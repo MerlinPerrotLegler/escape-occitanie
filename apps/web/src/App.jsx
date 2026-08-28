@@ -1,0 +1,64 @@
+import React from 'react';
+import { Route, Routes, BrowserRouter as Router, Link } from 'react-router-dom';
+import ScrollToTop from './components/ScrollToTop';
+import SiteHeader from './components/SiteHeader';
+import SiteFooter from './components/SiteFooter';
+import HomePage from './pages/HomePage';
+import RoomPage from './pages/RoomPage';
+import BookingPage from './pages/BookingPage';
+
+function NotFound() {
+  return (
+    <div className="flex min-h-[80dvh] flex-col items-center justify-center px-6 pt-16 text-center">
+      <p className="font-display text-7xl font-black text-primary sm:text-8xl">404</p>
+      <h1 className="mt-4 font-display text-2xl font-bold tracking-wider">
+        Cette porte n'existe pas…
+      </h1>
+      <p className="mt-3 max-w-md text-muted-foreground">
+        La page que vous cherchez s'est volatilisée dans la brume. Peut-être un indice vous
+        attend-il ailleurs ?
+      </p>
+      <Link
+        to="/"
+        className="mt-8 inline-flex h-12 items-center rounded-md bg-primary px-6 text-sm font-semibold text-primary-foreground transition-all hover:brightness-110 active:scale-[0.98]"
+      >
+        Retour à l'accueil
+      </Link>
+    </div>
+  );
+}
+
+function App() {
+  return (
+    <Router>
+      <ScrollToTop />
+      <div className="noise-overlay" aria-hidden="true" />
+      <SiteHeader />
+      <main>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route
+            path="/salles/convocation-chez-le-directeur"
+            element={<RoomPage roomKey="directeur" />}
+          />
+          <Route
+            path="/salles/la-malediction-du-vaisseau-fantome"
+            element={<RoomPage roomKey="vaisseau" />}
+          />
+          <Route
+            path="/reservation/convocation-chez-le-directeur"
+            element={<BookingPage roomKey="directeur" />}
+          />
+          <Route
+            path="/reservation/la-malediction-du-vaisseau-fantome"
+            element={<BookingPage roomKey="vaisseau" />}
+          />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </main>
+      <SiteFooter />
+    </Router>
+  );
+}
+
+export default App;
