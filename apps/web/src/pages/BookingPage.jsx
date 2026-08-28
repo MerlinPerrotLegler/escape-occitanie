@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
-import { ArrowLeft, Users, Baby, Timer, Phone, Mail, Clock, MousePointerClick, Send, BadgeCheck } from 'lucide-react';
+import { ArrowLeft, Users, Baby, Timer, Phone, Mail, MousePointerClick, Send, BadgeCheck } from 'lucide-react';
 import Reveal from '@/components/Reveal';
 import Seo from '@/components/Seo';
 import BookingCalendar from '@/components/BookingCalendar';
@@ -136,14 +136,6 @@ function BookingPage({ roomKey }) {
                     <Mail className="h-4 w-4 text-primary" />
                     {CONTACT.email}
                   </a>
-                  <p className="flex items-start gap-3 text-muted-foreground">
-                    <Clock className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
-                    <span>
-                      {CONTACT.hours}
-                      <br />
-                      {CONTACT.closedDays}
-                    </span>
-                  </p>
                 </div>
               </div>
             </div>

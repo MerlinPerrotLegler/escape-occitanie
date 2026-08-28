@@ -11,7 +11,6 @@ import {
   MapPin,
   Phone,
   Mail,
-  Clock,
   KeyRound,
   ChevronDown,
   CalendarDays,
@@ -218,7 +217,7 @@ function HomePage() {
                 </div>
                 <div>
                   <p className="font-display text-3xl font-bold text-primary sm:text-4xl">
-                    <CountUp value={6} />
+                    <CountUp value={12} />
                   </p>
                   <p className="mt-1 text-xs uppercase tracking-widest text-muted-foreground">
                     Joueurs max
@@ -471,14 +470,6 @@ function HomePage() {
                   >
                     {CONTACT.email}
                   </a>
-                </li>
-                <li className="flex items-start gap-3">
-                  <Clock className="mt-0.5 h-5 w-5 shrink-0 text-primary" strokeWidth={1.8} />
-                  <span className="text-foreground/85">
-                    {CONTACT.hours}
-                    <br />
-                    <span className="text-muted-foreground">{CONTACT.closedDays}</span>
-                  </span>
                 </li>
               </ul>
             </div>

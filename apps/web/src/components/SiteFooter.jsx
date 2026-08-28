@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { MapPin, Phone, Mail, Clock, Facebook, Instagram } from 'lucide-react';
+import { MapPin, Phone, Mail, CalendarDays, Facebook, Instagram } from 'lucide-react';
 import { CONTACT, ROOM_LIST } from '@/data/rooms';
 
 function SiteFooter() {
@@ -114,15 +114,14 @@ function SiteFooter() {
                 {CONTACT.email}
               </a>
             </li>
-            <li className="flex items-start gap-2.5">
-              <Clock className="mt-0.5 h-4 w-4 shrink-0 text-primary" strokeWidth={1.8} />
-              <span>
-                {CONTACT.hours}
-                <br />
-                {CONTACT.closedDays}
-              </span>
-            </li>
           </ul>
+          <Link
+            to="/#salles"
+            className="mt-5 inline-flex h-10 items-center gap-2 rounded-md bg-primary px-4 text-sm font-semibold text-primary-foreground shadow-[0_0_20px_hsl(var(--primary)/0.35)] transition-all duration-200 hover:brightness-110 active:scale-[0.98]"
+          >
+            <CalendarDays className="h-4 w-4" strokeWidth={2} />
+            Réserver
+          </Link>
         </div>
       </div>
       <div className="border-t border-border/60 py-5 text-center text-xs text-muted-foreground">
