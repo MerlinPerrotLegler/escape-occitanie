@@ -112,16 +112,19 @@ export const REVIEWS = [
     name: 'Élodie M.',
     city: 'Albi',
     text: "Une immersion incroyable ! Le bureau du directeur est bluffant de réalisme et les énigmes sont diaboliquement bien pensées. On a adhéré du début à la fin.",
+    stars: 5,
   },
   {
     name: 'Thomas R.',
     city: 'Toulouse',
     text: "Le Vaisseau Fantôme nous a littéralement transportés. Un décor digne d'un film, une ambiance à frissonner et un game master au top. On reviendra !",
+    stars: 5,
   },
   {
     name: 'Famille Garcia',
     city: 'Castres',
     text: "Parfait en famille : nos enfants de 11 et 14 ans ont participé à toutes les fouilles. Une heure passée beaucoup, beaucoup trop vite !",
+    stars: 5,
   },
 ];
 

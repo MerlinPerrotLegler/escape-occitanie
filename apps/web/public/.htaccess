@@ -1,0 +1,9 @@
+<FilesMatch "^\.env">
+  Require all denied
+</FilesMatch>
+
+RewriteEngine On
+RewriteRule ^api/ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.html [L]

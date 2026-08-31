@@ -10,18 +10,18 @@ import { ROOMS, CONTACT } from '@/data/rooms';
 const STEPS = [
   {
     icon: MousePointerClick,
-    title: 'Choisissez un créneau',
-    text: 'Parcourez le calendrier et sélectionnez le jour et l\'horaire qui vous conviennent.',
+    title: 'Choisissez un horaire',
+    text: 'Les départs s’affichent toutes les 30 minutes. Une partie dure 60 minutes.',
   },
   {
     icon: Send,
-    title: 'Contactez-nous',
-    text: 'Appelez-nous ou envoyez-nous un e-mail avec le créneau choisi et le nombre de joueurs.',
+    title: 'Réservez en ligne',
+    text: 'Indiquez votre nom, e-mail, téléphone et le nombre de joueurs (3 à 6).',
   },
   {
     icon: BadgeCheck,
     title: 'Confirmation',
-    text: 'Nous bloquons votre session et vous confirmons la réservation. À vous de jouer !',
+    text: 'Vous recevez un e-mail. L’équipe confirme ensuite la réservation. Rendez-vous 15 minutes avant le début.',
   },
 ];
 
@@ -60,8 +60,8 @@ function BookingPage({ roomKey }) {
             {room.name}
           </h1>
           <p className="mt-4 max-w-2xl leading-relaxed text-muted-foreground">
-            Consultez les disponibilités en temps réel ci-dessous, puis contactez-nous pour bloquer
-            votre créneau. La réservation est confirmée par téléphone ou par e-mail.
+            Consultez les disponibilités et réservez votre session de 60 minutes. Votre demande est
+            d’abord enregistrée, puis confirmée par l’équipe.
           </p>
         </Reveal>
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import {
@@ -20,6 +20,7 @@ import Reveal from '@/components/Reveal';
 import CountUp from '@/components/CountUp';
 import Seo from '@/components/Seo';
 import { CONTACT, ROOM_LIST, REVIEWS, HERO_IMAGE } from '@/data/rooms';
+import { fetchSiteContent } from '@/lib/siteContent';
 import { cn } from '@/lib/utils';
 
 const MARQUEE_WORDS = [
@@ -63,13 +64,30 @@ const RANK_STYLES = [
 ];
 
 function HomePage() {
+  const [reviews, setReviews] = useState(REVIEWS);
+  const [recordsBySlug, setRecordsBySlug] = useState(() =>
+    Object.fromEntries(ROOM_LIST.map((room) => [room.slug, room.records]))
+  );
+
+  useEffect(() => {
+    let cancelled = false;
+    fetchSiteContent().then((data) => {
+      if (cancelled || !data) return;
+      setReviews(data.reviews);
+      setRecordsBySlug(data.records);
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
   return (
     <>
       <Helmet>
         <title>Escape Occitanie — Escape game immersif en Occitanie</title>
         <meta
           name="description"
-          content="L'Escape Occitanie rouvre ses portes ! Deux salles d'escape game immersives : enquêtez dans le bureau du directeur ou brisez la malédiction du Vaisseau Fantôme. 60 minutes, 4 à 6 joueurs, dès 10 ans."
+          content="L'Escape Occitanie réouvre ses portes ! Deux salles d'escape game immersives : enquêtez dans le bureau du directeur ou brisez la malédiction du Vaisseau Fantôme. 60 minutes, 4 à 6 joueurs, dès 10 ans."
         />
       </Helmet>
       <Seo
@@ -103,7 +121,7 @@ function HomePage() {
               L'Escape Occitanie
               <br />
               <span className="relative inline-block text-primary">
-                rouvre ses portes
+                réouvre ses portes
                 <svg
                   className="absolute -bottom-2 left-0 w-full text-primary/70"
                   viewBox="0 0 300 12"
@@ -346,12 +364,22 @@ function HomePage() {
           </div>
         </Reveal>
         <div className="mt-14 grid gap-10 md:grid-cols-3 md:gap-8">
-          {REVIEWS.map((review, i) => (
+          {reviews.map((review, i) => (
             <Reveal key={review.name} delay={0.1 * i}>
               <figure className="flex h-full flex-col border-l-2 border-primary/50 pl-6">
-                <div className="flex gap-1 text-primary" aria-label="5 étoiles sur 5">
+                <div
+                  className="flex gap-1 text-primary"
+                  aria-label={`${review.stars ?? 5} étoiles sur 5`}
+                >
                   {Array.from({ length: 5 }).map((_, s) => (
-                    <Star key={s} className="h-4 w-4 fill-current" strokeWidth={0} />
+                    <Star
+                      key={s}
+                      className={cn(
+                        'h-4 w-4',
+                        s < (review.stars ?? 5) ? 'fill-current' : 'text-muted-foreground'
+                      )}
+                      strokeWidth={s < (review.stars ?? 5) ? 0 : 1.5}
+                    />
                   ))}
                 </div>
                 <blockquote className="mt-4 flex-1 leading-relaxed text-foreground/85">
@@ -398,7 +426,7 @@ function HomePage() {
                     </h3>
                   </div>
                   <ol className="divide-y divide-border/50">
-                    {room.records.map((record, rank) => (
+                    {(recordsBySlug[room.slug] || room.records).map((record, rank) => (
                       <li key={record.team} className="flex items-center gap-4 px-6 py-4">
                         <span
                           className={cn(

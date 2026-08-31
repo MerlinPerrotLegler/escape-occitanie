@@ -1,29 +1,32 @@
-import path from 'node:path';
-import react from '@vitejs/plugin-react';
-import { createLogger, defineConfig } from 'vite';
-import inlineEditPlugin from './plugins/visual-editor/vite-plugin-react-inline-editor.js';
-import editModeDevPlugin from './plugins/visual-editor/vite-plugin-edit-mode.js';
-import iframeRouteRestorationPlugin from './plugins/vite-plugin-iframe-route-restoration.js';
-import sitePagesPlugin from './plugins/vite-plugin-site-pages.js';
-import pocketbaseAuthPlugin from './plugins/vite-plugin-pocketbase-auth.js';
-import sessionJournalPlugin from './plugins/session-journal/vite-plugin-session-journal.js';
+<!doctype html>
+<html lang="fr">
+	<head>
+		<meta charset="UTF-8" />
+		<link rel="icon" type="image/svg+xml" href="/vite.svg" />
+		<meta name="generator" content="Hostinger AI Builder" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title></title>
+		<script type="module" crossorigin src="/assets/index-sIIiLjv-.js"></script>
+		<link rel="stylesheet" crossorigin href="/assets/index-C3JLNtHS.css">
+		<script type="module">
+window.onerror = (message, source, lineno, colno, errorObj) => {
+	const errorDetails = errorObj ? JSON.stringify({
+		name: errorObj.name,
+		message: errorObj.message,
+		stack: errorObj.stack,
+		source,
+		lineno,
+		colno,
+	}) : null;
 
-import { readFileSync } from 'node:fs';
-
-const pkg = JSON.parse(readFileSync('./package.json', 'utf-8'));
-const allDeps = Object.keys(pkg.dependencies || {});
-
-const isDev = process.env.NODE_ENV !== 'production';
-
-// Only the Horizons editor may read this dev server cross-origin. `cors: true`
-// sends `Access-Control-Allow-Origin: *`, which lets any site read the source
-// transforms and call the dev-only APIs.
-const AllowedEditorOrigins = [
-	'https://horizons.hostinger.com',
-	'https://horizons.hostinger.dev',
-];
-
-const configHorizonsViteErrorHandler = `
+	window.parent.postMessage({
+		type: 'horizons-runtime-error',
+		message,
+		error: errorDetails
+	}, '*');
+};
+</script>
+		<script type="module">
 const observer = new MutationObserver((mutations) => {
 	for (const mutation of mutations) {
 		for (const addedNode of mutation.addedNodes) {
@@ -68,38 +71,18 @@ function handleViteOverlay(node) {
 		}, '*');
 	}
 }
-`;
-
-const configHorizonsRuntimeErrorHandler = `
-window.onerror = (message, source, lineno, colno, errorObj) => {
-	const errorDetails = errorObj ? JSON.stringify({
-		name: errorObj.name,
-		message: errorObj.message,
-		stack: errorObj.stack,
-		source,
-		lineno,
-		colno,
-	}) : null;
-
-	window.parent.postMessage({
-		type: 'horizons-runtime-error',
-		message,
-		error: errorDetails
-	}, '*');
-};
-`;
-
-const configHorizonsConsoleErrorHandler = `
+</script>
+		<script type="module">
 const originalConsoleError = console.error;
-const MATCH_LINE_COL_REGEX = /:(\\d+):(\\d+)\\)?\\s*$/; // regex to match the :lineNum:colNum
-const MATCH_AT_REGEX = /^\\s*at\\s+(?:async\\s+)?(?:.*?\\s+)?\\(?/; // regex to remove the 'at' keyword and any 'async' or function name
-const MATCH_PATH_REGEX = /^\\//; // regex to remove the leading slash
+const MATCH_LINE_COL_REGEX = /:(\d+):(\d+)\)?\s*$/; // regex to match the :lineNum:colNum
+const MATCH_AT_REGEX = /^\s*at\s+(?:async\s+)?(?:.*?\s+)?\(?/; // regex to remove the 'at' keyword and any 'async' or function name
+const MATCH_PATH_REGEX = /^\//; // regex to remove the leading slash
 
 function parseStackFrameLine(line) {
 	const lineColMatch = line.match(MATCH_LINE_COL_REGEX);
 	if (!lineColMatch) return null;
 	const [, lineNum, colNum] = lineColMatch;
-	const suffix = \`:\${lineNum}:\${colNum}\`;
+	const suffix = `:${lineNum}:${colNum}`;
 	const idx = line.lastIndexOf(suffix);
 	if (idx === -1) return null;
 	const before = line.substring(0, idx);
@@ -110,18 +93,18 @@ function parseStackFrameLine(line) {
 	try {
 		const pathname = new URL(path).pathname;
 		const filePath = pathname.replace(MATCH_PATH_REGEX, '') || pathname;
-		return \`\${filePath}:\${lineNum}:\${colNum}\`;
+		return `${filePath}:${lineNum}:${colNum}`;
 	} catch (e) {
 		const filePath = path.replace(MATCH_PATH_REGEX, '') || path;
-		return \`\${filePath}:\${lineNum}:\${colNum}\`;
+		return `${filePath}:${lineNum}:${colNum}`;
 	}
 }
 
 function getFilePathFromStack(stack, skipFrames = 0) {
 	if (!stack || typeof stack !== 'string') return null;
-	const lines = stack.split('\\n').slice(1);
+	const lines = stack.split('\n').slice(1);
 
-	const frames = lines.map(line => parseStackFrameLine(line.replace(/\\r$/, ''))).filter(Boolean);
+	const frames = lines.map(line => parseStackFrameLine(line.replace(/\r$/, ''))).filter(Boolean);
 
 	return frames[skipFrames] ?? null;
 }
@@ -134,9 +117,9 @@ function formatConsoleMessage(args, skipStackFrames = 1) {
 		const arg = args[i];
 		if (arg instanceof Error) {
 			filePath = getFilePathFromStack(arg.stack, 0);
-			messageString = \`\${arg.name}: \${arg.message}\`;
+			messageString = `${arg.name}: ${arg.message}`;
 			if (filePath) {
-				messageString = \`\${messageString} at \${filePath}\`;
+				messageString = `${messageString} at ${filePath}`;
 			}
 			break;
 		}
@@ -147,7 +130,7 @@ function formatConsoleMessage(args, skipStackFrames = 1) {
 		const stack = new Error().stack;
 		filePath = getFilePathFromStack(stack, skipStackFrames);
 		if (filePath) {
-			messageString = \`\${messageString} at \${filePath}\`;
+			messageString = `${messageString} at ${filePath}`;
 		}
 	}
 
@@ -173,16 +156,15 @@ console.warn = function(...args) {
 		warning: formatConsoleMessage(args, 1)
 	}, '*');
 };
-`;
-
-const configWindowFetchMonkeyPatch = `
+</script>
+		<script type="module">
 // Prevents authentication failures (PB returns 400) from crashing the app — use console.info, not console.error/PM2.
 // [urlPattern, bodyPattern] tuples; align with sandboxErrorUtils ERROR_BLACKLIST.
 const BENIGN_FETCH_ERRORS = [
-	[/hcgi\\/platform\\/api\\/collections\\/.*auth-with-password.*/i, /Failed to authenticate/i],
-	[/hcgi\\/api\\//i, /Insufficient credits/i],
+	[/hcgi\/platform\/api\/collections\/.*auth-with-password.*/i, /Failed to authenticate/i],
+	[/hcgi\/api\//i, /Insufficient credits/i],
 	// A user-supplied integration secret (Stripe/PayPal/Twilio/...) is not set yet — an expected setup state, not a bug to fix.
-	[/hcgi\\/api\\//i, /INTEGRATION_NOT_CONFIGURED/i],
+	[/hcgi\/api\//i, /INTEGRATION_NOT_CONFIGURED/i],
 ];
 
 function isBenignFetchError(url, body) {
@@ -190,7 +172,7 @@ function isBenignFetchError(url, body) {
 		urlPattern.test(url) && (!bodyPattern || bodyPattern.test(body)));
 }
 
-const PLATFORM_URL_PATTERN = /hcgi\\/platform\\//i;
+const PLATFORM_URL_PATTERN = /hcgi\/platform\//i;
 const VALIDATION_CODE_TEXT_PATTERN = /validation_/;
 
 function hasValidationCode(value) {
@@ -243,7 +225,7 @@ window.fetch = function(...args) {
 					const responseClone = response.clone();
 					const errorFromRes = await responseClone.text();
 					const requestUrl = response.url;
-					const errorMessage = \`Fetch error from \${requestUrl}: \${errorFromRes}\`;
+					const errorMessage = `Fetch error from ${requestUrl}: ${errorFromRes}`;
 
 					if (isBenignFetchError(requestUrl, errorFromRes)) {
 						console.info(errorMessage);
@@ -257,7 +239,7 @@ window.fetch = function(...args) {
 			return response;
 		})
 		.catch(error => {
-			if (!url.match(/\.html?$/i)) {
+			if (!url.match(/.html?$/i)) {
 				// Cancelled in-flight fetch (e.g. preview reload) — not a server failure.
 				if (error?.name === 'AbortError') {
 					console.info(error);
@@ -269,9 +251,8 @@ window.fetch = function(...args) {
 			throw error;
 		});
 };
-`;
-
-const configNavigationHandler = `
+</script>
+		<script type="module">
 if (window.navigation && window.self !== window.top) {
 	window.navigation.addEventListener('navigate', (event) => {
 		const url = event.destination.url;
@@ -294,131 +275,9 @@ if (window.navigation && window.self !== window.top) {
 		}, '*');
 	});
 }
-`;
-
-const addTransformIndexHtml = {
-	name: 'add-transform-index-html',
-	transformIndexHtml(html) {
-		const tags = [
-			{
-				tag: 'script',
-				attrs: { type: 'module' },
-				children: configHorizonsRuntimeErrorHandler,
-				injectTo: 'head',
-			},
-			{
-				tag: 'script',
-				attrs: { type: 'module' },
-				children: configHorizonsViteErrorHandler,
-				injectTo: 'head',
-			},
-			{
-				tag: 'script',
-				attrs: { type: 'module' },
-				children: configHorizonsConsoleErrorHandler,
-				injectTo: 'head',
-			},
-			{
-				tag: 'script',
-				attrs: { type: 'module' },
-				children: configWindowFetchMonkeyPatch,
-				injectTo: 'head',
-			},
-			{
-				tag: 'script',
-				attrs: { type: 'module' },
-				children: configNavigationHandler,
-				injectTo: 'head',
-			},
-		];
-
-		if (!isDev && process.env.TEMPLATE_BANNER_SCRIPT_URL && process.env.TEMPLATE_REDIRECT_URL) {
-			tags.push(
-				{
-					tag: 'script',
-					attrs: {
-						src: process.env.TEMPLATE_BANNER_SCRIPT_URL,
-						'template-redirect-url': process.env.TEMPLATE_REDIRECT_URL,
-						...(process.env.TEMPLATE_BANNER_MAIN_TEXT && { 'template-main-text': process.env.TEMPLATE_BANNER_MAIN_TEXT }),
-						...(process.env.TEMPLATE_BANNER_CTA_TEXT && { 'template-cta-text': process.env.TEMPLATE_BANNER_CTA_TEXT }),
-						...(process.env.TEMPLATE_BANNER_THEME && { 'template-theme': process.env.TEMPLATE_BANNER_THEME }),
-					},
-					injectTo: 'head',
-				}
-			);
-		}
-
-		return {
-			html,
-			tags,
-		};
-	},
-};
-
-console.warn = () => { };
-
-const logger = createLogger()
-const loggerError = logger.error
-
-logger.error = (msg, options) => {
-	if (options?.error?.toString().includes('CssSyntaxError: [postcss]')) {
-		return;
-	}
-
-	loggerError(msg, options);
-}
-
-export default defineConfig({
-	optimizeDeps: {
-		include: allDeps,
-	},
-	customLogger: logger,
-	plugins: [
-		...(isDev ? [inlineEditPlugin(), editModeDevPlugin(), iframeRouteRestorationPlugin(), sitePagesPlugin(), pocketbaseAuthPlugin(), sessionJournalPlugin()] : []),
-		react(),
-		addTransformIndexHtml
-	],
-	server: {
-		port: 3000,
-		cors: { origin: AllowedEditorOrigins },
-		headers: {
-			'Cross-Origin-Embedder-Policy': 'credentialless',
-		},
-		allowedHosts: [
-			'.app-preview.com',
-			'.app-preview.io',
-		],
-		fs: {
-			strict: true,
-			allow: [
-				path.resolve(__dirname),
-				path.join(path.resolve(__dirname, '../..'), 'node_modules'),
-			],
-		},
-		proxy: {
-			'/api': {
-				target: 'http://127.0.0.1:8080',
-				changeOrigin: true,
-			},
-		},
-	},
-	resolve: {
-		extensions: ['.jsx', '.js', '.json'],
-		alias: {
-			'@': path.resolve(__dirname, './src'),
-		},
-	},
-	build: {
-		rollupOptions: {
-			external: [
-				'@babel/parser',
-				'@babel/traverse',
-				'@babel/generator',
-				'@babel/types'
-			],
-			checks: {
-				pluginTimings: false,
-			}
-		}
-	}
-});
+</script>
+	</head>
+	<body>
+		<div id="root"></div>
+	</body>
+</html>

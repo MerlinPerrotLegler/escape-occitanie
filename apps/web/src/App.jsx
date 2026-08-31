@@ -1,11 +1,12 @@
 import React from 'react';
-import { Route, Routes, BrowserRouter as Router, Link } from 'react-router-dom';
+import { Route, Routes, BrowserRouter as Router, Link, Outlet, Navigate } from 'react-router-dom';
 import ScrollToTop from './components/ScrollToTop';
 import SiteHeader from './components/SiteHeader';
 import SiteFooter from './components/SiteFooter';
 import HomePage from './pages/HomePage';
 import RoomPage from './pages/RoomPage';
 import BookingPage from './pages/BookingPage';
+import MaitreThibautPage from './pages/MaitreThibautPage';
 
 function NotFound() {
   return (
@@ -28,14 +29,27 @@ function NotFound() {
   );
 }
 
+function PublicLayout() {
+  return (
+    <>
+      <SiteHeader />
+      <main>
+        <Outlet />
+      </main>
+      <SiteFooter />
+    </>
+  );
+}
+
 function App() {
   return (
     <Router>
       <ScrollToTop />
       <div className="noise-overlay" aria-hidden="true" />
-      <SiteHeader />
-      <main>
-        <Routes>
+      <Routes>
+        <Route path="/maitre" element={<MaitreThibautPage />} />
+        <Route path="/maitre-thibaut" element={<Navigate to="/maitre" replace />} />
+        <Route element={<PublicLayout />}>
           <Route path="/" element={<HomePage />} />
           <Route
             path="/salles/convocation-chez-le-directeur"
@@ -54,9 +68,8 @@ function App() {
             element={<BookingPage roomKey="vaisseau" />}
           />
           <Route path="*" element={<NotFound />} />
-        </Routes>
-      </main>
-      <SiteFooter />
+        </Route>
+      </Routes>
     </Router>
   );
 }
