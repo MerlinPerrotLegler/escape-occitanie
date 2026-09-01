@@ -4046,3 +4046,1051 @@
 ## 2026-09-01 16:13:32.021Z blur
 - element: {"tag":"input","role":null,"ariaLabel":null,"name":"phone","type":"tel","id":":ra:-form-item","placeholder":"Téléphone","label":"phone","value":"+42112345678","valueLength":12,"text":""}
 
+## 2026-09-01 16:17:58.095Z window.error
+- message: Uncaught ReferenceError: slotStatusLabel is not defined
+- source: http://127.0.0.1:3000/src/pages/MaitreThibaultPage.jsx?t=1788279477919
+- line: 971
+- col: 46
+- stack: 
+    ReferenceError: slotStatusLabel is not defined
+        at http://127.0.0.1:3000/src/pages/MaitreThibaultPage.jsx?t=1788279477919:971:46
+        at Array.map (<anonymous>)
+        at http://127.0.0.1:3000/src/pages/MaitreThibaultPage.jsx?t=1788279477919:967:133
+        at Array.map (<anonymous>)
+        at MaitreThibaultPage (http://127.0.0.1:3000/src/pages/MaitreThibaultPage.jsx?t=1788279477919:955:123)
+        at renderWithHooks (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:11596:26)
+        at updateFunctionComponent (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:14630:28)
+        at beginWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:15972:22)
+        at HTMLUnknownElement.callCallback2 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:3680:22)
+        at Object.invokeGuardedCallbackDev (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:3705:24)
+
+## 2026-09-01 16:17:58.097Z window.error
+- message: Uncaught ReferenceError: slotStatusLabel is not defined
+- source: http://127.0.0.1:3000/src/pages/MaitreThibaultPage.jsx?t=1788279477919
+- line: 971
+- col: 46
+- stack: 
+    ReferenceError: slotStatusLabel is not defined
+        at http://127.0.0.1:3000/src/pages/MaitreThibaultPage.jsx?t=1788279477919:971:46
+        at Array.map (<anonymous>)
+        at http://127.0.0.1:3000/src/pages/MaitreThibaultPage.jsx?t=1788279477919:967:133
+        at Array.map (<anonymous>)
+        at MaitreThibaultPage (http://127.0.0.1:3000/src/pages/MaitreThibaultPage.jsx?t=1788279477919:955:123)
+        at renderWithHooks (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:11596:26)
+        at updateFunctionComponent (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:14630:28)
+        at beginWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:15972:22)
+        at HTMLUnknownElement.callCallback2 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:3680:22)
+        at Object.invokeGuardedCallbackDev (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:3705:24)
+
+## 2026-09-01 16:17:58.098Z console.error
+- text: 
+    The above error occurred in the <MaitreThibaultPage> component:
+    
+        at MaitreThibaultPage (http://127.0.0.1:3000/src/pages/MaitreThibaultPage.jsx?t=1788279477919:116:33)
+        at RenderedRoute (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=71457aec:6647:26)
+        at Routes (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=71457aec:7572:3)
+        at Router (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=71457aec:7511:13)
+        at BrowserRouter (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=71457aec:10816:3)
+        at App
+    
+    Consider adding an error boundary to your tree to customize error handling behavior.
+    Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries.
+
+## 2026-09-01 16:17:58.098Z unhandledrejection
+- message: slotStatusLabel is not defined
+- stack: 
+    ReferenceError: slotStatusLabel is not defined
+        at http://127.0.0.1:3000/src/pages/MaitreThibaultPage.jsx?t=1788279477919:971:46
+        at Array.map (<anonymous>)
+        at http://127.0.0.1:3000/src/pages/MaitreThibaultPage.jsx?t=1788279477919:967:133
+        at Array.map (<anonymous>)
+        at MaitreThibaultPage (http://127.0.0.1:3000/src/pages/MaitreThibaultPage.jsx?t=1788279477919:955:123)
+        at renderWithHooks (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:11596:26)
+        at updateFunctionComponent (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:14630:28)
+        at beginWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:15972:22)
+        at beginWork$1 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:19806:22)
+        at performUnitOfWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:19251:20)
+
+## 2026-09-01 16:17:58.399Z root.empty
+- url: http://127.0.0.1:3000/maitre#planning
+
+## 2026-09-01 16:17:58.755Z window.error
+- message: Uncaught ReferenceError: slotDate is not defined
+- source: http://127.0.0.1:3000/src/pages/MaitreThibaultPage.jsx?t=1788279478656
+- line: 280
+- col: 21
+- stack: 
+    ReferenceError: slotDate is not defined
+        at MaitreThibaultPage (http://127.0.0.1:3000/src/pages/MaitreThibaultPage.jsx?t=1788279478656:280:21)
+        at renderWithHooks (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:11596:26)
+        at mountIndeterminateComponent (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:14974:21)
+        at beginWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:15962:22)
+        at HTMLUnknownElement.callCallback2 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:3680:22)
+        at Object.invokeGuardedCallbackDev (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:3705:24)
+        at invokeGuardedCallback (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:3739:39)
+        at beginWork$1 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:19818:15)
+        at performUnitOfWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:19251:20)
+        at workLoopSync (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:19190:13)
+
+## 2026-09-01 16:17:58.756Z window.error
+- message: Uncaught ReferenceError: slotDate is not defined
+- source: http://127.0.0.1:3000/src/pages/MaitreThibaultPage.jsx?t=1788279478656
+- line: 280
+- col: 21
+- stack: 
+    ReferenceError: slotDate is not defined
+        at MaitreThibaultPage (http://127.0.0.1:3000/src/pages/MaitreThibaultPage.jsx?t=1788279478656:280:21)
+        at renderWithHooks (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:11596:26)
+        at mountIndeterminateComponent (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:14974:21)
+        at beginWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:15962:22)
+        at HTMLUnknownElement.callCallback2 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:3680:22)
+        at Object.invokeGuardedCallbackDev (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:3705:24)
+        at invokeGuardedCallback (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:3739:39)
+        at beginWork$1 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:19818:15)
+        at performUnitOfWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:19251:20)
+        at workLoopSync (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:19190:13)
+
+## 2026-09-01 16:17:58.757Z console.error
+- text: 
+    The above error occurred in the <MaitreThibaultPage> component:
+    
+        at MaitreThibaultPage (http://127.0.0.1:3000/src/pages/MaitreThibaultPage.jsx?t=1788279478656:116:33)
+        at RenderedRoute (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=71457aec:6647:26)
+        at Routes (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=71457aec:7572:3)
+        at Router (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=71457aec:7511:13)
+        at BrowserRouter (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=71457aec:10816:3)
+        at App
+    
+    Consider adding an error boundary to your tree to customize error handling behavior.
+    Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries.
+
+## 2026-09-01 16:17:58.757Z unhandledrejection
+- message: slotDate is not defined
+- stack: 
+    ReferenceError: slotDate is not defined
+        at MaitreThibaultPage (http://127.0.0.1:3000/src/pages/MaitreThibaultPage.jsx?t=1788279478656:280:21)
+        at renderWithHooks (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:11596:26)
+        at mountIndeterminateComponent (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:14974:21)
+        at beginWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:15962:22)
+        at beginWork$1 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:19806:22)
+        at performUnitOfWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:19251:20)
+        at workLoopSync (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:19190:13)
+        at renderRootSync (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:19169:15)
+        at recoverFromConcurrentError (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:18786:28)
+        at performSyncWorkOnRoot (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:18932:28)
+
+## 2026-09-01 16:17:58.644Z window.error
+- message: Uncaught ReferenceError: slotStatusLabel is not defined
+- source: http://localhost:3000/src/pages/MaitreThibaultPage.jsx?t=1788279477919
+- line: 971
+- col: 46
+- stack: 
+    ReferenceError: slotStatusLabel is not defined
+        at http://localhost:3000/src/pages/MaitreThibaultPage.jsx?t=1788279477919:971:46
+        at Array.map (<anonymous>)
+        at http://localhost:3000/src/pages/MaitreThibaultPage.jsx?t=1788279477919:967:133
+        at Array.map (<anonymous>)
+        at MaitreThibaultPage (http://localhost:3000/src/pages/MaitreThibaultPage.jsx?t=1788279477919:955:123)
+        at renderWithHooks (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:11596:26)
+        at updateFunctionComponent (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:14630:28)
+        at beginWork (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:15972:22)
+        at HTMLUnknownElement.callCallback2 (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:3680:22)
+        at Object.invokeGuardedCallbackDev (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:3705:24)
+
+## 2026-09-01 16:17:58.650Z window.error
+- message: Uncaught ReferenceError: slotStatusLabel is not defined
+- source: http://localhost:3000/src/pages/MaitreThibaultPage.jsx?t=1788279477919
+- line: 971
+- col: 46
+- stack: 
+    ReferenceError: slotStatusLabel is not defined
+        at http://localhost:3000/src/pages/MaitreThibaultPage.jsx?t=1788279477919:971:46
+        at Array.map (<anonymous>)
+        at http://localhost:3000/src/pages/MaitreThibaultPage.jsx?t=1788279477919:967:133
+        at Array.map (<anonymous>)
+        at MaitreThibaultPage (http://localhost:3000/src/pages/MaitreThibaultPage.jsx?t=1788279477919:955:123)
+        at renderWithHooks (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:11596:26)
+        at updateFunctionComponent (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:14630:28)
+        at beginWork (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:15972:22)
+        at HTMLUnknownElement.callCallback2 (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:3680:22)
+        at Object.invokeGuardedCallbackDev (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:3705:24)
+
+## 2026-09-01 16:17:58.651Z console.error
+- text: 
+    The above error occurred in the <MaitreThibaultPage> component:
+    
+        at MaitreThibaultPage (http://localhost:3000/src/pages/MaitreThibaultPage.jsx?t=1788279477919:116:33)
+        at RenderedRoute (http://localhost:3000/node_modules/.vite/deps/react-router-dom.js?v=71457aec:6647:26)
+        at Routes (http://localhost:3000/node_modules/.vite/deps/react-router-dom.js?v=71457aec:7572:3)
+        at Router (http://localhost:3000/node_modules/.vite/deps/react-router-dom.js?v=71457aec:7511:13)
+        at BrowserRouter (http://localhost:3000/node_modules/.vite/deps/react-router-dom.js?v=71457aec:10816:3)
+        at App
+    
+    Consider adding an error boundary to your tree to customize error handling behavior.
+    Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries.
+
+## 2026-09-01 16:17:58.654Z unhandledrejection
+- message: slotStatusLabel is not defined
+- stack: 
+    ReferenceError: slotStatusLabel is not defined
+        at http://localhost:3000/src/pages/MaitreThibaultPage.jsx?t=1788279477919:971:46
+        at Array.map (<anonymous>)
+        at http://localhost:3000/src/pages/MaitreThibaultPage.jsx?t=1788279477919:967:133
+        at Array.map (<anonymous>)
+        at MaitreThibaultPage (http://localhost:3000/src/pages/MaitreThibaultPage.jsx?t=1788279477919:955:123)
+        at renderWithHooks (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:11596:26)
+        at updateFunctionComponent (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:14630:28)
+        at beginWork (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:15972:22)
+        at beginWork$1 (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:19806:22)
+        at performUnitOfWork (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:19251:20)
+
+## 2026-09-01 16:17:59.646Z window.error
+- message: Uncaught ReferenceError: slotDate is not defined
+- source: http://localhost:3000/src/pages/MaitreThibaultPage.jsx?t=1788279478656
+- line: 280
+- col: 21
+- stack: 
+    ReferenceError: slotDate is not defined
+        at MaitreThibaultPage (http://localhost:3000/src/pages/MaitreThibaultPage.jsx?t=1788279478656:280:21)
+        at renderWithHooks (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:11596:26)
+        at mountIndeterminateComponent (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:14974:21)
+        at beginWork (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:15962:22)
+        at HTMLUnknownElement.callCallback2 (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:3680:22)
+        at Object.invokeGuardedCallbackDev (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:3705:24)
+        at invokeGuardedCallback (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:3739:39)
+        at beginWork$1 (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:19818:15)
+        at performUnitOfWork (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:19251:20)
+        at workLoopSync (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:19190:13)
+
+## 2026-09-01 16:17:59.652Z window.error
+- message: Uncaught ReferenceError: slotDate is not defined
+- source: http://localhost:3000/src/pages/MaitreThibaultPage.jsx?t=1788279478656
+- line: 280
+- col: 21
+- stack: 
+    ReferenceError: slotDate is not defined
+        at MaitreThibaultPage (http://localhost:3000/src/pages/MaitreThibaultPage.jsx?t=1788279478656:280:21)
+        at renderWithHooks (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:11596:26)
+        at mountIndeterminateComponent (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:14974:21)
+        at beginWork (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:15962:22)
+        at HTMLUnknownElement.callCallback2 (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:3680:22)
+        at Object.invokeGuardedCallbackDev (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:3705:24)
+        at invokeGuardedCallback (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:3739:39)
+        at beginWork$1 (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:19818:15)
+        at performUnitOfWork (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:19251:20)
+        at workLoopSync (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:19190:13)
+
+## 2026-09-01 16:17:59.652Z console.error
+- text: 
+    The above error occurred in the <MaitreThibaultPage> component:
+    
+        at MaitreThibaultPage (http://localhost:3000/src/pages/MaitreThibaultPage.jsx?t=1788279478656:116:33)
+        at RenderedRoute (http://localhost:3000/node_modules/.vite/deps/react-router-dom.js?v=71457aec:6647:26)
+        at Routes (http://localhost:3000/node_modules/.vite/deps/react-router-dom.js?v=71457aec:7572:3)
+        at Router (http://localhost:3000/node_modules/.vite/deps/react-router-dom.js?v=71457aec:7511:13)
+        at BrowserRouter (http://localhost:3000/node_modules/.vite/deps/react-router-dom.js?v=71457aec:10816:3)
+        at App
+    
+    Consider adding an error boundary to your tree to customize error handling behavior.
+    Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries.
+
+## 2026-09-01 16:17:59.653Z root.empty
+- url: http://localhost:3000/maitre#planning
+
+## 2026-09-01 16:17:59.654Z unhandledrejection
+- message: slotDate is not defined
+- stack: 
+    ReferenceError: slotDate is not defined
+        at MaitreThibaultPage (http://localhost:3000/src/pages/MaitreThibaultPage.jsx?t=1788279478656:280:21)
+        at renderWithHooks (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:11596:26)
+        at mountIndeterminateComponent (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:14974:21)
+        at beginWork (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:15962:22)
+        at beginWork$1 (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:19806:22)
+        at performUnitOfWork (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:19251:20)
+        at workLoopSync (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:19190:13)
+        at renderRootSync (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:19169:15)
+        at recoverFromConcurrentError (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:18786:28)
+        at performSyncWorkOnRoot (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:18932:28)
+
+## 2026-09-01 16:18:25.992Z window.error
+- message: Uncaught ReferenceError: setPlanningDate is not defined
+- source: http://127.0.0.1:3000/src/pages/MaitreThibaultPage.jsx?t=1788279505816
+- line: 823
+- col: 125
+- stack: 
+    ReferenceError: setPlanningDate is not defined
+        at MaitreThibaultPage (http://127.0.0.1:3000/src/pages/MaitreThibaultPage.jsx?t=1788279505816:823:125)
+        at renderWithHooks (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:11596:26)
+        at updateFunctionComponent (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:14630:28)
+        at beginWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:15972:22)
+        at HTMLUnknownElement.callCallback2 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:3680:22)
+        at Object.invokeGuardedCallbackDev (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:3705:24)
+        at invokeGuardedCallback (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:3739:39)
+        at beginWork$1 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:19818:15)
+        at performUnitOfWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:19251:20)
+        at workLoopSync (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:19190:13)
+
+## 2026-09-01 16:18:25.993Z window.error
+- message: Uncaught ReferenceError: setPlanningDate is not defined
+- source: http://127.0.0.1:3000/src/pages/MaitreThibaultPage.jsx?t=1788279505816
+- line: 823
+- col: 125
+- stack: 
+    ReferenceError: setPlanningDate is not defined
+        at MaitreThibaultPage (http://127.0.0.1:3000/src/pages/MaitreThibaultPage.jsx?t=1788279505816:823:125)
+        at renderWithHooks (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:11596:26)
+        at updateFunctionComponent (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:14630:28)
+        at beginWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:15972:22)
+        at HTMLUnknownElement.callCallback2 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:3680:22)
+        at Object.invokeGuardedCallbackDev (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:3705:24)
+        at invokeGuardedCallback (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:3739:39)
+        at beginWork$1 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:19818:15)
+        at performUnitOfWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:19251:20)
+        at workLoopSync (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:19190:13)
+
+## 2026-09-01 16:18:25.993Z console.error
+- text: 
+    The above error occurred in the <MaitreThibaultPage> component:
+    
+        at MaitreThibaultPage (http://127.0.0.1:3000/src/pages/MaitreThibaultPage.jsx?t=1788279505816:116:33)
+        at RenderedRoute (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=71457aec:6647:26)
+        at Routes (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=71457aec:7572:3)
+        at Router (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=71457aec:7511:13)
+        at BrowserRouter (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=71457aec:10816:3)
+        at App
+    
+    Consider adding an error boundary to your tree to customize error handling behavior.
+    Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries.
+
+## 2026-09-01 16:18:25.993Z window.error
+- message: Uncaught ReferenceError: setPlanningDate is not defined
+- source: http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec
+- line: 19466
+- col: 13
+- stack: 
+    ReferenceError: setPlanningDate is not defined
+        at MaitreThibaultPage (http://127.0.0.1:3000/src/pages/MaitreThibaultPage.jsx?t=1788279505816:823:125)
+        at renderWithHooks (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:11596:26)
+        at updateFunctionComponent (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:14630:28)
+        at beginWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:15972:22)
+        at beginWork$1 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:19806:22)
+        at performUnitOfWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:19251:20)
+        at workLoopSync (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:19190:13)
+        at renderRootSync (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:19169:15)
+        at recoverFromConcurrentError (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:18786:28)
+        at performConcurrentWorkOnRoot (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:18734:30)
+
+## 2026-09-01 16:18:26.294Z root.empty
+- url: http://127.0.0.1:3000/maitre#planning
+
+## 2026-09-01 16:18:26.748Z window.error
+- message: Uncaught ReferenceError: setPlanningDate is not defined
+- source: http://127.0.0.1:3000/src/pages/MaitreThibaultPage.jsx?t=1788279506651
+- line: 813
+- col: 125
+- stack: 
+    ReferenceError: setPlanningDate is not defined
+        at MaitreThibaultPage (http://127.0.0.1:3000/src/pages/MaitreThibaultPage.jsx?t=1788279506651:813:125)
+        at renderWithHooks (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:11596:26)
+        at updateFunctionComponent (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:14630:28)
+        at beginWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:15972:22)
+        at HTMLUnknownElement.callCallback2 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:3680:22)
+        at Object.invokeGuardedCallbackDev (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:3705:24)
+        at invokeGuardedCallback (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:3739:39)
+        at beginWork$1 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:19818:15)
+        at performUnitOfWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:19251:20)
+        at workLoopSync (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:19190:13)
+
+## 2026-09-01 16:18:26.748Z window.error
+- message: Uncaught ReferenceError: setPlanningDate is not defined
+- source: http://127.0.0.1:3000/src/pages/MaitreThibaultPage.jsx?t=1788279506651
+- line: 813
+- col: 125
+- stack: 
+    ReferenceError: setPlanningDate is not defined
+        at MaitreThibaultPage (http://127.0.0.1:3000/src/pages/MaitreThibaultPage.jsx?t=1788279506651:813:125)
+        at renderWithHooks (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:11596:26)
+        at updateFunctionComponent (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:14630:28)
+        at beginWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:15972:22)
+        at HTMLUnknownElement.callCallback2 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:3680:22)
+        at Object.invokeGuardedCallbackDev (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:3705:24)
+        at invokeGuardedCallback (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:3739:39)
+        at beginWork$1 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:19818:15)
+        at performUnitOfWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:19251:20)
+        at workLoopSync (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:19190:13)
+
+## 2026-09-01 16:18:26.748Z console.error
+- text: 
+    The above error occurred in the <MaitreThibaultPage> component:
+    
+        at MaitreThibaultPage (http://127.0.0.1:3000/src/pages/MaitreThibaultPage.jsx?t=1788279506651:116:33)
+        at RenderedRoute (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=71457aec:6647:26)
+        at Routes (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=71457aec:7572:3)
+        at Router (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=71457aec:7511:13)
+        at BrowserRouter (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=71457aec:10816:3)
+        at App
+    
+    Consider adding an error boundary to your tree to customize error handling behavior.
+    Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries.
+
+## 2026-09-01 16:18:26.748Z window.error
+- message: Uncaught ReferenceError: setPlanningDate is not defined
+- source: http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec
+- line: 19466
+- col: 13
+- stack: 
+    ReferenceError: setPlanningDate is not defined
+        at MaitreThibaultPage (http://127.0.0.1:3000/src/pages/MaitreThibaultPage.jsx?t=1788279506651:813:125)
+        at renderWithHooks (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:11596:26)
+        at updateFunctionComponent (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:14630:28)
+        at beginWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:15972:22)
+        at beginWork$1 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:19806:22)
+        at performUnitOfWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:19251:20)
+        at workLoopSync (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:19190:13)
+        at renderRootSync (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:19169:15)
+        at recoverFromConcurrentError (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:18786:28)
+        at performConcurrentWorkOnRoot (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:18734:30)
+
+## 2026-09-01 16:18:27.049Z root.empty
+- url: http://127.0.0.1:3000/maitre#planning
+
+## 2026-09-01 16:18:28.048Z window.error
+- message: Uncaught ReferenceError: setPlanningDate is not defined
+- source: http://127.0.0.1:3000/src/pages/MaitreThibaultPage.jsx?t=1788279507951
+- line: 813
+- col: 125
+- stack: 
+    ReferenceError: setPlanningDate is not defined
+        at MaitreThibaultPage (http://127.0.0.1:3000/src/pages/MaitreThibaultPage.jsx?t=1788279507951:813:125)
+        at renderWithHooks (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:11596:26)
+        at updateFunctionComponent (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:14630:28)
+        at beginWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:15972:22)
+        at HTMLUnknownElement.callCallback2 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:3680:22)
+        at Object.invokeGuardedCallbackDev (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:3705:24)
+        at invokeGuardedCallback (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:3739:39)
+        at beginWork$1 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:19818:15)
+        at performUnitOfWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:19251:20)
+        at workLoopSync (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:19190:13)
+
+## 2026-09-01 16:18:28.048Z window.error
+- message: Uncaught ReferenceError: setPlanningDate is not defined
+- source: http://127.0.0.1:3000/src/pages/MaitreThibaultPage.jsx?t=1788279507951
+- line: 813
+- col: 125
+- stack: 
+    ReferenceError: setPlanningDate is not defined
+        at MaitreThibaultPage (http://127.0.0.1:3000/src/pages/MaitreThibaultPage.jsx?t=1788279507951:813:125)
+        at renderWithHooks (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:11596:26)
+        at updateFunctionComponent (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:14630:28)
+        at beginWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:15972:22)
+        at HTMLUnknownElement.callCallback2 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:3680:22)
+        at Object.invokeGuardedCallbackDev (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:3705:24)
+        at invokeGuardedCallback (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:3739:39)
+        at beginWork$1 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:19818:15)
+        at performUnitOfWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:19251:20)
+        at workLoopSync (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:19190:13)
+
+## 2026-09-01 16:18:28.049Z console.error
+- text: 
+    The above error occurred in the <MaitreThibaultPage> component:
+    
+        at MaitreThibaultPage (http://127.0.0.1:3000/src/pages/MaitreThibaultPage.jsx?t=1788279507951:116:33)
+        at RenderedRoute (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=71457aec:6647:26)
+        at Routes (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=71457aec:7572:3)
+        at Router (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=71457aec:7511:13)
+        at BrowserRouter (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=71457aec:10816:3)
+        at App
+    
+    Consider adding an error boundary to your tree to customize error handling behavior.
+    Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries.
+
+## 2026-09-01 16:18:28.049Z window.error
+- message: Uncaught ReferenceError: setPlanningDate is not defined
+- source: http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec
+- line: 19466
+- col: 13
+- stack: 
+    ReferenceError: setPlanningDate is not defined
+        at MaitreThibaultPage (http://127.0.0.1:3000/src/pages/MaitreThibaultPage.jsx?t=1788279507951:813:125)
+        at renderWithHooks (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:11596:26)
+        at updateFunctionComponent (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:14630:28)
+        at beginWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:15972:22)
+        at beginWork$1 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:19806:22)
+        at performUnitOfWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:19251:20)
+        at workLoopSync (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:19190:13)
+        at renderRootSync (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:19169:15)
+        at recoverFromConcurrentError (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:18786:28)
+        at performConcurrentWorkOnRoot (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:18734:30)
+
+## 2026-09-01 16:18:26.656Z window.error
+- message: Uncaught ReferenceError: setPlanningDate is not defined
+- source: http://localhost:3000/src/pages/MaitreThibaultPage.jsx?t=1788279505816
+- line: 823
+- col: 125
+- stack: 
+    ReferenceError: setPlanningDate is not defined
+        at MaitreThibaultPage (http://localhost:3000/src/pages/MaitreThibaultPage.jsx?t=1788279505816:823:125)
+        at renderWithHooks (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:11596:26)
+        at updateFunctionComponent (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:14630:28)
+        at beginWork (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:15972:22)
+        at HTMLUnknownElement.callCallback2 (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:3680:22)
+        at Object.invokeGuardedCallbackDev (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:3705:24)
+        at invokeGuardedCallback (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:3739:39)
+        at beginWork$1 (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:19818:15)
+        at performUnitOfWork (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:19251:20)
+        at workLoopSync (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:19190:13)
+
+## 2026-09-01 16:18:26.656Z window.error
+- message: Uncaught ReferenceError: setPlanningDate is not defined
+- source: http://localhost:3000/src/pages/MaitreThibaultPage.jsx?t=1788279505816
+- line: 823
+- col: 125
+- stack: 
+    ReferenceError: setPlanningDate is not defined
+        at MaitreThibaultPage (http://localhost:3000/src/pages/MaitreThibaultPage.jsx?t=1788279505816:823:125)
+        at renderWithHooks (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:11596:26)
+        at updateFunctionComponent (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:14630:28)
+        at beginWork (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:15972:22)
+        at HTMLUnknownElement.callCallback2 (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:3680:22)
+        at Object.invokeGuardedCallbackDev (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:3705:24)
+        at invokeGuardedCallback (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:3739:39)
+        at beginWork$1 (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:19818:15)
+        at performUnitOfWork (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:19251:20)
+        at workLoopSync (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:19190:13)
+
+## 2026-09-01 16:18:26.657Z console.error
+- text: 
+    The above error occurred in the <MaitreThibaultPage> component:
+    
+        at MaitreThibaultPage (http://localhost:3000/src/pages/MaitreThibaultPage.jsx?t=1788279505816:116:33)
+        at RenderedRoute (http://localhost:3000/node_modules/.vite/deps/react-router-dom.js?v=71457aec:6647:26)
+        at Routes (http://localhost:3000/node_modules/.vite/deps/react-router-dom.js?v=71457aec:7572:3)
+        at Router (http://localhost:3000/node_modules/.vite/deps/react-router-dom.js?v=71457aec:7511:13)
+        at BrowserRouter (http://localhost:3000/node_modules/.vite/deps/react-router-dom.js?v=71457aec:10816:3)
+        at App
+    
+    Consider adding an error boundary to your tree to customize error handling behavior.
+    Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries.
+
+## 2026-09-01 16:18:26.657Z window.error
+- message: Uncaught ReferenceError: setPlanningDate is not defined
+- source: http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec
+- line: 19466
+- col: 13
+- stack: 
+    ReferenceError: setPlanningDate is not defined
+        at MaitreThibaultPage (http://localhost:3000/src/pages/MaitreThibaultPage.jsx?t=1788279505816:823:125)
+        at renderWithHooks (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:11596:26)
+        at updateFunctionComponent (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:14630:28)
+        at beginWork (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:15972:22)
+        at beginWork$1 (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:19806:22)
+        at performUnitOfWork (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:19251:20)
+        at workLoopSync (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:19190:13)
+        at renderRootSync (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:19169:15)
+        at recoverFromConcurrentError (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:18786:28)
+        at performConcurrentWorkOnRoot (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:18734:30)
+
+## 2026-09-01 16:18:27.665Z window.error
+- message: Uncaught ReferenceError: setPlanningDate is not defined
+- source: http://localhost:3000/src/pages/MaitreThibaultPage.jsx?t=1788279506651
+- line: 813
+- col: 125
+- stack: 
+    ReferenceError: setPlanningDate is not defined
+        at MaitreThibaultPage (http://localhost:3000/src/pages/MaitreThibaultPage.jsx?t=1788279506651:813:125)
+        at renderWithHooks (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:11596:26)
+        at updateFunctionComponent (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:14630:28)
+        at beginWork (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:15972:22)
+        at HTMLUnknownElement.callCallback2 (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:3680:22)
+        at Object.invokeGuardedCallbackDev (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:3705:24)
+        at invokeGuardedCallback (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:3739:39)
+        at beginWork$1 (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:19818:15)
+        at performUnitOfWork (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:19251:20)
+        at workLoopSync (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:19190:13)
+
+## 2026-09-01 16:18:27.667Z window.error
+- message: Uncaught ReferenceError: setPlanningDate is not defined
+- source: http://localhost:3000/src/pages/MaitreThibaultPage.jsx?t=1788279506651
+- line: 813
+- col: 125
+- stack: 
+    ReferenceError: setPlanningDate is not defined
+        at MaitreThibaultPage (http://localhost:3000/src/pages/MaitreThibaultPage.jsx?t=1788279506651:813:125)
+        at renderWithHooks (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:11596:26)
+        at updateFunctionComponent (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:14630:28)
+        at beginWork (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:15972:22)
+        at HTMLUnknownElement.callCallback2 (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:3680:22)
+        at Object.invokeGuardedCallbackDev (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:3705:24)
+        at invokeGuardedCallback (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:3739:39)
+        at beginWork$1 (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:19818:15)
+        at performUnitOfWork (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:19251:20)
+        at workLoopSync (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:19190:13)
+
+## 2026-09-01 16:18:27.668Z console.error
+- text: 
+    The above error occurred in the <MaitreThibaultPage> component:
+    
+        at MaitreThibaultPage (http://localhost:3000/src/pages/MaitreThibaultPage.jsx?t=1788279506651:116:33)
+        at RenderedRoute (http://localhost:3000/node_modules/.vite/deps/react-router-dom.js?v=71457aec:6647:26)
+        at Routes (http://localhost:3000/node_modules/.vite/deps/react-router-dom.js?v=71457aec:7572:3)
+        at Router (http://localhost:3000/node_modules/.vite/deps/react-router-dom.js?v=71457aec:7511:13)
+        at BrowserRouter (http://localhost:3000/node_modules/.vite/deps/react-router-dom.js?v=71457aec:10816:3)
+        at App
+    
+    Consider adding an error boundary to your tree to customize error handling behavior.
+    Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries.
+
+## 2026-09-01 16:18:27.668Z window.error
+- message: Uncaught ReferenceError: setPlanningDate is not defined
+- source: http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec
+- line: 19466
+- col: 13
+- stack: 
+    ReferenceError: setPlanningDate is not defined
+        at MaitreThibaultPage (http://localhost:3000/src/pages/MaitreThibaultPage.jsx?t=1788279506651:813:125)
+        at renderWithHooks (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:11596:26)
+        at updateFunctionComponent (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:14630:28)
+        at beginWork (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:15972:22)
+        at beginWork$1 (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:19806:22)
+        at performUnitOfWork (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:19251:20)
+        at workLoopSync (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:19190:13)
+        at renderRootSync (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:19169:15)
+        at recoverFromConcurrentError (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:18786:28)
+        at performConcurrentWorkOnRoot (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:18734:30)
+
+## 2026-09-01 16:18:28.349Z root.empty
+- url: http://127.0.0.1:3000/maitre#planning
+
+## 2026-09-01 16:18:28.657Z window.error
+- message: Uncaught ReferenceError: setPlanningDate is not defined
+- source: http://127.0.0.1:3000/src/pages/MaitreThibaultPage.jsx?t=1788279508572
+- line: 813
+- col: 125
+- stack: 
+    ReferenceError: setPlanningDate is not defined
+        at MaitreThibaultPage (http://127.0.0.1:3000/src/pages/MaitreThibaultPage.jsx?t=1788279508572:813:125)
+        at renderWithHooks (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:11596:26)
+        at updateFunctionComponent (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:14630:28)
+        at beginWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:15972:22)
+        at HTMLUnknownElement.callCallback2 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:3680:22)
+        at Object.invokeGuardedCallbackDev (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:3705:24)
+        at invokeGuardedCallback (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:3739:39)
+        at beginWork$1 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:19818:15)
+        at performUnitOfWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:19251:20)
+        at workLoopSync (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:19190:13)
+
+## 2026-09-01 16:18:28.658Z window.error
+- message: Uncaught ReferenceError: setPlanningDate is not defined
+- source: http://127.0.0.1:3000/src/pages/MaitreThibaultPage.jsx?t=1788279508572
+- line: 813
+- col: 125
+- stack: 
+    ReferenceError: setPlanningDate is not defined
+        at MaitreThibaultPage (http://127.0.0.1:3000/src/pages/MaitreThibaultPage.jsx?t=1788279508572:813:125)
+        at renderWithHooks (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:11596:26)
+        at updateFunctionComponent (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:14630:28)
+        at beginWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:15972:22)
+        at HTMLUnknownElement.callCallback2 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:3680:22)
+        at Object.invokeGuardedCallbackDev (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:3705:24)
+        at invokeGuardedCallback (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:3739:39)
+        at beginWork$1 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:19818:15)
+        at performUnitOfWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:19251:20)
+        at workLoopSync (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:19190:13)
+
+## 2026-09-01 16:18:28.658Z console.error
+- text: 
+    The above error occurred in the <MaitreThibaultPage> component:
+    
+        at MaitreThibaultPage (http://127.0.0.1:3000/src/pages/MaitreThibaultPage.jsx?t=1788279508572:116:33)
+        at RenderedRoute (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=71457aec:6647:26)
+        at Routes (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=71457aec:7572:3)
+        at Router (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=71457aec:7511:13)
+        at BrowserRouter (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=71457aec:10816:3)
+        at App
+    
+    Consider adding an error boundary to your tree to customize error handling behavior.
+    Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries.
+
+## 2026-09-01 16:18:28.658Z window.error
+- message: Uncaught ReferenceError: setPlanningDate is not defined
+- source: http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec
+- line: 19466
+- col: 13
+- stack: 
+    ReferenceError: setPlanningDate is not defined
+        at MaitreThibaultPage (http://127.0.0.1:3000/src/pages/MaitreThibaultPage.jsx?t=1788279508572:813:125)
+        at renderWithHooks (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:11596:26)
+        at updateFunctionComponent (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:14630:28)
+        at beginWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:15972:22)
+        at beginWork$1 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:19806:22)
+        at performUnitOfWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:19251:20)
+        at workLoopSync (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:19190:13)
+        at renderRootSync (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:19169:15)
+        at recoverFromConcurrentError (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:18786:28)
+        at performConcurrentWorkOnRoot (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:18734:30)
+
+## 2026-09-01 16:18:28.755Z window.error
+- message: Uncaught ReferenceError: setPlanningDate is not defined
+- source: http://127.0.0.1:3000/src/pages/MaitreThibaultPage.jsx?t=1788279508672
+- line: 813
+- col: 125
+- stack: 
+    ReferenceError: setPlanningDate is not defined
+        at MaitreThibaultPage (http://127.0.0.1:3000/src/pages/MaitreThibaultPage.jsx?t=1788279508672:813:125)
+        at renderWithHooks (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:11596:26)
+        at updateFunctionComponent (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:14630:28)
+        at beginWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:15972:22)
+        at HTMLUnknownElement.callCallback2 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:3680:22)
+        at Object.invokeGuardedCallbackDev (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:3705:24)
+        at invokeGuardedCallback (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:3739:39)
+        at beginWork$1 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:19818:15)
+        at performUnitOfWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:19251:20)
+        at workLoopSync (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:19190:13)
+
+## 2026-09-01 16:18:28.756Z window.error
+- message: Uncaught ReferenceError: setPlanningDate is not defined
+- source: http://127.0.0.1:3000/src/pages/MaitreThibaultPage.jsx?t=1788279508672
+- line: 813
+- col: 125
+- stack: 
+    ReferenceError: setPlanningDate is not defined
+        at MaitreThibaultPage (http://127.0.0.1:3000/src/pages/MaitreThibaultPage.jsx?t=1788279508672:813:125)
+        at renderWithHooks (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:11596:26)
+        at updateFunctionComponent (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:14630:28)
+        at beginWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:15972:22)
+        at HTMLUnknownElement.callCallback2 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:3680:22)
+        at Object.invokeGuardedCallbackDev (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:3705:24)
+        at invokeGuardedCallback (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:3739:39)
+        at beginWork$1 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:19818:15)
+        at performUnitOfWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:19251:20)
+        at workLoopSync (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:19190:13)
+
+## 2026-09-01 16:18:28.756Z console.error
+- text: 
+    The above error occurred in the <MaitreThibaultPage> component:
+    
+        at MaitreThibaultPage (http://127.0.0.1:3000/src/pages/MaitreThibaultPage.jsx?t=1788279508672:116:33)
+        at RenderedRoute (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=71457aec:6647:26)
+        at Routes (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=71457aec:7572:3)
+        at Router (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=71457aec:7511:13)
+        at BrowserRouter (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=71457aec:10816:3)
+        at App
+    
+    Consider adding an error boundary to your tree to customize error handling behavior.
+    Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries.
+
+## 2026-09-01 16:18:28.756Z window.error
+- message: Uncaught ReferenceError: setPlanningDate is not defined
+- source: http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec
+- line: 19466
+- col: 13
+- stack: 
+    ReferenceError: setPlanningDate is not defined
+        at MaitreThibaultPage (http://127.0.0.1:3000/src/pages/MaitreThibaultPage.jsx?t=1788279508672:813:125)
+        at renderWithHooks (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:11596:26)
+        at updateFunctionComponent (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:14630:28)
+        at beginWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:15972:22)
+        at beginWork$1 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:19806:22)
+        at performUnitOfWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:19251:20)
+        at workLoopSync (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:19190:13)
+        at renderRootSync (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:19169:15)
+        at recoverFromConcurrentError (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:18786:28)
+        at performConcurrentWorkOnRoot (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:18734:30)
+
+## 2026-09-01 16:18:29.057Z root.empty
+- url: http://127.0.0.1:3000/maitre#planning
+
+## 2026-09-01 16:18:28.642Z root.empty
+- url: http://localhost:3000/maitre#planning
+
+## 2026-09-01 16:18:28.659Z window.error
+- message: Uncaught ReferenceError: setPlanningDate is not defined
+- source: http://localhost:3000/src/pages/MaitreThibaultPage.jsx?t=1788279507951
+- line: 813
+- col: 125
+- stack: 
+    ReferenceError: setPlanningDate is not defined
+        at MaitreThibaultPage (http://localhost:3000/src/pages/MaitreThibaultPage.jsx?t=1788279507951:813:125)
+        at renderWithHooks (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:11596:26)
+        at updateFunctionComponent (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:14630:28)
+        at beginWork (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:15972:22)
+        at HTMLUnknownElement.callCallback2 (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:3680:22)
+        at Object.invokeGuardedCallbackDev (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:3705:24)
+        at invokeGuardedCallback (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:3739:39)
+        at beginWork$1 (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:19818:15)
+        at performUnitOfWork (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:19251:20)
+        at workLoopSync (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:19190:13)
+
+## 2026-09-01 16:18:28.661Z window.error
+- message: Uncaught ReferenceError: setPlanningDate is not defined
+- source: http://localhost:3000/src/pages/MaitreThibaultPage.jsx?t=1788279507951
+- line: 813
+- col: 125
+- stack: 
+    ReferenceError: setPlanningDate is not defined
+        at MaitreThibaultPage (http://localhost:3000/src/pages/MaitreThibaultPage.jsx?t=1788279507951:813:125)
+        at renderWithHooks (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:11596:26)
+        at updateFunctionComponent (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:14630:28)
+        at beginWork (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:15972:22)
+        at HTMLUnknownElement.callCallback2 (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:3680:22)
+        at Object.invokeGuardedCallbackDev (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:3705:24)
+        at invokeGuardedCallback (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:3739:39)
+        at beginWork$1 (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:19818:15)
+        at performUnitOfWork (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:19251:20)
+        at workLoopSync (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:19190:13)
+
+## 2026-09-01 16:18:28.662Z console.error
+- text: 
+    The above error occurred in the <MaitreThibaultPage> component:
+    
+        at MaitreThibaultPage (http://localhost:3000/src/pages/MaitreThibaultPage.jsx?t=1788279507951:116:33)
+        at RenderedRoute (http://localhost:3000/node_modules/.vite/deps/react-router-dom.js?v=71457aec:6647:26)
+        at Routes (http://localhost:3000/node_modules/.vite/deps/react-router-dom.js?v=71457aec:7572:3)
+        at Router (http://localhost:3000/node_modules/.vite/deps/react-router-dom.js?v=71457aec:7511:13)
+        at BrowserRouter (http://localhost:3000/node_modules/.vite/deps/react-router-dom.js?v=71457aec:10816:3)
+        at App
+    
+    Consider adding an error boundary to your tree to customize error handling behavior.
+    Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries.
+
+## 2026-09-01 16:18:28.662Z window.error
+- message: Uncaught ReferenceError: setPlanningDate is not defined
+- source: http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec
+- line: 19466
+- col: 13
+- stack: 
+    ReferenceError: setPlanningDate is not defined
+        at MaitreThibaultPage (http://localhost:3000/src/pages/MaitreThibaultPage.jsx?t=1788279507951:813:125)
+        at renderWithHooks (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:11596:26)
+        at updateFunctionComponent (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:14630:28)
+        at beginWork (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:15972:22)
+        at beginWork$1 (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:19806:22)
+        at performUnitOfWork (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:19251:20)
+        at workLoopSync (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:19190:13)
+        at renderRootSync (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:19169:15)
+        at recoverFromConcurrentError (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:18786:28)
+        at performConcurrentWorkOnRoot (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:18734:30)
+
+## 2026-09-01 16:18:29.661Z window.error
+- message: Uncaught ReferenceError: setPlanningDate is not defined
+- source: http://localhost:3000/src/pages/MaitreThibaultPage.jsx?t=1788279508672
+- line: 813
+- col: 125
+- stack: 
+    ReferenceError: setPlanningDate is not defined
+        at MaitreThibaultPage (http://localhost:3000/src/pages/MaitreThibaultPage.jsx?t=1788279508672:813:125)
+        at renderWithHooks (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:11596:26)
+        at updateFunctionComponent (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:14630:28)
+        at beginWork (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:15972:22)
+        at HTMLUnknownElement.callCallback2 (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:3680:22)
+        at Object.invokeGuardedCallbackDev (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:3705:24)
+        at invokeGuardedCallback (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:3739:39)
+        at beginWork$1 (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:19818:15)
+        at performUnitOfWork (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:19251:20)
+        at workLoopSync (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:19190:13)
+
+## 2026-09-01 16:18:29.663Z window.error
+- message: Uncaught ReferenceError: setPlanningDate is not defined
+- source: http://localhost:3000/src/pages/MaitreThibaultPage.jsx?t=1788279508672
+- line: 813
+- col: 125
+- stack: 
+    ReferenceError: setPlanningDate is not defined
+        at MaitreThibaultPage (http://localhost:3000/src/pages/MaitreThibaultPage.jsx?t=1788279508672:813:125)
+        at renderWithHooks (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:11596:26)
+        at updateFunctionComponent (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:14630:28)
+        at beginWork (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:15972:22)
+        at HTMLUnknownElement.callCallback2 (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:3680:22)
+        at Object.invokeGuardedCallbackDev (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:3705:24)
+        at invokeGuardedCallback (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:3739:39)
+        at beginWork$1 (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:19818:15)
+        at performUnitOfWork (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:19251:20)
+        at workLoopSync (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:19190:13)
+
+## 2026-09-01 16:18:29.664Z console.error
+- text: 
+    The above error occurred in the <MaitreThibaultPage> component:
+    
+        at MaitreThibaultPage (http://localhost:3000/src/pages/MaitreThibaultPage.jsx?t=1788279508672:116:33)
+        at RenderedRoute (http://localhost:3000/node_modules/.vite/deps/react-router-dom.js?v=71457aec:6647:26)
+        at Routes (http://localhost:3000/node_modules/.vite/deps/react-router-dom.js?v=71457aec:7572:3)
+        at Router (http://localhost:3000/node_modules/.vite/deps/react-router-dom.js?v=71457aec:7511:13)
+        at BrowserRouter (http://localhost:3000/node_modules/.vite/deps/react-router-dom.js?v=71457aec:10816:3)
+        at App
+    
+    Consider adding an error boundary to your tree to customize error handling behavior.
+    Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries.
+
+## 2026-09-01 16:18:29.665Z window.error
+- message: Uncaught ReferenceError: setPlanningDate is not defined
+- source: http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec
+- line: 19466
+- col: 13
+- stack: 
+    ReferenceError: setPlanningDate is not defined
+        at MaitreThibaultPage (http://localhost:3000/src/pages/MaitreThibaultPage.jsx?t=1788279508672:813:125)
+        at renderWithHooks (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:11596:26)
+        at updateFunctionComponent (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:14630:28)
+        at beginWork (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:15972:22)
+        at beginWork$1 (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:19806:22)
+        at performUnitOfWork (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:19251:20)
+        at workLoopSync (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:19190:13)
+        at renderRootSync (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:19169:15)
+        at recoverFromConcurrentError (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:18786:28)
+        at performConcurrentWorkOnRoot (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:18734:30)
+
+## 2026-09-01 16:18:30.640Z root.empty
+- url: http://localhost:3000/maitre#planning
+
+## 2026-09-01 16:19:27.831Z window.error
+- message: Uncaught ReferenceError: setPlanningDate is not defined
+- source: http://127.0.0.1:3000/src/pages/MaitreThibaultPage.jsx?t=1788279567653
+- line: 814
+- col: 125
+- stack: 
+    ReferenceError: setPlanningDate is not defined
+        at MaitreThibaultPage (http://127.0.0.1:3000/src/pages/MaitreThibaultPage.jsx?t=1788279567653:814:125)
+        at renderWithHooks (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:11596:26)
+        at updateFunctionComponent (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:14630:28)
+        at beginWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:15972:22)
+        at HTMLUnknownElement.callCallback2 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:3680:22)
+        at Object.invokeGuardedCallbackDev (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:3705:24)
+        at invokeGuardedCallback (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:3739:39)
+        at beginWork$1 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:19818:15)
+        at performUnitOfWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:19251:20)
+        at workLoopSync (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:19190:13)
+
+## 2026-09-01 16:19:27.831Z window.error
+- message: Uncaught ReferenceError: setPlanningDate is not defined
+- source: http://127.0.0.1:3000/src/pages/MaitreThibaultPage.jsx?t=1788279567653
+- line: 814
+- col: 125
+- stack: 
+    ReferenceError: setPlanningDate is not defined
+        at MaitreThibaultPage (http://127.0.0.1:3000/src/pages/MaitreThibaultPage.jsx?t=1788279567653:814:125)
+        at renderWithHooks (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:11596:26)
+        at updateFunctionComponent (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:14630:28)
+        at beginWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:15972:22)
+        at HTMLUnknownElement.callCallback2 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:3680:22)
+        at Object.invokeGuardedCallbackDev (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:3705:24)
+        at invokeGuardedCallback (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:3739:39)
+        at beginWork$1 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:19818:15)
+        at performUnitOfWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:19251:20)
+        at workLoopSync (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:19190:13)
+
+## 2026-09-01 16:19:27.831Z console.error
+- text: 
+    The above error occurred in the <MaitreThibaultPage> component:
+    
+        at MaitreThibaultPage (http://127.0.0.1:3000/src/pages/MaitreThibaultPage.jsx?t=1788279567653:116:33)
+        at RenderedRoute (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=71457aec:6647:26)
+        at Routes (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=71457aec:7572:3)
+        at Router (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=71457aec:7511:13)
+        at BrowserRouter (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=71457aec:10816:3)
+        at App
+    
+    Consider adding an error boundary to your tree to customize error handling behavior.
+    Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries.
+
+## 2026-09-01 16:19:27.831Z window.error
+- message: Uncaught ReferenceError: setPlanningDate is not defined
+- source: http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec
+- line: 19466
+- col: 13
+- stack: 
+    ReferenceError: setPlanningDate is not defined
+        at MaitreThibaultPage (http://127.0.0.1:3000/src/pages/MaitreThibaultPage.jsx?t=1788279567653:814:125)
+        at renderWithHooks (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:11596:26)
+        at updateFunctionComponent (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:14630:28)
+        at beginWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:15972:22)
+        at beginWork$1 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:19806:22)
+        at performUnitOfWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:19251:20)
+        at workLoopSync (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:19190:13)
+        at renderRootSync (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:19169:15)
+        at recoverFromConcurrentError (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:18786:28)
+        at performConcurrentWorkOnRoot (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=71457aec:18734:30)
+
+## 2026-09-01 16:19:28.132Z root.empty
+- url: http://127.0.0.1:3000/maitre#planning
+
+## 2026-09-01 16:21:33.162Z change
+- element: {"tag":"select","role":null,"ariaLabel":null,"name":null,"type":null,"id":"planning-month-year","placeholder":null,"label":"Année","value":"2027","valueLength":4,"text":"2025202620272028"}
+
+## 2026-09-01 16:22:15.929Z click
+- element: {"tag":"button","role":null,"ariaLabel":null,"name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"01/09/2027 — 10:00 → 22:00"}
+
+## 2026-09-01 16:23:41.476Z click
+- element: {"tag":"button","role":null,"ariaLabel":null,"name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Reproduire"}
+
+## 2026-09-01 16:24:41.213Z click
+- element: {"tag":"button","role":null,"ariaLabel":null,"name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"5"}
+
+## 2026-09-01 16:24:45.079Z click
+- element: {"tag":"button","role":null,"ariaLabel":null,"name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"6"}
+
+## 2026-09-01 16:24:49.167Z click
+- element: {"tag":"button","role":null,"ariaLabel":null,"name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Copier"}
+
+## 2026-09-01 16:25:27.861Z click
+- element: {"tag":"button","role":null,"ariaLabel":null,"name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"05/09/2027 — 10:00 → 22:00"}
+
+## 2026-09-01 16:26:17.938Z click
+- element: {"tag":"button","role":null,"ariaLabel":null,"name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Reproduire"}
+
+## 2026-09-01 16:26:31.696Z click
+- element: {"tag":"button","role":null,"ariaLabel":null,"name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"1"}
+
+## 2026-09-01 16:26:36.526Z click
+- element: {"tag":"button","role":null,"ariaLabel":null,"name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Copier"}
+
+## 2026-09-01 16:26:36.548Z network.error
+- method: POST
+- url: http://127.0.0.1:3000/api/periods.php?action=copy
+- status: 409
+- statusText: Conflict
+- requestBody: {"sourceId":"57","dates":["2027-09-01"],"overwrite":"false"}
+- response: {"error":"Certains jours ont déjà une plage.","dates":["2027-09-01"]}
+- durationMs: 21
+
+## 2026-09-01 16:26:36.548Z console.error
+- text: Fetch error from http://127.0.0.1:3000/api/periods.php?action=copy: {"error":"Certains jours ont déjà une plage.","dates":["2027-09-01"]}
+
+## 2026-09-01 16:27:07.238Z click
+- element: {"tag":"button","role":null,"ariaLabel":null,"name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Écraser"}
+
+## 2026-09-01 16:27:41.856Z click
+- element: {"tag":"button","role":null,"ariaLabel":null,"name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"01/09/2027 — 10:00 → 22:00"}
+
+## 2026-09-01 17:04:20.973Z load
+- url: http://127.0.0.1:3000/reservation/convocation-chez-le-directeur?date=2027-09-03
+
+## 2026-09-01 17:04:30.250Z click
+- element: {"tag":"div","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"03/09/2027 — 12:00 → 20:00ModifierRetirer"}
+
+## 2026-09-01 17:04:31.017Z click
+- element: {"tag":"button","role":null,"ariaLabel":null,"name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"03/09/2027 — 12:00 → 20:00"}
+
+## 2026-09-01 17:04:33.813Z click
+- element: {"tag":"button","role":null,"ariaLabel":null,"name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"05/09/2027 — 10:00 → 22:00"}
+
+## 2026-09-01 17:04:35.629Z click
+- element: {"tag":"button","role":null,"ariaLabel":null,"name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"06/09/2027 — 10:00 → 22:00"}
+
+## 2026-09-01 17:04:37.712Z click
+- element: {"tag":"button","role":null,"ariaLabel":null,"name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"01/09/2027 — 10:00 → 22:00"}
+
+## 2026-09-01 17:07:10.079Z click
+- element: {"tag":"button","role":null,"ariaLabel":null,"name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"03/09/2027 — 12:00 → 20:00"}
+
+## 2026-09-01 17:08:46.893Z click
+- element: {"tag":"button","role":null,"ariaLabel":null,"name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"01/09/2027 — 10:00 → 22:00"}
+
+## 2026-09-01 17:08:49.433Z click
+- element: {"tag":"button","role":null,"ariaLabel":null,"name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"03/09/2027 — 12:00 → 20:00"}
+
+## 2026-09-01 17:08:51.066Z click
+- element: {"tag":"button","role":null,"ariaLabel":null,"name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"01/09/2027 — 10:00 → 22:00"}
+
+## 2026-09-01 17:08:52.474Z click
+- element: {"tag":"button","role":null,"ariaLabel":null,"name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"03/09/2027 — 12:00 → 20:00"}
+

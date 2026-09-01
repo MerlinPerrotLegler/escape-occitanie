@@ -803,16 +803,18 @@ function MaitreThibaultPage() {
                           <li
                             key={row.id}
                             ref={isOpen ? expandedBlockRef : null}
-                            className={cn('scroll-mt-24 px-5 py-3', isOpen && 'bg-primary/5')}
+                            className={cn('scroll-mt-24', isOpen && 'bg-primary/5')}
                           >
-                            <div className="flex items-center justify-between gap-4">
+                            <div className="flex items-stretch gap-4">
                               <button
                                 type="button"
                                 onClick={() => togglePeriod(row)}
                                 aria-expanded={isOpen}
                                 className={cn(
-                                  'text-left text-sm transition-colors',
-                                  isOpen ? 'font-medium text-foreground' : 'text-muted-foreground hover:text-foreground'
+                                  'min-w-0 flex-1 px-5 py-3 text-left text-sm transition-colors',
+                                  isOpen
+                                    ? 'font-medium text-foreground'
+                                    : 'text-muted-foreground hover:bg-primary/5 hover:text-foreground'
                                 )}
                               >
                                 <span className="font-medium text-foreground">
@@ -823,7 +825,10 @@ function MaitreThibaultPage() {
                                   — {row.start} → {row.end}
                                 </span>
                               </button>
-                              <div className="flex shrink-0 items-center gap-2">
+                              <div
+                                className="flex shrink-0 items-center gap-2 py-3 pr-5"
+                                onClick={(event) => event.stopPropagation()}
+                              >
                                 {isOpen ? (
                                   <Button
                                     type="button"
@@ -854,19 +859,21 @@ function MaitreThibaultPage() {
                               </div>
                             </div>
                             {isOpen ? (
-                              <PeriodSlots
-                                key={row.id}
-                                rooms={ROOM_BLOCKS.map((room) => ({
-                                  ...room,
-                                  slots: daySlots[room.slug] || [],
-                                }))}
-                                loading={loadingSlots}
-                                emptyLabel="Aucun créneau ouvert ce jour-là."
-                                onToggle={onToggleSlot}
-                                onReservedClick={(bookingId) => {
-                                  window.location.hash = `reservations/${bookingId}`;
-                                }}
-                              />
+                              <div className="px-5 pb-3">
+                                <PeriodSlots
+                                  key={row.id}
+                                  rooms={ROOM_BLOCKS.map((room) => ({
+                                    ...room,
+                                    slots: daySlots[room.slug] || [],
+                                  }))}
+                                  loading={loadingSlots}
+                                  emptyLabel="Aucun créneau ouvert ce jour-là."
+                                  onToggle={onToggleSlot}
+                                  onReservedClick={(bookingId) => {
+                                    window.location.hash = `reservations/${bookingId}`;
+                                  }}
+                                />
+                              </div>
                             ) : null}
                           </li>
                         );
