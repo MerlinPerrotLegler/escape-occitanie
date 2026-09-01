@@ -5178,3 +5178,465 @@
 ## 2026-09-01 17:36:05.092Z load
 - url: http://localhost:3000/#salles
 
+## 2026-09-01 17:37:59.424Z click
+- element: {"tag":"p","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Clique une plage pour voir ses créneaux. Cycle : Ouvert → Indisponible → Fermé → Ouvert. Un créneau occupé (vert) ouvre la réservation."}
+
+## 2026-09-01 17:38:02.215Z focus
+- element: {"tag":"select","role":null,"ariaLabel":null,"name":null,"type":null,"id":"planning-month-month","placeholder":null,"label":"Mois","value":"9","valueLength":1,"text":"JanvierFévrierMarsAvrilMaiJuinJuilletAoûtSeptembreOctobreNovembreDécembre"}
+
+## 2026-09-01 17:38:02.219Z click
+- element: {"tag":"select","role":null,"ariaLabel":null,"name":null,"type":null,"id":"planning-month-month","placeholder":null,"label":"Mois","value":"9","valueLength":1,"text":"JanvierFévrierMarsAvrilMaiJuinJuilletAoûtSeptembreOctobreNovembreDécembre"}
+
+## 2026-09-01 17:38:03.709Z change
+- element: {"tag":"select","role":null,"ariaLabel":null,"name":null,"type":null,"id":"planning-month-month","placeholder":null,"label":"Mois","value":"8","valueLength":1,"text":"JanvierFévrierMarsAvrilMaiJuinJuilletAoûtSeptembreOctobreNovembreDécembre"}
+
+## 2026-09-01 17:38:03.712Z click
+- element: {"tag":"select","role":null,"ariaLabel":null,"name":null,"type":null,"id":"planning-month-month","placeholder":null,"label":"Mois","value":"8","valueLength":1,"text":"JanvierFévrierMarsAvrilMaiJuinJuilletAoûtSeptembreOctobreNovembreDécembre"}
+
+## 2026-09-01 17:38:04.149Z click
+- element: {"tag":"select","role":null,"ariaLabel":null,"name":null,"type":null,"id":"planning-month-month","placeholder":null,"label":"Mois","value":"8","valueLength":1,"text":"JanvierFévrierMarsAvrilMaiJuinJuilletAoûtSeptembreOctobreNovembreDécembre"}
+
+## 2026-09-01 17:38:05.182Z change
+- element: {"tag":"select","role":null,"ariaLabel":null,"name":null,"type":null,"id":"planning-month-month","placeholder":null,"label":"Mois","value":"9","valueLength":1,"text":"JanvierFévrierMarsAvrilMaiJuinJuilletAoûtSeptembreOctobreNovembreDécembre"}
+
+## 2026-09-01 17:38:05.184Z click
+- element: {"tag":"select","role":null,"ariaLabel":null,"name":null,"type":null,"id":"planning-month-month","placeholder":null,"label":"Mois","value":"9","valueLength":1,"text":"JanvierFévrierMarsAvrilMaiJuinJuilletAoûtSeptembreOctobreNovembreDécembre"}
+
+## 2026-09-01 17:38:05.449Z blur
+- element: {"tag":"select","role":null,"ariaLabel":null,"name":null,"type":null,"id":"planning-month-month","placeholder":null,"label":"Mois","value":"9","valueLength":1,"text":"JanvierFévrierMarsAvrilMaiJuinJuilletAoûtSeptembreOctobreNovembreDécembre"}
+
+## 2026-09-01 17:38:05.449Z focus
+- element: {"tag":"select","role":null,"ariaLabel":null,"name":null,"type":null,"id":"planning-month-year","placeholder":null,"label":"Année","value":"2026","valueLength":4,"text":"2025202620272028"}
+
+## 2026-09-01 17:38:05.450Z click
+- element: {"tag":"select","role":null,"ariaLabel":null,"name":null,"type":null,"id":"planning-month-year","placeholder":null,"label":"Année","value":"2026","valueLength":4,"text":"2025202620272028"}
+
+## 2026-09-01 17:38:06.397Z change
+- element: {"tag":"select","role":null,"ariaLabel":null,"name":null,"type":null,"id":"planning-month-year","placeholder":null,"label":"Année","value":"2027","valueLength":4,"text":"2025202620272028"}
+
+## 2026-09-01 17:38:06.399Z click
+- element: {"tag":"select","role":null,"ariaLabel":null,"name":null,"type":null,"id":"planning-month-year","placeholder":null,"label":"Année","value":"2027","valueLength":4,"text":"2025202620272028"}
+
+## 2026-09-01 17:38:13.731Z blur
+- element: {"tag":"select","role":null,"ariaLabel":null,"name":null,"type":null,"id":"planning-month-year","placeholder":null,"label":"Année","value":"2027","valueLength":4,"text":"2025202620272028"}
+
+## 2026-09-01 17:38:13.798Z click
+- element: {"tag":"button","role":null,"ariaLabel":null,"name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"01/09/2027 — 10:00 → 22:00"}
+
+## 2026-09-01 17:38:20.799Z load
+- url: http://localhost:3000/maitre#reservations?filtre=aujourdhui&page=1
+
+## 2026-09-01 17:38:20.851Z navigate
+- url: http://localhost:3000/maitre#reservations?filtre=aujourdhui&page=1
+- via: replaceState
+
+## 2026-09-01 17:38:27.532Z click
+- element: {"tag":"label","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Confirmation automatique"}
+
+## 2026-09-01 17:38:27.532Z click
+- element: {"tag":"button","role":"checkbox","ariaLabel":null,"name":null,"type":"button","id":"mt-auto-confirm","placeholder":null,"label":null,"value":null,"valueLength":0,"text":""}
+
+## 2026-09-01 17:38:27.535Z click
+- element: {"tag":"input","role":null,"ariaLabel":null,"name":null,"type":"checkbox","id":null,"placeholder":null,"label":"[checkbox]","value":"on","valueLength":2,"text":""}
+
+## 2026-09-01 17:38:28.173Z click
+- element: {"tag":"label","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Confirmation automatique"}
+
+## 2026-09-01 17:38:28.173Z click
+- element: {"tag":"button","role":"checkbox","ariaLabel":null,"name":null,"type":"button","id":"mt-auto-confirm","placeholder":null,"label":null,"value":null,"valueLength":0,"text":""}
+
+## 2026-09-01 17:38:28.174Z click
+- element: {"tag":"input","role":null,"ariaLabel":null,"name":null,"type":"checkbox","id":null,"placeholder":null,"label":"[checkbox]","value":"on","valueLength":2,"text":""}
+
+## 2026-09-01 17:38:29.489Z click
+- element: {"tag":"label","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Lors d’une réservation, bloquer les deux salles"}
+
+## 2026-09-01 17:38:29.490Z click
+- element: {"tag":"button","role":"checkbox","ariaLabel":null,"name":null,"type":"button","id":"mt-block-both","placeholder":null,"label":null,"value":null,"valueLength":0,"text":""}
+
+## 2026-09-01 17:38:29.492Z click
+- element: {"tag":"input","role":null,"ariaLabel":null,"name":null,"type":"checkbox","id":null,"placeholder":null,"label":"[checkbox]","value":"on","valueLength":2,"text":""}
+
+## 2026-09-01 17:38:30.626Z click
+- element: {"tag":"button","role":null,"ariaLabel":null,"name":null,"type":"submit","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Enregistrer les paramètres"}
+
+## 2026-09-01 17:38:30.626Z submit
+- action: http://localhost:3000/maitre#reservations?filtre=aujourdhui&page=1
+- fields: [{"label":"Lors d’une réservation, bloquer les deux salles","type":"button","value":"on","length":2,"redacted":false},{"label":"[checkbox]","type":"checkbox","value":"on","length":2,"redacted":false},{"label":"Lors de la réservation d’une salle, bloquer le créneau qui suit","type":"button","value":"on","length":2,"redacted":false},{"label":"[checkbox]","type":"checkbox","value":"on","length":2,"redacted":false},{"label":"[button]","type":"button","value":"","length":0,"redacted":false},{"label":"[button]","type":"button","value":"","length":0,"redacted":false},{"label":"[button]","type":"button","value":"","length":0,"redacted":false},{"label":"Confirmation automatique","type":"button","value":"on","length":2,"redacted":false},{"label":"[checkbox]","type":"checkbox","value":"on","length":2,"redacted":false},{"label":"[submit]","type":"submit","value":"","length":0,"redacted":false}]
+
+## 2026-09-01 17:38:32.798Z click
+- element: {"tag":"button","role":null,"ariaLabel":null,"name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"À confirmer"}
+
+## 2026-09-01 17:38:32.798Z navigate
+- url: http://localhost:3000/maitre#reservations?filtre=a-confirmer&page=1
+- via: popstate
+
+## 2026-09-01 17:38:37.790Z click
+- element: {"tag":"button","role":null,"ariaLabel":null,"name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Toutes"}
+
+## 2026-09-01 17:38:37.790Z navigate
+- url: http://localhost:3000/maitre#reservations?filtre=toutes&page=1
+- via: popstate
+
+## 2026-09-01 17:39:15.673Z click
+- element: {"tag":"button","role":null,"ariaLabel":null,"name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"13:30"}
+
+## 2026-09-01 17:39:17.389Z click
+- element: {"tag":"button","role":null,"ariaLabel":null,"name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"14:00"}
+
+## 2026-09-01 17:39:33.872Z click
+- element: {"tag":"a","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Réserver"}
+
+## 2026-09-01 17:39:33.873Z navigate
+- url: http://127.0.0.1:3000/#salles
+- via: pushState
+
+## 2026-09-01 17:39:44.583Z click
+- element: {"tag":"button","role":null,"ariaLabel":null,"name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"À confirmer"}
+
+## 2026-09-01 17:39:44.583Z navigate
+- url: http://localhost:3000/maitre#reservations?filtre=a-confirmer&page=1
+- via: popstate
+
+## 2026-09-01 17:40:30.373Z click
+- element: {"tag":"button","role":"checkbox","ariaLabel":null,"name":null,"type":"button","id":"mt-block-both","placeholder":null,"label":null,"value":null,"valueLength":0,"text":""}
+
+## 2026-09-01 17:40:30.374Z click
+- element: {"tag":"input","role":null,"ariaLabel":null,"name":null,"type":"checkbox","id":null,"placeholder":null,"label":"[checkbox]","value":"on","valueLength":2,"text":""}
+
+## 2026-09-01 17:40:30.705Z click
+- element: {"tag":"input","role":null,"ariaLabel":null,"name":null,"type":"checkbox","id":null,"placeholder":null,"label":"[checkbox]","value":"on","valueLength":2,"text":""}
+
+## 2026-09-01 17:40:35.231Z click
+- element: {"tag":"button","role":null,"ariaLabel":null,"name":null,"type":"submit","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Enregistrer les paramètres"}
+
+## 2026-09-01 17:40:35.231Z submit
+- action: http://localhost:3000/maitre#reservations?filtre=a-confirmer&page=1
+- fields: [{"label":"Lors d’une réservation, bloquer les deux salles","type":"button","value":"on","length":2,"redacted":false},{"label":"[checkbox]","type":"checkbox","value":"on","length":2,"redacted":false},{"label":"Lors de la réservation d’une salle, bloquer le créneau qui suit","type":"button","value":"on","length":2,"redacted":false},{"label":"[checkbox]","type":"checkbox","value":"on","length":2,"redacted":false},{"label":"[button]","type":"button","value":"","length":0,"redacted":false},{"label":"[button]","type":"button","value":"","length":0,"redacted":false},{"label":"[button]","type":"button","value":"","length":0,"redacted":false},{"label":"Confirmation automatique","type":"button","value":"on","length":2,"redacted":false},{"label":"[checkbox]","type":"checkbox","value":"on","length":2,"redacted":false},{"label":"[submit]","type":"submit","value":"","length":0,"redacted":false}]
+
+## 2026-09-01 17:40:40.772Z click
+- element: {"tag":"h2","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Les survivants témoignent"}
+
+## 2026-09-01 17:40:41.489Z click
+- element: {"tag":"h2","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Les survivants témoignent"}
+
+## 2026-09-01 17:40:46.631Z click
+- element: {"tag":"a","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Réserver"}
+
+## 2026-09-01 17:40:46.632Z navigate
+- url: http://127.0.0.1:3000/#salles
+- via: replaceState
+
+## 2026-09-01 17:40:47.222Z click
+- element: {"tag":"a","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Réserver"}
+
+## 2026-09-01 17:40:47.222Z navigate
+- url: http://127.0.0.1:3000/#salles
+- via: replaceState
+
+## 2026-09-01 17:40:47.405Z click
+- element: {"tag":"a","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Réserver"}
+
+## 2026-09-01 17:40:47.405Z navigate
+- url: http://127.0.0.1:3000/#salles
+- via: replaceState
+
+## 2026-09-01 17:40:48.613Z click
+- element: {"tag":"a","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Réserver"}
+
+## 2026-09-01 17:40:48.614Z navigate
+- url: http://127.0.0.1:3000/#salles
+- via: replaceState
+
+## 2026-09-01 17:40:57.705Z click
+- element: {"tag":"button","role":"checkbox","ariaLabel":null,"name":null,"type":"button","id":"mt-block-both","placeholder":null,"label":null,"value":null,"valueLength":0,"text":""}
+
+## 2026-09-01 17:40:57.706Z click
+- element: {"tag":"input","role":null,"ariaLabel":null,"name":null,"type":"checkbox","id":null,"placeholder":null,"label":"[checkbox]","value":"on","valueLength":2,"text":""}
+
+## 2026-09-01 17:41:02.123Z click
+- element: {"tag":"button","role":null,"ariaLabel":null,"name":null,"type":"submit","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Enregistrer les paramètres"}
+
+## 2026-09-01 17:41:02.123Z submit
+- action: http://localhost:3000/maitre#reservations?filtre=a-confirmer&page=1
+- fields: [{"label":"Lors d’une réservation, bloquer les deux salles","type":"button","value":"on","length":2,"redacted":false},{"label":"[checkbox]","type":"checkbox","value":"on","length":2,"redacted":false},{"label":"Lors de la réservation d’une salle, bloquer le créneau qui suit","type":"button","value":"on","length":2,"redacted":false},{"label":"[checkbox]","type":"checkbox","value":"on","length":2,"redacted":false},{"label":"[button]","type":"button","value":"","length":0,"redacted":false},{"label":"[button]","type":"button","value":"","length":0,"redacted":false},{"label":"[button]","type":"button","value":"","length":0,"redacted":false},{"label":"Confirmation automatique","type":"button","value":"on","length":2,"redacted":false},{"label":"[checkbox]","type":"checkbox","value":"on","length":2,"redacted":false},{"label":"[submit]","type":"submit","value":"","length":0,"redacted":false}]
+
+## 2026-09-01 17:42:31.406Z click
+- element: {"tag":"a","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Planning"}
+
+## 2026-09-01 17:42:31.406Z navigate
+- url: http://localhost:3000/maitre#planning
+- via: popstate
+
+## 2026-09-01 17:42:35.063Z click
+- element: {"tag":"button","role":null,"ariaLabel":null,"name":null,"type":"submit","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Ouvrir cette plage"}
+
+## 2026-09-01 17:42:35.064Z submit
+- action: http://localhost:3000/maitre#planning
+- fields: [{"label":"Jour","type":"select-one","value":"01","length":2,"redacted":false},{"label":"Mois","type":"select-one","value":"09","length":2,"redacted":false},{"label":"Année","type":"select-one","value":"26","length":2,"redacted":false},{"label":"Heure","type":"select-one","value":"10","length":2,"redacted":false},{"label":"Minutes","type":"select-one","value":"00","length":2,"redacted":false},{"label":"Heure","type":"select-one","value":"22","length":2,"redacted":false},{"label":"Minutes","type":"select-one","value":"00","length":2,"redacted":false},{"label":"[submit]","type":"submit","value":"","length":0,"redacted":false},{"label":"Jour précédent","type":"button","value":"","length":0,"redacted":false},{"label":"Jour suivant","type":"button","value":"","length":0,"redacted":false}]
+
+## 2026-09-01 17:42:40.772Z click
+- element: {"tag":"a","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Réservations"}
+
+## 2026-09-01 17:42:40.772Z navigate
+- url: http://localhost:3000/maitre#reservations?filtre=aujourdhui&page=1
+- via: popstate
+
+## 2026-09-01 17:43:15.080Z click
+- element: {"tag":"button","role":null,"ariaLabel":null,"name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"À confirmer"}
+
+## 2026-09-01 17:43:15.080Z navigate
+- url: http://localhost:3000/maitre#reservations?filtre=a-confirmer&page=1
+- via: popstate
+
+## 2026-09-01 17:43:50.117Z click
+- element: {"tag":"button","role":null,"ariaLabel":null,"name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"15 min"}
+
+## 2026-09-01 17:43:50.767Z click
+- element: {"tag":"button","role":null,"ariaLabel":null,"name":null,"type":"submit","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Enregistrer les paramètres"}
+
+## 2026-09-01 17:43:50.768Z submit
+- action: http://localhost:3000/maitre#reservations?filtre=a-confirmer&page=1
+- fields: [{"label":"Lors d’une réservation, bloquer les deux salles","type":"button","value":"on","length":2,"redacted":false},{"label":"[checkbox]","type":"checkbox","value":"on","length":2,"redacted":false},{"label":"Lors de la réservation d’une salle, bloquer le créneau qui suit","type":"button","value":"on","length":2,"redacted":false},{"label":"[checkbox]","type":"checkbox","value":"on","length":2,"redacted":false},{"label":"[button]","type":"button","value":"","length":0,"redacted":false},{"label":"[button]","type":"button","value":"","length":0,"redacted":false},{"label":"[button]","type":"button","value":"","length":0,"redacted":false},{"label":"Confirmation automatique","type":"button","value":"on","length":2,"redacted":false},{"label":"[checkbox]","type":"checkbox","value":"on","length":2,"redacted":false},{"label":"[submit]","type":"submit","value":"","length":0,"redacted":false}]
+
+## 2026-09-01 17:43:54.955Z click
+- element: {"tag":"a","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Réserver une session"}
+
+## 2026-09-01 17:43:54.955Z navigate
+- url: http://127.0.0.1:3000/#salles
+- via: replaceState
+
+## 2026-09-01 17:43:55.905Z click
+- element: {"tag":"a","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Réserver une session"}
+
+## 2026-09-01 17:43:55.905Z navigate
+- url: http://127.0.0.1:3000/#salles
+- via: replaceState
+
+## 2026-09-01 17:43:57.022Z click
+- element: {"tag":"a","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Réserver"}
+
+## 2026-09-01 17:43:57.022Z navigate
+- url: http://127.0.0.1:3000/#salles
+- via: replaceState
+
+## 2026-09-01 17:43:57.739Z click
+- element: {"tag":"nav","role":null,"ariaLabel":"Navigation principale","name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"AccueilLe DirecteurLe Vaisseau FantômeContactRéserver"}
+
+## 2026-09-01 17:43:58.234Z click
+- element: {"tag":"a","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Le Directeur"}
+
+## 2026-09-01 17:43:58.234Z navigate
+- url: http://127.0.0.1:3000/salles/convocation-chez-le-directeur
+- via: pushState
+
+## 2026-09-01 17:43:59.914Z click
+- element: {"tag":"a","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Réserver cette salle"}
+
+## 2026-09-01 17:43:59.914Z navigate
+- url: http://127.0.0.1:3000/reservation/convocation-chez-le-directeur
+- via: pushState
+
+## 2026-09-01 17:44:00.226Z navigate
+- url: http://127.0.0.1:3000/reservation/convocation-chez-le-directeur?date=2026-09-01
+- via: replaceState
+
+## 2026-09-01 17:44:09.534Z click
+- element: {"tag":"td","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"01/09/2027"}
+
+## 2026-09-01 17:44:11.826Z click
+- element: {"tag":"a","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Planning"}
+
+## 2026-09-01 17:44:11.826Z navigate
+- url: http://localhost:3000/maitre#planning
+- via: popstate
+
+## 2026-09-01 17:44:14.368Z click
+- element: {"tag":"button","role":null,"ariaLabel":"10:15 — Ouvert","name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"10:15Ouvert"}
+
+## 2026-09-01 17:44:14.842Z click
+- element: {"tag":"button","role":null,"ariaLabel":"10:30 — Ouvert","name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"10:30Ouvert"}
+
+## 2026-09-01 17:44:15.334Z click
+- element: {"tag":"button","role":null,"ariaLabel":"10:45 — Ouvert","name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"10:45Ouvert"}
+
+## 2026-09-01 17:44:16.034Z click
+- element: {"tag":"button","role":null,"ariaLabel":"11:00 — Ouvert","name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"11:00Ouvert"}
+
+## 2026-09-01 17:44:16.634Z click
+- element: {"tag":"button","role":null,"ariaLabel":"11:00 — Indisponible","name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"11:00Indisponible"}
+
+## 2026-09-01 17:44:17.317Z click
+- element: {"tag":"button","role":null,"ariaLabel":"10:15 — Indisponible","name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"10:15Indisponible"}
+
+## 2026-09-01 17:44:18.225Z click
+- element: {"tag":"button","role":null,"ariaLabel":"10:30 — Indisponible","name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"10:30Indisponible"}
+
+## 2026-09-01 17:44:18.617Z click
+- element: {"tag":"button","role":null,"ariaLabel":"10:45 — Indisponible","name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"10:45Indisponible"}
+
+## 2026-09-01 17:44:19.200Z click
+- element: {"tag":"button","role":null,"ariaLabel":"11:15 — Ouvert","name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"11:15Ouvert"}
+
+## 2026-09-01 17:44:19.534Z click
+- element: {"tag":"button","role":null,"ariaLabel":"11:15 — Indisponible","name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"11:15Indisponible"}
+
+## 2026-09-01 17:44:24.422Z click
+- element: {"tag":"a","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Réservations"}
+
+## 2026-09-01 17:44:24.422Z navigate
+- url: http://localhost:3000/maitre#reservations?filtre=aujourdhui&page=1
+- via: popstate
+
+## 2026-09-01 17:44:26.138Z click
+- element: {"tag":"button","role":null,"ariaLabel":null,"name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"30 min"}
+
+## 2026-09-01 17:44:27.013Z click
+- element: {"tag":"button","role":null,"ariaLabel":null,"name":null,"type":"submit","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Enregistrer les paramètres"}
+
+## 2026-09-01 17:44:27.013Z submit
+- action: http://localhost:3000/maitre#reservations?filtre=aujourdhui&page=1
+- fields: [{"label":"Lors d’une réservation, bloquer les deux salles","type":"button","value":"on","length":2,"redacted":false},{"label":"[checkbox]","type":"checkbox","value":"on","length":2,"redacted":false},{"label":"Lors de la réservation d’une salle, bloquer le créneau qui suit","type":"button","value":"on","length":2,"redacted":false},{"label":"[checkbox]","type":"checkbox","value":"on","length":2,"redacted":false},{"label":"[button]","type":"button","value":"","length":0,"redacted":false},{"label":"[button]","type":"button","value":"","length":0,"redacted":false},{"label":"[button]","type":"button","value":"","length":0,"redacted":false},{"label":"Confirmation automatique","type":"button","value":"on","length":2,"redacted":false},{"label":"[checkbox]","type":"checkbox","value":"on","length":2,"redacted":false},{"label":"[submit]","type":"submit","value":"","length":0,"redacted":false}]
+
+## 2026-09-01 17:44:28.801Z click
+- element: {"tag":"a","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Planning"}
+
+## 2026-09-01 17:44:28.801Z navigate
+- url: http://localhost:3000/maitre#planning
+- via: popstate
+
+## 2026-09-01 17:44:31.234Z click
+- element: {"tag":"a","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Réservations"}
+
+## 2026-09-01 17:44:31.235Z navigate
+- url: http://localhost:3000/maitre#reservations?filtre=aujourdhui&page=1
+- via: popstate
+
+## 2026-09-01 17:44:32.718Z click
+- element: {"tag":"button","role":null,"ariaLabel":null,"name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"60 min"}
+
+## 2026-09-01 17:44:33.621Z click
+- element: {"tag":"button","role":null,"ariaLabel":null,"name":null,"type":"submit","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Enregistrer les paramètres"}
+
+## 2026-09-01 17:44:33.622Z submit
+- action: http://localhost:3000/maitre#reservations?filtre=aujourdhui&page=1
+- fields: [{"label":"Lors d’une réservation, bloquer les deux salles","type":"button","value":"on","length":2,"redacted":false},{"label":"[checkbox]","type":"checkbox","value":"on","length":2,"redacted":false},{"label":"Lors de la réservation d’une salle, bloquer le créneau qui suit","type":"button","value":"on","length":2,"redacted":false},{"label":"[checkbox]","type":"checkbox","value":"on","length":2,"redacted":false},{"label":"[button]","type":"button","value":"","length":0,"redacted":false},{"label":"[button]","type":"button","value":"","length":0,"redacted":false},{"label":"[button]","type":"button","value":"","length":0,"redacted":false},{"label":"Confirmation automatique","type":"button","value":"on","length":2,"redacted":false},{"label":"[checkbox]","type":"checkbox","value":"on","length":2,"redacted":false},{"label":"[submit]","type":"submit","value":"","length":0,"redacted":false}]
+
+## 2026-09-01 17:44:34.972Z click
+- element: {"tag":"a","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Planning"}
+
+## 2026-09-01 17:44:34.972Z navigate
+- url: http://localhost:3000/maitre#planning
+- via: popstate
+
+## 2026-09-01 17:44:36.871Z click
+- element: {"tag":"a","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Réservations"}
+
+## 2026-09-01 17:44:36.872Z navigate
+- url: http://localhost:3000/maitre#reservations?filtre=aujourdhui&page=1
+- via: popstate
+
+## 2026-09-01 17:44:38.255Z click
+- element: {"tag":"button","role":null,"ariaLabel":null,"name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"15 min"}
+
+## 2026-09-01 17:44:38.813Z click
+- element: {"tag":"button","role":null,"ariaLabel":null,"name":null,"type":"submit","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Enregistrer les paramètres"}
+
+## 2026-09-01 17:44:38.813Z submit
+- action: http://localhost:3000/maitre#reservations?filtre=aujourdhui&page=1
+- fields: [{"label":"Lors d’une réservation, bloquer les deux salles","type":"button","value":"on","length":2,"redacted":false},{"label":"[checkbox]","type":"checkbox","value":"on","length":2,"redacted":false},{"label":"Lors de la réservation d’une salle, bloquer le créneau qui suit","type":"button","value":"on","length":2,"redacted":false},{"label":"[checkbox]","type":"checkbox","value":"on","length":2,"redacted":false},{"label":"[button]","type":"button","value":"","length":0,"redacted":false},{"label":"[button]","type":"button","value":"","length":0,"redacted":false},{"label":"[button]","type":"button","value":"","length":0,"redacted":false},{"label":"Confirmation automatique","type":"button","value":"on","length":2,"redacted":false},{"label":"[checkbox]","type":"checkbox","value":"on","length":2,"redacted":false},{"label":"[submit]","type":"submit","value":"","length":0,"redacted":false}]
+
+## 2026-09-01 17:44:40.113Z click
+- element: {"tag":"button","role":null,"ariaLabel":null,"name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"À confirmer"}
+
+## 2026-09-01 17:44:40.113Z navigate
+- url: http://localhost:3000/maitre#reservations?filtre=a-confirmer&page=1
+- via: popstate
+
+## 2026-09-01 17:44:42.846Z click
+- element: {"tag":"a","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Planning"}
+
+## 2026-09-01 17:44:42.846Z navigate
+- url: http://localhost:3000/maitre#planning
+- via: popstate
+
+## 2026-09-01 17:44:45.030Z click
+- element: {"tag":"button","role":null,"ariaLabel":"11:15 — Fermé","name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"11:15Fermé"}
+
+## 2026-09-01 17:44:47.025Z click
+- element: {"tag":"a","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Réservations"}
+
+## 2026-09-01 17:44:47.026Z navigate
+- url: http://localhost:3000/maitre#reservations?filtre=aujourdhui&page=1
+- via: popstate
+
+## 2026-09-01 17:44:48.667Z click
+- element: {"tag":"button","role":null,"ariaLabel":null,"name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"30 min"}
+
+## 2026-09-01 17:44:49.380Z click
+- element: {"tag":"button","role":null,"ariaLabel":null,"name":null,"type":"submit","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Enregistrer les paramètres"}
+
+## 2026-09-01 17:44:49.380Z submit
+- action: http://localhost:3000/maitre#reservations?filtre=aujourdhui&page=1
+- fields: [{"label":"Lors d’une réservation, bloquer les deux salles","type":"button","value":"on","length":2,"redacted":false},{"label":"[checkbox]","type":"checkbox","value":"on","length":2,"redacted":false},{"label":"Lors de la réservation d’une salle, bloquer le créneau qui suit","type":"button","value":"on","length":2,"redacted":false},{"label":"[checkbox]","type":"checkbox","value":"on","length":2,"redacted":false},{"label":"[button]","type":"button","value":"","length":0,"redacted":false},{"label":"[button]","type":"button","value":"","length":0,"redacted":false},{"label":"[button]","type":"button","value":"","length":0,"redacted":false},{"label":"Confirmation automatique","type":"button","value":"on","length":2,"redacted":false},{"label":"[checkbox]","type":"checkbox","value":"on","length":2,"redacted":false},{"label":"[submit]","type":"submit","value":"","length":0,"redacted":false}]
+
+## 2026-09-01 17:44:53.677Z load
+- url: http://127.0.0.1:3000/reservation/convocation-chez-le-directeur?date=2026-09-01
+
+## 2026-09-01 17:45:04.297Z click
+- element: {"tag":"button","role":null,"ariaLabel":null,"name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"60 min"}
+
+## 2026-09-01 17:45:05.675Z click
+- element: {"tag":"a","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Planning"}
+
+## 2026-09-01 17:45:05.676Z navigate
+- url: http://localhost:3000/maitre#planning
+- via: popstate
+
+## 2026-09-01 17:45:08.184Z click
+- element: {"tag":"a","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Réservations"}
+
+## 2026-09-01 17:45:08.184Z navigate
+- url: http://localhost:3000/maitre#reservations?filtre=aujourdhui&page=1
+- via: popstate
+
+## 2026-09-01 17:45:09.730Z click
+- element: {"tag":"button","role":null,"ariaLabel":null,"name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"15 min"}
+
+## 2026-09-01 17:45:10.246Z click
+- element: {"tag":"button","role":null,"ariaLabel":null,"name":null,"type":"submit","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Enregistrer les paramètres"}
+
+## 2026-09-01 17:45:10.247Z submit
+- action: http://localhost:3000/maitre#reservations?filtre=aujourdhui&page=1
+- fields: [{"label":"Lors d’une réservation, bloquer les deux salles","type":"button","value":"on","length":2,"redacted":false},{"label":"[checkbox]","type":"checkbox","value":"on","length":2,"redacted":false},{"label":"Lors de la réservation d’une salle, bloquer le créneau qui suit","type":"button","value":"on","length":2,"redacted":false},{"label":"[checkbox]","type":"checkbox","value":"on","length":2,"redacted":false},{"label":"[button]","type":"button","value":"","length":0,"redacted":false},{"label":"[button]","type":"button","value":"","length":0,"redacted":false},{"label":"[button]","type":"button","value":"","length":0,"redacted":false},{"label":"Confirmation automatique","type":"button","value":"on","length":2,"redacted":false},{"label":"[checkbox]","type":"checkbox","value":"on","length":2,"redacted":false},{"label":"[submit]","type":"submit","value":"","length":0,"redacted":false}]
+
+## 2026-09-01 17:45:11.684Z click
+- element: {"tag":"a","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Planning"}
+
+## 2026-09-01 17:45:11.684Z navigate
+- url: http://localhost:3000/maitre#planning
+- via: popstate
+
+## 2026-09-01 17:45:20.804Z click
+- element: {"tag":"a","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Réservations"}
+
+## 2026-09-01 17:45:20.804Z navigate
+- url: http://localhost:3000/maitre#reservations?filtre=aujourdhui&page=1
+- via: popstate
+
+## 2026-09-01 17:45:25.489Z click
+- element: {"tag":"label","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Lors d’une réservation, bloquer les deux salles"}
+
+## 2026-09-01 17:45:25.490Z click
+- element: {"tag":"button","role":"checkbox","ariaLabel":null,"name":null,"type":"button","id":"mt-block-both","placeholder":null,"label":null,"value":null,"valueLength":0,"text":""}
+
+## 2026-09-01 17:45:25.495Z click
+- element: {"tag":"input","role":null,"ariaLabel":null,"name":null,"type":"checkbox","id":null,"placeholder":null,"label":"[checkbox]","value":"on","valueLength":2,"text":""}
+
+## 2026-09-01 17:45:28.208Z click
+- element: {"tag":"a","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Records & Avis"}
+
+## 2026-09-01 17:45:28.209Z navigate
+- url: http://localhost:3000/maitre#records
+- via: popstate
+

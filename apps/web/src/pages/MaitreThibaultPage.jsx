@@ -1024,7 +1024,7 @@ function MaitreThibaultPage() {
                       ))}
                     </ButtonGroup>
                     <p className="text-sm text-muted-foreground">
-                      {bookingsTotal} réservation{bookingsTotal === 1 ? '' : 's'}
+                      {bookingsTotal === 1 ? '1 réservation' : `${bookingsTotal} réservations`}
                     </p>
                   </div>
                   <div className="mt-4 overflow-x-auto rounded-xl border border-border">
