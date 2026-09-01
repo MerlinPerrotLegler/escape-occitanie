@@ -5640,3 +5640,6 @@
 - url: http://localhost:3000/maitre#records
 - via: popstate
 
+## 2026-09-01 17:48:56.181Z click
+- element: {"tag":"div","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"RéservationsPlanningRecords & AvisVoir le siteSe déconnecter"}
+
