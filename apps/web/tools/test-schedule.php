@@ -54,9 +54,10 @@ foreach ($pending as $s) {
 }
 expect($pendingBy['13:00'] === 'reserved', 'pending 13:00 reserves the 13:00 unit');
 expect($pendingBy['12:30'] === 'open', 'pending 13:00 does not occupy 12:30');
-expect($pendingBy['13:30'] === 'reserved', 'pending 13:00 occupies 60 min so 13:30 is reserved');
+expect($pendingBy['13:30'] === 'open', 'stored 30-min duration occupies only the start unit');
 expect($pendingBy['12:00'] === 'open', '12:00 still open with pending 13:00');
-expect(mt_occupancy_duration(['status' => 'pending', 'duration_minutes' => 30]) === 60, 'legacy 30-min pending still occupies 60');
+expect(mt_occupancy_duration(['status' => 'pending', 'duration_minutes' => 30]) === 30, 'stored 30-min duration is trusted');
+expect(mt_occupancy_duration(['status' => 'pending', 'duration_minutes' => 0]) === 60, 'missing duration falls back to occupancy settings');
 
 $closed = mt_compute_day_slots($periods, [], [780]);
 $closedBy = [];
@@ -141,7 +142,28 @@ foreach ($pendingAnnotated as $s) {
     $pendingBy[$s['time']] = $s;
 }
 expect(($pendingBy['13:00']['guest_name'] ?? '') === 'Bob', 'pending occupies the start unit');
-expect(($pendingBy['13:30']['guest_name'] ?? '') === 'Bob', 'pending 60 min names the following unit');
+expect(($pendingBy['13:30']['guest_name'] ?? null) === null, '30-min pending does not name the following unit');
+
+mt_set_runtime_booking_settings(['slot_minutes' => 15, 'block_next_slot' => false]);
+expect(mt_slot_minutes() === 15, 'runtime slot minutes 15');
+expect(mt_occupancy_minutes() === 15, 'occupancy is one 15-min slot when next is not blocked');
+expect(mt_is_slot_aligned(615) === true, '10:15 aligned on 15-min slots');
+$fine = mt_compute_day_slots($periods, []);
+$fineTimes = array_column($fine, 'time');
+expect($fineTimes[0] === '10:00', '15-min grid starts at 10:00');
+expect(end($fineTimes) === '21:45', 'last 15-min start is 21:45');
+expect(in_array('10:15', $fineTimes, true), '10:15 is a public start');
+mt_set_runtime_booking_settings(['slot_minutes' => 30, 'block_next_slot' => false]);
+expect(mt_occupancy_minutes() === 30, 'occupancy is 30 when next slot is not blocked');
+$noBuffer = mt_compute_day_slots($periods, [['start_minute' => 780, 'duration_minutes' => 30]]);
+$noBufferBy = [];
+foreach ($noBuffer as $s) {
+    $noBufferBy[$s['time']] = $s['status'];
+}
+expect($noBufferBy['13:00'] === 'reserved', '30-min occupancy reserves 13:00');
+expect($noBufferBy['13:30'] === 'open', '30-min occupancy leaves 13:30 open');
+mt_set_runtime_booking_settings(mt_default_booking_settings());
+expect(mt_occupancy_minutes() === 60, 'defaults restore 60-min occupancy');
 
 if ($failed > 0) {
     fwrite(STDERR, "$failed assertion(s) failed\n");

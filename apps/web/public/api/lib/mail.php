@@ -57,7 +57,7 @@ function mt_booking_customer_email(array $booking, string $kind = 'pending', arr
         . "Salle : {$room}\n"
         . "Date : {$booking['booking_date']}\n"
         . "Heure : {$time}\n"
-        . "Durée : 60 minutes\n"
+        . 'Durée : ' . mt_occupancy_duration($booking) . " minutes\n"
         . "Joueurs : {$booking['players']}\n\n"
         . "Merci d'arriver 15 minutes avant le début de la session une fois la réservation confirmée.\n"
         . "Adresse : 23 Bd de Verdun, 12400 Saint-Affrique\n";
@@ -93,7 +93,7 @@ function mt_booking_ics_attachment(array $booking): array {
     ];
 }
 
-function mt_send_booking_emails(array $env, array $booking, string $kind): bool {
+function mt_send_booking_emails(array $env, array $booking, string $kind, bool $notifyManager = false): bool {
     $subject = $kind === 'confirmed'
         ? 'Confirmation de réservation — Escape Occitanie'
         : 'Demande de réservation — Escape Occitanie';
@@ -106,7 +106,7 @@ function mt_send_booking_emails(array $env, array $booking, string $kind): bool 
         $attachment
     );
     $manager = $env['MANAGER_EMAIL'] ?? '';
-    if ($kind === 'pending' && $manager !== '') {
+    if (($kind === 'pending' || $notifyManager) && $manager !== '') {
         mt_send_mail($env, $manager, 'Nouvelle demande de réservation — Escape Occitanie', mt_booking_manager_email($booking));
     }
     return $sent;

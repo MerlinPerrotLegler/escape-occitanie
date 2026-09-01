@@ -5094,3 +5094,87 @@
 ## 2026-09-01 17:08:52.474Z click
 - element: {"tag":"button","role":null,"ariaLabel":null,"name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"03/09/2027 — 12:00 → 20:00"}
 
+## 2026-09-01 17:28:20.284Z console.error
+- text: [vite] Failed to reload /src/pages/MaitreThibaultPage.jsx. This could be due to syntax errors or importing non-existent modules. (see errors above)
+
+## 2026-09-01 17:28:20.342Z console.error
+- text: [vite] Failed to reload /src/pages/MaitreThibaultPage.jsx. This could be due to syntax errors or importing non-existent modules. (see errors above)
+
+## 2026-09-01 17:28:20.332Z console.error
+- text: [vite] Failed to reload /src/pages/MaitreThibaultPage.jsx. This could be due to syntax errors or importing non-existent modules. (see errors above)
+
+## 2026-09-01 17:28:21.360Z console.error
+- text: [vite] Failed to reload /src/pages/MaitreThibaultPage.jsx. This could be due to syntax errors or importing non-existent modules. (see errors above)
+
+## 2026-09-01 17:28:21.445Z console.error
+- text: [vite] Failed to reload /src/pages/MaitreThibaultPage.jsx. This could be due to syntax errors or importing non-existent modules. (see errors above)
+
+## 2026-09-01 17:28:20.355Z console.error
+- text: [vite] Failed to reload /src/pages/MaitreThibaultPage.jsx. This could be due to syntax errors or importing non-existent modules. (see errors above)
+
+## 2026-09-01 17:28:21.377Z console.error
+- text: [vite] Failed to reload /src/pages/MaitreThibaultPage.jsx. This could be due to syntax errors or importing non-existent modules. (see errors above)
+
+## 2026-09-01 17:28:21.463Z console.error
+- text: [vite] Failed to reload /src/pages/MaitreThibaultPage.jsx. This could be due to syntax errors or importing non-existent modules. (see errors above)
+
+## 2026-09-01 17:28:21.317Z console.error
+- text: [vite] Failed to reload /src/pages/MaitreThibaultPage.jsx. This could be due to syntax errors or importing non-existent modules. (see errors above)
+
+## 2026-09-01 17:28:21.411Z console.error
+- text: [vite] Failed to reload /src/pages/MaitreThibaultPage.jsx. This could be due to syntax errors or importing non-existent modules. (see errors above)
+
+## 2026-09-01 17:28:21.367Z console.error
+- text: [vite] Failed to reload /src/pages/MaitreThibaultPage.jsx. This could be due to syntax errors or importing non-existent modules. (see errors above)
+
+## 2026-09-01 17:28:21.450Z console.error
+- text: [vite] Failed to reload /src/pages/MaitreThibaultPage.jsx. This could be due to syntax errors or importing non-existent modules. (see errors above)
+
+## 2026-09-01 17:28:30.757Z console.error
+- text: [vite] Failed to reload /src/pages/MaitreThibaultPage.jsx. This could be due to syntax errors or importing non-existent modules. (see errors above)
+
+## 2026-09-01 17:28:30.812Z console.error
+- text: [vite] Failed to reload /src/pages/MaitreThibaultPage.jsx. This could be due to syntax errors or importing non-existent modules. (see errors above)
+
+## 2026-09-01 17:28:30.823Z console.error
+- text: [vite] Failed to reload /src/pages/MaitreThibaultPage.jsx. This could be due to syntax errors or importing non-existent modules. (see errors above)
+
+## 2026-09-01 17:28:30.802Z console.error
+- text: [vite] Failed to reload /src/pages/MaitreThibaultPage.jsx. This could be due to syntax errors or importing non-existent modules. (see errors above)
+
+## 2026-09-01 17:30:57.739Z console.error
+- text: [vite] Failed to reload /src/pages/MaitreThibaultPage.jsx. This could be due to syntax errors or importing non-existent modules. (see errors above)
+
+## 2026-09-01 17:30:57.825Z console.error
+- text: [vite] Failed to reload /src/pages/MaitreThibaultPage.jsx. This could be due to syntax errors or importing non-existent modules. (see errors above)
+
+## 2026-09-01 17:30:57.810Z console.error
+- text: [vite] Failed to reload /src/pages/MaitreThibaultPage.jsx. This could be due to syntax errors or importing non-existent modules. (see errors above)
+
+## 2026-09-01 17:30:57.832Z console.error
+- text: [vite] Failed to reload /src/pages/MaitreThibaultPage.jsx. This could be due to syntax errors or importing non-existent modules. (see errors above)
+
+## 2026-09-01 17:31:14.981Z console.error
+- text: [vite] Failed to reload /src/pages/MaitreThibaultPage.jsx. This could be due to syntax errors or importing non-existent modules. (see errors above)
+
+## 2026-09-01 17:31:15.052Z console.error
+- text: [vite] Failed to reload /src/pages/MaitreThibaultPage.jsx. This could be due to syntax errors or importing non-existent modules. (see errors above)
+
+## 2026-09-01 17:31:15.043Z console.error
+- text: [vite] Failed to reload /src/pages/MaitreThibaultPage.jsx. This could be due to syntax errors or importing non-existent modules. (see errors above)
+
+## 2026-09-01 17:31:15.064Z console.error
+- text: [vite] Failed to reload /src/pages/MaitreThibaultPage.jsx. This could be due to syntax errors or importing non-existent modules. (see errors above)
+
+## 2026-09-01 17:36:04.782Z load
+- url: http://127.0.0.1:3000/maitre#planning
+
+## 2026-09-01 17:36:04.784Z load
+- url: http://127.0.0.1:3000/reservation/convocation-chez-le-directeur?date=2027-09-03
+
+## 2026-09-01 17:36:05.091Z load
+- url: http://localhost:3000/maitre#planning
+
+## 2026-09-01 17:36:05.092Z load
+- url: http://localhost:3000/#salles
+

@@ -6,6 +6,7 @@ import { toast } from 'sonner';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Button } from '@/components/ui/button';
+import { ButtonGroup } from '@/components/ui/button-group';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Label } from '@/components/ui/label';
 import {
@@ -31,12 +32,18 @@ import {
   closeSlot,
   confirmBooking,
   createPeriod,
+  DEFAULT_BOOKING_SETTINGS,
   deletePeriod,
   fetchAdminDaySlots,
+  fetchBookingSettings,
   fetchBookings,
   fetchPeriods,
+  normalizeBookingSettings,
+  occupancyFromSettings,
   openSlot,
   resendBookingEmail,
+  saveBookingSettings,
+  SLOT_MINUTE_OPTIONS,
   updateBooking,
   updatePeriod,
 } from '@/lib/booking';
@@ -47,6 +54,7 @@ import MonthYearSelect from '@/components/MonthYearSelect';
 import PeriodCopyDialog from '@/components/PeriodCopyDialog';
 import PeriodSlots from '@/components/PeriodSlots';
 import { isoToYearMonth, monthBounds } from '@/lib/monthYear';
+import { BOOKING_FILTERS, parseLocationHash, reservationsHash } from '@/lib/reservationsHash';
 import { cn } from '@/lib/utils';
 import { nextAdminSlotStatus } from '@/lib/slotStatus';
 
@@ -92,24 +100,6 @@ function writeRememberPreference(remember) {
   }
 }
 
-const TAB_ALIASES = {
-  contenu: 'records',
-  avis: 'records',
-  reservation: 'reservations',
-  creneaux: 'planning',
-  creneau: 'planning',
-};
-
-function parseLocationHash() {
-  const raw = window.location.hash.replace(/^#/, '');
-  const [tabRaw, focusRaw] = raw.split('/');
-  const key = (tabRaw || '').toLowerCase();
-  const id = TAB_ALIASES[key] || key;
-  const tab = TABS.some((item) => item.id === id) ? id : 'reservations';
-  const focusBookingId = /^\d+$/.test(focusRaw || '') ? Number(focusRaw) : null;
-  return { tab, focusBookingId };
-}
-
 function slotTimeRange(row) {
   const duration = Number(row.duration_minutes) || 60;
   if (duration <= 30 || !row.end_time) return row.time;
@@ -144,6 +134,13 @@ function MaitreThibaultPage() {
   const [loginError, setLoginError] = useState('');
   const [tab, setTab] = useState(() => parseLocationHash().tab);
   const [focusBookingId, setFocusBookingId] = useState(() => parseLocationHash().focusBookingId);
+  const [filtre, setFiltre] = useState(() => parseLocationHash().filtre);
+  const [page, setPage] = useState(() => parseLocationHash().page);
+  const [bookingsTotal, setBookingsTotal] = useState(0);
+  const [bookingsPages, setBookingsPages] = useState(1);
+  const [settings, setSettings] = useState(DEFAULT_BOOKING_SETTINGS);
+  const [settingsForm, setSettingsForm] = useState(DEFAULT_BOOKING_SETTINGS);
+  const [savingSettings, setSavingSettings] = useState(false);
   const [reviews, setReviews] = useState(EMPTY_REVIEWS);
   const [records, setRecords] = useState(EMPTY_RECORDS);
   const [apiDown, setApiDown] = useState(false);
@@ -183,6 +180,28 @@ function MaitreThibaultPage() {
     return list;
   }
 
+  async function reloadBookings() {
+    const data = await fetchBookings({
+      filtre: focusBookingId ? 'toutes' : filtre,
+      page,
+      focus: focusBookingId || undefined,
+    });
+    setBookings(data.bookings || []);
+    setBookingsTotal(data.total || 0);
+    setBookingsPages(data.pages || 1);
+    if (data.page) setPage(data.page);
+    if (data.settings) setSettings(normalizeBookingSettings(data.settings));
+    return data;
+  }
+
+  function goReservations({ nextFiltre = filtre, nextPage = 1, nextFocus = null } = {}) {
+    window.location.hash = reservationsHash({
+      filtre: nextFiltre,
+      page: nextPage,
+      focusBookingId: nextFocus,
+    });
+  }
+
   function showPeriodInPlanning(period) {
     const month = isoToYearMonth(period.period_date);
     if (month) setPlanningMonth(month);
@@ -217,13 +236,23 @@ function MaitreThibaultPage() {
       const next = parseLocationHash();
       setTab(next.tab);
       setFocusBookingId(next.focusBookingId);
+      setFiltre(next.filtre);
+      setPage(next.page);
     };
     if (!window.location.hash) {
-      window.history.replaceState(null, '', `#${parseLocationHash().tab}`);
+      window.history.replaceState(null, '', reservationsHash({ filtre: 'aujourdhui', page: 1 }));
     }
     window.addEventListener('hashchange', sync);
     return () => window.removeEventListener('hashchange', sync);
   }, []);
+
+  useEffect(() => {
+    if (tab !== 'reservations') return;
+    const next = reservationsHash({ filtre, page, focusBookingId });
+    if (window.location.hash !== next) {
+      window.history.replaceState(null, '', next);
+    }
+  }, [tab, filtre, page, focusBookingId]);
 
   useEffect(() => {
     if (tab !== 'reservations' || !focusBookingId) return undefined;
@@ -246,15 +275,44 @@ function MaitreThibaultPage() {
       setReviews(data.reviews);
       setRecords(data.records);
     });
-    fetchBookings()
-      .then((data) => {
-        if (!cancelled) setBookings(data.bookings || []);
+    fetchBookingSettings()
+      .then((next) => {
+        if (cancelled) return;
+        setSettings(next);
+        setSettingsForm(next);
       })
       .catch(() => {});
     return () => {
       cancelled = true;
     };
   }, [session]);
+
+  useEffect(() => {
+    if (!session || tab !== 'reservations') return undefined;
+    let cancelled = false;
+    const query = {
+      filtre: focusBookingId ? 'toutes' : filtre,
+      page,
+      focus: focusBookingId || undefined,
+    };
+    fetchBookings(query)
+      .then((data) => {
+        if (cancelled) return;
+        setBookings(data.bookings || []);
+        setBookingsTotal(data.total || 0);
+        setBookingsPages(data.pages || 1);
+        if (data.page && data.page !== page) setPage(data.page);
+        if (focusBookingId && data.filtre && data.filtre !== filtre) setFiltre(data.filtre);
+        if (data.settings) {
+          const next = normalizeBookingSettings(data.settings);
+          setSettings(next);
+        }
+      })
+      .catch(() => {});
+    return () => {
+      cancelled = true;
+    };
+  }, [session, tab, filtre, page, focusBookingId]);
 
   useEffect(() => {
     if (!session) return undefined;
@@ -437,9 +495,9 @@ function MaitreThibaultPage() {
     const id = cancellingBooking.id;
     try {
       await cancelBooking(id);
-      setBookings((list) => list.map((row) => (row.id === id ? { ...row, status: 'cancelled' } : row)));
       setCancellingBooking(null);
       toast.success('Réservation annulée.');
+      await reloadBookings();
       if (expandedPeriod) await reloadDaySlots(expandedPeriod.period_date);
     } catch (err) {
       toast.error(err.message);
@@ -449,8 +507,8 @@ function MaitreThibaultPage() {
   async function onConfirmBooking(id) {
     try {
       const result = await confirmBooking(id);
-      setBookings((list) => list.map((row) => (row.id === id ? result.booking : row)));
       toast.success(result.emailSent ? 'Confirmée. E-mail envoyé.' : 'Réservation confirmée.');
+      await reloadBookings();
       if (expandedPeriod) await reloadDaySlots(expandedPeriod.period_date);
     } catch (err) {
       toastFromApi(err);
@@ -484,6 +542,7 @@ function MaitreThibaultPage() {
       setBookings((list) => list.map((row) => (row.id === editingBooking ? result.booking : row)));
       setEditingBooking(null);
       toast.success('Réservation mise à jour.');
+      await reloadBookings();
     } catch (err) {
       toastFromApi(err);
     }
@@ -502,6 +561,34 @@ function MaitreThibaultPage() {
     if (status === 'confirmed') return 'Confirmée';
     if (status === 'cancelled') return 'Annulée';
     return 'En attente';
+  }
+
+  function emptyBookingsLabel() {
+    if (filtre === 'aujourdhui') return 'Aucune réservation aujourd’hui.';
+    if (filtre === 'a-confirmer') return 'Aucune réservation à confirmer.';
+    return 'Aucune réservation.';
+  }
+
+  async function onSaveSettings(event) {
+    event.preventDefault();
+    setSavingSettings(true);
+    try {
+      const saved = await saveBookingSettings({
+        block_both_rooms: settingsForm.block_both_rooms,
+        block_next_slot: settingsForm.block_next_slot,
+        slot_minutes: settingsForm.slot_minutes,
+        auto_confirm: settingsForm.auto_confirm,
+      });
+      setSettings(saved);
+      setSettingsForm(saved);
+      toast.success('Paramètres enregistrés.');
+      if (expandedPeriod) await reloadDaySlots(expandedPeriod.period_date);
+    } catch (err) {
+      if (err.status === 401) setSession(null);
+      toast.error(err.message || 'Enregistrement impossible, réessaie.');
+    } finally {
+      setSavingSettings(false);
+    }
   }
 
   return (
@@ -572,7 +659,11 @@ function MaitreThibaultPage() {
               {TABS.map((item) => (
                 <a
                   key={item.id}
-                  href={`#${item.id}`}
+                  href={
+                    item.id === 'reservations'
+                      ? reservationsHash({ filtre: 'aujourdhui', page: 1 })
+                      : `#${item.id}`
+                  }
                   className={cn(
                     'rounded-md px-4 py-2 text-sm font-medium transition-colors',
                     tab === item.id
@@ -728,9 +819,13 @@ function MaitreThibaultPage() {
                 <div>
                   <h2 className="font-display text-2xl font-bold tracking-wide">Ajouter une plage</h2>
                   <p className="mt-2 max-w-2xl text-sm leading-relaxed text-muted-foreground">
-                    Ouvrez un jour en indiquant le début et la fin (au moins 60 minutes, aligné
-                    sur 30). Une partie dure 60 minutes : une réservation à 13h occupe 13h et
-                    13h30, dès la demande.
+                    Ouvrez un jour en indiquant le début et la fin (au moins{' '}
+                    {settings.occupancy_minutes} minutes, aligné sur {settings.slot_minutes}).
+                    Une réservation occupe {settings.occupancy_minutes} minutes
+                    {settings.block_next_slot
+                      ? ` (${settings.slot_minutes} min + le créneau suivant)`
+                      : ''}
+                    {settings.block_both_rooms ? ' et bloque les deux salles' : ''}.
                   </p>
                   <form onSubmit={onSavePeriod} className="mt-4 flex flex-wrap items-end gap-3">
                     <div className="text-sm">
@@ -748,6 +843,7 @@ function MaitreThibaultPage() {
                         id="period-start"
                         required
                         value={periodForm.start}
+                        step={settings.slot_minutes}
                         onChange={(start) => setPeriodForm({ ...periodForm, start })}
                       />
                     </div>
@@ -757,6 +853,7 @@ function MaitreThibaultPage() {
                         id="period-end"
                         required
                         value={periodForm.end}
+                        step={settings.slot_minutes}
                         onChange={(end) => setPeriodForm({ ...periodForm, end })}
                       />
                     </div>
@@ -870,7 +967,11 @@ function MaitreThibaultPage() {
                                   emptyLabel="Aucun créneau ouvert ce jour-là."
                                   onToggle={onToggleSlot}
                                   onReservedClick={(bookingId) => {
-                                    window.location.hash = `reservations/${bookingId}`;
+                                    window.location.hash = reservationsHash({
+                                      filtre: 'toutes',
+                                      page: 1,
+                                      focusBookingId: bookingId,
+                                    });
                                   }}
                                 />
                               </div>
@@ -896,164 +997,285 @@ function MaitreThibaultPage() {
             />
 
             {tab === 'reservations' && (
-              <section className="mt-10">
-                <h2 className="font-display text-2xl font-bold tracking-wide">Réservations</h2>
-                <p className="mt-2 text-sm text-muted-foreground">
-                  Les demandes arrivent en attente. Confirme-les pour envoyer l’e-mail. Une
-                  réservation occupe 60 min. Modifier l’heure déplace la réservation dans une
-                  plage libre.
-                </p>
-                <div className="mt-6 overflow-x-auto rounded-xl border border-border">
-                  <table className="w-full min-w-[720px] text-left text-sm">
-                    <thead className="border-b border-border/70 text-xs uppercase tracking-wider text-muted-foreground">
-                      <tr>
-                        <th className="px-4 py-3">Date</th>
-                        <th className="px-4 py-3">Heure</th>
-                        <th className="px-4 py-3">Salle</th>
-                        <th className="px-4 py-3">Client</th>
-                        <th className="px-4 py-3">Joueurs</th>
-                        <th className="px-4 py-3">Statut</th>
-                        <th className="px-4 py-3" />
-                      </tr>
-                    </thead>
-                    <tbody className="divide-y divide-border/50">
-                      {bookings.length === 0 ? (
+              <section className="mt-10 space-y-10">
+                <div>
+                  <h2 className="font-display text-2xl font-bold tracking-wide">Réservations</h2>
+                  <p className="mt-2 text-sm text-muted-foreground">
+                    {settings.auto_confirm
+                      ? 'Les demandes sont confirmées automatiquement.'
+                      : 'Les demandes arrivent en attente. Confirme-les pour envoyer l’e-mail.'}{' '}
+                    Une réservation occupe {settings.occupancy_minutes} min
+                    {settings.block_both_rooms ? ' et bloque les deux salles' : ''}. Modifier
+                    l’heure déplace la réservation dans une plage libre.
+                  </p>
+                  <div className="mt-4 flex flex-wrap items-center justify-between gap-3">
+                    <ButtonGroup aria-label="Filtrer les réservations">
+                      {BOOKING_FILTERS.map((item) => (
+                        <Button
+                          key={item.id}
+                          type="button"
+                          size="sm"
+                          variant={filtre === item.id ? 'default' : 'outline'}
+                          aria-pressed={filtre === item.id}
+                          onClick={() => goReservations({ nextFiltre: item.id, nextPage: 1 })}
+                        >
+                          {item.label}
+                        </Button>
+                      ))}
+                    </ButtonGroup>
+                    <p className="text-sm text-muted-foreground">
+                      {bookingsTotal} réservation{bookingsTotal === 1 ? '' : 's'}
+                    </p>
+                  </div>
+                  <div className="mt-4 overflow-x-auto rounded-xl border border-border">
+                    <table className="w-full min-w-[720px] text-left text-sm">
+                      <thead className="border-b border-border/70 text-xs uppercase tracking-wider text-muted-foreground">
                         <tr>
-                          <td colSpan={7} className="px-4 py-6 text-muted-foreground">
-                            Aucune réservation.
-                          </td>
+                          <th className="px-4 py-3">Date</th>
+                          <th className="px-4 py-3">Heure</th>
+                          <th className="px-4 py-3">Salle</th>
+                          <th className="px-4 py-3">Client</th>
+                          <th className="px-4 py-3">Joueurs</th>
+                          <th className="px-4 py-3">Statut</th>
+                          <th className="px-4 py-3" />
                         </tr>
-                      ) : (
-                        bookings.map((row) => (
-                          <React.Fragment key={row.id}>
-                            <tr
-                              id={`booking-${row.id}`}
-                              className={cn(
-                                'scroll-mt-24',
-                                focusBookingId === row.id && 'bg-emerald-500/15'
-                              )}
-                            >
-                              <td className="px-4 py-3">{isoToShortDate(row.booking_date)}</td>
-                              <td className="px-4 py-3 font-mono">{slotTimeRange(row)}</td>
-                              <td className="px-4 py-3">{ROOM_LABELS[row.room_slug] || row.room_slug}</td>
-                              <td className="px-4 py-3">
-                                <div>{row.guest_name}</div>
-                                <div className="text-xs text-muted-foreground">{row.guest_email}</div>
-                                <div className="text-xs text-muted-foreground">{row.guest_phone}</div>
-                              </td>
-                              <td className="px-4 py-3">{row.players}</td>
-                              <td className="px-4 py-3">{bookingStatusLabel(row.status)}</td>
-                              <td className="px-4 py-3">
-                                {row.status === 'cancelled' ? null : (
-                                  <div className="flex flex-wrap justify-end gap-2">
-                                    {row.status === 'pending' ? (
-                                      <Button type="button" size="sm" onClick={() => onConfirmBooking(row.id)}>
-                                        Confirmer
-                                      </Button>
-                                    ) : null}
-                                    <Button
-                                      type="button"
-                                      variant="outline"
-                                      size="sm"
-                                      onClick={() =>
-                                        editingBooking === row.id ? setEditingBooking(null) : startEditBooking(row)
-                                      }
-                                    >
-                                      Modifier
-                                    </Button>
-                                    <Button type="button" variant="outline" size="sm" onClick={() => onResendMail(row.id)}>
-                                      Renvoyer l’e-mail
-                                    </Button>
-                                    <Button
-                                      type="button"
-                                      variant="outline"
-                                      size="sm"
-                                      onClick={() => setCancellingBooking(row)}
-                                    >
-                                      Annuler
-                                    </Button>
-                                  </div>
+                      </thead>
+                      <tbody className="divide-y divide-border/50">
+                        {bookings.length === 0 ? (
+                          <tr>
+                            <td colSpan={7} className="px-4 py-6 text-muted-foreground">
+                              {emptyBookingsLabel()}
+                            </td>
+                          </tr>
+                        ) : (
+                          bookings.map((row) => (
+                            <React.Fragment key={row.id}>
+                              <tr
+                                id={`booking-${row.id}`}
+                                className={cn(
+                                  'scroll-mt-24',
+                                  focusBookingId === row.id && 'bg-emerald-500/15'
                                 )}
-                              </td>
-                            </tr>
-                            {editingBooking === row.id ? (
-                              <tr>
-                                <td colSpan={7} className="bg-primary/5 px-4 py-4">
-                                  <form onSubmit={onSaveBooking} className="grid gap-3 sm:grid-cols-3">
-                                    <Input
-                                      required
-                                      placeholder="Nom"
-                                      value={editForm.name}
-                                      onChange={(e) => setEditForm({ ...editForm, name: e.target.value })}
-                                    />
-                                    <Input
-                                      required
-                                      type="email"
-                                      placeholder="E-mail"
-                                      value={editForm.email}
-                                      onChange={(e) => setEditForm({ ...editForm, email: e.target.value })}
-                                    />
-                                    <Input
-                                      required
-                                      placeholder="Téléphone"
-                                      value={editForm.phone}
-                                      onChange={(e) => setEditForm({ ...editForm, phone: e.target.value })}
-                                    />
-                                    <div className="text-sm">
-                                      <p className="mb-1">Date</p>
-                                      <ShortDateInput
-                                        id="edit-date"
-                                        required
-                                        value={editForm.date}
-                                        onChange={(date) => setEditForm({ ...editForm, date })}
-                                      />
-                                    </div>
-                                    <div className="text-sm">
-                                      <p className="mb-1">Heure</p>
-                                      <ShortTimeInput
-                                        id="edit-time"
-                                        required
-                                        value={editForm.time}
-                                        onChange={(time) => setEditForm({ ...editForm, time })}
-                                      />
-                                    </div>
-                                    <label className="text-sm">
-                                      Joueurs
-                                      <select
-                                        className="mt-1 h-9 w-full rounded-md border border-input bg-transparent px-2 text-sm"
-                                        value={editForm.players}
-                                        onChange={(e) => setEditForm({ ...editForm, players: e.target.value })}
+                              >
+                                <td className="px-4 py-3">{isoToShortDate(row.booking_date)}</td>
+                                <td className="px-4 py-3 font-mono">{slotTimeRange(row)}</td>
+                                <td className="px-4 py-3">{ROOM_LABELS[row.room_slug] || row.room_slug}</td>
+                                <td className="px-4 py-3">
+                                  <div>{row.guest_name}</div>
+                                  <div className="text-xs text-muted-foreground">{row.guest_email}</div>
+                                  <div className="text-xs text-muted-foreground">{row.guest_phone}</div>
+                                </td>
+                                <td className="px-4 py-3">{row.players}</td>
+                                <td className="px-4 py-3">{bookingStatusLabel(row.status)}</td>
+                                <td className="px-4 py-3">
+                                  {row.status === 'cancelled' ? null : (
+                                    <div className="flex flex-wrap justify-end gap-2">
+                                      {row.status === 'pending' ? (
+                                        <Button type="button" size="sm" onClick={() => onConfirmBooking(row.id)}>
+                                          Confirmer
+                                        </Button>
+                                      ) : null}
+                                      <Button
+                                        type="button"
+                                        variant="destructive"
+                                        size="sm"
+                                        onClick={() => setCancellingBooking(row)}
                                       >
-                                        {[3, 4, 5, 6].map((n) => (
-                                          <option key={n} value={n}>
-                                            {n}
-                                          </option>
-                                        ))}
-                                      </select>
-                                    </label>
-                                    <div className="flex gap-2 sm:col-span-3">
-                                      <Button type="submit" size="sm">
-                                        Enregistrer
+                                        Annuler
                                       </Button>
                                       <Button
                                         type="button"
                                         variant="outline"
                                         size="sm"
-                                        onClick={() => setEditingBooking(null)}
+                                        onClick={() =>
+                                          editingBooking === row.id ? setEditingBooking(null) : startEditBooking(row)
+                                        }
                                       >
-                                        Fermer
+                                        Modifier
+                                      </Button>
+                                      <Button type="button" variant="outline" size="sm" onClick={() => onResendMail(row.id)}>
+                                        Renvoyer l’e-mail
                                       </Button>
                                     </div>
-                                  </form>
+                                  )}
                                 </td>
                               </tr>
-                            ) : null}
-                          </React.Fragment>
-                        ))
-                      )}
-                    </tbody>
-                  </table>
+                              {editingBooking === row.id ? (
+                                <tr>
+                                  <td colSpan={7} className="bg-primary/5 px-4 py-4">
+                                    <form onSubmit={onSaveBooking} className="grid gap-3 sm:grid-cols-3">
+                                      <Input
+                                        required
+                                        placeholder="Nom"
+                                        value={editForm.name}
+                                        onChange={(e) => setEditForm({ ...editForm, name: e.target.value })}
+                                      />
+                                      <Input
+                                        required
+                                        type="email"
+                                        placeholder="E-mail"
+                                        value={editForm.email}
+                                        onChange={(e) => setEditForm({ ...editForm, email: e.target.value })}
+                                      />
+                                      <Input
+                                        required
+                                        placeholder="Téléphone"
+                                        value={editForm.phone}
+                                        onChange={(e) => setEditForm({ ...editForm, phone: e.target.value })}
+                                      />
+                                      <div className="text-sm">
+                                        <p className="mb-1">Date</p>
+                                        <ShortDateInput
+                                          id="edit-date"
+                                          required
+                                          value={editForm.date}
+                                          onChange={(date) => setEditForm({ ...editForm, date })}
+                                        />
+                                      </div>
+                                      <div className="text-sm">
+                                        <p className="mb-1">Heure</p>
+                                        <ShortTimeInput
+                                          id="edit-time"
+                                          required
+                                          step={settings.slot_minutes}
+                                          value={editForm.time}
+                                          onChange={(time) => setEditForm({ ...editForm, time })}
+                                        />
+                                      </div>
+                                      <label className="text-sm">
+                                        Joueurs
+                                        <select
+                                          className="mt-1 h-9 w-full rounded-md border border-input bg-transparent px-2 text-sm"
+                                          value={editForm.players}
+                                          onChange={(e) => setEditForm({ ...editForm, players: e.target.value })}
+                                        >
+                                          {[3, 4, 5, 6].map((n) => (
+                                            <option key={n} value={n}>
+                                              {n}
+                                            </option>
+                                          ))}
+                                        </select>
+                                      </label>
+                                      <div className="flex gap-2 sm:col-span-3">
+                                        <Button type="submit" size="sm">
+                                          Enregistrer
+                                        </Button>
+                                        <Button
+                                          type="button"
+                                          variant="outline"
+                                          size="sm"
+                                          onClick={() => setEditingBooking(null)}
+                                        >
+                                          Fermer
+                                        </Button>
+                                      </div>
+                                    </form>
+                                  </td>
+                                </tr>
+                              ) : null}
+                            </React.Fragment>
+                          ))
+                        )}
+                      </tbody>
+                    </table>
+                  </div>
+                  {bookingsPages > 1 ? (
+                    <div className="mt-4 flex flex-wrap items-center gap-3">
+                      <Button
+                        type="button"
+                        variant="outline"
+                        size="sm"
+                        disabled={page <= 1}
+                        onClick={() => goReservations({ nextFiltre: filtre, nextPage: page - 1 })}
+                      >
+                        Précédent
+                      </Button>
+                      <span className="text-sm text-muted-foreground">
+                        Page {page} / {bookingsPages}
+                      </span>
+                      <Button
+                        type="button"
+                        variant="outline"
+                        size="sm"
+                        disabled={page >= bookingsPages}
+                        onClick={() => goReservations({ nextFiltre: filtre, nextPage: page + 1 })}
+                      >
+                        Suivant
+                      </Button>
+                    </div>
+                  ) : null}
                 </div>
+
+                <form
+                  onSubmit={onSaveSettings}
+                  className="rounded-xl border border-border p-5 sm:p-6"
+                >
+                  <h2 className="font-display text-2xl font-bold tracking-wide">
+                    Paramètres de réservation
+                  </h2>
+                  <p className="mt-2 text-sm text-muted-foreground">
+                    Ces réglages s’appliquent aux nouvelles réservations. Occupation actuelle :{' '}
+                    {occupancyFromSettings(settingsForm)} min.
+                  </p>
+                  <div className="mt-5 space-y-4">
+                    <div className="flex items-start gap-2">
+                      <Checkbox
+                        id="mt-block-both"
+                        checked={settingsForm.block_both_rooms}
+                        onCheckedChange={(value) =>
+                          setSettingsForm((form) => ({ ...form, block_both_rooms: value === true }))
+                        }
+                      />
+                      <Label htmlFor="mt-block-both" className="cursor-pointer font-normal leading-snug">
+                        Lors d’une réservation, bloquer les deux salles
+                      </Label>
+                    </div>
+                    <div className="flex items-start gap-2">
+                      <Checkbox
+                        id="mt-block-next"
+                        checked={settingsForm.block_next_slot}
+                        onCheckedChange={(value) =>
+                          setSettingsForm((form) => ({ ...form, block_next_slot: value === true }))
+                        }
+                      />
+                      <Label htmlFor="mt-block-next" className="cursor-pointer font-normal leading-snug">
+                        Lors de la réservation d’une salle, bloquer le créneau qui suit
+                      </Label>
+                    </div>
+                    <div>
+                      <p className="mb-2 text-sm font-medium">Taille des créneaux</p>
+                      <ButtonGroup aria-label="Taille des créneaux">
+                        {SLOT_MINUTE_OPTIONS.map((minutes) => (
+                          <Button
+                            key={minutes}
+                            type="button"
+                            size="sm"
+                            variant={settingsForm.slot_minutes === minutes ? 'default' : 'outline'}
+                            aria-pressed={settingsForm.slot_minutes === minutes}
+                            onClick={() => setSettingsForm((form) => ({ ...form, slot_minutes: minutes }))}
+                          >
+                            {minutes} min
+                          </Button>
+                        ))}
+                      </ButtonGroup>
+                    </div>
+                    <div className="flex items-start gap-2">
+                      <Checkbox
+                        id="mt-auto-confirm"
+                        checked={settingsForm.auto_confirm}
+                        onCheckedChange={(value) =>
+                          setSettingsForm((form) => ({ ...form, auto_confirm: value === true }))
+                        }
+                      />
+                      <Label htmlFor="mt-auto-confirm" className="cursor-pointer font-normal leading-snug">
+                        Confirmation automatique
+                      </Label>
+                    </div>
+                  </div>
+                  <Button type="submit" disabled={savingSettings} className="mt-6 h-11 px-6">
+                    {savingSettings ? 'Enregistrement…' : 'Enregistrer les paramètres'}
+                  </Button>
+                </form>
               </section>
             )}
           </div>

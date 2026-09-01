@@ -96,9 +96,71 @@ export async function deletePeriod(id) {
   return parseJson(res);
 }
 
-export async function fetchBookings() {
-  const res = await fetch('/api/bookings.php', { credentials: 'include' });
+export const DEFAULT_BOOKING_SETTINGS = {
+  block_both_rooms: false,
+  block_next_slot: true,
+  slot_minutes: 30,
+  auto_confirm: false,
+  occupancy_minutes: 60,
+};
+
+export const SLOT_MINUTE_OPTIONS = [15, 30, 60];
+
+export function occupancyFromSettings(settings) {
+  const slot = SLOT_MINUTE_OPTIONS.includes(Number(settings?.slot_minutes))
+    ? Number(settings.slot_minutes)
+    : 30;
+  const blockNext = settings?.block_next_slot !== false;
+  return slot * (blockNext ? 2 : 1);
+}
+
+export function normalizeBookingSettings(raw = {}) {
+  const slot = SLOT_MINUTE_OPTIONS.includes(Number(raw.slot_minutes))
+    ? Number(raw.slot_minutes)
+    : DEFAULT_BOOKING_SETTINGS.slot_minutes;
+  const blockNext = raw.block_next_slot !== false && raw.block_next_slot !== 0;
+  return {
+    block_both_rooms: Boolean(raw.block_both_rooms),
+    block_next_slot: blockNext,
+    slot_minutes: slot,
+    auto_confirm: Boolean(raw.auto_confirm),
+    occupancy_minutes: occupancyFromSettings({
+      slot_minutes: slot,
+      block_next_slot: blockNext,
+    }),
+  };
+}
+
+export async function fetchBookings({ filtre = 'aujourdhui', page = 1, focus } = {}) {
+  const params = new URLSearchParams({
+    filtre,
+    page: String(page),
+  });
+  if (focus) params.set('focus', String(focus));
+  const res = await fetch(`/api/bookings.php?${params}`, { credentials: 'include' });
   return parseJson(res);
+}
+
+export async function fetchBookingSettings() {
+  try {
+    const res = await fetch('/api/booking-settings.php');
+    if (!res.ok) return DEFAULT_BOOKING_SETTINGS;
+    const data = await res.json();
+    return normalizeBookingSettings(data.settings || data);
+  } catch {
+    return DEFAULT_BOOKING_SETTINGS;
+  }
+}
+
+export async function saveBookingSettings(payload) {
+  const res = await fetch('/api/booking-settings.php', {
+    method: 'PATCH',
+    credentials: 'include',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload),
+  });
+  const data = await parseJson(res);
+  return normalizeBookingSettings(data.settings || data);
 }
 
 export async function cancelBooking(id) {

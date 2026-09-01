@@ -23,6 +23,8 @@ function cleanup_test_day(PDO $pdo, string $date): void {
 $env = mt_boot();
 $pdo = mt_pdo($env);
 mt_ensure_schema($pdo);
+$savedSettings = mt_get_booking_settings($pdo);
+mt_save_booking_settings($pdo, mt_default_booking_settings());
 
 $date = '2099-06-15';
 $room = 'directeur';
@@ -268,6 +270,8 @@ try {
     cleanup_test_day($pdo, $editDate);
     cleanup_test_day($pdo, $movedDate);
 }
+
+mt_save_booking_settings($pdo, $savedSettings);
 
 if ($failed > 0) {
     fwrite(STDERR, "$failed assertion(s) failed\n");

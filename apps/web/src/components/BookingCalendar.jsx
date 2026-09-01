@@ -9,7 +9,7 @@ import { cn } from '@/lib/utils';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Form, FormControl, FormField, FormItem, FormMessage } from '@/components/ui/form';
-import { createBooking, fetchDaySlots, fetchMonthAvailability, fetchOpenPeriods } from '@/lib/booking';
+import { createBooking, fetchBookingSettings, fetchDaySlots, fetchMonthAvailability, fetchOpenPeriods, DEFAULT_BOOKING_SETTINGS } from '@/lib/booking';
 import {
   closestOpenSlot,
   parseQueryDate,
@@ -83,8 +83,12 @@ function applyDateParam(prev, iso) {
 
 function BookingCalendar({ room }) {
   const [searchParams, setSearchParams] = useSearchParams();
+  const [settings, setSettings] = useState(DEFAULT_BOOKING_SETTINGS);
   const queryDate = parseQueryDate(searchParams.get('date'));
-  const queryTime = parseQueryTime(searchParams.get('heure') || searchParams.get('time'));
+  const queryTime = parseQueryTime(
+    searchParams.get('heure') || searchParams.get('time'),
+    settings.slot_minutes
+  );
   const skipQueryBootstrap = useRef(false);
   const initLoadedISO = useRef(null);
   const slotsSectionRef = useRef(null);
@@ -152,6 +156,16 @@ function BookingCalendar({ room }) {
   });
   const [nextOpenIso, setNextOpenIso] = useState(null);
   const nextOpenOffset = nextOpenIso ? initialMonthOffset(today, [nextOpenIso]) : 0;
+
+  useEffect(() => {
+    let cancelled = false;
+    fetchBookingSettings().then((next) => {
+      if (!cancelled) setSettings(next);
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
   const viewDate = new Date(today.getFullYear(), today.getMonth() + monthOffset, 1);
   const cells = buildMonthCells(viewDate.getFullYear(), viewDate.getMonth());
@@ -269,10 +283,15 @@ function BookingCalendar({ room }) {
         players: Number(values.players),
       });
       setDone(result.booking);
+      const confirmed = result.booking?.status === 'confirmed' || settings.auto_confirm;
       toast.success(
-        result.emailSent
-          ? 'Demande envoyée. Un e-mail vous a été envoyé.'
-          : 'Demande envoyée, en attente de confirmation.'
+        confirmed
+          ? result.emailSent
+            ? 'Réservation confirmée. Un e-mail vous a été envoyé.'
+            : 'Réservation confirmée.'
+          : result.emailSent
+            ? 'Demande envoyée. Un e-mail vous a été envoyé.'
+            : 'Demande envoyée, en attente de confirmation.'
       );
     } catch (err) {
       toast.error(err.message);
@@ -282,17 +301,25 @@ function BookingCalendar({ room }) {
   }
 
   if (done) {
+    const confirmed = done.status === 'confirmed';
     return (
       <div className="rounded-xl border border-primary/40 bg-primary/5 p-6 sm:p-8">
         <CalendarCheck className="h-8 w-8 text-primary" />
-        <h2 className="mt-4 font-display text-2xl font-bold tracking-wide">Demande envoyée</h2>
+        <h2 className="mt-4 font-display text-2xl font-bold tracking-wide">
+          {confirmed ? 'Réservation confirmée' : 'Demande envoyée'}
+        </h2>
         <p className="mt-3 leading-relaxed text-muted-foreground">
-          {done.guest_name}, votre demande pour « {room.name} » le{' '}
+          {done.guest_name}, votre {confirmed ? 'réservation' : 'demande'} pour « {room.name} » le{' '}
           {dayFormatter.format(new Date(`${done.booking_date}T12:00:00`))} à {done.time} ({done.players}{' '}
-          joueurs) est enregistrée. Elle sera confirmée par l’équipe. Un e-mail a été envoyé à{' '}
+          joueurs) est enregistrée.
+          {confirmed
+            ? ' Un e-mail de confirmation a été envoyé à '
+            : ' Elle sera confirmée par l’équipe. Un e-mail a été envoyé à '}
           {done.guest_email}.
         </p>
-        <p className="mt-3 text-sm text-muted-foreground">Merci d’arriver 15 minutes en avance une fois confirmé.</p>
+        <p className="mt-3 text-sm text-muted-foreground">
+          Merci d’arriver 15 minutes en avance{confirmed ? '.' : ' une fois confirmé.'}
+        </p>
       </div>
     );
   }
@@ -402,7 +429,8 @@ function BookingCalendar({ room }) {
               {dayFormatter.format(selectedDate)}
             </p>
             <p className="mt-1 text-xs text-muted-foreground">
-              Créneaux de départ toutes les 30 min — une partie dure 60 min.
+              Créneaux de départ toutes les {settings.slot_minutes} min — occupation{' '}
+              {settings.occupancy_minutes} min.
             </p>
             {loadingSlots ? (
               <p className="mt-3 text-sm text-muted-foreground">Chargement des horaires…</p>
@@ -447,7 +475,7 @@ function BookingCalendar({ room }) {
                 >
                   <p className="flex items-center gap-2 font-display text-sm font-bold tracking-wider text-primary">
                     <CalendarCheck className="h-4 w-4" />
-                    {dayFormatter.format(selectedDate)} à {selectedSlot} — 60 min
+                    {dayFormatter.format(selectedDate)} à {selectedSlot} — {settings.occupancy_minutes} min
                   </p>
                   <FormField
                     control={contactForm.control}
@@ -516,8 +544,9 @@ function BookingCalendar({ room }) {
                     Réserver ce créneau
                   </Button>
                   <p className="text-xs text-muted-foreground">
-                    Un e-mail d’accusé de réception sera envoyé. Confirmation par l’équipe ensuite. Une
-                    question ? {CONTACT.phone}
+                    {settings.auto_confirm
+                      ? `Un e-mail de confirmation sera envoyé. Une question ? ${CONTACT.phone}`
+                      : `Un e-mail d’accusé de réception sera envoyé. Confirmation par l’équipe ensuite. Une question ? ${CONTACT.phone}`}
                   </p>
                 </form>
               </Form>

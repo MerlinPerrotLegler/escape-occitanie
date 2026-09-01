@@ -13,7 +13,10 @@ try {
 
 if ($method === 'GET') {
     mt_require_session($env);
-    mt_json_out(200, ['bookings' => mt_list_bookings($pdo)]);
+    $filter = (string) ($_GET['filtre'] ?? $_GET['filter'] ?? 'aujourdhui');
+    $page = (int) ($_GET['page'] ?? 1);
+    $focus = isset($_GET['focus']) ? (int) $_GET['focus'] : null;
+    mt_json_out(200, mt_list_bookings_page($pdo, $filter, $page, $focus > 0 ? $focus : null));
 }
 
 if ($method === 'POST' && isset($_GET['id']) && (($_GET['action'] ?? '') === 'mail' || ($_GET['action'] ?? '') === 'confirm')) {
@@ -136,11 +139,12 @@ if ($method === 'POST') {
     $players = (int) ($body['players'] ?? 0);
     $start = mt_hhmm_to_minutes($time);
 
+    mt_ensure_schema($pdo);
     if (!in_array($room, MT_ROOM_SLUGS, true)) {
         mt_json_out(400, ['error' => 'Salle inconnue.']);
     }
     if (!mt_is_iso_date($date) || $start === null || !mt_is_slot_aligned($start)) {
-        mt_json_out(400, ['error' => 'Date ou horaire invalide (créneaux de 30 min).']);
+        mt_json_out(400, ['error' => 'Date ou horaire invalide (créneaux de ' . mt_slot_minutes() . ' min).']);
     }
     if ($date < mt_today_paris()) {
         mt_json_out(400, ['error' => 'Impossible de réserver une date passée.']);
@@ -164,7 +168,6 @@ if ($method === 'POST') {
         mt_json_out(400, ['error' => 'Entre 3 et 6 joueurs.']);
     }
 
-    mt_ensure_schema($pdo);
     $booking = null;
     try {
         $pdo->query("SELECT GET_LOCK('escape-booking', 10)")->fetch();
@@ -202,7 +205,8 @@ if ($method === 'POST') {
 
     $emailSent = false;
     try {
-        $emailSent = mt_send_booking_emails($env, $booking, 'pending');
+        $kind = $booking['status'] === 'confirmed' ? 'confirmed' : 'pending';
+        $emailSent = mt_send_booking_emails($env, $booking, $kind, $kind === 'confirmed');
     } catch (Throwable $ignored) {
         $emailSent = false;
     }

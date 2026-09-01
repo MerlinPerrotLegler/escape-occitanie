@@ -31,17 +31,20 @@ function mt_require_period_input(array $body): array {
     if (!mt_is_iso_date($date) || $start === null || $end === null) {
         mt_json_out(400, ['error' => 'Date et horaires HH:MM obligatoires.']);
     }
-    if ($end - $start < MT_GAME_MINUTES) {
-        mt_json_out(400, ['error' => 'La plage doit durer au moins 60 minutes (2 créneaux).']);
+    $occupancy = mt_occupancy_minutes();
+    $slot = mt_slot_minutes();
+    if ($end - $start < $occupancy) {
+        mt_json_out(400, ['error' => "La plage doit durer au moins {$occupancy} minutes."]);
     }
-    if ($start % MT_SLOT_MINUTES !== 0 || $end % MT_SLOT_MINUTES !== 0) {
-        mt_json_out(400, ['error' => 'Les horaires doivent être alignés sur 30 minutes.']);
+    if ($slot < 1 || $start % $slot !== 0 || $end % $slot !== 0) {
+        mt_json_out(400, ['error' => "Les horaires doivent être alignés sur {$slot} minutes."]);
     }
     return ['date' => $date, 'start' => $start, 'end' => $end];
 }
 
 if ($method === 'POST') {
     mt_require_session($env);
+    mt_ensure_schema($pdo);
     $action = (string) ($_GET['action'] ?? '');
     if ($action === 'copy') {
         $body = mt_read_json();
@@ -76,6 +79,7 @@ if ($method === 'POST') {
 
 if ($method === 'PATCH') {
     mt_require_session($env);
+    mt_ensure_schema($pdo);
     $id = (int) ($_GET['id'] ?? 0);
     if ($id < 1) {
         mt_json_out(400, ['error' => 'Identifiant manquant.']);

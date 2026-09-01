@@ -159,8 +159,7 @@ function mt_booking_select_sql(): string {
 }
 
 function mt_booking_duration(array $booking): int {
-    $duration = (int) ($booking['duration_minutes'] ?? 0);
-    return $duration > MT_GAME_MINUTES ? $duration : MT_GAME_MINUTES;
+    return mt_occupancy_duration($booking);
 }
 
 function mt_map_booking_rows(array $rows): array {
@@ -189,6 +188,68 @@ function mt_list_bookings(PDO $pdo): array {
     return mt_map_booking_rows($stmt->fetchAll());
 }
 
+const MT_BOOKINGS_PAGE_SIZE = 10;
+
+function mt_normalize_booking_filter(?string $raw): string {
+    $value = strtolower(trim((string) $raw));
+    if (in_array($value, ['a-confirmer', 'pending', 'aconfirmer'], true)) {
+        return 'a-confirmer';
+    }
+    if (in_array($value, ['toutes', 'all'], true)) {
+        return 'toutes';
+    }
+    return 'aujourdhui';
+}
+
+function mt_list_bookings_page(PDO $pdo, string $filter = 'aujourdhui', int $page = 1, ?int $focusId = null): array {
+    mt_ensure_schema($pdo);
+    $filter = mt_normalize_booking_filter($filter);
+    $perPage = MT_BOOKINGS_PAGE_SIZE;
+    $sql = 'SELECT ' . mt_booking_select_sql() . ' FROM bookings';
+    $where = [];
+    $args = [];
+    if ($filter === 'aujourdhui') {
+        $where[] = 'booking_date = ?';
+        $args[] = mt_today_paris();
+    } elseif ($filter === 'a-confirmer') {
+        $where[] = "status = 'pending'";
+    }
+    if ($where !== []) {
+        $sql .= ' WHERE ' . implode(' AND ', $where);
+    }
+    if ($filter === 'aujourdhui') {
+        $sql .= ' ORDER BY start_minute ASC, id ASC';
+    } elseif ($filter === 'a-confirmer') {
+        $sql .= ' ORDER BY created_at DESC, id DESC';
+    } else {
+        $sql .= ' ORDER BY booking_date DESC, start_minute DESC, id DESC';
+    }
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute($args);
+    $all = mt_map_booking_rows($stmt->fetchAll());
+    $total = count($all);
+    $pages = max(1, (int) ceil($total / $perPage));
+    if ($focusId) {
+        foreach ($all as $index => $row) {
+            if ((int) $row['id'] === $focusId) {
+                $page = intdiv($index, $perPage) + 1;
+                break;
+            }
+        }
+    }
+    $page = max(1, min($page < 1 ? 1 : $page, $pages));
+    $offset = ($page - 1) * $perPage;
+    return [
+        'bookings' => array_slice($all, $offset, $perPage),
+        'total' => $total,
+        'page' => $page,
+        'perPage' => $perPage,
+        'pages' => $pages,
+        'filtre' => $filter,
+        'settings' => mt_runtime_booking_settings(),
+    ];
+}
+
 function mt_fetch_active_bookings(PDO $pdo, ?string $from = null, ?string $to = null, ?string $room = null): array {
     mt_ensure_schema($pdo);
     $sql = 'SELECT ' . mt_booking_select_sql() . " FROM bookings WHERE status IN ('pending','confirmed')";
@@ -208,15 +269,20 @@ function mt_fetch_active_bookings(PDO $pdo, ?string $from = null, ?string $to = 
     return mt_map_booking_rows($stmt->fetchAll());
 }
 
+function mt_occupying_bookings(PDO $pdo, string $date, string $room): array {
+    $roomFilter = mt_runtime_booking_settings()['block_both_rooms'] ? null : $room;
+    return mt_fetch_active_bookings($pdo, $date, $date, $roomFilter);
+}
+
 function mt_public_day_slots(PDO $pdo, string $room, string $date): array {
     $periods = mt_periods_for_date($pdo, $date);
-    $bookings = mt_fetch_active_bookings($pdo, $date, $date, $room);
+    $bookings = mt_occupying_bookings($pdo, $date, $room);
     return mt_filter_public_slots(mt_compute_day_slots($periods, $bookings, mt_slot_flags_for($pdo, $room, $date)));
 }
 
 function mt_admin_day_slots(PDO $pdo, string $room, string $date): array {
     $periods = mt_periods_for_date($pdo, $date);
-    $bookings = mt_fetch_active_bookings($pdo, $date, $date, $room);
+    $bookings = mt_occupying_bookings($pdo, $date, $room);
     return mt_annotate_reserved_slots(
         mt_compute_unit_slots($periods, $bookings, mt_slot_flags_for($pdo, $room, $date)),
         $bookings
@@ -259,14 +325,14 @@ function mt_set_slot_kind(PDO $pdo, string $room, string $date, int $startMinute
     if (!in_array($room, MT_ROOM_SLUGS, true)) {
         throw new InvalidArgumentException('Salle inconnue.');
     }
-    if (!mt_is_iso_date($date) || $startMinute < 0 || $startMinute % MT_SLOT_MINUTES !== 0 || $startMinute > 24 * 60 - MT_SLOT_MINUTES) {
+    if (!mt_is_iso_date($date) || $startMinute < 0 || $startMinute % mt_slot_minutes() !== 0 || $startMinute > 24 * 60 - mt_slot_minutes()) {
         throw new InvalidArgumentException('Date ou horaire invalide.');
     }
     if (!mt_slot_unit_in_periods(mt_periods_for_date($pdo, $date), $startMinute)) {
         throw new InvalidArgumentException('Ce créneau n’est pas dans une plage ouverte.');
     }
-    foreach (mt_fetch_active_bookings($pdo, $date, $date, $room) as $booking) {
-        if (mt_ranges_overlap($startMinute, MT_SLOT_MINUTES, (int) $booking['start_minute'], mt_booking_duration($booking))) {
+    foreach (mt_occupying_bookings($pdo, $date, $room) as $booking) {
+        if (mt_ranges_overlap($startMinute, mt_slot_minutes(), (int) $booking['start_minute'], mt_booking_duration($booking))) {
             throw new RuntimeException('Ce créneau est déjà réservé.');
         }
     }
@@ -315,39 +381,45 @@ function mt_assert_window_available(
     string $action
 ): void {
     $periods = mt_periods_for_date($pdo, $date);
+    $slot = mt_slot_minutes();
+    $follow = mt_minutes_to_hhmm($start + $slot);
     if (!mt_interval_covered_by_periods($periods, $start, $duration)) {
-        $follow = mt_minutes_to_hhmm($start + MT_SLOT_MINUTES);
         throw new RuntimeException("Le créneau suivant ({$follow}) n’est pas disponible. Impossible de {$action}.");
     }
     foreach (mt_closed_minutes_for($pdo, $room, $date) as $closedMinute) {
-        if (mt_ranges_overlap($start, $duration, (int) $closedMinute, MT_SLOT_MINUTES)) {
-            $follow = mt_minutes_to_hhmm($start + MT_SLOT_MINUTES);
+        if (mt_ranges_overlap($start, $duration, (int) $closedMinute, $slot)) {
             throw new RuntimeException("Le créneau suivant ({$follow}) n’est pas disponible. Impossible de {$action}.");
         }
     }
-    $others = mt_fetch_active_bookings($pdo, $date, $date, $room);
+    $others = mt_occupying_bookings($pdo, $date, $room);
     foreach ($others as $other) {
         if ($ignoreBookingId !== null && (int) $other['id'] === $ignoreBookingId) {
             continue;
         }
         if (mt_ranges_overlap($start, $duration, (int) $other['start_minute'], mt_booking_duration($other))) {
-            $follow = mt_minutes_to_hhmm($start + MT_SLOT_MINUTES);
             throw new RuntimeException("Le créneau suivant ({$follow}) n’est pas disponible. Impossible de {$action}.");
         }
     }
 }
 
 function mt_create_booking(PDO $pdo, array $row): array {
-    $stmt = $pdo->prepare("INSERT INTO bookings (room_slug, booking_date, start_minute, duration_minutes, guest_name, guest_email, guest_phone, players, status) VALUES (?,?,?,?,?,?,?,?,'pending')");
+    $settings = mt_runtime_booking_settings();
+    $duration = (int) ($row['duration_minutes'] ?? $settings['occupancy_minutes']);
+    $status = (string) ($row['status'] ?? ($settings['auto_confirm'] ? 'confirmed' : 'pending'));
+    if ($status !== 'confirmed') {
+        $status = 'pending';
+    }
+    $stmt = $pdo->prepare('INSERT INTO bookings (room_slug, booking_date, start_minute, duration_minutes, guest_name, guest_email, guest_phone, players, status) VALUES (?,?,?,?,?,?,?,?,?)');
     $stmt->execute([
         $row['room_slug'],
         $row['booking_date'],
         $row['start_minute'],
-        MT_GAME_MINUTES,
+        $duration,
         $row['guest_name'],
         $row['guest_email'],
         $row['guest_phone'],
         $row['players'],
+        $status,
     ]);
     return mt_get_booking($pdo, (int) $pdo->lastInsertId());
 }
@@ -365,21 +437,8 @@ function mt_confirm_booking(PDO $pdo, int $id): ?array {
     if (!$current) {
         return null;
     }
+    $duration = mt_booking_duration($current);
     if ($current['status'] === 'confirmed') {
-        if (mt_booking_duration($current) < MT_GAME_MINUTES) {
-            mt_assert_window_available(
-                $pdo,
-                $current['room_slug'],
-                $current['booking_date'],
-                (int) $current['start_minute'],
-                MT_GAME_MINUTES,
-                (int) $current['id'],
-                'confirmer une partie de 60 min'
-            );
-            $pdo->prepare('UPDATE bookings SET duration_minutes = ? WHERE id = ?')
-                ->execute([MT_GAME_MINUTES, $id]);
-            return mt_get_booking($pdo, $id);
-        }
         return $current;
     }
     if ($current['status'] !== 'pending') {
@@ -390,12 +449,12 @@ function mt_confirm_booking(PDO $pdo, int $id): ?array {
         $current['room_slug'],
         $current['booking_date'],
         (int) $current['start_minute'],
-        MT_GAME_MINUTES,
+        $duration,
         (int) $current['id'],
-        'confirmer une partie de 60 min'
+        'confirmer cette réservation'
     );
-    $stmt = $pdo->prepare("UPDATE bookings SET status = 'confirmed', duration_minutes = ? WHERE id = ? AND status = 'pending'");
-    $stmt->execute([MT_GAME_MINUTES, $id]);
+    $stmt = $pdo->prepare("UPDATE bookings SET status = 'confirmed' WHERE id = ? AND status = 'pending'");
+    $stmt->execute([$id]);
     if ($stmt->rowCount() === 0) {
         $after = mt_get_booking($pdo, $id);
         return ($after && $after['status'] === 'confirmed') ? $after : null;
@@ -420,7 +479,7 @@ function mt_update_booking(PDO $pdo, int $id, array $fields): ?array {
     if (isset($fields['date'], $fields['time'])) {
         $nextStart = mt_hhmm_to_minutes((string) $fields['time']);
         $nextDate = (string) $fields['date'];
-        if (!mt_is_iso_date($nextDate) || $nextStart === null || $nextStart % MT_SLOT_MINUTES !== 0) {
+        if (!mt_is_iso_date($nextDate) || $nextStart === null || $nextStart % mt_slot_minutes() !== 0) {
             throw new InvalidArgumentException('Date ou horaire invalide.');
         }
         $date = $nextDate;
@@ -435,7 +494,7 @@ function mt_update_booking(PDO $pdo, int $id, array $fields): ?array {
             $start,
             $duration,
             $id,
-            $duration >= MT_GAME_MINUTES ? 'déplacer une partie de 60 min' : 'déplacer cette réservation'
+            'déplacer cette réservation'
         );
     }
     $stmt = $pdo->prepare('UPDATE bookings SET room_slug = ?, booking_date = ?, start_minute = ?, guest_name = ?, guest_email = ?, guest_phone = ?, players = ? WHERE id = ?');

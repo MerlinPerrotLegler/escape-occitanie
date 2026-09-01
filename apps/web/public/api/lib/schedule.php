@@ -4,7 +4,75 @@ declare(strict_types=1);
 const MT_SLOT_MINUTES = 30;
 const MT_GAME_SLOTS = 2;
 const MT_GAME_MINUTES = MT_SLOT_MINUTES * MT_GAME_SLOTS;
+const MT_SLOT_MINUTE_OPTIONS = [15, 30, 60];
 const MT_ROOM_SLUGS = ['directeur', 'vaisseau'];
+
+function mt_default_booking_settings(): array {
+    return [
+        'block_both_rooms' => false,
+        'block_next_slot' => true,
+        'slot_minutes' => MT_SLOT_MINUTES,
+        'auto_confirm' => false,
+    ];
+}
+
+function mt_truthy($value): bool {
+    if (is_bool($value)) {
+        return $value;
+    }
+    if (is_int($value) || is_float($value)) {
+        return (int) $value !== 0;
+    }
+    if (is_string($value)) {
+        $v = strtolower(trim($value));
+        return $v === '1' || $v === 'true' || $v === 'on' || $v === 'yes';
+    }
+    return !empty($value);
+}
+
+function mt_normalize_booking_settings(array $raw): array {
+    $defaults = mt_default_booking_settings();
+    $slot = (int) ($raw['slot_minutes'] ?? $defaults['slot_minutes']);
+    if (!in_array($slot, MT_SLOT_MINUTE_OPTIONS, true)) {
+        $slot = $defaults['slot_minutes'];
+    }
+    $blockNext = array_key_exists('block_next_slot', $raw)
+        ? mt_truthy($raw['block_next_slot'])
+        : $defaults['block_next_slot'];
+    $blockBoth = array_key_exists('block_both_rooms', $raw)
+        ? mt_truthy($raw['block_both_rooms'])
+        : $defaults['block_both_rooms'];
+    $auto = array_key_exists('auto_confirm', $raw)
+        ? mt_truthy($raw['auto_confirm'])
+        : $defaults['auto_confirm'];
+    return [
+        'block_both_rooms' => $blockBoth,
+        'block_next_slot' => $blockNext,
+        'slot_minutes' => $slot,
+        'auto_confirm' => $auto,
+        'occupancy_minutes' => $slot * ($blockNext ? 2 : 1),
+    ];
+}
+
+function mt_set_runtime_booking_settings(?array $settings): array {
+    $GLOBALS['mt_runtime_booking_settings'] = mt_normalize_booking_settings($settings ?? []);
+    return $GLOBALS['mt_runtime_booking_settings'];
+}
+
+function mt_runtime_booking_settings(): array {
+    if (!isset($GLOBALS['mt_runtime_booking_settings']) || !is_array($GLOBALS['mt_runtime_booking_settings'])) {
+        $GLOBALS['mt_runtime_booking_settings'] = mt_normalize_booking_settings([]);
+    }
+    return $GLOBALS['mt_runtime_booking_settings'];
+}
+
+function mt_slot_minutes(): int {
+    return (int) mt_runtime_booking_settings()['slot_minutes'];
+}
+
+function mt_occupancy_minutes(): int {
+    return (int) mt_runtime_booking_settings()['occupancy_minutes'];
+}
 
 function mt_hhmm_to_minutes(string $time): ?int {
     if (!preg_match('/^([01]\d|2[0-3]):([0-5]\d)(?::[0-5]\d)?$/', $time, $m)) {
@@ -22,17 +90,20 @@ function mt_minutes_to_hhmm(int $minutes): string {
 }
 
 function mt_is_slot_aligned(int $minutes): bool {
-    return $minutes >= 0 && $minutes % MT_SLOT_MINUTES === 0 && $minutes <= 24 * 60 - MT_GAME_MINUTES;
+    $slot = mt_slot_minutes();
+    $span = mt_occupancy_minutes();
+    return $minutes >= 0 && $slot > 0 && $minutes % $slot === 0 && $minutes <= 24 * 60 - $span;
 }
 
 /** @return list<int> */
 function mt_period_slot_minutes(int $from, int $to): array {
-    if ($to - $from < MT_SLOT_MINUTES) {
+    $slot = mt_slot_minutes();
+    if ($slot < 1 || $to - $from < $slot) {
         return [];
     }
-    $aligned = (int) (ceil($from / MT_SLOT_MINUTES) * MT_SLOT_MINUTES);
+    $aligned = (int) (ceil($from / $slot) * $slot);
     $minutes = [];
-    for ($m = $aligned; $m + MT_SLOT_MINUTES <= $to; $m += MT_SLOT_MINUTES) {
+    for ($m = $aligned; $m + $slot <= $to; $m += $slot) {
         $minutes[] = $m;
     }
     return $minutes;
@@ -51,11 +122,11 @@ function mt_interval_covered_by_periods(array $periods, int $startMinute, int $d
 }
 
 function mt_game_fits_periods(array $periods, int $startMinute): bool {
-    return mt_interval_covered_by_periods($periods, $startMinute, MT_GAME_MINUTES);
+    return mt_interval_covered_by_periods($periods, $startMinute, mt_occupancy_minutes());
 }
 
 function mt_slot_unit_in_periods(array $periods, int $startMinute): bool {
-    return mt_interval_covered_by_periods($periods, $startMinute, MT_SLOT_MINUTES);
+    return mt_interval_covered_by_periods($periods, $startMinute, mt_slot_minutes());
 }
 
 function mt_ranges_overlap(int $aStart, int $aDuration, int $bStart, int $bDuration): bool {
@@ -63,12 +134,13 @@ function mt_ranges_overlap(int $aStart, int $aDuration, int $bStart, int $bDurat
 }
 
 function mt_intervals_overlap(int $aStart, int $bStart): bool {
-    return mt_ranges_overlap($aStart, MT_GAME_MINUTES, $bStart, MT_GAME_MINUTES);
+    $span = mt_occupancy_minutes();
+    return mt_ranges_overlap($aStart, $span, $bStart, $span);
 }
 
 function mt_occupancy_duration(array $booking): int {
     $duration = (int) ($booking['duration_minutes'] ?? 0);
-    return $duration > MT_GAME_MINUTES ? $duration : MT_GAME_MINUTES;
+    return $duration >= 15 ? $duration : mt_occupancy_minutes();
 }
 
 /**
@@ -113,7 +185,7 @@ function mt_next_admin_slot_status(string $status): ?string {
  */
 function mt_unit_status(int $minute, array $bookings, array $flags = []): string {
     foreach ($bookings as $booking) {
-        if (mt_ranges_overlap($minute, MT_SLOT_MINUTES, (int) $booking['start_minute'], mt_occupancy_duration($booking))) {
+        if (mt_ranges_overlap($minute, mt_slot_minutes(), (int) $booking['start_minute'], mt_occupancy_duration($booking))) {
             return 'reserved';
         }
     }
@@ -127,7 +199,7 @@ function mt_unit_status(int $minute, array $bookings, array $flags = []): string
 /** @param list<array{start_minute:int,duration_minutes?:int,status?:string}> $bookings */
 function mt_booking_covering_minute(array $bookings, int $minute): ?array {
     foreach ($bookings as $booking) {
-        if (mt_ranges_overlap($minute, MT_SLOT_MINUTES, (int) $booking['start_minute'], mt_occupancy_duration($booking))) {
+        if (mt_ranges_overlap($minute, mt_slot_minutes(), (int) $booking['start_minute'], mt_occupancy_duration($booking))) {
             return $booking;
         }
     }
@@ -195,8 +267,10 @@ function mt_game_start_minutes(array $periods): array {
     foreach ($periods as $period) {
         $from = (int) $period['start_minute'];
         $to = (int) $period['end_minute'];
-        $aligned = (int) (ceil($from / MT_SLOT_MINUTES) * MT_SLOT_MINUTES);
-        for ($m = $aligned; $m + MT_GAME_MINUTES <= $to; $m += MT_SLOT_MINUTES) {
+        $slot = mt_slot_minutes();
+        $span = mt_occupancy_minutes();
+        $aligned = (int) (ceil($from / $slot) * $slot);
+        for ($m = $aligned; $m + $span <= $to; $m += $slot) {
             if (!mt_game_fits_periods($periods, $m)) {
                 continue;
             }
@@ -223,7 +297,7 @@ function mt_unit_minutes(array $periods): array {
 }
 
 /**
- * Public starts: every 30 min where a 60-min game still fits the opening period.
+ * Public starts: every slot where occupancy still fits the opening period.
  *
  * @param list<array{start_minute:int,end_minute:int}> $periods
  * @param list<array{start_minute:int}> $bookings
@@ -235,7 +309,7 @@ function mt_compute_day_slots(array $periods, array $bookings, array $flags = []
 }
 
 /**
- * Admin grid: every 30-min unit inside the opening periods.
+ * Admin grid: every slot unit inside the opening periods.
  *
  * @param list<array{start_minute:int,end_minute:int}> $periods
  * @param list<array{start_minute:int}> $bookings

@@ -23,13 +23,14 @@ export function parseQueryDate(raw) {
   return Number.isNaN(dt.getTime()) || toISODate(dt) !== iso ? null : iso;
 }
 
-export function parseQueryTime(raw) {
+export function parseQueryTime(raw, slotMinutes = 30) {
   if (!raw) return null;
   const match = String(raw).trim().match(/^(\d{1,2})(?:[:hH.](\d{2}))?$/);
   if (!match) return null;
   const hour = Number(match[1]);
   const minute = Number(match[2] || '0');
-  if (hour > 23 || minute > 59 || minute % 30 !== 0) return null;
+  const step = [15, 30, 60].includes(Number(slotMinutes)) ? Number(slotMinutes) : 30;
+  if (hour > 23 || minute > 59 || minute % step !== 0) return null;
   return `${String(hour).padStart(2, '0')}:${String(minute).padStart(2, '0')}`;
 }
 
