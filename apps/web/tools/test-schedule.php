@@ -36,26 +36,62 @@ expect(end($times) === '21:00', 'last start 21:00 so 60 min game fits before 22:
 expect(!in_array('21:30', $times, true), '21:30 cannot fit 60 min before 22:00');
 expect(count(array_filter($slots, fn($s) => $s['status'] === 'open')) === count($slots), 'all open without bookings');
 
-$booked = mt_compute_day_slots($periods, [['start_minute' => 840]]); // 14:00 occupies 14:00–15:00
+$booked = mt_compute_day_slots($periods, [['start_minute' => 780, 'duration_minutes' => 60, 'status' => 'confirmed']]); // 13:00–14:00
 $byTime = [];
 foreach ($booked as $s) {
     $byTime[$s['time']] = $s['status'];
 }
-expect($byTime['14:00'] === 'reserved', '14:00 reserved');
-expect($byTime['14:30'] === 'reserved', '14:30 reserved (2nd slot of the game)');
-expect($byTime['13:30'] === 'reserved', '13:30 overlaps the 14:00 game');
-expect($byTime['13:00'] === 'open', '13:00–14:00 does not overlap 14:00–15:00');
-expect($byTime['15:00'] === 'open', '15:00 open after the game');
+expect($byTime['13:00'] === 'reserved', '13:00 reserved by the 60-min game');
+expect($byTime['13:30'] === 'reserved', '13:30 reserved (2nd 30-min unit of the game)');
+expect($byTime['12:30'] === 'open', '12:30 stays open — the game does not occupy that unit');
+expect($byTime['12:00'] === 'open', '12:00 open before the game');
+expect($byTime['14:00'] === 'open', '14:00 open after the game');
 
-$pending = mt_compute_day_slots($periods, [['start_minute' => 840, 'duration_minutes' => 30, 'status' => 'pending']]);
+$pending = mt_compute_day_slots($periods, [['start_minute' => 780, 'duration_minutes' => 30, 'status' => 'pending']]);
 $pendingBy = [];
 foreach ($pending as $s) {
     $pendingBy[$s['time']] = $s['status'];
 }
-expect($pendingBy['14:00'] === 'reserved', 'pending 14:00 reserves 14:00 start');
-expect($pendingBy['13:30'] === 'reserved', 'pending 14:00 overlaps 13:30 start');
-expect($pendingBy['14:30'] === 'open', 'pending 14:00 leaves 14:30 start open');
-expect($pendingBy['13:00'] === 'open', '13:00 still open with pending 14:00');
+expect($pendingBy['13:00'] === 'reserved', 'pending 13:00 reserves the 13:00 unit');
+expect($pendingBy['12:30'] === 'open', 'pending 13:00 does not occupy 12:30');
+expect($pendingBy['13:30'] === 'open', 'pending 13:00 leaves 13:30 open');
+expect($pendingBy['12:00'] === 'open', '12:00 still open with pending 13:00');
+
+$closed = mt_compute_day_slots($periods, [], [780]);
+$closedBy = [];
+foreach ($closed as $s) {
+    $closedBy[$s['time']] = $s['status'];
+}
+expect($closedBy['13:00'] === 'closed', 'maître can close the 13:00 start');
+expect($closedBy['12:30'] === 'open', 'closing 13:00 does not close 12:30');
+expect($closedBy['13:30'] === 'open', 'closing 13:00 does not close 13:30');
+
+$bookedClosed = mt_compute_day_slots(
+    $periods,
+    [['start_minute' => 780, 'duration_minutes' => 60, 'status' => 'confirmed']],
+    [780]
+);
+$bookedClosedBy = [];
+foreach ($bookedClosed as $s) {
+    $bookedClosedBy[$s['time']] = $s['status'];
+}
+expect($bookedClosedBy['13:00'] === 'reserved', 'a booking wins over a closed flag on the same unit');
+expect($bookedClosedBy['13:30'] === 'reserved', 'second unit of the game stays reserved');
+
+$units = mt_compute_unit_slots($periods, [], [810]);
+$unitBy = [];
+foreach ($units as $s) {
+    $unitBy[$s['time']] = $s['status'];
+}
+expect($unitBy['10:00'] === 'open', 'first 30-min unit is open');
+expect($unitBy['13:30'] === 'closed', 'maître can close a 30-min unit that is not a 60-min start');
+$unitTimes = array_column($units, 'time');
+expect(end($unitTimes) === '21:30', 'unit grid last block is 21:30–22:00');
+
+$periodUnits = mt_compute_unit_slots([['start_minute' => 600, 'end_minute' => 840]], [], []);
+$periodTimes = array_column($periodUnits, 'time');
+expect($periodTimes[0] === '10:00', 'unit grid starts at period start');
+expect(end($periodTimes) === '13:30', 'unit grid includes the last 30 min before period end');
 
 expect(mt_ranges_overlap(840, 30, 840, 30) === true, 'same 30-min overlaps');
 expect(mt_ranges_overlap(840, 30, 870, 30) === false, 'adjacent 30-min do not overlap');

@@ -66,12 +66,55 @@ function mt_intervals_overlap(int $aStart, int $bStart): bool {
     return mt_ranges_overlap($aStart, MT_GAME_MINUTES, $bStart, MT_GAME_MINUTES);
 }
 
+function mt_occupancy_duration(array $booking): int {
+    $duration = (int) ($booking['duration_minutes'] ?? 0);
+    if ($duration > 0) {
+        return $duration;
+    }
+    return (($booking['status'] ?? '') === 'pending') ? MT_SLOT_MINUTES : MT_GAME_MINUTES;
+}
+
 /**
- * @param list<array{start_minute:int,end_minute:int}> $periods
+ * @param list<array{start_minute:int,duration_minutes?:int,status?:string}> $bookings
+ * @param list<int> $closedMinutes
+ */
+function mt_unit_status(int $minute, array $bookings, array $closedMinutes): string {
+    foreach ($bookings as $booking) {
+        if (mt_ranges_overlap($minute, MT_SLOT_MINUTES, (int) $booking['start_minute'], mt_occupancy_duration($booking))) {
+            return 'reserved';
+        }
+    }
+    foreach ($closedMinutes as $closed) {
+        if ((int) $closed === $minute) {
+            return 'closed';
+        }
+    }
+    return 'open';
+}
+
+/**
+ * @param list<int> $minutes
  * @param list<array{start_minute:int}> $bookings
+ * @param list<int> $closedMinutes
  * @return list<array{time:string,minute:int,status:string}>
  */
-function mt_compute_day_slots(array $periods, array $bookings): array {
+function mt_slots_from_minutes(array $minutes, array $bookings, array $closedMinutes = []): array {
+    $slots = [];
+    foreach ($minutes as $minute) {
+        $slots[] = [
+            'time' => mt_minutes_to_hhmm($minute),
+            'minute' => $minute,
+            'status' => mt_unit_status($minute, $bookings, $closedMinutes),
+        ];
+    }
+    return $slots;
+}
+
+/**
+ * @param list<array{start_minute:int,end_minute:int}> $periods
+ * @return list<int>
+ */
+function mt_game_start_minutes(array $periods): array {
     $starts = [];
     foreach ($periods as $period) {
         $from = (int) $period['start_minute'];
@@ -85,24 +128,44 @@ function mt_compute_day_slots(array $periods, array $bookings): array {
         }
     }
     ksort($starts);
-    $slots = [];
-    foreach (array_keys($starts) as $minute) {
-        $status = 'open';
-        foreach ($bookings as $booking) {
-            $duration = (int) ($booking['duration_minutes'] ?? 0);
-            if ($duration < 1) {
-                $duration = (($booking['status'] ?? '') === 'pending') ? MT_SLOT_MINUTES : MT_GAME_MINUTES;
-            }
-            if (mt_ranges_overlap($minute, MT_GAME_MINUTES, (int) $booking['start_minute'], $duration)) {
-                $status = 'reserved';
-                break;
-            }
+    return array_map('intval', array_keys($starts));
+}
+
+/**
+ * @param list<array{start_minute:int,end_minute:int}> $periods
+ * @return list<int>
+ */
+function mt_unit_minutes(array $periods): array {
+    $units = [];
+    foreach ($periods as $period) {
+        foreach (mt_period_slot_minutes((int) $period['start_minute'], (int) $period['end_minute']) as $minute) {
+            $units[$minute] = true;
         }
-        $slots[] = [
-            'time' => mt_minutes_to_hhmm($minute),
-            'minute' => $minute,
-            'status' => $status,
-        ];
     }
-    return $slots;
+    ksort($units);
+    return array_map('intval', array_keys($units));
+}
+
+/**
+ * Public starts: every 30 min where a 60-min game still fits the opening period.
+ *
+ * @param list<array{start_minute:int,end_minute:int}> $periods
+ * @param list<array{start_minute:int}> $bookings
+ * @param list<int> $closedMinutes
+ * @return list<array{time:string,minute:int,status:string}>
+ */
+function mt_compute_day_slots(array $periods, array $bookings, array $closedMinutes = []): array {
+    return mt_slots_from_minutes(mt_game_start_minutes($periods), $bookings, $closedMinutes);
+}
+
+/**
+ * Admin grid: every 30-min unit inside the opening periods.
+ *
+ * @param list<array{start_minute:int,end_minute:int}> $periods
+ * @param list<array{start_minute:int}> $bookings
+ * @param list<int> $closedMinutes
+ * @return list<array{time:string,minute:int,status:string}>
+ */
+function mt_compute_unit_slots(array $periods, array $bookings, array $closedMinutes = []): array {
+    return mt_slots_from_minutes(mt_unit_minutes($periods), $bookings, $closedMinutes);
 }

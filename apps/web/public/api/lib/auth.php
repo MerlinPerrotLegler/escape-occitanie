@@ -2,6 +2,8 @@
 declare(strict_types=1);
 
 const MT_COOKIE = 'mt_auth';
+const MT_TTL_SESSION = 43200;
+const MT_TTL_REMEMBER = 2592000;
 
 function mt_b64url_encode(string $raw): string {
     return rtrim(strtr(base64_encode($raw), '+/', '-_'), '=');
@@ -51,16 +53,16 @@ function mt_rate_limit_path(string $ip): string {
     return rtrim(sys_get_temp_dir(), DIRECTORY_SEPARATOR) . '/mt-login-' . hash('sha256', $ip);
 }
 
-function mt_rate_limit_hit(string $ip, int $max = 5, int $window = 900): bool {
+function mt_rate_limit_hit(string $ip, int $max = 5, int $window = 900, bool $record = true): bool {
     $file = mt_rate_limit_path($ip);
     $now = time();
     $fh = fopen($file, 'c+');
     if ($fh === false) {
-        return true;
+        return false;
     }
     try {
         if (!flock($fh, LOCK_EX)) {
-            return true;
+            return false;
         }
         $raw = stream_get_contents($fh);
         $hits = [];
@@ -72,7 +74,7 @@ function mt_rate_limit_hit(string $ip, int $max = 5, int $window = 900): bool {
         }
         $hits = array_values(array_filter($hits, fn($t) => is_int($t) && $t > $now - $window));
         $blocked = count($hits) >= $max;
-        if (!$blocked) {
+        if ($record && !$blocked) {
             $hits[] = $now;
         }
         rewind($fh);
@@ -88,13 +90,16 @@ function mt_rate_limit_hit(string $ip, int $max = 5, int $window = 900): bool {
 
 function mt_set_auth_cookie(string $value, int $ttl = 604800): void {
     $secure = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off');
-    setcookie(MT_COOKIE, $value, [
-        'expires' => time() + $ttl,
+    $options = [
         'path' => '/',
         'httponly' => true,
         'samesite' => 'Lax',
         'secure' => $secure,
-    ]);
+    ];
+    if ($ttl > 0) {
+        $options['expires'] = time() + $ttl;
+    }
+    setcookie(MT_COOKIE, $value, $options);
 }
 
 function mt_clear_auth_cookie(): void {

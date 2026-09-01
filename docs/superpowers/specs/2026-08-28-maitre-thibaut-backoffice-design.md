@@ -1,4 +1,4 @@
-# Backoffice Maître Thibaut — avis et Hall of fame
+# Backoffice Maître Thibault — avis et Hall of fame
 
 Date: 2026-08-28  
 Statut: validé en conversation, en attente de relecture du spec
@@ -9,7 +9,7 @@ Les avis (« Les survivants témoignent ») et le top 3 des records (« Hall of 
 
 ## Objectif
 
-Une page secrète `/maitre-thibaut` permet de modifier :
+Une page secrète `/maitre-Thibault` permet de modifier :
 
 - **3 avis** : nom, ville, texte, note (1 à 5 étoiles)
 - **Top 3 par salle** : nom d’équipe + temps `MM:SS` pour *Le Directeur* et *Le Vaisseau Fantôme*
@@ -30,7 +30,7 @@ Hors scope : réservations, salles, textes marketing, ajout/suppression d’avis
 ```
 Navigateur
   GET /                     HomePage → GET /api/content.php
-  /maitre-thibaut           page React isolée
+  /maitre-Thibault           page React isolée
     POST /api/login.php
     GET  /api/me.php
     POST /api/content.php   (save, session requise)
@@ -44,7 +44,7 @@ apps/web/public/api/*.php   → MySQL Hostinger
 - En production, Hostinger exécute les `.php`. Un `.htaccess` à la racine du site :
   - laisse passer `/api/`
   - interdit le téléchargement de `.env` / configs
-  - redirige les autres routes SPA vers `index.html` (nécessaire pour `/maitre-thibaut`)
+  - redirige les autres routes SPA vers `index.html` (nécessaire pour `/maitre-Thibault`)
 
 Le mot de passe MySQL peut contenir des caractères spéciaux (`?`, `@`, etc.). L’API PHP ne parse pas `DATABASE_URL` naïvement : elle utilise des variables discrètes (`MYSQL_HOST`, `MYSQL_USER`, `MYSQL_PASSWORD`, `MYSQL_DATABASE`) et, en secours, un parseur qui décode le mot de passe de `DATABASE_URL`.
 
@@ -81,7 +81,7 @@ Seed initial des étoiles : 5 pour les 3 avis actuels.
 
 ## Auth
 
-- Page `/maitre-thibaut` : formulaire email + mot de passe, bouton « Entrer dans le bureau ».
+- Page `/maitre-Thibault` : formulaire email + mot de passe, bouton « Entrer dans le bureau ».
 - `POST /api/login.php` compare (timing-safe) à `MANAGER_EMAIL` / `MANAGER_PASSWORD`.
 - Succès : cookie de session `httpOnly`, `Secure` en HTTPS, `SameSite=Lax`, signé avec `AUTH_SECRET`.
 - Échec : message générique « Identifiants incorrects ». Max 5 essais par IP / 15 minutes, compteur stocké dans un fichier de `sys_get_temp_dir()` (pas en MySQL).
@@ -120,11 +120,11 @@ Réponses JSON, erreurs `{ error: "…" }` avec code HTTP 400 / 401 / 429 / 500.
 - Échec / timeout : valeurs actuelles de `rooms.js`.
 - Les étoiles d’un avis suivent `review.stars` (plus hardcodé à 5). `aria-label` : « N étoiles sur 5 ».
 
-### Backoffice `/maitre-thibaut`
+### Backoffice `/maitre-Thibault`
 
 - Route React dédiée. `App` n’affiche pas `SiteHeader` / `SiteFooter` sur ce chemin.
-- Meta `noindex, nofollow`. Entrée `Disallow: /maitre-thibaut` dans `robots.txt` (à créer si absent).
-- Look du site (fond sombre, or), titre du type « Bureau de Maître Thibaut ».
+- Meta `noindex, nofollow`. Entrée `Disallow: /maitre-Thibault` dans `robots.txt` (à créer si absent).
+- Look du site (fond sombre, or), titre du type « Bureau de Maître Thibault ».
 - Non connecté : formulaire de login.
 - Connecté :
   - 3 cartes avis : nom, ville, textarea, sélecteur d’étoiles 1–5 cliquable
@@ -164,7 +164,7 @@ Config : `public/api/.env` (gitignoré), modèle `public/api/.env.example` sans 
 4. Ouvrir `/` : les nouvelles valeurs s’affichent, étoiles correctes.
 5. Logout → `/api/content.php` POST sans cookie → 401.
 6. Couper PHP / mauvaise config : l’accueil montre encore les valeurs de `rooms.js`.
-7. `/maitre-thibaut` n’apparaît pas dans le header/footer ; `noindex` présent.
+7. `/maitre-Thibault` n’apparaît pas dans le header/footer ; `noindex` présent.
 
 ## Hors scope volontaire
 

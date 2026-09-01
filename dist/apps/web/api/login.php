@@ -8,14 +8,14 @@ if (($_SERVER['REQUEST_METHOD'] ?? '') !== 'POST') {
 
 $env = mt_boot();
 $ip = mt_client_ip();
-if (mt_rate_limit_hit($ip)) {
+if (mt_rate_limit_hit($ip, 5, 900, false)) {
     mt_json_out(429, ['error' => 'Réessaie dans quelques minutes.']);
 }
 
 $body = mt_read_json();
-$email = trim((string) ($body['email'] ?? ''));
+$email = strtolower(trim((string) ($body['email'] ?? '')));
 $password = (string) ($body['password'] ?? '');
-$expectedEmail = (string) ($env['MANAGER_EMAIL'] ?? '');
+$expectedEmail = strtolower(trim((string) ($env['MANAGER_EMAIL'] ?? '')));
 $expectedPass = (string) ($env['MANAGER_PASSWORD'] ?? '');
 $secret = (string) ($env['AUTH_SECRET'] ?? '');
 
@@ -25,6 +25,7 @@ $configOk = $expectedEmail !== '' && $expectedPass !== '' && $secret !== '';
 $ok = $configOk && $emailOk && $passOk;
 
 if (!$ok) {
+    mt_rate_limit_hit($ip);
     mt_json_out(401, ['error' => 'Identifiants incorrects']);
 }
 

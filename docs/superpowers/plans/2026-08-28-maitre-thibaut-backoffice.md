@@ -1,14 +1,14 @@
-# Backoffice Maître Thibaut Implementation Plan
+# Backoffice Maître Thibault Implementation Plan
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**Goal:** Permettre à la direction d’éditer les 3 avis et le top 3 des records depuis `/maitre-thibaut`, persistés en MySQL et affichés sur l’accueil.
+**Goal:** Permettre à la direction d’éditer les 3 avis et le top 3 des records depuis `/maitre-Thibault`, persistés en MySQL et affichés sur l’accueil.
 
 **Architecture:** SPA Vite/React inchangée côté public. API PHP dans `apps/web/public/api/` (exécutée par Hostinger en prod, par `php -S` en local via proxy Vite). Auth cookie HMAC (`AUTH_SECRET` + `MANAGER_EMAIL` / `MANAGER_PASSWORD`). Accueil : `GET /api/content.php` avec fallback `rooms.js`.
 
 **Tech Stack:** PHP 8 + PDO MySQL, Vite 7 proxy, React 18, react-router-dom 7, shadcn/ui (Input, Textarea, Button), sonner, Helmet.
 
-**Spec:** `docs/superpowers/specs/2026-08-28-maitre-thibaut-backoffice-design.md`
+**Spec:** `docs/superpowers/specs/2026-08-28-maitre-Thibault-backoffice-design.md`
 
 ## Global Constraints
 
@@ -21,7 +21,7 @@
 - Rate limit login : 5 essais / IP / 15 min, fichier dans `sys_get_temp_dir()`.
 - Secrets : jamais dans git. `apps/web/public/api/.env` gitignoré.
 - Accueil : si l’API échoue, garder `REVIEWS` / `room.records` de `rooms.js`.
-- `/maitre-thibaut` : pas de SiteHeader/SiteFooter, `noindex`, absent du menu.
+- `/maitre-Thibault` : pas de SiteHeader/SiteFooter, `noindex`, absent du menu.
 - Copy login : bouton « Entrer dans le bureau », erreur « Identifiants incorrects », 429 « Réessaie dans quelques minutes. »
 - PHP local : `php -S 127.0.0.1:8080 -t apps/web/public` ; Vite proxy `/api` → ce serveur.
 
@@ -42,7 +42,7 @@ Create:
 - `apps/web/public/.htaccess` — SPA fallback + deny `.env`
 - `apps/web/tools/test-api-lib.php` — tests CLI sans MySQL
 - `apps/web/src/lib/siteContent.js` — fetch/save content + auth helpers
-- `apps/web/src/pages/MaitreThibautPage.jsx`
+- `apps/web/src/pages/MaitreThibaultPage.jsx`
 
 Modify:
 
@@ -51,7 +51,7 @@ Modify:
 - `apps/web/src/App.jsx` — layout public vs backoffice
 - `apps/web/src/pages/HomePage.jsx` — load API + étoiles dynamiques
 - `apps/web/src/data/rooms.js` — `stars: 5` sur chaque avis (fallback)
-- `apps/web/public/robots.txt` — `Disallow: /maitre-thibaut`
+- `apps/web/public/robots.txt` — `Disallow: /maitre-Thibault`
 - `.gitignore` — `apps/web/public/api/.env`
 
 ---
@@ -1073,11 +1073,11 @@ Replace `{room.records.map(...)}` with `{(recordsBySlug[room.slug] || room.recor
 
 ---
 
-### Task 7: Page `/maitre-thibaut`
+### Task 7: Page `/maitre-Thibault`
 
 **Files:**
 
-- Create: `apps/web/src/pages/MaitreThibautPage.jsx`
+- Create: `apps/web/src/pages/MaitreThibaultPage.jsx`
 - Modify: `apps/web/src/App.jsx`
 - Modify: `apps/web/src/main.jsx` (Toaster sonner once)
 
@@ -1099,7 +1099,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
 );
 ```
 
-- [ ] **Step 2: Create `apps/web/src/pages/MaitreThibautPage.jsx`** (fichier entier)
+- [ ] **Step 2: Create `apps/web/src/pages/MaitreThibaultPage.jsx`** (fichier entier)
 
 ```jsx
 import React, { useEffect, useState } from 'react';
@@ -1138,7 +1138,7 @@ const ROOM_BLOCKS = [
   { slug: 'vaisseau', label: ROOMS.vaisseau.shortName },
 ];
 
-function MaitreThibautPage() {
+function MaitreThibaultPage() {
   const [session, setSession] = useState(null);
   const [checking, setChecking] = useState(true);
   const [email, setEmail] = useState('');
@@ -1229,7 +1229,7 @@ function MaitreThibautPage() {
   return (
     <div className="min-h-dvh bg-background px-4 py-12 text-foreground sm:px-6">
       <Helmet>
-        <title>Bureau de Maître Thibaut — Escape Occitanie</title>
+        <title>Bureau de Maître Thibault — Escape Occitanie</title>
         <meta name="robots" content="noindex, nofollow" />
       </Helmet>
       <div className="mx-auto w-full max-w-3xl">
@@ -1237,7 +1237,7 @@ function MaitreThibautPage() {
           Accès restreint
         </p>
         <h1 className="mt-3 font-display text-3xl font-black tracking-wide sm:text-4xl">
-          Bureau de Maître Thibaut
+          Bureau de Maître Thibault
         </h1>
 
         {checking ? (
@@ -1420,14 +1420,14 @@ function MaitreThibautPage() {
   );
 }
 
-export default MaitreThibautPage;
+export default MaitreThibaultPage;
 ```
 
 - [ ] **Step 3: Split App layouts**
 
 ```jsx
 import { Route, Routes, BrowserRouter as Router, Link, Outlet } from 'react-router-dom';
-import MaitreThibautPage from './pages/MaitreThibautPage';
+import MaitreThibaultPage from './pages/MaitreThibaultPage';
 
 function PublicLayout() {
   return (
@@ -1447,7 +1447,7 @@ function App() {
       <ScrollToTop />
       <div className="noise-overlay" aria-hidden="true" />
       <Routes>
-        <Route path="/maitre-thibaut" element={<MaitreThibautPage />} />
+        <Route path="/maitre-Thibault" element={<MaitreThibaultPage />} />
         <Route element={<PublicLayout />}>
           <Route path="/" element={<HomePage />} />
           <Route
@@ -1479,7 +1479,7 @@ Keep `NotFound` as it is. Remove unused `SiteHeader`/`SiteFooter` from the root 
 - [ ] **Step 4: `robots.txt`** — after `Allow: /` add:
 
 ```
-Disallow: /maitre-thibaut
+Disallow: /maitre-Thibault
 Disallow: /api/
 ```
 
@@ -1490,12 +1490,12 @@ Disallow: /api/
 **Files:** none new
 
 - [ ] **Step 1:** `npm run dev --prefix apps/web`
-- [ ] **Step 2:** Login faux sur `/maitre-thibaut` → « Identifiants incorrects »
+- [ ] **Step 2:** Login faux sur `/maitre-Thibault` → « Identifiants incorrects »
 - [ ] **Step 3:** Login bon → formulaire prérempli (seed)
 - [ ] **Step 4:** Changer un avis (étoiles à 4) + un temps record → Enregistrer → toast
 - [ ] **Step 5:** Ouvrir `/` → nouvelles valeurs + 4 étoiles
 - [ ] **Step 6:** Se déconnecter → POST `/api/content.php` sans cookie → 401
-- [ ] **Step 7:** Header/footer absents sur `/maitre-thibaut` ; présents sur `/` ; pas de lien public vers le backoffice
+- [ ] **Step 7:** Header/footer absents sur `/maitre-Thibault` ; présents sur `/` ; pas de lien public vers le backoffice
 - [ ] **Step 8:** Helmet `noindex` présent (View Source ou snapshot)
 - [ ] **Step 9:** Restore seed via the backoffice so production-like data stays the current site copy
 
@@ -1515,7 +1515,7 @@ If a step fails, fix before marking the plan done.
 | Rate limit 5/15 min | 1, 3 |
 | GET public / POST auth | 2, 4 |
 | HomePage fallback | 6 |
-| `/maitre-thibaut` UI + no chrome | 7 |
+| `/maitre-Thibault` UI + no chrome | 7 |
 | robots noindex | 7 |
 | htaccess SPA + deny .env | 5 |
 | DATABASE_URL password `?` | 1 |

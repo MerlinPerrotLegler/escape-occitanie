@@ -57,6 +57,17 @@ function mt_try_exec(PDO $pdo, string $sql): void {
     }
 }
 
+function mt_ensure_closed_slots_schema(PDO $pdo): void {
+    $pdo->exec("CREATE TABLE IF NOT EXISTS closed_slots (
+        id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+        room_slug VARCHAR(32) NOT NULL,
+        slot_date DATE NOT NULL,
+        start_minute SMALLINT UNSIGNED NOT NULL,
+        created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+        UNIQUE KEY uniq_closed_slot (room_slug, slot_date, start_minute)
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4");
+}
+
 function mt_ensure_bookings_schema(PDO $pdo): void {
     $ddl = "CREATE TABLE bookings (
         id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -143,6 +154,7 @@ function mt_retire_slot_tables(PDO $pdo): void {
 function mt_ensure_schema(PDO $pdo): void {
     static $ready = false;
     if ($ready) {
+        mt_ensure_closed_slots_schema($pdo);
         mt_ensure_bookings_schema($pdo);
         mt_retire_slot_tables($pdo);
         return;
@@ -171,6 +183,7 @@ function mt_ensure_schema(PDO $pdo): void {
         created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
         INDEX idx_period_date (period_date)
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4");
+    mt_ensure_closed_slots_schema($pdo);
     mt_ensure_bookings_schema($pdo);
     mt_retire_slot_tables($pdo);
 

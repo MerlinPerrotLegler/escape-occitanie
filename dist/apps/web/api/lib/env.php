@@ -71,7 +71,7 @@ function mt_load_env(?string $startDir = null): array {
         }
         $dir = $parent;
     }
-    foreach (['MYSQL_HOST', 'MYSQL_USER', 'MYSQL_PASSWORD', 'MYSQL_DATABASE', 'DATABASE_URL', 'MANAGER_EMAIL', 'MANAGER_PASSWORD', 'MANAGER_NAME', 'AUTH_SECRET'] as $key) {
+    foreach (['MYSQL_HOST', 'MYSQL_USER', 'MYSQL_PASSWORD', 'MYSQL_DATABASE', 'MYSQL_PORT', 'DATABASE_URL', 'MANAGER_EMAIL', 'MANAGER_PASSWORD', 'MANAGER_NAME', 'AUTH_SECRET', 'SMTP_FROM', 'SMTP_HOST'] as $key) {
         $g = getenv($key);
         if ($g !== false && $g !== '') {
             $merged[$key] = $g;

@@ -15,6 +15,9 @@ function expect($cond, $msg) {
 function cleanup_test_day(PDO $pdo, string $date): void {
     $pdo->prepare('DELETE FROM bookings WHERE booking_date = ?')->execute([$date]);
     $pdo->prepare('DELETE FROM opening_periods WHERE period_date = ?')->execute([$date]);
+    if (function_exists('mt_table_exists') && mt_table_exists($pdo, 'closed_slots')) {
+        $pdo->prepare('DELETE FROM closed_slots WHERE slot_date = ?')->execute([$date]);
+    }
 }
 
 $env = mt_boot();
@@ -131,6 +134,95 @@ try {
     }
     expect(($afterCancel[720] ?? '') === 'open', '12:00 open after cancel');
     expect(($afterCancel[750] ?? '') === 'open', '12:30 open after cancel');
+
+    mt_add_period($pdo, $date, 600, 960); // 10:00–16:00 so 13:30 is a public start
+
+    $thirteen = mt_create_booking($pdo, [
+        'room_slug' => $room,
+        'booking_date' => $date,
+        'start_minute' => 780,
+        'guest_name' => 'Thirteen',
+        'guest_email' => 'thirteen@example.com',
+        'guest_phone' => '0600000004',
+        'players' => 4,
+    ]);
+    $confirmedThirteen = mt_confirm_booking($pdo, (int) $thirteen['id']);
+    expect($confirmedThirteen && $confirmedThirteen['status'] === 'confirmed', '13:00 confirm succeeds');
+    $atThirteen = [];
+    foreach (mt_public_day_slots($pdo, $room, $date) as $slot) {
+        $atThirteen[$slot['minute']] = $slot['status'];
+    }
+    expect(($atThirteen[780] ?? '') === 'reserved', '13:00 reserved');
+    expect(($atThirteen[810] ?? '') === 'reserved', '13:30 reserved with the 13:00 game');
+    expect(($atThirteen[750] ?? '') === 'open', '12:30 stays open when 13:00 is booked');
+    mt_cancel_booking($pdo, (int) $thirteen['id']);
+
+    $closed = mt_close_slot($pdo, $room, $date, 780);
+    expect($closed['start_minute'] === 780, 'close 13:00 returns the unit');
+    $afterMaitreClose = [];
+    foreach (mt_public_day_slots($pdo, $room, $date) as $slot) {
+        $afterMaitreClose[$slot['minute']] = $slot['status'];
+    }
+    expect(($afterMaitreClose[780] ?? '') === 'closed', 'closed 13:00 is unavailable publicly');
+    expect(($afterMaitreClose[750] ?? '') === 'open', '12:30 stays open after closing 13:00');
+    expect(mt_find_open_game_slot($pdo, $room, $date, 780) === null, 'cannot book a closed start');
+
+    $admin = [];
+    foreach (mt_admin_day_slots($pdo, $room, $date) as $slot) {
+        $admin[$slot['minute']] = $slot['status'];
+    }
+    expect(($admin[780] ?? '') === 'closed', 'admin grid shows 13:00 closed');
+    expect(($admin[810] ?? '') === 'open', 'admin grid still has the 13:30 unit');
+
+    $pendingOnClosedFollow = mt_create_booking($pdo, [
+        'room_slug' => $room,
+        'booking_date' => $date,
+        'start_minute' => 750,
+        'guest_name' => 'Needs Follow',
+        'guest_email' => 'needs-follow@example.com',
+        'guest_phone' => '0600000005',
+        'players' => 3,
+    ]);
+    $warnClosedFollow = null;
+    try {
+        mt_confirm_booking($pdo, (int) $pendingOnClosedFollow['id']);
+    } catch (RuntimeException $e) {
+        $warnClosedFollow = $e->getMessage();
+    }
+    expect($warnClosedFollow !== null && str_contains($warnClosedFollow, '13:00'), 'confirm fails when the following unit is closed');
+    mt_cancel_booking($pdo, (int) $pendingOnClosedFollow['id']);
+
+    expect(mt_open_slot($pdo, $room, $date, 780) === true, 'reopen 13:00');
+    $reopened = [];
+    foreach (mt_public_day_slots($pdo, $room, $date) as $slot) {
+        $reopened[$slot['minute']] = $slot['status'];
+    }
+    expect(($reopened[780] ?? '') === 'open', '13:00 open after reopen');
+
+    $busy = mt_create_booking($pdo, [
+        'room_slug' => $room,
+        'booking_date' => $date,
+        'start_minute' => 780,
+        'guest_name' => 'Busy Close',
+        'guest_email' => 'busy-close@example.com',
+        'guest_phone' => '0600000006',
+        'players' => 3,
+    ]);
+    $warnBusyClose = null;
+    try {
+        mt_close_slot($pdo, $room, $date, 780);
+    } catch (RuntimeException $e) {
+        $warnBusyClose = $e->getMessage();
+    }
+    expect($warnBusyClose !== null, 'cannot close a reserved unit');
+    mt_cancel_booking($pdo, (int) $busy['id']);
+
+    $otherRoom = [];
+    mt_close_slot($pdo, 'vaisseau', $date, 780);
+    foreach (mt_public_day_slots($pdo, $room, $date) as $slot) {
+        $otherRoom[$slot['minute']] = $slot['status'];
+    }
+    expect(($otherRoom[780] ?? '') === 'open', 'closing a slot on the other room does not close this room');
 } finally {
     cleanup_test_day($pdo, $date);
 }

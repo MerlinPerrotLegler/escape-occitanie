@@ -6,7 +6,7 @@ import SiteFooter from './components/SiteFooter';
 import HomePage from './pages/HomePage';
 import RoomPage from './pages/RoomPage';
 import BookingPage from './pages/BookingPage';
-import MaitreThibautPage from './pages/MaitreThibautPage';
+import MaitreThibaultPage from './pages/MaitreThibaultPage';
 
 function NotFound() {
   return (
@@ -47,8 +47,8 @@ function App() {
       <ScrollToTop />
       <div className="noise-overlay" aria-hidden="true" />
       <Routes>
-        <Route path="/maitre" element={<MaitreThibautPage />} />
-        <Route path="/maitre-thibaut" element={<Navigate to="/maitre" replace />} />
+        <Route path="/maitre" element={<MaitreThibaultPage />} />
+        <Route path="/maitre-Thibault" element={<Navigate to="/maitre" replace />} />
         <Route element={<PublicLayout />}>
           <Route path="/" element={<HomePage />} />
           <Route

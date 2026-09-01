@@ -12,12 +12,12 @@ export async function fetchSiteContent() {
   }
 }
 
-export async function loginManager(email, password) {
+export async function loginManager(email, password, remember = false) {
   const res = await fetch('/api/login.php', {
     method: 'POST',
     credentials: 'include',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ email, password }),
+    body: JSON.stringify({ email, password, remember: Boolean(remember) }),
   });
   const data = await res.json().catch(() => ({}));
   if (!res.ok) {

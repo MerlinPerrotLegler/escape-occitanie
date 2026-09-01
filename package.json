@@ -7,7 +7,10 @@
 		"dev": "concurrently --kill-others --raw \"npm run dev --prefix apps/web\"",
 		"build": "concurrently --raw \"npm run build --prefix apps/web\"",
 		"start": "concurrently --kill-others --raw",
-		"lint": "concurrently --raw \"npm run lint --prefix apps/web\""
+		"lint": "concurrently --raw \"npm run lint --prefix apps/web\"",
+		"deploy": "python3 scripts/deploy.py",
+		"deploy:check": "python3 scripts/deploy.py --check",
+		"deploy:dry": "python3 scripts/deploy.py --dry-run --skip-build"
 	},
 	"devDependencies": {
 		"concurrently": "^10.0.4",

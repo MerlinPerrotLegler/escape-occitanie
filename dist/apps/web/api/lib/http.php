@@ -16,5 +16,23 @@ function mt_read_json(): array {
 }
 
 function mt_client_ip(): string {
-    return $_SERVER['REMOTE_ADDR'] ?? '0.0.0.0';
+    $headers = [
+        'HTTP_CF_CONNECTING_IP',
+        'HTTP_X_REAL_IP',
+        'HTTP_X_FORWARDED_FOR',
+        'REMOTE_ADDR',
+    ];
+    foreach ($headers as $key) {
+        $raw = (string) ($_SERVER[$key] ?? '');
+        if ($raw === '') {
+            continue;
+        }
+        foreach (explode(',', $raw) as $part) {
+            $ip = trim($part);
+            if (filter_var($ip, FILTER_VALIDATE_IP)) {
+                return $ip;
+            }
+        }
+    }
+    return '0.0.0.0';
 }

@@ -115,7 +115,60 @@ function mt_fetch_active_bookings(PDO $pdo, ?string $from = null, ?string $to = 
 function mt_public_day_slots(PDO $pdo, string $room, string $date): array {
     $periods = mt_periods_for_date($pdo, $date);
     $bookings = mt_fetch_active_bookings($pdo, $date, $date, $room);
-    return mt_compute_day_slots($periods, $bookings);
+    return mt_compute_day_slots($periods, $bookings, mt_closed_minutes_for($pdo, $room, $date));
+}
+
+function mt_admin_day_slots(PDO $pdo, string $room, string $date): array {
+    $periods = mt_periods_for_date($pdo, $date);
+    $bookings = mt_fetch_active_bookings($pdo, $date, $date, $room);
+    return mt_compute_unit_slots($periods, $bookings, mt_closed_minutes_for($pdo, $room, $date));
+}
+
+function mt_closed_minutes_for(PDO $pdo, string $room, string $date): array {
+    mt_ensure_schema($pdo);
+    $stmt = $pdo->prepare('SELECT start_minute FROM closed_slots WHERE room_slug = ? AND slot_date = ? ORDER BY start_minute ASC');
+    $stmt->execute([$room, $date]);
+    return array_map(static fn($row) => (int) $row['start_minute'], $stmt->fetchAll());
+}
+
+function mt_map_closed_slot(string $room, string $date, int $startMinute): array {
+    return [
+        'room_slug' => $room,
+        'slot_date' => $date,
+        'start_minute' => $startMinute,
+        'time' => mt_minutes_to_hhmm($startMinute),
+    ];
+}
+
+function mt_close_slot(PDO $pdo, string $room, string $date, int $startMinute): array {
+    mt_ensure_schema($pdo);
+    if (!in_array($room, MT_ROOM_SLUGS, true)) {
+        throw new InvalidArgumentException('Salle inconnue.');
+    }
+    if (!mt_is_iso_date($date) || $startMinute < 0 || $startMinute % MT_SLOT_MINUTES !== 0 || $startMinute > 24 * 60 - MT_SLOT_MINUTES) {
+        throw new InvalidArgumentException('Date ou horaire invalide.');
+    }
+    if (!mt_slot_unit_in_periods(mt_periods_for_date($pdo, $date), $startMinute)) {
+        throw new InvalidArgumentException('Ce créneau n’est pas dans une plage ouverte.');
+    }
+    foreach (mt_fetch_active_bookings($pdo, $date, $date, $room) as $booking) {
+        if (mt_ranges_overlap($startMinute, MT_SLOT_MINUTES, (int) $booking['start_minute'], mt_booking_duration($booking))) {
+            throw new RuntimeException('Ce créneau est déjà réservé.');
+        }
+    }
+    if (in_array($startMinute, mt_closed_minutes_for($pdo, $room, $date), true)) {
+        return mt_map_closed_slot($room, $date, $startMinute);
+    }
+    $stmt = $pdo->prepare('INSERT INTO closed_slots (room_slug, slot_date, start_minute) VALUES (?,?,?)');
+    $stmt->execute([$room, $date, $startMinute]);
+    return mt_map_closed_slot($room, $date, $startMinute);
+}
+
+function mt_open_slot(PDO $pdo, string $room, string $date, int $startMinute): bool {
+    mt_ensure_schema($pdo);
+    $stmt = $pdo->prepare('DELETE FROM closed_slots WHERE room_slug = ? AND slot_date = ? AND start_minute = ?');
+    $stmt->execute([$room, $date, $startMinute]);
+    return $stmt->rowCount() > 0;
 }
 
 function mt_find_open_game_slot(PDO $pdo, string $room, string $date, int $start): ?array {
@@ -140,6 +193,12 @@ function mt_assert_window_available(
     if (!mt_interval_covered_by_periods($periods, $start, $duration)) {
         $follow = mt_minutes_to_hhmm($start + MT_SLOT_MINUTES);
         throw new RuntimeException("Le créneau suivant ({$follow}) n’est pas disponible. Impossible de {$action}.");
+    }
+    foreach (mt_closed_minutes_for($pdo, $room, $date) as $closedMinute) {
+        if (mt_ranges_overlap($start, $duration, (int) $closedMinute, MT_SLOT_MINUTES)) {
+            $follow = mt_minutes_to_hhmm($start + MT_SLOT_MINUTES);
+            throw new RuntimeException("Le créneau suivant ({$follow}) n’est pas disponible. Impossible de {$action}.");
+        }
     }
     $others = mt_fetch_active_bookings($pdo, $date, $date, $room);
     foreach ($others as $other) {

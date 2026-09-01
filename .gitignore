@@ -1,3 +1,5 @@
 node_modules
 
+.env
 apps/web/public/api/.env
+dist/apps/web/api/.env

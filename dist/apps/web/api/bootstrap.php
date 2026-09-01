@@ -6,6 +6,10 @@ require_once __DIR__ . '/lib/http.php';
 require_once __DIR__ . '/lib/validate.php';
 require_once __DIR__ . '/lib/auth.php';
 require_once __DIR__ . '/lib/db.php';
+require_once __DIR__ . '/lib/schedule.php';
+require_once __DIR__ . '/lib/booking.php';
+require_once __DIR__ . '/lib/mail.php';
+require_once __DIR__ . '/lib/calendar.php';
 
 function mt_boot(): array {
     $env = mt_load_env(__DIR__);

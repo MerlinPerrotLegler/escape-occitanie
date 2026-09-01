@@ -6,17 +6,17 @@ import { CONTACT } from '@/data/rooms';
 import { cn } from '@/lib/utils';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
-import { createBooking, fetchDaySlots, fetchMonthAvailability } from '@/lib/booking';
+import { createBooking, fetchDaySlots, fetchMonthAvailability, fetchOpenPeriods } from '@/lib/booking';
+import {
+  closestOpenSlot,
+  parseQueryDate,
+  parseQueryTime,
+  rankOpenDates,
+  toISODate,
+} from '@/lib/bookingDeepLink';
+import { MAX_MONTH_OFFSET, horizonIso, initialMonthOffset } from '@/lib/calendarMonths';
 
 const WEEKDAY_LABELS = ['Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam', 'Dim'];
-const MAX_MONTH_OFFSET = 2;
-
-function toISO(date) {
-  const y = date.getFullYear();
-  const m = String(date.getMonth() + 1).padStart(2, '0');
-  const d = String(date.getDate()).padStart(2, '0');
-  return `${y}-${m}-${d}`;
-}
 
 function monthRange(year, month) {
   const from = `${year}-${String(month + 1).padStart(2, '0')}-01`;
@@ -40,6 +40,7 @@ const dayFormatter = new Intl.DateTimeFormat('fr-FR', {
   weekday: 'long',
   day: 'numeric',
   month: 'long',
+  year: 'numeric',
 });
 
 function parisToday() {
@@ -61,111 +62,59 @@ function parisNowMinutes() {
   return hour * 60 + minute;
 }
 
-function parseQueryDate(raw) {
-  if (!raw) return null;
-  const value = String(raw).trim();
-  if (/^\d{4}-\d{2}-\d{2}$/.test(value)) {
-    const dt = new Date(`${value}T12:00:00`);
-    return Number.isNaN(dt.getTime()) || toISO(dt) !== value ? null : value;
-  }
-  const match = value.match(/^(\d{1,2})[/.-](\d{1,2})[/.-](\d{2}|\d{4})$/);
-  if (!match) return null;
-  let [, day, month, year] = match;
-  if (year.length === 2) {
-    year = Number(year) > 50 ? `19${year}` : `20${year}`;
-  }
-  const iso = `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}`;
-  const dt = new Date(`${iso}T12:00:00`);
-  return Number.isNaN(dt.getTime()) || toISO(dt) !== iso ? null : iso;
-}
-
-function parseQueryTime(raw) {
-  if (!raw) return null;
-  const match = String(raw).trim().match(/^(\d{1,2})(?:[:hH.](\d{2}))?$/);
-  if (!match) return null;
-  const hour = Number(match[1]);
-  const minute = Number(match[2] || '0');
-  if (hour > 23 || minute > 59 || minute % 30 !== 0) return null;
-  return `${String(hour).padStart(2, '0')}:${String(minute).padStart(2, '0')}`;
-}
-
-function timeToMinutes(time) {
-  const [hour, minute] = time.split(':').map(Number);
-  return hour * 60 + minute;
-}
-
 function monthsBetween(today, iso) {
   const date = new Date(`${iso}T12:00:00`);
   return (date.getFullYear() - today.getFullYear()) * 12 + (date.getMonth() - today.getMonth());
 }
 
-function clampMonthOffset(offset) {
-  return Math.max(0, Math.min(MAX_MONTH_OFFSET, offset));
+function clampMonthOffset(offset, maxOffset = MAX_MONTH_OFFSET) {
+  return Math.max(0, Math.min(maxOffset, offset));
 }
 
-async function fetchAvailabilityWindow(roomSlug, today) {
-  const months = await Promise.all(
-    [0, 1, 2].map((offset) => {
-      const cursor = new Date(today.getFullYear(), today.getMonth() + offset, 1);
-      const { from, to } = monthRange(cursor.getFullYear(), cursor.getMonth());
-      return fetchMonthAvailability(roomSlug, from, to);
-    })
-  );
-  return Object.assign({}, ...months.filter(Boolean));
-}
-
-function nearestOpenDay(days, requestedISO, todayISO) {
-  const requested = new Date(`${requestedISO}T12:00:00`).getTime();
-  let best = null;
-  let bestDist = Infinity;
-  Object.entries(days).forEach(([iso, info]) => {
-    if (iso < todayISO || !info || info.closed || !info.open) return;
-    const dist = Math.abs(new Date(`${iso}T12:00:00`).getTime() - requested);
-    if (dist < bestDist) {
-      best = iso;
-      bestDist = dist;
-    }
-  });
-  return best;
-}
-
-function closestOpenSlot(slots, { iso, todayISO, preferredTime }) {
-  let open = slots.filter((slot) => slot.status === 'open');
-  if (iso === todayISO) {
-    const now = parisNowMinutes();
-    const upcoming = open.filter((slot) => timeToMinutes(slot.time) >= now);
-    if (upcoming.length) open = upcoming;
-  }
-  if (!open.length) return null;
-  const target = preferredTime
-    ? timeToMinutes(preferredTime)
-    : iso === todayISO
-      ? parisNowMinutes()
-      : timeToMinutes(open[0].time);
-  let best = open[0];
-  let bestDist = Infinity;
-  open.forEach((slot) => {
-    const dist = Math.abs(timeToMinutes(slot.time) - target);
-    if (dist < bestDist) {
-      best = slot;
-      bestDist = dist;
-    }
-  });
-  return best.time;
+function applyDateParam(prev, iso) {
+  const next = new URLSearchParams(prev);
+  next.set('date', iso);
+  return next;
 }
 
 function BookingCalendar({ room }) {
   const [searchParams, setSearchParams] = useSearchParams();
   const queryDate = parseQueryDate(searchParams.get('date'));
   const queryTime = parseQueryTime(searchParams.get('heure') || searchParams.get('time'));
-  const appliedQuery = useRef(null);
+  const skipQueryBootstrap = useRef(false);
   const initLoadedISO = useRef(null);
+  const slotsSectionRef = useRef(null);
+
+  function scrollToSlots() {
+    requestAnimationFrame(() => {
+      slotsSectionRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  }
+
+  function selectDay(iso) {
+    if (iso !== queryDate) skipQueryBootstrap.current = true;
+    if (iso !== selectedISO) {
+      setSelectedISO(iso);
+      setSelectedSlot(null);
+      setSlots([]);
+      setLoadingSlots(true);
+      setSearchParams((prev) => {
+        const next = applyDateParam(prev, iso);
+        next.delete('heure');
+        next.delete('time');
+        return next;
+      }, { replace: true });
+    }
+    scrollToSlots();
+  }
 
   const today = useMemo(() => parisToday(), []);
-  const todayISO = toISO(today);
+  const todayISO = toISODate(today);
+  const linkedOffset = queryDate ? Math.max(0, monthsBetween(today, queryDate)) : 0;
+  const maxOffset = Math.max(MAX_MONTH_OFFSET, linkedOffset);
 
   const [monthOffset, setMonthOffset] = useState(() =>
-    queryDate ? clampMonthOffset(monthsBetween(today, queryDate)) : 0
+    queryDate ? clampMonthOffset(monthsBetween(today, queryDate), maxOffset) : 0
   );
   const [selectedISO, setSelectedISO] = useState(() => {
     if (!queryDate) return null;
@@ -178,10 +127,24 @@ function BookingCalendar({ room }) {
   const [done, setDone] = useState(null);
   const [submitting, setSubmitting] = useState(false);
   const [form, setForm] = useState({ name: '', email: '', phone: '', players: 4 });
+  const [nextOpenIso, setNextOpenIso] = useState(null);
+  const nextOpenOffset = nextOpenIso ? initialMonthOffset(today, [nextOpenIso]) : 0;
 
   const viewDate = new Date(today.getFullYear(), today.getMonth() + monthOffset, 1);
   const cells = buildMonthCells(viewDate.getFullYear(), viewDate.getMonth());
   const selectedDate = selectedISO ? new Date(`${selectedISO}T12:00:00`) : null;
+
+  useEffect(() => {
+    let cancelled = false;
+    fetchOpenPeriods(todayISO, horizonIso(today)).then((periods) => {
+      if (cancelled) return;
+      const isos = [...new Set(periods.map((row) => row.period_date))].sort();
+      setNextOpenIso(isos.find((iso) => iso >= todayISO) || null);
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, [room.slug, today, todayISO]);
 
   useEffect(() => {
     const { from, to } = monthRange(viewDate.getFullYear(), viewDate.getMonth());
@@ -195,52 +158,68 @@ function BookingCalendar({ room }) {
   }, [room.slug, monthOffset]);
 
   useEffect(() => {
-    if (!queryDate) return undefined;
-    const queryKey = `${room.slug}|${queryDate}|${queryTime || ''}`;
-    if (appliedQuery.current === queryKey) return undefined;
+    if (skipQueryBootstrap.current) {
+      skipQueryBootstrap.current = false;
+      return undefined;
+    }
     let cancelled = false;
-    appliedQuery.current = queryKey;
     setLoadingSlots(true);
     (async () => {
-      const requested = queryDate < todayISO ? todayISO : queryDate;
-      const windowDays = await fetchAvailabilityWindow(room.slug, today);
+      const requested = queryDate && queryDate >= todayISO ? queryDate : todayISO;
+      const horizon = queryDate && queryDate > horizonIso(today) ? queryDate : horizonIso(today);
+      const periods = await fetchOpenPeriods(todayISO, horizon);
       if (cancelled) return;
-      setDays((prev) => ({ ...prev, ...windowDays }));
-      const info = windowDays[requested];
-      const iso =
-        info?.open && !info.closed
-          ? requested
-          : nearestOpenDay(windowDays, requested, todayISO) || requested;
-      setMonthOffset(clampMonthOffset(monthsBetween(today, iso)));
+      const candidates = rankOpenDates(
+        periods.map((row) => row.period_date),
+        requested,
+        todayISO
+      );
+      const nowMinutes = parisNowMinutes();
+      let iso = requested;
+      let list = [];
+      let slot = null;
+      for (const candidate of candidates) {
+        const daySlots = await fetchDaySlots(room.slug, candidate);
+        if (cancelled) return;
+        const match = closestOpenSlot(daySlots, {
+          iso: candidate,
+          todayISO,
+          preferredTime: queryTime,
+          nowMinutes,
+        });
+        if (match) {
+          iso = candidate;
+          list = daySlots;
+          slot = match;
+          break;
+        }
+      }
+      if (!slot && !candidates.includes(requested)) {
+        list = await fetchDaySlots(room.slug, requested);
+        if (cancelled) return;
+      }
+      setMonthOffset(clampMonthOffset(monthsBetween(today, iso), maxOffset));
       setSelectedISO(iso);
-      const list = await fetchDaySlots(room.slug, iso);
-      if (cancelled) return;
       setSlots(list);
+      setSelectedSlot(slot);
       setLoadingSlots(false);
       initLoadedISO.current = iso;
-      const slot = closestOpenSlot(list, { iso, todayISO, preferredTime: queryTime });
-      setSelectedSlot(slot);
-      if (iso !== queryDate) {
-        appliedQuery.current = `${room.slug}|${iso}|${queryTime || ''}`;
-        setSearchParams(
-          (prev) => {
-            const next = new URLSearchParams(prev);
-            next.set('date', iso);
-            return next;
-          },
-          { replace: true }
-        );
+      if (slot && iso !== queryDate) {
+        skipQueryBootstrap.current = true;
+        setSearchParams((prev) => applyDateParam(prev, iso), { replace: true });
       }
     })();
     return () => {
       cancelled = true;
     };
-  }, [room.slug, queryDate, queryTime, today, todayISO, setSearchParams]);
+  }, [room.slug, queryDate, queryTime, today, todayISO, maxOffset, setSearchParams]);
 
   useEffect(() => {
     if (!selectedISO) return undefined;
-    const queryKey = `${room.slug}|${queryDate || ''}|${queryTime || ''}`;
-    if (queryDate && appliedQuery.current === queryKey) return undefined;
+    if (initLoadedISO.current === selectedISO) {
+      initLoadedISO.current = null;
+      return undefined;
+    }
     let cancelled = false;
     setLoadingSlots(true);
     fetchDaySlots(room.slug, selectedISO).then((list) => {
@@ -251,7 +230,7 @@ function BookingCalendar({ room }) {
     return () => {
       cancelled = true;
     };
-  }, [room.slug, selectedISO, done, queryDate, queryTime]);
+  }, [room.slug, selectedISO, done]);
 
   async function onSubmit(event) {
     event.preventDefault();
@@ -313,14 +292,29 @@ function BookingCalendar({ room }) {
         </p>
         <button
           type="button"
-          disabled={monthOffset === MAX_MONTH_OFFSET}
-          onClick={() => setMonthOffset((v) => Math.min(MAX_MONTH_OFFSET, v + 1))}
+          disabled={monthOffset === maxOffset}
+          onClick={() => setMonthOffset((v) => Math.min(maxOffset, v + 1))}
           className="flex h-10 w-10 items-center justify-center rounded-md border border-border text-foreground transition-colors hover:bg-secondary disabled:cursor-not-allowed disabled:opacity-30"
           aria-label="Mois suivant"
         >
           <ChevronRight className="h-5 w-5" />
         </button>
       </div>
+
+      {nextOpenIso && nextOpenOffset !== monthOffset ? (
+        <div className="border-b border-border/70 px-4 py-3 sm:px-6">
+          <button
+            type="button"
+            onClick={() => {
+              setMonthOffset(nextOpenOffset);
+              selectDay(nextOpenIso);
+            }}
+            className="text-left text-sm text-primary underline-offset-4 hover:underline"
+          >
+            Prochaine ouverture le {dayFormatter.format(new Date(`${nextOpenIso}T12:00:00`))}
+          </button>
+        </div>
+      ) : null}
 
       <div className="px-3 py-4 sm:px-6">
         <div className="grid grid-cols-7 gap-1 text-center">
@@ -334,7 +328,7 @@ function BookingCalendar({ room }) {
           ))}
           {cells.map((date, idx) => {
             if (!date) return <span key={`empty-${idx}`} />;
-            const iso = toISO(date);
+            const iso = toISODate(date);
             const isPast = date < today;
             const info = days[iso];
             const openCount = isPast ? 0 : (info?.open ?? 0);
@@ -345,23 +339,7 @@ function BookingCalendar({ room }) {
                 key={iso}
                 type="button"
                 disabled={isPast || isClosed}
-                onClick={() => {
-                  appliedQuery.current = `${room.slug}|${iso}|`;
-                  setSelectedISO(iso);
-                  setSelectedSlot(null);
-                  setSlots([]);
-                  setLoadingSlots(true);
-                  setSearchParams(
-                    (prev) => {
-                      const next = new URLSearchParams(prev);
-                      next.set('date', iso);
-                      next.delete('heure');
-                      next.delete('time');
-                      return next;
-                    },
-                    { replace: true }
-                  );
-                }}
+                onClick={() => selectDay(iso)}
                 className={cn(
                   'flex min-h-[52px] flex-col items-center justify-center gap-1 rounded-lg border border-transparent px-1 py-1.5 transition-all duration-150 sm:min-h-[64px]',
                   isPast || isClosed
@@ -386,7 +364,11 @@ function BookingCalendar({ room }) {
         </div>
       </div>
 
-      <div className="border-t border-border/70 px-4 py-5 sm:px-6">
+      <div
+        ref={slotsSectionRef}
+        id="horaires"
+        className="scroll-mt-24 border-t border-border/70 px-4 py-5 sm:px-6"
+      >
         {!selectedDate ? (
           <p className="flex items-center gap-2 text-sm text-muted-foreground">
             <Info className="h-4 w-4 shrink-0 text-primary" />

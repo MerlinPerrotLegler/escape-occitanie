@@ -15,6 +15,30 @@ function expect($cond, $msg) {
     }
 }
 
+$envTmp = sys_get_temp_dir() . '/mt-env-' . bin2hex(random_bytes(4));
+mkdir($envTmp . '/api', 0700, true);
+mkdir($envTmp . '/.git', 0700, true);
+file_put_contents($envTmp . '/.env', "MANAGER_EMAIL=root@example.com\nMANAGER_PASSWORD=root-pass\nAUTH_SECRET=root-secret\nDATABASE_URL=mysql://prod:x@db:3306/prod\n");
+file_put_contents($envTmp . '/api/.env', "MANAGER_EMAIL=local@example.com\nMANAGER_PASSWORD=local-pass\nAUTH_SECRET=local-secret\nMYSQL_HOST=127.0.0.1\nMYSQL_USER=root\n");
+$loaded = mt_load_env($envTmp . '/api');
+expect(($loaded['MANAGER_EMAIL'] ?? '') === 'root@example.com', 'repo-root manager email wins over api/.env');
+expect(($loaded['MANAGER_PASSWORD'] ?? '') === 'root-pass', 'repo-root manager password wins over api/.env');
+expect(($loaded['AUTH_SECRET'] ?? '') === 'root-secret', 'repo-root auth secret wins over api/.env');
+expect(($loaded['MYSQL_HOST'] ?? '') === '127.0.0.1', 'local mysql host kept');
+$solo = sys_get_temp_dir() . '/mt-env-solo-' . bin2hex(random_bytes(4));
+mkdir($solo . '/api', 0700, true);
+file_put_contents($solo . '/api/.env', "MANAGER_EMAIL=only-local@example.com\nAUTH_SECRET=only-local-secret\n");
+$soloLoaded = mt_load_env($solo . '/api');
+expect(($soloLoaded['MANAGER_EMAIL'] ?? '') === 'only-local@example.com', 'api/.env manager used when no parent .env');
+foreach ([$envTmp . '/api/.env', $envTmp . '/.env', $solo . '/api/.env'] as $f) {
+    @unlink($f);
+}
+@rmdir($envTmp . '/.git');
+@rmdir($envTmp . '/api');
+@rmdir($envTmp);
+@rmdir($solo . '/api');
+@rmdir($solo);
+
 $url = 'mysql://demo_user:p?assw0rd@db.example:3306/demo_db';
 $parsed = mt_parse_database_url($url);
 expect(($parsed['pass'] ?? '') === 'p?assw0rd', 'password with ? parsed');
@@ -74,6 +98,14 @@ $session = mt_verify_cookie($cookie, $secret);
 expect(($session['email'] ?? '') === 'contact@example.fr', 'cookie roundtrip');
 expect(mt_verify_cookie($cookie, 'wrong') === null, 'bad secret rejected');
 expect(mt_verify_cookie('tampered', $secret) === null, 'tamper rejected');
+
+$monthCookie = mt_issue_cookie('contact@example.fr', $secret, MT_TTL_REMEMBER);
+$monthParts = explode('.', substr($monthCookie, 3), 2);
+$monthPayload = json_decode(mt_b64url_decode($monthParts[0]) ?? '', true);
+expect(is_array($monthPayload), 'remember payload decoded');
+expect((int) ($monthPayload['exp'] ?? 0) >= time() + MT_TTL_REMEMBER - 2, 'remember ttl is 1 month');
+expect(MT_TTL_REMEMBER === 2592000, 'remember ttl constant is 30 days');
+expect(MT_TTL_SESSION === 43200, 'session ttl constant is 12 hours');
 
 $ip = 'test-ip-' . bin2hex(random_bytes(4));
 expect(mt_rate_limit_hit($ip) === false, 'first hit allowed');
