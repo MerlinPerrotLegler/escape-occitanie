@@ -4040,3 +4040,9 @@
 ## 2026-09-01 16:13:28.920Z click
 - element: {"tag":"input","role":null,"ariaLabel":null,"name":"phone","type":"tel","id":":ra:-form-item","placeholder":"Téléphone","label":"phone","value":"+42112345678","valueLength":12,"text":""}
 
+## 2026-09-01 16:13:32.021Z change
+- element: {"tag":"input","role":null,"ariaLabel":null,"name":"phone","type":"tel","id":":ra:-form-item","placeholder":"Téléphone","label":"phone","value":"+42112345678","valueLength":12,"text":""}
+
+## 2026-09-01 16:13:32.021Z blur
+- element: {"tag":"input","role":null,"ariaLabel":null,"name":"phone","type":"tel","id":":ra:-form-item","placeholder":"Téléphone","label":"phone","value":"+42112345678","valueLength":12,"text":""}
+
