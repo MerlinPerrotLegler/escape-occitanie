@@ -71,6 +71,89 @@ function mt_update_period(PDO $pdo, int $id, string $date, int $startMinute, int
     return mt_period_payload($id, $date, $startMinute, $endMinute);
 }
 
+function mt_get_period(PDO $pdo, int $id): ?array {
+    mt_ensure_schema($pdo);
+    $stmt = $pdo->prepare('SELECT id, period_date, start_minute, end_minute FROM opening_periods WHERE id = ?');
+    $stmt->execute([$id]);
+    $row = $stmt->fetch();
+    if (!$row) {
+        return null;
+    }
+    return mt_period_payload((int) $row['id'], (string) $row['period_date'], (int) $row['start_minute'], (int) $row['end_minute']);
+}
+
+function mt_dates_with_periods(PDO $pdo, array $dates): array {
+    $dates = array_values(array_unique($dates));
+    if ($dates === []) {
+        return [];
+    }
+    $placeholders = implode(',', array_fill(0, count($dates), '?'));
+    $stmt = $pdo->prepare("SELECT DISTINCT period_date FROM opening_periods WHERE period_date IN ($placeholders)");
+    $stmt->execute($dates);
+    return array_map(static fn($row) => (string) $row['period_date'], $stmt->fetchAll());
+}
+
+function mt_delete_periods_on_date(PDO $pdo, string $date): void {
+    $pdo->prepare('DELETE FROM opening_periods WHERE period_date = ?')->execute([$date]);
+}
+
+function mt_replace_closed_slots_from_source(PDO $pdo, string $sourceDate, string $targetDate): void {
+    $pdo->prepare('DELETE FROM closed_slots WHERE slot_date = ?')->execute([$targetDate]);
+    foreach (MT_ROOM_SLUGS as $room) {
+        $flags = mt_slot_flags_for($pdo, $room, $sourceDate);
+        $bookings = mt_fetch_active_bookings($pdo, $targetDate, $targetDate, $room);
+        foreach ($flags as $minute => $kind) {
+            if (mt_unit_status((int) $minute, $bookings, []) === 'reserved') {
+                continue;
+            }
+            mt_set_slot_kind($pdo, $room, $targetDate, (int) $minute, $kind === 'hidden' ? 'hidden' : 'closed');
+        }
+    }
+}
+
+function mt_copy_period(PDO $pdo, int $sourceId, array $dates, bool $overwrite): array {
+    mt_ensure_schema($pdo);
+    $source = mt_get_period($pdo, $sourceId);
+    if (!$source) {
+        return ['ok' => false, 'error' => 'not_found'];
+    }
+    $clean = [];
+    foreach ($dates as $date) {
+        $date = is_string($date) ? trim($date) : '';
+        if (!mt_is_iso_date($date) || $date === $source['period_date']) {
+            continue;
+        }
+        $clean[$date] = $date;
+    }
+    $clean = array_values($clean);
+    sort($clean);
+    if ($clean === []) {
+        return ['ok' => false, 'error' => 'invalid'];
+    }
+    $conflicts = mt_dates_with_periods($pdo, $clean);
+    sort($conflicts);
+    if ($conflicts !== [] && !$overwrite) {
+        return ['ok' => false, 'dates' => $conflicts];
+    }
+    $pdo->beginTransaction();
+    try {
+        foreach ($clean as $date) {
+            mt_delete_periods_on_date($pdo, $date);
+            mt_add_period($pdo, $date, (int) $source['start_minute'], (int) $source['end_minute']);
+            mt_replace_closed_slots_from_source($pdo, $source['period_date'], $date);
+        }
+        if ($pdo->inTransaction()) {
+            $pdo->commit();
+        }
+    } catch (Throwable $e) {
+        if ($pdo->inTransaction()) {
+            $pdo->rollBack();
+        }
+        throw $e;
+    }
+    return ['ok' => true, 'copied' => count($clean)];
+}
+
 function mt_booking_select_sql(): string {
     return 'id, room_slug, booking_date, start_minute, duration_minutes, guest_name, guest_email, guest_phone, players, status, created_at';
 }

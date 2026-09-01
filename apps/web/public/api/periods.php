@@ -42,6 +42,30 @@ function mt_require_period_input(array $body): array {
 
 if ($method === 'POST') {
     mt_require_session($env);
+    $action = (string) ($_GET['action'] ?? '');
+    if ($action === 'copy') {
+        $body = mt_read_json();
+        $sourceId = (int) ($body['sourceId'] ?? 0);
+        $dates = $body['dates'] ?? null;
+        $overwrite = (bool) ($body['overwrite'] ?? false);
+        if ($sourceId < 1 || !is_array($dates)) {
+            mt_json_out(400, ['error' => 'Source et dates obligatoires.']);
+        }
+        $result = mt_copy_period($pdo, $sourceId, $dates, $overwrite);
+        if (($result['error'] ?? '') === 'not_found') {
+            mt_json_out(404, ['error' => 'Plage introuvable.']);
+        }
+        if (($result['error'] ?? '') === 'invalid') {
+            mt_json_out(400, ['error' => 'Dates invalides.']);
+        }
+        if (isset($result['dates'])) {
+            mt_json_out(409, [
+                'error' => 'Certains jours ont déjà une plage.',
+                'dates' => $result['dates'],
+            ]);
+        }
+        mt_json_out(200, ['ok' => true, 'copied' => (int) $result['copied']]);
+    }
     $input = mt_require_period_input(mt_read_json());
     try {
         mt_json_out(200, mt_add_period($pdo, $input['date'], $input['start'], $input['end']));

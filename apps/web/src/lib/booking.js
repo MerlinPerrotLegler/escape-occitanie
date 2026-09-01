@@ -4,6 +4,7 @@ async function parseJson(res) {
     const err = new Error(data.error || 'Une erreur est survenue.');
     err.status = res.status;
     err.warning = Boolean(data.warning);
+    if (Array.isArray(data.dates)) err.dates = data.dates;
     throw err;
   }
   return data;
@@ -51,8 +52,19 @@ export async function createBooking(payload) {
   return parseJson(res);
 }
 
-export async function fetchPeriods() {
-  const res = await fetch('/api/periods.php', { credentials: 'include' });
+export async function fetchPeriods(from, to) {
+  const qs = from && to ? `?from=${encodeURIComponent(from)}&to=${encodeURIComponent(to)}` : '';
+  const res = await fetch(`/api/periods.php${qs}`, { credentials: 'include' });
+  return parseJson(res);
+}
+
+export async function copyPeriod(sourceId, dates, overwrite = false) {
+  const res = await fetch('/api/periods.php?action=copy', {
+    method: 'POST',
+    credentials: 'include',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ sourceId, dates, overwrite }),
+  });
   return parseJson(res);
 }
 
