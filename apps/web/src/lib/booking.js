@@ -66,6 +66,16 @@ export async function createPeriod(payload) {
   return parseJson(res);
 }
 
+export async function updatePeriod(id, payload) {
+  const res = await fetch(`/api/periods.php?id=${id}`, {
+    method: 'PATCH',
+    credentials: 'include',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload),
+  });
+  return parseJson(res);
+}
+
 export async function deletePeriod(id) {
   const res = await fetch(`/api/periods.php?id=${id}`, {
     method: 'DELETE',
@@ -120,12 +130,12 @@ export async function fetchAdminDaySlots(date) {
   return parseJson(res);
 }
 
-export async function closeSlot(room, date, time) {
+export async function closeSlot(room, date, time, status = 'closed') {
   const res = await fetch('/api/closed-slots.php', {
     method: 'POST',
     credentials: 'include',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ room, date, time }),
+    body: JSON.stringify({ room, date, time, status }),
   });
   return parseJson(res);
 }

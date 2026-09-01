@@ -24,9 +24,7 @@ if ($method === 'GET') {
     mt_json_out(200, ['periods' => mt_list_periods($pdo)]);
 }
 
-if ($method === 'POST') {
-    mt_require_session($env);
-    $body = mt_read_json();
+function mt_require_period_input(array $body): array {
     $date = trim((string) ($body['date'] ?? ''));
     $start = mt_hhmm_to_minutes((string) ($body['start'] ?? ''));
     $end = mt_hhmm_to_minutes((string) ($body['end'] ?? ''));
@@ -39,11 +37,31 @@ if ($method === 'POST') {
     if ($start % MT_SLOT_MINUTES !== 0 || $end % MT_SLOT_MINUTES !== 0) {
         mt_json_out(400, ['error' => 'Les horaires doivent être alignés sur 30 minutes.']);
     }
+    return ['date' => $date, 'start' => $start, 'end' => $end];
+}
+
+if ($method === 'POST') {
+    mt_require_session($env);
+    $input = mt_require_period_input(mt_read_json());
     try {
-        mt_json_out(200, mt_add_period($pdo, $date, $start, $end));
+        mt_json_out(200, mt_add_period($pdo, $input['date'], $input['start'], $input['end']));
     } catch (Throwable $e) {
         mt_json_out(500, ['error' => 'Enregistrement impossible, réessaie.']);
     }
+}
+
+if ($method === 'PATCH') {
+    mt_require_session($env);
+    $id = (int) ($_GET['id'] ?? 0);
+    if ($id < 1) {
+        mt_json_out(400, ['error' => 'Identifiant manquant.']);
+    }
+    $input = mt_require_period_input(mt_read_json());
+    $updated = mt_update_period($pdo, $id, $input['date'], $input['start'], $input['end']);
+    if ($updated === null) {
+        mt_json_out(404, ['error' => 'Plage introuvable.']);
+    }
+    mt_json_out(200, $updated);
 }
 
 if ($method === 'DELETE') {

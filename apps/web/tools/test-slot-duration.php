@@ -47,14 +47,15 @@ try {
         'players' => 4,
     ]);
     expect($booking['status'] === 'pending', 'created pending');
-    expect((int) $booking['duration_minutes'] === 30, 'pending occupies 30 min');
+    expect((int) $booking['duration_minutes'] === 60, 'pending occupies 60 min');
 
     $byMinute = [];
     foreach (mt_public_day_slots($pdo, $room, $date) as $slot) {
         $byMinute[$slot['minute']] = $slot['status'];
     }
     expect(($byMinute[600] ?? '') === 'reserved', '10:00 reserved while pending');
-    expect(($byMinute[630] ?? '') === 'open', '10:30 remains bookable while 10:00 is pending');
+    expect(($byMinute[630] ?? '') === 'reserved', '10:30 reserved while 10:00 is pending');
+    expect(mt_find_open_game_slot($pdo, $room, $date, 630) === null, 'public cannot book 10:30 over a 10:00 reservation');
 
     $confirmed = mt_confirm_booking($pdo, (int) $booking['id']);
     expect($confirmed && $confirmed['status'] === 'confirmed', 'confirm succeeds when next 30 min is free');
@@ -199,6 +200,23 @@ try {
     }
     expect(($reopened[780] ?? '') === 'open', '13:00 open after reopen');
 
+    $hidden = mt_set_slot_kind($pdo, $room, $date, 780, 'hidden');
+    expect(($hidden['kind'] ?? '') === 'hidden', 'hide 13:00 stores hidden kind');
+    $afterHide = [];
+    foreach (mt_public_day_slots($pdo, $room, $date) as $slot) {
+        $afterHide[$slot['minute']] = $slot['status'];
+    }
+    expect(!array_key_exists(780, $afterHide), 'hidden 13:00 is omitted from public slots');
+    expect(($afterHide[750] ?? '') === 'open', '12:30 stays listed after hiding 13:00');
+    $adminHidden = [];
+    foreach (mt_admin_day_slots($pdo, $room, $date) as $slot) {
+        $adminHidden[$slot['minute']] = $slot['status'];
+    }
+    expect(($adminHidden[780] ?? '') === 'hidden', 'admin grid shows 13:00 as hidden');
+    expect(mt_find_open_game_slot($pdo, $room, $date, 780) === null, 'cannot book a hidden start');
+    expect(mt_set_slot_kind($pdo, $room, $date, 780, 'closed')['kind'] === 'closed', 'hidden can become closed');
+    expect(mt_open_slot($pdo, $room, $date, 780) === true, 'reopen hidden/closed 13:00');
+
     $busy = mt_create_booking($pdo, [
         'room_slug' => $room,
         'booking_date' => $date,
@@ -225,6 +243,30 @@ try {
     expect(($otherRoom[780] ?? '') === 'open', 'closing a slot on the other room does not close this room');
 } finally {
     cleanup_test_day($pdo, $date);
+}
+
+$editDate = '2099-06-16';
+$movedDate = '2099-06-17';
+cleanup_test_day($pdo, $editDate);
+cleanup_test_day($pdo, $movedDate);
+try {
+    $created = mt_add_period($pdo, $editDate, 600, 840);
+    $updated = mt_update_period($pdo, (int) $created['id'], $movedDate, 660, 900);
+    expect($updated !== null, 'update returns the period');
+    expect($updated['period_date'] === $movedDate, 'update can move the date');
+    expect($updated['start'] === '11:00', 'update start to 11:00');
+    expect($updated['end'] === '15:00', 'update end to 15:00');
+    expect(mt_update_period($pdo, 0, $movedDate, 600, 840) === null, 'missing id returns null');
+
+    $movedOpen = array_column(
+        array_filter(mt_public_day_slots($pdo, $room, $movedDate), fn($s) => $s['status'] === 'open'),
+        'minute'
+    );
+    expect(in_array(660, $movedOpen, true), '11:00 is open after update');
+    expect(!in_array(600, $movedOpen, true), '10:00 is gone after the period moved');
+} finally {
+    cleanup_test_day($pdo, $editDate);
+    cleanup_test_day($pdo, $movedDate);
 }
 
 if ($failed > 0) {

@@ -68,46 +68,122 @@ function mt_intervals_overlap(int $aStart, int $bStart): bool {
 
 function mt_occupancy_duration(array $booking): int {
     $duration = (int) ($booking['duration_minutes'] ?? 0);
-    if ($duration > 0) {
-        return $duration;
+    return $duration > MT_GAME_MINUTES ? $duration : MT_GAME_MINUTES;
+}
+
+/**
+ * @param list<int>|array<int,string> $flags
+ * @return array<int,string>
+ */
+function mt_normalize_slot_flags(array $flags): array {
+    if ($flags === []) {
+        return [];
     }
-    return (($booking['status'] ?? '') === 'pending') ? MT_SLOT_MINUTES : MT_GAME_MINUTES;
+    $first = reset($flags);
+    if ($first === 'hidden' || $first === 'closed') {
+        $out = [];
+        foreach ($flags as $minute => $kind) {
+            $out[(int) $minute] = $kind === 'hidden' ? 'hidden' : 'closed';
+        }
+        return $out;
+    }
+    $out = [];
+    foreach ($flags as $minute) {
+        $out[(int) $minute] = 'closed';
+    }
+    return $out;
+}
+
+function mt_next_admin_slot_status(string $status): ?string {
+    if ($status === 'open') {
+        return 'hidden';
+    }
+    if ($status === 'hidden') {
+        return 'closed';
+    }
+    if ($status === 'closed') {
+        return 'open';
+    }
+    return null;
 }
 
 /**
  * @param list<array{start_minute:int,duration_minutes?:int,status?:string}> $bookings
- * @param list<int> $closedMinutes
+ * @param list<int>|array<int,string> $flags
  */
-function mt_unit_status(int $minute, array $bookings, array $closedMinutes): string {
+function mt_unit_status(int $minute, array $bookings, array $flags = []): string {
     foreach ($bookings as $booking) {
         if (mt_ranges_overlap($minute, MT_SLOT_MINUTES, (int) $booking['start_minute'], mt_occupancy_duration($booking))) {
             return 'reserved';
         }
     }
-    foreach ($closedMinutes as $closed) {
-        if ((int) $closed === $minute) {
-            return 'closed';
-        }
+    $kind = mt_normalize_slot_flags($flags)[$minute] ?? null;
+    if ($kind === 'hidden' || $kind === 'closed') {
+        return $kind;
     }
     return 'open';
+}
+
+/** @param list<array{start_minute:int,duration_minutes?:int,status?:string}> $bookings */
+function mt_booking_covering_minute(array $bookings, int $minute): ?array {
+    foreach ($bookings as $booking) {
+        if (mt_ranges_overlap($minute, MT_SLOT_MINUTES, (int) $booking['start_minute'], mt_occupancy_duration($booking))) {
+            return $booking;
+        }
+    }
+    return null;
+}
+
+/**
+ * @param list<array{time:string,minute:int,status:string}> $slots
+ * @param list<array{id?:int,guest_name?:string,start_minute:int}> $bookings
+ * @return list<array{time:string,minute:int,status:string,booking_id?:int,guest_name?:string}>
+ */
+function mt_annotate_reserved_slots(array $slots, array $bookings): array {
+    foreach ($slots as &$slot) {
+        if (($slot['status'] ?? '') !== 'reserved') {
+            continue;
+        }
+        $booking = mt_booking_covering_minute($bookings, (int) $slot['minute']);
+        if (!$booking) {
+            continue;
+        }
+        if (isset($booking['id'])) {
+            $slot['booking_id'] = (int) $booking['id'];
+        }
+        if (isset($booking['guest_name'])) {
+            $slot['guest_name'] = (string) $booking['guest_name'];
+        }
+    }
+    unset($slot);
+    return $slots;
 }
 
 /**
  * @param list<int> $minutes
  * @param list<array{start_minute:int}> $bookings
- * @param list<int> $closedMinutes
+ * @param list<int>|array<int,string> $flags
  * @return list<array{time:string,minute:int,status:string}>
  */
-function mt_slots_from_minutes(array $minutes, array $bookings, array $closedMinutes = []): array {
+function mt_slots_from_minutes(array $minutes, array $bookings, array $flags = []): array {
+    $normalized = mt_normalize_slot_flags($flags);
     $slots = [];
     foreach ($minutes as $minute) {
         $slots[] = [
             'time' => mt_minutes_to_hhmm($minute),
             'minute' => $minute,
-            'status' => mt_unit_status($minute, $bookings, $closedMinutes),
+            'status' => mt_unit_status($minute, $bookings, $normalized),
         ];
     }
     return $slots;
+}
+
+/**
+ * @param list<array{time:string,minute:int,status:string}> $slots
+ * @return list<array{time:string,minute:int,status:string}>
+ */
+function mt_filter_public_slots(array $slots): array {
+    return array_values(array_filter($slots, static fn($slot) => ($slot['status'] ?? '') !== 'hidden'));
 }
 
 /**
@@ -151,11 +227,11 @@ function mt_unit_minutes(array $periods): array {
  *
  * @param list<array{start_minute:int,end_minute:int}> $periods
  * @param list<array{start_minute:int}> $bookings
- * @param list<int> $closedMinutes
+ * @param list<int>|array<int,string> $flags
  * @return list<array{time:string,minute:int,status:string}>
  */
-function mt_compute_day_slots(array $periods, array $bookings, array $closedMinutes = []): array {
-    return mt_slots_from_minutes(mt_game_start_minutes($periods), $bookings, $closedMinutes);
+function mt_compute_day_slots(array $periods, array $bookings, array $flags = []): array {
+    return mt_slots_from_minutes(mt_game_start_minutes($periods), $bookings, $flags);
 }
 
 /**
@@ -163,9 +239,9 @@ function mt_compute_day_slots(array $periods, array $bookings, array $closedMinu
  *
  * @param list<array{start_minute:int,end_minute:int}> $periods
  * @param list<array{start_minute:int}> $bookings
- * @param list<int> $closedMinutes
+ * @param list<int>|array<int,string> $flags
  * @return list<array{time:string,minute:int,status:string}>
  */
-function mt_compute_unit_slots(array $periods, array $bookings, array $closedMinutes = []): array {
-    return mt_slots_from_minutes(mt_unit_minutes($periods), $bookings, $closedMinutes);
+function mt_compute_unit_slots(array $periods, array $bookings, array $flags = []): array {
+    return mt_slots_from_minutes(mt_unit_minutes($periods), $bookings, $flags);
 }

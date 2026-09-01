@@ -63,9 +63,13 @@ function mt_ensure_closed_slots_schema(PDO $pdo): void {
         room_slug VARCHAR(32) NOT NULL,
         slot_date DATE NOT NULL,
         start_minute SMALLINT UNSIGNED NOT NULL,
+        kind VARCHAR(16) NOT NULL DEFAULT 'closed',
         created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
         UNIQUE KEY uniq_closed_slot (room_slug, slot_date, start_minute)
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4");
+    if (mt_table_exists($pdo, 'closed_slots') && !mt_table_has_column($pdo, 'closed_slots', 'kind')) {
+        $pdo->exec("ALTER TABLE closed_slots ADD COLUMN kind VARCHAR(16) NOT NULL DEFAULT 'closed'");
+    }
 }
 
 function mt_ensure_bookings_schema(PDO $pdo): void {
@@ -74,7 +78,7 @@ function mt_ensure_bookings_schema(PDO $pdo): void {
         room_slug VARCHAR(32) NOT NULL,
         booking_date DATE NOT NULL,
         start_minute SMALLINT UNSIGNED NOT NULL,
-        duration_minutes SMALLINT UNSIGNED NOT NULL DEFAULT 30,
+        duration_minutes SMALLINT UNSIGNED NOT NULL DEFAULT 60,
         guest_name VARCHAR(120) NOT NULL,
         guest_email VARCHAR(190) NOT NULL,
         guest_phone VARCHAR(40) NOT NULL,
@@ -100,7 +104,7 @@ function mt_ensure_bookings_schema(PDO $pdo): void {
             $pdo->exec('ALTER TABLE bookings ADD COLUMN start_minute SMALLINT UNSIGNED NULL');
         }
         if (!mt_table_has_column($pdo, 'bookings', 'duration_minutes')) {
-            $pdo->exec('ALTER TABLE bookings ADD COLUMN duration_minutes SMALLINT UNSIGNED NOT NULL DEFAULT 30');
+            $pdo->exec('ALTER TABLE bookings ADD COLUMN duration_minutes SMALLINT UNSIGNED NOT NULL DEFAULT 60');
         }
         if (mt_table_exists($pdo, 'slots')) {
             $pdo->exec("UPDATE bookings b
@@ -108,9 +112,9 @@ function mt_ensure_bookings_schema(PDO $pdo): void {
                 SET b.room_slug = s.room_slug,
                     b.booking_date = s.slot_date,
                     b.start_minute = s.start_minute,
-                    b.duration_minutes = IF(b.status = 'confirmed', 60, 30)");
+                    b.duration_minutes = 60");
         }
-        $pdo->exec("UPDATE bookings SET duration_minutes = 60 WHERE status = 'confirmed' AND duration_minutes < 60");
+        $pdo->exec("UPDATE bookings SET duration_minutes = 60 WHERE duration_minutes < 60 AND status IN ('pending','confirmed')");
         $pdo->exec('DELETE FROM bookings WHERE room_slug IS NULL OR booking_date IS NULL OR start_minute IS NULL');
         if (mt_table_exists($pdo, 'booking_slots')) {
             mt_try_exec($pdo, 'DROP TABLE booking_slots');
@@ -125,8 +129,16 @@ function mt_ensure_bookings_schema(PDO $pdo): void {
     }
 
     if (!mt_table_has_column($pdo, 'bookings', 'duration_minutes')) {
-        $pdo->exec('ALTER TABLE bookings ADD COLUMN duration_minutes SMALLINT UNSIGNED NOT NULL DEFAULT 30');
-        mt_try_exec($pdo, "UPDATE bookings SET duration_minutes = 60 WHERE status = 'confirmed' AND duration_minutes < 60");
+        $pdo->exec('ALTER TABLE bookings ADD COLUMN duration_minutes SMALLINT UNSIGNED NOT NULL DEFAULT 60');
+    }
+    mt_try_exec($pdo, "UPDATE bookings SET duration_minutes = 60 WHERE duration_minutes < 60 AND status IN ('pending','confirmed')");
+    try {
+        $col = $pdo->query("SHOW COLUMNS FROM bookings LIKE 'duration_minutes'")->fetch();
+        $default = (string) ($col['Default'] ?? '');
+        if ($default !== '60') {
+            $pdo->exec('ALTER TABLE bookings MODIFY duration_minutes SMALLINT UNSIGNED NOT NULL DEFAULT 60');
+        }
+    } catch (Throwable $ignored) {
     }
 
     try {

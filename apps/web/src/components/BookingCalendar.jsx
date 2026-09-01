@@ -84,10 +84,25 @@ function BookingCalendar({ room }) {
   const skipQueryBootstrap = useRef(false);
   const initLoadedISO = useRef(null);
   const slotsSectionRef = useRef(null);
+  const formSectionRef = useRef(null);
 
   function scrollToSlots() {
     requestAnimationFrame(() => {
       slotsSectionRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  }
+
+  function scrollToForm() {
+    requestAnimationFrame(() => {
+      formSectionRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  }
+
+  function selectSlot(time) {
+    setSelectedSlot(time);
+    // The form mounts on first selection; wait for commit + paint.
+    requestAnimationFrame(() => {
+      scrollToForm();
     });
   }
 
@@ -396,7 +411,7 @@ function BookingCalendar({ room }) {
                       key={slot.time}
                       type="button"
                       disabled={isFull}
-                      onClick={() => setSelectedSlot(slot.time)}
+                      onClick={() => selectSlot(slot.time)}
                       className={cn(
                         'flex h-11 items-center justify-center gap-2 rounded-md border text-sm font-medium transition-all duration-150',
                         isFull
@@ -415,7 +430,12 @@ function BookingCalendar({ room }) {
             )}
 
             {selectedSlot && (
-              <form onSubmit={onSubmit} className="mt-5 space-y-3 rounded-lg border border-primary/40 bg-primary/5 p-4">
+              <form
+                ref={formSectionRef}
+                id="reservation"
+                onSubmit={onSubmit}
+                className="mt-5 scroll-mt-24 space-y-3 rounded-lg border border-primary/40 bg-primary/5 p-4"
+              >
                 <p className="flex items-center gap-2 font-display text-sm font-bold tracking-wider text-primary">
                   <CalendarCheck className="h-4 w-4" />
                   {dayFormatter.format(selectedDate)} à {selectedSlot} — 60 min

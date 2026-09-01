@@ -3,6 +3,7 @@ import {
   daysInMonth,
   isoToDateParts,
   isoToShortDate,
+  shiftIsoDate,
   shortDateToIso,
   yearSelectOptions,
 } from '../src/lib/shortDate.js';
@@ -32,6 +33,12 @@ expect(
   'year list covers previous year through the 18-month booking horizon'
 );
 expect(yearSelectOptions('2026-09-01', '2029-01-15').join(',') === '25,26,27,28,29', 'selected year outside the window stays available');
+
+expect(shiftIsoDate('2026-09-01', -1) === '2026-08-31', 'J-1 crosses month boundary');
+expect(shiftIsoDate('2026-09-01', 1) === '2026-09-02', 'J+1 stays in month');
+expect(shiftIsoDate('2026-12-31', 1) === '2027-01-01', 'J+1 crosses year');
+expect(shiftIsoDate('2028-02-28', 1) === '2028-02-29', 'J+1 into leap day');
+expect(shiftIsoDate('not-a-date', 1) === null, 'invalid ISO is rejected');
 
 if (failed > 0) {
   process.stderr.write(`${failed} assertion(s) failed\n`);

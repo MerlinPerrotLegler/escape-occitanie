@@ -54,8 +54,9 @@ foreach ($pending as $s) {
 }
 expect($pendingBy['13:00'] === 'reserved', 'pending 13:00 reserves the 13:00 unit');
 expect($pendingBy['12:30'] === 'open', 'pending 13:00 does not occupy 12:30');
-expect($pendingBy['13:30'] === 'open', 'pending 13:00 leaves 13:30 open');
+expect($pendingBy['13:30'] === 'reserved', 'pending 13:00 occupies 60 min so 13:30 is reserved');
 expect($pendingBy['12:00'] === 'open', '12:00 still open with pending 13:00');
+expect(mt_occupancy_duration(['status' => 'pending', 'duration_minutes' => 30]) === 60, 'legacy 30-min pending still occupies 60');
 
 $closed = mt_compute_day_slots($periods, [], [780]);
 $closedBy = [];
@@ -65,6 +66,25 @@ foreach ($closed as $s) {
 expect($closedBy['13:00'] === 'closed', 'maître can close the 13:00 start');
 expect($closedBy['12:30'] === 'open', 'closing 13:00 does not close 12:30');
 expect($closedBy['13:30'] === 'open', 'closing 13:00 does not close 13:30');
+
+$hidden = mt_compute_day_slots($periods, [], [780 => 'hidden']);
+$hiddenBy = [];
+foreach ($hidden as $s) {
+    $hiddenBy[$s['time']] = $s['status'];
+}
+expect($hiddenBy['13:00'] === 'hidden', 'maître can hide the 13:00 start');
+expect($hiddenBy['13:30'] === 'open', 'hiding 13:00 does not hide 13:30');
+$publicVisible = mt_filter_public_slots($hidden);
+$publicTimes = array_column($publicVisible, 'time');
+expect(!in_array('13:00', $publicTimes, true), 'hidden 13:00 is omitted from the public list');
+expect(in_array('13:30', $publicTimes, true), 'open 13:30 stays on the public list');
+$publicClosed = mt_filter_public_slots($closed);
+expect(in_array('13:00', array_column($publicClosed, 'time'), true), 'closed 13:00 stays visible to the public');
+
+expect(mt_next_admin_slot_status('open') === 'hidden', 'cycle open → hidden');
+expect(mt_next_admin_slot_status('hidden') === 'closed', 'cycle hidden → closed');
+expect(mt_next_admin_slot_status('closed') === 'open', 'cycle closed → open');
+expect(mt_next_admin_slot_status('reserved') === null, 'cycle skips reserved');
 
 $bookedClosed = mt_compute_day_slots(
     $periods,
@@ -102,6 +122,26 @@ expect(mt_ranges_overlap(870, 60, 840, 30) === false, '14:30–15:30 does not ov
 
 $empty = mt_compute_day_slots([], []);
 expect($empty === [], 'no periods → no slots');
+
+$alice = ['id' => 7, 'start_minute' => 780, 'duration_minutes' => 60, 'status' => 'confirmed', 'guest_name' => 'Alice'];
+$annotated = mt_annotate_reserved_slots(mt_compute_unit_slots($periods, [$alice]), [$alice]);
+$annotatedBy = [];
+foreach ($annotated as $s) {
+    $annotatedBy[$s['time']] = $s;
+}
+expect(($annotatedBy['13:00']['guest_name'] ?? '') === 'Alice', 'reserved 13:00 shows guest name');
+expect((int) ($annotatedBy['13:00']['booking_id'] ?? 0) === 7, 'reserved 13:00 links to booking id');
+expect(($annotatedBy['13:30']['guest_name'] ?? '') === 'Alice', 'second 30-min of the game shows the same name');
+expect(($annotatedBy['12:30']['guest_name'] ?? null) === null, 'open slot has no guest name');
+expect(($annotatedBy['12:30']['booking_id'] ?? null) === null, 'open slot has no booking id');
+$pendingBob = ['id' => 9, 'start_minute' => 780, 'duration_minutes' => 30, 'status' => 'pending', 'guest_name' => 'Bob'];
+$pendingAnnotated = mt_annotate_reserved_slots(mt_compute_unit_slots($periods, [$pendingBob]), [$pendingBob]);
+$pendingBy = [];
+foreach ($pendingAnnotated as $s) {
+    $pendingBy[$s['time']] = $s;
+}
+expect(($pendingBy['13:00']['guest_name'] ?? '') === 'Bob', 'pending occupies the start unit');
+expect(($pendingBy['13:30']['guest_name'] ?? '') === 'Bob', 'pending 60 min names the following unit');
 
 if ($failed > 0) {
     fwrite(STDERR, "$failed assertion(s) failed\n");

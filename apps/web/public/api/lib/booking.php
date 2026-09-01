@@ -36,8 +36,12 @@ function mt_add_period(PDO $pdo, string $date, int $startMinute, int $endMinute)
     mt_ensure_schema($pdo);
     $stmt = $pdo->prepare('INSERT INTO opening_periods (period_date, start_minute, end_minute) VALUES (?,?,?)');
     $stmt->execute([$date, $startMinute, $endMinute]);
+    return mt_period_payload((int) $pdo->lastInsertId(), $date, $startMinute, $endMinute);
+}
+
+function mt_period_payload(int $id, string $date, int $startMinute, int $endMinute): array {
     return [
-        'id' => (int) $pdo->lastInsertId(),
+        'id' => $id,
         'period_date' => $date,
         'start_minute' => $startMinute,
         'end_minute' => $endMinute,
@@ -53,18 +57,27 @@ function mt_delete_period(PDO $pdo, int $id): bool {
     return $stmt->rowCount() > 0;
 }
 
+function mt_update_period(PDO $pdo, int $id, string $date, int $startMinute, int $endMinute): ?array {
+    mt_ensure_schema($pdo);
+    $stmt = $pdo->prepare('UPDATE opening_periods SET period_date = ?, start_minute = ?, end_minute = ? WHERE id = ?');
+    $stmt->execute([$date, $startMinute, $endMinute, $id]);
+    if ($stmt->rowCount() === 0) {
+        $exists = $pdo->prepare('SELECT id FROM opening_periods WHERE id = ?');
+        $exists->execute([$id]);
+        if (!$exists->fetch()) {
+            return null;
+        }
+    }
+    return mt_period_payload($id, $date, $startMinute, $endMinute);
+}
+
 function mt_booking_select_sql(): string {
     return 'id, room_slug, booking_date, start_minute, duration_minutes, guest_name, guest_email, guest_phone, players, status, created_at';
 }
 
 function mt_booking_duration(array $booking): int {
-    if (isset($booking['duration_minutes'])) {
-        $duration = (int) $booking['duration_minutes'];
-        if ($duration > 0) {
-            return $duration;
-        }
-    }
-    return ($booking['status'] ?? '') === 'confirmed' ? MT_GAME_MINUTES : MT_SLOT_MINUTES;
+    $duration = (int) ($booking['duration_minutes'] ?? 0);
+    return $duration > MT_GAME_MINUTES ? $duration : MT_GAME_MINUTES;
 }
 
 function mt_map_booking_rows(array $rows): array {
@@ -115,33 +128,51 @@ function mt_fetch_active_bookings(PDO $pdo, ?string $from = null, ?string $to = 
 function mt_public_day_slots(PDO $pdo, string $room, string $date): array {
     $periods = mt_periods_for_date($pdo, $date);
     $bookings = mt_fetch_active_bookings($pdo, $date, $date, $room);
-    return mt_compute_day_slots($periods, $bookings, mt_closed_minutes_for($pdo, $room, $date));
+    return mt_filter_public_slots(mt_compute_day_slots($periods, $bookings, mt_slot_flags_for($pdo, $room, $date)));
 }
 
 function mt_admin_day_slots(PDO $pdo, string $room, string $date): array {
     $periods = mt_periods_for_date($pdo, $date);
     $bookings = mt_fetch_active_bookings($pdo, $date, $date, $room);
-    return mt_compute_unit_slots($periods, $bookings, mt_closed_minutes_for($pdo, $room, $date));
+    return mt_annotate_reserved_slots(
+        mt_compute_unit_slots($periods, $bookings, mt_slot_flags_for($pdo, $room, $date)),
+        $bookings
+    );
+}
+
+function mt_slot_flags_for(PDO $pdo, string $room, string $date): array {
+    mt_ensure_schema($pdo);
+    $sql = mt_table_has_column($pdo, 'closed_slots', 'kind')
+        ? 'SELECT start_minute, kind FROM closed_slots WHERE room_slug = ? AND slot_date = ? ORDER BY start_minute ASC'
+        : 'SELECT start_minute FROM closed_slots WHERE room_slug = ? AND slot_date = ? ORDER BY start_minute ASC';
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([$room, $date]);
+    $flags = [];
+    foreach ($stmt->fetchAll() as $row) {
+        $flags[(int) $row['start_minute']] = (($row['kind'] ?? '') === 'hidden') ? 'hidden' : 'closed';
+    }
+    return $flags;
 }
 
 function mt_closed_minutes_for(PDO $pdo, string $room, string $date): array {
-    mt_ensure_schema($pdo);
-    $stmt = $pdo->prepare('SELECT start_minute FROM closed_slots WHERE room_slug = ? AND slot_date = ? ORDER BY start_minute ASC');
-    $stmt->execute([$room, $date]);
-    return array_map(static fn($row) => (int) $row['start_minute'], $stmt->fetchAll());
+    return array_map('intval', array_keys(mt_slot_flags_for($pdo, $room, $date)));
 }
 
-function mt_map_closed_slot(string $room, string $date, int $startMinute): array {
+function mt_map_closed_slot(string $room, string $date, int $startMinute, string $kind = 'closed'): array {
     return [
         'room_slug' => $room,
         'slot_date' => $date,
         'start_minute' => $startMinute,
         'time' => mt_minutes_to_hhmm($startMinute),
+        'kind' => $kind === 'hidden' ? 'hidden' : 'closed',
     ];
 }
 
-function mt_close_slot(PDO $pdo, string $room, string $date, int $startMinute): array {
+function mt_set_slot_kind(PDO $pdo, string $room, string $date, int $startMinute, string $kind): array {
     mt_ensure_schema($pdo);
+    if ($kind !== 'hidden' && $kind !== 'closed') {
+        throw new InvalidArgumentException('Statut de créneau invalide.');
+    }
     if (!in_array($room, MT_ROOM_SLUGS, true)) {
         throw new InvalidArgumentException('Salle inconnue.');
     }
@@ -156,12 +187,23 @@ function mt_close_slot(PDO $pdo, string $room, string $date, int $startMinute): 
             throw new RuntimeException('Ce créneau est déjà réservé.');
         }
     }
-    if (in_array($startMinute, mt_closed_minutes_for($pdo, $room, $date), true)) {
-        return mt_map_closed_slot($room, $date, $startMinute);
+    if (mt_table_has_column($pdo, 'closed_slots', 'kind')) {
+        $stmt = $pdo->prepare('INSERT INTO closed_slots (room_slug, slot_date, start_minute, kind) VALUES (?,?,?,?) ON DUPLICATE KEY UPDATE kind = ?');
+        $stmt->execute([$room, $date, $startMinute, $kind, $kind]);
+    } else {
+        $stmt = $pdo->prepare('INSERT INTO closed_slots (room_slug, slot_date, start_minute) VALUES (?,?,?)');
+        try {
+            $stmt->execute([$room, $date, $startMinute]);
+        } catch (Throwable $ignored) {
+            /* already closed */
+        }
+        $kind = 'closed';
     }
-    $stmt = $pdo->prepare('INSERT INTO closed_slots (room_slug, slot_date, start_minute) VALUES (?,?,?)');
-    $stmt->execute([$room, $date, $startMinute]);
-    return mt_map_closed_slot($room, $date, $startMinute);
+    return mt_map_closed_slot($room, $date, $startMinute, $kind);
+}
+
+function mt_close_slot(PDO $pdo, string $room, string $date, int $startMinute): array {
+    return mt_set_slot_kind($pdo, $room, $date, $startMinute, 'closed');
 }
 
 function mt_open_slot(PDO $pdo, string $room, string $date, int $startMinute): bool {
@@ -218,7 +260,7 @@ function mt_create_booking(PDO $pdo, array $row): array {
         $row['room_slug'],
         $row['booking_date'],
         $row['start_minute'],
-        MT_SLOT_MINUTES,
+        MT_GAME_MINUTES,
         $row['guest_name'],
         $row['guest_email'],
         $row['guest_phone'],

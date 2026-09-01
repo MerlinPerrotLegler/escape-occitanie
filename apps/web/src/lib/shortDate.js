@@ -56,6 +56,13 @@ export function parisTodayIso(now = new Date()) {
   return new Intl.DateTimeFormat('en-CA', { timeZone: 'Europe/Paris' }).format(now);
 }
 
+export function shiftIsoDate(iso, days) {
+  const parts = isoToDateParts(iso);
+  if (!parts) return null;
+  const next = new Date(fullYear(parts.year), Number(parts.month) - 1, Number(parts.day) + Number(days));
+  return `${next.getFullYear()}-${pad2(next.getMonth() + 1)}-${pad2(next.getDate())}`;
+}
+
 export function shortDateToIso(text) {
   const raw = String(text || '').trim();
   const match = raw.match(/^(\d{1,2})[/.\-](\d{1,2})[/.\-](\d{2}|\d{4})$/);

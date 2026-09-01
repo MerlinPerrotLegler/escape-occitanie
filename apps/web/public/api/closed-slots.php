@@ -34,7 +34,14 @@ if ($method === 'POST') {
         mt_json_out(400, ['error' => 'Date et horaire HH:MM obligatoires.']);
     }
     try {
-        mt_json_out(200, mt_close_slot($pdo, $room, $date, $start));
+        $status = (string) ($body['status'] ?? 'closed');
+        if ($status === 'open') {
+            if (!mt_open_slot($pdo, $room, $date, $start)) {
+                mt_json_out(404, ['error' => 'Créneau fermé introuvable.']);
+            }
+            mt_json_out(200, ['ok' => true, 'status' => 'open']);
+        }
+        mt_json_out(200, mt_set_slot_kind($pdo, $room, $date, $start, $status));
     } catch (InvalidArgumentException $e) {
         mt_json_out(400, ['error' => $e->getMessage()]);
     } catch (RuntimeException $e) {

@@ -6340,3 +6340,1137 @@
 ## 2026-09-01 10:32:44.758Z click
 - element: {"tag":"h2","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Fermer un créneau (d’une salle)"}
 
+## 2026-09-01 10:35:01.659Z click
+- element: {"tag":"a","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Réserver"}
+
+## 2026-09-01 10:35:01.660Z navigate
+- url: http://localhost:3000/#salles
+- via: pushState
+
+## 2026-09-01 10:35:08.793Z click
+- element: {"tag":"a","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Réserver cette salle"}
+
+## 2026-09-01 10:35:08.793Z navigate
+- url: http://localhost:3000/reservation/convocation-chez-le-directeur
+- via: pushState
+
+## 2026-09-01 10:35:09.016Z navigate
+- url: http://localhost:3000/reservation/convocation-chez-le-directeur?date=2027-09-01
+- via: replaceState
+
+## 2026-09-01 10:35:22.935Z click
+- element: {"tag":"button","role":null,"ariaLabel":null,"name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"13:00"}
+
+## 2026-09-01 10:38:05.382Z load
+- url: http://localhost:3000/reservation/convocation-chez-le-directeur
+
+## 2026-09-01 10:38:05.440Z navigate
+- url: http://localhost:3000/reservation/convocation-chez-le-directeur
+- via: replaceState
+
+## 2026-09-01 10:38:05.759Z navigate
+- url: http://localhost:3000/reservation/convocation-chez-le-directeur?date=2027-09-01
+- via: replaceState
+
+## 2026-09-01 10:38:35.122Z click
+- element: {"tag":"button","role":null,"ariaLabel":null,"name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"11:00"}
+
+## 2026-09-01 10:40:28.350Z load
+- url: http://localhost:3000/reservation/convocation-chez-le-directeur?date=2027-09-01
+
+## 2026-09-01 10:40:43.330Z window.error
+- message: Uncaught ReferenceError: tabFromHash is not defined
+- source: http://127.0.0.1:3000/src/pages/MaitreThibaultPage.jsx?t=1788259243231
+- line: 121
+- col: 34
+- stack: 
+    ReferenceError: tabFromHash is not defined
+        at MaitreThibaultPage (http://127.0.0.1:3000/src/pages/MaitreThibaultPage.jsx?t=1788259243231:121:34)
+        at renderWithHooks (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=7b61f176:11596:26)
+        at updateFunctionComponent (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=7b61f176:14630:28)
+        at beginWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=7b61f176:15972:22)
+        at HTMLUnknownElement.callCallback2 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=7b61f176:3680:22)
+        at Object.invokeGuardedCallbackDev (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=7b61f176:3705:24)
+        at invokeGuardedCallback (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=7b61f176:3739:39)
+        at beginWork$1 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=7b61f176:19818:15)
+        at performUnitOfWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=7b61f176:19251:20)
+        at workLoopSync (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=7b61f176:19190:13)
+
+## 2026-09-01 10:40:43.332Z window.error
+- message: Uncaught ReferenceError: tabFromHash is not defined
+- source: http://127.0.0.1:3000/src/pages/MaitreThibaultPage.jsx?t=1788259243231
+- line: 121
+- col: 34
+- stack: 
+    ReferenceError: tabFromHash is not defined
+        at MaitreThibaultPage (http://127.0.0.1:3000/src/pages/MaitreThibaultPage.jsx?t=1788259243231:121:34)
+        at renderWithHooks (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=7b61f176:11596:26)
+        at updateFunctionComponent (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=7b61f176:14630:28)
+        at beginWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=7b61f176:15972:22)
+        at HTMLUnknownElement.callCallback2 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=7b61f176:3680:22)
+        at Object.invokeGuardedCallbackDev (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=7b61f176:3705:24)
+        at invokeGuardedCallback (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=7b61f176:3739:39)
+        at beginWork$1 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=7b61f176:19818:15)
+        at performUnitOfWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=7b61f176:19251:20)
+        at workLoopSync (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=7b61f176:19190:13)
+
+## 2026-09-01 10:40:43.336Z console.error
+- text: 
+    The above error occurred in the <MaitreThibaultPage> component:
+    
+        at MaitreThibaultPage (http://127.0.0.1:3000/src/pages/MaitreThibaultPage.jsx?t=1788259243231:115:33)
+        at RenderedRoute (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=7b61f176:6647:26)
+        at Routes (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=7b61f176:7572:3)
+        at Router (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=7b61f176:7511:13)
+        at BrowserRouter (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=7b61f176:10816:3)
+        at App
+    
+    Consider adding an error boundary to your tree to customize error handling behavior.
+    Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries.
+
+## 2026-09-01 10:40:43.338Z unhandledrejection
+- message: tabFromHash is not defined
+- stack: 
+    ReferenceError: tabFromHash is not defined
+        at MaitreThibaultPage (http://127.0.0.1:3000/src/pages/MaitreThibaultPage.jsx?t=1788259243231:121:34)
+        at renderWithHooks (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=7b61f176:11596:26)
+        at updateFunctionComponent (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=7b61f176:14630:28)
+        at beginWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=7b61f176:15972:22)
+        at beginWork$1 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=7b61f176:19806:22)
+        at performUnitOfWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=7b61f176:19251:20)
+        at workLoopSync (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=7b61f176:19190:13)
+        at renderRootSync (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=7b61f176:19169:15)
+        at recoverFromConcurrentError (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=7b61f176:18786:28)
+        at performSyncWorkOnRoot (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=7b61f176:18932:28)
+
+## 2026-09-01 10:40:43.638Z root.empty
+- url: http://127.0.0.1:3000/maitre#planning
+
+## 2026-09-01 10:40:43.602Z window.error
+- message: Uncaught ReferenceError: tabFromHash is not defined
+- source: http://localhost:3000/src/pages/MaitreThibaultPage.jsx?t=1788259243231
+- line: 121
+- col: 34
+- stack: 
+    ReferenceError: tabFromHash is not defined
+        at MaitreThibaultPage (http://localhost:3000/src/pages/MaitreThibaultPage.jsx?t=1788259243231:121:34)
+        at renderWithHooks (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=7b61f176:11596:26)
+        at updateFunctionComponent (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=7b61f176:14630:28)
+        at beginWork (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=7b61f176:15972:22)
+        at HTMLUnknownElement.callCallback2 (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=7b61f176:3680:22)
+        at Object.invokeGuardedCallbackDev (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=7b61f176:3705:24)
+        at invokeGuardedCallback (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=7b61f176:3739:39)
+        at beginWork$1 (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=7b61f176:19818:15)
+        at performUnitOfWork (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=7b61f176:19251:20)
+        at workLoopSync (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=7b61f176:19190:13)
+
+## 2026-09-01 10:40:43.604Z window.error
+- message: Uncaught ReferenceError: tabFromHash is not defined
+- source: http://localhost:3000/src/pages/MaitreThibaultPage.jsx?t=1788259243231
+- line: 121
+- col: 34
+- stack: 
+    ReferenceError: tabFromHash is not defined
+        at MaitreThibaultPage (http://localhost:3000/src/pages/MaitreThibaultPage.jsx?t=1788259243231:121:34)
+        at renderWithHooks (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=7b61f176:11596:26)
+        at updateFunctionComponent (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=7b61f176:14630:28)
+        at beginWork (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=7b61f176:15972:22)
+        at HTMLUnknownElement.callCallback2 (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=7b61f176:3680:22)
+        at Object.invokeGuardedCallbackDev (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=7b61f176:3705:24)
+        at invokeGuardedCallback (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=7b61f176:3739:39)
+        at beginWork$1 (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=7b61f176:19818:15)
+        at performUnitOfWork (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=7b61f176:19251:20)
+        at workLoopSync (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=7b61f176:19190:13)
+
+## 2026-09-01 10:40:43.605Z console.error
+- text: 
+    The above error occurred in the <MaitreThibaultPage> component:
+    
+        at MaitreThibaultPage (http://localhost:3000/src/pages/MaitreThibaultPage.jsx?t=1788259243231:115:33)
+        at RenderedRoute (http://localhost:3000/node_modules/.vite/deps/react-router-dom.js?v=7b61f176:6647:26)
+        at Routes (http://localhost:3000/node_modules/.vite/deps/react-router-dom.js?v=7b61f176:7572:3)
+        at Router (http://localhost:3000/node_modules/.vite/deps/react-router-dom.js?v=7b61f176:7511:13)
+        at BrowserRouter (http://localhost:3000/node_modules/.vite/deps/react-router-dom.js?v=7b61f176:10816:3)
+        at App
+    
+    Consider adding an error boundary to your tree to customize error handling behavior.
+    Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries.
+
+## 2026-09-01 10:40:43.605Z unhandledrejection
+- message: tabFromHash is not defined
+- stack: 
+    ReferenceError: tabFromHash is not defined
+        at MaitreThibaultPage (http://localhost:3000/src/pages/MaitreThibaultPage.jsx?t=1788259243231:121:34)
+        at renderWithHooks (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=7b61f176:11596:26)
+        at updateFunctionComponent (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=7b61f176:14630:28)
+        at beginWork (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=7b61f176:15972:22)
+        at beginWork$1 (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=7b61f176:19806:22)
+        at performUnitOfWork (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=7b61f176:19251:20)
+        at workLoopSync (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=7b61f176:19190:13)
+        at renderRootSync (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=7b61f176:19169:15)
+        at recoverFromConcurrentError (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=7b61f176:18786:28)
+        at performSyncWorkOnRoot (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=7b61f176:18932:28)
+
+## 2026-09-01 10:40:44.601Z root.empty
+- url: http://localhost:3000/maitre#planning
+
+## 2026-09-01 10:40:44.602Z navigate
+- url: http://localhost:3000/maitre#planning
+- via: replaceState
+
+## 2026-09-01 10:40:46.952Z load
+- url: http://localhost:3000/maitre#planning
+
+## 2026-09-01 10:40:48.075Z load
+- url: http://localhost:3000/maitre#planning
+
+## 2026-09-01 10:41:02.412Z click
+- element: {"tag":"a","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Réserver"}
+
+## 2026-09-01 10:41:02.413Z navigate
+- url: http://localhost:3000/#salles
+- via: pushState
+
+## 2026-09-01 10:41:04.377Z click
+- element: {"tag":"div","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"ESCAPE OCCITANIEAccueilLe DirecteurLe Vaisseau FantômeContactRéserver"}
+
+## 2026-09-01 10:41:04.785Z click
+- element: {"tag":"a","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Réserver"}
+
+## 2026-09-01 10:41:04.785Z navigate
+- url: http://localhost:3000/#salles
+- via: replaceState
+
+## 2026-09-01 10:41:13.579Z load
+- url: http://localhost:3000/reservation/
+
+## 2026-09-01 10:41:13.642Z navigate
+- url: http://localhost:3000/reservation/
+- via: replaceState
+
+## 2026-09-01 10:41:27.498Z load
+- url: http://localhost:3000/#salles
+
+## 2026-09-01 10:41:29.032Z click
+- element: {"tag":"a","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Réserver cette salle"}
+
+## 2026-09-01 10:41:29.033Z navigate
+- url: http://localhost:3000/reservation/convocation-chez-le-directeur
+- via: pushState
+
+## 2026-09-01 10:41:29.259Z navigate
+- url: http://localhost:3000/reservation/convocation-chez-le-directeur?date=2027-09-01
+- via: replaceState
+
+## 2026-09-01 10:41:30.573Z click
+- element: {"tag":"button","role":null,"ariaLabel":null,"name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"11:00"}
+
+## 2026-09-01 10:41:31.882Z click
+- element: {"tag":"button","role":null,"ariaLabel":null,"name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"12:30"}
+
+## 2026-09-01 10:41:32.573Z click
+- element: {"tag":"div","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"10:00— réservé10:3011:0011:3012:0012:3013:0013:3014:0014:3015:0015:3016:0016:30— réservé17:0017:3018:0018:3019:0019:3020:0020:3021:00"}
+
+## 2026-09-01 10:41:33.117Z click
+- element: {"tag":"button","role":null,"ariaLabel":null,"name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"12:00"}
+
+## 2026-09-01 10:41:33.849Z click
+- element: {"tag":"button","role":null,"ariaLabel":null,"name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"11:00"}
+
+## 2026-09-01 10:41:34.703Z load
+- url: http://localhost:3000/reservation/convocation-chez-le-directeur?date=2027-09-01
+
+## 2026-09-01 10:41:36.524Z click
+- element: {"tag":"button","role":null,"ariaLabel":null,"name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"11:00"}
+
+## 2026-09-01 10:41:45.123Z click
+- element: {"tag":"button","role":null,"ariaLabel":null,"name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"12:30"}
+
+## 2026-09-01 10:42:48.975Z navigate
+- url: http://127.0.0.1:3000/maitre#planning
+- via: popstate
+
+## 2026-09-01 10:42:48.976Z navigate
+- url: http://127.0.0.1:3000/maitre#planning
+- via: popstate
+
+## 2026-09-01 10:45:10.871Z window.error
+- message: Uncaught Error: Stale element reference: e17 now points to (select, text="01020304050607080910111213141516171819202122232425") but was expected to be "Créneaux date jour". The page may have changed. Take a new snapshot.
+- source: http://127.0.0.1:3000/maitre#planning
+- line: 130
+- col: 5
+- stack: 
+    Error: Stale element reference: e17 now points to (select, text="01020304050607080910111213141516171819202122232425") but was expected to be "Créneaux date jour". The page may have changed. Take a new snapshot.
+        at assertDescriptionMatches (<anonymous>:130:11)
+        at <anonymous>:393:7
+        at <anonymous>:410:8
+
+## 2026-09-01 10:45:30.340Z click
+- element: {"tag":"button","role":null,"ariaLabel":"Jour suivant","name":null,"type":"button","id":"slot-day-next","placeholder":null,"label":null,"value":null,"valueLength":0,"text":"J+1"}
+
+## 2026-09-01 10:45:51.462Z click
+- element: {"tag":"button","role":null,"ariaLabel":"Jour précédent","name":null,"type":"button","id":"slot-day-prev","placeholder":null,"label":null,"value":null,"valueLength":0,"text":"J-1"}
+
+## 2026-09-01 10:46:26.288Z click
+- element: {"tag":"button","role":null,"ariaLabel":"10:00 — Merlin Perrot","name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"10:00Merlin Perrot"}
+
+## 2026-09-01 10:46:26.289Z navigate
+- url: http://127.0.0.1:3000/maitre#reservations/52
+- via: popstate
+
+## 2026-09-01 10:55:21.580Z click
+- element: {"tag":"button","role":null,"ariaLabel":"Jour suivant","name":null,"type":"button","id":"period-day-next","placeholder":null,"label":null,"value":null,"valueLength":0,"text":"J+1"}
+
+## 2026-09-01 10:55:22.814Z click
+- element: {"tag":"button","role":null,"ariaLabel":"Jour précédent","name":null,"type":"button","id":"period-day-prev","placeholder":null,"label":null,"value":null,"valueLength":0,"text":"J-1"}
+
+## 2026-09-01 10:55:23.629Z click
+- element: {"tag":"button","role":null,"ariaLabel":"Jour suivant","name":null,"type":"button","id":"period-day-next","placeholder":null,"label":null,"value":null,"valueLength":0,"text":"J+1"}
+
+## 2026-09-01 10:55:24.016Z click
+- element: {"tag":"button","role":null,"ariaLabel":"Jour suivant","name":null,"type":"button","id":"period-day-next","placeholder":null,"label":null,"value":null,"valueLength":0,"text":"J+1"}
+
+## 2026-09-01 10:55:25.120Z click
+- element: {"tag":"button","role":null,"ariaLabel":"Jour précédent","name":null,"type":"button","id":"period-day-prev","placeholder":null,"label":null,"value":null,"valueLength":0,"text":"J-1"}
+
+## 2026-09-01 10:55:25.329Z click
+- element: {"tag":"button","role":null,"ariaLabel":"Jour précédent","name":null,"type":"button","id":"period-day-prev","placeholder":null,"label":null,"value":null,"valueLength":0,"text":"J-1"}
+
+## 2026-09-01 10:55:25.920Z click
+- element: {"tag":"button","role":null,"ariaLabel":"Jour précédent","name":null,"type":"button","id":"period-day-prev","placeholder":null,"label":null,"value":null,"valueLength":0,"text":"J-1"}
+
+## 2026-09-01 10:55:27.949Z click
+- element: {"tag":"button","role":null,"ariaLabel":"Jour précédent","name":null,"type":"button","id":"period-day-prev","placeholder":null,"label":null,"value":null,"valueLength":0,"text":"J-1"}
+
+## 2026-09-01 10:55:28.121Z click
+- element: {"tag":"button","role":null,"ariaLabel":"Jour précédent","name":null,"type":"button","id":"period-day-prev","placeholder":null,"label":null,"value":null,"valueLength":0,"text":"J-1"}
+
+## 2026-09-01 10:55:28.294Z click
+- element: {"tag":"button","role":null,"ariaLabel":"Jour précédent","name":null,"type":"button","id":"period-day-prev","placeholder":null,"label":null,"value":null,"valueLength":0,"text":"J-1"}
+
+## 2026-09-01 10:55:28.461Z click
+- element: {"tag":"button","role":null,"ariaLabel":"Jour précédent","name":null,"type":"button","id":"period-day-prev","placeholder":null,"label":null,"value":null,"valueLength":0,"text":"J-1"}
+
+## 2026-09-01 10:55:28.611Z click
+- element: {"tag":"button","role":null,"ariaLabel":"Jour précédent","name":null,"type":"button","id":"period-day-prev","placeholder":null,"label":null,"value":null,"valueLength":0,"text":"J-1"}
+
+## 2026-09-01 10:55:28.786Z click
+- element: {"tag":"button","role":null,"ariaLabel":"Jour précédent","name":null,"type":"button","id":"period-day-prev","placeholder":null,"label":null,"value":null,"valueLength":0,"text":"J-1"}
+
+## 2026-09-01 10:55:28.953Z click
+- element: {"tag":"button","role":null,"ariaLabel":"Jour précédent","name":null,"type":"button","id":"period-day-prev","placeholder":null,"label":null,"value":null,"valueLength":0,"text":"J-1"}
+
+## 2026-09-01 10:55:29.136Z click
+- element: {"tag":"button","role":null,"ariaLabel":"Jour précédent","name":null,"type":"button","id":"period-day-prev","placeholder":null,"label":null,"value":null,"valueLength":0,"text":"J-1"}
+
+## 2026-09-01 10:55:29.287Z click
+- element: {"tag":"button","role":null,"ariaLabel":"Jour précédent","name":null,"type":"button","id":"period-day-prev","placeholder":null,"label":null,"value":null,"valueLength":0,"text":"J-1"}
+
+## 2026-09-01 10:55:29.462Z click
+- element: {"tag":"button","role":null,"ariaLabel":"Jour précédent","name":null,"type":"button","id":"period-day-prev","placeholder":null,"label":null,"value":null,"valueLength":0,"text":"J-1"}
+
+## 2026-09-01 10:55:29.629Z click
+- element: {"tag":"button","role":null,"ariaLabel":"Jour précédent","name":null,"type":"button","id":"period-day-prev","placeholder":null,"label":null,"value":null,"valueLength":0,"text":"J-1"}
+
+## 2026-09-01 10:55:29.796Z click
+- element: {"tag":"button","role":null,"ariaLabel":"Jour précédent","name":null,"type":"button","id":"period-day-prev","placeholder":null,"label":null,"value":null,"valueLength":0,"text":"J-1"}
+
+## 2026-09-01 10:55:29.970Z click
+- element: {"tag":"button","role":null,"ariaLabel":"Jour précédent","name":null,"type":"button","id":"period-day-prev","placeholder":null,"label":null,"value":null,"valueLength":0,"text":"J-1"}
+
+## 2026-09-01 10:55:30.170Z click
+- element: {"tag":"button","role":null,"ariaLabel":"Jour précédent","name":null,"type":"button","id":"period-day-prev","placeholder":null,"label":null,"value":null,"valueLength":0,"text":"J-1"}
+
+## 2026-09-01 10:55:30.345Z click
+- element: {"tag":"button","role":null,"ariaLabel":"Jour précédent","name":null,"type":"button","id":"period-day-prev","placeholder":null,"label":null,"value":null,"valueLength":0,"text":"J-1"}
+
+## 2026-09-01 10:55:30.529Z click
+- element: {"tag":"button","role":null,"ariaLabel":"Jour précédent","name":null,"type":"button","id":"period-day-prev","placeholder":null,"label":null,"value":null,"valueLength":0,"text":"J-1"}
+
+## 2026-09-01 10:55:30.711Z click
+- element: {"tag":"button","role":null,"ariaLabel":"Jour précédent","name":null,"type":"button","id":"period-day-prev","placeholder":null,"label":null,"value":null,"valueLength":0,"text":"J-1"}
+
+## 2026-09-01 10:55:30.936Z click
+- element: {"tag":"button","role":null,"ariaLabel":"Jour précédent","name":null,"type":"button","id":"period-day-prev","placeholder":null,"label":null,"value":null,"valueLength":0,"text":"J-1"}
+
+## 2026-09-01 10:55:31.103Z click
+- element: {"tag":"button","role":null,"ariaLabel":"Jour précédent","name":null,"type":"button","id":"period-day-prev","placeholder":null,"label":null,"value":null,"valueLength":0,"text":"J-1"}
+
+## 2026-09-01 10:55:31.262Z click
+- element: {"tag":"button","role":null,"ariaLabel":"Jour précédent","name":null,"type":"button","id":"period-day-prev","placeholder":null,"label":null,"value":null,"valueLength":0,"text":"J-1"}
+
+## 2026-09-01 10:55:31.429Z click
+- element: {"tag":"button","role":null,"ariaLabel":"Jour précédent","name":null,"type":"button","id":"period-day-prev","placeholder":null,"label":null,"value":null,"valueLength":0,"text":"J-1"}
+
+## 2026-09-01 10:55:31.594Z click
+- element: {"tag":"button","role":null,"ariaLabel":"Jour précédent","name":null,"type":"button","id":"period-day-prev","placeholder":null,"label":null,"value":null,"valueLength":0,"text":"J-1"}
+
+## 2026-09-01 10:55:31.786Z click
+- element: {"tag":"button","role":null,"ariaLabel":"Jour précédent","name":null,"type":"button","id":"period-day-prev","placeholder":null,"label":null,"value":null,"valueLength":0,"text":"J-1"}
+
+## 2026-09-01 10:55:32.017Z click
+- element: {"tag":"button","role":null,"ariaLabel":"Jour précédent","name":null,"type":"button","id":"period-day-prev","placeholder":null,"label":null,"value":null,"valueLength":0,"text":"J-1"}
+
+## 2026-09-01 10:55:32.305Z click
+- element: {"tag":"button","role":null,"ariaLabel":"Jour précédent","name":null,"type":"button","id":"period-day-prev","placeholder":null,"label":null,"value":null,"valueLength":0,"text":"J-1"}
+
+## 2026-09-01 10:55:32.496Z click
+- element: {"tag":"button","role":null,"ariaLabel":"Jour précédent","name":null,"type":"button","id":"period-day-prev","placeholder":null,"label":null,"value":null,"valueLength":0,"text":"J-1"}
+
+## 2026-09-01 10:55:32.661Z click
+- element: {"tag":"button","role":null,"ariaLabel":"Jour précédent","name":null,"type":"button","id":"period-day-prev","placeholder":null,"label":null,"value":null,"valueLength":0,"text":"J-1"}
+
+## 2026-09-01 10:55:32.886Z click
+- element: {"tag":"button","role":null,"ariaLabel":"Jour précédent","name":null,"type":"button","id":"period-day-prev","placeholder":null,"label":null,"value":null,"valueLength":0,"text":"J-1"}
+
+## 2026-09-01 10:55:33.087Z click
+- element: {"tag":"button","role":null,"ariaLabel":"Jour précédent","name":null,"type":"button","id":"period-day-prev","placeholder":null,"label":null,"value":null,"valueLength":0,"text":"J-1"}
+
+## 2026-09-01 10:55:33.345Z click
+- element: {"tag":"button","role":null,"ariaLabel":"Jour précédent","name":null,"type":"button","id":"period-day-prev","placeholder":null,"label":null,"value":null,"valueLength":0,"text":"J-1"}
+
+## 2026-09-01 10:55:33.881Z click
+- element: {"tag":"button","role":null,"ariaLabel":"Jour précédent","name":null,"type":"button","id":"period-day-prev","placeholder":null,"label":null,"value":null,"valueLength":0,"text":"J-1"}
+
+## 2026-09-01 10:55:35.361Z click
+- element: {"tag":"button","role":null,"ariaLabel":"Jour suivant","name":null,"type":"button","id":"period-day-next","placeholder":null,"label":null,"value":null,"valueLength":0,"text":"J+1"}
+
+## 2026-09-01 10:55:35.528Z click
+- element: {"tag":"button","role":null,"ariaLabel":"Jour suivant","name":null,"type":"button","id":"period-day-next","placeholder":null,"label":null,"value":null,"valueLength":0,"text":"J+1"}
+
+## 2026-09-01 10:55:35.695Z click
+- element: {"tag":"button","role":null,"ariaLabel":"Jour suivant","name":null,"type":"button","id":"period-day-next","placeholder":null,"label":null,"value":null,"valueLength":0,"text":"J+1"}
+
+## 2026-09-01 10:55:35.870Z click
+- element: {"tag":"button","role":null,"ariaLabel":"Jour suivant","name":null,"type":"button","id":"period-day-next","placeholder":null,"label":null,"value":null,"valueLength":0,"text":"J+1"}
+
+## 2026-09-01 10:55:36.020Z click
+- element: {"tag":"button","role":null,"ariaLabel":"Jour suivant","name":null,"type":"button","id":"period-day-next","placeholder":null,"label":null,"value":null,"valueLength":0,"text":"J+1"}
+
+## 2026-09-01 10:55:36.187Z click
+- element: {"tag":"button","role":null,"ariaLabel":"Jour suivant","name":null,"type":"button","id":"period-day-next","placeholder":null,"label":null,"value":null,"valueLength":0,"text":"J+1"}
+
+## 2026-09-01 10:55:36.356Z click
+- element: {"tag":"button","role":null,"ariaLabel":"Jour suivant","name":null,"type":"button","id":"period-day-next","placeholder":null,"label":null,"value":null,"valueLength":0,"text":"J+1"}
+
+## 2026-09-01 10:55:36.529Z click
+- element: {"tag":"button","role":null,"ariaLabel":"Jour suivant","name":null,"type":"button","id":"period-day-next","placeholder":null,"label":null,"value":null,"valueLength":0,"text":"J+1"}
+
+## 2026-09-01 10:55:36.712Z click
+- element: {"tag":"button","role":null,"ariaLabel":"Jour suivant","name":null,"type":"button","id":"period-day-next","placeholder":null,"label":null,"value":null,"valueLength":0,"text":"J+1"}
+
+## 2026-09-01 10:55:36.881Z click
+- element: {"tag":"button","role":null,"ariaLabel":"Jour suivant","name":null,"type":"button","id":"period-day-next","placeholder":null,"label":null,"value":null,"valueLength":0,"text":"J+1"}
+
+## 2026-09-01 10:55:37.103Z click
+- element: {"tag":"button","role":null,"ariaLabel":"Jour suivant","name":null,"type":"button","id":"period-day-next","placeholder":null,"label":null,"value":null,"valueLength":0,"text":"J+1"}
+
+## 2026-09-01 10:55:37.295Z click
+- element: {"tag":"button","role":null,"ariaLabel":"Jour suivant","name":null,"type":"button","id":"period-day-next","placeholder":null,"label":null,"value":null,"valueLength":0,"text":"J+1"}
+
+## 2026-09-01 10:55:37.562Z click
+- element: {"tag":"button","role":null,"ariaLabel":"Jour suivant","name":null,"type":"button","id":"period-day-next","placeholder":null,"label":null,"value":null,"valueLength":0,"text":"J+1"}
+
+## 2026-09-01 10:55:37.820Z click
+- element: {"tag":"button","role":null,"ariaLabel":"Jour suivant","name":null,"type":"button","id":"period-day-next","placeholder":null,"label":null,"value":null,"valueLength":0,"text":"J+1"}
+
+## 2026-09-01 10:55:38.345Z click
+- element: {"tag":"button","role":null,"ariaLabel":"Jour suivant","name":null,"type":"button","id":"period-day-next","placeholder":null,"label":null,"value":null,"valueLength":0,"text":"J+1"}
+
+## 2026-09-01 10:55:38.543Z click
+- element: {"tag":"button","role":null,"ariaLabel":"Jour suivant","name":null,"type":"button","id":"period-day-next","placeholder":null,"label":null,"value":null,"valueLength":0,"text":"J+1"}
+
+## 2026-09-01 10:55:38.727Z click
+- element: {"tag":"button","role":null,"ariaLabel":"Jour suivant","name":null,"type":"button","id":"period-day-next","placeholder":null,"label":null,"value":null,"valueLength":0,"text":"J+1"}
+
+## 2026-09-01 10:55:39.153Z click
+- element: {"tag":"button","role":null,"ariaLabel":"Jour suivant","name":null,"type":"button","id":"period-day-next","placeholder":null,"label":null,"value":null,"valueLength":0,"text":"J+1"}
+
+## 2026-09-01 10:55:39.338Z click
+- element: {"tag":"button","role":null,"ariaLabel":"Jour suivant","name":null,"type":"button","id":"period-day-next","placeholder":null,"label":null,"value":null,"valueLength":0,"text":"J+1"}
+
+## 2026-09-01 10:55:39.526Z click
+- element: {"tag":"button","role":null,"ariaLabel":"Jour suivant","name":null,"type":"button","id":"period-day-next","placeholder":null,"label":null,"value":null,"valueLength":0,"text":"J+1"}
+
+## 2026-09-01 10:55:39.753Z click
+- element: {"tag":"button","role":null,"ariaLabel":"Jour suivant","name":null,"type":"button","id":"period-day-next","placeholder":null,"label":null,"value":null,"valueLength":0,"text":"J+1"}
+
+## 2026-09-01 10:55:39.920Z click
+- element: {"tag":"button","role":null,"ariaLabel":"Jour suivant","name":null,"type":"button","id":"period-day-next","placeholder":null,"label":null,"value":null,"valueLength":0,"text":"J+1"}
+
+## 2026-09-01 10:55:40.904Z click
+- element: {"tag":"button","role":null,"ariaLabel":"10:00 — Merlin Perrot","name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"10:00Merlin Perrot"}
+
+## 2026-09-01 10:55:40.905Z navigate
+- url: http://localhost:3000/maitre#reservations/52
+- via: popstate
+
+## 2026-09-01 10:55:45.799Z click
+- element: {"tag":"a","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Planning"}
+
+## 2026-09-01 10:55:45.799Z navigate
+- url: http://localhost:3000/maitre#planning
+- via: popstate
+
+## 2026-09-01 10:57:46.279Z click
+- element: {"tag":"button","role":null,"ariaLabel":"10:00 — Ouvert","name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"10:00Ouvert"}
+
+## 2026-09-01 10:57:48.496Z click
+- element: {"tag":"button","role":null,"ariaLabel":"10:00 — Fermé","name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"10:00Fermé"}
+
+## 2026-09-01 10:57:49.753Z click
+- element: {"tag":"button","role":null,"ariaLabel":"10:30 — Ouvert","name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"10:30Ouvert"}
+
+## 2026-09-01 10:57:50.220Z click
+- element: {"tag":"button","role":null,"ariaLabel":"12:30 — Ouvert","name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"12:30Ouvert"}
+
+## 2026-09-01 10:57:50.753Z click
+- element: {"tag":"button","role":null,"ariaLabel":"10:30 — Fermé","name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"10:30Fermé"}
+
+## 2026-09-01 10:57:51.240Z click
+- element: {"tag":"button","role":null,"ariaLabel":"12:30 — Fermé","name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"12:30Fermé"}
+
+## 2026-09-01 10:57:51.770Z click
+- element: {"tag":"button","role":null,"ariaLabel":"10:30 — Ouvert","name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"10:30Ouvert"}
+
+## 2026-09-01 10:57:52.307Z click
+- element: {"tag":"button","role":null,"ariaLabel":"12:30 — Ouvert","name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"12:30Ouvert"}
+
+## 2026-09-01 10:57:52.983Z click
+- element: {"tag":"button","role":null,"ariaLabel":"10:30 — Fermé","name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"10:30Fermé"}
+
+## 2026-09-01 10:57:53.494Z click
+- element: {"tag":"button","role":null,"ariaLabel":"12:30 — Fermé","name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"12:30Fermé"}
+
+## 2026-09-01 10:57:58.273Z click
+- element: {"tag":"button","role":null,"ariaLabel":"17:00 — Ouvert","name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"17:00Ouvert"}
+
+## 2026-09-01 10:57:59.054Z click
+- element: {"tag":"button","role":null,"ariaLabel":"15:00 — Ouvert","name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"15:00Ouvert"}
+
+## 2026-09-01 10:57:59.544Z click
+- element: {"tag":"button","role":null,"ariaLabel":"14:30 — Ouvert","name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"14:30Ouvert"}
+
+## 2026-09-01 10:58:01.440Z click
+- element: {"tag":"button","role":null,"ariaLabel":"16:30 — Fermé","name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"16:30Fermé"}
+
+## 2026-09-01 10:58:01.787Z click
+- element: {"tag":"button","role":null,"ariaLabel":"17:00 — Fermé","name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"17:00Fermé"}
+
+## 2026-09-01 10:58:02.378Z click
+- element: {"tag":"button","role":null,"ariaLabel":"14:30 — Fermé","name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"14:30Fermé"}
+
+## 2026-09-01 10:58:02.753Z click
+- element: {"tag":"button","role":null,"ariaLabel":"15:00 — Fermé","name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"15:00Fermé"}
+
+## 2026-09-01 10:58:06.493Z click
+- element: {"tag":"button","role":null,"ariaLabel":"14:30 — Ouvert","name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"14:30Ouvert"}
+
+## 2026-09-01 10:58:06.953Z click
+- element: {"tag":"button","role":null,"ariaLabel":"15:00 — Ouvert","name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"15:00Ouvert"}
+
+## 2026-09-01 10:58:07.444Z click
+- element: {"tag":"button","role":null,"ariaLabel":"16:30 — Ouvert","name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"16:30Ouvert"}
+
+## 2026-09-01 10:58:07.736Z click
+- element: {"tag":"button","role":null,"ariaLabel":"17:00 — Ouvert","name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"17:00Ouvert"}
+
+## 2026-09-01 10:58:10.646Z click
+- element: {"tag":"button","role":null,"ariaLabel":"10:00 — Merlin Perrot","name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"10:00Merlin Perrot"}
+
+## 2026-09-01 10:58:10.646Z navigate
+- url: http://localhost:3000/maitre#reservations/52
+- via: popstate
+
+## 2026-09-01 10:58:13.678Z click
+- element: {"tag":"a","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Planning"}
+
+## 2026-09-01 10:58:13.678Z navigate
+- url: http://localhost:3000/maitre#planning
+- via: popstate
+
+## 2026-09-01 10:58:16.983Z click
+- element: {"tag":"button","role":null,"ariaLabel":"Jour suivant","name":null,"type":"button","id":"slot-day-next","placeholder":null,"label":null,"value":null,"valueLength":0,"text":"J+1"}
+
+## 2026-09-01 10:58:18.362Z click
+- element: {"tag":"button","role":null,"ariaLabel":"Jour précédent","name":null,"type":"button","id":"slot-day-prev","placeholder":null,"label":null,"value":null,"valueLength":0,"text":"J-1"}
+
+## 2026-09-01 10:58:21.645Z click
+- element: {"tag":"button","role":null,"ariaLabel":"Jour suivant","name":null,"type":"button","id":"period-day-next","placeholder":null,"label":null,"value":null,"valueLength":0,"text":"J+1"}
+
+## 2026-09-01 10:58:23.307Z click
+- element: {"tag":"button","role":null,"ariaLabel":"Jour précédent","name":null,"type":"button","id":"period-day-prev","placeholder":null,"label":null,"value":null,"valueLength":0,"text":"J-1"}
+
+## 2026-09-01 10:58:24.087Z click
+- element: {"tag":"button","role":null,"ariaLabel":"Jour suivant","name":null,"type":"button","id":"period-day-next","placeholder":null,"label":null,"value":null,"valueLength":0,"text":"J+1"}
+
+## 2026-09-01 10:59:09.595Z click
+- element: {"tag":"button","role":null,"ariaLabel":"15:00 — Fermé","name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"15:00Fermé"}
+
+## 2026-09-01 10:59:10.628Z click
+- element: {"tag":"button","role":null,"ariaLabel":"15:00 — Ouvert","name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"15:00Ouvert"}
+
+## 2026-09-01 10:59:11.378Z click
+- element: {"tag":"button","role":null,"ariaLabel":"15:00 — Fermé","name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"15:00Fermé"}
+
+## 2026-09-01 10:59:11.970Z click
+- element: {"tag":"button","role":null,"ariaLabel":"15:00 — Ouvert","name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"15:00Ouvert"}
+
+## 2026-09-01 10:59:12.528Z click
+- element: {"tag":"button","role":null,"ariaLabel":"15:00 — Fermé","name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"15:00Fermé"}
+
+## 2026-09-01 10:59:16.170Z click
+- element: {"tag":"button","role":null,"ariaLabel":"15:00 — Ouvert","name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"15:00Ouvert"}
+
+## 2026-09-01 10:59:17.424Z click
+- element: {"tag":"button","role":null,"ariaLabel":"15:00 — Fermé","name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"15:00Fermé"}
+
+## 2026-09-01 10:59:17.731Z click
+- element: {"tag":"button","role":null,"ariaLabel":"15:00 — Ouvert","name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"15:00Ouvert"}
+
+## 2026-09-01 10:59:18.378Z click
+- element: {"tag":"button","role":null,"ariaLabel":"15:00 — Fermé","name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"15:00Fermé"}
+
+## 2026-09-01 10:59:18.645Z click
+- element: {"tag":"button","role":null,"ariaLabel":"15:00 — Ouvert","name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"15:00Ouvert"}
+
+## 2026-09-01 11:01:26.847Z navigate
+- url: http://127.0.0.1:3000/maitre#planning
+- via: popstate
+
+## 2026-09-01 11:03:03.053Z click
+- element: {"tag":"button","role":null,"ariaLabel":"Jour suivant","name":null,"type":"button","id":"slot-day-next","placeholder":null,"label":null,"value":null,"valueLength":0,"text":"J+1"}
+
+## 2026-09-01 11:03:03.715Z click
+- element: {"tag":"button","role":null,"ariaLabel":"Jour suivant","name":null,"type":"button","id":"slot-day-next","placeholder":null,"label":null,"value":null,"valueLength":0,"text":"J+1"}
+
+## 2026-09-01 11:03:04.323Z click
+- element: {"tag":"button","role":null,"ariaLabel":"Jour suivant","name":null,"type":"button","id":"slot-day-next","placeholder":null,"label":null,"value":null,"valueLength":0,"text":"J+1"}
+
+## 2026-09-01 11:03:05.053Z click
+- element: {"tag":"button","role":null,"ariaLabel":"Jour précédent","name":null,"type":"button","id":"slot-day-prev","placeholder":null,"label":null,"value":null,"valueLength":0,"text":"J-1"}
+
+## 2026-09-01 11:03:05.245Z click
+- element: {"tag":"button","role":null,"ariaLabel":"Jour précédent","name":null,"type":"button","id":"slot-day-prev","placeholder":null,"label":null,"value":null,"valueLength":0,"text":"J-1"}
+
+## 2026-09-01 11:03:05.461Z click
+- element: {"tag":"button","role":null,"ariaLabel":"Jour précédent","name":null,"type":"button","id":"slot-day-prev","placeholder":null,"label":null,"value":null,"valueLength":0,"text":"J-1"}
+
+## 2026-09-01 11:03:06.178Z click
+- element: {"tag":"button","role":null,"ariaLabel":"Jour suivant","name":null,"type":"button","id":"slot-day-next","placeholder":null,"label":null,"value":null,"valueLength":0,"text":"J+1"}
+
+## 2026-09-01 11:03:06.361Z click
+- element: {"tag":"button","role":null,"ariaLabel":"Jour suivant","name":null,"type":"button","id":"slot-day-next","placeholder":null,"label":null,"value":null,"valueLength":0,"text":"J+1"}
+
+## 2026-09-01 11:03:07.478Z click
+- element: {"tag":"button","role":null,"ariaLabel":"Jour suivant","name":null,"type":"button","id":"period-day-next","placeholder":null,"label":null,"value":null,"valueLength":0,"text":"J+1"}
+
+## 2026-09-01 11:03:07.653Z click
+- element: {"tag":"button","role":null,"ariaLabel":"Jour suivant","name":null,"type":"button","id":"period-day-next","placeholder":null,"label":null,"value":null,"valueLength":0,"text":"J+1"}
+
+## 2026-09-01 11:03:08.194Z click
+- element: {"tag":"button","role":null,"ariaLabel":"Jour précédent","name":null,"type":"button","id":"period-day-prev","placeholder":null,"label":null,"value":null,"valueLength":0,"text":"J-1"}
+
+## 2026-09-01 11:03:08.361Z click
+- element: {"tag":"button","role":null,"ariaLabel":"Jour précédent","name":null,"type":"button","id":"period-day-prev","placeholder":null,"label":null,"value":null,"valueLength":0,"text":"J-1"}
+
+## 2026-09-01 11:03:47.073Z navigate
+- url: http://127.0.0.1:3000/maitre#planning
+- via: popstate
+
+## 2026-09-01 11:03:47.073Z navigate
+- url: http://127.0.0.1:3000/maitre#planning
+- via: popstate
+
+## 2026-09-01 11:04:29.805Z click
+- element: {"tag":"button","role":null,"ariaLabel":"Jour suivant","name":null,"type":"button","id":"period-day-next","placeholder":null,"label":null,"value":null,"valueLength":0,"text":"J+1"}
+
+## 2026-09-01 11:04:37.199Z click
+- element: {"tag":"button","role":null,"ariaLabel":"Jour précédent","name":null,"type":"button","id":"slot-day-prev","placeholder":null,"label":null,"value":null,"valueLength":0,"text":"J-1"}
+
+## 2026-09-01 11:05:47.116Z load
+- url: http://localhost:3000/reservation/convocation-chez-le-directeur?date=2027-09-01
+
+## 2026-09-01 11:05:58.719Z click
+- element: {"tag":"button","role":null,"ariaLabel":"Mois suivant","name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":""}
+
+## 2026-09-01 11:06:00.103Z click
+- element: {"tag":"button","role":null,"ariaLabel":"Mois précédent","name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":""}
+
+## 2026-09-01 11:06:04.753Z click
+- element: {"tag":"a","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Réserver"}
+
+## 2026-09-01 11:06:04.754Z navigate
+- url: http://localhost:3000/#salles
+- via: pushState
+
+## 2026-09-01 11:06:07.529Z click
+- element: {"tag":"a","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Réserver cette salle"}
+
+## 2026-09-01 11:06:07.529Z navigate
+- url: http://localhost:3000/reservation/la-malediction-du-vaisseau-fantome
+- via: pushState
+
+## 2026-09-01 11:06:07.794Z navigate
+- url: http://localhost:3000/reservation/la-malediction-du-vaisseau-fantome?date=2027-09-01
+- via: replaceState
+
+## 2026-09-01 11:06:21.699Z click
+- element: {"tag":"a","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Réserver"}
+
+## 2026-09-01 11:06:21.701Z navigate
+- url: http://localhost:3000/#salles
+- via: pushState
+
+## 2026-09-01 11:06:34.428Z click
+- element: {"tag":"a","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Réservations"}
+
+## 2026-09-01 11:06:34.429Z navigate
+- url: http://localhost:3000/maitre#reservations
+- via: popstate
+
+## 2026-09-01 11:08:32.778Z console.error
+- text: [vite] Failed to reload /src/pages/MaitreThibaultPage.jsx. This could be due to syntax errors or importing non-existent modules. (see errors above)
+
+## 2026-09-01 11:08:32.780Z console.error
+- text: [vite] Failed to reload /src/pages/MaitreThibaultPage.jsx. This could be due to syntax errors or importing non-existent modules. (see errors above)
+
+## 2026-09-01 11:08:32.781Z console.error
+- text: [vite] Failed to reload /src/pages/MaitreThibaultPage.jsx. This could be due to syntax errors or importing non-existent modules. (see errors above)
+
+## 2026-09-01 11:08:32.840Z console.error
+- text: [vite] Failed to reload /src/pages/MaitreThibaultPage.jsx. This could be due to syntax errors or importing non-existent modules. (see errors above)
+
+## 2026-09-01 11:09:13.434Z click
+- element: {"tag":"button","role":null,"ariaLabel":null,"name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Annuler"}
+
+## 2026-09-01 11:09:30.549Z navigate
+- url: http://127.0.0.1:3000/maitre#planning
+- via: popstate
+
+## 2026-09-01 11:09:30.549Z navigate
+- url: http://127.0.0.1:3000/maitre#planning
+- via: popstate
+
+## 2026-09-01 11:10:12.280Z click
+- element: {"tag":"button","role":null,"ariaLabel":"11:00 — Ouvert","name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"11:00Ouvert"}
+
+## 2026-09-01 11:10:30.775Z navigate
+- url: http://127.0.0.1:3000/maitre#planning
+- via: popstate
+
+## 2026-09-01 11:10:30.776Z navigate
+- url: http://127.0.0.1:3000/maitre#planning
+- via: popstate
+
+## 2026-09-01 11:11:08.146Z click
+- element: {"tag":"button","role":null,"ariaLabel":"11:00 — Indisponible","name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"11:00Indisponible"}
+
+## 2026-09-01 11:11:43.688Z click
+- element: {"tag":"button","role":null,"ariaLabel":"11:00 — Fermé","name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"11:00Fermé"}
+
+## 2026-09-01 11:13:45.715Z click
+- element: {"tag":"h2","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Réservations"}
+
+## 2026-09-01 11:13:45.790Z click
+- element: {"tag":"h2","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Réservations"}
+
+## 2026-09-01 11:24:10.512Z click
+- element: {"tag":"div","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Accès restreintBureau de Maître ThibaultRéservationsPlanningRecords & AvisVoir le siteSe déconnecterRéservationsLes demandes arrivent en attente. Confirme-les pour envoyer l’e-mail. Une réservation occupe 60 min. Modifier l’heure déplace la réservation dans une plage libre.DateHeureSalleClientJoueursStatut01/09/202710:00–11:00Le DirecteurMerlin Perrotmerlin.perrot.legler@gmail.c064En attenteConfirmerModifierRenvoyer l’e-mailAnnuler01/09/202712:00–13:00Le DirecteurTest Popintest-popin@example.com06000000013Annulée01/09/202711:00–12:00Le DirecteurTest Annulationtest-annulation@example.com06000000003Annulée01/09/202710:00–11:00Le DirecteurMerlinasdasd@asasd.com-3--1231234Annulée"}
+
+## 2026-09-01 11:24:11.741Z click
+- element: {"tag":"div","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Merlin Perrot"}
+
+## 2026-09-01 11:24:17.992Z load
+- url: http://localhost:3000/maitre#reservations
+
+## 2026-09-01 11:24:18.006Z load
+- url: http://localhost:3000/reservation/convocation-chez-le-directeur?date=2027-09-01
+
+## 2026-09-01 11:24:18.006Z load
+- url: http://127.0.0.1:3000/maitre#planning
+
+## 2026-09-01 11:24:18.392Z navigate
+- url: http://localhost:3000/maitre#reservations
+- via: replaceState
+
+## 2026-09-01 11:24:18.399Z navigate
+- url: http://127.0.0.1:3000/maitre#planning
+- via: replaceState
+
+## 2026-09-01 11:24:20.780Z click
+- element: {"tag":"a","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Planning"}
+
+## 2026-09-01 11:24:20.781Z navigate
+- url: http://localhost:3000/maitre#planning
+- via: popstate
+
+## 2026-09-01 11:24:27.120Z click
+- element: {"tag":"button","role":null,"ariaLabel":"15:00 — Fermé","name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"15:00Fermé"}
+
+## 2026-09-01 11:24:27.979Z click
+- element: {"tag":"button","role":null,"ariaLabel":"15:00 — Ouvert","name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"15:00Ouvert"}
+
+## 2026-09-01 11:24:29.253Z click
+- element: {"tag":"button","role":null,"ariaLabel":"14:30 — Fermé","name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"14:30Fermé"}
+
+## 2026-09-01 11:24:29.845Z click
+- element: {"tag":"button","role":null,"ariaLabel":"14:30 — Ouvert","name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"14:30Ouvert"}
+
+## 2026-09-01 11:24:30.488Z click
+- element: {"tag":"button","role":null,"ariaLabel":"16:30 — Fermé","name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"16:30Fermé"}
+
+## 2026-09-01 11:24:30.912Z click
+- element: {"tag":"button","role":null,"ariaLabel":"16:30 — Ouvert","name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"16:30Ouvert"}
+
+## 2026-09-01 11:24:31.545Z click
+- element: {"tag":"button","role":null,"ariaLabel":"17:00 — Fermé","name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"17:00Fermé"}
+
+## 2026-09-01 11:24:31.878Z click
+- element: {"tag":"button","role":null,"ariaLabel":"17:00 — Ouvert","name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"17:00Ouvert"}
+
+## 2026-09-01 11:24:36.978Z click
+- element: {"tag":"button","role":null,"ariaLabel":"12:30 — Ouvert","name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"12:30Ouvert"}
+
+## 2026-09-01 11:24:37.528Z click
+- element: {"tag":"button","role":null,"ariaLabel":"13:00 — Ouvert","name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"13:00Ouvert"}
+
+## 2026-09-01 11:24:38.053Z click
+- element: {"tag":"button","role":null,"ariaLabel":"11:00 — Ouvert","name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"11:00Ouvert"}
+
+## 2026-09-01 11:24:42.453Z click
+- element: {"tag":"button","role":null,"ariaLabel":"Jour suivant","name":null,"type":"button","id":"slot-day-next","placeholder":null,"label":null,"value":null,"valueLength":0,"text":"J+1"}
+
+## 2026-09-01 11:24:44.098Z click
+- element: {"tag":"button","role":null,"ariaLabel":"Jour précédent","name":null,"type":"button","id":"slot-day-prev","placeholder":null,"label":null,"value":null,"valueLength":0,"text":"J-1"}
+
+## 2026-09-01 11:24:55.782Z click
+- element: {"tag":"li","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"01/09/2027 — 10:00 → 22:00Retirer"}
+
+## 2026-09-01 11:24:59.311Z focus
+- element: {"tag":"select","role":null,"ariaLabel":null,"name":null,"type":null,"id":"period-date-day","placeholder":null,"label":"Jour","value":"01","valueLength":2,"text":"010203040506070809101112131415161718192021222324252627282930"}
+
+## 2026-09-01 11:24:59.315Z click
+- element: {"tag":"select","role":null,"ariaLabel":null,"name":null,"type":null,"id":"period-date-day","placeholder":null,"label":"Jour","value":"01","valueLength":2,"text":"010203040506070809101112131415161718192021222324252627282930"}
+
+## 2026-09-01 11:25:00.549Z change
+- element: {"tag":"select","role":null,"ariaLabel":null,"name":null,"type":null,"id":"period-date-day","placeholder":null,"label":"Jour","value":"03","valueLength":2,"text":"010203040506070809101112131415161718192021222324252627282930"}
+
+## 2026-09-01 11:25:00.554Z click
+- element: {"tag":"select","role":null,"ariaLabel":null,"name":null,"type":null,"id":"period-date-day","placeholder":null,"label":"Jour","value":"03","valueLength":2,"text":"010203040506070809101112131415161718192021222324252627282930"}
+
+## 2026-09-01 11:25:01.692Z blur
+- element: {"tag":"select","role":null,"ariaLabel":null,"name":null,"type":null,"id":"period-date-day","placeholder":null,"label":"Jour","value":"03","valueLength":2,"text":"010203040506070809101112131415161718192021222324252627282930"}
+
+## 2026-09-01 11:25:01.816Z click
+- element: {"tag":"button","role":null,"ariaLabel":null,"name":null,"type":"submit","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Ouvrir cette plage"}
+
+## 2026-09-01 11:25:01.818Z submit
+- action: http://localhost:3000/maitre#planning
+- fields: [{"label":"Jour","type":"select-one","value":"03","length":2,"redacted":false},{"label":"Mois","type":"select-one","value":"09","length":2,"redacted":false},{"label":"Année","type":"select-one","value":"27","length":2,"redacted":false},{"label":"Heure","type":"select-one","value":"10","length":2,"redacted":false},{"label":"Minutes","type":"select-one","value":"00","length":2,"redacted":false},{"label":"Heure","type":"select-one","value":"22","length":2,"redacted":false},{"label":"Minutes","type":"select-one","value":"00","length":2,"redacted":false},{"label":"[submit]","type":"submit","value":"","length":0,"redacted":false},{"label":"Jour précédent","type":"button","value":"","length":0,"redacted":false},{"label":"Jour suivant","type":"button","value":"","length":0,"redacted":false}]
+
+## 2026-09-01 11:25:04.949Z click
+- element: {"tag":"li","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"03/09/2027 — 10:00 → 22:00Retirer"}
+
+## 2026-09-01 11:25:07.706Z click
+- element: {"tag":"button","role":null,"ariaLabel":"10:30 — Ouvert","name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"10:30Ouvert"}
+
+## 2026-09-01 11:25:08.574Z click
+- element: {"tag":"button","role":null,"ariaLabel":"10:30 — Indisponible","name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"10:30Indisponible"}
+
+## 2026-09-01 11:25:09.334Z click
+- element: {"tag":"button","role":null,"ariaLabel":"10:30 — Fermé","name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"10:30Fermé"}
+
+## 2026-09-01 11:25:11.927Z click
+- element: {"tag":"button","role":null,"ariaLabel":null,"name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"03/09/2027 — 10:00 → 22:00"}
+
+## 2026-09-01 11:25:12.673Z click
+- element: {"tag":"button","role":null,"ariaLabel":null,"name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"03/09/2027 — 10:00 → 22:00"}
+
+## 2026-09-01 11:25:12.860Z click
+- element: {"tag":"button","role":null,"ariaLabel":null,"name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"03/09/2027 — 10:00 → 22:00"}
+
+## 2026-09-01 11:25:14.658Z click
+- element: {"tag":"li","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"03/09/2027 — 10:00 → 22:00Retirer"}
+
+## 2026-09-01 11:28:12.961Z click
+- element: {"tag":"button","role":null,"ariaLabel":"Jour suivant","name":null,"type":"button","id":"slot-day-next","placeholder":null,"label":null,"value":null,"valueLength":0,"text":"J+1"}
+
+## 2026-09-01 11:28:13.777Z click
+- element: {"tag":"button","role":null,"ariaLabel":"Jour précédent","name":null,"type":"button","id":"slot-day-prev","placeholder":null,"label":null,"value":null,"valueLength":0,"text":"J-1"}
+
+## 2026-09-01 11:28:14.492Z click
+- element: {"tag":"button","role":null,"ariaLabel":"Jour précédent","name":null,"type":"button","id":"slot-day-prev","placeholder":null,"label":null,"value":null,"valueLength":0,"text":"J-1"}
+
+## 2026-09-01 11:28:15.169Z click
+- element: {"tag":"button","role":null,"ariaLabel":"Jour suivant","name":null,"type":"button","id":"slot-day-next","placeholder":null,"label":null,"value":null,"valueLength":0,"text":"J+1"}
+
+## 2026-09-01 11:28:16.069Z click
+- element: {"tag":"button","role":null,"ariaLabel":"Jour suivant","name":null,"type":"button","id":"slot-day-next","placeholder":null,"label":null,"value":null,"valueLength":0,"text":"J+1"}
+
+## 2026-09-01 11:28:17.142Z window.error
+- message: Uncaught ReferenceError: onAddPeriod is not defined
+- source: http://127.0.0.1:3000/src/pages/MaitreThibaultPage.jsx?t=1788262097028
+- line: 784
+- col: 54
+- stack: 
+    ReferenceError: onAddPeriod is not defined
+        at MaitreThibaultPage (http://127.0.0.1:3000/src/pages/MaitreThibaultPage.jsx?t=1788262097028:784:54)
+        at renderWithHooks (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=7b61f176:11596:26)
+        at updateFunctionComponent (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=7b61f176:14630:28)
+        at beginWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=7b61f176:15972:22)
+        at HTMLUnknownElement.callCallback2 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=7b61f176:3680:22)
+        at Object.invokeGuardedCallbackDev (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=7b61f176:3705:24)
+        at invokeGuardedCallback (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=7b61f176:3739:39)
+        at beginWork$1 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=7b61f176:19818:15)
+        at performUnitOfWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=7b61f176:19251:20)
+        at workLoopSync (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=7b61f176:19190:13)
+
+## 2026-09-01 11:28:17.143Z window.error
+- message: Uncaught ReferenceError: onAddPeriod is not defined
+- source: http://127.0.0.1:3000/src/pages/MaitreThibaultPage.jsx?t=1788262097028
+- line: 784
+- col: 54
+- stack: 
+    ReferenceError: onAddPeriod is not defined
+        at MaitreThibaultPage (http://127.0.0.1:3000/src/pages/MaitreThibaultPage.jsx?t=1788262097028:784:54)
+        at renderWithHooks (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=7b61f176:11596:26)
+        at updateFunctionComponent (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=7b61f176:14630:28)
+        at beginWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=7b61f176:15972:22)
+        at HTMLUnknownElement.callCallback2 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=7b61f176:3680:22)
+        at Object.invokeGuardedCallbackDev (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=7b61f176:3705:24)
+        at invokeGuardedCallback (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=7b61f176:3739:39)
+        at beginWork$1 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=7b61f176:19818:15)
+        at performUnitOfWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=7b61f176:19251:20)
+        at workLoopSync (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=7b61f176:19190:13)
+
+## 2026-09-01 11:28:17.143Z console.error
+- text: 
+    The above error occurred in the <MaitreThibaultPage> component:
+    
+        at MaitreThibaultPage (http://127.0.0.1:3000/src/pages/MaitreThibaultPage.jsx?t=1788262097028:111:33)
+        at RenderedRoute (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=7b61f176:6647:26)
+        at Routes (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=7b61f176:7572:3)
+        at Router (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=7b61f176:7511:13)
+        at BrowserRouter (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=7b61f176:10816:3)
+        at App
+    
+    Consider adding an error boundary to your tree to customize error handling behavior.
+    Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries.
+
+## 2026-09-01 11:28:17.144Z unhandledrejection
+- message: onAddPeriod is not defined
+- stack: 
+    ReferenceError: onAddPeriod is not defined
+        at MaitreThibaultPage (http://127.0.0.1:3000/src/pages/MaitreThibaultPage.jsx?t=1788262097028:784:54)
+        at renderWithHooks (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=7b61f176:11596:26)
+        at updateFunctionComponent (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=7b61f176:14630:28)
+        at beginWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=7b61f176:15972:22)
+        at beginWork$1 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=7b61f176:19806:22)
+        at performUnitOfWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=7b61f176:19251:20)
+        at workLoopSync (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=7b61f176:19190:13)
+        at renderRootSync (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=7b61f176:19169:15)
+        at recoverFromConcurrentError (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=7b61f176:18786:28)
+        at performSyncWorkOnRoot (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=7b61f176:18932:28)
+
+## 2026-09-01 11:28:17.445Z root.empty
+- url: http://127.0.0.1:3000/maitre#planning
+
+## 2026-09-01 11:28:17.144Z window.error
+- message: Uncaught ReferenceError: onAddPeriod is not defined
+- source: http://localhost:3000/src/pages/MaitreThibaultPage.jsx?t=1788262097028
+- line: 784
+- col: 54
+- stack: 
+    ReferenceError: onAddPeriod is not defined
+        at MaitreThibaultPage (http://localhost:3000/src/pages/MaitreThibaultPage.jsx?t=1788262097028:784:54)
+        at renderWithHooks (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=7b61f176:11596:26)
+        at updateFunctionComponent (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=7b61f176:14630:28)
+        at beginWork (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=7b61f176:15972:22)
+        at HTMLUnknownElement.callCallback2 (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=7b61f176:3680:22)
+        at Object.invokeGuardedCallbackDev (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=7b61f176:3705:24)
+        at invokeGuardedCallback (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=7b61f176:3739:39)
+        at beginWork$1 (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=7b61f176:19818:15)
+        at performUnitOfWork (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=7b61f176:19251:20)
+        at workLoopSync (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=7b61f176:19190:13)
+
+## 2026-09-01 11:28:17.145Z window.error
+- message: Uncaught ReferenceError: onAddPeriod is not defined
+- source: http://localhost:3000/src/pages/MaitreThibaultPage.jsx?t=1788262097028
+- line: 784
+- col: 54
+- stack: 
+    ReferenceError: onAddPeriod is not defined
+        at MaitreThibaultPage (http://localhost:3000/src/pages/MaitreThibaultPage.jsx?t=1788262097028:784:54)
+        at renderWithHooks (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=7b61f176:11596:26)
+        at updateFunctionComponent (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=7b61f176:14630:28)
+        at beginWork (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=7b61f176:15972:22)
+        at HTMLUnknownElement.callCallback2 (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=7b61f176:3680:22)
+        at Object.invokeGuardedCallbackDev (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=7b61f176:3705:24)
+        at invokeGuardedCallback (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=7b61f176:3739:39)
+        at beginWork$1 (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=7b61f176:19818:15)
+        at performUnitOfWork (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=7b61f176:19251:20)
+        at workLoopSync (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=7b61f176:19190:13)
+
+## 2026-09-01 11:28:17.146Z console.error
+- text: 
+    The above error occurred in the <MaitreThibaultPage> component:
+    
+        at MaitreThibaultPage (http://localhost:3000/src/pages/MaitreThibaultPage.jsx?t=1788262097028:111:33)
+        at RenderedRoute (http://localhost:3000/node_modules/.vite/deps/react-router-dom.js?v=7b61f176:6647:26)
+        at Routes (http://localhost:3000/node_modules/.vite/deps/react-router-dom.js?v=7b61f176:7572:3)
+        at Router (http://localhost:3000/node_modules/.vite/deps/react-router-dom.js?v=7b61f176:7511:13)
+        at BrowserRouter (http://localhost:3000/node_modules/.vite/deps/react-router-dom.js?v=7b61f176:10816:3)
+        at App
+    
+    Consider adding an error boundary to your tree to customize error handling behavior.
+    Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries.
+
+## 2026-09-01 11:28:17.146Z unhandledrejection
+- message: onAddPeriod is not defined
+- stack: 
+    ReferenceError: onAddPeriod is not defined
+        at MaitreThibaultPage (http://localhost:3000/src/pages/MaitreThibaultPage.jsx?t=1788262097028:784:54)
+        at renderWithHooks (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=7b61f176:11596:26)
+        at updateFunctionComponent (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=7b61f176:14630:28)
+        at beginWork (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=7b61f176:15972:22)
+        at beginWork$1 (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=7b61f176:19806:22)
+        at performUnitOfWork (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=7b61f176:19251:20)
+        at workLoopSync (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=7b61f176:19190:13)
+        at renderRootSync (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=7b61f176:19169:15)
+        at recoverFromConcurrentError (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=7b61f176:18786:28)
+        at performSyncWorkOnRoot (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=7b61f176:18932:28)
+
+## 2026-09-01 11:28:17.447Z root.empty
+- url: http://localhost:3000/maitre#planning
+
+## 2026-09-01 11:28:18.617Z navigate
+- url: http://localhost:3000/maitre#planning
+- via: replaceState
+
+## 2026-09-01 11:28:21.589Z click
+- element: {"tag":"button","role":null,"ariaLabel":"Jour suivant","name":null,"type":"button","id":"period-day-next","placeholder":null,"label":null,"value":null,"valueLength":0,"text":"J+1"}
+
+## 2026-09-01 11:28:22.556Z click
+- element: {"tag":"button","role":null,"ariaLabel":"Jour précédent","name":null,"type":"button","id":"period-day-prev","placeholder":null,"label":null,"value":null,"valueLength":0,"text":"J-1"}
+
+## 2026-09-01 11:28:25.047Z click
+- element: {"tag":"button","role":null,"ariaLabel":"Jour suivant","name":null,"type":"button","id":"slot-day-next","placeholder":null,"label":null,"value":null,"valueLength":0,"text":"J+1"}
+
+## 2026-09-01 11:28:25.402Z click
+- element: {"tag":"button","role":null,"ariaLabel":"Jour suivant","name":null,"type":"button","id":"slot-day-next","placeholder":null,"label":null,"value":null,"valueLength":0,"text":"J+1"}
+
+## 2026-09-01 11:28:27.035Z click
+- element: {"tag":"button","role":null,"ariaLabel":null,"name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Modifier"}
+
+## 2026-09-01 11:28:30.422Z focus
+- element: {"tag":"select","role":null,"ariaLabel":null,"name":null,"type":null,"id":"period-start-hour","placeholder":null,"label":"Heure","value":"10","valueLength":2,"text":"000102030405060708091011121314151617181920212223"}
+
+## 2026-09-01 11:28:30.423Z click
+- element: {"tag":"select","role":null,"ariaLabel":null,"name":null,"type":null,"id":"period-start-hour","placeholder":null,"label":"Heure","value":"10","valueLength":2,"text":"000102030405060708091011121314151617181920212223"}
+
+## 2026-09-01 11:28:32.125Z change
+- element: {"tag":"select","role":null,"ariaLabel":null,"name":null,"type":null,"id":"period-start-hour","placeholder":null,"label":"Heure","value":"12","valueLength":2,"text":"000102030405060708091011121314151617181920212223"}
+
+## 2026-09-01 11:28:32.128Z click
+- element: {"tag":"select","role":null,"ariaLabel":null,"name":null,"type":null,"id":"period-start-hour","placeholder":null,"label":"Heure","value":"12","valueLength":2,"text":"000102030405060708091011121314151617181920212223"}
+
+## 2026-09-01 11:28:33.119Z blur
+- element: {"tag":"select","role":null,"ariaLabel":null,"name":null,"type":null,"id":"period-start-hour","placeholder":null,"label":"Heure","value":"12","valueLength":2,"text":"000102030405060708091011121314151617181920212223"}
+
+## 2026-09-01 11:28:33.219Z click
+- element: {"tag":"button","role":null,"ariaLabel":null,"name":null,"type":"submit","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Enregistrer la plage"}
+
+## 2026-09-01 11:28:33.220Z submit
+- action: http://localhost:3000/maitre#planning
+- fields: [{"label":"Jour","type":"select-one","value":"03","length":2,"redacted":false},{"label":"Mois","type":"select-one","value":"09","length":2,"redacted":false},{"label":"Année","type":"select-one","value":"27","length":2,"redacted":false},{"label":"Heure","type":"select-one","value":"12","length":2,"redacted":false},{"label":"Minutes","type":"select-one","value":"00","length":2,"redacted":false},{"label":"Heure","type":"select-one","value":"22","length":2,"redacted":false},{"label":"Minutes","type":"select-one","value":"00","length":2,"redacted":false},{"label":"[submit]","type":"submit","value":"","length":0,"redacted":false},{"label":"[button]","type":"button","value":"","length":0,"redacted":false},{"label":"Jour précédent","type":"button","value":"","length":0,"redacted":false},{"label":"Jour suivant","type":"button","value":"","length":0,"redacted":false}]
+
+## 2026-09-01 11:28:39.369Z click
+- element: {"tag":"button","role":null,"ariaLabel":"12:00 — Ouvert","name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"12:00Ouvert"}
+
+## 2026-09-01 11:28:40.779Z click
+- element: {"tag":"button","role":null,"ariaLabel":"12:30 — Ouvert","name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"12:30Ouvert"}
+
+## 2026-09-01 11:28:44.588Z click
+- element: {"tag":"a","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Voir le site"}
+
+## 2026-09-01 11:28:44.589Z navigate
+- url: http://localhost:3000/
+- via: pushState
+
+## 2026-09-01 11:28:47.152Z click
+- element: {"tag":"a","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Réserver une session"}
+
+## 2026-09-01 11:28:47.152Z navigate
+- url: http://localhost:3000/#salles
+- via: pushState
+
+## 2026-09-01 11:28:49.068Z click
+- element: {"tag":"a","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Réserver cette salle"}
+
+## 2026-09-01 11:28:49.069Z navigate
+- url: http://localhost:3000/reservation/convocation-chez-le-directeur
+- via: pushState
+
+## 2026-09-01 11:28:49.366Z navigate
+- url: http://localhost:3000/reservation/convocation-chez-le-directeur?date=2027-09-01
+- via: replaceState
+
+## 2026-09-01 11:28:57.185Z click
+- element: {"tag":"button","role":null,"ariaLabel":"vendredi 3 septembre 2027 — 17 créneaux disponibles","name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"317 dispo"}
+
+## 2026-09-01 11:28:57.186Z navigate
+- url: http://localhost:3000/reservation/convocation-chez-le-directeur?date=2027-09-03
+- via: replaceState
+
+## 2026-09-01 11:29:00.317Z navigate
+- url: http://127.0.0.1:3000/maitre#planning
+- via: popstate
+
+## 2026-09-01 11:29:00.317Z navigate
+- url: http://127.0.0.1:3000/maitre#planning
+- via: popstate
+
+## 2026-09-01 11:29:03.436Z load
+- url: http://localhost:3000/#salles
+
+## 2026-09-01 11:29:11.457Z navigate
+- url: http://localhost:3000/#salles
+- via: popstate
+
+## 2026-09-01 11:29:12.253Z navigate
+- url: http://localhost:3000/
+- via: popstate
+
+## 2026-09-01 11:29:13.237Z navigate
+- url: http://localhost:3000/maitre#planning
+- via: popstate
+
+## 2026-09-01 11:29:24.860Z click
+- element: {"tag":"li","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"03/09/2027 — 12:00 → 22:00ModifierRetirer"}
+
+## 2026-09-01 11:29:25.461Z click
+- element: {"tag":"li","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"01/09/2027 — 10:00 → 22:00ModifierRetirer"}
+
+## 2026-09-01 11:29:25.981Z click
+- element: {"tag":"li","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"03/09/2027 — 12:00 → 22:00ModifierRetirer"}
+
+## 2026-09-01 11:29:39.536Z click
+- element: {"tag":"button","role":null,"ariaLabel":null,"name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Modifier"}
+
+## 2026-09-01 11:29:52.189Z change
+- element: {"tag":"select","role":null,"ariaLabel":null,"name":null,"type":null,"id":"period-end-hour","placeholder":null,"label":"Heure","value":"20","valueLength":2,"text":"000102030405060708091011121314151617181920212223"}
+
+## 2026-09-01 11:29:56.382Z click
+- element: {"tag":"button","role":null,"ariaLabel":null,"name":null,"type":"submit","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Enregistrer la plage"}
+
+## 2026-09-01 11:29:56.383Z submit
+- action: http://127.0.0.1:3000/maitre#planning
+- fields: [{"label":"Jour","type":"select-one","value":"03","length":2,"redacted":false},{"label":"Mois","type":"select-one","value":"09","length":2,"redacted":false},{"label":"Année","type":"select-one","value":"27","length":2,"redacted":false},{"label":"Heure","type":"select-one","value":"12","length":2,"redacted":false},{"label":"Minutes","type":"select-one","value":"00","length":2,"redacted":false},{"label":"Heure","type":"select-one","value":"20","length":2,"redacted":false},{"label":"Minutes","type":"select-one","value":"00","length":2,"redacted":false},{"label":"[submit]","type":"submit","value":"","length":0,"redacted":false},{"label":"[button]","type":"button","value":"","length":0,"redacted":false},{"label":"Jour précédent","type":"button","value":"","length":0,"redacted":false},{"label":"Jour suivant","type":"button","value":"","length":0,"redacted":false}]
+
+## 2026-09-01 11:30:00.505Z click
+- element: {"tag":"h2","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Plages horaires"}
+
+## 2026-09-01 12:13:32.272Z click
+- element: {"tag":"li","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"01/09/2027 — 10:00 → 22:00ModifierRetirer"}
+

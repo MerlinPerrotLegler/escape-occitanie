@@ -38,11 +38,14 @@ import {
   openSlot,
   resendBookingEmail,
   updateBooking,
+  updatePeriod,
 } from '@/lib/booking';
 import ShortDateInput, { isoToShortDate, parisTodayIso } from '@/components/ShortDateInput';
 import ShortTimeInput from '@/components/ShortTimeInput';
+import DayPagination from '@/components/DayPagination';
 import { firstOpenIso } from '@/lib/calendarMonths';
 import { cn } from '@/lib/utils';
+import { nextAdminSlotStatus, slotStatusLabel } from '@/lib/slotStatus';
 
 const EMPTY_REVIEWS = [1, 2, 3].map((slot) => ({
   slot,
@@ -94,22 +97,26 @@ const TAB_ALIASES = {
   creneau: 'planning',
 };
 
-function tabFromHash() {
-  const raw = window.location.hash.replace(/^#/, '').toLowerCase();
-  const id = TAB_ALIASES[raw] || raw;
-  return TABS.some((tab) => tab.id === id) ? id : 'reservations';
-}
-
-function slotStatusLabel(status) {
-  if (status === 'reserved') return 'Réservé';
-  if (status === 'closed') return 'Fermé';
-  return 'Ouvert';
+function parseLocationHash() {
+  const raw = window.location.hash.replace(/^#/, '');
+  const [tabRaw, focusRaw] = raw.split('/');
+  const key = (tabRaw || '').toLowerCase();
+  const id = TAB_ALIASES[key] || key;
+  const tab = TABS.some((item) => item.id === id) ? id : 'reservations';
+  const focusBookingId = /^\d+$/.test(focusRaw || '') ? Number(focusRaw) : null;
+  return { tab, focusBookingId };
 }
 
 function slotTimeRange(row) {
-  const duration = Number(row.duration_minutes) || 30;
+  const duration = Number(row.duration_minutes) || 60;
   if (duration <= 30 || !row.end_time) return row.time;
   return `${row.time}–${row.end_time}`;
+}
+
+function sortPeriods(list) {
+  return [...list].sort(
+    (a, b) => a.period_date.localeCompare(b.period_date) || a.start.localeCompare(b.start)
+  );
 }
 
 function toastFromApi(err) {
@@ -132,7 +139,8 @@ function MaitreThibaultPage() {
   const [password, setPassword] = useState('');
   const [remember, setRemember] = useState(readRememberPreference);
   const [loginError, setLoginError] = useState('');
-  const [tab, setTab] = useState(tabFromHash);
+  const [tab, setTab] = useState(() => parseLocationHash().tab);
+  const [focusBookingId, setFocusBookingId] = useState(() => parseLocationHash().focusBookingId);
   const [reviews, setReviews] = useState(EMPTY_REVIEWS);
   const [records, setRecords] = useState(EMPTY_RECORDS);
   const [apiDown, setApiDown] = useState(false);
@@ -140,12 +148,19 @@ function MaitreThibaultPage() {
   const [periods, setPeriods] = useState([]);
   const [bookings, setBookings] = useState([]);
   const [periodForm, setPeriodForm] = useState({ date: parisTodayIso(), start: '10:00', end: '22:00' });
+  const [editingPeriodId, setEditingPeriodId] = useState(null);
   const [editingBooking, setEditingBooking] = useState(null);
   const [editForm, setEditForm] = useState({ name: '', email: '', phone: '', players: 4, date: '', time: '' });
   const [cancellingBooking, setCancellingBooking] = useState(null);
   const [slotDate, setSlotDate] = useState(parisTodayIso);
   const [daySlots, setDaySlots] = useState({ directeur: [], vaisseau: [] });
   const [loadingSlots, setLoadingSlots] = useState(false);
+
+  function setPlanningDate(date) {
+    const next = date || parisTodayIso();
+    setSlotDate(next);
+    setPeriodForm((form) => (form.date === next ? form : { ...form, date: next }));
+  }
 
   async function reloadDaySlots(date) {
     if (!date) return;
@@ -175,13 +190,25 @@ function MaitreThibaultPage() {
   }, []);
 
   useEffect(() => {
-    const sync = () => setTab(tabFromHash());
+    const sync = () => {
+      const next = parseLocationHash();
+      setTab(next.tab);
+      setFocusBookingId(next.focusBookingId);
+    };
     if (!window.location.hash) {
-      window.history.replaceState(null, '', `#${tabFromHash()}`);
+      window.history.replaceState(null, '', `#${parseLocationHash().tab}`);
     }
     window.addEventListener('hashchange', sync);
     return () => window.removeEventListener('hashchange', sync);
   }, []);
+
+  useEffect(() => {
+    if (tab !== 'reservations' || !focusBookingId) return undefined;
+    const node = document.getElementById(`booking-${focusBookingId}`);
+    if (!node) return undefined;
+    node.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    return undefined;
+  }, [tab, focusBookingId, bookings]);
 
   useEffect(() => {
     if (!session) return undefined;
@@ -203,8 +230,11 @@ function MaitreThibaultPage() {
         setPeriods(list);
         setSlotDate((current) => {
           const openDates = list.map((row) => row.period_date);
-          if (openDates.includes(current)) return current;
-          return firstOpenIso(parisTodayIso(), openDates) || current;
+          const next = openDates.includes(current)
+            ? current
+            : firstOpenIso(parisTodayIso(), openDates) || current;
+          setPeriodForm((form) => (form.date === next ? form : { ...form, date: next }));
+          return next;
         });
       })
       .catch(() => {});
@@ -291,16 +321,36 @@ function MaitreThibaultPage() {
     setSession(null);
   }
 
-  async function onAddPeriod(event) {
+  function startEditPeriod(row) {
+    setEditingPeriodId(row.id);
+    setSlotDate(row.period_date);
+    setPeriodForm({ date: row.period_date, start: row.start, end: row.end });
+  }
+
+  function cancelEditPeriod() {
+    setEditingPeriodId(null);
+    setPeriodForm((form) => ({ ...form, start: '10:00', end: '22:00' }));
+  }
+
+  async function onSavePeriod(event) {
     event.preventDefault();
     try {
+      if (editingPeriodId) {
+        const updated = await updatePeriod(editingPeriodId, periodForm);
+        setPeriods((list) => sortPeriods(list.map((row) => (row.id === updated.id ? updated : row))));
+        setEditingPeriodId(null);
+        toast.success(`Plage modifiée le ${isoToShortDate(updated.period_date)}.`);
+        setPlanningDate(updated.period_date);
+        await reloadDaySlots(updated.period_date);
+        return;
+      }
       const created = await createPeriod(periodForm);
-      setPeriods((list) => [...list, created].sort((a, b) => a.period_date.localeCompare(b.period_date)));
+      setPeriods((list) => sortPeriods([...list, created]));
       toast.success(`Plage ouverte le ${isoToShortDate(created.period_date)}.`);
       if (created.period_date === slotDate) {
         await reloadDaySlots(slotDate);
       } else {
-        setSlotDate(created.period_date);
+        setPlanningDate(created.period_date);
       }
     } catch (err) {
       if (err.status === 401) setSession(null);
@@ -311,6 +361,10 @@ function MaitreThibaultPage() {
   async function onDeletePeriod(id) {
     try {
       await deletePeriod(id);
+      if (editingPeriodId === id) {
+        setEditingPeriodId(null);
+        setPeriodForm((form) => ({ ...form, start: '10:00', end: '22:00' }));
+      }
       const remaining = periods.filter((row) => row.id !== id);
       setPeriods(remaining);
       toast.success('Plage retirée.');
@@ -319,7 +373,7 @@ function MaitreThibaultPage() {
           parisTodayIso(),
           remaining.map((row) => row.period_date)
         );
-        setSlotDate(fallback || parisTodayIso());
+        setPlanningDate(fallback || parisTodayIso());
         if (!fallback) setDaySlots({ directeur: [], vaisseau: [] });
         return;
       }
@@ -330,13 +384,17 @@ function MaitreThibaultPage() {
   }
 
   async function onToggleSlot(room, slot) {
-    if (slot.status === 'reserved') return;
+    const next = nextAdminSlotStatus(slot.status);
+    if (!next) return;
     try {
-      if (slot.status === 'closed') {
+      if (next === 'open') {
         await openSlot(room, slotDate, slot.time);
         toast.success(`Créneau ${slot.time} rouvert.`);
+      } else if (next === 'hidden') {
+        await closeSlot(room, slotDate, slot.time, 'hidden');
+        toast.success(`Créneau ${slot.time} indisponible.`);
       } else {
-        await closeSlot(room, slotDate, slot.time);
+        await closeSlot(room, slotDate, slot.time, 'closed');
         toast.success(`Créneau ${slot.time} fermé.`);
       }
       await reloadDaySlots(slotDate);
@@ -644,20 +702,20 @@ function MaitreThibaultPage() {
                   <p className="mt-2 max-w-2xl text-sm leading-relaxed text-muted-foreground">
                     Ouvrez un jour en indiquant le début et la fin (au moins 60 minutes, aligné
                     sur 30). Le site propose alors tous les départs possibles, jusqu’à 18 mois à
-                    l’avance. Une partie dure 60 minutes ; une demande en attente n’occupe que 30
-                    minutes jusqu’à confirmation. Une partie à 13h occupe 13h et 13h30. Retirer une
-                    plage ferme les nouvelles réservations, sans supprimer les résas déjà
-                    enregistrées. Tu peux aussi fermer un créneau ouvert sans retirer toute la plage.
+                    l’avance. Une partie dure 60 minutes : une réservation à 13h occupe 13h et
+                    13h30, dès la demande. Retirer une plage ferme les nouvelles réservations,
+                    sans supprimer les résas déjà enregistrées. Tu peux aussi fermer un créneau
+                    ouvert sans retirer toute la plage.
                   </p>
                 </div>
-                <form onSubmit={onAddPeriod} className="flex flex-wrap items-end gap-3">
+                <form onSubmit={onSavePeriod} className="flex flex-wrap items-end gap-3">
                   <div className="text-sm">
                     <p className="mb-1">Date</p>
                     <ShortDateInput
                       id="period-date"
                       required
                       value={periodForm.date}
-                      onChange={(date) => setPeriodForm({ ...periodForm, date })}
+                      onChange={setPlanningDate}
                     />
                   </div>
                   <div className="text-sm">
@@ -678,17 +736,36 @@ function MaitreThibaultPage() {
                       onChange={(end) => setPeriodForm({ ...periodForm, end })}
                     />
                   </div>
-                  <Button type="submit">Ouvrir cette plage</Button>
+                  <Button type="submit">
+                    {editingPeriodId ? 'Enregistrer la plage' : 'Ouvrir cette plage'}
+                  </Button>
+                  {editingPeriodId ? (
+                    <Button type="button" variant="outline" onClick={cancelEditPeriod}>
+                      Annuler
+                    </Button>
+                  ) : null}
+                  <DayPagination
+                    id="period-day"
+                    className="ml-auto"
+                    value={periodForm.date}
+                    onChange={setPlanningDate}
+                  />
                 </form>
                 <ul className="max-h-64 overflow-y-auto divide-y divide-border/60 rounded-xl border border-border">
                   {periods.length === 0 ? (
                     <li className="px-5 py-6 text-sm text-muted-foreground">Aucune plage ouverte.</li>
                   ) : (
                     periods.map((row) => (
-                      <li key={row.id} className="flex items-center justify-between gap-4 px-5 py-3">
+                      <li
+                        key={row.id}
+                        className={cn(
+                          'flex items-center justify-between gap-4 px-5 py-3',
+                          editingPeriodId === row.id && 'bg-primary/5'
+                        )}
+                      >
                         <button
                           type="button"
-                          onClick={() => setSlotDate(row.period_date)}
+                          onClick={() => setPlanningDate(row.period_date)}
                           aria-pressed={row.period_date === slotDate}
                           className={cn(
                             'text-left text-sm transition-colors',
@@ -703,28 +780,45 @@ function MaitreThibaultPage() {
                             — {row.start} → {row.end}
                           </span>
                         </button>
-                        <Button type="button" variant="outline" size="sm" onClick={() => onDeletePeriod(row.id)}>
-                          Retirer
-                        </Button>
+                        <div className="flex shrink-0 items-center gap-2">
+                          <Button
+                            type="button"
+                            variant="outline"
+                            size="sm"
+                            aria-pressed={editingPeriodId === row.id}
+                            onClick={() => startEditPeriod(row)}
+                          >
+                            Modifier
+                          </Button>
+                          <Button type="button" variant="outline" size="sm" onClick={() => onDeletePeriod(row.id)}>
+                            Retirer
+                          </Button>
+                        </div>
                       </li>
                     ))
                   )}
                 </ul>
                 <div>
-                  <h2 className="font-display text-2xl font-bold tracking-wide">
-                    Fermer un créneau (d’une salle)
-                  </h2>
+                  <h2 className="font-display text-2xl font-bold tracking-wide">Créneaux</h2>
                   <p className="mt-2 max-w-2xl text-sm leading-relaxed text-muted-foreground">
                     Clique une plage ci-dessus pour afficher ses créneaux, ou choisis une date.
-                    Clique un créneau ouvert pour le fermer au public, un créneau fermé pour le
-                    rouvrir. Les horaires déjà réservés ne peuvent pas être fermés ici.
+                    Clique pour cycler Ouvert → Indisponible (masqué au public) → Fermé → Ouvert. Un
+                    créneau occupé (vert) ouvre la réservation.
                   </p>
-                  <div className="mt-4 w-fit text-sm">
-                    <p className="mb-1">Date</p>
-                    <ShortDateInput
-                      id="slot-date"
+                  <div className="mt-4 flex flex-wrap items-end gap-3">
+                    <div className="w-fit text-sm">
+                      <p className="mb-1">Date</p>
+                      <ShortDateInput
+                        id="slot-date"
+                        value={slotDate}
+                        onChange={setPlanningDate}
+                      />
+                    </div>
+                    <DayPagination
+                      id="slot-day"
+                      className="ml-auto"
                       value={slotDate}
-                      onChange={(date) => setSlotDate(date || parisTodayIso())}
+                      onChange={setPlanningDate}
                     />
                   </div>
                   {loadingSlots ? (
@@ -750,25 +844,51 @@ function MaitreThibaultPage() {
                                 {slots.map((slot) => {
                                   const isReserved = slot.status === 'reserved';
                                   const isClosed = slot.status === 'closed';
+                                  const isHidden = slot.status === 'hidden';
+                                  const reservedLabel = slot.guest_name || slotStatusLabel(slot.status);
                                   return (
                                     <button
                                       key={`${room.slug}-${slot.time}`}
                                       type="button"
-                                      disabled={isReserved}
-                                      onClick={() => onToggleSlot(room.slug, slot)}
+                                      onClick={() => {
+                                        if (isReserved) {
+                                          if (slot.booking_id) {
+                                            window.location.hash = `reservations/${slot.booking_id}`;
+                                          }
+                                          return;
+                                        }
+                                        onToggleSlot(room.slug, slot);
+                                      }}
                                       className={cn(
-                                        'flex h-11 flex-col items-center justify-center rounded-md border text-xs font-medium transition-all duration-150',
+                                        'flex h-11 flex-col items-center justify-center rounded-md border px-1 text-xs font-medium transition-all duration-150',
                                         isReserved
-                                          ? 'cursor-not-allowed border-border/50 text-muted-foreground/40 line-through'
-                                          : isClosed
-                                            ? 'border-destructive/40 bg-destructive/10 text-destructive hover:bg-destructive/15'
-                                            : 'border-border text-foreground hover:border-primary/60 hover:bg-primary/5'
+                                          ? 'border-emerald-500/50 bg-emerald-500/20 text-emerald-200 hover:bg-emerald-500/30'
+                                          : isHidden
+                                            ? 'border-sky-500/50 bg-sky-500/20 text-sky-200 hover:bg-sky-500/30'
+                                            : isClosed
+                                              ? 'border-destructive/40 bg-destructive/10 text-destructive hover:bg-destructive/15'
+                                              : 'border-border text-muted-foreground hover:border-primary/60 hover:bg-primary/5'
                                       )}
-                                      aria-label={`${slot.time} — ${slotStatusLabel(slot.status)}`}
+                                      aria-label={
+                                        isReserved
+                                          ? `${slot.time} — ${reservedLabel}`
+                                          : `${slot.time} — ${slotStatusLabel(slot.status)}`
+                                      }
                                     >
                                       <span className="font-mono">{slot.time}</span>
-                                      <span className="text-[10px] leading-none text-muted-foreground">
-                                        {slotStatusLabel(slot.status)}
+                                      <span
+                                        className={cn(
+                                          'max-w-full truncate text-[10px] leading-none',
+                                          isReserved
+                                            ? 'text-emerald-100'
+                                            : isHidden
+                                              ? 'text-sky-100'
+                                              : isClosed
+                                                ? 'text-destructive'
+                                                : 'text-muted-foreground'
+                                        )}
+                                      >
+                                        {isReserved ? reservedLabel : slotStatusLabel(slot.status)}
                                       </span>
                                     </button>
                                   );
@@ -788,8 +908,9 @@ function MaitreThibaultPage() {
               <section className="mt-10">
                 <h2 className="font-display text-2xl font-bold tracking-wide">Réservations</h2>
                 <p className="mt-2 text-sm text-muted-foreground">
-                  Les demandes arrivent en attente (30 min). Confirme-les pour bloquer 60 min et
-                  envoyer l’e-mail. Modifier l’heure déplace la réservation dans une plage libre.
+                  Les demandes arrivent en attente. Confirme-les pour envoyer l’e-mail. Une
+                  réservation occupe 60 min. Modifier l’heure déplace la réservation dans une
+                  plage libre.
                 </p>
                 <div className="mt-6 overflow-x-auto rounded-xl border border-border">
                   <table className="w-full min-w-[720px] text-left text-sm">
@@ -814,7 +935,13 @@ function MaitreThibaultPage() {
                       ) : (
                         bookings.map((row) => (
                           <React.Fragment key={row.id}>
-                            <tr>
+                            <tr
+                              id={`booking-${row.id}`}
+                              className={cn(
+                                'scroll-mt-24',
+                                focusBookingId === row.id && 'bg-emerald-500/15'
+                              )}
+                            >
                               <td className="px-4 py-3">{isoToShortDate(row.booking_date)}</td>
                               <td className="px-4 py-3 font-mono">{slotTimeRange(row)}</td>
                               <td className="px-4 py-3">{ROOM_LABELS[row.room_slug] || row.room_slug}</td>
