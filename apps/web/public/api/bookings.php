@@ -70,14 +70,26 @@ if ($method === 'PATCH') {
         $email = isset($body['email']) ? trim((string) $body['email']) : null;
         $phone = isset($body['phone']) ? trim((string) $body['phone']) : null;
         $players = array_key_exists('players', $body) ? (int) $body['players'] : null;
-        if ($name !== null && ($name === '' || mb_strlen($name) > 120)) {
-            mt_json_out(400, ['error' => 'Nom obligatoire.']);
+        if ($name !== null) {
+            $checked = mt_validate_guest_name($name);
+            if (!$checked['ok']) {
+                mt_json_out(400, ['error' => $checked['error']]);
+            }
+            $name = $checked['value'];
         }
-        if ($email !== null && !filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            mt_json_out(400, ['error' => 'E-mail invalide.']);
+        if ($email !== null) {
+            $checked = mt_validate_guest_email($email);
+            if (!$checked['ok']) {
+                mt_json_out(400, ['error' => $checked['error']]);
+            }
+            $email = $checked['value'];
         }
-        if ($phone !== null && ($phone === '' || mb_strlen($phone) > 40)) {
-            mt_json_out(400, ['error' => 'Téléphone obligatoire.']);
+        if ($phone !== null) {
+            $checked = mt_validate_guest_phone($phone);
+            if (!$checked['ok']) {
+                mt_json_out(400, ['error' => $checked['error']]);
+            }
+            $phone = $checked['value'];
         }
         if ($players !== null && ($players < 3 || $players > 6)) {
             mt_json_out(400, ['error' => 'Entre 3 et 6 joueurs.']);
@@ -133,15 +145,21 @@ if ($method === 'POST') {
     if ($date < mt_today_paris()) {
         mt_json_out(400, ['error' => 'Impossible de réserver une date passée.']);
     }
-    if ($name === '' || mb_strlen($name) > 120) {
-        mt_json_out(400, ['error' => 'Nom obligatoire.']);
+    $checkedName = mt_validate_guest_name($name);
+    if (!$checkedName['ok']) {
+        mt_json_out(400, ['error' => $checkedName['error']]);
     }
-    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        mt_json_out(400, ['error' => 'E-mail invalide.']);
+    $name = $checkedName['value'];
+    $checkedEmail = mt_validate_guest_email($email);
+    if (!$checkedEmail['ok']) {
+        mt_json_out(400, ['error' => $checkedEmail['error']]);
     }
-    if ($phone === '' || mb_strlen($phone) > 40) {
-        mt_json_out(400, ['error' => 'Téléphone obligatoire.']);
+    $email = $checkedEmail['value'];
+    $checkedPhone = mt_validate_guest_phone($phone);
+    if (!$checkedPhone['ok']) {
+        mt_json_out(400, ['error' => $checkedPhone['error']]);
     }
+    $phone = $checkedPhone['value'];
     if ($players < 3 || $players > 6) {
         mt_json_out(400, ['error' => 'Entre 3 et 6 joueurs.']);
     }

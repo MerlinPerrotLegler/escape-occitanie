@@ -114,6 +114,31 @@ for ($i = 0; $i < 4; $i++) {
 }
 expect(mt_rate_limit_hit($ip) === true, '6th hit blocked');
 
+$okName = mt_validate_guest_name('Jean-Luc');
+expect(($okName['ok'] ?? false) === true && $okName['value'] === 'Jean-Luc', 'php name hyphen');
+$okCurly = mt_validate_guest_name("O’Brien");
+expect(($okCurly['ok'] ?? false) === true, 'php name curly apostrophe');
+$trimName = mt_validate_guest_name('  Marie Claire  ');
+expect(($trimName['ok'] ?? false) === true && $trimName['value'] === 'Marie Claire', 'php name trim');
+$short = mt_validate_guest_name('A');
+expect(($short['ok'] ?? false) === false && $short['error'] === 'Indiquez un nom (au moins 2 lettres).', 'php name too short');
+$punct = mt_validate_guest_name('--');
+expect(($punct['ok'] ?? false) === false, 'php name punctuation');
+$digits = mt_validate_guest_name('123');
+expect(($digits['ok'] ?? false) === false, 'php name digits');
+
+$okMail = mt_validate_guest_email('  paul@example.com  ');
+expect(($okMail['ok'] ?? false) === true && $okMail['value'] === 'paul@example.com', 'php email trim');
+$badMail = mt_validate_guest_email('not-an-email');
+expect(($badMail['ok'] ?? false) === false && $badMail['error'] === 'E-mail invalide.', 'php email invalid');
+
+$okPhone = mt_validate_guest_phone('+33 6 12 34 56 78');
+expect(($okPhone['ok'] ?? false) === true && $okPhone['value'] === '+33 6 12 34 56 78', 'php phone keeps formatting');
+$shortPhone = mt_validate_guest_phone('1234');
+expect(($shortPhone['ok'] ?? false) === false && $shortPhone['error'] === 'Numéro de téléphone invalide.', 'php phone short');
+$lettersPhone = mt_validate_guest_phone('abc');
+expect(($lettersPhone['ok'] ?? false) === false, 'php phone letters');
+
 require $root . '/schedule.php';
 require $root . '/mail.php';
 require $root . '/calendar.php';

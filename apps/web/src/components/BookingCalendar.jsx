@@ -2,10 +2,13 @@ import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { ChevronLeft, ChevronRight, Clock, CalendarCheck, Info, Users } from 'lucide-react';
 import { toast } from 'sonner';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
 import { CONTACT } from '@/data/rooms';
 import { cn } from '@/lib/utils';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
+import { Form, FormControl, FormField, FormItem, FormMessage } from '@/components/ui/form';
 import { createBooking, fetchDaySlots, fetchMonthAvailability, fetchOpenPeriods } from '@/lib/booking';
 import {
   closestOpenSlot,
@@ -15,6 +18,7 @@ import {
   toISODate,
 } from '@/lib/bookingDeepLink';
 import { MAX_MONTH_OFFSET, horizonIso, initialMonthOffset } from '@/lib/calendarMonths';
+import { bookingContactSchema } from '@/lib/bookingContact';
 
 const WEEKDAY_LABELS = ['Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam', 'Dim'];
 
@@ -141,7 +145,11 @@ function BookingCalendar({ room }) {
   const [loadingSlots, setLoadingSlots] = useState(false);
   const [done, setDone] = useState(null);
   const [submitting, setSubmitting] = useState(false);
-  const [form, setForm] = useState({ name: '', email: '', phone: '', players: 4 });
+  const contactForm = useForm({
+    resolver: zodResolver(bookingContactSchema),
+    mode: 'onTouched',
+    defaultValues: { name: '', email: '', phone: '', players: 4 },
+  });
   const [nextOpenIso, setNextOpenIso] = useState(null);
   const nextOpenOffset = nextOpenIso ? initialMonthOffset(today, [nextOpenIso]) : 0;
 
@@ -247,8 +255,7 @@ function BookingCalendar({ room }) {
     };
   }, [room.slug, selectedISO, done]);
 
-  async function onSubmit(event) {
-    event.preventDefault();
+  async function onSubmit(values) {
     if (!selectedISO || !selectedSlot) return;
     setSubmitting(true);
     try {
@@ -256,10 +263,10 @@ function BookingCalendar({ room }) {
         room: room.slug,
         date: selectedISO,
         time: selectedSlot,
-        name: form.name,
-        email: form.email,
-        phone: form.phone,
-        players: Number(form.players),
+        name: values.name,
+        email: values.email,
+        phone: values.phone,
+        players: Number(values.players),
       });
       setDone(result.booking);
       toast.success(
@@ -430,59 +437,90 @@ function BookingCalendar({ room }) {
             )}
 
             {selectedSlot && (
-              <form
-                ref={formSectionRef}
-                id="reservation"
-                onSubmit={onSubmit}
-                className="mt-5 scroll-mt-24 space-y-3 rounded-lg border border-primary/40 bg-primary/5 p-4"
-              >
-                <p className="flex items-center gap-2 font-display text-sm font-bold tracking-wider text-primary">
-                  <CalendarCheck className="h-4 w-4" />
-                  {dayFormatter.format(selectedDate)} à {selectedSlot} — 60 min
-                </p>
-                <Input
-                  required
-                  placeholder="Nom"
-                  value={form.name}
-                  onChange={(e) => setForm({ ...form, name: e.target.value })}
-                />
-                <Input
-                  required
-                  type="email"
-                  placeholder="E-mail"
-                  value={form.email}
-                  onChange={(e) => setForm({ ...form, email: e.target.value })}
-                />
-                <Input
-                  required
-                  type="tel"
-                  placeholder="Téléphone"
-                  value={form.phone}
-                  onChange={(e) => setForm({ ...form, phone: e.target.value })}
-                />
-                <label className="flex items-center gap-2 text-sm">
-                  <Users className="h-4 w-4 text-primary" />
-                  Joueurs
-                  <select
-                    className="h-9 rounded-md border border-input bg-transparent px-2 text-sm"
-                    value={form.players}
-                    onChange={(e) => setForm({ ...form, players: e.target.value })}
-                  >
-                    {[3, 4, 5, 6].map((n) => (
-                      <option key={n} value={n}>
-                        {n}
-                      </option>
-                    ))}
-                  </select>
-                </label>
-                <Button type="submit" disabled={submitting} className="h-11 w-full">
-                  Réserver ce créneau
-                </Button>
-                <p className="text-xs text-muted-foreground">
-                  Un e-mail d’accusé de réception sera envoyé. Confirmation par l’équipe ensuite. Une
-                  question ? {CONTACT.phone}
-                </p>
-              </form>
+              <Form {...contactForm}>
+                <form
+                  ref={formSectionRef}
+                  id="reservation"
+                  onSubmit={contactForm.handleSubmit(onSubmit)}
+                  className="mt-5 scroll-mt-24 space-y-3 rounded-lg border border-primary/40 bg-primary/5 p-4"
+                  noValidate
+                >
+                  <p className="flex items-center gap-2 font-display text-sm font-bold tracking-wider text-primary">
+                    <CalendarCheck className="h-4 w-4" />
+                    {dayFormatter.format(selectedDate)} à {selectedSlot} — 60 min
+                  </p>
+                  <FormField
+                    control={contactForm.control}
+                    name="name"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormControl>
+                          <Input placeholder="Nom" autoComplete="name" {...field} />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <FormField
+                    control={contactForm.control}
+                    name="email"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormControl>
+                          <Input type="email" placeholder="E-mail" autoComplete="email" {...field} />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <FormField
+                    control={contactForm.control}
+                    name="phone"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormControl>
+                          <Input type="tel" placeholder="Téléphone" autoComplete="tel" {...field} />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <FormField
+                    control={contactForm.control}
+                    name="players"
+                    render={({ field }) => (
+                      <FormItem>
+                        <label className="flex items-center gap-2 text-sm">
+                          <Users className="h-4 w-4 text-primary" />
+                          Joueurs
+                          <select
+                            className="h-9 rounded-md border border-input bg-transparent px-2 text-sm"
+                            value={field.value}
+                            onChange={(e) => field.onChange(Number(e.target.value))}
+                            onBlur={field.onBlur}
+                            name={field.name}
+                            ref={field.ref}
+                          >
+                            {[3, 4, 5, 6].map((n) => (
+                              <option key={n} value={n}>
+                                {n}
+                              </option>
+                            ))}
+                          </select>
+                        </label>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <Button type="submit" disabled={submitting} className="h-11 w-full">
+                    Réserver ce créneau
+                  </Button>
+                  <p className="text-xs text-muted-foreground">
+                    Un e-mail d’accusé de réception sera envoyé. Confirmation par l’équipe ensuite. Une
+                    question ? {CONTACT.phone}
+                  </p>
+                </form>
+              </Form>
             )}
           </div>
         )}
