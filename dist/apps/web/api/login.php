@@ -15,6 +15,7 @@ if (mt_rate_limit_hit($ip, 5, 900, false)) {
 $body = mt_read_json();
 $email = strtolower(trim((string) ($body['email'] ?? '')));
 $password = (string) ($body['password'] ?? '');
+$remember = !empty($body['remember']);
 $expectedEmail = strtolower(trim((string) ($env['MANAGER_EMAIL'] ?? '')));
 $expectedPass = (string) ($env['MANAGER_PASSWORD'] ?? '');
 $secret = (string) ($env['AUTH_SECRET'] ?? '');
@@ -29,8 +30,9 @@ if (!$ok) {
     mt_json_out(401, ['error' => 'Identifiants incorrects']);
 }
 
-$ttl = 604800;
-mt_set_auth_cookie(mt_issue_cookie($email, $secret, $ttl), $ttl);
+$ttl = $remember ? MT_TTL_REMEMBER : MT_TTL_SESSION;
+$cookieTtl = $remember ? $ttl : 0;
+mt_set_auth_cookie(mt_issue_cookie($email, $secret, $ttl), $cookieTtl);
 mt_json_out(200, [
     'email' => $email,
     'name' => (string) ($env['MANAGER_NAME'] ?? 'Direction'),

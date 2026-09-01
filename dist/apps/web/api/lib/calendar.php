@@ -31,7 +31,8 @@ function mt_booking_datetime(array $booking): array {
     if (!$start) {
         throw new RuntimeException('Date de réservation invalide.');
     }
-    $end = $start->modify('+' . MT_GAME_MINUTES . ' minutes');
+    $duration = mt_occupancy_duration($booking);
+    $end = $start->modify('+' . $duration . ' minutes');
     return [$start, $end];
 }
 

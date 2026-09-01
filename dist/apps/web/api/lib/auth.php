@@ -2,6 +2,8 @@
 declare(strict_types=1);
 
 const MT_COOKIE = 'mt_auth';
+const MT_TTL_SESSION = 43200;
+const MT_TTL_REMEMBER = 2592000;
 
 function mt_b64url_encode(string $raw): string {
     return rtrim(strtr(base64_encode($raw), '+/', '-_'), '=');
@@ -88,13 +90,16 @@ function mt_rate_limit_hit(string $ip, int $max = 5, int $window = 900, bool $re
 
 function mt_set_auth_cookie(string $value, int $ttl = 604800): void {
     $secure = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off');
-    setcookie(MT_COOKIE, $value, [
-        'expires' => time() + $ttl,
+    $options = [
         'path' => '/',
         'httponly' => true,
         'samesite' => 'Lax',
         'secure' => $secure,
-    ]);
+    ];
+    if ($ttl > 0) {
+        $options['expires'] = time() + $ttl;
+    }
+    setcookie(MT_COOKIE, $value, $options);
 }
 
 function mt_clear_auth_cookie(): void {

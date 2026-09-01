@@ -62,14 +62,29 @@ function mt_parse_env_file(string $path): array {
 
 function mt_load_env(?string $startDir = null): array {
     $dir = $startDir ?? __DIR__ . '/..';
-    $merged = [];
+    $layers = [];
+    $repoEnv = null;
     for ($i = 0; $i < 8; $i++) {
-        $merged = array_merge(mt_parse_env_file($dir . '/.env'), $merged);
+        $layer = mt_parse_env_file($dir . '/.env');
+        $layers[] = $layer;
+        if ($repoEnv === null && (is_dir($dir . '/.git') || is_file($dir . '/.git'))) {
+            $repoEnv = $layer;
+        }
         $parent = dirname($dir);
         if ($parent === $dir) {
             break;
         }
         $dir = $parent;
+    }
+    $repoEnv = $repoEnv ?? [];
+    $merged = [];
+    foreach ($layers as $layer) {
+        $merged = array_merge($layer, $merged);
+    }
+    foreach (['MANAGER_EMAIL', 'MANAGER_PASSWORD', 'MANAGER_NAME', 'AUTH_SECRET'] as $key) {
+        if (($repoEnv[$key] ?? '') !== '') {
+            $merged[$key] = $repoEnv[$key];
+        }
     }
     foreach (['MYSQL_HOST', 'MYSQL_USER', 'MYSQL_PASSWORD', 'MYSQL_DATABASE', 'MYSQL_PORT', 'DATABASE_URL', 'MANAGER_EMAIL', 'MANAGER_PASSWORD', 'MANAGER_NAME', 'AUTH_SECRET', 'SMTP_FROM', 'SMTP_HOST'] as $key) {
         $g = getenv($key);

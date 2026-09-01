@@ -57,13 +57,28 @@ function mt_try_exec(PDO $pdo, string $sql): void {
     }
 }
 
+function mt_ensure_closed_slots_schema(PDO $pdo): void {
+    $pdo->exec("CREATE TABLE IF NOT EXISTS closed_slots (
+        id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+        room_slug VARCHAR(32) NOT NULL,
+        slot_date DATE NOT NULL,
+        start_minute SMALLINT UNSIGNED NOT NULL,
+        kind VARCHAR(16) NOT NULL DEFAULT 'closed',
+        created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+        UNIQUE KEY uniq_closed_slot (room_slug, slot_date, start_minute)
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4");
+    if (mt_table_exists($pdo, 'closed_slots') && !mt_table_has_column($pdo, 'closed_slots', 'kind')) {
+        $pdo->exec("ALTER TABLE closed_slots ADD COLUMN kind VARCHAR(16) NOT NULL DEFAULT 'closed'");
+    }
+}
+
 function mt_ensure_bookings_schema(PDO $pdo): void {
     $ddl = "CREATE TABLE bookings (
         id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
         room_slug VARCHAR(32) NOT NULL,
         booking_date DATE NOT NULL,
         start_minute SMALLINT UNSIGNED NOT NULL,
-        duration_minutes SMALLINT UNSIGNED NOT NULL DEFAULT 30,
+        duration_minutes SMALLINT UNSIGNED NOT NULL DEFAULT 60,
         guest_name VARCHAR(120) NOT NULL,
         guest_email VARCHAR(190) NOT NULL,
         guest_phone VARCHAR(40) NOT NULL,
@@ -89,7 +104,7 @@ function mt_ensure_bookings_schema(PDO $pdo): void {
             $pdo->exec('ALTER TABLE bookings ADD COLUMN start_minute SMALLINT UNSIGNED NULL');
         }
         if (!mt_table_has_column($pdo, 'bookings', 'duration_minutes')) {
-            $pdo->exec('ALTER TABLE bookings ADD COLUMN duration_minutes SMALLINT UNSIGNED NOT NULL DEFAULT 30');
+            $pdo->exec('ALTER TABLE bookings ADD COLUMN duration_minutes SMALLINT UNSIGNED NOT NULL DEFAULT 60');
         }
         if (mt_table_exists($pdo, 'slots')) {
             $pdo->exec("UPDATE bookings b
@@ -97,9 +112,9 @@ function mt_ensure_bookings_schema(PDO $pdo): void {
                 SET b.room_slug = s.room_slug,
                     b.booking_date = s.slot_date,
                     b.start_minute = s.start_minute,
-                    b.duration_minutes = IF(b.status = 'confirmed', 60, 30)");
+                    b.duration_minutes = 60");
         }
-        $pdo->exec("UPDATE bookings SET duration_minutes = 60 WHERE status = 'confirmed' AND duration_minutes < 60");
+        $pdo->exec("UPDATE bookings SET duration_minutes = 60 WHERE duration_minutes < 60 AND status IN ('pending','confirmed')");
         $pdo->exec('DELETE FROM bookings WHERE room_slug IS NULL OR booking_date IS NULL OR start_minute IS NULL');
         if (mt_table_exists($pdo, 'booking_slots')) {
             mt_try_exec($pdo, 'DROP TABLE booking_slots');
@@ -114,8 +129,16 @@ function mt_ensure_bookings_schema(PDO $pdo): void {
     }
 
     if (!mt_table_has_column($pdo, 'bookings', 'duration_minutes')) {
-        $pdo->exec('ALTER TABLE bookings ADD COLUMN duration_minutes SMALLINT UNSIGNED NOT NULL DEFAULT 30');
-        mt_try_exec($pdo, "UPDATE bookings SET duration_minutes = 60 WHERE status = 'confirmed' AND duration_minutes < 60");
+        $pdo->exec('ALTER TABLE bookings ADD COLUMN duration_minutes SMALLINT UNSIGNED NOT NULL DEFAULT 60');
+    }
+    mt_try_exec($pdo, "UPDATE bookings SET duration_minutes = 60 WHERE duration_minutes < 60 AND status IN ('pending','confirmed')");
+    try {
+        $col = $pdo->query("SHOW COLUMNS FROM bookings LIKE 'duration_minutes'")->fetch();
+        $default = (string) ($col['Default'] ?? '');
+        if ($default !== '60') {
+            $pdo->exec('ALTER TABLE bookings MODIFY duration_minutes SMALLINT UNSIGNED NOT NULL DEFAULT 60');
+        }
+    } catch (Throwable $ignored) {
     }
 
     try {
@@ -140,10 +163,68 @@ function mt_retire_slot_tables(PDO $pdo): void {
     }
 }
 
+function mt_ensure_booking_settings_schema(PDO $pdo): void {
+    $pdo->exec("CREATE TABLE IF NOT EXISTS booking_settings (
+        id TINYINT UNSIGNED NOT NULL PRIMARY KEY,
+        block_both_rooms TINYINT(1) NOT NULL DEFAULT 0,
+        block_next_slot TINYINT(1) NOT NULL DEFAULT 1,
+        slot_minutes SMALLINT UNSIGNED NOT NULL DEFAULT 30,
+        auto_confirm TINYINT(1) NOT NULL DEFAULT 0,
+        updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4");
+    $count = (int) $pdo->query('SELECT COUNT(*) FROM booking_settings')->fetchColumn();
+    if ($count === 0) {
+        $defaults = mt_default_booking_settings();
+        $stmt = $pdo->prepare('INSERT INTO booking_settings (id, block_both_rooms, block_next_slot, slot_minutes, auto_confirm) VALUES (1,?,?,?,?)');
+        $stmt->execute([
+            $defaults['block_both_rooms'] ? 1 : 0,
+            $defaults['block_next_slot'] ? 1 : 0,
+            $defaults['slot_minutes'],
+            $defaults['auto_confirm'] ? 1 : 0,
+        ]);
+    }
+    mt_set_runtime_booking_settings(mt_read_booking_settings_row($pdo));
+}
+
+function mt_read_booking_settings_row(PDO $pdo): array {
+    $row = $pdo->query('SELECT block_both_rooms, block_next_slot, slot_minutes, auto_confirm FROM booking_settings WHERE id = 1')->fetch();
+    return $row ?: [];
+}
+
+function mt_get_booking_settings(PDO $pdo): array {
+    mt_ensure_schema($pdo);
+    return mt_runtime_booking_settings();
+}
+
+function mt_save_booking_settings(PDO $pdo, array $raw): array {
+    mt_ensure_schema($pdo);
+    $settings = mt_normalize_booking_settings($raw);
+    $stmt = $pdo->prepare('UPDATE booking_settings SET block_both_rooms = ?, block_next_slot = ?, slot_minutes = ?, auto_confirm = ? WHERE id = 1');
+    $stmt->execute([
+        $settings['block_both_rooms'] ? 1 : 0,
+        $settings['block_next_slot'] ? 1 : 0,
+        $settings['slot_minutes'],
+        $settings['auto_confirm'] ? 1 : 0,
+    ]);
+    if ($stmt->rowCount() === 0) {
+        $insert = $pdo->prepare('INSERT INTO booking_settings (id, block_both_rooms, block_next_slot, slot_minutes, auto_confirm) VALUES (1,?,?,?,?)
+            ON DUPLICATE KEY UPDATE block_both_rooms = VALUES(block_both_rooms), block_next_slot = VALUES(block_next_slot), slot_minutes = VALUES(slot_minutes), auto_confirm = VALUES(auto_confirm)');
+        $insert->execute([
+            $settings['block_both_rooms'] ? 1 : 0,
+            $settings['block_next_slot'] ? 1 : 0,
+            $settings['slot_minutes'],
+            $settings['auto_confirm'] ? 1 : 0,
+        ]);
+    }
+    return mt_set_runtime_booking_settings($settings);
+}
+
 function mt_ensure_schema(PDO $pdo): void {
     static $ready = false;
     if ($ready) {
+        mt_ensure_closed_slots_schema($pdo);
         mt_ensure_bookings_schema($pdo);
+        mt_ensure_booking_settings_schema($pdo);
         mt_retire_slot_tables($pdo);
         return;
     }
@@ -171,8 +252,10 @@ function mt_ensure_schema(PDO $pdo): void {
         created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
         INDEX idx_period_date (period_date)
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4");
+    mt_ensure_closed_slots_schema($pdo);
     mt_ensure_bookings_schema($pdo);
     mt_retire_slot_tables($pdo);
+    mt_ensure_booking_settings_schema($pdo);
 
     $count = (int) $pdo->query('SELECT COUNT(*) FROM site_reviews')->fetchColumn();
     if ($count === 0) {

@@ -74,3 +74,36 @@ function mt_validate_content(array $data): array {
     }
     return ['ok' => true, 'error' => null, 'value' => ['reviews' => $reviews, 'records' => $records]];
 }
+
+function mt_validate_guest_name(string $name): array {
+    $name = trim($name);
+    $letters = preg_match_all('/\p{L}/u', $name);
+    $okChars = (bool) preg_match("/^[\\p{L}\\p{M}][\\p{L}\\p{M}\\s'\\x{2019}-]*$/u", $name);
+    if ($name === '' || mb_strlen($name) > 120 || $letters < 2 || !$okChars) {
+        return ['ok' => false, 'error' => 'Indiquez un nom (au moins 2 lettres).', 'value' => null];
+    }
+    return ['ok' => true, 'error' => null, 'value' => $name];
+}
+
+function mt_validate_guest_email(string $email): array {
+    $email = trim($email);
+    if ($email === '' || mb_strlen($email) > 190 || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        return ['ok' => false, 'error' => 'E-mail invalide.', 'value' => null];
+    }
+    return ['ok' => true, 'error' => null, 'value' => $email];
+}
+
+function mt_validate_guest_phone(string $phone): array {
+    $phone = trim($phone);
+    $digits = preg_replace('/\D+/', '', $phone) ?? '';
+    if (
+        $phone === ''
+        || mb_strlen($phone) > 40
+        || !preg_match('/^[0-9+\s().\-]+$/', $phone)
+        || strlen($digits) < 8
+    ) {
+        return ['ok' => false, 'error' => 'Numéro de téléphone invalide.', 'value' => null];
+    }
+    return ['ok' => true, 'error' => null, 'value' => $phone];
+}
+
