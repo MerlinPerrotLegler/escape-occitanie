@@ -160,12 +160,6 @@ function RoomPage({ roomKey }) {
                   </div>
                 </li>
               </ul>
-              <div className="mt-7 border-t border-border/60 pt-6">
-                <p className="font-display text-3xl font-bold text-primary">{room.successRate}%</p>
-                <p className="mt-1 text-sm text-muted-foreground">
-                  {labels.tauxTexte}
-                </p>
-              </div>
               <Link
                 to={room.bookingPath}
                 className="mt-7 flex h-12 items-center justify-center gap-2 rounded-md bg-primary text-sm font-semibold text-primary-foreground transition-all hover:brightness-110 active:scale-[0.98]"

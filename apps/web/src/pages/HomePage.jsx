@@ -192,17 +192,19 @@ function HomePage() {
             })}
           </div>
         </Reveal>
-        <div className="mt-12 grid grid-cols-3 gap-4 border-t border-border/60 pt-8">
-          {home.experience.stats.map((stat) => (
-            <div key={stat.libelle}>
-              <p className="font-display text-3xl font-bold text-primary sm:text-4xl">
-                <CountUp value={stat.valeur} />
-              </p>
-              <p className="mt-1 text-xs uppercase tracking-widest text-muted-foreground">
-                {stat.libelle}
-              </p>
-            </div>
-          ))}
+        <div className="mt-12 flex justify-center border-t border-border/60 pt-8">
+          <div className="grid grid-cols-3 gap-8 text-center sm:gap-16">
+            {home.experience.stats.map((stat) => (
+              <div key={stat.libelle}>
+                <p className="font-display text-3xl font-bold text-primary sm:text-4xl">
+                  <CountUp value={stat.valeur} />
+                </p>
+                <p className="mt-1 text-xs uppercase tracking-widest text-muted-foreground">
+                  {stat.libelle}
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
         {home.experience.atouts.length > 0 ? (
           <div className="mt-4 grid sm:grid-cols-2 sm:gap-x-12">

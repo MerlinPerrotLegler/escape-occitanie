@@ -94,7 +94,6 @@ function writeMinimal(dir, { localImage = false, extraPhoto = false } = {}) {
     <age-note>accompagnés d'un adulte</age-note>
     <duree-note>pour vous échapper</duree-note>
     <difficulte-note>niveau de difficulté</difficulte-note>
-    <taux-texte>des équipes parviennent à sortir à temps.</taux-texte>
     <galerie-surtitre>Galerie</galerie-surtitre>
     <galerie-titre>Un aperçu</galerie-titre>
     <cta-titre>Oserez-vous</cta-titre>
@@ -196,7 +195,6 @@ function writeMinimal(dir, { localImage = false, extraPhoto = false } = {}) {
   <age>Dès 14 ans</age>
   <duree>60 minutes</duree>
   <difficulte>${difficulte}</difficulte>
-  <taux-reussite>50</taux-reussite>
   <image src="${imageSrc}" alt="Salle alt"/>
   <resume>Résumé</resume>
   <histoire>

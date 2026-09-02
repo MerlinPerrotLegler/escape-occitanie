@@ -3490,7 +3490,7 @@ début et la fin (au moins 60 minutes, aligné sur 30). Le site propose alors to
 - via: replaceState
 
 ## 2026-09-02 07:19:19.020Z click
-- element: {"tag":"div","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Escape game — OccitanieL'Escape Occitanieréouvre ses portes !Enfermés en équipe, vous avez 60 minutes pour fouiller les lieux, dénicher les indices, résoudre les énigmes et percer le mystère. Observation, logique et coopération seront vos seules clés vers la sortie.Réserver une sessionDécouvrir l'expérience2 salles immersives4 à 6 joueursDès 10 ans"}
+- element: {"tag":"div","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Escape game — OccitanieL'Escape Occitanieréouvre ses portes !Plongé en équipe au cœur de l'aventure, vous avez 60 minutes pour fouiller les lieux, dénicher les indices, résoudre les énigmes et percer le mystère. Observation, logique et coopération seront vos seules clés vers la sortie.Réserver une sessionDécouvrir l'expérience2 salles immersives4 à 6 joueursDès 10 ans"}
 
 ## 2026-09-02 07:20:26.074Z load
 - url: http://localhost:3000/maitre
@@ -5050,4 +5050,44 @@ début et la fin (au moins 60 minutes, aligné sur 30). Le site propose alors to
 - formId: reservation
 - action: http://localhost:3000/reservation/convocation-chez-le-directeur?date=2027-09-01&heure=14:15
 - fields: [{"label":"name","type":"text","value":"Merlin Test","length":11,"redacted":false},{"label":"email","type":"email","value":"merlin.cal@example.com","length":22,"redacted":false},{"label":"phone","type":"tel","value":"0612345678","length":10,"redacted":false},{"label":"players","type":"select-one","value":"4","length":1,"redacted":false},{"label":"cf-turnstile-response","type":"hidden","value":"1.OEO3G6k4JSSUoEkrLjTbmjWjL9RnWF-sJVWx7mxQpia9f9LGE12AtSnTmWaucl3NpPQOlyA_ZfKowaPz4NxUAUSV4Picl3NREOYxlKTUvLEgbHZfMtuUVYWz0geCU0UIxHg0InmHgnR4Mtdzx2AjHZ0HqFUZXRpKssXlGXCTi8LhcuWTRKXPbHOlgDOF_Rod_2KwblZEVNoOzvaku0lU-lH65bLToMKysxy1FqlYkHLDMrkjkKFo3yf9CIHtkuzMWQaoKie9a6B9lFfUthtWzLuFpzg0-Do8msAXmac3ulB2UPPtyaPgsDewsV8q1Sreq6GDwMJNSAGISuvLlmxykxCu-3qjmzMnF21lKYZeY5aBw-HRFwrI7yOkXzstZu8W2IP69cthQd8mHSXDO0XCudibgpE0u2gHB6uNh1kGHkJraSrfGMh-YYhATBsNdg3nigISHugW5x3_haBqOhQ9Lw-yPAm1pQovgv4FOGVKEYBm5rOBrinOVBjclk9IvfNH5THJheeqLhGwbY_n_eRkcljDx7mtQTkbJkEO66nGgj1XCzWgIShRYCGsznBLXejuLGnD6sPIUCCr1KnltB5x-_Jm8HKuA4CBrrbSMcQ2JdG84w4iJy-Sn13ouFW1PSL_XYSdmT8sMU8CS1t0JqeK7RP7WWKCmdvHFGn1nL3J7vvEYW6qCZQx9Gp9dp21WZE_JJLGb6I1yWSSX65Gr9tbxw.CEG2GCsruMXj9NGoWJtDrA.34202a2bbf63865b772bc62722705dc24abfe9433dffbbcb19166d76c7f271a4","length":816,"redacted":false},{"label":"[submit]","type":"submit","value":"","length":0,"redacted":false}]
+
+## 2026-09-02 11:54:11.076Z load
+- url: http://127.0.0.1:3000/
+
+## 2026-09-02 11:54:11.129Z navigate
+- url: http://127.0.0.1:3000/
+- via: replaceState
+
+## 2026-09-02 11:55:05.420Z load
+- url: http://127.0.0.1:3000/
+
+## 2026-09-02 11:55:05.446Z load
+- url: http://localhost:3000/reservation/convocation-chez-le-directeur?date=2027-09-01&heure=14:15
+
+## 2026-09-02 11:57:12.432Z load
+- url: http://127.0.0.1:3000/
+
+## 2026-09-02 11:57:12.401Z load
+- url: http://localhost:3000/reservation/convocation-chez-le-directeur?date=2027-09-01&heure=14:15
+
+## 2026-09-02 11:57:46.093Z load
+- url: http://127.0.0.1:3000/salles/convocation-chez-le-directeur
+
+## 2026-09-02 11:57:46.117Z navigate
+- url: http://127.0.0.1:3000/salles/convocation-chez-le-directeur
+- via: replaceState
+
+## 2026-09-02 11:57:58.028Z load
+- url: http://127.0.0.1:3000/salles/la-malediction-du-vaisseau-fantome
+
+## 2026-09-02 11:57:58.049Z navigate
+- url: http://127.0.0.1:3000/salles/la-malediction-du-vaisseau-fantome
+- via: replaceState
+
+## 2026-09-02 11:58:07.410Z load
+- url: http://127.0.0.1:3000/
+
+## 2026-09-02 11:58:07.444Z navigate
+- url: http://127.0.0.1:3000/
+- via: replaceState
 

@@ -201,7 +201,6 @@ function parseCommun(file, node) {
       ageNote: reqStr(file, salle, 'age-note'),
       dureeNote: reqStr(file, salle, 'duree-note'),
       difficulteNote: reqStr(file, salle, 'difficulte-note'),
-      tauxTexte: reqStr(file, salle, 'taux-texte'),
       galerieSurtitre: reqStr(file, salle, 'galerie-surtitre'),
       galerieTitre: reqStr(file, salle, 'galerie-titre'),
       ctaTitre: reqStr(file, salle, 'cta-titre'),
@@ -326,12 +325,8 @@ function parseSalle(contributionDir, mediaDir, file, expectedSlug, node) {
     throw new Error(`${file}: <galerie> doit contenir exactement 3 <photo>`);
   }
   const difficulty = Number(reqStr(file, node, 'difficulte'));
-  const successRate = Number(reqStr(file, node, 'taux-reussite'));
   if (!Number.isInteger(difficulty) || difficulty < 1 || difficulty > 5) {
     throw new Error(`${file}: <difficulte> doit être 1–5`);
-  }
-  if (!Number.isFinite(successRate)) {
-    throw new Error(`${file}: <taux-reussite> invalide`);
   }
   return {
     slug,
@@ -344,7 +339,6 @@ function parseSalle(contributionDir, mediaDir, file, expectedSlug, node) {
     minAge: reqStr(file, node, 'age'),
     duration: reqStr(file, node, 'duree'),
     difficulty,
-    successRate,
     image: image.src,
     imageAlt: image.alt,
     cardDescription: reqStr(file, node, 'resume'),
