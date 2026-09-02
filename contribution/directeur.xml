@@ -8,7 +8,7 @@
   <age>Dès 10 ans</age>
   <duree>60 minutes</duree>
   <difficulte>3</difficulte>
-  <image src="https://images.hostinger.com/f2d40922-ae59-47a0-95d4-549223e899bf.png" alt="Bureau du directeur du collège plongé dans la pénombre, lampe verte allumée"/>
+  <images/directeur-bureau-1.png>
   <resume>Convoqués dans le bureau de M. Grenot, aidez l'inspecteur Dupont à percer le mystère qui plane sur le collège. Fouille, indices et révélations vous attendent.</resume>
   <histoire>
     <p>Vous allez être convoqués dans le bureau du directeur.</p>
@@ -18,9 +18,4 @@
     <p>Vous avez 60 minutes. Après cela... qui sait dans quel état vous ressortirez ?</p>
   </histoire>
   <citation>« Il est réellement malade... » — carnet de l'inspecteur Dupont</citation>
-  <galerie>
-    <photo src="https://images.hostinger.com/e4188b98-da57-4aab-94a5-df4d85f06176.png" alt="Loupe posée sur des notes manuscrites et des photographies, indices de l'enquête" legende="Les indices de l'inspecteur"/>
-    <photo src="https://images.hostinger.com/e630d118-598a-4cd5-838f-55f7a7e1973c.png" alt="Salle de classe à l'ancienne, tableau noir couvert de symboles mystérieux" legende="La salle de classe abandonnée"/>
-    <photo src="https://images.hostinger.com/1201bdc8-6343-437e-a907-8e4250bc04f8.png" alt="Meuble à tiroirs ancien entrouvert révélant des dossiers et une clé en laiton" legende="Le cabinet aux dossiers secrets"/>
-  </galerie>
 </salle>
