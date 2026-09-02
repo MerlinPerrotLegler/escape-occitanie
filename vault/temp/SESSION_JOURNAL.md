@@ -5643,3 +5643,2056 @@
 ## 2026-09-01 17:48:56.181Z click
 - element: {"tag":"div","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"RéservationsPlanningRecords & AvisVoir le siteSe déconnecter"}
 
+## 2026-09-01 18:42:30.792Z load
+- url: http://127.0.0.1:3000/reservation/convocation-chez-le-directeur?date=2026-09-01
+
+## 2026-09-01 18:42:30.790Z load
+- url: http://localhost:3000/maitre#records
+
+## 2026-09-01 18:42:31.000Z load
+- url: http://localhost:3000/#salles
+
+## 2026-09-01 18:42:31.003Z load
+- url: http://localhost:3000/maitre#planning
+
+## 2026-09-01 18:42:30.847Z navigate
+- url: http://localhost:3000/maitre#records
+- via: replaceState
+
+## 2026-09-01 18:52:20.525Z click
+- element: {"tag":"a","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Voir le site"}
+
+## 2026-09-01 18:52:20.525Z navigate
+- url: http://localhost:3000/
+- via: pushState
+
+## 2026-09-01 18:53:21.500Z click
+- element: {"tag":"a","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Réserver"}
+
+## 2026-09-01 18:53:21.501Z navigate
+- url: http://localhost:3000/#salles
+- via: pushState
+
+## 2026-09-01 18:53:22.449Z click
+- element: {"tag":"a","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Réserver"}
+
+## 2026-09-01 18:53:22.449Z navigate
+- url: http://localhost:3000/#salles
+- via: replaceState
+
+## 2026-09-01 18:53:53.644Z click
+- element: {"tag":"div","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"ESCAPE OCCITANIEAccueilLe DirecteurLe Vaisseau FantômeContactRéserver"}
+
+## 2026-09-01 18:53:54.065Z click
+- element: {"tag":"a","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Réserver"}
+
+## 2026-09-01 18:53:54.065Z navigate
+- url: http://localhost:3000/#salles
+- via: replaceState
+
+## 2026-09-01 18:53:59.485Z click
+- element: {"tag":"a","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Découvrir l'histoire"}
+
+## 2026-09-01 18:53:59.485Z navigate
+- url: http://localhost:3000/salles/la-malediction-du-vaisseau-fantome
+- via: pushState
+
+## 2026-09-01 18:54:04.835Z click
+- element: {"tag":"a","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Réserver « Le Vaisseau Fantôme »"}
+
+## 2026-09-01 18:54:04.836Z navigate
+- url: http://localhost:3000/reservation/la-malediction-du-vaisseau-fantome
+- via: pushState
+
+## 2026-09-01 18:54:05.161Z navigate
+- url: http://localhost:3000/reservation/la-malediction-du-vaisseau-fantome?date=2026-09-01
+- via: replaceState
+
+## 2026-09-01 19:37:58.488Z load
+- url: http://127.0.0.1:3000/reservation/convocation-chez-le-directeur?date=2026-09-01
+
+## 2026-09-01 19:37:58.495Z load
+- url: http://localhost:3000/reservation/la-malediction-du-vaisseau-fantome?date=2026-09-01
+
+## 2026-09-01 19:37:58.742Z load
+- url: http://localhost:3000/#salles
+
+## 2026-09-01 19:37:58.745Z load
+- url: http://localhost:3000/maitre#planning
+
+## 2026-09-01 19:37:59.423Z navigate
+- url: http://127.0.0.1:3000/reservation/convocation-chez-le-directeur?date=2027-09-01
+- via: replaceState
+
+## 2026-09-01 19:37:59.433Z navigate
+- url: http://localhost:3000/reservation/la-malediction-du-vaisseau-fantome?date=2027-09-01
+- via: replaceState
+
+## 2026-09-01 20:26:16.123Z load
+- url: http://localhost:3000/reservation/la-malediction-du-vaisseau-fantome?date=2027-09-01
+
+## 2026-09-01 20:26:16.126Z load
+- url: http://127.0.0.1:3000/reservation/convocation-chez-le-directeur?date=2027-09-01
+
+## 2026-09-01 20:26:16.208Z load
+- url: http://localhost:3000/#salles
+
+## 2026-09-01 20:26:16.209Z load
+- url: http://localhost:3000/maitre#planning
+
+## 2026-09-01 20:54:06.430Z click
+- element: {"tag":"a","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Réserver"}
+
+## 2026-09-01 20:54:06.432Z navigate
+- url: http://localhost:3000/#salles
+- via: pushState
+
+## 2026-09-01 20:54:07.720Z click
+- element: {"tag":"a","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Réserver"}
+
+## 2026-09-01 20:54:07.721Z navigate
+- url: http://localhost:3000/#salles
+- via: replaceState
+
+## 2026-09-01 21:15:50.769Z load
+- url: http://127.0.0.1:3000/reservation/convocation-chez-le-directeur?date=2027-09-01
+
+## 2026-09-01 21:15:50.770Z load
+- url: http://localhost:3000/#salles
+
+## 2026-09-01 21:15:51.169Z load
+- url: http://localhost:3000/#salles
+
+## 2026-09-01 21:15:51.172Z load
+- url: http://localhost:3000/maitre#planning
+
+## 2026-09-01 22:18:43.851Z load
+- url: http://127.0.0.1:3000/reservation/convocation-chez-le-directeur?date=2027-09-01
+
+## 2026-09-01 22:18:43.890Z load
+- url: http://localhost:3000/#salles
+
+## 2026-09-01 22:18:44.365Z load
+- url: http://127.0.0.1:3000/reservation/convocation-chez-le-directeur?date=2027-09-01
+
+## 2026-09-01 22:18:45.219Z load
+- url: http://localhost:3000/#salles
+
+## 2026-09-01 22:19:08.972Z load
+- url: http://localhost:3000/#salles
+
+## 2026-09-01 22:19:08.972Z load
+- url: http://127.0.0.1:3000/reservation/convocation-chez-le-directeur?date=2027-09-01
+
+## 2026-09-01 22:19:18.840Z console.error
+- text: 
+    [vite] ReferenceError: GENERATED_LIST is not defined
+        at http://localhost:3000/src/data/rooms.js?t=1788301158829:50:1
+
+## 2026-09-01 22:19:18.840Z console.error
+- text: [vite] Failed to reload /src/pages/BookingPage.jsx. This could be due to syntax errors or importing non-existent modules. (see errors above)
+
+## 2026-09-01 22:19:18.841Z console.error
+- text: 
+    [vite] ReferenceError: GENERATED_LIST is not defined
+        at http://localhost:3000/src/data/rooms.js?t=1788301158829:50:1
+
+## 2026-09-01 22:19:18.841Z console.error
+- text: [vite] Failed to reload /src/pages/HomePage.jsx. This could be due to syntax errors or importing non-existent modules. (see errors above)
+
+## 2026-09-01 22:19:18.841Z console.error
+- text: 
+    [vite] ReferenceError: GENERATED_LIST is not defined
+        at http://localhost:3000/src/data/rooms.js?t=1788301158829:50:1
+
+## 2026-09-01 22:19:18.841Z console.error
+- text: [vite] Failed to reload /src/pages/MaitreThibaultPage.jsx. This could be due to syntax errors or importing non-existent modules. (see errors above)
+
+## 2026-09-01 22:19:18.841Z console.error
+- text: 
+    [vite] ReferenceError: GENERATED_LIST is not defined
+        at http://localhost:3000/src/data/rooms.js?t=1788301158829:50:1
+
+## 2026-09-01 22:19:18.841Z console.error
+- text: [vite] Failed to reload /src/pages/RoomPage.jsx. This could be due to syntax errors or importing non-existent modules. (see errors above)
+
+## 2026-09-01 22:19:18.841Z console.error
+- text: 
+    [vite] ReferenceError: GENERATED_LIST is not defined
+        at http://localhost:3000/src/data/rooms.js?t=1788301158829:50:1
+
+## 2026-09-01 22:19:18.841Z console.error
+- text: [vite] Failed to reload /src/components/BookingCalendar.jsx. This could be due to syntax errors or importing non-existent modules. (see errors above)
+
+## 2026-09-01 22:19:18.841Z console.error
+- text: 
+    [vite] ReferenceError: GENERATED_LIST is not defined
+        at http://localhost:3000/src/data/rooms.js?t=1788301158829:50:1
+
+## 2026-09-01 22:19:18.841Z console.error
+- text: [vite] Failed to reload /src/components/SiteHeader.jsx. This could be due to syntax errors or importing non-existent modules. (see errors above)
+
+## 2026-09-01 22:19:18.841Z console.error
+- text: 
+    [vite] ReferenceError: GENERATED_LIST is not defined
+        at http://localhost:3000/src/data/rooms.js?t=1788301158829:50:1
+
+## 2026-09-01 22:19:18.841Z console.error
+- text: [vite] Failed to reload /src/components/SiteFooter.jsx. This could be due to syntax errors or importing non-existent modules. (see errors above)
+
+## 2026-09-01 22:19:18.869Z console.error
+- text: 
+    [vite] ReferenceError: GENERATED_LIST is not defined
+        at http://127.0.0.1:3000/src/data/rooms.js?t=1788301158829:50:1
+
+## 2026-09-01 22:19:18.869Z console.error
+- text: [vite] Failed to reload /src/components/SiteHeader.jsx. This could be due to syntax errors or importing non-existent modules. (see errors above)
+
+## 2026-09-01 22:19:18.869Z console.error
+- text: 
+    [vite] ReferenceError: GENERATED_LIST is not defined
+        at http://127.0.0.1:3000/src/data/rooms.js?t=1788301158829:50:1
+
+## 2026-09-01 22:19:18.869Z console.error
+- text: [vite] Failed to reload /src/pages/RoomPage.jsx. This could be due to syntax errors or importing non-existent modules. (see errors above)
+
+## 2026-09-01 22:19:18.869Z console.error
+- text: 
+    [vite] ReferenceError: GENERATED_LIST is not defined
+        at http://127.0.0.1:3000/src/data/rooms.js?t=1788301158829:50:1
+
+## 2026-09-01 22:19:18.869Z console.error
+- text: [vite] Failed to reload /src/components/SiteFooter.jsx. This could be due to syntax errors or importing non-existent modules. (see errors above)
+
+## 2026-09-01 22:19:18.869Z console.error
+- text: 
+    [vite] ReferenceError: GENERATED_LIST is not defined
+        at http://127.0.0.1:3000/src/data/rooms.js?t=1788301158829:50:1
+
+## 2026-09-01 22:19:18.869Z console.error
+- text: [vite] Failed to reload /src/pages/MaitreThibaultPage.jsx. This could be due to syntax errors or importing non-existent modules. (see errors above)
+
+## 2026-09-01 22:19:18.869Z console.error
+- text: 
+    [vite] ReferenceError: GENERATED_LIST is not defined
+        at http://127.0.0.1:3000/src/data/rooms.js?t=1788301158829:50:1
+
+## 2026-09-01 22:19:18.870Z console.error
+- text: [vite] Failed to reload /src/pages/BookingPage.jsx. This could be due to syntax errors or importing non-existent modules. (see errors above)
+
+## 2026-09-01 22:19:18.870Z console.error
+- text: 
+    [vite] ReferenceError: GENERATED_LIST is not defined
+        at http://127.0.0.1:3000/src/data/rooms.js?t=1788301158829:50:1
+
+## 2026-09-01 22:19:18.870Z console.error
+- text: [vite] Failed to reload /src/components/BookingCalendar.jsx. This could be due to syntax errors or importing non-existent modules. (see errors above)
+
+## 2026-09-01 22:19:18.870Z console.error
+- text: 
+    [vite] ReferenceError: GENERATED_LIST is not defined
+        at http://127.0.0.1:3000/src/data/rooms.js?t=1788301158829:50:1
+
+## 2026-09-01 22:19:18.870Z console.error
+- text: [vite] Failed to reload /src/pages/HomePage.jsx. This could be due to syntax errors or importing non-existent modules. (see errors above)
+
+## 2026-09-01 22:20:03.129Z window.error
+- message: Uncaught ReferenceError: MARQUEE_WORDS is not defined
+- source: http://localhost:3000/src/pages/HomePage.jsx?t=1788301203029
+- line: 205
+- col: 250
+- stack: 
+    ReferenceError: MARQUEE_WORDS is not defined
+        at HomePage (http://localhost:3000/src/pages/HomePage.jsx?t=1788301203029:205:250)
+        at renderWithHooks (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:11596:26)
+        at updateFunctionComponent (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:14630:28)
+        at beginWork (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:15972:22)
+        at HTMLUnknownElement.callCallback2 (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3680:22)
+        at Object.invokeGuardedCallbackDev (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3705:24)
+        at invokeGuardedCallback (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3739:39)
+        at beginWork$1 (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19818:15)
+        at performUnitOfWork (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19251:20)
+        at workLoopSync (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19190:13)
+
+## 2026-09-01 22:20:03.130Z window.error
+- message: Uncaught ReferenceError: MARQUEE_WORDS is not defined
+- source: http://localhost:3000/src/pages/HomePage.jsx?t=1788301203029
+- line: 205
+- col: 250
+- stack: 
+    ReferenceError: MARQUEE_WORDS is not defined
+        at HomePage (http://localhost:3000/src/pages/HomePage.jsx?t=1788301203029:205:250)
+        at renderWithHooks (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:11596:26)
+        at updateFunctionComponent (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:14630:28)
+        at beginWork (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:15972:22)
+        at HTMLUnknownElement.callCallback2 (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3680:22)
+        at Object.invokeGuardedCallbackDev (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3705:24)
+        at invokeGuardedCallback (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3739:39)
+        at beginWork$1 (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19818:15)
+        at performUnitOfWork (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19251:20)
+        at workLoopSync (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19190:13)
+
+## 2026-09-01 22:20:03.131Z console.error
+- text: 
+    The above error occurred in the <HomePage> component:
+    
+        at HomePage (http://localhost:3000/src/pages/HomePage.jsx?t=1788301203029:20:33)
+        at RenderedRoute (http://localhost:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:6647:26)
+        at Outlet (http://localhost:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7502:26)
+        at main
+        at PublicLayout
+        at RenderedRoute (http://localhost:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:6647:26)
+        at Routes (http://localhost:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7572:3)
+        at Router (http://localhost:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7511:13)
+        at BrowserRouter (http://localhost:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:10816:3)
+        at App
+    
+    Consider adding an error boundary to your tree to customize error handling behavior.
+    Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries.
+
+## 2026-09-01 22:20:03.132Z unhandledrejection
+- message: MARQUEE_WORDS is not defined
+- stack: 
+    ReferenceError: MARQUEE_WORDS is not defined
+        at HomePage (http://localhost:3000/src/pages/HomePage.jsx?t=1788301203029:205:250)
+        at renderWithHooks (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:11596:26)
+        at updateFunctionComponent (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:14630:28)
+        at beginWork (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:15972:22)
+        at beginWork$1 (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19806:22)
+        at performUnitOfWork (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19251:20)
+        at workLoopSync (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19190:13)
+        at renderRootSync (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19169:15)
+        at recoverFromConcurrentError (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:18786:28)
+        at performSyncWorkOnRoot (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:18932:28)
+
+## 2026-09-01 22:20:03.432Z root.empty
+- url: http://localhost:3000/#salles
+
+## 2026-09-01 22:20:03.889Z window.error
+- message: Uncaught ReferenceError: MARQUEE_WORDS is not defined
+- source: http://localhost:3000/src/pages/HomePage.jsx?t=1788301203814
+- line: 205
+- col: 250
+- stack: 
+    ReferenceError: MARQUEE_WORDS is not defined
+        at HomePage (http://localhost:3000/src/pages/HomePage.jsx?t=1788301203814:205:250)
+        at renderWithHooks (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:11596:26)
+        at mountIndeterminateComponent (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:14974:21)
+        at beginWork (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:15962:22)
+        at HTMLUnknownElement.callCallback2 (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3680:22)
+        at Object.invokeGuardedCallbackDev (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3705:24)
+        at invokeGuardedCallback (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3739:39)
+        at beginWork$1 (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19818:15)
+        at performUnitOfWork (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19251:20)
+        at workLoopSync (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19190:13)
+
+## 2026-09-01 22:20:03.891Z window.error
+- message: Uncaught ReferenceError: MARQUEE_WORDS is not defined
+- source: http://localhost:3000/src/pages/HomePage.jsx?t=1788301203814
+- line: 205
+- col: 250
+- stack: 
+    ReferenceError: MARQUEE_WORDS is not defined
+        at HomePage (http://localhost:3000/src/pages/HomePage.jsx?t=1788301203814:205:250)
+        at renderWithHooks (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:11596:26)
+        at mountIndeterminateComponent (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:14974:21)
+        at beginWork (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:15962:22)
+        at HTMLUnknownElement.callCallback2 (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3680:22)
+        at Object.invokeGuardedCallbackDev (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3705:24)
+        at invokeGuardedCallback (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3739:39)
+        at beginWork$1 (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19818:15)
+        at performUnitOfWork (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19251:20)
+        at workLoopSync (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19190:13)
+
+## 2026-09-01 22:20:03.892Z console.error
+- text: 
+    The above error occurred in the <HomePage> component:
+    
+        at HomePage (http://localhost:3000/src/pages/HomePage.jsx?t=1788301203814:20:33)
+        at RenderedRoute (http://localhost:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:6647:26)
+        at Outlet (http://localhost:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7502:26)
+        at main
+        at PublicLayout
+        at RenderedRoute (http://localhost:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:6647:26)
+        at Routes (http://localhost:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7572:3)
+        at Router (http://localhost:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7511:13)
+        at BrowserRouter (http://localhost:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:10816:3)
+        at App
+    
+    Consider adding an error boundary to your tree to customize error handling behavior.
+    Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries.
+
+## 2026-09-01 22:20:03.892Z unhandledrejection
+- message: MARQUEE_WORDS is not defined
+- stack: 
+    ReferenceError: MARQUEE_WORDS is not defined
+        at HomePage (http://localhost:3000/src/pages/HomePage.jsx?t=1788301203814:205:250)
+        at renderWithHooks (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:11596:26)
+        at mountIndeterminateComponent (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:14974:21)
+        at beginWork (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:15962:22)
+        at beginWork$1 (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19806:22)
+        at performUnitOfWork (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19251:20)
+        at workLoopSync (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19190:13)
+        at renderRootSync (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19169:15)
+        at recoverFromConcurrentError (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:18786:28)
+        at performSyncWorkOnRoot (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:18932:28)
+
+## 2026-09-01 22:20:07.674Z window.error
+- message: Uncaught ReferenceError: MARQUEE_WORDS is not defined
+- source: http://localhost:3000/src/pages/HomePage.jsx?t=1788301207611
+- line: 205
+- col: 250
+- stack: 
+    ReferenceError: MARQUEE_WORDS is not defined
+        at HomePage (http://localhost:3000/src/pages/HomePage.jsx?t=1788301207611:205:250)
+        at renderWithHooks (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:11596:26)
+        at mountIndeterminateComponent (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:14974:21)
+        at beginWork (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:15962:22)
+        at HTMLUnknownElement.callCallback2 (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3680:22)
+        at Object.invokeGuardedCallbackDev (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3705:24)
+        at invokeGuardedCallback (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3739:39)
+        at beginWork$1 (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19818:15)
+        at performUnitOfWork (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19251:20)
+        at workLoopSync (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19190:13)
+
+## 2026-09-01 22:20:07.675Z window.error
+- message: Uncaught ReferenceError: MARQUEE_WORDS is not defined
+- source: http://localhost:3000/src/pages/HomePage.jsx?t=1788301207611
+- line: 205
+- col: 250
+- stack: 
+    ReferenceError: MARQUEE_WORDS is not defined
+        at HomePage (http://localhost:3000/src/pages/HomePage.jsx?t=1788301207611:205:250)
+        at renderWithHooks (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:11596:26)
+        at mountIndeterminateComponent (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:14974:21)
+        at beginWork (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:15962:22)
+        at HTMLUnknownElement.callCallback2 (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3680:22)
+        at Object.invokeGuardedCallbackDev (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3705:24)
+        at invokeGuardedCallback (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3739:39)
+        at beginWork$1 (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19818:15)
+        at performUnitOfWork (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19251:20)
+        at workLoopSync (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19190:13)
+
+## 2026-09-01 22:20:07.676Z console.error
+- text: 
+    The above error occurred in the <HomePage> component:
+    
+        at HomePage (http://localhost:3000/src/pages/HomePage.jsx?t=1788301207611:20:33)
+        at RenderedRoute (http://localhost:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:6647:26)
+        at Outlet (http://localhost:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7502:26)
+        at main
+        at PublicLayout
+        at RenderedRoute (http://localhost:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:6647:26)
+        at Routes (http://localhost:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7572:3)
+        at Router (http://localhost:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7511:13)
+        at BrowserRouter (http://localhost:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:10816:3)
+        at App
+    
+    Consider adding an error boundary to your tree to customize error handling behavior.
+    Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries.
+
+## 2026-09-01 22:20:07.676Z unhandledrejection
+- message: MARQUEE_WORDS is not defined
+- stack: 
+    ReferenceError: MARQUEE_WORDS is not defined
+        at HomePage (http://localhost:3000/src/pages/HomePage.jsx?t=1788301207611:205:250)
+        at renderWithHooks (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:11596:26)
+        at mountIndeterminateComponent (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:14974:21)
+        at beginWork (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:15962:22)
+        at beginWork$1 (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19806:22)
+        at performUnitOfWork (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19251:20)
+        at workLoopSync (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19190:13)
+        at renderRootSync (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19169:15)
+        at recoverFromConcurrentError (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:18786:28)
+        at performSyncWorkOnRoot (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:18932:28)
+
+## 2026-09-01 22:20:09.428Z window.error
+- message: Uncaught ReferenceError: MARQUEE_WORDS is not defined
+- source: http://localhost:3000/src/pages/HomePage.jsx?t=1788301209370
+- line: 205
+- col: 250
+- stack: 
+    ReferenceError: MARQUEE_WORDS is not defined
+        at HomePage (http://localhost:3000/src/pages/HomePage.jsx?t=1788301209370:205:250)
+        at renderWithHooks (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:11596:26)
+        at mountIndeterminateComponent (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:14974:21)
+        at beginWork (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:15962:22)
+        at HTMLUnknownElement.callCallback2 (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3680:22)
+        at Object.invokeGuardedCallbackDev (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3705:24)
+        at invokeGuardedCallback (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3739:39)
+        at beginWork$1 (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19818:15)
+        at performUnitOfWork (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19251:20)
+        at workLoopSync (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19190:13)
+
+## 2026-09-01 22:20:09.430Z window.error
+- message: Uncaught ReferenceError: MARQUEE_WORDS is not defined
+- source: http://localhost:3000/src/pages/HomePage.jsx?t=1788301209370
+- line: 205
+- col: 250
+- stack: 
+    ReferenceError: MARQUEE_WORDS is not defined
+        at HomePage (http://localhost:3000/src/pages/HomePage.jsx?t=1788301209370:205:250)
+        at renderWithHooks (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:11596:26)
+        at mountIndeterminateComponent (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:14974:21)
+        at beginWork (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:15962:22)
+        at HTMLUnknownElement.callCallback2 (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3680:22)
+        at Object.invokeGuardedCallbackDev (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3705:24)
+        at invokeGuardedCallback (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3739:39)
+        at beginWork$1 (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19818:15)
+        at performUnitOfWork (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19251:20)
+        at workLoopSync (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19190:13)
+
+## 2026-09-01 22:20:09.431Z console.error
+- text: 
+    The above error occurred in the <HomePage> component:
+    
+        at HomePage (http://localhost:3000/src/pages/HomePage.jsx?t=1788301209370:20:33)
+        at RenderedRoute (http://localhost:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:6647:26)
+        at Outlet (http://localhost:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7502:26)
+        at main
+        at PublicLayout
+        at RenderedRoute (http://localhost:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:6647:26)
+        at Routes (http://localhost:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7572:3)
+        at Router (http://localhost:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7511:13)
+        at BrowserRouter (http://localhost:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:10816:3)
+        at App
+    
+    Consider adding an error boundary to your tree to customize error handling behavior.
+    Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries.
+
+## 2026-09-01 22:20:09.431Z unhandledrejection
+- message: MARQUEE_WORDS is not defined
+- stack: 
+    ReferenceError: MARQUEE_WORDS is not defined
+        at HomePage (http://localhost:3000/src/pages/HomePage.jsx?t=1788301209370:205:250)
+        at renderWithHooks (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:11596:26)
+        at mountIndeterminateComponent (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:14974:21)
+        at beginWork (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:15962:22)
+        at beginWork$1 (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19806:22)
+        at performUnitOfWork (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19251:20)
+        at workLoopSync (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19190:13)
+        at renderRootSync (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19169:15)
+        at recoverFromConcurrentError (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:18786:28)
+        at performSyncWorkOnRoot (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:18932:28)
+
+## 2026-09-01 22:20:12.193Z window.error
+- message: Uncaught ReferenceError: MARQUEE_WORDS is not defined
+- source: http://localhost:3000/src/pages/HomePage.jsx?t=1788301212133
+- line: 205
+- col: 250
+- stack: 
+    ReferenceError: MARQUEE_WORDS is not defined
+        at HomePage (http://localhost:3000/src/pages/HomePage.jsx?t=1788301212133:205:250)
+        at renderWithHooks (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:11596:26)
+        at mountIndeterminateComponent (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:14974:21)
+        at beginWork (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:15962:22)
+        at HTMLUnknownElement.callCallback2 (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3680:22)
+        at Object.invokeGuardedCallbackDev (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3705:24)
+        at invokeGuardedCallback (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3739:39)
+        at beginWork$1 (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19818:15)
+        at performUnitOfWork (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19251:20)
+        at workLoopSync (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19190:13)
+
+## 2026-09-01 22:20:12.194Z window.error
+- message: Uncaught ReferenceError: MARQUEE_WORDS is not defined
+- source: http://localhost:3000/src/pages/HomePage.jsx?t=1788301212133
+- line: 205
+- col: 250
+- stack: 
+    ReferenceError: MARQUEE_WORDS is not defined
+        at HomePage (http://localhost:3000/src/pages/HomePage.jsx?t=1788301212133:205:250)
+        at renderWithHooks (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:11596:26)
+        at mountIndeterminateComponent (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:14974:21)
+        at beginWork (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:15962:22)
+        at HTMLUnknownElement.callCallback2 (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3680:22)
+        at Object.invokeGuardedCallbackDev (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3705:24)
+        at invokeGuardedCallback (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3739:39)
+        at beginWork$1 (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19818:15)
+        at performUnitOfWork (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19251:20)
+        at workLoopSync (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19190:13)
+
+## 2026-09-01 22:20:12.195Z console.error
+- text: 
+    The above error occurred in the <HomePage> component:
+    
+        at HomePage (http://localhost:3000/src/pages/HomePage.jsx?t=1788301212133:20:33)
+        at RenderedRoute (http://localhost:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:6647:26)
+        at Outlet (http://localhost:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7502:26)
+        at main
+        at PublicLayout
+        at RenderedRoute (http://localhost:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:6647:26)
+        at Routes (http://localhost:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7572:3)
+        at Router (http://localhost:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7511:13)
+        at BrowserRouter (http://localhost:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:10816:3)
+        at App
+    
+    Consider adding an error boundary to your tree to customize error handling behavior.
+    Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries.
+
+## 2026-09-01 22:20:12.195Z unhandledrejection
+- message: MARQUEE_WORDS is not defined
+- stack: 
+    ReferenceError: MARQUEE_WORDS is not defined
+        at HomePage (http://localhost:3000/src/pages/HomePage.jsx?t=1788301212133:205:250)
+        at renderWithHooks (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:11596:26)
+        at mountIndeterminateComponent (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:14974:21)
+        at beginWork (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:15962:22)
+        at beginWork$1 (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19806:22)
+        at performUnitOfWork (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19251:20)
+        at workLoopSync (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19190:13)
+        at renderRootSync (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19169:15)
+        at recoverFromConcurrentError (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:18786:28)
+        at performSyncWorkOnRoot (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:18932:28)
+
+## 2026-09-01 22:20:15.463Z window.error
+- message: Uncaught ReferenceError: MARQUEE_WORDS is not defined
+- source: http://localhost:3000/src/pages/HomePage.jsx?t=1788301215404
+- line: 205
+- col: 250
+- stack: 
+    ReferenceError: MARQUEE_WORDS is not defined
+        at HomePage (http://localhost:3000/src/pages/HomePage.jsx?t=1788301215404:205:250)
+        at renderWithHooks (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:11596:26)
+        at mountIndeterminateComponent (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:14974:21)
+        at beginWork (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:15962:22)
+        at HTMLUnknownElement.callCallback2 (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3680:22)
+        at Object.invokeGuardedCallbackDev (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3705:24)
+        at invokeGuardedCallback (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3739:39)
+        at beginWork$1 (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19818:15)
+        at performUnitOfWork (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19251:20)
+        at workLoopSync (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19190:13)
+
+## 2026-09-01 22:20:15.464Z window.error
+- message: Uncaught ReferenceError: MARQUEE_WORDS is not defined
+- source: http://localhost:3000/src/pages/HomePage.jsx?t=1788301215404
+- line: 205
+- col: 250
+- stack: 
+    ReferenceError: MARQUEE_WORDS is not defined
+        at HomePage (http://localhost:3000/src/pages/HomePage.jsx?t=1788301215404:205:250)
+        at renderWithHooks (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:11596:26)
+        at mountIndeterminateComponent (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:14974:21)
+        at beginWork (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:15962:22)
+        at HTMLUnknownElement.callCallback2 (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3680:22)
+        at Object.invokeGuardedCallbackDev (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3705:24)
+        at invokeGuardedCallback (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3739:39)
+        at beginWork$1 (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19818:15)
+        at performUnitOfWork (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19251:20)
+        at workLoopSync (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19190:13)
+
+## 2026-09-01 22:20:15.464Z console.error
+- text: 
+    The above error occurred in the <HomePage> component:
+    
+        at HomePage (http://localhost:3000/src/pages/HomePage.jsx?t=1788301215404:20:33)
+        at RenderedRoute (http://localhost:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:6647:26)
+        at Outlet (http://localhost:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7502:26)
+        at main
+        at PublicLayout
+        at RenderedRoute (http://localhost:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:6647:26)
+        at Routes (http://localhost:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7572:3)
+        at Router (http://localhost:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7511:13)
+        at BrowserRouter (http://localhost:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:10816:3)
+        at App
+    
+    Consider adding an error boundary to your tree to customize error handling behavior.
+    Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries.
+
+## 2026-09-01 22:20:15.464Z unhandledrejection
+- message: MARQUEE_WORDS is not defined
+- stack: 
+    ReferenceError: MARQUEE_WORDS is not defined
+        at HomePage (http://localhost:3000/src/pages/HomePage.jsx?t=1788301215404:205:250)
+        at renderWithHooks (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:11596:26)
+        at mountIndeterminateComponent (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:14974:21)
+        at beginWork (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:15962:22)
+        at beginWork$1 (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19806:22)
+        at performUnitOfWork (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19251:20)
+        at workLoopSync (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19190:13)
+        at renderRootSync (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19169:15)
+        at recoverFromConcurrentError (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:18786:28)
+        at performSyncWorkOnRoot (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:18932:28)
+
+## 2026-09-01 22:20:16.322Z window.error
+- message: Uncaught ReferenceError: MARQUEE_WORDS is not defined
+- source: http://localhost:3000/src/pages/HomePage.jsx?t=1788301216261
+- line: 194
+- col: 250
+- stack: 
+    ReferenceError: MARQUEE_WORDS is not defined
+        at HomePage (http://localhost:3000/src/pages/HomePage.jsx?t=1788301216261:194:250)
+        at renderWithHooks (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:11596:26)
+        at mountIndeterminateComponent (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:14974:21)
+        at beginWork (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:15962:22)
+        at HTMLUnknownElement.callCallback2 (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3680:22)
+        at Object.invokeGuardedCallbackDev (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3705:24)
+        at invokeGuardedCallback (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3739:39)
+        at beginWork$1 (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19818:15)
+        at performUnitOfWork (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19251:20)
+        at workLoopSync (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19190:13)
+
+## 2026-09-01 22:20:16.324Z window.error
+- message: Uncaught ReferenceError: MARQUEE_WORDS is not defined
+- source: http://localhost:3000/src/pages/HomePage.jsx?t=1788301216261
+- line: 194
+- col: 250
+- stack: 
+    ReferenceError: MARQUEE_WORDS is not defined
+        at HomePage (http://localhost:3000/src/pages/HomePage.jsx?t=1788301216261:194:250)
+        at renderWithHooks (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:11596:26)
+        at mountIndeterminateComponent (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:14974:21)
+        at beginWork (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:15962:22)
+        at HTMLUnknownElement.callCallback2 (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3680:22)
+        at Object.invokeGuardedCallbackDev (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3705:24)
+        at invokeGuardedCallback (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3739:39)
+        at beginWork$1 (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19818:15)
+        at performUnitOfWork (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19251:20)
+        at workLoopSync (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19190:13)
+
+## 2026-09-01 22:20:16.325Z console.error
+- text: 
+    The above error occurred in the <HomePage> component:
+    
+        at HomePage (http://localhost:3000/src/pages/HomePage.jsx?t=1788301216261:20:33)
+        at RenderedRoute (http://localhost:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:6647:26)
+        at Outlet (http://localhost:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7502:26)
+        at main
+        at PublicLayout
+        at RenderedRoute (http://localhost:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:6647:26)
+        at Routes (http://localhost:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7572:3)
+        at Router (http://localhost:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7511:13)
+        at BrowserRouter (http://localhost:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:10816:3)
+        at App
+    
+    Consider adding an error boundary to your tree to customize error handling behavior.
+    Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries.
+
+## 2026-09-01 22:20:16.325Z unhandledrejection
+- message: MARQUEE_WORDS is not defined
+- stack: 
+    ReferenceError: MARQUEE_WORDS is not defined
+        at HomePage (http://localhost:3000/src/pages/HomePage.jsx?t=1788301216261:194:250)
+        at renderWithHooks (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:11596:26)
+        at mountIndeterminateComponent (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:14974:21)
+        at beginWork (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:15962:22)
+        at beginWork$1 (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19806:22)
+        at performUnitOfWork (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19251:20)
+        at workLoopSync (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19190:13)
+        at renderRootSync (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19169:15)
+        at recoverFromConcurrentError (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:18786:28)
+        at performSyncWorkOnRoot (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:18932:28)
+
+## 2026-09-01 22:20:25.444Z window.error
+- message: Uncaught ReferenceError: FEATURES is not defined
+- source: http://localhost:3000/src/pages/HomePage.jsx?t=1788301225336
+- line: 311
+- col: 103
+- stack: 
+    ReferenceError: FEATURES is not defined
+        at HomePage (http://localhost:3000/src/pages/HomePage.jsx?t=1788301225336:311:103)
+        at renderWithHooks (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:11596:26)
+        at mountIndeterminateComponent (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:14974:21)
+        at beginWork (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:15962:22)
+        at HTMLUnknownElement.callCallback2 (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3680:22)
+        at Object.invokeGuardedCallbackDev (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3705:24)
+        at invokeGuardedCallback (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3739:39)
+        at beginWork$1 (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19818:15)
+        at performUnitOfWork (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19251:20)
+        at workLoopSync (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19190:13)
+
+## 2026-09-01 22:20:25.446Z window.error
+- message: Uncaught ReferenceError: FEATURES is not defined
+- source: http://localhost:3000/src/pages/HomePage.jsx?t=1788301225336
+- line: 311
+- col: 103
+- stack: 
+    ReferenceError: FEATURES is not defined
+        at HomePage (http://localhost:3000/src/pages/HomePage.jsx?t=1788301225336:311:103)
+        at renderWithHooks (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:11596:26)
+        at mountIndeterminateComponent (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:14974:21)
+        at beginWork (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:15962:22)
+        at HTMLUnknownElement.callCallback2 (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3680:22)
+        at Object.invokeGuardedCallbackDev (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3705:24)
+        at invokeGuardedCallback (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3739:39)
+        at beginWork$1 (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19818:15)
+        at performUnitOfWork (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19251:20)
+        at workLoopSync (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19190:13)
+
+## 2026-09-01 22:20:25.447Z console.error
+- text: 
+    The above error occurred in the <HomePage> component:
+    
+        at HomePage (http://localhost:3000/src/pages/HomePage.jsx?t=1788301225336:20:33)
+        at RenderedRoute (http://localhost:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:6647:26)
+        at Outlet (http://localhost:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7502:26)
+        at main
+        at PublicLayout
+        at RenderedRoute (http://localhost:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:6647:26)
+        at Routes (http://localhost:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7572:3)
+        at Router (http://localhost:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7511:13)
+        at BrowserRouter (http://localhost:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:10816:3)
+        at App
+    
+    Consider adding an error boundary to your tree to customize error handling behavior.
+    Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries.
+
+## 2026-09-01 22:20:25.447Z unhandledrejection
+- message: FEATURES is not defined
+- stack: 
+    ReferenceError: FEATURES is not defined
+        at HomePage (http://localhost:3000/src/pages/HomePage.jsx?t=1788301225336:311:103)
+        at renderWithHooks (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:11596:26)
+        at mountIndeterminateComponent (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:14974:21)
+        at beginWork (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:15962:22)
+        at beginWork$1 (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19806:22)
+        at performUnitOfWork (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19251:20)
+        at workLoopSync (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19190:13)
+        at renderRootSync (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19169:15)
+        at recoverFromConcurrentError (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:18786:28)
+        at performSyncWorkOnRoot (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:18932:28)
+
+## 2026-09-01 22:20:30.028Z window.error
+- message: Uncaught ReferenceError: FEATURES is not defined
+- source: http://localhost:3000/src/pages/HomePage.jsx?t=1788301229950
+- line: 269
+- col: 103
+- stack: 
+    ReferenceError: FEATURES is not defined
+        at HomePage (http://localhost:3000/src/pages/HomePage.jsx?t=1788301229950:269:103)
+        at renderWithHooks (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:11596:26)
+        at mountIndeterminateComponent (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:14974:21)
+        at beginWork (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:15962:22)
+        at HTMLUnknownElement.callCallback2 (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3680:22)
+        at Object.invokeGuardedCallbackDev (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3705:24)
+        at invokeGuardedCallback (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3739:39)
+        at beginWork$1 (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19818:15)
+        at performUnitOfWork (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19251:20)
+        at workLoopSync (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19190:13)
+
+## 2026-09-01 22:20:30.030Z window.error
+- message: Uncaught ReferenceError: FEATURES is not defined
+- source: http://localhost:3000/src/pages/HomePage.jsx?t=1788301229950
+- line: 269
+- col: 103
+- stack: 
+    ReferenceError: FEATURES is not defined
+        at HomePage (http://localhost:3000/src/pages/HomePage.jsx?t=1788301229950:269:103)
+        at renderWithHooks (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:11596:26)
+        at mountIndeterminateComponent (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:14974:21)
+        at beginWork (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:15962:22)
+        at HTMLUnknownElement.callCallback2 (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3680:22)
+        at Object.invokeGuardedCallbackDev (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3705:24)
+        at invokeGuardedCallback (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3739:39)
+        at beginWork$1 (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19818:15)
+        at performUnitOfWork (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19251:20)
+        at workLoopSync (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19190:13)
+
+## 2026-09-01 22:20:30.030Z console.error
+- text: 
+    The above error occurred in the <HomePage> component:
+    
+        at HomePage (http://localhost:3000/src/pages/HomePage.jsx?t=1788301229950:20:33)
+        at RenderedRoute (http://localhost:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:6647:26)
+        at Outlet (http://localhost:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7502:26)
+        at main
+        at PublicLayout
+        at RenderedRoute (http://localhost:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:6647:26)
+        at Routes (http://localhost:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7572:3)
+        at Router (http://localhost:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7511:13)
+        at BrowserRouter (http://localhost:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:10816:3)
+        at App
+    
+    Consider adding an error boundary to your tree to customize error handling behavior.
+    Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries.
+
+## 2026-09-01 22:20:30.031Z unhandledrejection
+- message: FEATURES is not defined
+- stack: 
+    ReferenceError: FEATURES is not defined
+        at HomePage (http://localhost:3000/src/pages/HomePage.jsx?t=1788301229950:269:103)
+        at renderWithHooks (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:11596:26)
+        at mountIndeterminateComponent (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:14974:21)
+        at beginWork (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:15962:22)
+        at beginWork$1 (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19806:22)
+        at performUnitOfWork (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19251:20)
+        at workLoopSync (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19190:13)
+        at renderRootSync (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19169:15)
+        at recoverFromConcurrentError (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:18786:28)
+        at performSyncWorkOnRoot (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:18932:28)
+
+## 2026-09-01 22:21:47.588Z window.error
+- message: Uncaught ReferenceError: STEPS is not defined
+- source: http://127.0.0.1:3000/src/pages/BookingPage.jsx?t=1788301307542
+- line: 131
+- col: 83
+- stack: 
+    ReferenceError: STEPS is not defined
+        at BookingPage (http://127.0.0.1:3000/src/pages/BookingPage.jsx?t=1788301307542:131:83)
+        at renderWithHooks (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:11596:26)
+        at updateFunctionComponent (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:14630:28)
+        at beginWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:15972:22)
+        at HTMLUnknownElement.callCallback2 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3680:22)
+        at Object.invokeGuardedCallbackDev (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3705:24)
+        at invokeGuardedCallback (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3739:39)
+        at beginWork$1 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19818:15)
+        at performUnitOfWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19251:20)
+        at workLoopSync (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19190:13)
+
+## 2026-09-01 22:21:47.589Z window.error
+- message: Uncaught ReferenceError: STEPS is not defined
+- source: http://127.0.0.1:3000/src/pages/BookingPage.jsx?t=1788301307542
+- line: 131
+- col: 83
+- stack: 
+    ReferenceError: STEPS is not defined
+        at BookingPage (http://127.0.0.1:3000/src/pages/BookingPage.jsx?t=1788301307542:131:83)
+        at renderWithHooks (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:11596:26)
+        at updateFunctionComponent (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:14630:28)
+        at beginWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:15972:22)
+        at HTMLUnknownElement.callCallback2 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3680:22)
+        at Object.invokeGuardedCallbackDev (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3705:24)
+        at invokeGuardedCallback (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3739:39)
+        at beginWork$1 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19818:15)
+        at performUnitOfWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19251:20)
+        at workLoopSync (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19190:13)
+
+## 2026-09-01 22:21:47.590Z console.error
+- text: 
+    The above error occurred in the <BookingPage> component:
+    
+        at BookingPage (http://127.0.0.1:3000/src/pages/BookingPage.jsx?t=1788301307542:14:3)
+        at RenderedRoute (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:6647:26)
+        at Outlet (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7502:26)
+        at main
+        at PublicLayout
+        at RenderedRoute (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:6647:26)
+        at Routes (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7572:3)
+        at Router (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7511:13)
+        at BrowserRouter (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:10816:3)
+        at App
+    
+    Consider adding an error boundary to your tree to customize error handling behavior.
+    Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries.
+
+## 2026-09-01 22:21:47.590Z unhandledrejection
+- message: STEPS is not defined
+- stack: 
+    ReferenceError: STEPS is not defined
+        at BookingPage (http://127.0.0.1:3000/src/pages/BookingPage.jsx?t=1788301307542:131:83)
+        at renderWithHooks (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:11596:26)
+        at updateFunctionComponent (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:14630:28)
+        at beginWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:15972:22)
+        at beginWork$1 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19806:22)
+        at performUnitOfWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19251:20)
+        at workLoopSync (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19190:13)
+        at renderRootSync (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19169:15)
+        at recoverFromConcurrentError (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:18786:28)
+        at performSyncWorkOnRoot (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:18932:28)
+
+## 2026-09-01 22:21:47.891Z root.empty
+- url: http://127.0.0.1:3000/reservation/convocation-chez-le-directeur?date=2027-09-01
+
+## 2026-09-01 22:21:49.611Z window.error
+- message: Uncaught ReferenceError: STEPS is not defined
+- source: http://127.0.0.1:3000/src/pages/BookingPage.jsx?t=1788301309561
+- line: 135
+- col: 83
+- stack: 
+    ReferenceError: STEPS is not defined
+        at BookingPage (http://127.0.0.1:3000/src/pages/BookingPage.jsx?t=1788301309561:135:83)
+        at renderWithHooks (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:11596:26)
+        at mountIndeterminateComponent (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:14974:21)
+        at beginWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:15962:22)
+        at HTMLUnknownElement.callCallback2 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3680:22)
+        at Object.invokeGuardedCallbackDev (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3705:24)
+        at invokeGuardedCallback (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3739:39)
+        at beginWork$1 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19818:15)
+        at performUnitOfWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19251:20)
+        at workLoopSync (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19190:13)
+
+## 2026-09-01 22:21:49.613Z window.error
+- message: Uncaught ReferenceError: STEPS is not defined
+- source: http://127.0.0.1:3000/src/pages/BookingPage.jsx?t=1788301309561
+- line: 135
+- col: 83
+- stack: 
+    ReferenceError: STEPS is not defined
+        at BookingPage (http://127.0.0.1:3000/src/pages/BookingPage.jsx?t=1788301309561:135:83)
+        at renderWithHooks (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:11596:26)
+        at mountIndeterminateComponent (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:14974:21)
+        at beginWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:15962:22)
+        at HTMLUnknownElement.callCallback2 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3680:22)
+        at Object.invokeGuardedCallbackDev (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3705:24)
+        at invokeGuardedCallback (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3739:39)
+        at beginWork$1 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19818:15)
+        at performUnitOfWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19251:20)
+        at workLoopSync (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19190:13)
+
+## 2026-09-01 22:21:49.613Z console.error
+- text: 
+    The above error occurred in the <BookingPage> component:
+    
+        at BookingPage (http://127.0.0.1:3000/src/pages/BookingPage.jsx?t=1788301309561:14:3)
+        at RenderedRoute (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:6647:26)
+        at Outlet (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7502:26)
+        at main
+        at PublicLayout
+        at RenderedRoute (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:6647:26)
+        at Routes (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7572:3)
+        at Router (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7511:13)
+        at BrowserRouter (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:10816:3)
+        at App
+    
+    Consider adding an error boundary to your tree to customize error handling behavior.
+    Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries.
+
+## 2026-09-01 22:21:49.614Z unhandledrejection
+- message: STEPS is not defined
+- stack: 
+    ReferenceError: STEPS is not defined
+        at BookingPage (http://127.0.0.1:3000/src/pages/BookingPage.jsx?t=1788301309561:135:83)
+        at renderWithHooks (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:11596:26)
+        at mountIndeterminateComponent (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:14974:21)
+        at beginWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:15962:22)
+        at beginWork$1 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19806:22)
+        at performUnitOfWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19251:20)
+        at workLoopSync (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19190:13)
+        at renderRootSync (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19169:15)
+        at recoverFromConcurrentError (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:18786:28)
+        at performSyncWorkOnRoot (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:18932:28)
+
+## 2026-09-01 22:21:52.896Z window.error
+- message: Uncaught ReferenceError: STEPS is not defined
+- source: http://127.0.0.1:3000/src/pages/BookingPage.jsx?t=1788301312851
+- line: 131
+- col: 83
+- stack: 
+    ReferenceError: STEPS is not defined
+        at BookingPage (http://127.0.0.1:3000/src/pages/BookingPage.jsx?t=1788301312851:131:83)
+        at renderWithHooks (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:11596:26)
+        at mountIndeterminateComponent (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:14974:21)
+        at beginWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:15962:22)
+        at HTMLUnknownElement.callCallback2 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3680:22)
+        at Object.invokeGuardedCallbackDev (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3705:24)
+        at invokeGuardedCallback (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3739:39)
+        at beginWork$1 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19818:15)
+        at performUnitOfWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19251:20)
+        at workLoopSync (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19190:13)
+
+## 2026-09-01 22:21:52.897Z window.error
+- message: Uncaught ReferenceError: STEPS is not defined
+- source: http://127.0.0.1:3000/src/pages/BookingPage.jsx?t=1788301312851
+- line: 131
+- col: 83
+- stack: 
+    ReferenceError: STEPS is not defined
+        at BookingPage (http://127.0.0.1:3000/src/pages/BookingPage.jsx?t=1788301312851:131:83)
+        at renderWithHooks (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:11596:26)
+        at mountIndeterminateComponent (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:14974:21)
+        at beginWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:15962:22)
+        at HTMLUnknownElement.callCallback2 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3680:22)
+        at Object.invokeGuardedCallbackDev (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3705:24)
+        at invokeGuardedCallback (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3739:39)
+        at beginWork$1 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19818:15)
+        at performUnitOfWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19251:20)
+        at workLoopSync (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19190:13)
+
+## 2026-09-01 22:21:52.898Z console.error
+- text: 
+    The above error occurred in the <BookingPage> component:
+    
+        at BookingPage (http://127.0.0.1:3000/src/pages/BookingPage.jsx?t=1788301312851:14:3)
+        at RenderedRoute (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:6647:26)
+        at Outlet (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7502:26)
+        at main
+        at PublicLayout
+        at RenderedRoute (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:6647:26)
+        at Routes (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7572:3)
+        at Router (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7511:13)
+        at BrowserRouter (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:10816:3)
+        at App
+    
+    Consider adding an error boundary to your tree to customize error handling behavior.
+    Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries.
+
+## 2026-09-01 22:21:52.898Z unhandledrejection
+- message: STEPS is not defined
+- stack: 
+    ReferenceError: STEPS is not defined
+        at BookingPage (http://127.0.0.1:3000/src/pages/BookingPage.jsx?t=1788301312851:131:83)
+        at renderWithHooks (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:11596:26)
+        at mountIndeterminateComponent (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:14974:21)
+        at beginWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:15962:22)
+        at beginWork$1 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19806:22)
+        at performUnitOfWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19251:20)
+        at workLoopSync (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19190:13)
+        at renderRootSync (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19169:15)
+        at recoverFromConcurrentError (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:18786:28)
+        at performSyncWorkOnRoot (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:18932:28)
+
+## 2026-09-01 22:21:57.625Z window.error
+- message: Uncaught ReferenceError: STEPS is not defined
+- source: http://127.0.0.1:3000/src/pages/BookingPage.jsx?t=1788301317559
+- line: 131
+- col: 83
+- stack: 
+    ReferenceError: STEPS is not defined
+        at BookingPage (http://127.0.0.1:3000/src/pages/BookingPage.jsx?t=1788301317559:131:83)
+        at renderWithHooks (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:11596:26)
+        at mountIndeterminateComponent (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:14974:21)
+        at beginWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:15962:22)
+        at HTMLUnknownElement.callCallback2 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3680:22)
+        at Object.invokeGuardedCallbackDev (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3705:24)
+        at invokeGuardedCallback (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3739:39)
+        at beginWork$1 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19818:15)
+        at performUnitOfWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19251:20)
+        at workLoopSync (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19190:13)
+
+## 2026-09-01 22:21:57.626Z window.error
+- message: Uncaught ReferenceError: STEPS is not defined
+- source: http://127.0.0.1:3000/src/pages/BookingPage.jsx?t=1788301317559
+- line: 131
+- col: 83
+- stack: 
+    ReferenceError: STEPS is not defined
+        at BookingPage (http://127.0.0.1:3000/src/pages/BookingPage.jsx?t=1788301317559:131:83)
+        at renderWithHooks (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:11596:26)
+        at mountIndeterminateComponent (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:14974:21)
+        at beginWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:15962:22)
+        at HTMLUnknownElement.callCallback2 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3680:22)
+        at Object.invokeGuardedCallbackDev (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3705:24)
+        at invokeGuardedCallback (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3739:39)
+        at beginWork$1 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19818:15)
+        at performUnitOfWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19251:20)
+        at workLoopSync (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19190:13)
+
+## 2026-09-01 22:21:57.627Z console.error
+- text: 
+    The above error occurred in the <BookingPage> component:
+    
+        at BookingPage (http://127.0.0.1:3000/src/pages/BookingPage.jsx?t=1788301317559:14:3)
+        at RenderedRoute (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:6647:26)
+        at Outlet (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7502:26)
+        at main
+        at PublicLayout
+        at RenderedRoute (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:6647:26)
+        at Routes (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7572:3)
+        at Router (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7511:13)
+        at BrowserRouter (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:10816:3)
+        at App
+    
+    Consider adding an error boundary to your tree to customize error handling behavior.
+    Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries.
+
+## 2026-09-01 22:21:57.627Z unhandledrejection
+- message: STEPS is not defined
+- stack: 
+    ReferenceError: STEPS is not defined
+        at BookingPage (http://127.0.0.1:3000/src/pages/BookingPage.jsx?t=1788301317559:131:83)
+        at renderWithHooks (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:11596:26)
+        at mountIndeterminateComponent (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:14974:21)
+        at beginWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:15962:22)
+        at beginWork$1 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19806:22)
+        at performUnitOfWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19251:20)
+        at workLoopSync (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19190:13)
+        at renderRootSync (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19169:15)
+        at recoverFromConcurrentError (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:18786:28)
+        at performSyncWorkOnRoot (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:18932:28)
+
+## 2026-09-01 22:22:07.581Z window.error
+- message: Uncaught ReferenceError: WEEKDAY_LABELS is not defined
+- source: http://127.0.0.1:3000/src/components/BookingCalendar.jsx?t=1788301327497
+- line: 387
+- col: 7
+- stack: 
+    ReferenceError: WEEKDAY_LABELS is not defined
+        at BookingCalendar (http://127.0.0.1:3000/src/components/BookingCalendar.jsx?t=1788301327497:387:7)
+        at renderWithHooks (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:11596:26)
+        at updateFunctionComponent (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:14630:28)
+        at beginWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:15972:22)
+        at HTMLUnknownElement.callCallback2 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3680:22)
+        at Object.invokeGuardedCallbackDev (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3705:24)
+        at invokeGuardedCallback (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3739:39)
+        at beginWork$1 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19818:15)
+        at performUnitOfWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19251:20)
+        at workLoopSync (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19190:13)
+
+## 2026-09-01 22:22:07.582Z window.error
+- message: Uncaught ReferenceError: WEEKDAY_LABELS is not defined
+- source: http://127.0.0.1:3000/src/components/BookingCalendar.jsx?t=1788301327497
+- line: 387
+- col: 7
+- stack: 
+    ReferenceError: WEEKDAY_LABELS is not defined
+        at BookingCalendar (http://127.0.0.1:3000/src/components/BookingCalendar.jsx?t=1788301327497:387:7)
+        at renderWithHooks (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:11596:26)
+        at updateFunctionComponent (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:14630:28)
+        at beginWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:15972:22)
+        at HTMLUnknownElement.callCallback2 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3680:22)
+        at Object.invokeGuardedCallbackDev (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3705:24)
+        at invokeGuardedCallback (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3739:39)
+        at beginWork$1 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19818:15)
+        at performUnitOfWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19251:20)
+        at workLoopSync (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19190:13)
+
+## 2026-09-01 22:22:07.582Z console.error
+- text: 
+    The above error occurred in the <BookingCalendar> component:
+    
+        at BookingCalendar (http://127.0.0.1:3000/src/components/BookingCalendar.jsx?t=1788301327497:81:3)
+        at div
+        at MotionComponent (http://127.0.0.1:3000/node_modules/.vite/deps/framer-motion.js?v=b6c39f40:946:40)
+        at Reveal (http://127.0.0.1:3000/src/components/Reveal.jsx:5:19)
+        at div
+        at section
+        at BookingPage (http://127.0.0.1:3000/src/pages/BookingPage.jsx?t=1788301318880:14:3)
+        at RenderedRoute (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:6647:26)
+        at Outlet (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7502:26)
+        at main
+        at PublicLayout
+        at RenderedRoute (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:6647:26)
+        at Routes (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7572:3)
+        at Router (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7511:13)
+        at BrowserRouter (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:10816:3)
+        at App
+    
+    Consider adding an error boundary to your tree to customize error handling behavior.
+    Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries.
+
+## 2026-09-01 22:22:07.583Z unhandledrejection
+- message: WEEKDAY_LABELS is not defined
+- stack: 
+    ReferenceError: WEEKDAY_LABELS is not defined
+        at BookingCalendar (http://127.0.0.1:3000/src/components/BookingCalendar.jsx?t=1788301327497:387:7)
+        at renderWithHooks (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:11596:26)
+        at updateFunctionComponent (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:14630:28)
+        at beginWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:15972:22)
+        at beginWork$1 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19806:22)
+        at performUnitOfWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19251:20)
+        at workLoopSync (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19190:13)
+        at renderRootSync (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19169:15)
+        at recoverFromConcurrentError (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:18786:28)
+        at performSyncWorkOnRoot (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:18932:28)
+
+## 2026-09-01 22:22:07.883Z root.empty
+- url: http://127.0.0.1:3000/reservation/convocation-chez-le-directeur?date=2027-09-01
+
+## 2026-09-01 22:22:12.430Z window.error
+- message: Uncaught ReferenceError: WEEKDAY_LABELS is not defined
+- source: http://127.0.0.1:3000/src/components/BookingCalendar.jsx?t=1788301332362
+- line: 387
+- col: 7
+- stack: 
+    ReferenceError: WEEKDAY_LABELS is not defined
+        at BookingCalendar (http://127.0.0.1:3000/src/components/BookingCalendar.jsx?t=1788301332362:387:7)
+        at renderWithHooks (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:11596:26)
+        at mountIndeterminateComponent (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:14974:21)
+        at beginWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:15962:22)
+        at HTMLUnknownElement.callCallback2 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3680:22)
+        at Object.invokeGuardedCallbackDev (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3705:24)
+        at invokeGuardedCallback (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3739:39)
+        at beginWork$1 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19818:15)
+        at performUnitOfWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19251:20)
+        at workLoopSync (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19190:13)
+
+## 2026-09-01 22:22:12.432Z window.error
+- message: Uncaught ReferenceError: WEEKDAY_LABELS is not defined
+- source: http://127.0.0.1:3000/src/components/BookingCalendar.jsx?t=1788301332362
+- line: 387
+- col: 7
+- stack: 
+    ReferenceError: WEEKDAY_LABELS is not defined
+        at BookingCalendar (http://127.0.0.1:3000/src/components/BookingCalendar.jsx?t=1788301332362:387:7)
+        at renderWithHooks (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:11596:26)
+        at mountIndeterminateComponent (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:14974:21)
+        at beginWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:15962:22)
+        at HTMLUnknownElement.callCallback2 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3680:22)
+        at Object.invokeGuardedCallbackDev (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3705:24)
+        at invokeGuardedCallback (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3739:39)
+        at beginWork$1 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19818:15)
+        at performUnitOfWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19251:20)
+        at workLoopSync (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19190:13)
+
+## 2026-09-01 22:22:12.433Z console.error
+- text: 
+    The above error occurred in the <BookingCalendar> component:
+    
+        at BookingCalendar (http://127.0.0.1:3000/src/components/BookingCalendar.jsx?t=1788301332362:81:3)
+        at div
+        at MotionComponent (http://127.0.0.1:3000/node_modules/.vite/deps/framer-motion.js?v=b6c39f40:946:40)
+        at Reveal (http://127.0.0.1:3000/src/components/Reveal.jsx:5:19)
+        at div
+        at section
+        at BookingPage (http://127.0.0.1:3000/src/pages/BookingPage.jsx?t=1788301318880:14:3)
+        at RenderedRoute (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:6647:26)
+        at Outlet (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7502:26)
+        at main
+        at PublicLayout
+        at RenderedRoute (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:6647:26)
+        at Routes (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7572:3)
+        at Router (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7511:13)
+        at BrowserRouter (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:10816:3)
+        at App
+    
+    Consider adding an error boundary to your tree to customize error handling behavior.
+    Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries.
+
+## 2026-09-01 22:22:12.433Z unhandledrejection
+- message: WEEKDAY_LABELS is not defined
+- stack: 
+    ReferenceError: WEEKDAY_LABELS is not defined
+        at BookingCalendar (http://127.0.0.1:3000/src/components/BookingCalendar.jsx?t=1788301332362:387:7)
+        at renderWithHooks (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:11596:26)
+        at mountIndeterminateComponent (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:14974:21)
+        at beginWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:15962:22)
+        at beginWork$1 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19806:22)
+        at performUnitOfWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19251:20)
+        at workLoopSync (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19190:13)
+        at renderRootSync (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19169:15)
+        at recoverFromConcurrentError (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:18786:28)
+        at performSyncWorkOnRoot (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:18932:28)
+
+## 2026-09-01 22:22:13.060Z window.error
+- message: Uncaught ReferenceError: WEEKDAY_LABELS is not defined
+- source: http://127.0.0.1:3000/src/components/BookingCalendar.jsx?t=1788301332984
+- line: 373
+- col: 7
+- stack: 
+    ReferenceError: WEEKDAY_LABELS is not defined
+        at BookingCalendar (http://127.0.0.1:3000/src/components/BookingCalendar.jsx?t=1788301332984:373:7)
+        at renderWithHooks (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:11596:26)
+        at mountIndeterminateComponent (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:14974:21)
+        at beginWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:15962:22)
+        at HTMLUnknownElement.callCallback2 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3680:22)
+        at Object.invokeGuardedCallbackDev (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3705:24)
+        at invokeGuardedCallback (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3739:39)
+        at beginWork$1 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19818:15)
+        at performUnitOfWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19251:20)
+        at workLoopSync (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19190:13)
+
+## 2026-09-01 22:22:13.063Z window.error
+- message: Uncaught ReferenceError: WEEKDAY_LABELS is not defined
+- source: http://127.0.0.1:3000/src/components/BookingCalendar.jsx?t=1788301332984
+- line: 373
+- col: 7
+- stack: 
+    ReferenceError: WEEKDAY_LABELS is not defined
+        at BookingCalendar (http://127.0.0.1:3000/src/components/BookingCalendar.jsx?t=1788301332984:373:7)
+        at renderWithHooks (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:11596:26)
+        at mountIndeterminateComponent (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:14974:21)
+        at beginWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:15962:22)
+        at HTMLUnknownElement.callCallback2 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3680:22)
+        at Object.invokeGuardedCallbackDev (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3705:24)
+        at invokeGuardedCallback (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3739:39)
+        at beginWork$1 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19818:15)
+        at performUnitOfWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19251:20)
+        at workLoopSync (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19190:13)
+
+## 2026-09-01 22:22:13.064Z console.error
+- text: 
+    The above error occurred in the <BookingCalendar> component:
+    
+        at BookingCalendar (http://127.0.0.1:3000/src/components/BookingCalendar.jsx?t=1788301332984:81:3)
+        at div
+        at MotionComponent (http://127.0.0.1:3000/node_modules/.vite/deps/framer-motion.js?v=b6c39f40:946:40)
+        at Reveal (http://127.0.0.1:3000/src/components/Reveal.jsx:5:19)
+        at div
+        at section
+        at BookingPage (http://127.0.0.1:3000/src/pages/BookingPage.jsx?t=1788301318880:14:3)
+        at RenderedRoute (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:6647:26)
+        at Outlet (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7502:26)
+        at main
+        at PublicLayout
+        at RenderedRoute (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:6647:26)
+        at Routes (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7572:3)
+        at Router (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7511:13)
+        at BrowserRouter (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:10816:3)
+        at App
+    
+    Consider adding an error boundary to your tree to customize error handling behavior.
+    Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries.
+
+## 2026-09-01 22:22:13.065Z unhandledrejection
+- message: WEEKDAY_LABELS is not defined
+- stack: 
+    ReferenceError: WEEKDAY_LABELS is not defined
+        at BookingCalendar (http://127.0.0.1:3000/src/components/BookingCalendar.jsx?t=1788301332984:373:7)
+        at renderWithHooks (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:11596:26)
+        at mountIndeterminateComponent (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:14974:21)
+        at beginWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:15962:22)
+        at beginWork$1 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19806:22)
+        at performUnitOfWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19251:20)
+        at workLoopSync (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19190:13)
+        at renderRootSync (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19169:15)
+        at recoverFromConcurrentError (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:18786:28)
+        at performSyncWorkOnRoot (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:18932:28)
+
+## 2026-09-01 22:22:13.876Z window.error
+- message: Uncaught ReferenceError: WEEKDAY_LABELS is not defined
+- source: http://127.0.0.1:3000/src/components/BookingCalendar.jsx?t=1788301333808
+- line: 373
+- col: 7
+- stack: 
+    ReferenceError: WEEKDAY_LABELS is not defined
+        at BookingCalendar (http://127.0.0.1:3000/src/components/BookingCalendar.jsx?t=1788301333808:373:7)
+        at renderWithHooks (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:11596:26)
+        at mountIndeterminateComponent (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:14974:21)
+        at beginWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:15962:22)
+        at HTMLUnknownElement.callCallback2 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3680:22)
+        at Object.invokeGuardedCallbackDev (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3705:24)
+        at invokeGuardedCallback (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3739:39)
+        at beginWork$1 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19818:15)
+        at performUnitOfWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19251:20)
+        at workLoopSync (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19190:13)
+
+## 2026-09-01 22:22:13.879Z window.error
+- message: Uncaught ReferenceError: WEEKDAY_LABELS is not defined
+- source: http://127.0.0.1:3000/src/components/BookingCalendar.jsx?t=1788301333808
+- line: 373
+- col: 7
+- stack: 
+    ReferenceError: WEEKDAY_LABELS is not defined
+        at BookingCalendar (http://127.0.0.1:3000/src/components/BookingCalendar.jsx?t=1788301333808:373:7)
+        at renderWithHooks (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:11596:26)
+        at mountIndeterminateComponent (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:14974:21)
+        at beginWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:15962:22)
+        at HTMLUnknownElement.callCallback2 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3680:22)
+        at Object.invokeGuardedCallbackDev (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3705:24)
+        at invokeGuardedCallback (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3739:39)
+        at beginWork$1 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19818:15)
+        at performUnitOfWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19251:20)
+        at workLoopSync (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19190:13)
+
+## 2026-09-01 22:22:13.880Z console.error
+- text: 
+    The above error occurred in the <BookingCalendar> component:
+    
+        at BookingCalendar (http://127.0.0.1:3000/src/components/BookingCalendar.jsx?t=1788301333808:81:3)
+        at div
+        at MotionComponent (http://127.0.0.1:3000/node_modules/.vite/deps/framer-motion.js?v=b6c39f40:946:40)
+        at Reveal (http://127.0.0.1:3000/src/components/Reveal.jsx:5:19)
+        at div
+        at section
+        at BookingPage (http://127.0.0.1:3000/src/pages/BookingPage.jsx?t=1788301318880:14:3)
+        at RenderedRoute (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:6647:26)
+        at Outlet (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7502:26)
+        at main
+        at PublicLayout
+        at RenderedRoute (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:6647:26)
+        at Routes (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7572:3)
+        at Router (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7511:13)
+        at BrowserRouter (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:10816:3)
+        at App
+    
+    Consider adding an error boundary to your tree to customize error handling behavior.
+    Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries.
+
+## 2026-09-01 22:22:13.880Z unhandledrejection
+- message: WEEKDAY_LABELS is not defined
+- stack: 
+    ReferenceError: WEEKDAY_LABELS is not defined
+        at BookingCalendar (http://127.0.0.1:3000/src/components/BookingCalendar.jsx?t=1788301333808:373:7)
+        at renderWithHooks (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:11596:26)
+        at mountIndeterminateComponent (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:14974:21)
+        at beginWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:15962:22)
+        at beginWork$1 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19806:22)
+        at performUnitOfWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19251:20)
+        at workLoopSync (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19190:13)
+        at renderRootSync (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19169:15)
+        at recoverFromConcurrentError (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:18786:28)
+        at performSyncWorkOnRoot (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:18932:28)
+
+## 2026-09-01 22:22:14.510Z window.error
+- message: Uncaught ReferenceError: WEEKDAY_LABELS is not defined
+- source: http://127.0.0.1:3000/src/components/BookingCalendar.jsx?t=1788301334433
+- line: 373
+- col: 7
+- stack: 
+    ReferenceError: WEEKDAY_LABELS is not defined
+        at BookingCalendar (http://127.0.0.1:3000/src/components/BookingCalendar.jsx?t=1788301334433:373:7)
+        at renderWithHooks (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:11596:26)
+        at mountIndeterminateComponent (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:14974:21)
+        at beginWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:15962:22)
+        at HTMLUnknownElement.callCallback2 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3680:22)
+        at Object.invokeGuardedCallbackDev (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3705:24)
+        at invokeGuardedCallback (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3739:39)
+        at beginWork$1 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19818:15)
+        at performUnitOfWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19251:20)
+        at workLoopSync (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19190:13)
+
+## 2026-09-01 22:22:14.513Z window.error
+- message: Uncaught ReferenceError: WEEKDAY_LABELS is not defined
+- source: http://127.0.0.1:3000/src/components/BookingCalendar.jsx?t=1788301334433
+- line: 373
+- col: 7
+- stack: 
+    ReferenceError: WEEKDAY_LABELS is not defined
+        at BookingCalendar (http://127.0.0.1:3000/src/components/BookingCalendar.jsx?t=1788301334433:373:7)
+        at renderWithHooks (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:11596:26)
+        at mountIndeterminateComponent (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:14974:21)
+        at beginWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:15962:22)
+        at HTMLUnknownElement.callCallback2 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3680:22)
+        at Object.invokeGuardedCallbackDev (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3705:24)
+        at invokeGuardedCallback (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3739:39)
+        at beginWork$1 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19818:15)
+        at performUnitOfWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19251:20)
+        at workLoopSync (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19190:13)
+
+## 2026-09-01 22:22:14.514Z console.error
+- text: 
+    The above error occurred in the <BookingCalendar> component:
+    
+        at BookingCalendar (http://127.0.0.1:3000/src/components/BookingCalendar.jsx?t=1788301334433:81:3)
+        at div
+        at MotionComponent (http://127.0.0.1:3000/node_modules/.vite/deps/framer-motion.js?v=b6c39f40:946:40)
+        at Reveal (http://127.0.0.1:3000/src/components/Reveal.jsx:5:19)
+        at div
+        at section
+        at BookingPage (http://127.0.0.1:3000/src/pages/BookingPage.jsx?t=1788301318880:14:3)
+        at RenderedRoute (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:6647:26)
+        at Outlet (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7502:26)
+        at main
+        at PublicLayout
+        at RenderedRoute (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:6647:26)
+        at Routes (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7572:3)
+        at Router (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7511:13)
+        at BrowserRouter (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:10816:3)
+        at App
+    
+    Consider adding an error boundary to your tree to customize error handling behavior.
+    Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries.
+
+## 2026-09-01 22:22:14.514Z unhandledrejection
+- message: WEEKDAY_LABELS is not defined
+- stack: 
+    ReferenceError: WEEKDAY_LABELS is not defined
+        at BookingCalendar (http://127.0.0.1:3000/src/components/BookingCalendar.jsx?t=1788301334433:373:7)
+        at renderWithHooks (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:11596:26)
+        at mountIndeterminateComponent (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:14974:21)
+        at beginWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:15962:22)
+        at beginWork$1 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19806:22)
+        at performUnitOfWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19251:20)
+        at workLoopSync (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19190:13)
+        at renderRootSync (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19169:15)
+        at recoverFromConcurrentError (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:18786:28)
+        at performSyncWorkOnRoot (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:18932:28)
+
+## 2026-09-01 22:22:15.259Z window.error
+- message: Uncaught ReferenceError: WEEKDAY_LABELS is not defined
+- source: http://127.0.0.1:3000/src/components/BookingCalendar.jsx?t=1788301335194
+- line: 372
+- col: 7
+- stack: 
+    ReferenceError: WEEKDAY_LABELS is not defined
+        at BookingCalendar (http://127.0.0.1:3000/src/components/BookingCalendar.jsx?t=1788301335194:372:7)
+        at renderWithHooks (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:11596:26)
+        at mountIndeterminateComponent (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:14974:21)
+        at beginWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:15962:22)
+        at HTMLUnknownElement.callCallback2 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3680:22)
+        at Object.invokeGuardedCallbackDev (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3705:24)
+        at invokeGuardedCallback (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3739:39)
+        at beginWork$1 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19818:15)
+        at performUnitOfWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19251:20)
+        at workLoopSync (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19190:13)
+
+## 2026-09-01 22:22:15.261Z window.error
+- message: Uncaught ReferenceError: WEEKDAY_LABELS is not defined
+- source: http://127.0.0.1:3000/src/components/BookingCalendar.jsx?t=1788301335194
+- line: 372
+- col: 7
+- stack: 
+    ReferenceError: WEEKDAY_LABELS is not defined
+        at BookingCalendar (http://127.0.0.1:3000/src/components/BookingCalendar.jsx?t=1788301335194:372:7)
+        at renderWithHooks (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:11596:26)
+        at mountIndeterminateComponent (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:14974:21)
+        at beginWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:15962:22)
+        at HTMLUnknownElement.callCallback2 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3680:22)
+        at Object.invokeGuardedCallbackDev (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3705:24)
+        at invokeGuardedCallback (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3739:39)
+        at beginWork$1 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19818:15)
+        at performUnitOfWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19251:20)
+        at workLoopSync (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19190:13)
+
+## 2026-09-01 22:22:15.262Z console.error
+- text: 
+    The above error occurred in the <BookingCalendar> component:
+    
+        at BookingCalendar (http://127.0.0.1:3000/src/components/BookingCalendar.jsx?t=1788301335194:81:3)
+        at div
+        at MotionComponent (http://127.0.0.1:3000/node_modules/.vite/deps/framer-motion.js?v=b6c39f40:946:40)
+        at Reveal (http://127.0.0.1:3000/src/components/Reveal.jsx:5:19)
+        at div
+        at section
+        at BookingPage (http://127.0.0.1:3000/src/pages/BookingPage.jsx?t=1788301318880:14:3)
+        at RenderedRoute (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:6647:26)
+        at Outlet (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7502:26)
+        at main
+        at PublicLayout
+        at RenderedRoute (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:6647:26)
+        at Routes (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7572:3)
+        at Router (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7511:13)
+        at BrowserRouter (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:10816:3)
+        at App
+    
+    Consider adding an error boundary to your tree to customize error handling behavior.
+    Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries.
+
+## 2026-09-01 22:22:15.262Z unhandledrejection
+- message: WEEKDAY_LABELS is not defined
+- stack: 
+    ReferenceError: WEEKDAY_LABELS is not defined
+        at BookingCalendar (http://127.0.0.1:3000/src/components/BookingCalendar.jsx?t=1788301335194:372:7)
+        at renderWithHooks (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:11596:26)
+        at mountIndeterminateComponent (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:14974:21)
+        at beginWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:15962:22)
+        at beginWork$1 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19806:22)
+        at performUnitOfWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19251:20)
+        at workLoopSync (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19190:13)
+        at renderRootSync (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19169:15)
+        at recoverFromConcurrentError (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:18786:28)
+        at performSyncWorkOnRoot (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:18932:28)
+
+## 2026-09-01 22:24:59.115Z load
+- url: http://localhost:3000/
+
+## 2026-09-01 22:24:59.178Z navigate
+- url: http://localhost:3000/
+- via: replaceState
+
+## 2026-09-01 22:25:59.135Z load
+- url: http://localhost:3000/salles/convocation-chez-le-directeur
+
+## 2026-09-01 22:25:59.163Z navigate
+- url: http://localhost:3000/salles/convocation-chez-le-directeur
+- via: replaceState
+
+## 2026-09-01 22:26:01.509Z load
+- url: http://localhost:3000/salles/convocation-chez-le-directeur
+
+## 2026-09-01 22:26:01.525Z load
+- url: http://127.0.0.1:3000/reservation/convocation-chez-le-directeur?date=2027-09-01
+
+## 2026-09-01 22:26:05.821Z load
+- url: http://localhost:3000/reservation/convocation-chez-le-directeur
+
+## 2026-09-01 22:26:05.842Z navigate
+- url: http://localhost:3000/reservation/convocation-chez-le-directeur
+- via: replaceState
+
+## 2026-09-01 22:26:06.162Z navigate
+- url: http://localhost:3000/reservation/convocation-chez-le-directeur?date=2027-09-01
+- via: replaceState
+
+## 2026-09-01 22:26:13.901Z load
+- url: http://localhost:3000/cette-porte-nexiste-pas
+
+## 2026-09-01 22:26:13.925Z navigate
+- url: http://localhost:3000/cette-porte-nexiste-pas
+- via: replaceState
+
+## 2026-09-01 22:26:17.807Z load
+- url: http://localhost:3000/maitre
+
+## 2026-09-01 22:26:17.828Z navigate
+- url: http://localhost:3000/maitre
+- via: replaceState
+
+## 2026-09-01 22:26:17.833Z navigate
+- url: http://localhost:3000/maitre#reservations?filtre=aujourdhui&page=1
+- via: replaceState
+
+## 2026-09-01 22:26:17.837Z network.error
+- method: GET
+- url: http://localhost:3000/api/me.php
+- status: 401
+- statusText: Unauthorized
+- response: {"error":"Session expirée."}
+- durationMs: 5
+
+## 2026-09-01 22:26:17.837Z console.error
+- text: Fetch error from http://localhost:3000/api/me.php: {"error":"Session expirée."}
+
+## 2026-09-01 23:03:50.574Z load
+- url: http://127.0.0.1:3000/reservation/convocation-chez-le-directeur?date=2027-09-01
+
+## 2026-09-01 23:03:50.572Z load
+- url: http://localhost:3000/maitre#reservations?filtre=aujourdhui&page=1
+
+## 2026-09-01 23:03:50.638Z navigate
+- url: http://localhost:3000/maitre#reservations?filtre=aujourdhui&page=1
+- via: replaceState
+
+## 2026-09-01 23:03:50.652Z network.error
+- method: GET
+- url: http://localhost:3000/api/me.php
+- status: 401
+- statusText: Unauthorized
+- response: {"error":"Session expirée."}
+- durationMs: 5
+
+## 2026-09-01 23:03:50.652Z console.error
+- text: Fetch error from http://localhost:3000/api/me.php: {"error":"Session expirée."}
+
+## 2026-09-02 07:18:56.196Z load
+- url: http://localhost:3000/
+
+## 2026-09-02 07:18:56.243Z navigate
+- url: http://localhost:3000/
+- via: replaceState
+
+## 2026-09-02 07:19:19.020Z click
+- element: {"tag":"div","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Escape game — OccitanieL'Escape Occitanieréouvre ses portes !Enfermés en équipe, vous avez 60 minutes pour fouiller les lieux, dénicher les indices, résoudre les énigmes et percer le mystère. Observation, logique et coopération seront vos seules clés vers la sortie.Réserver une sessionDécouvrir l'expérience2 salles immersives4 à 6 joueursDès 10 ans"}
+
+## 2026-09-02 07:20:26.074Z load
+- url: http://localhost:3000/maitre
+
+## 2026-09-02 07:20:26.142Z navigate
+- url: http://localhost:3000/maitre
+- via: replaceState
+
+## 2026-09-02 07:20:26.151Z navigate
+- url: http://localhost:3000/maitre#reservations?filtre=aujourdhui&page=1
+- via: replaceState
+
+## 2026-09-02 07:20:29.988Z load
+- url: http://localhost:3000/
+
+## 2026-09-02 07:20:30.013Z navigate
+- url: http://localhost:3000/
+- via: replaceState
+
+## 2026-09-02 07:22:55.276Z load
+- url: http://localhost:3000/#salles
+
+## 2026-09-02 07:22:56.830Z click
+- element: {"tag":"section","role":null,"ariaLabel":null,"name":null,"type":null,"id":"salles","placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Nos aventuresDeux salles, deux mondes à explorerChoisissez votre mission : menez l'enquête dans un collège aux secrets troublants, ou affrontez la malédiction d'un galion fantôme échoué dans la brume.Enquête au cœur du collègeConvocation chez le Directeur3 à 6 joueursDès 14 ans60 minutesConvoqués dans le bureau de M. Grenot, aidez l'inspecteur Dupont à percer le mystère qui plane sur le collège. Fouille, indices et révélations vous attendent.Réserver cette salleDécouvrir l'histoireAventure maudite en haute merLa malédiction du Vaisseau Fantôme3 à 6 joueursDès 14 ans60 minutesNaufragés sur une île inconnue, explorez un galion abandonné et brisez la malédiction du capitaine disparu avant que le temps ne soit écoulé.Réserver cette salleDécouvrir l'histoire"}
+
+## 2026-09-02 07:22:57.212Z load
+- url: http://localhost:3000/#salles
+
+## 2026-09-02 07:22:58.465Z load
+- url: http://localhost:3000/#salles
+
+## 2026-09-02 07:26:15.415Z load
+- url: http://localhost:3000/maitre#planning
+
+## 2026-09-02 07:26:20.082Z click
+- element: {"tag":"button","role":null,"ariaLabel":null,"name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"01/09/2026 — 10:00 → 22:00"}
+
+## 2026-09-02 07:26:23.781Z click
+- element: {"tag":"button","role":null,"ariaLabel":"11:15 — Ouvert","name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"11:15Ouvert"}
+
+## 2026-09-02 07:26:24.189Z click
+- element: {"tag":"button","role":null,"ariaLabel":"11:30 — Ouvert","name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"11:30Ouvert"}
+
+## 2026-09-02 07:26:25.289Z click
+- element: {"tag":"button","role":null,"ariaLabel":"11:15 — Indisponible","name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"11:15Indisponible"}
+
+## 2026-09-02 07:26:25.646Z click
+- element: {"tag":"button","role":null,"ariaLabel":"11:30 — Indisponible","name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"11:30Indisponible"}
+
+## 2026-09-02 07:27:00.539Z click
+- element: {"tag":"h2","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Planning"}
+
+## 2026-09-02 07:27:00.993Z load
+- url: http://localhost:3000/maitre#planning
+
+## 2026-09-02 07:27:02.404Z click
+- element: {"tag":"button","role":null,"ariaLabel":null,"name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"01/09/2026 — 10:00 → 22:00"}
+
+## 2026-09-02 07:27:11.538Z click
+- element: {"tag":"a","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Réservations"}
+
+## 2026-09-02 07:27:11.539Z navigate
+- url: http://localhost:3000/maitre#reservations?filtre=aujourdhui&page=1
+- via: popstate
+
+## 2026-09-02 07:27:13.877Z load
+- url: http://localhost:3000/maitre#reservations?filtre=aujourdhui&page=1
+
+## 2026-09-02 07:27:13.912Z navigate
+- url: http://localhost:3000/maitre#reservations?filtre=aujourdhui&page=1
+- via: replaceState
+
+## 2026-09-02 07:27:15.491Z load
+- url: http://localhost:3000/maitre#reservations?filtre=aujourdhui&page=1
+
+## 2026-09-02 07:35:21.202Z click
+- element: {"tag":"a","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Réserver"}
+
+## 2026-09-02 07:35:21.203Z navigate
+- url: http://localhost:3000/#salles
+- via: replaceState
+
+## 2026-09-02 07:35:21.727Z click
+- element: {"tag":"a","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Réserver"}
+
+## 2026-09-02 07:35:21.728Z navigate
+- url: http://localhost:3000/#salles
+- via: replaceState
+
+## 2026-09-02 07:35:22.102Z click
+- element: {"tag":"a","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Réserver"}
+
+## 2026-09-02 07:35:22.102Z navigate
+- url: http://localhost:3000/#salles
+- via: replaceState
+
+## 2026-09-02 07:35:22.277Z click
+- element: {"tag":"a","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Réserver"}
+
+## 2026-09-02 07:35:22.278Z navigate
+- url: http://localhost:3000/#salles
+- via: replaceState
+
+## 2026-09-02 07:35:22.457Z click
+- element: {"tag":"a","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Réserver"}
+
+## 2026-09-02 07:35:22.457Z navigate
+- url: http://localhost:3000/#salles
+- via: replaceState
+
+## 2026-09-02 07:35:22.610Z click
+- element: {"tag":"a","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Réserver"}
+
+## 2026-09-02 07:35:22.610Z navigate
+- url: http://localhost:3000/#salles
+- via: replaceState
+
+## 2026-09-02 07:35:24.660Z click
+- element: {"tag":"a","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Réserver"}
+
+## 2026-09-02 07:35:24.661Z navigate
+- url: http://localhost:3000/#salles
+- via: replaceState
+
+## 2026-09-02 07:35:24.870Z click
+- element: {"tag":"a","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Réserver"}
+
+## 2026-09-02 07:35:24.871Z navigate
+- url: http://localhost:3000/#salles
+- via: replaceState
+
+## 2026-09-02 07:35:25.035Z click
+- element: {"tag":"a","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Réserver"}
+
+## 2026-09-02 07:35:25.036Z navigate
+- url: http://localhost:3000/#salles
+- via: replaceState
+
+## 2026-09-02 07:40:35.975Z network.error
+- method: GET
+- url: http://localhost:3000/api/me.php
+- status: 401
+- statusText: Unauthorized
+- response: {"error":"Session expirée."}
+- durationMs: 2
+
+## 2026-09-02 07:40:35.975Z console.error
+- text: Fetch error from http://localhost:3000/api/me.php: {"error":"Session expirée."}
+
+## 2026-09-02 07:41:44.952Z load
+- url: http://localhost:3000/maitre#reservations?filtre=aujourdhui&page=1
+
+## 2026-09-02 07:41:44.958Z load
+- url: http://127.0.0.1:3000/reservation/convocation-chez-le-directeur?date=2027-09-01
+
+## 2026-09-02 07:41:45.433Z load
+- url: http://localhost:3000/#salles
+
+## 2026-09-02 07:41:45.489Z load
+- url: http://localhost:3000/
+
+## 2026-09-02 07:41:45.041Z network.error
+- method: GET
+- url: http://localhost:3000/api/me.php
+- status: 401
+- statusText: Unauthorized
+- response: {"error":"Session expirée."}
+- durationMs: 7
+
+## 2026-09-02 07:41:45.041Z console.error
+- text: Fetch error from http://localhost:3000/api/me.php: {"error":"Session expirée."}
+
+## 2026-09-02 07:42:11.847Z network.error
+- method: GET
+- url: http://localhost:3000/api/me.php
+- status: 401
+- statusText: Unauthorized
+- response: {"error":"Session expirée."}
+- durationMs: 2
+
+## 2026-09-02 07:42:11.847Z console.error
+- text: Fetch error from http://localhost:3000/api/me.php: {"error":"Session expirée."}
+
+## 2026-09-02 07:42:13.100Z network.error
+- method: GET
+- url: http://localhost:3000/api/me.php
+- status: 401
+- statusText: Unauthorized
+- response: {"error":"Session expirée."}
+- durationMs: 2
+
+## 2026-09-02 07:42:13.100Z console.error
+- text: Fetch error from http://localhost:3000/api/me.php: {"error":"Session expirée."}
+
+## 2026-09-02 07:42:15.511Z network.error
+- method: GET
+- url: http://localhost:3000/api/me.php
+- status: 401
+- statusText: Unauthorized
+- response: {"error":"Session expirée."}
+- durationMs: 2
+
+## 2026-09-02 07:42:15.511Z console.error
+- text: Fetch error from http://localhost:3000/api/me.php: {"error":"Session expirée."}
+
+## 2026-09-02 07:42:17.271Z network.error
+- method: GET
+- url: http://localhost:3000/api/me.php
+- status: 401
+- statusText: Unauthorized
+- response: {"error":"Session expirée."}
+- durationMs: 2
+
+## 2026-09-02 07:42:17.271Z console.error
+- text: Fetch error from http://localhost:3000/api/me.php: {"error":"Session expirée."}
+
+## 2026-09-02 07:42:42.565Z network.error
+- method: GET
+- url: http://localhost:3000/api/me.php
+- status: 401
+- statusText: Unauthorized
+- response: {"error":"Session expirée."}
+- durationMs: 2
+
+## 2026-09-02 07:42:42.566Z console.error
+- text: Fetch error from http://localhost:3000/api/me.php: {"error":"Session expirée."}
+
+## 2026-09-02 07:42:43.296Z network.error
+- method: GET
+- url: http://localhost:3000/api/me.php
+- status: 401
+- statusText: Unauthorized
+- response: {"error":"Session expirée."}
+- durationMs: 2
+
+## 2026-09-02 07:42:43.296Z console.error
+- text: Fetch error from http://localhost:3000/api/me.php: {"error":"Session expirée."}
+
+## 2026-09-02 07:43:03.186Z network.error
+- method: GET
+- url: http://localhost:3000/api/me.php
+- status: 401
+- statusText: Unauthorized
+- response: {"error":"Session expirée."}
+- durationMs: 2
+
+## 2026-09-02 07:43:03.186Z console.error
+- text: Fetch error from http://localhost:3000/api/me.php: {"error":"Session expirée."}
+
+## 2026-09-02 07:43:09.207Z network.error
+- method: GET
+- url: http://localhost:3000/api/me.php
+- status: 401
+- statusText: Unauthorized
+- response: {"error":"Session expirée."}
+- durationMs: 2
+
+## 2026-09-02 07:43:09.207Z console.error
+- text: Fetch error from http://localhost:3000/api/me.php: {"error":"Session expirée."}
+
+## 2026-09-02 07:43:09.954Z network.error
+- method: GET
+- url: http://localhost:3000/api/me.php
+- status: 401
+- statusText: Unauthorized
+- response: {"error":"Session expirée."}
+- durationMs: 2
+
+## 2026-09-02 07:43:09.955Z console.error
+- text: Fetch error from http://localhost:3000/api/me.php: {"error":"Session expirée."}
+
+## 2026-09-02 07:44:12.264Z network.error
+- method: GET
+- url: http://localhost:3000/api/me.php
+- status: 401
+- statusText: Unauthorized
+- response: {"error":"Session expirée."}
+- durationMs: 4
+
+## 2026-09-02 07:44:12.264Z console.error
+- text: Fetch error from http://localhost:3000/api/me.php: {"error":"Session expirée."}
+
+## 2026-09-02 07:46:12.722Z network.error
+- method: GET
+- url: http://localhost:3000/api/me.php
+- status: 401
+- statusText: Unauthorized
+- response: {"error":"Session expirée."}
+- durationMs: 3
+
+## 2026-09-02 07:46:12.722Z console.error
+- text: Fetch error from http://localhost:3000/api/me.php: {"error":"Session expirée."}
+
+## 2026-09-02 07:46:13.394Z network.error
+- method: GET
+- url: http://localhost:3000/api/me.php
+- status: 401
+- statusText: Unauthorized
+- response: {"error":"Session expirée."}
+- durationMs: 4
+
+## 2026-09-02 07:46:13.394Z console.error
+- text: Fetch error from http://localhost:3000/api/me.php: {"error":"Session expirée."}
+
+## 2026-09-02 07:47:17.392Z navigate
+- url: http://localhost:3000/maitre#reservations
+- via: popstate
+
+## 2026-09-02 07:48:14.592Z change
+- element: {"tag":"input","role":null,"ariaLabel":null,"name":null,"type":"email","id":"mt-email","placeholder":null,"label":"Email","value":"escapeoccitanie@gmail.com","valueLength":25,"text":""}
+
+## 2026-09-02 07:48:14.595Z change
+- element: {"tag":"input","role":null,"ariaLabel":null,"name":null,"type":"password","id":"mt-password","placeholder":null,"label":"Mot de passe","value":"[redacted:length=29]","valueLength":29,"text":""}
+
+## 2026-09-02 07:48:17.962Z click
+- element: {"tag":"button","role":null,"ariaLabel":null,"name":null,"type":"submit","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Entrer dans le bureau"}
+
+## 2026-09-02 07:48:17.962Z submit
+- action: http://localhost:3000/maitre#reservations
+- fields: [{"label":"Email","type":"email","value":"escapeoccitanie@gmail.com","length":25,"redacted":false},{"label":"Mot de passe","type":"password","value":"[redacted:length=29]","length":29,"redacted":true},{"label":"Se souvenir de moi","type":"button","value":"on","length":2,"redacted":false},{"label":"[checkbox]","type":"checkbox","value":"on","length":2,"redacted":false},{"label":"[submit]","type":"submit","value":"","length":0,"redacted":false}]
+
+## 2026-09-02 07:48:17.985Z navigate
+- url: http://localhost:3000/maitre#reservations?filtre=a-confirmer&page=1
+- via: replaceState
+
+## 2026-09-02 07:48:30.471Z click
+- element: {"tag":"a","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Planning"}
+
+## 2026-09-02 07:48:30.471Z navigate
+- url: http://localhost:3000/maitre#planning
+- via: popstate
+
+## 2026-09-02 07:49:11.286Z click
+- element: {"tag":"a","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Réservations2"}
+
+## 2026-09-02 07:49:11.286Z navigate
+- url: http://localhost:3000/maitre#reservations?filtre=a-confirmer&page=1
+- via: popstate
+
+## 2026-09-02 07:49:43.015Z load
+- url: http://localhost:3000/maitre#reservations/101?filtre=toutes&page=1
+
+## 2026-09-02 07:49:43.048Z navigate
+- url: http://localhost:3000/maitre#reservations/101?filtre=toutes&page=1
+- via: replaceState
+
+## 2026-09-02 07:50:18.755Z navigate
+- url: http://localhost:3000/maitre#reservations/101?filtre=toutes&page=1
+- via: popstate
+
+## 2026-09-02 07:50:18.755Z navigate
+- url: http://localhost:3000/maitre#reservations/101?filtre=toutes&page=1
+- via: popstate
+

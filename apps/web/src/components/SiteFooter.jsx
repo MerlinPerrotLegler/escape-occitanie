@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { MapPin, Phone, Mail, CalendarDays, Facebook, Instagram } from 'lucide-react';
 import { CONTACT, ROOM_LIST } from '@/data/rooms';
+import { COPY } from '@/generated/siteCopy';
 
 function SiteFooter() {
   return (
@@ -11,16 +12,15 @@ function SiteFooter() {
           <div className="flex items-center gap-2.5">
             <img
               src={CONTACT.logo}
-              alt="Escape Occitanie"
+              alt={CONTACT.logoAlt}
               className="h-11 w-11 rounded-full object-cover ring-1 ring-primary/30"
             />
             <span className="font-display text-base font-bold tracking-widest">
-              ESCAPE <span className="text-primary">OCCITANIE</span>
+              {COPY.commun.marque.ligne1} <span className="text-primary">{COPY.commun.marque.ligne2}</span>
             </span>
           </div>
           <p className="mt-4 max-w-xs text-sm leading-relaxed text-muted-foreground">
-            Deux salles d'escape game immersives au cœur de l'Occitanie. Enquête, aventure et 60
-            minutes chrono pour écrire votre propre histoire.
+            {COPY.commun.footer.intro}
           </p>
           <div className="mt-5 flex items-center gap-3">
             <a
@@ -54,12 +54,12 @@ function SiteFooter() {
 
         <nav aria-label="Navigation de pied de page">
           <h3 className="font-display text-xs font-bold uppercase tracking-[0.25em] text-primary">
-            Explorer
+            {COPY.commun.footer.explorer}
           </h3>
           <ul className="mt-4 space-y-2.5 text-sm">
             <li>
               <Link to="/" className="text-muted-foreground transition-colors hover:text-foreground">
-                Accueil
+                {COPY.commun.nav.accueil}
               </Link>
             </li>
             {ROOM_LIST.map((room) => (
@@ -77,7 +77,7 @@ function SiteFooter() {
                 to="/#avis"
                 className="text-muted-foreground transition-colors hover:text-foreground"
               >
-                Avis & records
+                {COPY.commun.footer.avisRecords}
               </Link>
             </li>
           </ul>
@@ -85,7 +85,7 @@ function SiteFooter() {
 
         <div>
           <h3 className="font-display text-xs font-bold uppercase tracking-[0.25em] text-primary">
-            Nous trouver
+            {COPY.commun.footer.trouver}
           </h3>
           <ul className="mt-4 space-y-3 text-sm text-muted-foreground">
             <li className="flex items-start gap-2.5">
@@ -120,13 +120,12 @@ function SiteFooter() {
             className="mt-5 inline-flex h-10 items-center gap-2 rounded-md bg-primary px-4 text-sm font-semibold text-primary-foreground shadow-[0_0_20px_hsl(var(--primary)/0.35)] transition-all duration-200 hover:brightness-110 active:scale-[0.98]"
           >
             <CalendarDays className="h-4 w-4" strokeWidth={2} />
-            Réserver
+            {COPY.commun.nav.reserver}
           </Link>
         </div>
       </div>
       <div className="border-t border-border/60 py-5 text-center text-xs text-muted-foreground">
-        © {new Date().getFullYear()} Escape Occitanie — Tous droits réservés. Saurez-vous sortir à
-        temps ?
+        © {new Date().getFullYear()} {COPY.commun.footer.copyright}
       </div>
     </footer>
   );

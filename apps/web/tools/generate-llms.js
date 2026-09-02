@@ -153,22 +153,60 @@ function processPageFile(filePath, routes) {
 	}
 }
 
+function pagesFromSiteCopy() {
+	const jsonPath = path.join(process.cwd(), 'public', 'api', 'site-copy.json');
+	if (!fs.existsSync(jsonPath)) return [];
+	try {
+		const data = JSON.parse(fs.readFileSync(jsonPath, 'utf8'));
+		const fill = (template, vars) =>
+			String(template ?? '').replace(/\{([a-z0-9-]+)\}/gi, (match, key) =>
+				Object.prototype.hasOwnProperty.call(vars, key) ? String(vars[key]) : match
+			);
+		const pages = [
+			{
+				url: '/',
+				title: data.accueil?.seo?.titre,
+				description: data.accueil?.seo?.description,
+			},
+		];
+		for (const slug of ['directeur', 'vaisseau']) {
+			const room = data.rooms?.[slug];
+			if (!room) continue;
+			pages.push({
+				url: room.pagePath,
+				title: room.seo?.titre,
+				description: room.seo?.description,
+			});
+			pages.push({
+				url: room.bookingPath,
+				title: fill(data.reserver?.seo?.titre, { nom: room.name }),
+				description: fill(data.reserver?.seo?.description, { nom: room.name }),
+			});
+		}
+		return pages.filter((page) => page.title && page.description);
+	} catch {
+		return [];
+	}
+}
+
 function main() {
 	const pagesDir = path.join(process.cwd(), 'src', 'pages');
 	const appJsxPath = path.join(process.cwd(), 'src', 'App.jsx');
 
-	let pages = [];
+	let pages = pagesFromSiteCopy();
 
-	if (!fs.existsSync(pagesDir)) {
-		pages.push(processPageFile(appJsxPath, new Map()))
-		pages = pages.filter(Boolean);
-	} else {
-		const routes = extractRoutes(appJsxPath);
-		const reactFiles = findReactFiles(pagesDir);
+	if (pages.length === 0) {
+		if (!fs.existsSync(pagesDir)) {
+			pages.push(processPageFile(appJsxPath, new Map()));
+			pages = pages.filter(Boolean);
+		} else {
+			const routes = extractRoutes(appJsxPath);
+			const reactFiles = findReactFiles(pagesDir);
 
-		pages = reactFiles
-			.map(filePath => processPageFile(filePath, routes))
-			.filter(Boolean);
+			pages = reactFiles
+				.map((filePath) => processPageFile(filePath, routes))
+				.filter(Boolean);
+		}
 	}
 
 	if (pages.length === 0) {

@@ -1,7 +1,7 @@
 # Tableau de disponibilités horizontal — deux salles
 
 Date: 2026-09-01  
-Statut: validé en conversation, en attente de relecture du spec
+Statut: validé
 
 ## Problème
 

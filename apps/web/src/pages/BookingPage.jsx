@@ -6,42 +6,30 @@ import Reveal from '@/components/Reveal';
 import Seo from '@/components/Seo';
 import BookingCalendar from '@/components/BookingCalendar';
 import { ROOMS, CONTACT } from '@/data/rooms';
+import { COPY } from '@/generated/siteCopy';
+import { fillCopy } from '@/lib/fillCopy';
 
-const STEPS = [
-  {
-    icon: MousePointerClick,
-    title: 'Choisissez un horaire',
-    text: 'Les départs s’affichent toutes les 30 minutes. Une partie dure 60 minutes.',
-  },
-  {
-    icon: Send,
-    title: 'Réservez en ligne',
-    text: 'Indiquez votre nom, e-mail, téléphone et le nombre de joueurs (3 à 6).',
-  },
-  {
-    icon: BadgeCheck,
-    title: 'Confirmation',
-    text: 'Vous recevez un e-mail. L’équipe confirme ensuite la réservation. Rendez-vous 15 minutes avant le début.',
-  },
-];
+const STEP_ICONS = [MousePointerClick, Send, BadgeCheck];
 
 function BookingPage({ roomKey }) {
   const room = ROOMS[roomKey];
+  const book = COPY.reserver;
+  const vars = { nom: room.name };
 
   return (
     <>
       <Helmet>
-        <title>Réservation — {room.name} — Escape Occitanie</title>
+        <title>{fillCopy(book.seo.titre, vars)}</title>
         <meta
           name="description"
-          content={`Consultez les disponibilités de la salle « ${room.name} » et réservez votre session d'escape game de 60 minutes chez Escape Occitanie.`}
+          content={fillCopy(book.seo.description, vars)}
         />
       </Helmet>
       <Seo
-        title={`Réservation — ${room.name} — Escape Occitanie`}
-        description={`Disponibilités et réservation pour la salle « ${room.name} ».`}
+        title={fillCopy(book.seo.titre, vars)}
+        description={fillCopy(book.seoOg.description, vars)}
         image={room.image}
-        siteName="Escape Occitanie"
+        siteName={CONTACT.name}
       />
 
       <section className="mx-auto max-w-6xl px-4 pb-20 pt-28 sm:px-6 sm:pt-32">
@@ -51,17 +39,16 @@ function BookingPage({ roomKey }) {
             className="inline-flex items-center gap-2 text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
           >
             <ArrowLeft className="h-4 w-4" />
-            Retour à la salle
+            {book.retour}
           </Link>
           <p className="mt-6 font-display text-xs font-semibold uppercase tracking-[0.35em] text-primary">
-            Réservation
+            {book.surtitre}
           </p>
           <h1 className="mt-3 font-display text-3xl font-black tracking-wide sm:text-4xl">
             {room.name}
           </h1>
           <p className="mt-4 max-w-2xl leading-relaxed text-muted-foreground">
-            Consultez les disponibilités et réservez votre session de 60 minutes. Votre demande est
-            d’abord enregistrée, puis confirmée par l’équipe.
+            {book.intro}
           </p>
         </Reveal>
 
@@ -96,30 +83,33 @@ function BookingPage({ roomKey }) {
 
               <div className="rounded-xl border border-border bg-card/60 p-6">
                 <h2 className="font-display text-sm font-bold uppercase tracking-[0.2em] text-primary">
-                  Comment réserver ?
+                  {book.comment}
                 </h2>
                 <ol className="mt-5 space-y-5">
-                  {STEPS.map((step, i) => (
-                    <li key={step.title} className="flex items-start gap-4">
+                  {book.etapes.map((step, i) => {
+                    const Icon = STEP_ICONS[i];
+                    return (
+                    <li key={step.titre} className="flex items-start gap-4">
                       <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-primary/30 bg-primary/10 text-primary">
-                        <step.icon className="h-4 w-4" strokeWidth={1.8} />
+                        <Icon className="h-4 w-4" strokeWidth={1.8} />
                       </span>
                       <div>
                         <p className="text-sm font-semibold text-foreground">
-                          {i + 1}. {step.title}
+                          {i + 1}. {step.titre}
                         </p>
                         <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
-                          {step.text}
+                          {step.texte}
                         </p>
                       </div>
                     </li>
-                  ))}
+                    );
+                  })}
                 </ol>
               </div>
 
               <div className="rounded-xl border border-primary/30 bg-primary/5 p-6">
                 <h2 className="font-display text-sm font-bold uppercase tracking-[0.2em] text-primary">
-                  Nous contacter
+                  {book.contact}
                 </h2>
                 <div className="mt-4 space-y-3 text-sm">
                   <a

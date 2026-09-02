@@ -1,0 +1,31 @@
+<mjml>
+  <mj-head>
+    <mj-preview>Nouvelle réservation ({statut})</mj-preview>
+    <mj-attributes>
+      <mj-all font-family="Georgia, serif" />
+      <mj-text color="#e8dcc8" font-size="16px" line-height="1.55" />
+    </mj-attributes>
+  </mj-head>
+  <mj-body background-color="#1a1612">
+    <mj-section background-color="#241f1a" padding="28px 20px">
+      <mj-column>
+        <mj-text font-size="12px" letter-spacing="3px" color="#c9a227" text-transform="uppercase">Escape Occitanie</mj-text>
+        <mj-text font-size="22px" color="#f4ead6" padding-top="8px">Nouvelle réservation ({statut})</mj-text>
+        <mj-text>
+          Salle : {salle}<br />
+          Date : {date} à {heure}<br />
+          Joueurs : {joueurs}<br />
+          Nom : {nom}<br />
+          E-mail : {email}<br />
+          Téléphone : {telephone}
+        </mj-text>
+        <mj-button href="{lien_confirmer}" background-color="#c9a227" color="#1a1612" font-weight="700" inner-padding="12px 22px">
+          Confirmer la réservation
+        </mj-button>
+        <mj-button href="{lien_voir}" background-color="#241f1a" color="#f4ead6" border="1px solid #c9a227" inner-padding="12px 22px">
+          Voir la réservation
+        </mj-button>
+      </mj-column>
+    </mj-section>
+  </mj-body>
+</mjml>

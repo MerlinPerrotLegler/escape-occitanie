@@ -1,5 +1,6 @@
 ## Pages
-- [— Escape Occitanie](/salles/la-malediction-du-vaisseau-fantome): No description available
-- [Bureau de Maître Thibault — Escape Occitanie](/maitre): No description available
-- [Escape Occitanie — Escape game immersif en Occitanie](/): L
-- [Réservation —  — Escape Occitanie](/reservation/la-malediction-du-vaisseau-fantome): No description available
+- [Convocation chez le Directeur — Escape Occitanie](/salles/convocation-chez-le-directeur): Convoqués dans le bureau de M. Grenot, aidez l'inspecteur Dupont à percer le mystère qui plane sur le collège. Fouille, indices et révélations vous attendent. 3 à 6 joueurs, dès 14 ans, 60 minutes. Réservez votre session chez Escape Occitanie.
+- [Escape Occitanie — Escape game immersif en Occitanie](/): L'Escape Occitanie réouvre ses portes ! Deux salles d'escape game immersives : enquêtez dans le bureau du directeur ou brisez la malédiction du Vaisseau Fantôme. 60 minutes, 4 à 6 joueurs, dès 10 ans.
+- [La malédiction du Vaisseau Fantôme — Escape Occitanie](/salles/la-malediction-du-vaisseau-fantome): Naufragés sur une île inconnue, explorez un galion abandonné et brisez la malédiction du capitaine disparu avant que le temps ne soit écoulé. 3 à 6 joueurs, dès 14 ans, 60 minutes. Réservez votre session chez Escape Occitanie.
+- [Réservation — Convocation chez le Directeur — Escape Occitanie](/reservation/convocation-chez-le-directeur): Consultez les disponibilités de la salle « Convocation chez le Directeur » et réservez votre session d'escape game de 60 minutes chez Escape Occitanie.
+- [Réservation — La malédiction du Vaisseau Fantôme — Escape Occitanie](/reservation/la-malediction-du-vaisseau-fantome): Consultez les disponibilités de la salle « La malédiction du Vaisseau Fantôme » et réservez votre session d'escape game de 60 minutes chez Escape Occitanie.

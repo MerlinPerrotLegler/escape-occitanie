@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<accueil>
+  <seo titre="Escape Occitanie — Escape game immersif en Occitanie" description="L'Escape Occitanie réouvre ses portes ! Deux salles d'escape game immersives : enquêtez dans le bureau du directeur ou brisez la malédiction du Vaisseau Fantôme. 60 minutes, 4 à 6 joueurs, dès 10 ans."/>
+  <seo-og titre="Escape Occitanie — Escape game immersif en Occitanie" description="Deux aventures immersives de 60 minutes : Convocation chez le Directeur et La malédiction du Vaisseau Fantôme. Réservez votre session."/>
+  <hero>
+    <surtitre>Escape game — Occitanie</surtitre>
+    <titre>L'Escape Occitanie</titre>
+    <accent>réouvre ses portes</accent>
+    <texte>Enfermés en équipe, vous avez 60 minutes pour fouiller les lieux, dénicher les indices, résoudre les énigmes et percer le mystère. Observation, logique et coopération seront vos seules clés vers la sortie.</texte>
+    <image src="https://images.hostinger.com/97e78780-1685-4dc5-98c8-9ae3b0bb5543.png" alt="Couloir sombre d'un escape game, porte ancienne entrouverte laissant filtrer une lumière dorée"/>
+    <cta-reserver>Réserver une session</cta-reserver>
+    <cta-decouvrir>Découvrir l'expérience</cta-decouvrir>
+    <puce>2 salles immersives</puce>
+    <puce>4 à 6 joueurs</puce>
+    <puce>Dès 10 ans</puce>
+  </hero>
+  <bandeau>
+    <mot>Enquête</mot>
+    <mot>Fouille</mot>
+    <mot>Manipulation</mot>
+    <mot>Réflexion</mot>
+    <mot>Coopération</mot>
+    <mot>60 minutes chrono</mot>
+    <mot>Adrénaline</mot>
+    <mot>Mystère</mot>
+  </bandeau>
+  <experience>
+    <surtitre>L'expérience</surtitre>
+    <titre>60 minutes pour résoudre l'impossible</titre>
+    <p>Une porte se referme. Le chronomètre s'affole : 60 minutes, ni une de plus. En équipe de 4 à 6 joueurs, fouillez les lieux, dénichez les indices cachés, résolvez les énigmes et faites parler les mécanismes.</p>
+    <p>Ici, pas de force ni de hasard : seuls votre esprit d'observation, votre logique et votre cohésion vous permettront de sortir vainqueurs. Entre amis, en famille ou entre collègues, chaque session est une aventure dont vous êtes les héros.</p>
+    <stat valeur="2" libelle="Salles"/>
+    <stat valeur="60" libelle="Minutes"/>
+    <stat valeur="12" libelle="Joueurs max"/>
+    <atout titre="Investigation" texte="Fouillez chaque recoin du décor : aucun détail n'est laissé au hasard."/>
+    <atout titre="Énigmes" texte="Cadenas, mécanismes et casse-tête à résoudre en chaîne pour progresser."/>
+    <atout titre="Coopération" texte="On ne s'évade jamais seul : communiquez, partagez, combinez vos trouvailles."/>
+    <atout titre="60 minutes chrono" texte="L'adrénaline monte à mesure que le temps s'écoule. Tiendrez-vous la pression ?"/>
+  </experience>
+  <salles>
+    <surtitre>Nos aventures</surtitre>
+    <titre>Deux salles, deux mondes à explorer</titre>
+    <texte>Choisissez votre mission : menez l'enquête dans un collège aux secrets troublants, ou affrontez la malédiction d'un galion fantôme échoué dans la brume.</texte>
+  </salles>
+  <avis>
+    <surtitre>Ils ont tenté l'aventure</surtitre>
+    <titre>Les survivants témoignent</titre>
+  </avis>
+  <records>
+    <surtitre>Hall of fame</surtitre>
+    <titre>Top 3 des records</titre>
+    <texte>Les équipes les plus rapides de la saison. Saurez-vous faire mieux et graver votre nom au tableau ?</texte>
+  </records>
+  <contact>
+    <surtitre>Contact</surtitre>
+    <titre>Prêt à relever le défi ?</titre>
+    <texte>Une question sur nos salles, un événement à organiser (anniversaire, enterrement de vie de célibataire, team building) ou une réservation à confirmer ? Notre équipe vous répond avec plaisir.</texte>
+    <encart-titre>Le chronomètre tourne déjà…</encart-titre>
+    <encart-texte>Consultez les disponibilités de chaque salle et bloquez votre créneau. Les sessions partent vite, surtout le week-end !</encart-texte>
+  </contact>
+</accueil>

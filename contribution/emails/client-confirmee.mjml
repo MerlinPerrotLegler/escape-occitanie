@@ -1,0 +1,33 @@
+<mjml>
+  <mj-head>
+    <mj-preview>Votre réservation est confirmée.</mj-preview>
+    <mj-attributes>
+      <mj-all font-family="Georgia, serif" />
+      <mj-text color="#e8dcc8" font-size="16px" line-height="1.55" />
+    </mj-attributes>
+  </mj-head>
+  <mj-body background-color="#1a1612">
+    <mj-section background-color="#241f1a" padding="28px 20px">
+      <mj-column>
+        <mj-text font-size="12px" letter-spacing="3px" color="#c9a227" text-transform="uppercase">Escape Occitanie</mj-text>
+        <mj-text font-size="22px" color="#f4ead6" padding-top="8px">Bonjour {nom},</mj-text>
+        <mj-text>Votre réservation est confirmée.</mj-text>
+        <mj-text>
+          Salle : {salle}<br />
+          Date : {date}<br />
+          Heure : {heure}<br />
+          Durée : {duree} minutes<br />
+          Joueurs : {joueurs}
+        </mj-text>
+        <mj-text>Merci d'arriver 15 minutes avant le début de la session une fois la réservation confirmée.</mj-text>
+        <mj-text>Adresse : {adresse}</mj-text>
+        <mj-text>
+          Ajoutez l'événement à votre calendrier :<br />
+          - Fichier joint (reservation.ics) ou téléchargement : {lien_ics}<br />
+          - Google Agenda : {lien_google}
+        </mj-text>
+        <mj-text>À très bientôt,<br />L'équipe Escape Occitanie</mj-text>
+      </mj-column>
+    </mj-section>
+  </mj-body>
+</mjml>

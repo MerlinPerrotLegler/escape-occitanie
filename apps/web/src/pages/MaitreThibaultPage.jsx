@@ -54,7 +54,14 @@ import MonthYearSelect from '@/components/MonthYearSelect';
 import PeriodCopyDialog from '@/components/PeriodCopyDialog';
 import PeriodSlots from '@/components/PeriodSlots';
 import { isoToYearMonth, monthBounds } from '@/lib/monthYear';
-import { BOOKING_FILTERS, parseLocationHash, reservationsHash } from '@/lib/reservationsHash';
+import {
+  BOOKING_FILTERS,
+  defaultReservationsFilter,
+  parseLocationHash,
+  pendingBadgeLabel,
+  reservationsHash,
+  reservationsTabHash,
+} from '@/lib/reservationsHash';
 import { cn } from '@/lib/utils';
 import { nextAdminSlotStatus } from '@/lib/slotStatus';
 
@@ -120,6 +127,10 @@ function toastFromApi(err) {
   toast.error(err.message);
 }
 
+function hashNeedsPendingDefault(parsed = parseLocationHash()) {
+  return parsed.tab === 'reservations' && !parsed.filtreExplicit && !parsed.focusBookingId;
+}
+
 const ROOM_LABELS = {
   directeur: ROOMS.directeur.shortName,
   vaisseau: ROOMS.vaisseau.shortName,
@@ -136,6 +147,8 @@ function MaitreThibaultPage() {
   const [focusBookingId, setFocusBookingId] = useState(() => parseLocationHash().focusBookingId);
   const [filtre, setFiltre] = useState(() => parseLocationHash().filtre);
   const [page, setPage] = useState(() => parseLocationHash().page);
+  const [pendingCount, setPendingCount] = useState(null);
+  const [filtreReady, setFiltreReady] = useState(() => !hashNeedsPendingDefault());
   const [bookingsTotal, setBookingsTotal] = useState(0);
   const [bookingsPages, setBookingsPages] = useState(1);
   const [settings, setSettings] = useState(DEFAULT_BOOKING_SETTINGS);
@@ -189,6 +202,7 @@ function MaitreThibaultPage() {
     setBookings(data.bookings || []);
     setBookingsTotal(data.total || 0);
     setBookingsPages(data.pages || 1);
+    if (typeof data.pendingCount === 'number') setPendingCount(data.pendingCount);
     if (data.page) setPage(data.page);
     if (data.settings) setSettings(normalizeBookingSettings(data.settings));
     return data;
@@ -219,6 +233,7 @@ function MaitreThibaultPage() {
       .then((me) => {
         if (cancelled) return;
         setSession(me);
+        if (me) setPendingCount(typeof me.pendingCount === 'number' ? me.pendingCount : 0);
         setChecking(false);
       })
       .catch(() => {
@@ -238,21 +253,39 @@ function MaitreThibaultPage() {
       setFocusBookingId(next.focusBookingId);
       setFiltre(next.filtre);
       setPage(next.page);
+      setFiltreReady(!hashNeedsPendingDefault(next));
     };
     if (!window.location.hash) {
-      window.history.replaceState(null, '', reservationsHash({ filtre: 'aujourdhui', page: 1 }));
+      window.history.replaceState(null, '', '#reservations');
     }
     window.addEventListener('hashchange', sync);
     return () => window.removeEventListener('hashchange', sync);
   }, []);
 
   useEffect(() => {
-    if (tab !== 'reservations') return;
+    if (filtreReady || pendingCount === null) return;
+    if (tab !== 'reservations') {
+      setFiltreReady(true);
+      return;
+    }
+    const nextFiltre = defaultReservationsFilter(pendingCount);
+    setFiltre(nextFiltre);
+    setPage(1);
+    setFiltreReady(true);
+    window.history.replaceState(
+      null,
+      '',
+      reservationsHash({ filtre: nextFiltre, page: 1, focusBookingId })
+    );
+  }, [pendingCount, filtreReady, tab, focusBookingId]);
+
+  useEffect(() => {
+    if (tab !== 'reservations' || !filtreReady) return;
     const next = reservationsHash({ filtre, page, focusBookingId });
     if (window.location.hash !== next) {
       window.history.replaceState(null, '', next);
     }
-  }, [tab, filtre, page, focusBookingId]);
+  }, [tab, filtre, page, focusBookingId, filtreReady]);
 
   useEffect(() => {
     if (tab !== 'reservations' || !focusBookingId) return undefined;
@@ -288,7 +321,7 @@ function MaitreThibaultPage() {
   }, [session]);
 
   useEffect(() => {
-    if (!session || tab !== 'reservations') return undefined;
+    if (!session || tab !== 'reservations' || !filtreReady) return undefined;
     let cancelled = false;
     const query = {
       filtre: focusBookingId ? 'toutes' : filtre,
@@ -301,6 +334,7 @@ function MaitreThibaultPage() {
         setBookings(data.bookings || []);
         setBookingsTotal(data.total || 0);
         setBookingsPages(data.pages || 1);
+        if (typeof data.pendingCount === 'number') setPendingCount(data.pendingCount);
         if (data.page && data.page !== page) setPage(data.page);
         if (focusBookingId && data.filtre && data.filtre !== filtre) setFiltre(data.filtre);
         if (data.settings) {
@@ -312,7 +346,23 @@ function MaitreThibaultPage() {
     return () => {
       cancelled = true;
     };
-  }, [session, tab, filtre, page, focusBookingId]);
+  }, [session, tab, filtre, page, focusBookingId, filtreReady]);
+
+  useEffect(() => {
+    if (!session) return undefined;
+    let cancelled = false;
+    const refreshPending = () => {
+      fetchMe().then((me) => {
+        if (cancelled || !me || typeof me.pendingCount !== 'number') return;
+        setPendingCount(me.pendingCount);
+      });
+    };
+    const timer = window.setInterval(refreshPending, 30000);
+    return () => {
+      cancelled = true;
+      window.clearInterval(timer);
+    };
+  }, [session]);
 
   useEffect(() => {
     if (!session) return undefined;
@@ -372,6 +422,7 @@ function MaitreThibaultPage() {
       const me = await loginManager(email, password, remember);
       writeRememberPreference(remember);
       setSession(me);
+      setPendingCount(typeof me.pendingCount === 'number' ? me.pendingCount : 0);
       setPassword('');
     } catch (err) {
       setLoginError(err.status === 429 ? err.message : 'Identifiants incorrects');
@@ -655,25 +706,40 @@ function MaitreThibaultPage() {
           </form>
         ) : (
           <div className="mt-8">
-            <div className="flex flex-wrap items-center gap-2 border-b border-border/70 pb-3">
-              {TABS.map((item) => (
+            <div className="flex flex-wrap items-center gap-2 overflow-visible border-b border-border/70 pb-3 pt-3">
+              {TABS.map((item) => {
+                const badge = item.id === 'reservations' ? pendingBadgeLabel(pendingCount) : '';
+                return (
                 <a
                   key={item.id}
                   href={
                     item.id === 'reservations'
-                      ? reservationsHash({ filtre: 'aujourdhui', page: 1 })
+                      ? reservationsTabHash(pendingCount || 0)
                       : `#${item.id}`
                   }
                   className={cn(
-                    'rounded-md px-4 py-2 text-sm font-medium transition-colors',
+                    'relative rounded-md px-4 py-2 text-sm font-medium transition-colors',
                     tab === item.id
                       ? 'bg-primary text-primary-foreground'
                       : 'text-muted-foreground hover:text-foreground'
                   )}
                 >
                   {item.label}
+                  {badge ? (
+                    <span
+                      className="absolute left-1/2 top-0 z-10 flex h-5 min-w-5 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-destructive px-1 text-[11px] font-bold leading-none text-destructive-foreground"
+                      aria-label={
+                        pendingCount > 9
+                          ? 'Plus de 9 réservations à confirmer'
+                          : `${pendingCount} réservation${pendingCount > 1 ? 's' : ''} à confirmer`
+                      }
+                    >
+                      {badge}
+                    </span>
+                  ) : null}
                 </a>
-              ))}
+                );
+              })}
               <div className="ml-auto flex items-center gap-3">
                 <Link to="/" className="text-sm font-medium text-primary hover:underline">
                   Voir le site

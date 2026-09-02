@@ -33,7 +33,10 @@ if (!$ok) {
 $ttl = $remember ? MT_TTL_REMEMBER : MT_TTL_SESSION;
 $cookieTtl = $remember ? $ttl : 0;
 mt_set_auth_cookie(mt_issue_cookie($email, $secret, $ttl), $cookieTtl);
-mt_json_out(200, [
-    'email' => $email,
-    'name' => (string) ($env['MANAGER_NAME'] ?? 'Direction'),
-]);
+$pdo = null;
+try {
+    $pdo = mt_pdo($env);
+} catch (Throwable $ignored) {
+    $pdo = null;
+}
+mt_json_out(200, mt_manager_session_payload($env, $email, $pdo));

@@ -1,0 +1,333 @@
+{
+  "contact": {
+    "name": "Escape Occitanie",
+    "domain": "escapeoccitanie.fr",
+    "website": "https://escapeoccitanie.fr",
+    "logo": "https://horizons-cdn.hostinger.com/6f05984e-16ed-4597-8f84-cb44fc903b9b/4bd0e6870391b77d0f13cc22e5fda061.jpg",
+    "logoAlt": "Escape Occitanie",
+    "address": "23 Bd de Verdun, 12400 Saint-Affrique",
+    "phone": "07 43 72 99 94",
+    "phoneHref": "tel:+33743729994",
+    "email": "escapeoccitanie@gmail.com",
+    "facebook": "https://www.facebook.com/EscapeSaintAffrique",
+    "instagram": "https://www.instagram.com/escape_occitanie/",
+    "maps": "https://www.google.com/maps/place/Escape+Occitanie/@43.9575602,2.8805006,575m/data=!3m1!1e3!4m15!1m8!3m7!1s0x12b23bbf554c6b7d:0x5f6760ff0e4d410d!2sEscape+Occitanie!8m2!3d43.9575602!4d2.8805006!10e1!16s%2Fg%2F11pd2hdl2n!3m5!1s0x12b23bbf554c6b7d:0x5f6760ff0e4d410d!8m2!3d43.9575602!4d2.8805006!16s%2Fg%2F11pd2hdl2n?entry=ttu&g_ep=EgoyMDI2MDgyNS4wIKXMDSoASAFQAw%3D%3D"
+  },
+  "rooms": {
+    "directeur": {
+      "slug": "directeur",
+      "name": "Convocation chez le Directeur",
+      "shortName": "Le Directeur",
+      "tagline": "Enquête au cœur du collège",
+      "pagePath": "/salles/convocation-chez-le-directeur",
+      "bookingPath": "/reservation/convocation-chez-le-directeur",
+      "players": "3 à 6 joueurs",
+      "minAge": "Dès 14 ans",
+      "duration": "60 minutes",
+      "difficulty": 3,
+      "successRate": 58,
+      "image": "https://images.hostinger.com/f2d40922-ae59-47a0-95d4-549223e899bf.png",
+      "imageAlt": "Bureau du directeur du collège plongé dans la pénombre, lampe verte allumée",
+      "cardDescription": "Convoqués dans le bureau de M. Grenot, aidez l'inspecteur Dupont à percer le mystère qui plane sur le collège. Fouille, indices et révélations vous attendent.",
+      "story": [
+        "Une convocation mystérieuse… Vous voilà réunis dans le bureau du directeur du collège. Depuis quelques semaines, d'étranges rumeurs circulent dans les couloirs de l'école, et personne ne sait vraiment ce qui se passe derrière cette porte.",
+        "Des élèves entrés dans le bureau de M. Grenot en sont ressortis… changés. La mémoire confuse, incapables de raconter ce qui s'y est passé. Certains murmurent que le directeur cache un secret bien plus sombre qu'il n'y paraît.",
+        "L'inspecteur Dupont mène l'enquête, mais il a besoin de vous. Fouillez le bureau, rassemblez les indices, résolvez les énigmes et découvrez la vérité avant que les 60 minutes ne s'écoulent. Après, il sera trop tard."
+      ],
+      "note": "« Ils ressortent tous… changés. » — carnet de l'inspecteur Dupont",
+      "gallery": [
+        {
+          "src": "https://images.hostinger.com/e4188b98-da57-4aab-94a5-df4d85f06176.png",
+          "alt": "Loupe posée sur des notes manuscrites et des photographies, indices de l'enquête",
+          "caption": "Les indices de l'inspecteur"
+        },
+        {
+          "src": "https://images.hostinger.com/e630d118-598a-4cd5-838f-55f7a7e1973c.png",
+          "alt": "Salle de classe à l'ancienne, tableau noir couvert de symboles mystérieux",
+          "caption": "La salle de classe abandonnée"
+        },
+        {
+          "src": "https://images.hostinger.com/1201bdc8-6343-437e-a907-8e4250bc04f8.png",
+          "alt": "Meuble à tiroirs ancien entrouvert révélant des dossiers et une clé en laiton",
+          "caption": "Le cabinet aux dossiers secrets"
+        }
+      ],
+      "seo": {
+        "titre": "Convocation chez le Directeur — Escape Occitanie",
+        "description": "Convoqués dans le bureau de M. Grenot, aidez l'inspecteur Dupont à percer le mystère qui plane sur le collège. Fouille, indices et révélations vous attendent. 3 à 6 joueurs, dès 14 ans, 60 minutes. Réservez votre session chez Escape Occitanie."
+      }
+    },
+    "vaisseau": {
+      "slug": "vaisseau",
+      "name": "La malédiction du Vaisseau Fantôme",
+      "shortName": "Le Vaisseau Fantôme",
+      "tagline": "Aventure maudite en haute mer",
+      "pagePath": "/salles/la-malediction-du-vaisseau-fantome",
+      "bookingPath": "/reservation/la-malediction-du-vaisseau-fantome",
+      "players": "3 à 6 joueurs",
+      "minAge": "Dès 14 ans",
+      "duration": "60 minutes",
+      "difficulty": 4,
+      "successRate": 41,
+      "image": "https://images.hostinger.com/c1b6ad64-40d1-40af-90d5-bb894b7f5893.png",
+      "imageAlt": "Cabine du capitaine d'un galion abandonné, cartes marines et bougies vacillantes",
+      "cardDescription": "Naufragés sur une île inconnue, explorez un galion abandonné et brisez la malédiction du capitaine disparu avant que le temps ne soit écoulé.",
+      "story": [
+        "Après une terrible tempête, vous faites naufrage sur une île inconnue. Au cœur de la brume se dresse une silhouette immense : un galion abandonné, échoué là depuis des siècles, que les marins surnomment le Vaisseau Fantôme.",
+        "La légende raconte que son capitaine a disparu dans des circonstances mystérieuses, laissant derrière lui une malédiction qui pèse encore sur le navire et sur quiconque ose y pénétrer.",
+        "À vous de percer le secret du Vaisseau Fantôme et de briser la malédiction avant que le temps ne soit écoulé… sinon, vous pourriez bien rester à bord pour l'éternité."
+      ],
+      "note": "« Nul ne quitte le Vaisseau sans payer son dû. » — journal de bord, dernière page",
+      "gallery": [
+        {
+          "src": "https://images.hostinger.com/50859314-a996-473c-838b-b47844ba83b0.png",
+          "alt": "Carte au trésor déroulée sur un tonneau, boussole en laiton et doublons d'or",
+          "caption": "La carte du capitaine disparu"
+        },
+        {
+          "src": "https://images.hostinger.com/f70380c8-f4bc-46d8-a2de-e0e186aaf9f8.png",
+          "alt": "Pont d'un galion fantôme dans la brume nocturne, voiles déchirées",
+          "caption": "Le pont dans la brume"
+        },
+        {
+          "src": "https://images.hostinger.com/f4dafae4-5670-4898-80fe-0e02adafabfb.png",
+          "alt": "Coffre ancien entrouvert laissant échapper une lueur verte surnaturelle",
+          "caption": "Le coffre maudit"
+        }
+      ],
+      "seo": {
+        "titre": "La malédiction du Vaisseau Fantôme — Escape Occitanie",
+        "description": "Naufragés sur une île inconnue, explorez un galion abandonné et brisez la malédiction du capitaine disparu avant que le temps ne soit écoulé. 3 à 6 joueurs, dès 14 ans, 60 minutes. Réservez votre session chez Escape Occitanie."
+      }
+    }
+  },
+  "commun": {
+    "marque": {
+      "ligne1": "ESCAPE",
+      "ligne2": "OCCITANIE"
+    },
+    "nav": {
+      "accueil": "Accueil",
+      "contact": "Contact",
+      "reserver": "Réserver",
+      "reserverSession": "Réserver une session"
+    },
+    "footer": {
+      "intro": "Deux salles d'escape game immersives au cœur de l'Occitanie. Enquête, aventure et 60 minutes chrono pour écrire votre propre histoire.",
+      "explorer": "Explorer",
+      "trouver": "Nous trouver",
+      "avisRecords": "Avis & records",
+      "copyright": "Escape Occitanie — Tous droits réservés. Saurez-vous sortir à temps ?"
+    },
+    "notFound": {
+      "code": "404",
+      "titre": "Cette porte n'existe pas…",
+      "texte": "La page que vous cherchez s'est volatilisée dans la brume. Peut-être un indice vous attend-il ailleurs ?",
+      "bouton": "Retour à l'accueil"
+    },
+    "salle": {
+      "toutes": "Toutes les salles",
+      "histoireSurtitre": "L'histoire",
+      "histoireTitre": "Votre mission commence ici",
+      "infos": "Informations pratiques",
+      "parSession": "par session",
+      "ageNote": "accompagnés d'un adulte",
+      "dureeNote": "pour vous échapper",
+      "difficulteNote": "niveau de difficulté",
+      "tauxTexte": "des équipes parviennent à sortir à temps. En ferez-vous partie ?",
+      "galerieSurtitre": "Galerie",
+      "galerieTitre": "Un aperçu de l'immersion… sans rien dévoiler",
+      "ctaTitre": "Oserez-vous franchir la porte ?",
+      "ctaTexte": "Rassemblez votre équipe de 4 à 6 enquêteurs et consultez le calendrier des disponibilités. Le mystère n'attend pas.",
+      "reserverSalle": "Réserver cette salle",
+      "decouvrirHistoire": "Découvrir l'histoire",
+      "voirDispo": "Voir les disponibilités",
+      "reserverNomCourt": "Réserver « {nom-court} »",
+      "autreSalle": "Découvrir l'autre salle",
+      "voirCreneaux": "Voir les créneaux",
+      "maps": "Voir sur Google Maps"
+    }
+  },
+  "accueil": {
+    "seo": {
+      "titre": "Escape Occitanie — Escape game immersif en Occitanie",
+      "description": "L'Escape Occitanie réouvre ses portes ! Deux salles d'escape game immersives : enquêtez dans le bureau du directeur ou brisez la malédiction du Vaisseau Fantôme. 60 minutes, 4 à 6 joueurs, dès 10 ans."
+    },
+    "seoOg": {
+      "titre": "Escape Occitanie — Escape game immersif en Occitanie",
+      "description": "Deux aventures immersives de 60 minutes : Convocation chez le Directeur et La malédiction du Vaisseau Fantôme. Réservez votre session."
+    },
+    "hero": {
+      "surtitre": "Escape game — Occitanie",
+      "titre": "L'Escape Occitanie",
+      "accent": "réouvre ses portes",
+      "texte": "Enfermés en équipe, vous avez 60 minutes pour fouiller les lieux, dénicher les indices, résoudre les énigmes et percer le mystère. Observation, logique et coopération seront vos seules clés vers la sortie.",
+      "image": "https://images.hostinger.com/97e78780-1685-4dc5-98c8-9ae3b0bb5543.png",
+      "imageAlt": "Couloir sombre d'un escape game, porte ancienne entrouverte laissant filtrer une lumière dorée",
+      "ctaReserver": "Réserver une session",
+      "ctaDecouvrir": "Découvrir l'expérience",
+      "puces": [
+        "2 salles immersives",
+        "4 à 6 joueurs",
+        "Dès 10 ans"
+      ]
+    },
+    "bandeau": [
+      "Enquête",
+      "Fouille",
+      "Manipulation",
+      "Réflexion",
+      "Coopération",
+      "60 minutes chrono",
+      "Adrénaline",
+      "Mystère"
+    ],
+    "experience": {
+      "surtitre": "L'expérience",
+      "titre": "60 minutes pour résoudre l'impossible",
+      "paragraphes": [
+        "Une porte se referme. Le chronomètre s'affole : 60 minutes, ni une de plus. En équipe de 4 à 6 joueurs, fouillez les lieux, dénichez les indices cachés, résolvez les énigmes et faites parler les mécanismes.",
+        "Ici, pas de force ni de hasard : seuls votre esprit d'observation, votre logique et votre cohésion vous permettront de sortir vainqueurs. Entre amis, en famille ou entre collègues, chaque session est une aventure dont vous êtes les héros."
+      ],
+      "stats": [
+        {
+          "valeur": 2,
+          "libelle": "Salles"
+        },
+        {
+          "valeur": 60,
+          "libelle": "Minutes"
+        },
+        {
+          "valeur": 12,
+          "libelle": "Joueurs max"
+        }
+      ],
+      "atouts": [
+        {
+          "titre": "Investigation",
+          "texte": "Fouillez chaque recoin du décor : aucun détail n'est laissé au hasard."
+        },
+        {
+          "titre": "Énigmes",
+          "texte": "Cadenas, mécanismes et casse-tête à résoudre en chaîne pour progresser."
+        },
+        {
+          "titre": "Coopération",
+          "texte": "On ne s'évade jamais seul : communiquez, partagez, combinez vos trouvailles."
+        },
+        {
+          "titre": "60 minutes chrono",
+          "texte": "L'adrénaline monte à mesure que le temps s'écoule. Tiendrez-vous la pression ?"
+        }
+      ]
+    },
+    "salles": {
+      "surtitre": "Nos aventures",
+      "titre": "Deux salles, deux mondes à explorer",
+      "texte": "Choisissez votre mission : menez l'enquête dans un collège aux secrets troublants, ou affrontez la malédiction d'un galion fantôme échoué dans la brume."
+    },
+    "avis": {
+      "surtitre": "Ils ont tenté l'aventure",
+      "titre": "Les survivants témoignent"
+    },
+    "records": {
+      "surtitre": "Hall of fame",
+      "titre": "Top 3 des records",
+      "texte": "Les équipes les plus rapides de la saison. Saurez-vous faire mieux et graver votre nom au tableau ?"
+    },
+    "contact": {
+      "surtitre": "Contact",
+      "titre": "Prêt à relever le défi ?",
+      "texte": "Une question sur nos salles, un événement à organiser (anniversaire, enterrement de vie de célibataire, team building) ou une réservation à confirmer ? Notre équipe vous répond avec plaisir.",
+      "encartTitre": "Le chronomètre tourne déjà…",
+      "encartTexte": "Consultez les disponibilités de chaque salle et bloquez votre créneau. Les sessions partent vite, surtout le week-end !"
+    }
+  },
+  "reserver": {
+    "seo": {
+      "titre": "Réservation — {nom} — Escape Occitanie",
+      "description": "Consultez les disponibilités de la salle « {nom} » et réservez votre session d'escape game de 60 minutes chez Escape Occitanie."
+    },
+    "seoOg": {
+      "description": "Disponibilités et réservation pour la salle « {nom} »."
+    },
+    "surtitre": "Réservation",
+    "intro": "Consultez les disponibilités et réservez votre session de 60 minutes. Votre demande est d’abord enregistrée, puis confirmée par l’équipe.",
+    "retour": "Retour à la salle",
+    "comment": "Comment réserver ?",
+    "contact": "Nous contacter",
+    "etapes": [
+      {
+        "titre": "Choisissez un horaire",
+        "texte": "Les départs s’affichent toutes les 30 minutes. Une partie dure 60 minutes."
+      },
+      {
+        "titre": "Réservez en ligne",
+        "texte": "Indiquez votre nom, e-mail, téléphone et le nombre de joueurs (3 à 6)."
+      },
+      {
+        "titre": "Confirmation",
+        "texte": "Vous recevez un e-mail. L’équipe confirme ensuite la réservation. Rendez-vous 15 minutes avant le début."
+      }
+    ],
+    "calendrier": {
+      "jours": [
+        "Lun",
+        "Mar",
+        "Mer",
+        "Jeu",
+        "Ven",
+        "Sam",
+        "Dim"
+      ],
+      "ferme": "Fermé",
+      "complet": "Complet",
+      "dispo": "{n} dispo",
+      "indisponible": "indisponible",
+      "creneauxDispo": "{n} créneaux disponibles",
+      "moisPrev": "Mois précédent",
+      "moisNext": "Mois suivant",
+      "prochaine": "Prochaine ouverture le {date}",
+      "choisirJour": "Sélectionnez un jour pour afficher les horaires disponibles.",
+      "creneauxInfo": "Créneaux de départ toutes les {slot} min — occupation {occupancy} min.",
+      "chargement": "Chargement des horaires…",
+      "aucun": "Aucun créneau ouvert ce jour-là.",
+      "reserve": "— réservé",
+      "placeholderNom": "Nom",
+      "placeholderEmail": "E-mail",
+      "placeholderTel": "Téléphone",
+      "joueurs": "Joueurs",
+      "bouton": "Réserver ce créneau",
+      "noteAuto": "Un e-mail de confirmation sera envoyé. Une question ? {telephone}",
+      "noteManuel": "Un e-mail d’accusé de réception sera envoyé. Confirmation par l’équipe ensuite. Une question ? {telephone}",
+      "toastConfirmeMail": "Réservation confirmée. Un e-mail vous a été envoyé.",
+      "toastConfirme": "Réservation confirmée.",
+      "toastDemandeMail": "Demande envoyée. Un e-mail vous a été envoyé.",
+      "toastDemande": "Demande envoyée, en attente de confirmation.",
+      "doneConfirme": "Réservation confirmée",
+      "doneDemande": "Demande envoyée",
+      "doneCorpsConfirme": "{nom}, votre réservation pour « {salle} » le {date} à {heure} ({joueurs} joueurs) est enregistrée. Un e-mail de confirmation a été envoyé à {email}.",
+      "doneCorpsDemande": "{nom}, votre demande pour « {salle} » le {date} à {heure} ({joueurs} joueurs) est enregistrée. Elle sera confirmée par l’équipe. Un e-mail a été envoyé à {email}.",
+      "doneArriveConfirme": "Merci d’arriver 15 minutes en avance.",
+      "doneArriveAttente": "Merci d’arriver 15 minutes en avance une fois confirmé."
+    }
+  },
+  "emails": {
+    "client-attente": {
+      "sujet": "Demande de réservation — Escape Occitanie",
+      "html": "<!doctype html>\n<html lang=\"und\" dir=\"auto\" xmlns=\"http://www.w3.org/1999/xhtml\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\">\n  <head>\n    <title></title>\n    <!--[if !mso]><!-->\n    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n    <!--<![endif]-->\n    <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n    <style type=\"text/css\">\n      #outlook a { padding:0; }\n      body { margin:0;padding:0;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%; }\n      table, td { border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt; }\n      img { border:0;height:auto;line-height:100%; outline:none;text-decoration:none;-ms-interpolation-mode:bicubic; }\n      p { display:block;margin:13px 0; }\n    </style>\n    <!--[if mso]>\n    <noscript>\n    <xml>\n    <o:OfficeDocumentSettings>\n      <o:AllowPNG/>\n      <o:PixelsPerInch>96</o:PixelsPerInch>\n    </o:OfficeDocumentSettings>\n    </xml>\n    </noscript>\n    <![endif]-->\n    <!--[if lte mso 11]>\n    <style type=\"text/css\">\n      .mj-outlook-group-fix { width:100% !important; }\n    </style>\n    <![endif]-->\n    \n    \n    <style type=\"text/css\">\n      @media only screen and (min-width:480px) {\n        .mj-column-per-100 { width:100% !important; max-width: 100%; }\n      }\n    </style>\n    <style media=\"screen and (min-width:480px)\">\n      .moz-text-html .mj-column-per-100 { width:100% !important; max-width: 100%; }\n    </style>\n    \n    \n  \n    \n    \n    \n  </head>\n  \n      <body  style=\"word-spacing:normal;background-color:#1a1612;\">\n        \n    <div style=\"display:none;font-size:1px;color:#ffffff;line-height:1px;max-height:0px;max-width:0px;opacity:0;overflow:hidden;\">Nous avons bien reçu votre demande de réservation.</div>\n  \n        <div\n           aria-roledescription=\"email\" role=\"article\" lang=\"und\" dir=\"auto\" style=\"word-spacing:normal;background-color:#1a1612;\"\n        >\n        \n      \n      <!--[if mso | IE]><table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"\" role=\"presentation\" style=\"width:600px;\" width=\"600\" bgcolor=\"#241f1a\" ><tr><td style=\"line-height:0px;font-size:0px;mso-line-height-rule:exactly;\"><![endif]-->\n    \n      \n      <div  style=\"background:#241f1a;background-color:#241f1a;margin:0px auto;max-width:600px;\">\n        \n        <table\n           align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"background:#241f1a;background-color:#241f1a;width:100%;\"\n        >\n          <tbody>\n            <tr>\n              <td\n                 style=\"direction:ltr;font-size:0px;padding:28px 20px;text-align:center;\"\n              >\n                <!--[if mso | IE]><table role=\"presentation\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\"><tr><td class=\"\" style=\"vertical-align:top;width:560px;\" ><![endif]-->\n            \n      <div\n         class=\"mj-column-per-100 mj-outlook-group-fix\" style=\"font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;\"\n      >\n        \n      <table\n         border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"vertical-align:top;\" width=\"100%\"\n      >\n        <tbody>\n          \n              <tr>\n                <td\n                   align=\"left\" style=\"font-size:0px;padding:10px 25px;word-break:break-word;\"\n                >\n                  \n      <div\n         style=\"font-family:Georgia, serif;font-size:12px;letter-spacing:3px;line-height:1.55;text-align:left;text-transform:uppercase;color:#c9a227;\"\n      >Escape Occitanie</div>\n    \n                </td>\n              </tr>\n            \n              <tr>\n                <td\n                   align=\"left\" style=\"font-size:0px;padding:10px 25px;padding-top:8px;word-break:break-word;\"\n                >\n                  \n      <div\n         style=\"font-family:Georgia, serif;font-size:22px;line-height:1.55;text-align:left;color:#f4ead6;\"\n      >Bonjour {nom},</div>\n    \n                </td>\n              </tr>\n            \n              <tr>\n                <td\n                   align=\"left\" style=\"font-size:0px;padding:10px 25px;word-break:break-word;\"\n                >\n                  \n      <div\n         style=\"font-family:Georgia, serif;font-size:16px;line-height:1.55;text-align:left;color:#e8dcc8;\"\n      >Nous avons bien reçu votre demande de réservation. Elle est en attente de confirmation par l'équipe.</div>\n    \n                </td>\n              </tr>\n            \n              <tr>\n                <td\n                   align=\"left\" style=\"font-size:0px;padding:10px 25px;word-break:break-word;\"\n                >\n                  \n      <div\n         style=\"font-family:Georgia, serif;font-size:16px;line-height:1.55;text-align:left;color:#e8dcc8;\"\n      >Salle : {salle}<br />\n          Date : {date}<br />\n          Heure : {heure}<br />\n          Durée : {duree} minutes<br />\n          Joueurs : {joueurs}</div>\n    \n                </td>\n              </tr>\n            \n              <tr>\n                <td\n                   align=\"left\" style=\"font-size:0px;padding:10px 25px;word-break:break-word;\"\n                >\n                  \n      <div\n         style=\"font-family:Georgia, serif;font-size:16px;line-height:1.55;text-align:left;color:#e8dcc8;\"\n      >Merci d'arriver 15 minutes avant le début de la session une fois la réservation confirmée.</div>\n    \n                </td>\n              </tr>\n            \n              <tr>\n                <td\n                   align=\"left\" style=\"font-size:0px;padding:10px 25px;word-break:break-word;\"\n                >\n                  \n      <div\n         style=\"font-family:Georgia, serif;font-size:16px;line-height:1.55;text-align:left;color:#e8dcc8;\"\n      >Adresse : {adresse}</div>\n    \n                </td>\n              </tr>\n            \n              <tr>\n                <td\n                   align=\"left\" style=\"font-size:0px;padding:10px 25px;word-break:break-word;\"\n                >\n                  \n      <div\n         style=\"font-family:Georgia, serif;font-size:16px;line-height:1.55;text-align:left;color:#e8dcc8;\"\n      >À très bientôt,<br />L'équipe Escape Occitanie</div>\n    \n                </td>\n              </tr>\n            \n        </tbody>\n      </table>\n    \n      </div>\n    \n          <!--[if mso | IE]></td></tr></table><![endif]-->\n              </td>\n            </tr>\n          </tbody>\n        </table>\n        \n      </div>\n    \n      \n      <!--[if mso | IE]></td></tr></table><![endif]-->\n    \n    \n      </div>\n      </body>\n    \n</html>\n  ",
+      "texte": "Nous avons bien reçu votre demande de réservation.\nEscape Occitanie\nBonjour {nom},\nNous avons bien reçu votre demande de réservation. Elle est en attente de\nconfirmation par l'équipe.\nSalle : {salle}\nDate : {date}\nHeure : {heure}\nDurée : {duree} minutes\nJoueurs : {joueurs}\nMerci d'arriver 15 minutes avant le début de la session une fois la réservation\nconfirmée.\nAdresse : {adresse}\nÀ très bientôt,\nL'équipe Escape Occitanie"
+    },
+    "client-confirmee": {
+      "sujet": "Confirmation de réservation — Escape Occitanie",
+      "html": "<!doctype html>\n<html lang=\"und\" dir=\"auto\" xmlns=\"http://www.w3.org/1999/xhtml\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\">\n  <head>\n    <title></title>\n    <!--[if !mso]><!-->\n    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n    <!--<![endif]-->\n    <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n    <style type=\"text/css\">\n      #outlook a { padding:0; }\n      body { margin:0;padding:0;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%; }\n      table, td { border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt; }\n      img { border:0;height:auto;line-height:100%; outline:none;text-decoration:none;-ms-interpolation-mode:bicubic; }\n      p { display:block;margin:13px 0; }\n    </style>\n    <!--[if mso]>\n    <noscript>\n    <xml>\n    <o:OfficeDocumentSettings>\n      <o:AllowPNG/>\n      <o:PixelsPerInch>96</o:PixelsPerInch>\n    </o:OfficeDocumentSettings>\n    </xml>\n    </noscript>\n    <![endif]-->\n    <!--[if lte mso 11]>\n    <style type=\"text/css\">\n      .mj-outlook-group-fix { width:100% !important; }\n    </style>\n    <![endif]-->\n    \n    \n    <style type=\"text/css\">\n      @media only screen and (min-width:480px) {\n        .mj-column-per-100 { width:100% !important; max-width: 100%; }\n      }\n    </style>\n    <style media=\"screen and (min-width:480px)\">\n      .moz-text-html .mj-column-per-100 { width:100% !important; max-width: 100%; }\n    </style>\n    \n    \n  \n    \n    \n    \n  </head>\n  \n      <body  style=\"word-spacing:normal;background-color:#1a1612;\">\n        \n    <div style=\"display:none;font-size:1px;color:#ffffff;line-height:1px;max-height:0px;max-width:0px;opacity:0;overflow:hidden;\">Votre réservation est confirmée.</div>\n  \n        <div\n           aria-roledescription=\"email\" role=\"article\" lang=\"und\" dir=\"auto\" style=\"word-spacing:normal;background-color:#1a1612;\"\n        >\n        \n      \n      <!--[if mso | IE]><table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"\" role=\"presentation\" style=\"width:600px;\" width=\"600\" bgcolor=\"#241f1a\" ><tr><td style=\"line-height:0px;font-size:0px;mso-line-height-rule:exactly;\"><![endif]-->\n    \n      \n      <div  style=\"background:#241f1a;background-color:#241f1a;margin:0px auto;max-width:600px;\">\n        \n        <table\n           align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"background:#241f1a;background-color:#241f1a;width:100%;\"\n        >\n          <tbody>\n            <tr>\n              <td\n                 style=\"direction:ltr;font-size:0px;padding:28px 20px;text-align:center;\"\n              >\n                <!--[if mso | IE]><table role=\"presentation\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\"><tr><td class=\"\" style=\"vertical-align:top;width:560px;\" ><![endif]-->\n            \n      <div\n         class=\"mj-column-per-100 mj-outlook-group-fix\" style=\"font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;\"\n      >\n        \n      <table\n         border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"vertical-align:top;\" width=\"100%\"\n      >\n        <tbody>\n          \n              <tr>\n                <td\n                   align=\"left\" style=\"font-size:0px;padding:10px 25px;word-break:break-word;\"\n                >\n                  \n      <div\n         style=\"font-family:Georgia, serif;font-size:12px;letter-spacing:3px;line-height:1.55;text-align:left;text-transform:uppercase;color:#c9a227;\"\n      >Escape Occitanie</div>\n    \n                </td>\n              </tr>\n            \n              <tr>\n                <td\n                   align=\"left\" style=\"font-size:0px;padding:10px 25px;padding-top:8px;word-break:break-word;\"\n                >\n                  \n      <div\n         style=\"font-family:Georgia, serif;font-size:22px;line-height:1.55;text-align:left;color:#f4ead6;\"\n      >Bonjour {nom},</div>\n    \n                </td>\n              </tr>\n            \n              <tr>\n                <td\n                   align=\"left\" style=\"font-size:0px;padding:10px 25px;word-break:break-word;\"\n                >\n                  \n      <div\n         style=\"font-family:Georgia, serif;font-size:16px;line-height:1.55;text-align:left;color:#e8dcc8;\"\n      >Votre réservation est confirmée.</div>\n    \n                </td>\n              </tr>\n            \n              <tr>\n                <td\n                   align=\"left\" style=\"font-size:0px;padding:10px 25px;word-break:break-word;\"\n                >\n                  \n      <div\n         style=\"font-family:Georgia, serif;font-size:16px;line-height:1.55;text-align:left;color:#e8dcc8;\"\n      >Salle : {salle}<br />\n          Date : {date}<br />\n          Heure : {heure}<br />\n          Durée : {duree} minutes<br />\n          Joueurs : {joueurs}</div>\n    \n                </td>\n              </tr>\n            \n              <tr>\n                <td\n                   align=\"left\" style=\"font-size:0px;padding:10px 25px;word-break:break-word;\"\n                >\n                  \n      <div\n         style=\"font-family:Georgia, serif;font-size:16px;line-height:1.55;text-align:left;color:#e8dcc8;\"\n      >Merci d'arriver 15 minutes avant le début de la session une fois la réservation confirmée.</div>\n    \n                </td>\n              </tr>\n            \n              <tr>\n                <td\n                   align=\"left\" style=\"font-size:0px;padding:10px 25px;word-break:break-word;\"\n                >\n                  \n      <div\n         style=\"font-family:Georgia, serif;font-size:16px;line-height:1.55;text-align:left;color:#e8dcc8;\"\n      >Adresse : {adresse}</div>\n    \n                </td>\n              </tr>\n            \n              <tr>\n                <td\n                   align=\"left\" style=\"font-size:0px;padding:10px 25px;word-break:break-word;\"\n                >\n                  \n      <div\n         style=\"font-family:Georgia, serif;font-size:16px;line-height:1.55;text-align:left;color:#e8dcc8;\"\n      >Ajoutez l'événement à votre calendrier :<br />\n          - Fichier joint (reservation.ics) ou téléchargement : {lien_ics}<br />\n          - Google Agenda : {lien_google}</div>\n    \n                </td>\n              </tr>\n            \n              <tr>\n                <td\n                   align=\"left\" style=\"font-size:0px;padding:10px 25px;word-break:break-word;\"\n                >\n                  \n      <div\n         style=\"font-family:Georgia, serif;font-size:16px;line-height:1.55;text-align:left;color:#e8dcc8;\"\n      >À très bientôt,<br />L'équipe Escape Occitanie</div>\n    \n                </td>\n              </tr>\n            \n        </tbody>\n      </table>\n    \n      </div>\n    \n          <!--[if mso | IE]></td></tr></table><![endif]-->\n              </td>\n            </tr>\n          </tbody>\n        </table>\n        \n      </div>\n    \n      \n      <!--[if mso | IE]></td></tr></table><![endif]-->\n    \n    \n      </div>\n      </body>\n    \n</html>\n  ",
+      "texte": "Votre réservation est confirmée.\nEscape Occitanie\nBonjour {nom},\nVotre réservation est confirmée.\nSalle : {salle}\nDate : {date}\nHeure : {heure}\nDurée : {duree} minutes\nJoueurs : {joueurs}\nMerci d'arriver 15 minutes avant le début de la session une fois la réservation\nconfirmée.\nAdresse : {adresse}\nAjoutez l'événement à votre calendrier :\n- Fichier joint (reservation.ics) ou téléchargement : {lien_ics}\n- Google Agenda : {lien_google}\nÀ très bientôt,\nL'équipe Escape Occitanie"
+    },
+    "manager-nouvelle": {
+      "sujet": "Nouvelle demande de réservation — Escape Occitanie",
+      "html": "<!doctype html>\n<html lang=\"und\" dir=\"auto\" xmlns=\"http://www.w3.org/1999/xhtml\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\">\n  <head>\n    <title></title>\n    <!--[if !mso]><!-->\n    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n    <!--<![endif]-->\n    <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n    <style type=\"text/css\">\n      #outlook a { padding:0; }\n      body { margin:0;padding:0;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%; }\n      table, td { border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt; }\n      img { border:0;height:auto;line-height:100%; outline:none;text-decoration:none;-ms-interpolation-mode:bicubic; }\n      p { display:block;margin:13px 0; }\n    </style>\n    <!--[if mso]>\n    <noscript>\n    <xml>\n    <o:OfficeDocumentSettings>\n      <o:AllowPNG/>\n      <o:PixelsPerInch>96</o:PixelsPerInch>\n    </o:OfficeDocumentSettings>\n    </xml>\n    </noscript>\n    <![endif]-->\n    <!--[if lte mso 11]>\n    <style type=\"text/css\">\n      .mj-outlook-group-fix { width:100% !important; }\n    </style>\n    <![endif]-->\n    \n    \n    <style type=\"text/css\">\n      @media only screen and (min-width:480px) {\n        .mj-column-per-100 { width:100% !important; max-width: 100%; }\n      }\n    </style>\n    <style media=\"screen and (min-width:480px)\">\n      .moz-text-html .mj-column-per-100 { width:100% !important; max-width: 100%; }\n    </style>\n    \n    \n  \n    \n    \n    \n  </head>\n  \n      <body  style=\"word-spacing:normal;background-color:#1a1612;\">\n        \n    <div style=\"display:none;font-size:1px;color:#ffffff;line-height:1px;max-height:0px;max-width:0px;opacity:0;overflow:hidden;\">Nouvelle réservation ({statut})</div>\n  \n        <div\n           aria-roledescription=\"email\" role=\"article\" lang=\"und\" dir=\"auto\" style=\"word-spacing:normal;background-color:#1a1612;\"\n        >\n        \n      \n      <!--[if mso | IE]><table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"\" role=\"presentation\" style=\"width:600px;\" width=\"600\" bgcolor=\"#241f1a\" ><tr><td style=\"line-height:0px;font-size:0px;mso-line-height-rule:exactly;\"><![endif]-->\n    \n      \n      <div  style=\"background:#241f1a;background-color:#241f1a;margin:0px auto;max-width:600px;\">\n        \n        <table\n           align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"background:#241f1a;background-color:#241f1a;width:100%;\"\n        >\n          <tbody>\n            <tr>\n              <td\n                 style=\"direction:ltr;font-size:0px;padding:28px 20px;text-align:center;\"\n              >\n                <!--[if mso | IE]><table role=\"presentation\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\"><tr><td class=\"\" style=\"vertical-align:top;width:560px;\" ><![endif]-->\n            \n      <div\n         class=\"mj-column-per-100 mj-outlook-group-fix\" style=\"font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;\"\n      >\n        \n      <table\n         border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"vertical-align:top;\" width=\"100%\"\n      >\n        <tbody>\n          \n              <tr>\n                <td\n                   align=\"left\" style=\"font-size:0px;padding:10px 25px;word-break:break-word;\"\n                >\n                  \n      <div\n         style=\"font-family:Georgia, serif;font-size:12px;letter-spacing:3px;line-height:1.55;text-align:left;text-transform:uppercase;color:#c9a227;\"\n      >Escape Occitanie</div>\n    \n                </td>\n              </tr>\n            \n              <tr>\n                <td\n                   align=\"left\" style=\"font-size:0px;padding:10px 25px;padding-top:8px;word-break:break-word;\"\n                >\n                  \n      <div\n         style=\"font-family:Georgia, serif;font-size:22px;line-height:1.55;text-align:left;color:#f4ead6;\"\n      >Nouvelle réservation ({statut})</div>\n    \n                </td>\n              </tr>\n            \n              <tr>\n                <td\n                   align=\"left\" style=\"font-size:0px;padding:10px 25px;word-break:break-word;\"\n                >\n                  \n      <div\n         style=\"font-family:Georgia, serif;font-size:16px;line-height:1.55;text-align:left;color:#e8dcc8;\"\n      >Salle : {salle}<br />\n          Date : {date} à {heure}<br />\n          Joueurs : {joueurs}<br />\n          Nom : {nom}<br />\n          E-mail : {email}<br />\n          Téléphone : {telephone}</div>\n    \n                </td>\n              </tr>\n            \n        </tbody>\n      </table>\n    \n      </div>\n    \n          <!--[if mso | IE]></td></tr></table><![endif]-->\n              </td>\n            </tr>\n          </tbody>\n        </table>\n        \n      </div>\n    \n      \n      <!--[if mso | IE]></td></tr></table><![endif]-->\n    \n    \n      </div>\n      </body>\n    \n</html>\n  ",
+      "texte": "Nouvelle réservation ({statut})\nEscape Occitanie\nNouvelle réservation ({statut})\nSalle : {salle}\nDate : {date} à {heure}\nJoueurs : {joueurs}\nNom : {nom}\nE-mail : {email}\nTéléphone : {telephone}"
+    }
+  }
+}

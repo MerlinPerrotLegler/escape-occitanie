@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<reserver>
+  <seo titre="Réservation — {nom} — Escape Occitanie" description="Consultez les disponibilités de la salle « {nom} » et réservez votre session d'escape game de 60 minutes chez Escape Occitanie."/>
+  <seo-og description="Disponibilités et réservation pour la salle « {nom} »."/>
+  <surtitre>Réservation</surtitre>
+  <intro>Consultez les disponibilités et réservez votre session de 60 minutes. Votre demande est d’abord enregistrée, puis confirmée par l’équipe.</intro>
+  <retour>Retour à la salle</retour>
+  <comment>Comment réserver ?</comment>
+  <etape titre="Choisissez un horaire" texte="Les départs s’affichent toutes les 30 minutes. Une partie dure 60 minutes."/>
+  <etape titre="Réservez en ligne" texte="Indiquez votre nom, e-mail, téléphone et le nombre de joueurs (3 à 6)."/>
+  <etape titre="Confirmation" texte="Vous recevez un e-mail. L’équipe confirme ensuite la réservation. Rendez-vous 15 minutes avant le début."/>
+  <contact>Nous contacter</contact>
+  <calendrier>
+    <jour>Lun</jour>
+    <jour>Mar</jour>
+    <jour>Mer</jour>
+    <jour>Jeu</jour>
+    <jour>Ven</jour>
+    <jour>Sam</jour>
+    <jour>Dim</jour>
+    <ferme>Fermé</ferme>
+    <complet>Complet</complet>
+    <dispo>{n} dispo</dispo>
+    <indisponible>indisponible</indisponible>
+    <creneaux-dispo>{n} créneaux disponibles</creneaux-dispo>
+    <mois-prev>Mois précédent</mois-prev>
+    <mois-next>Mois suivant</mois-next>
+    <prochaine>Prochaine ouverture le {date}</prochaine>
+    <choisir-jour>Sélectionnez un jour pour afficher les horaires disponibles.</choisir-jour>
+    <creneaux-info>Créneaux de départ toutes les {slot} min — occupation {occupancy} min.</creneaux-info>
+    <chargement>Chargement des horaires…</chargement>
+    <aucun>Aucun créneau ouvert ce jour-là.</aucun>
+    <reserve>— réservé</reserve>
+    <placeholder-nom>Nom</placeholder-nom>
+    <placeholder-email>E-mail</placeholder-email>
+    <placeholder-tel>Téléphone</placeholder-tel>
+    <joueurs>Joueurs</joueurs>
+    <bouton>Réserver ce créneau</bouton>
+    <note-auto>Un e-mail de confirmation sera envoyé. Une question ? {telephone}</note-auto>
+    <note-manuel>Un e-mail d’accusé de réception sera envoyé. Confirmation par l’équipe ensuite. Une question ? {telephone}</note-manuel>
+    <toast-confirme-mail>Réservation confirmée. Un e-mail vous a été envoyé.</toast-confirme-mail>
+    <toast-confirme>Réservation confirmée.</toast-confirme>
+    <toast-demande-mail>Demande envoyée. Un e-mail vous a été envoyé.</toast-demande-mail>
+    <toast-demande>Demande envoyée, en attente de confirmation.</toast-demande>
+    <done-confirme>Réservation confirmée</done-confirme>
+    <done-demande>Demande envoyée</done-demande>
+    <done-corps-confirme>{nom}, votre réservation pour « {salle} » le {date} à {heure} ({joueurs} joueurs) est enregistrée. Un e-mail de confirmation a été envoyé à {email}.</done-corps-confirme>
+    <done-corps-demande>{nom}, votre demande pour « {salle} » le {date} à {heure} ({joueurs} joueurs) est enregistrée. Elle sera confirmée par l’équipe. Un e-mail a été envoyé à {email}.</done-corps-demande>
+    <done-arrive-confirme>Merci d’arriver 15 minutes en avance.</done-arrive-confirme>
+    <done-arrive-attente>Merci d’arriver 15 minutes en avance une fois confirmé.</done-arrive-attente>
+  </calendrier>
+</reserver>

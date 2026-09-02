@@ -24,6 +24,31 @@ function mt_calendar_token_ok(array $env, int $bookingId, string $email, string 
     return hash_equals($expected, $token);
 }
 
+function mt_manager_confirm_token(array $env, int $bookingId, string $email): string {
+    $secret = (string) ($env['AUTH_SECRET'] ?? '');
+    return substr(hash_hmac('sha256', 'confirm|' . $bookingId . '|' . strtolower($email), $secret), 0, 24);
+}
+
+function mt_manager_confirm_token_ok(array $env, int $bookingId, string $email, string $token): bool {
+    if ($token === '' || $bookingId < 1) {
+        return false;
+    }
+    $expected = mt_manager_confirm_token($env, $bookingId, $email);
+    return hash_equals($expected, $token);
+}
+
+function mt_manager_booking_links(array $env, array $booking): array {
+    $id = (int) ($booking['id'] ?? 0);
+    $email = (string) ($booking['guest_email'] ?? '');
+    $token = $id > 0 ? mt_manager_confirm_token($env, $id, $email) : '';
+    $base = mt_public_base($env);
+    return [
+        'voir' => $base . '/maitre#reservations/' . $id . '?filtre=toutes&page=1',
+        'confirmer' => $base . '/api/confirm-booking.php?b=' . $id . '&t=' . rawurlencode($token),
+        'token' => $token,
+    ];
+}
+
 function mt_booking_datetime(array $booking): array {
     $time = $booking['time'] ?? mt_minutes_to_hhmm((int) $booking['start_minute']);
     $tz = new DateTimeZone('Europe/Paris');

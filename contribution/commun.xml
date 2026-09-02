@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<commun>
+  <marque>
+    <ligne1>ESCAPE</ligne1>
+    <ligne2>OCCITANIE</ligne2>
+  </marque>
+  <nav>
+    <accueil>Accueil</accueil>
+    <contact>Contact</contact>
+    <reserver>Réserver</reserver>
+    <reserver-session>Réserver une session</reserver-session>
+  </nav>
+  <footer>
+    <intro>Deux salles d'escape game immersives au cœur de l'Occitanie. Enquête, aventure et 60 minutes chrono pour écrire votre propre histoire.</intro>
+    <explorer>Explorer</explorer>
+    <trouver>Nous trouver</trouver>
+    <avis-records>Avis &amp; records</avis-records>
+    <copyright>Escape Occitanie — Tous droits réservés. Saurez-vous sortir à temps ?</copyright>
+  </footer>
+  <erreur-404>
+    <code>404</code>
+    <titre>Cette porte n'existe pas…</titre>
+    <texte>La page que vous cherchez s'est volatilisée dans la brume. Peut-être un indice vous attend-il ailleurs ?</texte>
+    <bouton>Retour à l'accueil</bouton>
+  </erreur-404>
+  <salle>
+    <toutes>Toutes les salles</toutes>
+    <histoire-surtitre>L'histoire</histoire-surtitre>
+    <histoire-titre>Votre mission commence ici</histoire-titre>
+    <infos>Informations pratiques</infos>
+    <par-session>par session</par-session>
+    <age-note>accompagnés d'un adulte</age-note>
+    <duree-note>pour vous échapper</duree-note>
+    <difficulte-note>niveau de difficulté</difficulte-note>
+    <taux-texte>des équipes parviennent à sortir à temps. En ferez-vous partie ?</taux-texte>
+    <galerie-surtitre>Galerie</galerie-surtitre>
+    <galerie-titre>Un aperçu de l'immersion… sans rien dévoiler</galerie-titre>
+    <cta-titre>Oserez-vous franchir la porte ?</cta-titre>
+    <cta-texte>Rassemblez votre équipe de 4 à 6 enquêteurs et consultez le calendrier des disponibilités. Le mystère n'attend pas.</cta-texte>
+    <reserver-salle>Réserver cette salle</reserver-salle>
+    <decouvrir-histoire>Découvrir l'histoire</decouvrir-histoire>
+    <voir-dispo>Voir les disponibilités</voir-dispo>
+    <reserver-nom-court>Réserver « {nom-court} »</reserver-nom-court>
+    <autre-salle>Découvrir l'autre salle</autre-salle>
+    <voir-creneaux>Voir les créneaux</voir-creneaux>
+    <maps>Voir sur Google Maps</maps>
+  </salle>
+</commun>

@@ -48,12 +48,14 @@ if ($method === 'POST' && isset($_GET['id']) && (($_GET['action'] ?? '') === 'ma
     $emailSent = false;
     try {
         $attachment = $kind === 'confirmed' ? mt_booking_ics_attachment($booking) : null;
+        $parts = mt_booking_email_parts($booking, $kind, $env);
         $emailSent = mt_send_mail(
             $env,
             $booking['guest_email'],
-            $kind === 'confirmed' ? 'Confirmation de réservation — Escape Occitanie' : 'Demande de réservation — Escape Occitanie',
-            mt_booking_customer_email($booking, $kind, $env),
-            $attachment
+            $parts['subject'],
+            $parts['text'],
+            $attachment,
+            $parts['html'] !== '' ? $parts['html'] : null
         );
     } catch (Throwable $ignored) {
         $emailSent = false;
