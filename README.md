@@ -47,6 +47,10 @@ Deux formes de `src` :
 
 En local (`npm run dev`), `/media/…` est servi par Vite. Au `npm run deploy`, ces fichiers partent avec le site. S’il est activé, le CDN Hostinger du domaine les cache : pas d’envoi séparé vers `images.hostinger.com`.
 
+Les e-mails (`{logo}`, `{image_salle}`) reprennent le logo de `contact.xml` et l’image de la salle réservée. Une URL `https://…` est collée telle quelle. Un fichier local devient `https://escapeoccitanie.fr/media/…` (le `<site>` de `contact.xml`) : Gmail et consorts n’affichent pas un chemin `/media/…`.
+
+L’envoi lui-même est indépendant des images : `HOSTINGER_EMAIL_MCP_TOKEN` (+ `HOSTINGER_MAIL_MAILBOX_ID` si besoin) dans le `.env` du serveur, pas dans les XML.
+
 Chaque salle a **exactement 3** photos dans `<galerie>`. Accueil : **3** stats et **4** atouts. Réservation : **3** étapes.
 
 ### Prévisualiser

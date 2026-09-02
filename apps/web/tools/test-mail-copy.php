@@ -17,6 +17,14 @@ expect(mt_fill_copy('Réserver « {nom-court} »', ['nom-court' => 'Le Directeur
 expect(mt_fill_copy('Lien {lien_ics}', ['lien_ics' => 'https://x/ics']) === 'Lien https://x/ics', 'fill underscore');
 expect(mt_fill_copy('reste {inconnu}', []) === 'reste {inconnu}', 'unknown kept');
 
+expect(mt_mail_image_src('https://images.hostinger.com/x.png') === 'https://images.hostinger.com/x.png', 'absolute url kept');
+expect(
+    mt_mail_image_src('/media/logo.jpg', ['contact' => ['website' => 'https://escapeoccitanie.fr']])
+        === 'https://escapeoccitanie.fr/media/logo.jpg',
+    'relative media prefixed with site'
+);
+expect(mt_mail_image_src('') === '', 'empty src kept');
+
 $booking = [
     'id' => 17,
     'room_slug' => 'directeur',

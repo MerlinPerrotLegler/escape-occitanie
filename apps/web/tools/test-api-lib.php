@@ -139,6 +139,15 @@ expect(($shortPhone['ok'] ?? false) === false && $shortPhone['error'] === 'Numé
 $lettersPhone = mt_validate_guest_phone('abc');
 expect(($lettersPhone['ok'] ?? false) === false, 'php phone letters');
 
+$tooFewDir = mt_validate_players('directeur', 3);
+expect(($tooFewDir['ok'] ?? false) === false && $tooFewDir['error'] === 'Entre 4 et 6 joueurs.', 'php directeur rejects 3 players');
+$okDir = mt_validate_players('directeur', 4);
+expect(($okDir['ok'] ?? false) === true, 'php directeur accepts 4 players');
+$okShip = mt_validate_players('vaisseau', 3);
+expect(($okShip['ok'] ?? false) === true, 'php vaisseau still accepts 3 players');
+$tooMany = mt_validate_players('vaisseau', 7);
+expect(($tooMany['ok'] ?? false) === false && $tooMany['error'] === 'Entre 3 et 6 joueurs.', 'php vaisseau rejects 7 players');
+
 require $root . '/schedule.php';
 require $root . '/mail.php';
 require $root . '/calendar.php';

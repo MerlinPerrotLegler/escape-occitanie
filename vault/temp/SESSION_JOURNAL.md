@@ -4380,3 +4380,38 @@ début et la fin (au moins 60 minutes, aligné sur 30). Le site propose alors to
 - url: http://127.0.0.1:3000/_mail-preview/client-confirmee-directeur.html
 - via: replaceState
 
+## 2026-09-02 10:18:21.856Z load
+- url: http://127.0.0.1:3000/reservation/convocation-chez-le-directeur
+
+## 2026-09-02 10:18:21.932Z navigate
+- url: http://127.0.0.1:3000/reservation/convocation-chez-le-directeur
+- via: replaceState
+
+## 2026-09-02 10:18:22.273Z navigate
+- url: http://127.0.0.1:3000/reservation/convocation-chez-le-directeur?date=2027-09-01
+- via: replaceState
+
+## 2026-09-02 10:18:35.542Z load
+- url: http://127.0.0.1:3000/reservation/la-malediction-du-vaisseau-fantome
+
+## 2026-09-02 10:18:35.564Z navigate
+- url: http://127.0.0.1:3000/reservation/la-malediction-du-vaisseau-fantome
+- via: replaceState
+
+## 2026-09-02 10:18:35.934Z navigate
+- url: http://127.0.0.1:3000/reservation/la-malediction-du-vaisseau-fantome?date=2027-09-01
+- via: replaceState
+
+## 2026-09-02 10:18:42.492Z load
+- url: http://127.0.0.1:3000/reservation
+
+## 2026-09-02 10:18:42.512Z navigate
+- url: http://127.0.0.1:3000/reservation
+- via: replaceState
+
+## 2026-09-02 10:18:58.015Z click
+- element: {"tag":"button","role":null,"ariaLabel":"Réserver Le Directeur, mercredi 1 septembre 2027 à 12:00","name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Réserver"}
+
+## 2026-09-02 10:19:07.158Z click
+- element: {"tag":"button","role":null,"ariaLabel":"Réserver Le Vaisseau Fantôme, mercredi 1 septembre 2027 à 10:00","name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Réserver"}
+

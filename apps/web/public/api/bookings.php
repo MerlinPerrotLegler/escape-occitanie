@@ -175,8 +175,9 @@ if ($method === 'POST') {
         mt_json_out(400, ['error' => $checkedPhone['error']]);
     }
     $phone = $checkedPhone['value'];
-    if ($players < 3 || $players > 6) {
-        mt_json_out(400, ['error' => 'Entre 3 et 6 joueurs.']);
+    $checkedPlayers = mt_validate_players($room, $players);
+    if (!$checkedPlayers['ok']) {
+        mt_json_out(400, ['error' => $checkedPlayers['error']]);
     }
 
     $booking = null;

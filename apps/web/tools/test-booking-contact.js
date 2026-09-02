@@ -3,9 +3,11 @@ import {
   NAME_ERROR,
   PHONE_ERROR,
   bookingContactSchema,
+  bookingContactSchemaForRoom,
   isGuestEmail,
   isGuestName,
   isGuestPhone,
+  playerCountsForRoom,
 } from '../src/lib/bookingContact.js';
 
 let failed = 0;
@@ -55,6 +57,16 @@ const good = bookingContactSchema.safeParse({
   players: 4,
 });
 expect(good.success === true, 'schema accepts valid contact');
+
+expect(playerCountsForRoom('directeur').join(',') === '4,5,6', 'directeur form starts at 4');
+expect(playerCountsForRoom('vaisseau').join(',') === '3,4,5,6', 'vaisseau form still starts at 3');
+
+const dirSchema = bookingContactSchemaForRoom('directeur');
+expect(dirSchema.safeParse({ ...good.data, players: 3 }).success === false, 'directeur rejects 3 players');
+expect(dirSchema.safeParse({ ...good.data, players: 4 }).success === true, 'directeur accepts 4 players');
+
+const shipSchema = bookingContactSchemaForRoom('vaisseau');
+expect(shipSchema.safeParse({ ...good.data, players: 3 }).success === true, 'vaisseau still accepts 3 players');
 
 if (failed > 0) {
   process.stderr.write(`${failed} assertion(s) failed\n`);

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { CalendarCheck, Users } from 'lucide-react';
 import { toast } from 'sonner';
 import { useForm } from 'react-hook-form';
@@ -10,7 +10,7 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Form, FormControl, FormField, FormItem, FormMessage } from '@/components/ui/form';
 import { createBooking } from '@/lib/booking';
-import { bookingContactSchema } from '@/lib/bookingContact';
+import { bookingContactSchemaForRoom, playerCountsForRoom } from '@/lib/bookingContact';
 
 const cal = COPY.reserver.calendrier;
 
@@ -48,10 +48,12 @@ export function BookingSuccess({ booking, room }) {
 
 export function BookingForm({ room, iso, time, settings, formRef, title, onSuccess }) {
   const [submitting, setSubmitting] = useState(false);
+  const playerCounts = playerCountsForRoom(room.slug);
+  const schema = useMemo(() => bookingContactSchemaForRoom(room.slug), [room.slug]);
   const contactForm = useForm({
-    resolver: zodResolver(bookingContactSchema),
+    resolver: zodResolver(schema),
     mode: 'onTouched',
-    defaultValues: { name: '', email: '', phone: '', players: 4 },
+    defaultValues: { name: '', email: '', phone: '', players: playerCounts.includes(4) ? 4 : playerCounts[0] },
   });
   const dateLabel = dayFormatter.format(new Date(`${iso}T12:00:00`));
 
@@ -150,7 +152,7 @@ export function BookingForm({ room, iso, time, settings, formRef, title, onSucce
                   name={field.name}
                   ref={field.ref}
                 >
-                  {[3, 4, 5, 6].map((n) => (
+                  {playerCounts.map((n) => (
                     <option key={n} value={n}>
                       {n}
                     </option>

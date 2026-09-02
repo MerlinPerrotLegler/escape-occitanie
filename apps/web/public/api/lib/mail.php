@@ -37,6 +37,25 @@ function mt_room_label(string $slug): string {
     return $slug === 'vaisseau' ? 'La malédiction du Vaisseau Fantôme' : 'Convocation chez le Directeur';
 }
 
+function mt_mail_public_origin(?array $copy = null): string {
+    $site = rtrim((string) (($copy ?? mt_load_site_copy())['contact']['website'] ?? ''), '/');
+    if ($site !== '') {
+        return $site;
+    }
+    return 'https://escapeoccitanie.fr';
+}
+
+function mt_mail_image_src(string $src, ?array $copy = null): string {
+    $src = trim($src);
+    if ($src === '' || str_starts_with($src, 'https://') || str_starts_with($src, 'http://')) {
+        return $src;
+    }
+    if (str_starts_with($src, '/')) {
+        return mt_mail_public_origin($copy) . $src;
+    }
+    return $src;
+}
+
 function mt_room_image(string $slug): array {
     $copy = mt_load_site_copy();
     $room = is_array($copy['rooms'][$slug] ?? null) ? $copy['rooms'][$slug] : null;
@@ -80,10 +99,10 @@ function mt_booking_copy_vars(array $booking, array $env = []): array {
         'lien_voir' => (string) ($mgrLinks['voir'] ?? ''),
         'lien_confirmer' => (string) ($mgrLinks['confirmer'] ?? ''),
         'statut' => $status,
-        'logo' => (string) ($copy['contact']['logo'] ?? 'https://horizons-cdn.hostinger.com/6f05984e-16ed-4597-8f84-cb44fc903b9b/4bd0e6870391b77d0f13cc22e5fda061.jpg'),
+        'logo' => mt_mail_image_src((string) ($copy['contact']['logo'] ?? 'https://horizons-cdn.hostinger.com/6f05984e-16ed-4597-8f84-cb44fc903b9b/4bd0e6870391b77d0f13cc22e5fda061.jpg'), $copy),
         'logo_alt' => (string) ($copy['contact']['logoAlt'] ?? 'Escape Occitanie'),
         'site' => (string) ($copy['contact']['website'] ?? 'https://escapeoccitanie.fr'),
-        'image_salle' => $visual['src'],
+        'image_salle' => mt_mail_image_src($visual['src'], $copy),
         'image_salle_alt' => $visual['alt'],
     ];
 }

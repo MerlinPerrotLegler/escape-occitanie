@@ -27,9 +27,36 @@ export function isGuestPhone(value) {
   return isValidPhoneNumber(phone, 'FR');
 }
 
+const DEFAULT_PLAYER_RANGE = { min: 3, max: 6 };
+const ROOM_PLAYER_RANGE = {
+  directeur: { min: 4, max: 6 },
+};
+
+export function playerRangeForRoom(slug) {
+  return ROOM_PLAYER_RANGE[slug] || DEFAULT_PLAYER_RANGE;
+}
+
+export function playerCountsForRoom(slug) {
+  const { min, max } = playerRangeForRoom(slug);
+  const counts = [];
+  for (let n = min; n <= max; n += 1) counts.push(n);
+  return counts;
+}
+
+function playersField(min, max) {
+  return z.coerce.number().int().min(min).max(max);
+}
+
 export const bookingContactSchema = z.object({
   name: z.string().trim().refine(isGuestName, NAME_ERROR),
   email: z.string().trim().refine(isGuestEmail, EMAIL_ERROR),
   phone: z.string().trim().refine(isGuestPhone, PHONE_ERROR),
-  players: z.coerce.number().int().min(3).max(6),
+  players: playersField(DEFAULT_PLAYER_RANGE.min, DEFAULT_PLAYER_RANGE.max),
 });
+
+export function bookingContactSchemaForRoom(slug) {
+  const { min, max } = playerRangeForRoom(slug);
+  return bookingContactSchema.extend({
+    players: playersField(min, max),
+  });
+}

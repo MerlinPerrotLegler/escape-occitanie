@@ -307,6 +307,7 @@ function AvailabilityTimeline({ highlightRoom }) {
         </div>
       ) : selected ? (
         <BookingForm
+          key={`${selected.room.slug}|${selected.iso}|${selected.time}`}
           room={selected.room}
           iso={selected.iso}
           time={selected.time}

@@ -93,6 +93,21 @@ function mt_validate_guest_email(string $email): array {
     return ['ok' => true, 'error' => null, 'value' => $email];
 }
 
+function mt_player_range(string $room): array {
+    if ($room === 'directeur') {
+        return ['min' => 4, 'max' => 6];
+    }
+    return ['min' => 3, 'max' => 6];
+}
+
+function mt_validate_players(string $room, int $players): array {
+    $range = mt_player_range($room);
+    if ($players < $range['min'] || $players > $range['max']) {
+        return ['ok' => false, 'error' => "Entre {$range['min']} et {$range['max']} joueurs.", 'value' => null];
+    }
+    return ['ok' => true, 'error' => null, 'value' => $players];
+}
+
 function mt_validate_guest_phone(string $phone): array {
     $phone = trim($phone);
     $digits = preg_replace('/\D+/', '', $phone) ?? '';
