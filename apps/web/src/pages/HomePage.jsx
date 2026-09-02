@@ -164,42 +164,51 @@ function HomePage() {
 
       {/* EXPÉRIENCE */}
       <section id="experience" className="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-28">
-        <div className="grid items-start gap-12 lg:grid-cols-2 lg:gap-16">
-          <Reveal>
-            <div>
-              <p className="font-display text-xs font-semibold uppercase tracking-[0.35em] text-primary">
-                {home.experience.surtitre}
-              </p>
-              <h2 className="mt-4 font-display text-3xl font-bold leading-tight tracking-wide sm:text-4xl">
-                {home.experience.titre}
-              </h2>
-              <p className="mt-6 leading-relaxed text-muted-foreground">
-                {home.experience.paragraphes[0]}
-              </p>
-              <p className="mt-4 leading-relaxed text-muted-foreground">
-                {home.experience.paragraphes[1]}
-              </p>
-              <div className="mt-8 grid grid-cols-3 gap-4 border-t border-border/60 pt-8">
-                {home.experience.stats.map((stat) => (
-                  <div key={stat.libelle}>
-                    <p className="font-display text-3xl font-bold text-primary sm:text-4xl">
-                      <CountUp value={stat.valeur} />
-                    </p>
-                    <p className="mt-1 text-xs uppercase tracking-widest text-muted-foreground">
-                      {stat.libelle}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </Reveal>
-
-          <div className="flex flex-col divide-y divide-border/60">
-            {home.experience.atouts.map((feature, i) => {
-              const Icon = FEATURE_ICONS[i];
+        <Reveal>
+          <div>
+            <p className="font-display text-xs font-semibold uppercase tracking-[0.35em] text-primary">
+              {home.experience.surtitre}
+            </p>
+            <h2 className="mt-4 font-display text-3xl font-bold leading-tight tracking-wide sm:text-4xl">
+              {home.experience.titre}
+            </h2>
+            {home.experience.paragraphes.map((para, i) => {
+              const accent = /^\p{Extended_Pictographic}/u.test(para);
               return (
+                <p
+                  key={i}
+                  className={
+                    accent
+                      ? 'mt-8 font-display text-lg font-semibold tracking-wide text-foreground sm:text-xl'
+                      : i === 0
+                        ? 'mt-6 leading-relaxed text-muted-foreground'
+                        : 'mt-4 leading-relaxed text-muted-foreground'
+                  }
+                >
+                  {para}
+                </p>
+              );
+            })}
+          </div>
+        </Reveal>
+        <div className="mt-12 grid grid-cols-3 gap-4 border-t border-border/60 pt-8">
+          {home.experience.stats.map((stat) => (
+            <div key={stat.libelle}>
+              <p className="font-display text-3xl font-bold text-primary sm:text-4xl">
+                <CountUp value={stat.valeur} />
+              </p>
+              <p className="mt-1 text-xs uppercase tracking-widest text-muted-foreground">
+                {stat.libelle}
+              </p>
+            </div>
+          ))}
+        </div>
+        <div className="mt-4 grid sm:grid-cols-2 sm:gap-x-12">
+          {home.experience.atouts.map((feature, i) => {
+            const Icon = FEATURE_ICONS[i];
+            return (
               <Reveal key={feature.titre} delay={0.08 * i}>
-                <div className="flex items-start gap-5 py-6 first:pt-0 last:pb-0">
+                <div className="flex items-start gap-5 border-t border-border/60 py-6">
                   <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg border border-primary/30 bg-primary/10 text-primary">
                     <Icon className="h-5 w-5" strokeWidth={1.8} />
                   </span>
@@ -213,9 +222,8 @@ function HomePage() {
                   </div>
                 </div>
               </Reveal>
-              );
-            })}
-          </div>
+            );
+          })}
         </div>
       </section>
 

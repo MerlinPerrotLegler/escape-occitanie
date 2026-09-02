@@ -233,7 +233,7 @@ function parseAccueil(contributionDir, mediaDir, file, node) {
   const mots = asArray(bandeau.mot).map((item) => str(item)).filter(Boolean);
   if (mots.length < 1) throw new Error(`${file}: <bandeau> sans <mot>`);
   const paras = asArray(experience.p).map((item) => str(item)).filter(Boolean);
-  if (paras.length !== 2) throw new Error(`${file}: experience doit avoir exactement 2 <p>`);
+  if (paras.length < 2) throw new Error(`${file}: experience doit avoir au moins 2 <p>`);
   const stats = asArray(experience.stat);
   if (stats.length !== 3) throw new Error(`${file}: experience doit avoir exactement 3 <stat>`);
   const atouts = asArray(experience.atout);
