@@ -332,6 +332,7 @@ await withTemp(async (dir, out) => {
   expect(copy.rooms.directeur.gallery.length === 3, '3 photos');
   expect(copy.accueil.hero.puces.length === 3, '3 puces');
   expect(copy.accueil.experience.atouts.length === 4, '4 atouts');
+  expect(copy.accueil.experience.paragraphes.length >= 2, 'at least 2 experience p');
   expect(copy.reserver.page.titre === 'Réservation', 'reserver page titre');
   expect(copy.reserver.timeline.nonDispo === 'Non dispo', 'timeline non dispo');
   expect(copy.emails['client-attente'].sujet === 'Demande', 'email sujet');
@@ -345,6 +346,15 @@ await withTemp(async (dir, out) => {
   const js = fs.readFileSync(out.jsPath, 'utf8');
   expect(js.includes('export const CONTACT'), 'js exports CONTACT');
   expect(js.includes('export const COPY'), 'js exports COPY');
+});
+
+await withTemp(async (dir, out) => {
+  writeMinimal(dir);
+  const accueilPath = path.join(dir, 'accueil.xml');
+  const xml = fs.readFileSync(accueilPath, 'utf8').replace(/\s*<atout [^/]*\/>/g, '');
+  fs.writeFileSync(accueilPath, xml);
+  const copy = await compileContribution(dir, out);
+  expect(copy.accueil.experience.atouts.length === 0, '0 atouts allowed');
 });
 
 await withTemp(async (dir, out) => {

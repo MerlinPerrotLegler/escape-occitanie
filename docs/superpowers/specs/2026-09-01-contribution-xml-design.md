@@ -116,7 +116,7 @@ Identité unique (header, footer, bloc contact, e-mails `{adresse}`).
 - `seo` : `titre`, `description` (les deux chaînes Helmet actuelles, distinctes de og si elles le sont déjà)
 - `hero` : `surtitre`, `titre` (« L'Escape Occitanie »), `accent` (« réouvre ses portes » — c’est ce mot qui reste souligné), `texte`, `image`+`alt`, CTAs, 3 puces. Le « ! » après l’accent reste dans le JSX, comme aujourd’hui.
 - `bandeau` : liste de mots (marquee)
-- `experience` : surtitre, titre, 2 paragraphes, **exactement 3** stats (`valeur` + `libelle`), **exactement 4** `atout` (titre + texte)
+- `experience` : surtitre, titre, **au moins 2** paragraphes, **exactement 3** stats (`valeur` + `libelle`), **0 ou 4** `atout` (titre + texte)
 - Sections salles / avis / records / contact : surtitres, titres, textes d’intro (pas les avis ni les records)
 
 ### `directeur.xml` / `vaisseau.xml`

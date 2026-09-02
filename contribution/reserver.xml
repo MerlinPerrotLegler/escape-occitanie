@@ -3,7 +3,7 @@
   <seo titre="Réservation — {nom} — Escape Occitanie" description="Consultez les disponibilités de la salle « {nom} » et réservez votre session d'escape game de 60 minutes chez Escape Occitanie."/>
   <seo-og description="Disponibilités et réservation pour la salle « {nom} »."/>
   <surtitre>Réservation</surtitre>
-  <intro>Consultez les disponibilités et réservez votre session de 60 minutes. Votre demande est d’abord enregistrée, puis confirmée par l’équipe.</intro>
+  <intro>Consultez les disponibilités et réservez votre session de 60 minutes. Votre demande est d’abord enregistrée, puis confirmée.</intro>
   <retour>Retour à la salle</retour>
   <comment>Comment réserver ?</comment>
   <etape titre="Choisissez un horaire" texte="Les départs s’affichent toutes les 30 minutes. Une partie dure 60 minutes."/>

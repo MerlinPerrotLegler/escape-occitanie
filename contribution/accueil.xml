@@ -26,16 +26,17 @@
   </bandeau>
   <experience>
     <surtitre>L'expérience</surtitre>
-    <titre>60 minutes pour résoudre l'impossible</titre>
-    <p>Une porte se referme. Le chronomètre s'affole : 60 minutes, ni une de plus. En équipe de 4 à 6 joueurs, fouillez les lieux, dénichez les indices cachés, résolvez les énigmes et faites parler les mécanismes.</p>
-    <p>Ici, pas de force ni de hasard : seuls votre esprit d'observation, votre logique et votre cohésion vous permettront de sortir vainqueurs. Entre amis, en famille ou entre collègues, chaque session est une aventure dont vous êtes les héros.</p>
+    <titre>Poussez la porte… et laissez-vous entraîner !</titre>
+    <p>Pendant 60 minutes, observez, fouillez, réfléchissez et décodez les énigmes pour trouver la sortie.</p>
+    <p>Ici, vous n’êtes pas spectateur : vous êtes au cœur de l’aventure !</p>
+    <p>Faites preuve de logique, gardez votre sang-froid et surtout… jouez en équipe. Seul, impossible de tout voir. Ensemble, vous pourriez bien venir à bout des énigmes les plus redoutables.</p>
+    <p>Entre amis, en famille ou entre collègues, formez votre équipe et choisissez votre aventure.</p>
+    <p>Deux univers vous attendent. Deux histoires. Deux mystères à résoudre.</p>
+    <p>Mais une seule règle : vous échapper avant la fin du temps imparti.</p>
+    <p>⏳ Le chrono est lancé… à vous de jouer !</p>
     <stat valeur="2" libelle="Salles"/>
     <stat valeur="60" libelle="Minutes"/>
     <stat valeur="12" libelle="Joueurs max"/>
-    <atout titre="Investigation" texte="Fouillez chaque recoin du décor : aucun détail n'est laissé au hasard."/>
-    <atout titre="Énigmes" texte="Cadenas, mécanismes et casse-tête à résoudre en chaîne pour progresser."/>
-    <atout titre="Coopération" texte="On ne s'évade jamais seul : communiquez, partagez, combinez vos trouvailles."/>
-    <atout titre="60 minutes chrono" texte="L'adrénaline monte à mesure que le temps s'écoule. Tiendrez-vous la pression ?"/>
   </experience>
   <salles>
     <surtitre>Nos aventures</surtitre>
@@ -54,7 +55,7 @@
   <contact>
     <surtitre>Contact</surtitre>
     <titre>Prêt à relever le défi ?</titre>
-    <texte>Une question sur nos salles, un événement à organiser (anniversaire, enterrement de vie de célibataire, team building) ou une réservation à confirmer ? Notre équipe vous répond avec plaisir.</texte>
+    <texte>Une question sur nos salles, un événement à organiser (anniversaire, enterrement de vie de célibataire, team building) ou une réservation à confirmer ? On vous répond avec plaisir.</texte>
     <encart-titre>Le chronomètre tourne déjà…</encart-titre>
     <encart-texte>Consultez les disponibilités de chaque salle et bloquez votre créneau. Les sessions partent vite, surtout le week-end !</encart-texte>
   </contact>

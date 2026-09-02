@@ -51,7 +51,7 @@ Les e-mails (`{logo}`, `{image_salle}`) reprennent le logo de `contact.xml` et l
 
 L’envoi lui-même est indépendant des images : `HOSTINGER_EMAIL_MCP_TOKEN` (+ `HOSTINGER_MAIL_MAILBOX_ID` si besoin) dans le `.env` du serveur, pas dans les XML.
 
-Chaque salle a **exactement 3** photos dans `<galerie>`. Accueil : **3** stats et **4** atouts. Réservation : **3** étapes.
+Chaque salle a **exactement 3** photos dans `<galerie>`. Accueil : **au moins 2** paragraphes d’expérience, **3** stats, et **0 ou 4** atouts. Réservation : **3** étapes.
 
 ### Prévisualiser
 

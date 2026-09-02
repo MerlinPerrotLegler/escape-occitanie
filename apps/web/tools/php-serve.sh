@@ -8,11 +8,21 @@ resolve_php() {
     command -v php
     return
   fi
+  if command -v php.exe >/dev/null 2>&1; then
+    command -v php.exe
+    return
+  fi
   local mamp
   # Newest MAMP 8.x first (php8.4.1 > php8.3.14 > …)
   mamp="$(ls -1d /Applications/MAMP/bin/php/php8.*/bin/php 2>/dev/null | sort | tail -n 1 || true)"
   if [[ -n "${mamp}" && -x "${mamp}" ]]; then
     echo "${mamp}"
+    return
+  fi
+  local winget
+  winget="$(ls -1d /c/Users/*/AppData/Local/Microsoft/WinGet/Packages/PHP.PHP.*/php.exe 2>/dev/null | sort | tail -n 1 || true)"
+  if [[ -n "${winget}" && -x "${winget}" ]]; then
+    echo "${winget}"
     return
   fi
   echo "php introuvable. Installe PHP ou MAMP, ou ajoute php au PATH." >&2

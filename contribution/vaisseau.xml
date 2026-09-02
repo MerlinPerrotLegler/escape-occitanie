@@ -12,11 +12,13 @@
   <image src="https://images.hostinger.com/c1b6ad64-40d1-40af-90d5-bb894b7f5893.png" alt="Cabine du capitaine d'un galion abandonné, cartes marines et bougies vacillantes"/>
   <resume>Naufragés sur une île inconnue, explorez un galion abandonné et brisez la malédiction du capitaine disparu avant que le temps ne soit écoulé.</resume>
   <histoire>
-    <p>Après une terrible tempête, vous faites naufrage sur une île inconnue. Au cœur de la brume se dresse une silhouette immense : un galion abandonné, échoué là depuis des siècles, que les marins surnomment le Vaisseau Fantôme.</p>
-    <p>La légende raconte que son capitaine a disparu dans des circonstances mystérieuses, laissant derrière lui une malédiction qui pèse encore sur le navire et sur quiconque ose y pénétrer.</p>
-    <p>À vous de percer le secret du Vaisseau Fantôme et de briser la malédiction avant que le temps ne soit écoulé… sinon, vous pourriez bien rester à bord pour l'éternité.</p>
+    <p>Après une terrible tempête, vous faites naufrage sur une île inconnue. Au cœur de la brume se dresse une silhouette immense : un galion abandonné, échoué là depuis des siècles, un Vaisseau Fantôme.</p>
+    <p>Mais une étrange légende entoure ce navire... Son ancien capitaine aurait disparu dans de mystérieuses circonstances, laissant derrière lui un terrible secret et une malédiction dont personne ne connaîtrait réellement l'origine.</p>
+    <p>Le galion est-il réellement abandonné ? Que cache le mystérieux capitaine ? Pourrez-vous échappez à la malédiction avant qu’elle ne vous atteigne ?</p>
+    <p>Entrez à bord... si vous l'osez.</p>
+    <p>Vous avez 60 minutes. Après cela... qui sait dans quel état vous ressortirez ?</p>
   </histoire>
-  <citation>« Nul ne quitte le Vaisseau sans payer son dû. » — journal de bord, dernière page</citation>
+  <citation>« Son sang, Mon trésor... » — journal de bord, dernière page</citation>
   <galerie>
     <photo src="https://images.hostinger.com/50859314-a996-473c-838b-b47844ba83b0.png" alt="Carte au trésor déroulée sur un tonneau, boussole en laiton et doublons d'or" legende="La carte du capitaine disparu"/>
     <photo src="https://images.hostinger.com/f70380c8-f4bc-46d8-a2de-e0e186aaf9f8.png" alt="Pont d'un galion fantôme dans la brume nocturne, voiles déchirées" legende="Le pont dans la brume"/>

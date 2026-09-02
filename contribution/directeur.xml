@@ -1,22 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <salle slug="directeur">
-  <seo titre="Convocation chez le Directeur — Escape Occitanie" description="Convoqués dans le bureau de M. Grenot, aidez l'inspecteur Dupont à percer le mystère qui plane sur le collège. Fouille, indices et révélations vous attendent. 3 à 6 joueurs, dès 14 ans, 60 minutes. Réservez votre session chez Escape Occitanie."/>
+  <seo titre="Convocation chez le Directeur — Escape Occitanie" description="Convoqués dans le bureau de M. Grenot, aidez l'inspecteur Dupont à percer le mystère qui plane sur le collège. Fouille, indices et révélations vous attendent. 4 à 6 joueurs, dès 10 ans, 60 minutes. Réservez votre session chez Escape Occitanie."/>
   <nom>Convocation chez le Directeur</nom>
   <nom-court>Le Directeur</nom-court>
   <accroche>Enquête au cœur du collège</accroche>
-  <joueurs>3 à 6 joueurs</joueurs>
-  <age>Dès 14 ans</age>
+  <joueurs>4 à 6 joueurs</joueurs>
+  <age>Dès 10 ans</age>
   <duree>60 minutes</duree>
   <difficulte>3</difficulte>
   <taux-reussite>58</taux-reussite>
   <image src="https://images.hostinger.com/f2d40922-ae59-47a0-95d4-549223e899bf.png" alt="Bureau du directeur du collège plongé dans la pénombre, lampe verte allumée"/>
   <resume>Convoqués dans le bureau de M. Grenot, aidez l'inspecteur Dupont à percer le mystère qui plane sur le collège. Fouille, indices et révélations vous attendent.</resume>
   <histoire>
-    <p>Une convocation mystérieuse… Vous voilà réunis dans le bureau du directeur du collège. Depuis quelques semaines, d'étranges rumeurs circulent dans les couloirs de l'école, et personne ne sait vraiment ce qui se passe derrière cette porte.</p>
-    <p>Des élèves entrés dans le bureau de M. Grenot en sont ressortis… changés. La mémoire confuse, incapables de raconter ce qui s'y est passé. Certains murmurent que le directeur cache un secret bien plus sombre qu'il n'y paraît.</p>
-    <p>L'inspecteur Dupont mène l'enquête, mais il a besoin de vous. Fouillez le bureau, rassemblez les indices, résolvez les énigmes et découvrez la vérité avant que les 60 minutes ne s'écoulent. Après, il sera trop tard.</p>
+    <p>Vous allez être convoqués dans le bureau du directeur.</p>
+    <p>Depuis quelque temps, une étrange rumeur circule dans les couloirs du collège... Certains élèves, convoqués dans le bureau de M. Grenot, en ressortiraient complètement changés. Leur comportement serait devenu étrange, leurs souvenirs confus... et aucun d'entre eux ne semble vouloir raconter ce qui s'est réellement passé derrière cette porte.</p>
+    <p>Dans la peau d’élèves du collège, vous devrez aider l’inspecteur Dupont à résoudre le bien étrange mystère qui plane autour de M. Grenot.</p>
+    <p>Pourquoi certains élèves ressortent-ils si étranges du bureau du directeur ? Que leur est-il arrivé ? Et surtout... que se passe-t-il réellement derrière cette porte lorsque personne ne regarde ?</p>
+    <p>Vous avez 60 minutes. Après cela... qui sait dans quel état vous ressortirez ?</p>
   </histoire>
-  <citation>« Ils ressortent tous… changés. » — carnet de l'inspecteur Dupont</citation>
+  <citation>« Il est rééllement malade... » — carnet de l'inspecteur Dupont</citation>
   <galerie>
     <photo src="https://images.hostinger.com/e4188b98-da57-4aab-94a5-df4d85f06176.png" alt="Loupe posée sur des notes manuscrites et des photographies, indices de l'enquête" legende="Les indices de l'inspecteur"/>
     <photo src="https://images.hostinger.com/e630d118-598a-4cd5-838f-55f7a7e1973c.png" alt="Salle de classe à l'ancienne, tableau noir couvert de symboles mystérieux" legende="La salle de classe abandonnée"/>
