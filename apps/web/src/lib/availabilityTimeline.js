@@ -1,6 +1,6 @@
 import { timeToMinutes } from './bookingDeepLink.js';
 
-export const PAGE_SIZE = 7;
+export const PAGE_SIZE = 1;
 
 export function parisToday() {
   const iso = new Intl.DateTimeFormat('en-CA', { timeZone: 'Europe/Paris' }).format(new Date());
@@ -41,6 +41,13 @@ export function pageSlice(openIsos, pageIndex, pageSize = PAGE_SIZE) {
   };
 }
 
+export function isAlignedTime(time, slotMinutes) {
+  const step = Number(slotMinutes);
+  if (!time || ![15, 30, 60].includes(step)) return true;
+  const minutes = timeToMinutes(time);
+  return Number.isFinite(minutes) && minutes % step === 0;
+}
+
 export function isSlotBookable(slot, { iso, todayISO, nowMinutes }) {
   if (!slot || slot.status !== 'open') return false;
   if (!iso || iso < todayISO) return false;
@@ -48,30 +55,29 @@ export function isSlotBookable(slot, { iso, todayISO, nowMinutes }) {
   return true;
 }
 
-export function buildColumns(days, slotsByRoomByDate, { todayISO, nowMinutes, roomSlugs }) {
+export function buildColumns(days, slotsByRoomByDate, { todayISO, nowMinutes, roomSlugs, slotMinutes }) {
   const columns = [];
   for (const iso of days || []) {
     const times = new Set();
     for (const slug of roomSlugs) {
       for (const slot of slotsByRoomByDate?.[slug]?.[iso] || []) {
-        if (slot?.time) times.add(slot.time);
+        if (slot?.time && isAlignedTime(slot.time, slotMinutes)) times.add(slot.time);
       }
     }
     const sorted = [...times].sort();
-    if (sorted.length === 0) {
-      const cells = {};
-      for (const slug of roomSlugs) cells[slug] = 'unavailable';
-      columns.push({ iso, time: null, cells });
-      continue;
-    }
+    if (sorted.length === 0) continue;
+    const dayColumns = [];
     for (const time of sorted) {
       const cells = {};
       for (const slug of roomSlugs) {
         const slot = (slotsByRoomByDate?.[slug]?.[iso] || []).find((row) => row.time === time);
         cells[slug] = isSlotBookable(slot, { iso, todayISO, nowMinutes }) ? 'open' : 'unavailable';
       }
-      columns.push({ iso, time, cells });
+      if (!Object.values(cells).some((status) => status === 'open')) continue;
+      dayColumns.push({ iso, time, cells });
     }
+    if (dayColumns.length === 0) continue;
+    columns.push(...dayColumns);
   }
   return columns;
 }
@@ -84,11 +90,6 @@ export function groupColumnsByDay(columns) {
     else groups.push({ iso: col.iso, columns: [col] });
   }
   return groups;
-}
-
-export function formatColumnDate(iso) {
-  const date = new Date(`${iso}T12:00:00`);
-  return new Intl.DateTimeFormat('fr-FR', { weekday: 'short', day: 'numeric' }).format(date);
 }
 
 export function formatDayHeading(iso, todayISO) {

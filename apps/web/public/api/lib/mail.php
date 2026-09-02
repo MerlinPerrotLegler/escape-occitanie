@@ -98,6 +98,10 @@ function mt_booking_copy_vars(array $booking, array $env = []): array {
         'lien_ics' => (string) ($links['ics'] ?? ''),
         'lien_voir' => (string) ($mgrLinks['voir'] ?? ''),
         'lien_confirmer' => (string) ($mgrLinks['confirmer'] ?? ''),
+        'lien_avis' => ($env !== [] && ($booking['id'] ?? 0) ? mt_review_page_url($env, $booking) : ''),
+        'lien_avis_google' => (string) ($copy['contact']['reviewGoogle'] ?? ''),
+        'lien_facebook' => (string) ($copy['contact']['facebook'] ?? ''),
+        'lien_instagram' => (string) ($copy['contact']['instagram'] ?? ''),
         'statut' => $status,
         'logo' => mt_mail_image_src((string) ($copy['contact']['logo'] ?? 'https://horizons-cdn.hostinger.com/6f05984e-16ed-4597-8f84-cb44fc903b9b/4bd0e6870391b77d0f13cc22e5fda061.jpg'), $copy),
         'logo_alt' => (string) ($copy['contact']['logoAlt'] ?? 'Escape Occitanie'),
@@ -109,7 +113,12 @@ function mt_booking_copy_vars(array $booking, array $env = []): array {
 
 function mt_booking_email_parts(array $booking, string $kind, array $env = []): array {
     $copy = mt_load_site_copy();
-    $id = $kind === 'confirmed' ? 'client-confirmee' : 'client-attente';
+    $id = 'client-attente';
+    if ($kind === 'confirmed') {
+        $id = 'client-confirmee';
+    } elseif ($kind === 'review') {
+        $id = 'client-avis';
+    }
     $vars = mt_booking_copy_vars($booking, $env);
     $tpl = $copy['emails'][$id] ?? null;
     if (is_array($tpl) && ($tpl['sujet'] ?? '') !== '') {
@@ -117,6 +126,13 @@ function mt_booking_email_parts(array $booking, string $kind, array $env = []): 
             'subject' => mt_fill_copy((string) $tpl['sujet'], $vars),
             'text' => mt_fill_copy((string) ($tpl['texte'] ?? ''), $vars),
             'html' => mt_fill_copy((string) ($tpl['html'] ?? ''), $vars),
+        ];
+    }
+    if ($kind === 'review') {
+        return [
+            'subject' => 'Un petit mot après votre partie — Escape Occitanie',
+            'text' => mt_review_customer_email($booking, $env),
+            'html' => '',
         ];
     }
     $subject = $kind === 'confirmed'
@@ -440,6 +456,69 @@ function mt_manager_confirm_page_html(array $booking, string $state, array $link
         . '</div></body></html>';
 }
 
+function mt_review_page_html(array $booking, string $state): string {
+    $copy = mt_load_site_copy();
+    $room = mt_html(mt_room_label((string) ($booking['room_slug'] ?? '')));
+    $date = mt_html((string) ($booking['booking_date'] ?? ''));
+    $google = mt_html((string) ($copy['contact']['reviewGoogle'] ?? ''));
+    $facebook = mt_html((string) ($copy['contact']['facebook'] ?? ''));
+    $instagram = mt_html((string) ($copy['contact']['instagram'] ?? ''));
+    if ($state !== 'ok') {
+        $title = 'Lien invalide';
+        $lead = 'Ce lien n’est plus valable.';
+        $body = '';
+    } else {
+        $title = 'Merci';
+        $lead = 'Merci d’avoir joué à ' . $room . ' le ' . $date . '.';
+        $body = '<p class="btns">'
+            . '<a class="btn" href="' . $google . '">Google</a>'
+            . '<a class="btn" href="' . $facebook . '">Facebook</a>'
+            . '<a class="btn" href="' . $instagram . '">Instagram</a>'
+            . '</p>'
+            . '<p>Envoyez cette page aux autres joueurs de votre équipe.</p>'
+            . '<p class="btns">'
+            . '<button type="button" id="share">Partager</button>'
+            . '<button type="button" id="copy">Copier le lien</button>'
+            . '</p>'
+            . '<script>'
+            . '(function () {'
+            . 'var url = location.href;'
+            . 'var share = document.getElementById("share");'
+            . 'var copy = document.getElementById("copy");'
+            . 'if (share) {'
+            . 'if (!navigator.share) share.hidden = true;'
+            . 'share.addEventListener("click", function () {'
+            . 'navigator.share({ title: document.title, url: url, text: "Un petit mot après votre partie — Escape Occitanie" });'
+            . '});'
+            . '}'
+            . 'if (copy) {'
+            . 'copy.addEventListener("click", function () {'
+            . 'if (navigator.clipboard && navigator.clipboard.writeText) {'
+            . 'navigator.clipboard.writeText(url);'
+            . '}'
+            . '});'
+            . '}'
+            . '})();'
+            . '</script>';
+    }
+    return '<!DOCTYPE html><html lang="fr"><head><meta charset="utf-8">'
+        . '<meta name="viewport" content="width=device-width, initial-scale=1">'
+        . '<title>' . mt_html($title) . ' — Escape Occitanie</title>'
+        . '<style>'
+        . 'body{margin:0;background:#1a1612;color:#e8dcc8;font-family:Georgia,serif;}'
+        . '.box{max-width:32rem;margin:12vh auto;padding:28px 22px;background:#241f1a;border-radius:12px;}'
+        . 'h1{font-size:1.4rem;color:#f4ead6;margin:0 0 12px;}'
+        . 'p{line-height:1.55;}'
+        . '.btns{display:flex;flex-wrap:wrap;gap:10px;}'
+        . 'button,.btn{background:#c9a227;color:#1a1612;border:0;border-radius:8px;padding:12px 18px;font-weight:700;cursor:pointer;text-decoration:none;display:inline-block;}'
+        . 'a{color:#c9a227;}'
+        . '</style></head><body><div class="box"><p style="letter-spacing:3px;color:#c9a227;text-transform:uppercase;font-size:12px;">Escape Occitanie</p>'
+        . '<h1>' . mt_html($title) . '</h1>'
+        . '<p>' . $lead . '</p>'
+        . $body
+        . '</div></body></html>';
+}
+
 function mt_booking_ics_attachment(array $booking, array $env = []): array {
     return [
         'filename' => 'reservation-escape-occitanie.ics',
@@ -465,4 +544,28 @@ function mt_send_booking_emails(array $env, array $booking, string $kind, bool $
         mt_send_mail($env, $manager, $mgr['subject'], $mgr['text'], null, $mgr['html'] !== '' ? $mgr['html'] : null);
     }
     return $sent;
+}
+
+function mt_review_customer_email(array $booking, array $env = []): string {
+    $name = (string) ($booking['guest_name'] ?? '');
+    $room = mt_room_label((string) ($booking['room_slug'] ?? ''));
+    $date = (string) ($booking['booking_date'] ?? '');
+    $link = $env !== [] ? mt_review_page_url($env, $booking) : '';
+    return "Bonjour {$name},\n\n"
+        . "Merci d'avoir joué à {$room} le {$date}. Si l'expérience vous a plu, un avis nous aide beaucoup. Transmettez ce lien aux autres joueurs de votre équipe :\n"
+        . "{$link}\n\n"
+        . "À très bientôt,\n"
+        . "L'équipe Escape Occitanie\n";
+}
+
+function mt_send_review_email(array $env, array $booking): bool {
+    $parts = mt_booking_email_parts($booking, 'review', $env);
+    return mt_send_mail(
+        $env,
+        (string) ($booking['guest_email'] ?? ''),
+        $parts['subject'],
+        $parts['text'],
+        null,
+        $parts['html'] !== '' ? $parts['html'] : null
+    );
 }

@@ -1,6 +1,7 @@
 export const BOOKING_FILTERS = [
   { id: 'aujourdhui', label: 'Aujourd’hui' },
   { id: 'a-confirmer', label: 'À confirmer' },
+  { id: 'avis', label: 'Avis' },
   { id: 'toutes', label: 'Toutes' },
 ];
 
@@ -21,6 +22,7 @@ export function parseBookingFilter(raw) {
     .replace(/[\u0300-\u036f]/g, '')
     .replace(/['’]/g, '');
   if (value === 'a-confirmer' || value === 'pending' || value === 'aconfirmer') return 'a-confirmer';
+  if (value === 'avis' || value === 'reviews') return 'avis';
   if (value === 'toutes' || value === 'all') return 'toutes';
   return 'aujourdhui';
 }

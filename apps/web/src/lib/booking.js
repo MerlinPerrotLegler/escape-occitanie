@@ -213,6 +213,22 @@ export async function resendBookingEmail(id) {
   return parseJson(res);
 }
 
+export async function requestBookingReview(id) {
+  const res = await fetch(`/api/bookings.php?id=${id}&action=review-ask`, {
+    method: 'POST',
+    credentials: 'include',
+  });
+  return parseJson(res);
+}
+
+export async function skipBookingReview(id) {
+  const res = await fetch(`/api/bookings.php?id=${id}&action=review-skip`, {
+    method: 'POST',
+    credentials: 'include',
+  });
+  return parseJson(res);
+}
+
 export async function fetchAdminDaySlots(date) {
   const res = await fetch(`/api/closed-slots.php?date=${encodeURIComponent(date)}`, {
     credentials: 'include',

@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { ROOM_LIST } from '@/data/rooms';
 import { COPY } from '@/generated/siteCopy';
@@ -14,12 +14,10 @@ import {
 } from '@/lib/booking';
 import { toISODate } from '@/lib/bookingDeepLink';
 import { horizonIso } from '@/lib/calendarMonths';
+import { scrollNodeIntoView } from '@/lib/scrollIntoView';
 import {
   buildColumns,
-  formatColumnDate,
   formatDayHeading,
-  formatPageRange,
-  groupColumnsByDay,
   openDayIsos,
   pageSlice,
   parisNowMinutes,
@@ -27,6 +25,7 @@ import {
 } from '@/lib/availabilityTimeline';
 
 const tl = COPY.reserver.timeline;
+const cal = COPY.reserver.calendrier;
 
 const dayFormatter = new Intl.DateTimeFormat('fr-FR', {
   weekday: 'long',
@@ -43,6 +42,7 @@ function AvailabilityTimeline({ highlightRoom }) {
   const nowMinutes = useMemo(() => parisNowMinutes(), []);
 
   const [settings, setSettings] = useState(DEFAULT_BOOKING_SETTINGS);
+  const [settingsReady, setSettingsReady] = useState(false);
   const [openIsos, setOpenIsos] = useState(null);
   const [pageIndex, setPageIndex] = useState(0);
   const [slotsByRoomByDate, setSlotsByRoomByDate] = useState(null);
@@ -52,6 +52,8 @@ function AvailabilityTimeline({ highlightRoom }) {
   const [done, setDone] = useState(null);
   const [bookedKeys, setBookedKeys] = useState(() => new Set());
   const [reloadToken, setReloadToken] = useState(0);
+  const skipDir = useRef(1);
+  const formRef = useRef(null);
 
   const slice = useMemo(() => pageSlice(openIsos || [], pageIndex), [openIsos, pageIndex]);
   const daysKey = slice.days.join(',');
@@ -59,7 +61,10 @@ function AvailabilityTimeline({ highlightRoom }) {
   useEffect(() => {
     let cancelled = false;
     fetchBookingSettings().then((next) => {
-      if (!cancelled) setSettings(next);
+      if (!cancelled) {
+        setSettings(next);
+        setSettingsReady(true);
+      }
     });
     return () => {
       cancelled = true;
@@ -129,8 +134,13 @@ function AvailabilityTimeline({ highlightRoom }) {
   }, [daysKey, openIsos, roomSlugs]);
 
   const columns = useMemo(() => {
-    if (!slotsByRoomByDate) return [];
-    return buildColumns(slice.days, slotsByRoomByDate, { todayISO, nowMinutes, roomSlugs }).map(
+    if (!slotsByRoomByDate || !settingsReady) return [];
+    return buildColumns(slice.days, slotsByRoomByDate, {
+      todayISO,
+      nowMinutes,
+      roomSlugs,
+      slotMinutes: settings.slot_minutes,
+    }).map(
       (col) => ({
         ...col,
         cells: Object.fromEntries(
@@ -141,16 +151,45 @@ function AvailabilityTimeline({ highlightRoom }) {
         ),
       })
     );
-  }, [slotsByRoomByDate, slice.days, todayISO, nowMinutes, roomSlugs, bookedKeys]);
+  }, [slotsByRoomByDate, slice.days, todayISO, nowMinutes, roomSlugs, bookedKeys, settingsReady, settings.slot_minutes]);
 
-  const groups = useMemo(() => groupColumnsByDay(columns), [columns]);
+  useEffect(() => {
+    if (error || loadingSlots || !settingsReady || !slotsByRoomByDate || !openIsos?.length) return undefined;
+    if (columns.length > 0) return undefined;
+    const next = pageIndex + skipDir.current;
+    if (next < 0 || next >= openIsos.length) return undefined;
+    setPageIndex(next);
+    return undefined;
+  }, [columns.length, error, loadingSlots, openIsos, pageIndex, slotsByRoomByDate, settingsReady]);
+
+  useLayoutEffect(() => {
+    if (done || !selected) return undefined;
+    const frame = requestAnimationFrame(() => scrollNodeIntoView(formRef.current));
+    return () => cancelAnimationFrame(frame);
+  }, [selected, done]);
 
   function retry() {
+    skipDir.current = 1;
     setReloadToken((n) => n + 1);
   }
 
   const loadingPeriods = openIsos === null && !error;
-  const loading = loadingPeriods || (Boolean(openIsos?.length) && loadingSlots && !slotsByRoomByDate);
+  const canSkipEmpty =
+    Boolean(openIsos?.length) &&
+    pageIndex + skipDir.current >= 0 &&
+    pageIndex + skipDir.current < (openIsos?.length || 0);
+  const skippingEmpty =
+    !error &&
+    settingsReady &&
+    !loadingSlots &&
+    Boolean(slotsByRoomByDate) &&
+    columns.length === 0 &&
+    canSkipEmpty;
+  const loading =
+    loadingPeriods ||
+    !settingsReady ||
+    skippingEmpty ||
+    (Boolean(openIsos?.length) && loadingSlots);
 
   let body = null;
   if (error) {
@@ -179,126 +218,127 @@ function AvailabilityTimeline({ highlightRoom }) {
     body = <p className="px-4 py-6 text-center text-sm text-muted-foreground">{tl.aucunHoraire}</p>;
   } else {
     body = (
-      <div className="overflow-x-auto">
-        <div
-          className="grid min-w-max"
-          style={{
-            gridTemplateColumns: `8.5rem repeat(${columns.length}, 5.75rem)`,
-            gridTemplateRows: `auto auto repeat(${rooms.length}, 3.25rem)`,
-          }}
-        >
-          <div className="sticky left-0 z-10 bg-card" />
-          {groups.map((group) => (
-            <div
-              key={group.iso}
-              className="relative border-b border-border/60"
-              style={{ gridColumn: `span ${group.columns.length}` }}
-            >
-              <span className="sticky left-[8.5rem] z-[1] inline-block bg-card px-2 py-2 text-xs font-semibold capitalize tracking-wide text-foreground">
-                {formatDayHeading(group.iso, todayISO)}
-              </span>
+      <div
+        className="mx-auto grid w-max"
+        style={{
+          gridTemplateColumns: `repeat(${rooms.length + 1}, max-content)`,
+          gridTemplateRows: `auto repeat(${columns.length}, 1.85rem)`,
+        }}
+      >
+        <div className="sticky left-0 z-10 bg-card" />
+        {rooms.map((room) => (
+          <div
+            key={room.slug}
+            className={cn(
+              'flex items-center justify-center whitespace-nowrap border-b border-border/60 px-2.5 py-1 text-center text-[11px] font-semibold leading-tight',
+              highlightRoom === room.slug && 'bg-primary/10'
+            )}
+          >
+            {room.shortName}
+          </div>
+        ))}
+        {columns.map((col) => (
+          <div
+            key={`${col.iso}-${col.time}`}
+            className="group col-span-full grid grid-cols-subgrid"
+          >
+            <div className="sticky left-0 z-10 flex items-center justify-center whitespace-nowrap border-t border-border/50 bg-card px-2 text-[11px] font-medium tabular-nums text-foreground transition-colors group-hover:bg-primary/10">
+              {col.time}
             </div>
-          ))}
-          <div className="sticky left-0 z-10 bg-card" />
-          {columns.map((col) => (
-            <div
-              key={`${col.iso}-${col.time ?? 'empty'}`}
-              className="flex min-h-[2.75rem] flex-col items-center justify-center border-b border-border/60 px-1 text-center"
-            >
-              <span className="text-[10px] font-semibold capitalize leading-tight text-muted-foreground">
-                {formatColumnDate(col.iso)}
-              </span>
-              <span className="text-xs font-medium text-foreground">{col.time || '—'}</span>
-            </div>
-          ))}
-          {rooms.map((room) => (
-            <React.Fragment key={room.slug}>
-              <div
-                className={cn(
-                  'sticky left-0 z-10 flex items-center border-t border-border/50 bg-card px-3 text-sm font-semibold',
-                  highlightRoom === room.slug && 'bg-primary/10'
-                )}
-              >
-                {room.shortName}
-              </div>
-              {columns.map((col) => {
-                const status = col.cells[room.slug];
-                const active =
-                  selected?.room.slug === room.slug &&
-                  selected.iso === col.iso &&
-                  selected.time === col.time;
-                return status === 'open' ? (
-                  <button
-                    key={`${room.slug}-${col.iso}-${col.time ?? 'empty'}`}
-                    type="button"
-                    onClick={() => {
-                      setDone(null);
-                      setSelected({ room, iso: col.iso, time: col.time });
-                    }}
-                    aria-label={fillCopy(tl.ariaReserver, {
-                      salle: room.shortName,
-                      date: dayFormatter.format(new Date(`${col.iso}T12:00:00`)),
-                      heure: col.time,
-                    })}
-                    className={cn(
-                      'flex items-center justify-center border-l border-t border-border/40 text-xs font-medium',
-                      'text-foreground hover:border-primary/60 hover:bg-primary/5',
-                      highlightRoom === room.slug && 'bg-primary/5',
-                      active && 'border-primary bg-primary/15 text-primary'
-                    )}
-                  >
-                    {tl.reserver}
-                  </button>
-                ) : (
-                  <div
-                    key={`${room.slug}-${col.iso}-${col.time ?? 'empty'}`}
-                    className={cn(
-                      'flex items-center justify-center border-l border-t border-border/40 text-[11px] text-muted-foreground/50',
-                      highlightRoom === room.slug && 'bg-primary/5'
-                    )}
-                  >
-                    {tl.nonDispo}
-                  </div>
-                );
-              })}
-            </React.Fragment>
-          ))}
-        </div>
+            {rooms.map((room) => {
+              const status = col.cells[room.slug];
+              const active =
+                selected?.room.slug === room.slug &&
+                selected.iso === col.iso &&
+                selected.time === col.time;
+              return status === 'open' ? (
+                <button
+                  key={`${room.slug}-${col.iso}-${col.time}`}
+                  type="button"
+                  onClick={() => {
+                    setDone(null);
+                    setSelected({ room, iso: col.iso, time: col.time });
+                  }}
+                  aria-label={fillCopy(tl.ariaReserver, {
+                    salle: room.shortName,
+                    date: dayFormatter.format(new Date(`${col.iso}T12:00:00`)),
+                    heure: col.time,
+                  })}
+                  className={cn(
+                    'flex items-center justify-center whitespace-nowrap border-l border-t border-border/40 px-2.5 text-[11px] font-medium',
+                    'text-foreground transition-colors group-hover:bg-primary/10',
+                    highlightRoom === room.slug && 'bg-primary/5',
+                    active && 'border-primary bg-primary/15 text-primary group-hover:bg-primary/20'
+                  )}
+                >
+                  {tl.reserver}
+                </button>
+              ) : (
+                <div
+                  key={`${room.slug}-${col.iso}-${col.time}`}
+                  className={cn(
+                    'flex items-center justify-center whitespace-nowrap border-l border-t border-border/40 px-2.5 text-[10px] text-muted-foreground/50 transition-colors group-hover:bg-primary/10',
+                    highlightRoom === room.slug && 'bg-primary/5'
+                  )}
+                >
+                  {tl.nonDispo}
+                </div>
+              );
+            })}
+          </div>
+        ))}
       </div>
     );
   }
 
   const showPager = Boolean(openIsos?.length) && !error;
+  const pagerLabel = slice.days[0] ? formatDayHeading(slice.days[0], todayISO) : '';
 
   return (
     <div>
-      <div className="overflow-hidden rounded-xl border border-border bg-card/60">
-        {showPager && (
-          <div className="flex items-center justify-between border-b border-border/70 px-3 py-3 sm:px-4">
-            <button
-              type="button"
-              disabled={!slice.hasPrev}
-              onClick={() => setPageIndex((n) => n - 1)}
-              className="flex h-10 w-10 items-center justify-center rounded-md border border-border text-foreground transition-colors hover:bg-secondary disabled:cursor-not-allowed disabled:opacity-30"
-              aria-label={tl.pagePrev}
-            >
-              <ChevronLeft className="h-5 w-5" />
-            </button>
-            <p className="font-display text-sm font-bold uppercase tracking-[0.2em] text-foreground">
-              {formatPageRange(slice.days)}
-            </p>
-            <button
-              type="button"
-              disabled={!slice.hasNext}
-              onClick={() => setPageIndex((n) => n + 1)}
-              className="flex h-10 w-10 items-center justify-center rounded-md border border-border text-foreground transition-colors hover:bg-secondary disabled:cursor-not-allowed disabled:opacity-30"
-              aria-label={tl.pageNext}
-            >
-              <ChevronRight className="h-5 w-5" />
-            </button>
-          </div>
+      <div className="mx-auto flex max-w-full flex-col items-center">
+        <div className="w-max max-w-full overflow-hidden rounded-xl border border-border bg-card/60">
+          {showPager && (
+            <div className="flex items-center justify-between border-b border-border/70 px-2 py-1.5 sm:px-3">
+              <button
+                type="button"
+                disabled={!slice.hasPrev}
+                onClick={() => {
+                  skipDir.current = -1;
+                  setPageIndex((n) => n - 1);
+                }}
+                className="flex h-8 w-8 items-center justify-center rounded-md border border-border text-foreground transition-colors hover:bg-secondary disabled:cursor-not-allowed disabled:opacity-30"
+                aria-label={tl.pagePrev}
+              >
+                <ChevronLeft className="h-4 w-4" />
+              </button>
+              <p className="font-display text-xs font-bold capitalize tracking-wide text-foreground sm:text-sm">
+                {pagerLabel}
+              </p>
+              <button
+                type="button"
+                disabled={!slice.hasNext}
+                onClick={() => {
+                  skipDir.current = 1;
+                  setPageIndex((n) => n + 1);
+                }}
+                className="flex h-8 w-8 items-center justify-center rounded-md border border-border text-foreground transition-colors hover:bg-secondary disabled:cursor-not-allowed disabled:opacity-30"
+                aria-label={tl.pageNext}
+              >
+                <ChevronRight className="h-4 w-4" />
+              </button>
+            </div>
+          )}
+          {body}
+        </div>
+        {showPager && settingsReady && (
+          <p className="mt-2 max-w-xs text-center text-xs text-muted-foreground">
+            {fillCopy(cal.creneauxInfo, {
+              slot: settings.slot_minutes,
+              occupancy: settings.occupancy_minutes,
+            })}
+          </p>
         )}
-        {body}
       </div>
 
       {done ? (
@@ -312,6 +352,7 @@ function AvailabilityTimeline({ highlightRoom }) {
           iso={selected.iso}
           time={selected.time}
           settings={settings}
+          formRef={formRef}
           title={fillCopy(tl.formTitre, {
             date: dayFormatter.format(new Date(`${selected.iso}T12:00:00`)),
             heure: selected.time,

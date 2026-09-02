@@ -13,6 +13,7 @@ import {
   rankOpenDates,
   toISODate,
 } from '@/lib/bookingDeepLink';
+import { isAlignedTime } from '@/lib/availabilityTimeline';
 import { MAX_MONTH_OFFSET, horizonIso, initialMonthOffset } from '@/lib/calendarMonths';
 
 const cal = COPY.reserver.calendrier;
@@ -79,6 +80,7 @@ function applyDateParam(prev, iso) {
 function BookingCalendar({ room }) {
   const [searchParams, setSearchParams] = useSearchParams();
   const [settings, setSettings] = useState(DEFAULT_BOOKING_SETTINGS);
+  const [settingsReady, setSettingsReady] = useState(false);
   const queryDate = parseQueryDate(searchParams.get('date'));
   const queryTime = parseQueryTime(
     searchParams.get('heure') || searchParams.get('time'),
@@ -145,11 +147,21 @@ function BookingCalendar({ room }) {
   const [done, setDone] = useState(null);
   const [nextOpenIso, setNextOpenIso] = useState(null);
   const nextOpenOffset = nextOpenIso ? initialMonthOffset(today, [nextOpenIso]) : 0;
+  const visibleSlots = useMemo(
+    () =>
+      settingsReady
+        ? slots.filter((slot) => isAlignedTime(slot.time, settings.slot_minutes))
+        : slots,
+    [slots, settingsReady, settings.slot_minutes]
+  );
 
   useEffect(() => {
     let cancelled = false;
     fetchBookingSettings().then((next) => {
-      if (!cancelled) setSettings(next);
+      if (!cancelled) {
+        setSettings(next);
+        setSettingsReady(true);
+      }
     });
     return () => {
       cancelled = true;
@@ -373,19 +385,21 @@ function BookingCalendar({ room }) {
             <p className="font-display text-sm font-bold capitalize tracking-wider text-foreground">
               {dayFormatter.format(selectedDate)}
             </p>
-            <p className="mt-1 text-xs text-muted-foreground">
-              {fillCopy(cal.creneauxInfo, {
-                slot: settings.slot_minutes,
-                occupancy: settings.occupancy_minutes,
-              })}
-            </p>
+            {settingsReady ? (
+              <p className="mt-1 text-xs text-muted-foreground">
+                {fillCopy(cal.creneauxInfo, {
+                  slot: settings.slot_minutes,
+                  occupancy: settings.occupancy_minutes,
+                })}
+              </p>
+            ) : null}
             {loadingSlots ? (
               <p className="mt-3 text-sm text-muted-foreground">{cal.chargement}</p>
-            ) : slots.length === 0 ? (
+            ) : visibleSlots.length === 0 ? (
               <p className="mt-3 text-sm text-muted-foreground">{cal.aucun}</p>
             ) : (
               <div className="mt-3 grid grid-cols-2 gap-2 sm:grid-cols-3">
-                {slots.map((slot) => {
+                {visibleSlots.map((slot) => {
                   const isFull = slot.status !== 'open';
                   const isActive = selectedSlot === slot.time;
                   return (

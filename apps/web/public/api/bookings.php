@@ -16,7 +16,7 @@ if ($method === 'GET') {
     $filter = (string) ($_GET['filtre'] ?? $_GET['filter'] ?? 'aujourdhui');
     $page = (int) ($_GET['page'] ?? 1);
     $focus = isset($_GET['focus']) ? (int) $_GET['focus'] : null;
-    mt_json_out(200, mt_list_bookings_page($pdo, $filter, $page, $focus > 0 ? $focus : null));
+    mt_json_out(200, mt_list_bookings_page($pdo, $filter, $page, $focus > 0 ? $focus : null, $env));
 }
 
 if ($method === 'POST' && isset($_GET['id']) && (($_GET['action'] ?? '') === 'mail' || ($_GET['action'] ?? '') === 'confirm')) {
@@ -40,7 +40,7 @@ if ($method === 'POST' && isset($_GET['id']) && (($_GET['action'] ?? '') === 'ma
             mt_json_out(409, ['error' => $e->getMessage(), 'warning' => true]);
         }
     }
-    $booking = mt_get_booking($pdo, $id);
+    $booking = mt_get_booking($pdo, $id, $env);
     if (!$booking || $booking['status'] === 'cancelled') {
         mt_json_out(404, ['error' => 'Réservation introuvable.']);
     }
@@ -61,6 +61,35 @@ if ($method === 'POST' && isset($_GET['id']) && (($_GET['action'] ?? '') === 'ma
         $emailSent = false;
     }
     mt_json_out(200, ['ok' => true, 'emailSent' => $emailSent, 'booking' => $booking]);
+}
+
+if ($method === 'POST' && isset($_GET['id']) && in_array((string) ($_GET['action'] ?? ''), ['review-ask', 'review-skip'], true)) {
+    mt_require_session($env);
+    $id = (int) $_GET['id'];
+    $action = (string) $_GET['action'];
+    $booking = mt_get_booking($pdo, $id, $env);
+    if (!$booking) {
+        mt_json_out(404, ['error' => 'Réservation introuvable.']);
+    }
+    if (!mt_booking_can_ask_review($booking)) {
+        mt_json_out(400, ['error' => 'Cette réservation n’est pas éligible pour un avis.']);
+    }
+    if ($action === 'review-skip') {
+        if (!mt_mark_review_ask($pdo, $id, 'skipped')) {
+            mt_json_out(409, ['error' => 'Décision déjà enregistrée.']);
+        }
+        mt_json_out(200, ['booking' => mt_get_booking($pdo, $id, $env)]);
+    }
+    $emailSent = false;
+    try {
+        $emailSent = mt_send_review_email($env, $booking);
+    } catch (Throwable $ignored) {
+        $emailSent = false;
+    }
+    if ($emailSent && !mt_mark_review_ask($pdo, $id, 'sent')) {
+        mt_json_out(409, ['error' => 'Décision déjà enregistrée.', 'emailSent' => true, 'booking' => mt_get_booking($pdo, $id, $env)]);
+    }
+    mt_json_out(200, ['booking' => mt_get_booking($pdo, $id, $env), 'emailSent' => $emailSent]);
 }
 
 if ($method === 'PATCH') {

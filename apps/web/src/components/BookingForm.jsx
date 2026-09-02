@@ -64,6 +64,7 @@ export function BookingForm({ room, iso, time, settings, formRef, title, onSucce
   const [turnstileToken, setTurnstileToken] = useState('');
   const [turnstileReset, setTurnstileReset] = useState(0);
   const [turnstileOn, setTurnstileOn] = useState(null);
+  const localFormRef = useRef(null);
   const playerCounts = playerCountsForRoom(room.slug);
   const schema = useMemo(() => bookingContactSchemaForRoom(room.slug), [room.slug]);
   const contactForm = useForm({
@@ -73,6 +74,16 @@ export function BookingForm({ room, iso, time, settings, formRef, title, onSucce
   });
   const dateLabel = dayFormatter.format(new Date(`${iso}T12:00:00`));
 
+  useLayoutEffect(() => {
+    const frame = requestAnimationFrame(() => scrollNodeIntoView(localFormRef.current));
+    return () => cancelAnimationFrame(frame);
+  }, [room.slug, iso, time]);
+
+  function setFormNode(node) {
+    localFormRef.current = node;
+    if (formRef) formRef.current = node;
+  }
+
   function resetTurnstile() {
     setTurnstileToken('');
     setTurnstileReset((n) => n + 1);
@@ -80,7 +91,7 @@ export function BookingForm({ room, iso, time, settings, formRef, title, onSucce
 
   async function onSubmit(values) {
     if (turnstileOn === null) {
-      formRef?.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      scrollNodeIntoView(localFormRef.current);
       return;
     }
     if (turnstileOn && !turnstileToken) {
@@ -122,7 +133,7 @@ export function BookingForm({ room, iso, time, settings, formRef, title, onSucce
   return (
     <Form {...contactForm}>
       <form
-        ref={formRef}
+        ref={setFormNode}
         id="reservation"
         onSubmit={contactForm.handleSubmit(onSubmit)}
         className="mt-5 scroll-mt-24 space-y-3 rounded-lg border border-primary/40 bg-primary/5 p-4"

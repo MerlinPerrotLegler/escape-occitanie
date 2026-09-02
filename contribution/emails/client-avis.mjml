@@ -1,0 +1,22 @@
+<mjml>
+  <mj-head>
+    <mj-preview>Un petit mot après votre partie.</mj-preview>
+    <mj-attributes>
+      <mj-all font-family="Georgia, serif" />
+      <mj-text color="#e8dcc8" font-size="16px" line-height="1.55" padding="8px 24px" />
+    </mj-attributes>
+  </mj-head>
+  <mj-body background-color="#1a1612">
+    <mj-section background-color="#1a1612" padding="48px 20px">
+      <mj-column background-color="#241f1a" border-radius="12px" padding="0">
+        <mj-image src="{logo}" alt="{logo_alt}" width="88px" height="88px" border-radius="44px" align="center" padding="28px 20px 16px" />
+        <mj-image src="{image_salle}" alt="{image_salle_alt}" width="560px" padding="0" fluid-on-mobile="true" />
+        <mj-text font-size="22px" color="#f4ead6" padding="24px 24px 12px">Bonjour {nom},</mj-text>
+        <mj-text padding="0 24px 12px">Merci d'avoir joué à {salle} le {date}. Si l'expérience vous a plu, un avis nous aide beaucoup — et n'hésitez pas à transmettre ce lien aux autres joueurs de votre équipe.</mj-text>
+        <mj-button href="{lien_avis}" background-color="#c9a227" color="#1a1612" font-weight="700" inner-padding="12px 22px" padding="8px 24px 32px">
+          Laisser un avis
+        </mj-button>
+      </mj-column>
+    </mj-section>
+  </mj-body>
+</mjml>

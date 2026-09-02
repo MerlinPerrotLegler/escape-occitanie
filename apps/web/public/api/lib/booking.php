@@ -155,14 +155,15 @@ function mt_copy_period(PDO $pdo, int $sourceId, array $dates, bool $overwrite):
 }
 
 function mt_booking_select_sql(): string {
-    return 'id, room_slug, booking_date, start_minute, duration_minutes, guest_name, guest_email, guest_phone, players, status, ics_sequence, created_at';
+    return 'id, room_slug, booking_date, start_minute, duration_minutes, guest_name, guest_email, guest_phone, players, status, ics_sequence, review_ask, created_at';
 }
 
 function mt_booking_duration(array $booking): int {
     return mt_occupancy_duration($booking);
 }
 
-function mt_map_booking_rows(array $rows): array {
+function mt_map_booking_rows(array $rows, ?array $env = null, ?string $today = null): array {
+    $today = $today ?? mt_today_paris();
     foreach ($rows as &$row) {
         $row['id'] = (int) $row['id'];
         $row['start_minute'] = (int) $row['start_minute'];
@@ -171,16 +172,23 @@ function mt_map_booking_rows(array $rows): array {
         $row['duration_minutes'] = mt_booking_duration($row);
         $row['time'] = mt_minutes_to_hhmm($row['start_minute']);
         $row['end_time'] = mt_minutes_to_hhmm($row['start_minute'] + $row['duration_minutes']);
+        $row['review_ask'] = mt_normalize_review_ask($row['review_ask'] ?? null);
+        $row['past_actions'] = mt_booking_past_actions($row, $today);
+        $row['can_ask_review'] = mt_booking_can_ask_review($row, $today);
+        $row['review_url'] = '';
+        if (($row['status'] ?? '') === 'confirmed' && is_array($env)) {
+            $row['review_url'] = mt_review_page_url($env, $row);
+        }
     }
     return $rows;
 }
 
-function mt_get_booking(PDO $pdo, int $id): ?array {
+function mt_get_booking(PDO $pdo, int $id, ?array $env = null): ?array {
     mt_ensure_schema($pdo);
     $stmt = $pdo->prepare('SELECT ' . mt_booking_select_sql() . ' FROM bookings WHERE id = ?');
     $stmt->execute([$id]);
     $row = $stmt->fetch();
-    return $row ? mt_map_booking_rows([$row])[0] : null;
+    return $row ? mt_map_booking_rows([$row], $env)[0] : null;
 }
 
 function mt_list_bookings(PDO $pdo): array {
@@ -198,6 +206,9 @@ function mt_normalize_booking_filter(?string $raw): string {
     }
     if (in_array($value, ['toutes', 'all'], true)) {
         return 'toutes';
+    }
+    if (in_array($value, ['avis', 'reviews'], true)) {
+        return 'avis';
     }
     return 'aujourdhui';
 }
@@ -223,7 +234,7 @@ function mt_manager_session_payload(array $env, string $email, ?PDO $pdo = null)
     ];
 }
 
-function mt_list_bookings_page(PDO $pdo, string $filter = 'aujourdhui', int $page = 1, ?int $focusId = null): array {
+function mt_list_bookings_page(PDO $pdo, string $filter = 'aujourdhui', int $page = 1, ?int $focusId = null, ?array $env = null): array {
     mt_ensure_schema($pdo);
     $filter = mt_normalize_booking_filter($filter);
     $perPage = MT_BOOKINGS_PAGE_SIZE;
@@ -235,6 +246,11 @@ function mt_list_bookings_page(PDO $pdo, string $filter = 'aujourdhui', int $pag
         $args[] = mt_today_paris();
     } elseif ($filter === 'a-confirmer') {
         $where[] = "status = 'pending'";
+    } elseif ($filter === 'avis') {
+        $where[] = "status = 'confirmed'";
+        $where[] = 'review_ask IS NULL';
+        $where[] = 'booking_date < ?';
+        $args[] = mt_today_paris();
     }
     if ($where !== []) {
         $sql .= ' WHERE ' . implode(' AND ', $where);
@@ -248,7 +264,7 @@ function mt_list_bookings_page(PDO $pdo, string $filter = 'aujourdhui', int $pag
     }
     $stmt = $pdo->prepare($sql);
     $stmt->execute($args);
-    $all = mt_map_booking_rows($stmt->fetchAll());
+    $all = mt_map_booking_rows($stmt->fetchAll(), $env);
     $total = count($all);
     $pages = max(1, (int) ceil($total / $perPage));
     if ($focusId) {
@@ -532,6 +548,40 @@ function mt_update_booking(PDO $pdo, int $id, array $fields): ?array {
 function mt_today_paris(): string {
     $tz = new DateTimeZone('Europe/Paris');
     return (new DateTimeImmutable('now', $tz))->format('Y-m-d');
+}
+
+function mt_normalize_review_ask(mixed $raw): ?string {
+    $value = strtolower(trim((string) $raw));
+    if ($value === 'sent' || $value === 'skipped') {
+        return $value;
+    }
+    return null;
+}
+
+function mt_booking_past_actions(array $booking, ?string $today = null): bool {
+    $today = $today ?? mt_today_paris();
+    $date = (string) ($booking['booking_date'] ?? '');
+    return $date !== '' && $date < $today;
+}
+
+function mt_booking_can_ask_review(array $booking, ?string $today = null): bool {
+    if (($booking['status'] ?? '') !== 'confirmed') {
+        return false;
+    }
+    if (mt_normalize_review_ask($booking['review_ask'] ?? null) !== null) {
+        return false;
+    }
+    return mt_booking_past_actions($booking, $today);
+}
+
+function mt_mark_review_ask(PDO $pdo, int $id, string $value): bool {
+    $value = mt_normalize_review_ask($value);
+    if ($id < 1 || $value === null) {
+        return false;
+    }
+    $stmt = $pdo->prepare('UPDATE bookings SET review_ask = ? WHERE id = ? AND review_ask IS NULL');
+    $stmt->execute([$value, $id]);
+    return $stmt->rowCount() === 1;
 }
 
 function mt_is_iso_date(string $date): bool {

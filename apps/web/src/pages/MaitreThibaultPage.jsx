@@ -42,6 +42,8 @@ import {
   occupancyFromSettings,
   openSlot,
   resendBookingEmail,
+  requestBookingReview,
+  skipBookingReview,
   saveBookingSettings,
   SLOT_MINUTE_OPTIONS,
   updateBooking,
@@ -609,6 +611,35 @@ function MaitreThibaultPage() {
     }
   }
 
+  async function onRequestReview(id) {
+    try {
+      const result = await requestBookingReview(id);
+      toast.success(result.emailSent ? 'Lien d’avis envoyé.' : 'E-mail non envoyé (vérifie SMTP).');
+      await reloadBookings();
+    } catch (err) {
+      toastFromApi(err);
+    }
+  }
+
+  async function onSkipReview(id) {
+    try {
+      await skipBookingReview(id);
+      toast.success('Avis non demandé.');
+      await reloadBookings();
+    } catch (err) {
+      toastFromApi(err);
+    }
+  }
+
+  async function onCopyReviewLink(url) {
+    try {
+      await navigator.clipboard.writeText(url);
+      toast.success('Lien copié.');
+    } catch {
+      toast.error('Impossible de copier le lien.');
+    }
+  }
+
   function bookingStatusLabel(status) {
     if (status === 'confirmed') return 'Confirmée';
     if (status === 'cancelled') return 'Annulée';
@@ -618,6 +649,7 @@ function MaitreThibaultPage() {
   function emptyBookingsLabel() {
     if (filtre === 'aujourdhui') return 'Aucune réservation aujourd’hui.';
     if (filtre === 'a-confirmer') return 'Aucune réservation à confirmer.';
+    if (filtre === 'avis') return 'Aucun avis à demander.';
     return 'Aucune réservation.';
   }
 
@@ -1142,27 +1174,66 @@ function MaitreThibaultPage() {
                                           Confirmer
                                         </Button>
                                       ) : null}
-                                      <Button
-                                        type="button"
-                                        variant="destructive"
-                                        size="sm"
-                                        onClick={() => setCancellingBooking(row)}
-                                      >
-                                        Annuler
-                                      </Button>
-                                      <Button
-                                        type="button"
-                                        variant="outline"
-                                        size="sm"
-                                        onClick={() =>
-                                          editingBooking === row.id ? setEditingBooking(null) : startEditBooking(row)
-                                        }
-                                      >
-                                        Modifier
-                                      </Button>
-                                      <Button type="button" variant="outline" size="sm" onClick={() => onResendMail(row.id)}>
-                                        Renvoyer l’e-mail
-                                      </Button>
+                                      {!row.past_actions ? (
+                                        <>
+                                          <Button
+                                            type="button"
+                                            variant="destructive"
+                                            size="sm"
+                                            onClick={() => setCancellingBooking(row)}
+                                          >
+                                            Annuler
+                                          </Button>
+                                          <Button
+                                            type="button"
+                                            variant="outline"
+                                            size="sm"
+                                            onClick={() =>
+                                              editingBooking === row.id
+                                                ? setEditingBooking(null)
+                                                : startEditBooking(row)
+                                            }
+                                          >
+                                            Modifier
+                                          </Button>
+                                          <Button
+                                            type="button"
+                                            variant="outline"
+                                            size="sm"
+                                            onClick={() => onResendMail(row.id)}
+                                          >
+                                            Renvoyer l’e-mail
+                                          </Button>
+                                        </>
+                                      ) : null}
+                                      {row.can_ask_review ? (
+                                        <>
+                                          <Button type="button" size="sm" onClick={() => onRequestReview(row.id)}>
+                                            Demander un avis
+                                          </Button>
+                                          <Button
+                                            type="button"
+                                            variant="outline"
+                                            size="sm"
+                                            onClick={() => onSkipReview(row.id)}
+                                          >
+                                            Ne pas demander d’avis
+                                          </Button>
+                                        </>
+                                      ) : null}
+                                      {row.past_actions &&
+                                      row.status === 'confirmed' &&
+                                      row.review_ask !== 'skipped' &&
+                                      row.review_url ? (
+                                        <Button
+                                          type="button"
+                                          variant="outline"
+                                          size="sm"
+                                          onClick={() => onCopyReviewLink(row.review_url)}
+                                        >
+                                          Copier le lien
+                                        </Button>
+                                      ) : null}
                                     </div>
                                   )}
                                 </td>

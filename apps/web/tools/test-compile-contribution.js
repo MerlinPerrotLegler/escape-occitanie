@@ -54,6 +54,7 @@ function writeMinimal(dir, { localImage = false, extraPhoto = false } = {}) {
   <facebook>https://facebook.com/x</facebook>
   <instagram>https://instagram.com/x</instagram>
   <maps>https://maps.google.com</maps>
+  <avis-google>https://g.example/review</avis-google>
 </contact>
 `
   );
@@ -297,11 +298,15 @@ function writeMinimal(dir, { localImage = false, extraPhoto = false } = {}) {
     <sujet>Nouvelle</sujet>
     <mjml>emails/manager-nouvelle.mjml</mjml>
   </mail>
+  <mail id="client-avis">
+    <sujet>Avis</sujet>
+    <mjml>emails/client-avis.mjml</mjml>
+  </mail>
 </emails>
 `
   );
 
-  for (const name of ['client-attente', 'client-confirmee', 'manager-nouvelle']) {
+  for (const name of ['client-attente', 'client-confirmee', 'manager-nouvelle', 'client-avis']) {
     fs.writeFileSync(path.join(dir, 'emails', `${name}.mjml`), MJML);
   }
 }
@@ -338,6 +343,8 @@ await withTemp(async (dir, out) => {
   expect(copy.emails['client-attente'].html.includes('{logo}'), 'html keeps logo placeholder');
   expect(copy.emails['client-attente'].html.includes('{image_salle}'), 'html keeps room image placeholder');
   expect(copy.emails['client-attente'].texte.includes('{nom}'), 'texte keeps placeholder');
+  expect(copy.contact.reviewGoogle === 'https://g.example/review', 'avis-google');
+  expect(copy.emails['client-avis'].sujet === 'Avis', 'client-avis sujet');
   expect(copy.contact.logo.startsWith('https://'), 'https image unchanged');
   expect(fs.existsSync(out.jsPath), 'wrote js');
   expect(fs.existsSync(out.jsonPath), 'wrote json');

@@ -37,6 +37,26 @@ function mt_manager_confirm_token_ok(array $env, int $bookingId, string $email, 
     return hash_equals($expected, $token);
 }
 
+function mt_review_token(array $env, int $bookingId, string $email): string {
+    $secret = (string) ($env['AUTH_SECRET'] ?? '');
+    return substr(hash_hmac('sha256', 'avis|' . $bookingId . '|' . strtolower($email), $secret), 0, 20);
+}
+
+function mt_review_token_ok(array $env, int $bookingId, string $email, string $token): bool {
+    if ($token === '' || $bookingId < 1) {
+        return false;
+    }
+    $expected = mt_review_token($env, $bookingId, $email);
+    return hash_equals($expected, $token);
+}
+
+function mt_review_page_url(array $env, array $booking): string {
+    $id = (int) ($booking['id'] ?? 0);
+    $email = (string) ($booking['guest_email'] ?? '');
+    $token = $id > 0 ? mt_review_token($env, $id, $email) : '';
+    return mt_public_base($env) . '/api/avis.php?b=' . $id . '&t=' . rawurlencode($token);
+}
+
 function mt_manager_booking_links(array $env, array $booking): array {
     $id = (int) ($booking['id'] ?? 0);
     $email = (string) ($booking['guest_email'] ?? '');

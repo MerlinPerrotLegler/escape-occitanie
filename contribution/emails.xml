@@ -12,4 +12,8 @@
     <sujet>Nouvelle demande de réservation — Escape Occitanie</sujet>
     <mjml>emails/manager-nouvelle.mjml</mjml>
   </mail>
+  <mail id="client-avis">
+    <sujet>Un petit mot après votre partie — Escape Occitanie</sujet>
+    <mjml>emails/client-avis.mjml</mjml>
+  </mail>
 </emails>

@@ -18,10 +18,11 @@ function expect(cond, msg) {
   }
 }
 
-expect(BOOKING_FILTERS.map((item) => item.id).join(',') === 'aujourdhui,a-confirmer,toutes', 'filter ids');
+expect(BOOKING_FILTERS.map((item) => item.id).join(',') === 'aujourdhui,a-confirmer,avis,toutes', 'filter ids');
 expect(parseBookingFilter('today') === 'aujourdhui', 'today alias');
 expect(parseBookingFilter('pending') === 'a-confirmer', 'pending alias');
 expect(parseBookingFilter('all') === 'toutes', 'all alias');
+expect(parseBookingFilter('avis') === 'avis', 'avis filter');
 expect(parseBookingFilter("aujourd'hui") === 'aujourdhui', 'accented label');
 expect(parsePage('2') === 2, 'page 2');
 expect(parsePage('0') === 1, 'page 0 falls back to 1');
@@ -39,6 +40,8 @@ expect(focused.filtre === 'toutes', 'focus keeps filter');
 expect(focused.page === 2, 'focus keeps page');
 
 expect(parseLocationHash('#planning').tab === 'planning', 'planning tab');
+expect(parseLocationHash('#avis').tab === 'records', 'hash #avis stays records tab');
+expect(parseLocationHash('#reservations?filtre=avis&page=1').filtre === 'avis', 'avis from hash');
 expect(parseLocationHash('#reservations').filtre === 'aujourdhui', 'default filter');
 expect(parseLocationHash('#reservations').filtreExplicit === false, 'bare reservations hash is not explicit');
 expect(parseLocationHash('#reservations?filtre=aujourdhui').filtreExplicit === true, 'today query is explicit');

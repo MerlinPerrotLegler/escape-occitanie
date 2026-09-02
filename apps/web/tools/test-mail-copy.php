@@ -74,6 +74,15 @@ if (is_array($copy) && isset($copy['emails']['client-attente'])) {
     expect(str_contains($mgr['html'], 'confirm-booking.php'), 'manager html has confirm link');
     expect(str_contains($mgr['html'], '/maitre#reservations/'), 'manager html has view link');
     expect(str_contains($mgr['text'], 'confirm-booking.php') || str_contains($mgr['text'], 'Confirmer'), 'manager text has confirm');
+    $review = mt_booking_email_parts(array_merge($booking, ['status' => 'confirmed', 'id' => 1]), 'review', [
+        'AUTH_URL' => 'https://escapeoccitanie.fr',
+        'AUTH_SECRET' => 'test-secret',
+    ]);
+    expect($review['subject'] === 'Un petit mot après votre partie — Escape Occitanie', 'review subject');
+    expect(str_contains($review['html'], '/api/avis.php?b=1'), 'review html has page link');
+    expect(!str_contains($review['html'], 'search.google.com/local/writereview'), 'review mail has no google review url');
+    expect(!str_contains($review['html'], 'facebook.com'), 'review mail has no facebook url');
+    expect(str_contains($review['text'], 'avis.php'), 'review text has page link');
 } else {
     fwrite(STDERR, "SKIP: site-copy.json absent, template assertions skipped\n");
 }
@@ -96,6 +105,22 @@ expect($payload['attachments'][0]['encoding'] === 'base64', 'attachment encoding
 expect($payload['attachments'][0]['contentType'] === 'text/calendar', 'attachment mime stripped');
 expect($payload['attachments'][0]['content'] === base64_encode('BEGIN:VCALENDAR'), 'attachment base64');
 expect(mt_send_mail(['HOSTINGER_EMAIL_MCP_TOKEN' => ''], 'not-an-email', 'x', 'y') === false, 'invalid recipient rejected');
+
+$htmlOk = mt_review_page_html([
+    'id' => 1,
+    'guest_name' => 'Ada',
+    'room_slug' => 'directeur',
+    'booking_date' => '2026-09-01',
+    'status' => 'confirmed',
+], 'ok');
+expect(str_contains($htmlOk, 'Ada') || str_contains($htmlOk, 'Directeur') || str_contains($htmlOk, '2026-09-01'), 'review page has booking');
+expect(str_contains($htmlOk, 'Google'), 'review page Google');
+expect(str_contains($htmlOk, 'Facebook'), 'review page Facebook');
+expect(str_contains($htmlOk, 'Instagram'), 'review page Instagram');
+expect(str_contains($htmlOk, 'autres joueurs'), 'review page asks to share');
+expect(str_contains($htmlOk, 'navigator.share') || str_contains($htmlOk, 'clipboard'), 'review page share or copy');
+$htmlBad = mt_review_page_html([], 'invalid');
+expect(str_contains($htmlBad, 'invalide') || str_contains($htmlBad, 'valable'), 'invalid copy');
 
 if ($failed > 0) {
     fwrite(STDERR, "$failed assertion(s) failed\n");

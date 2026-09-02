@@ -28,7 +28,7 @@ const REQUIRED_FILES = [
   'emails.xml',
 ];
 
-const EMAIL_IDS = ['client-attente', 'client-confirmee', 'manager-nouvelle'];
+const EMAIL_IDS = ['client-attente', 'client-confirmee', 'manager-nouvelle', 'client-avis'];
 
 const ARRAY_TAGS = new Set([
   'p',
@@ -159,6 +159,7 @@ function parseContact(contributionDir, mediaDir, file, node) {
     facebook: reqStr(file, node, 'facebook'),
     instagram: reqStr(file, node, 'instagram'),
     maps: reqStr(file, node, 'maps'),
+    reviewGoogle: reqStr(file, node, 'avis-google'),
   };
 }
 

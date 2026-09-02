@@ -152,6 +152,7 @@ expect(($tooMany['ok'] ?? false) === false && $tooMany['error'] === 'Entre 3 et 
 require $root . '/schedule.php';
 require $root . '/mail.php';
 require $root . '/calendar.php';
+require $root . '/booking.php';
 
 $booking = [
     'id' => 42,
@@ -196,6 +197,38 @@ expect(str_contains($mgrLinks['voir'], '/maitre#reservations/42'), 'view link po
 expect(str_contains($mgrLinks['voir'], 'filtre=toutes'), 'view link uses all-bookings filter');
 expect(str_contains($mgrLinks['confirmer'], '/api/confirm-booking.php?b=42'), 'confirm link hits confirm endpoint');
 expect(str_contains($mgrLinks['confirmer'], 't='), 'confirm link includes token');
+
+$today = '2026-09-02';
+$baseBooking = [
+    'booking_date' => '2026-09-01',
+    'status' => 'confirmed',
+    'review_ask' => null,
+    'id' => 42,
+    'guest_email' => 'paul@example.com',
+];
+expect(mt_booking_past_actions($baseBooking, $today) === true, 'yesterday is past');
+expect(mt_booking_past_actions(array_merge($baseBooking, ['booking_date' => '2026-09-02']), $today) === false, 'today is not past');
+expect(mt_booking_past_actions(array_merge($baseBooking, ['booking_date' => '2026-09-03']), $today) === false, 'future is not past');
+expect(mt_booking_can_ask_review($baseBooking, $today) === true, 'confirmed yesterday can ask');
+expect(mt_booking_can_ask_review(array_merge($baseBooking, ['status' => 'pending']), $today) === false, 'pending cannot ask');
+expect(mt_booking_can_ask_review(array_merge($baseBooking, ['status' => 'cancelled']), $today) === false, 'cancelled cannot ask');
+expect(mt_booking_can_ask_review(array_merge($baseBooking, ['review_ask' => 'sent']), $today) === false, 'sent cannot ask');
+expect(mt_booking_can_ask_review(array_merge($baseBooking, ['review_ask' => 'skipped']), $today) === false, 'skipped cannot ask');
+expect(mt_booking_can_ask_review(array_merge($baseBooking, ['booking_date' => '2026-09-02']), $today) === false, 'today cannot ask');
+expect(mt_normalize_review_ask(null) === null, 'null ask');
+expect(mt_normalize_review_ask('') === null, 'empty ask');
+expect(mt_normalize_review_ask('sent') === 'sent', 'sent ask');
+expect(mt_normalize_review_ask('skipped') === 'skipped', 'skipped ask');
+expect(mt_normalize_review_ask('nope') === null, 'unknown ask');
+
+$reviewToken = mt_review_token($envCal, 42, 'paul@example.com');
+expect($reviewToken !== '', 'review token issued');
+expect(mt_review_token_ok($envCal, 42, 'paul@example.com', $reviewToken) === true, 'review token ok');
+expect(mt_review_token_ok($envCal, 42, 'other@example.com', $reviewToken) === false, 'review token rejects other email');
+expect(mt_review_token_ok($envCal, 41, 'paul@example.com', $reviewToken) === false, 'review token rejects other booking');
+$reviewUrl = mt_review_page_url($envCal, $baseBooking);
+expect(str_contains($reviewUrl, '/api/avis.php?b=42'), 'review url path');
+expect(str_contains($reviewUrl, 't='), 'review url has token');
 
 $formHtml = mt_manager_confirm_page_html($booking, 'form', $mgrLinks);
 expect(str_contains($formHtml, 'Paul'), 'confirm page shows guest');
