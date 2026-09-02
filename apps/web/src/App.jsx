@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet';
 import { Route, Routes, BrowserRouter as Router, Link, Outlet, Navigate } from 'react-router-dom';
 import ScrollToTop from './components/ScrollToTop';
 import SiteHeader from './components/SiteHeader';
@@ -8,7 +9,8 @@ import RoomPage from './pages/RoomPage';
 import BookingPage from './pages/BookingPage';
 import ReservationPage from './pages/ReservationPage';
 import MaitreThibaultPage from './pages/MaitreThibaultPage';
-import { COPY } from './generated/siteCopy';
+import { COPY, CONTACT, ROOMS } from './generated/siteCopy';
+import { buildJsonLd } from './lib/seo';
 
 function NotFound() {
   return (
@@ -30,9 +32,24 @@ function NotFound() {
   );
 }
 
+function SiteJsonLd() {
+  const jsonLd = buildJsonLd({
+    contact: CONTACT,
+    rooms: ROOMS,
+    accueil: COPY.accueil,
+    reserver: COPY.reserver,
+  });
+  return (
+    <Helmet>
+      <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
+    </Helmet>
+  );
+}
+
 function PublicLayout() {
   return (
     <>
+      <SiteJsonLd />
       <SiteHeader />
       <main>
         <Outlet />

@@ -6,7 +6,7 @@
 	"scripts": {
 		"php:serve": "bash tools/php-serve.sh",
 		"dev": "concurrently --kill-others --raw \"npm run php:serve\" \"vite --host :: --port 3000\"",
-		"build": "node tools/compile-contribution.js && (node tools/generate-llms.js || true) && vite build --outDir ../../dist/apps/web",
+		"build": "node tools/compile-contribution.js && (node tools/generate-llms.js || true) && vite build --outDir ../../dist/apps/web && node tools/generate-seo-shells.js",
 		"compile:content": "node tools/compile-contribution.js",
 		"start": "vite preview --outDir ../../dist/apps/web --host :: --port 3000",
 		"lint": "eslint . --quiet; lint_status=$?; eslint \"src/**/*.jsx\" --config eslint.config.mjs --format ./eslint.unicode-escapes-formatter.mjs --no-error-on-unmatched-pattern; exit $lint_status",

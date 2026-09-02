@@ -1,16 +1,18 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { isCrawler } from '@/lib/isCrawler';
 
 const EASE_OUT_CUBIC = (progress) => 1 - Math.pow(1 - progress, 3);
 
 const CountUp = ({ value, duration = 1600, decimals = 0, prefix = '', suffix = '', locale, className = '' }) => {
-    const [display, setDisplay] = useState(0);
+    const crawler = typeof navigator !== 'undefined' && isCrawler(navigator.userAgent);
+    const [display, setDisplay] = useState(() => (crawler ? Number(value) || 0 : 0));
     const ref = useRef(null);
 
     useEffect(() => {
         const node = ref.current;
         const target = Number(value) || 0;
 
-        if (!node || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        if (!node || crawler || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
             setDisplay(target);
             return undefined;
         }

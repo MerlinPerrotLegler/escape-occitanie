@@ -40,12 +40,12 @@ function RoomPage({ roomKey }) {
   return (
     <>
       <Helmet>
-        <title>{room.name} — Escape Occitanie</title>
-        <meta name="description" content={`${room.cardDescription} ${room.players}, ${room.minAge.toLowerCase()}, ${room.duration}. Réservez votre session chez Escape Occitanie.`} />
+        <title>{room.seo.titre}</title>
+        <meta name="description" content={room.seo.description} />
       </Helmet>
       <Seo
-        title={`${room.name} — Escape Occitanie`}
-        description={room.cardDescription}
+        title={room.seo.titre}
+        description={room.seo.description}
         image={room.image}
         siteName={CONTACT.name}
       />
