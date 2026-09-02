@@ -224,11 +224,14 @@ expect(mt_normalize_review_ask('nope') === null, 'unknown ask');
 $reviewToken = mt_review_token($envCal, 42, 'paul@example.com');
 expect($reviewToken !== '', 'review token issued');
 expect(mt_review_token_ok($envCal, 42, 'paul@example.com', $reviewToken) === true, 'review token ok');
-expect(mt_review_token_ok($envCal, 42, 'other@example.com', $reviewToken) === false, 'review token rejects other email');
+expect(mt_review_token_ok($envCal, 42, 'other@example.com', $reviewToken) === true, 'review token does not depend on email');
 expect(mt_review_token_ok($envCal, 41, 'paul@example.com', $reviewToken) === false, 'review token rejects other booking');
+$legacyReview = mt_review_legacy_token($envCal, 42, 'paul@example.com');
+expect(mt_review_token_ok($envCal, 42, 'paul@example.com', $legacyReview) === true, 'legacy email-bound review token still ok');
 $reviewUrl = mt_review_page_url($envCal, $baseBooking);
 expect(str_contains($reviewUrl, '/api/avis.php?b=42'), 'review url path');
 expect(str_contains($reviewUrl, 't='), 'review url has token');
+expect(!str_contains($reviewUrl, 'paul'), 'review url has no email');
 
 $formHtml = mt_manager_confirm_page_html($booking, 'form', $mgrLinks);
 expect(str_contains($formHtml, 'Paul'), 'confirm page shows guest');

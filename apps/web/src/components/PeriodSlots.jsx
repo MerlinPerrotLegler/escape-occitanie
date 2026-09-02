@@ -27,10 +27,11 @@ function PeriodSlots({ rooms, loading, emptyLabel, onToggle, onReservedClick }) 
                       key={`${room.slug}-${slot.time}`}
                       type="button"
                       onClick={() => {
-                        if (isReserved) {
-                          if (slot.booking_id) onReservedClick(slot.booking_id);
+                        if (slot.booking_id) {
+                          onReservedClick(slot.booking_id);
                           return;
                         }
+                        if (isReserved) return;
                         onToggle(room.slug, slot);
                       }}
                       className={cn(

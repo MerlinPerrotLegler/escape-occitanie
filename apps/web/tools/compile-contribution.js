@@ -28,7 +28,7 @@ const REQUIRED_FILES = [
   'emails.xml',
 ];
 
-const EMAIL_IDS = ['client-attente', 'client-confirmee', 'manager-nouvelle', 'client-avis'];
+const EMAIL_IDS = ['client-attente', 'client-confirmee', 'manager-nouvelle', 'client-avis', 'client-modifiee'];
 
 const ARRAY_TAGS = new Set([
   'p',
@@ -179,6 +179,7 @@ function parseCommun(file, node) {
       contact: reqStr(file, nav, 'contact'),
       reserver: reqStr(file, nav, 'reserver'),
       reserverSession: reqStr(file, nav, 'reserver-session'),
+      tousLesCreneaux: reqStr(file, nav, 'tous-les-creneaux'),
     },
     footer: {
       intro: reqStr(file, footer, 'intro'),
@@ -435,6 +436,9 @@ function parseReserver(file, node) {
       surtitre: reqStr(file, page, 'surtitre'),
       titre: reqStr(file, page, 'titre'),
       intro: reqStr(file, page, 'intro'),
+      rassuranceTitre: reqStr(file, page, 'rassurance-titre'),
+      rassuranceTexte: reqStr(file, page, 'rassurance-texte'),
+      rassuranceLien: reqStr(file, page, 'rassurance-lien'),
     },
     timeline: {
       reserver: reqStr(file, timeline, 'reserver'),

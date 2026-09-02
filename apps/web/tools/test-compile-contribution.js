@@ -72,6 +72,7 @@ function writeMinimal(dir, { localImage = false, skipGallery = false } = {}) {
     <contact>Contact</contact>
     <reserver>Réserver</reserver>
     <reserver-session>Réserver une session</reserver-session>
+    <tous-les-creneaux>Tous les créneaux</tous-les-creneaux>
   </nav>
   <footer>
     <intro>Intro footer</intro>
@@ -262,9 +263,12 @@ function writeMinimal(dir, { localImage = false, skipGallery = false } = {}) {
     <surtitre>Réservation</surtitre>
     <titre>Réservation</titre>
     <intro>Intro comparatif</intro>
+    <rassurance-titre>Hésitez-vous ?</rassurance-titre>
+    <rassurance-texte>Découvrez les salles.</rassurance-texte>
+    <rassurance-lien>Découvrir les salles</rassurance-lien>
   </page>
   <timeline>
-    <reserver>Réserver</reserver>
+    <reserver>Réserver ce créneau</reserver>
     <non-dispo>Non dispo</non-dispo>
     <aria-reserver>Réserver {salle}, {date} à {heure}</aria-reserver>
     <form-titre>{date} à {heure} — {salle} — {occupancy} min</form-titre>
@@ -299,11 +303,15 @@ function writeMinimal(dir, { localImage = false, skipGallery = false } = {}) {
     <sujet>Avis</sujet>
     <mjml>emails/client-avis.mjml</mjml>
   </mail>
+  <mail id="client-modifiee">
+    <sujet>Modification</sujet>
+    <mjml>emails/client-modifiee.mjml</mjml>
+  </mail>
 </emails>
 `
   );
 
-  for (const name of ['client-attente', 'client-confirmee', 'manager-nouvelle', 'client-avis']) {
+  for (const name of ['client-attente', 'client-confirmee', 'manager-nouvelle', 'client-avis', 'client-modifiee']) {
     fs.writeFileSync(path.join(dir, 'emails', `${name}.mjml`), MJML);
   }
 }
@@ -334,6 +342,9 @@ await withTemp(async (dir, out) => {
   expect(copy.accueil.experience.atouts.length === 4, '4 atouts');
   expect(copy.accueil.experience.paragraphes.length >= 2, 'at least 2 experience p');
   expect(copy.reserver.page.titre === 'Réservation', 'reserver page titre');
+  expect(copy.commun.nav.tousLesCreneaux === 'Tous les créneaux', 'nav tous les créneaux');
+  expect(copy.reserver.page.rassuranceLien === 'Découvrir les salles', 'rassurance lien');
+  expect(copy.reserver.timeline.reserver === 'Réserver ce créneau', 'timeline reserver');
   expect(copy.reserver.timeline.nonDispo === 'Non dispo', 'timeline non dispo');
   expect(copy.emails['client-attente'].sujet === 'Demande', 'email sujet');
   expect(copy.emails['client-attente'].html.includes('{nom}'), 'html keeps placeholder');
@@ -342,6 +353,7 @@ await withTemp(async (dir, out) => {
   expect(copy.emails['client-attente'].texte.includes('{nom}'), 'texte keeps placeholder');
   expect(copy.contact.reviewGoogle === 'https://g.example/review', 'avis-google');
   expect(copy.emails['client-avis'].sujet === 'Avis', 'client-avis sujet');
+  expect(copy.emails['client-modifiee'].sujet === 'Modification', 'client-modifiee sujet');
   expect(copy.contact.logo.startsWith('https://'), 'https image unchanged');
   expect(fs.existsSync(out.jsPath), 'wrote js');
   expect(fs.existsSync(out.jsonPath), 'wrote json');

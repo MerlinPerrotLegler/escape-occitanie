@@ -100,7 +100,7 @@ function PeriodCopyDialog({ open, onOpenChange, source, onCopied }) {
         <DialogHeader>
           <DialogTitle>Reproduire la plage</DialogTitle>
           <DialogDescription>
-            Copie les horaires et les créneaux Indisponible / Fermé vers les jours choisis. Les
+            Copie les horaires et les créneaux Invisible / Fermé vers les jours choisis. Les
             réservations ne sont pas copiées.
           </DialogDescription>
         </DialogHeader>

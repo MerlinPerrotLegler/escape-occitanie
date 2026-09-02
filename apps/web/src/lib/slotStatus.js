@@ -7,7 +7,7 @@ export function nextAdminSlotStatus(status) {
 
 export function slotStatusLabel(status) {
   if (status === 'reserved') return 'Occupé';
-  if (status === 'hidden') return 'Indisponible';
+  if (status === 'hidden') return 'Invisible';
   if (status === 'closed') return 'Fermé';
   return 'Ouvert';
 }

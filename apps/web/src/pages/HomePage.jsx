@@ -164,7 +164,7 @@ function HomePage() {
       </div>
 
       {/* EXPÉRIENCE */}
-      <section id="experience" className="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-28">
+      <section id="experience" className="mx-auto max-w-6xl scroll-mt-24 px-4 py-20 sm:px-6 sm:py-28">
         <Reveal>
           <div>
             <p className="font-display text-xs font-semibold uppercase tracking-[0.35em] text-primary">
@@ -233,7 +233,7 @@ function HomePage() {
       </section>
 
       {/* SALLES */}
-      <section id="salles" className="border-t border-border/60 bg-card/30 py-20 sm:py-28">
+      <section id="salles" className="scroll-mt-24 border-t border-border/60 bg-card/30 py-20 sm:py-28">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <Reveal>
             <div className="max-w-2xl">
@@ -256,7 +256,7 @@ function HomePage() {
       </section>
 
       {/* AVIS */}
-      <section id="avis" className="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-28">
+      <section id="avis" className="mx-auto max-w-6xl scroll-mt-24 px-4 py-20 sm:px-6 sm:py-28">
         <Reveal>
           <div className="text-center">
             <p className="font-display text-xs font-semibold uppercase tracking-[0.35em] text-primary">
@@ -354,7 +354,7 @@ function HomePage() {
       </section>
 
       {/* CONTACT */}
-      <section id="contact" className="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-28">
+      <section id="contact" className="mx-auto max-w-6xl scroll-mt-24 px-4 py-20 sm:px-6 sm:py-28">
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
           <Reveal>
             <div>

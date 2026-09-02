@@ -56,7 +56,7 @@ try {
         $byMinute[$slot['minute']] = $slot['status'];
     }
     expect(($byMinute[600] ?? '') === 'reserved', '10:00 reserved while pending');
-    expect(($byMinute[630] ?? '') === 'reserved', '10:30 reserved while 10:00 is pending');
+    expect(($byMinute[630] ?? '') === 'closed', '10:30 closed while 10:00 is pending');
     expect(mt_find_open_game_slot($pdo, $room, $date, 630) === null, 'public cannot book 10:30 over a 10:00 reservation');
 
     $confirmed = mt_confirm_booking($pdo, (int) $booking['id']);
@@ -68,7 +68,7 @@ try {
         $afterConfirm[$slot['minute']] = $slot['status'];
     }
     expect(($afterConfirm[600] ?? '') === 'reserved', '10:00 reserved once confirmed');
-    expect(($afterConfirm[630] ?? '') === 'reserved', '10:30 reserved by the 60-min game');
+    expect(($afterConfirm[630] ?? '') === 'closed', '10:30 closed by the 60-min game');
     expect(($afterConfirm[660] ?? '') === 'open', '11:00 open after the game');
 
     $busyStart = mt_create_booking($pdo, [
@@ -132,7 +132,7 @@ try {
     expect(($afterMove[600] ?? '') === 'open', 'origin 10:00 is free after the move');
     expect(($afterMove[630] ?? '') === 'open', 'origin 10:30 is free after the move');
     expect(($afterMove[720] ?? '') === 'reserved', '12:00 reserved after the move');
-    expect(($afterMove[750] ?? '') === 'reserved', '12:30 reserved after the move');
+    expect(($afterMove[750] ?? '') === 'closed', '12:30 closed after the move');
 
     mt_cancel_booking($pdo, (int) $booking['id']);
     $afterCancel = [];
@@ -160,7 +160,7 @@ try {
         $atThirteen[$slot['minute']] = $slot['status'];
     }
     expect(($atThirteen[780] ?? '') === 'reserved', '13:00 reserved');
-    expect(($atThirteen[810] ?? '') === 'reserved', '13:30 reserved with the 13:00 game');
+    expect(($atThirteen[810] ?? '') === 'closed', '13:30 closed with the 13:00 game');
     expect(($atThirteen[750] ?? '') === 'open', '12:30 stays open when 13:00 is booked');
     mt_cancel_booking($pdo, (int) $thirteen['id']);
 

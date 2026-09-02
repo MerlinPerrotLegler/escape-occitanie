@@ -14,8 +14,9 @@ function RoomCards() {
       {ROOM_LIST.map((room, i) => (
         <Reveal key={room.slug} delay={0.05}>
           <article
+            id={i === 0 ? 'premiere-salle' : undefined}
             className={cn(
-              'grid items-center gap-8 lg:grid-cols-2 lg:gap-12',
+              'grid scroll-mt-24 items-center gap-8 lg:grid-cols-2 lg:gap-12',
               i % 2 === 1 && 'lg:[&>*:first-child]:order-2'
             )}
           >

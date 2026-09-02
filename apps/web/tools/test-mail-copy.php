@@ -43,6 +43,9 @@ $booking = [
 $fallback = mt_booking_customer_email($booking, 'pending');
 expect(str_contains($fallback, 'Bonjour Ada'), 'fallback greeting');
 expect(str_contains($fallback, 'Convocation chez le Directeur') || str_contains($fallback, 'Ada'), 'fallback has room or name');
+$fallbackModified = mt_booking_customer_email(array_merge($booking, ['status' => 'confirmed']), 'modified');
+expect(str_contains($fallbackModified, 'modifiée'), 'fallback modified says the booking changed');
+expect(!str_contains($fallbackModified, 'Votre réservation est confirmée.'), 'fallback modified is not the confirmation copy');
 
 $copy = mt_load_site_copy();
 if (is_array($copy) && isset($copy['emails']['client-attente'])) {
@@ -83,6 +86,15 @@ if (is_array($copy) && isset($copy['emails']['client-attente'])) {
     expect(!str_contains($review['html'], 'search.google.com/local/writereview'), 'review mail has no google review url');
     expect(!str_contains($review['html'], 'facebook.com'), 'review mail has no facebook url');
     expect(str_contains($review['text'], 'avis.php'), 'review text has page link');
+    $modified = mt_booking_email_parts(array_merge($booking, ['status' => 'confirmed', 'id' => 1]), 'modified', [
+        'AUTH_URL' => 'https://escapeoccitanie.fr',
+        'AUTH_SECRET' => 'test-secret',
+    ]);
+    expect($modified['subject'] === 'Modification de réservation — Escape Occitanie', 'modified subject from xml');
+    expect(str_contains($modified['html'], 'modifiée'), 'modified html says the booking changed');
+    expect(str_contains($modified['html'], 'calendar.php'), 'modified html has ics link');
+    expect(!str_contains($modified['html'], 'Votre réservation est confirmée.'), 'modified html is not the confirmation copy');
+    expect(str_contains($modified['text'], 'modifiée'), 'modified text says the booking changed');
 } else {
     fwrite(STDERR, "SKIP: site-copy.json absent, template assertions skipped\n");
 }
@@ -120,7 +132,8 @@ expect(str_contains($htmlOk, 'Instagram'), 'review page Instagram');
 expect(str_contains($htmlOk, 'autres joueurs'), 'review page asks to share');
 expect(str_contains($htmlOk, 'navigator.share') || str_contains($htmlOk, 'clipboard'), 'review page share or copy');
 $htmlBad = mt_review_page_html([], 'invalid');
-expect(str_contains($htmlBad, 'invalide') || str_contains($htmlBad, 'valable'), 'invalid copy');
+expect(str_contains($htmlBad, 'invalide'), 'invalid copy');
+expect(!str_contains($htmlBad, 'plus valable'), 'invalid copy does not say expired');
 
 if ($failed > 0) {
     fwrite(STDERR, "$failed assertion(s) failed\n");

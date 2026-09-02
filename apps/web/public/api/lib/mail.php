@@ -118,6 +118,8 @@ function mt_booking_email_parts(array $booking, string $kind, array $env = []): 
         $id = 'client-confirmee';
     } elseif ($kind === 'review') {
         $id = 'client-avis';
+    } elseif ($kind === 'modified') {
+        $id = 'client-modifiee';
     }
     $vars = mt_booking_copy_vars($booking, $env);
     $tpl = $copy['emails'][$id] ?? null;
@@ -132,6 +134,13 @@ function mt_booking_email_parts(array $booking, string $kind, array $env = []): 
         return [
             'subject' => 'Un petit mot après votre partie — Escape Occitanie',
             'text' => mt_review_customer_email($booking, $env),
+            'html' => '',
+        ];
+    }
+    if ($kind === 'modified') {
+        return [
+            'subject' => 'Modification de réservation — Escape Occitanie',
+            'text' => mt_booking_customer_email($booking, $kind, $env),
             'html' => '',
         ];
     }
@@ -342,6 +351,8 @@ function mt_booking_customer_email(array $booking, string $kind = 'pending', arr
     $name = $booking['guest_name'];
     if ($kind === 'confirmed') {
         $intro = "Votre réservation est confirmée.";
+    } elseif ($kind === 'modified') {
+        $intro = "Votre réservation a été modifiée. Voici les nouveaux détails :";
     } else {
         $intro = "Nous avons bien reçu votre demande de réservation. Elle est en attente de confirmation par l'équipe.";
     }
@@ -358,7 +369,7 @@ function mt_booking_customer_email(array $booking, string $kind = 'pending', arr
         . "Joueurs : {$booking['players']}\n\n"
         . "Merci d'arriver 15 minutes avant le début de la session une fois la réservation confirmée.\n"
         . "Adresse : {$address}\n";
-    if ($kind === 'confirmed' && $env !== []) {
+    if (($kind === 'confirmed' || $kind === 'modified') && $env !== []) {
         $links = mt_booking_calendar_links($env, $booking);
         $body .= "\nAjoutez l'événement à votre calendrier : fichier joint (reservation.ics) ou téléchargement : {$links['ics']}\n";
     }
@@ -465,7 +476,7 @@ function mt_review_page_html(array $booking, string $state): string {
     $instagram = mt_html((string) ($copy['contact']['instagram'] ?? ''));
     if ($state !== 'ok') {
         $title = 'Lien invalide';
-        $lead = 'Ce lien n’est plus valable.';
+        $lead = 'Ce lien d’avis est incorrect.';
         $body = '';
     } else {
         $title = 'Merci';
@@ -529,7 +540,7 @@ function mt_booking_ics_attachment(array $booking, array $env = []): array {
 
 function mt_send_booking_emails(array $env, array $booking, string $kind, bool $notifyManager = false): bool {
     $parts = mt_booking_email_parts($booking, $kind, $env);
-    $attachment = $kind === 'confirmed' ? mt_booking_ics_attachment($booking, $env) : null;
+    $attachment = ($kind === 'confirmed' || $kind === 'modified') ? mt_booking_ics_attachment($booking, $env) : null;
     $sent = mt_send_mail(
         $env,
         $booking['guest_email'],

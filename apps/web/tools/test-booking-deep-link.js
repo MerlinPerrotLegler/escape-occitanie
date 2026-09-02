@@ -4,6 +4,7 @@ import {
   nearestOpenDay,
   closestOpenSlot,
   rankOpenDates,
+  resolveBookingDeepLink,
 } from '../src/lib/bookingDeepLink.js';
 
 let failed = 0;
@@ -77,6 +78,59 @@ expect(
     null,
   'today with no remaining slot'
 );
+
+const slotsByDate = {
+  '2026-09-03': [
+    { time: '10:00', status: 'open' },
+    { time: '13:30', status: 'reserved' },
+    { time: '14:00', status: 'reserved' },
+    { time: '14:30', status: 'open' },
+  ],
+  '2026-09-04': [{ time: '10:00', status: 'open' }],
+};
+const candidates = ['2026-09-03', '2026-09-04'];
+const dateOnly = resolveBookingDeepLink({
+  requestedISO: '2026-09-03',
+  preferredTime: null,
+  candidates,
+  slotsByDate,
+  todayISO: '2026-09-02',
+  nowMinutes: 0,
+});
+expect(dateOnly.iso === '2026-09-03', 'date-only stays on requested day');
+expect(dateOnly.slot === null, 'date-only does not auto-select first open slot');
+
+const heureOnReserved = resolveBookingDeepLink({
+  requestedISO: '2026-09-03',
+  preferredTime: '13:30',
+  candidates,
+  slotsByDate,
+  todayISO: '2026-09-02',
+  nowMinutes: 0,
+});
+expect(heureOnReserved.iso === '2026-09-03', 'heure on reserved stays on day');
+expect(heureOnReserved.slot === '14:30', 'heure on reserved picks nearest open');
+
+const heureExact = resolveBookingDeepLink({
+  requestedISO: '2026-09-03',
+  preferredTime: '10:00',
+  candidates,
+  slotsByDate,
+  todayISO: '2026-09-02',
+  nowMinutes: 0,
+});
+expect(heureExact.slot === '10:00', 'heure exact open slot');
+
+const closedDay = resolveBookingDeepLink({
+  requestedISO: '2026-09-07',
+  preferredTime: null,
+  candidates: ['2026-09-09'],
+  slotsByDate: {},
+  todayISO: '2026-09-02',
+  nowMinutes: 0,
+});
+expect(closedDay.iso === '2026-09-09', 'date-only closed day → nearest candidate');
+expect(closedDay.slot === null, 'closed day still does not auto-select');
 
 if (failed > 0) {
   process.stderr.write(`${failed} assertion(s) failed\n`);

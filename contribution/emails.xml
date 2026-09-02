@@ -16,4 +16,8 @@
     <sujet>Un petit mot après votre partie — Escape Occitanie</sujet>
     <mjml>emails/client-avis.mjml</mjml>
   </mail>
+  <mail id="client-modifiee">
+    <sujet>Modification de réservation — Escape Occitanie</sujet>
+    <mjml>emails/client-modifiee.mjml</mjml>
+  </mail>
 </emails>

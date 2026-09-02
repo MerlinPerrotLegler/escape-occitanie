@@ -7,10 +7,10 @@ import { cn } from '@/lib/utils';
 import { BookingForm, BookingSuccess } from '@/components/BookingForm';
 import { fetchBookingSettings, fetchDaySlots, fetchMonthAvailability, fetchOpenPeriods, DEFAULT_BOOKING_SETTINGS } from '@/lib/booking';
 import {
-  closestOpenSlot,
   parseQueryDate,
   parseQueryTime,
   rankOpenDates,
+  resolveBookingDeepLink,
   toISODate,
 } from '@/lib/bookingDeepLink';
 import { isAlignedTime } from '@/lib/availabilityTimeline';
@@ -216,24 +216,42 @@ function BookingCalendar({ room }) {
       let iso = requested;
       let list = [];
       let slot = null;
-      for (const candidate of candidates) {
-        const daySlots = await fetchDaySlots(room.slug, candidate);
-        if (cancelled) return;
-        const match = closestOpenSlot(daySlots, {
-          iso: candidate,
+      if (queryTime) {
+        const slotsByDate = {};
+        for (const candidate of candidates) {
+          const daySlots = await fetchDaySlots(room.slug, candidate);
+          if (cancelled) return;
+          slotsByDate[candidate] = daySlots;
+          const resolved = resolveBookingDeepLink({
+            requestedISO: requested,
+            preferredTime: queryTime,
+            candidates: [candidate],
+            slotsByDate,
+            todayISO,
+            nowMinutes,
+          });
+          if (resolved.slot) {
+            iso = resolved.iso;
+            list = daySlots;
+            slot = resolved.slot;
+            break;
+          }
+        }
+        if (!slot) {
+          list = slotsByDate[requested] || (await fetchDaySlots(room.slug, requested));
+          if (cancelled) return;
+        }
+      } else {
+        const resolved = resolveBookingDeepLink({
+          requestedISO: requested,
+          preferredTime: null,
+          candidates,
+          slotsByDate: {},
           todayISO,
-          preferredTime: queryTime,
           nowMinutes,
         });
-        if (match) {
-          iso = candidate;
-          list = daySlots;
-          slot = match;
-          break;
-        }
-      }
-      if (!slot && !candidates.includes(requested)) {
-        list = await fetchDaySlots(room.slug, requested);
+        iso = resolved.iso;
+        list = await fetchDaySlots(room.slug, iso);
         if (cancelled) return;
       }
       setMonthOffset(clampMonthOffset(monthsBetween(today, iso), maxOffset));
@@ -247,7 +265,7 @@ function BookingCalendar({ room }) {
           requestAnimationFrame(() => scrollToForm());
         });
       }
-      if (slot && iso !== queryDate) {
+      if (iso !== queryDate) {
         skipQueryBootstrap.current = true;
         setSearchParams((prev) => applyDateParam(prev, iso), { replace: true });
       }

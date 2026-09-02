@@ -60,7 +60,8 @@ function App() {
             path="/salles/la-malediction-du-vaisseau-fantome"
             element={<RoomPage roomKey="vaisseau" />}
           />
-          <Route path="/reservation" element={<ReservationPage />} />
+          <Route path="/tous-les-creneaux" element={<ReservationPage />} />
+          <Route path="/reservation" element={<Navigate to="/tous-les-creneaux" replace />} />
           <Route
             path="/reservation/convocation-chez-le-directeur"
             element={<BookingPage roomKey="directeur" />}

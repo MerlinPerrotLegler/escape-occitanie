@@ -103,7 +103,7 @@ function mt_replace_closed_slots_from_source(PDO $pdo, string $sourceDate, strin
         $flags = mt_slot_flags_for($pdo, $room, $sourceDate);
         $bookings = mt_fetch_active_bookings($pdo, $targetDate, $targetDate, $room);
         foreach ($flags as $minute => $kind) {
-            if (mt_unit_status((int) $minute, $bookings, []) === 'reserved') {
+            if (mt_booking_covering_minute($bookings, (int) $minute)) {
                 continue;
             }
             mt_set_slot_kind($pdo, $room, $targetDate, (int) $minute, $kind === 'hidden' ? 'hidden' : 'closed');
@@ -201,6 +201,9 @@ const MT_BOOKINGS_PAGE_SIZE = 10;
 
 function mt_normalize_booking_filter(?string $raw): string {
     $value = strtolower(trim((string) $raw));
+    if (in_array($value, ['demain', 'tomorrow'], true)) {
+        return 'demain';
+    }
     if (in_array($value, ['a-confirmer', 'pending', 'aconfirmer'], true)) {
         return 'a-confirmer';
     }
@@ -211,6 +214,42 @@ function mt_normalize_booking_filter(?string $raw): string {
         return 'avis';
     }
     return 'aujourdhui';
+}
+
+function mt_normalize_booking_sort(?string $raw): ?string {
+    $value = strtolower(trim((string) $raw));
+    if ($value === 'heure') {
+        $value = 'date';
+    }
+    $allowed = ['date', 'salle', 'client', 'joueurs', 'statut'];
+    return in_array($value, $allowed, true) ? $value : null;
+}
+
+function mt_normalize_booking_dir(?string $raw): string {
+    return strtolower(trim((string) $raw)) === 'desc' ? 'desc' : 'asc';
+}
+
+function mt_booking_order_sql(string $filter, ?string $sort, string $dir): string {
+    $dirSql = $dir === 'desc' ? 'DESC' : 'ASC';
+    if ($sort === 'date') {
+        return ' ORDER BY booking_date ' . $dirSql . ', start_minute ' . $dirSql . ', id ' . $dirSql;
+    }
+    $columns = [
+        'salle' => 'room_slug',
+        'client' => 'guest_name',
+        'joueurs' => 'players',
+        'statut' => 'status',
+    ];
+    if ($sort && isset($columns[$sort])) {
+        return ' ORDER BY ' . $columns[$sort] . ' ' . $dirSql . ', id ' . $dirSql;
+    }
+    if ($filter === 'aujourdhui' || $filter === 'demain') {
+        return ' ORDER BY start_minute ASC, id ASC';
+    }
+    if ($filter === 'a-confirmer') {
+        return ' ORDER BY created_at DESC, id DESC';
+    }
+    return ' ORDER BY booking_date DESC, start_minute DESC, id DESC';
 }
 
 function mt_pending_booking_count(PDO $pdo): int {
@@ -234,9 +273,19 @@ function mt_manager_session_payload(array $env, string $email, ?PDO $pdo = null)
     ];
 }
 
-function mt_list_bookings_page(PDO $pdo, string $filter = 'aujourdhui', int $page = 1, ?int $focusId = null, ?array $env = null): array {
+function mt_list_bookings_page(
+    PDO $pdo,
+    string $filter = 'aujourdhui',
+    int $page = 1,
+    ?int $focusId = null,
+    ?array $env = null,
+    ?string $sort = null,
+    ?string $dir = null
+): array {
     mt_ensure_schema($pdo);
     $filter = mt_normalize_booking_filter($filter);
+    $sort = mt_normalize_booking_sort($sort);
+    $dir = mt_normalize_booking_dir($dir);
     $perPage = MT_BOOKINGS_PAGE_SIZE;
     $sql = 'SELECT ' . mt_booking_select_sql() . ' FROM bookings';
     $where = [];
@@ -244,6 +293,9 @@ function mt_list_bookings_page(PDO $pdo, string $filter = 'aujourdhui', int $pag
     if ($filter === 'aujourdhui') {
         $where[] = 'booking_date = ?';
         $args[] = mt_today_paris();
+    } elseif ($filter === 'demain') {
+        $where[] = 'booking_date = ?';
+        $args[] = mt_tomorrow_paris();
     } elseif ($filter === 'a-confirmer') {
         $where[] = "status = 'pending'";
     } elseif ($filter === 'avis') {
@@ -255,13 +307,7 @@ function mt_list_bookings_page(PDO $pdo, string $filter = 'aujourdhui', int $pag
     if ($where !== []) {
         $sql .= ' WHERE ' . implode(' AND ', $where);
     }
-    if ($filter === 'aujourdhui') {
-        $sql .= ' ORDER BY start_minute ASC, id ASC';
-    } elseif ($filter === 'a-confirmer') {
-        $sql .= ' ORDER BY created_at DESC, id DESC';
-    } else {
-        $sql .= ' ORDER BY booking_date DESC, start_minute DESC, id DESC';
-    }
+    $sql .= mt_booking_order_sql($filter, $sort, $dir);
     $stmt = $pdo->prepare($sql);
     $stmt->execute($args);
     $all = mt_map_booking_rows($stmt->fetchAll(), $env);
@@ -284,6 +330,8 @@ function mt_list_bookings_page(PDO $pdo, string $filter = 'aujourdhui', int $pag
         'perPage' => $perPage,
         'pages' => $pages,
         'filtre' => $filter,
+        'tri' => $sort,
+        'sens' => $sort ? $dir : null,
         'pendingCount' => mt_pending_booking_count($pdo),
         'settings' => mt_runtime_booking_settings(),
     ];
@@ -316,14 +364,14 @@ function mt_occupying_bookings(PDO $pdo, string $date, string $room): array {
 function mt_public_day_slots(PDO $pdo, string $room, string $date): array {
     $periods = mt_periods_for_date($pdo, $date);
     $bookings = mt_occupying_bookings($pdo, $date, $room);
-    return mt_filter_public_slots(mt_compute_day_slots($periods, $bookings, mt_slot_flags_for($pdo, $room, $date)));
+    return mt_filter_public_slots(mt_compute_day_slots($periods, $bookings, mt_slot_flags_for($pdo, $room, $date), $room));
 }
 
 function mt_admin_day_slots(PDO $pdo, string $room, string $date): array {
     $periods = mt_periods_for_date($pdo, $date);
     $bookings = mt_occupying_bookings($pdo, $date, $room);
     return mt_annotate_reserved_slots(
-        mt_compute_unit_slots($periods, $bookings, mt_slot_flags_for($pdo, $room, $date)),
+        mt_compute_unit_slots($periods, $bookings, mt_slot_flags_for($pdo, $room, $date), $room),
         $bookings
     );
 }
@@ -548,6 +596,11 @@ function mt_update_booking(PDO $pdo, int $id, array $fields): ?array {
 function mt_today_paris(): string {
     $tz = new DateTimeZone('Europe/Paris');
     return (new DateTimeImmutable('now', $tz))->format('Y-m-d');
+}
+
+function mt_tomorrow_paris(): string {
+    $tz = new DateTimeZone('Europe/Paris');
+    return (new DateTimeImmutable('now', $tz))->modify('+1 day')->format('Y-m-d');
 }
 
 function mt_normalize_review_ask(mixed $raw): ?string {

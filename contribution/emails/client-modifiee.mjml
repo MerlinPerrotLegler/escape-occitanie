@@ -1,6 +1,6 @@
 <mjml>
   <mj-head>
-    <mj-preview>Un petit mot après votre partie.</mj-preview>
+    <mj-preview>Votre réservation a été modifiée.</mj-preview>
     <mj-attributes>
       <mj-all font-family="Georgia, serif" />
       <mj-text color="#e8dcc8" font-size="16px" line-height="1.55" padding="8px 24px" />
@@ -34,18 +34,27 @@
           font-size="45px"
           line-height="45px"
           font-weight="900">
-          MERCI <br />
-          D'AVOIR ESSAYÉ
+          RÉSERVATION <br />
+          MODIFIÉE
         </mj-text>
       </mj-hero>
       <mj-section background-color="#241f1a" padding="0">
         <mj-column padding="0">
-          <mj-text font-size="22px" color="#f4ead6" padding="24px 24px 12px">Salut {nom},</mj-text>
-          <mj-text padding="0 24px 12px">Vous pourrez retouver votre temps pour {salle} dans le <strong>Hall of Fame</strong>, enfin si vous y êtes.<br />
-          Si l'expérience vous a plu, un avis nous aide beaucoup — et n'hésitez pas à transmettre ce lien aux autres joueurs de votre équipe.</mj-text>
-          <mj-button href="{lien_avis}" background-color="#c9a227" color="#1a1612" font-weight="700" inner-padding="12px 22px" padding="8px 24px 32px">
-            Laisser un avis
-          </mj-button>
+          <mj-text font-size="22px" color="#f4ead6" padding="24px 24px 12px">Bonjour {nom},</mj-text>
+          <mj-text padding="0 24px 12px">Votre réservation a été modifiée. Voici les nouveaux détails :</mj-text>
+          <mj-text padding="0 24px 12px">
+            Salle : {salle}<br />
+            Date : {date}<br />
+            Heure : {heure}<br />
+            Durée : {duree} minutes<br />
+            Joueurs : {joueurs}
+          </mj-text>
+          <mj-text padding="0 24px 12px">Merci d'arriver 15 minutes avant le début de la session une fois la réservation confirmée.</mj-text>
+          <mj-text padding="0 24px 12px">Adresse : {adresse}</mj-text>
+          <mj-text padding="0 24px 12px">
+            Ajoutez l'événement à votre calendrier : fichier joint (reservation.ics) ou téléchargement : {lien_ics}
+          </mj-text>
+          <mj-text padding="0 24px 32px">À très bientôt,<br />L'équipe Escape Occitanie</mj-text>
         </mj-column>
       </mj-section>
     </mj-wrapper>

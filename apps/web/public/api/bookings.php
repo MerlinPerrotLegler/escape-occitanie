@@ -16,7 +16,9 @@ if ($method === 'GET') {
     $filter = (string) ($_GET['filtre'] ?? $_GET['filter'] ?? 'aujourdhui');
     $page = (int) ($_GET['page'] ?? 1);
     $focus = isset($_GET['focus']) ? (int) $_GET['focus'] : null;
-    mt_json_out(200, mt_list_bookings_page($pdo, $filter, $page, $focus > 0 ? $focus : null, $env));
+    $sort = (string) ($_GET['tri'] ?? $_GET['sort'] ?? '');
+    $dir = (string) ($_GET['sens'] ?? $_GET['dir'] ?? '');
+    mt_json_out(200, mt_list_bookings_page($pdo, $filter, $page, $focus > 0 ? $focus : null, $env, $sort, $dir));
 }
 
 if ($method === 'POST' && isset($_GET['id']) && (($_GET['action'] ?? '') === 'mail' || ($_GET['action'] ?? '') === 'confirm')) {
@@ -153,7 +155,7 @@ if ($method === 'PATCH') {
         $emailSent = false;
         if ($before && mt_should_refresh_guest_calendar($before, $booking)) {
             try {
-                $emailSent = mt_send_booking_emails($env, $booking, 'confirmed');
+                $emailSent = mt_send_booking_emails($env, $booking, 'modified');
             } catch (Throwable $ignored) {
                 $emailSent = false;
             }

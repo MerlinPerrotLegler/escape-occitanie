@@ -42,7 +42,7 @@ foreach ($booked as $s) {
     $byTime[$s['time']] = $s['status'];
 }
 expect($byTime['13:00'] === 'reserved', '13:00 reserved by the 60-min game');
-expect($byTime['13:30'] === 'reserved', '13:30 reserved (2nd 30-min unit of the game)');
+expect($byTime['13:30'] === 'closed', '13:30 closed (following unit of the game)');
 expect($byTime['12:30'] === 'open', '12:30 stays open — the game does not occupy that unit');
 expect($byTime['12:00'] === 'open', '12:00 open before the game');
 expect($byTime['14:00'] === 'open', '14:00 open after the game');
@@ -97,7 +97,7 @@ foreach ($bookedClosed as $s) {
     $bookedClosedBy[$s['time']] = $s['status'];
 }
 expect($bookedClosedBy['13:00'] === 'reserved', 'a booking wins over a closed flag on the same unit');
-expect($bookedClosedBy['13:30'] === 'reserved', 'second unit of the game stays reserved');
+expect($bookedClosedBy['13:30'] === 'closed', 'second unit of the game appears closed');
 
 $units = mt_compute_unit_slots($periods, [], [810]);
 $unitBy = [];
@@ -132,9 +132,36 @@ foreach ($annotated as $s) {
 }
 expect(($annotatedBy['13:00']['guest_name'] ?? '') === 'Alice', 'reserved 13:00 shows guest name');
 expect((int) ($annotatedBy['13:00']['booking_id'] ?? 0) === 7, 'reserved 13:00 links to booking id');
-expect(($annotatedBy['13:30']['guest_name'] ?? '') === 'Alice', 'second 30-min of the game shows the same name');
+expect(($annotatedBy['13:30']['status'] ?? '') === 'closed', 'following unit appears closed on the reserved room');
+expect(($annotatedBy['13:30']['guest_name'] ?? null) === null, 'following unit does not show the guest name');
+expect((int) ($annotatedBy['13:30']['booking_id'] ?? 0) === 7, 'following unit still links to the booking');
 expect(($annotatedBy['12:30']['guest_name'] ?? null) === null, 'open slot has no guest name');
 expect(($annotatedBy['12:30']['booking_id'] ?? null) === null, 'open slot has no booking id');
+
+$aliceDirecteur = ['id' => 7, 'room_slug' => 'directeur', 'start_minute' => 780, 'duration_minutes' => 60, 'status' => 'confirmed', 'guest_name' => 'Alice'];
+$otherRoomUnits = mt_annotate_reserved_slots(
+    mt_compute_unit_slots($periods, [$aliceDirecteur], [], 'vaisseau'),
+    [$aliceDirecteur]
+);
+$otherBy = [];
+foreach ($otherRoomUnits as $s) {
+    $otherBy[$s['time']] = $s;
+}
+expect(($otherBy['13:00']['status'] ?? '') === 'closed', 'other room start appears closed');
+expect(($otherBy['13:30']['status'] ?? '') === 'closed', 'other room following unit appears closed');
+expect(($otherBy['13:00']['guest_name'] ?? null) === null, 'other room does not show the guest name');
+expect((int) ($otherBy['13:00']['booking_id'] ?? 0) === 7, 'other room closed unit still links to the booking');
+$sameRoomUnits = mt_annotate_reserved_slots(
+    mt_compute_unit_slots($periods, [$aliceDirecteur], [], 'directeur'),
+    [$aliceDirecteur]
+);
+$sameBy = [];
+foreach ($sameRoomUnits as $s) {
+    $sameBy[$s['time']] = $s;
+}
+expect(($sameBy['13:00']['status'] ?? '') === 'reserved', 'reserved room start stays reserved');
+expect(($sameBy['13:00']['guest_name'] ?? '') === 'Alice', 'reserved room start shows the guest name');
+expect(($sameBy['13:30']['status'] ?? '') === 'closed', 'reserved room following unit is closed');
 $pendingBob = ['id' => 9, 'start_minute' => 780, 'duration_minutes' => 30, 'status' => 'pending', 'guest_name' => 'Bob'];
 $pendingAnnotated = mt_annotate_reserved_slots(mt_compute_unit_slots($periods, [$pendingBob]), [$pendingBob]);
 $pendingBy = [];

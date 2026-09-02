@@ -180,14 +180,22 @@ function mt_next_admin_slot_status(string $status): ?string {
 }
 
 /**
- * @param list<array{start_minute:int,duration_minutes?:int,status?:string}> $bookings
+ * Occupancy: the start unit on the booked room is reserved; other occupied units are closed.
+ *
+ * @param list<array{start_minute:int,duration_minutes?:int,status?:string,room_slug?:string}> $bookings
  * @param list<int>|array<int,string> $flags
  */
-function mt_unit_status(int $minute, array $bookings, array $flags = []): string {
+function mt_unit_status(int $minute, array $bookings, array $flags = [], ?string $room = null): string {
     foreach ($bookings as $booking) {
-        if (mt_ranges_overlap($minute, mt_slot_minutes(), (int) $booking['start_minute'], mt_occupancy_duration($booking))) {
+        if (!mt_ranges_overlap($minute, mt_slot_minutes(), (int) $booking['start_minute'], mt_occupancy_duration($booking))) {
+            continue;
+        }
+        $bookingRoom = (string) ($booking['room_slug'] ?? '');
+        $sameRoom = $room === null || $bookingRoom === '' || $bookingRoom === $room;
+        if ($sameRoom && $minute === (int) $booking['start_minute']) {
             return 'reserved';
         }
+        return 'closed';
     }
     $kind = mt_normalize_slot_flags($flags)[$minute] ?? null;
     if ($kind === 'hidden' || $kind === 'closed') {
@@ -213,9 +221,6 @@ function mt_booking_covering_minute(array $bookings, int $minute): ?array {
  */
 function mt_annotate_reserved_slots(array $slots, array $bookings): array {
     foreach ($slots as &$slot) {
-        if (($slot['status'] ?? '') !== 'reserved') {
-            continue;
-        }
         $booking = mt_booking_covering_minute($bookings, (int) $slot['minute']);
         if (!$booking) {
             continue;
@@ -223,7 +228,7 @@ function mt_annotate_reserved_slots(array $slots, array $bookings): array {
         if (isset($booking['id'])) {
             $slot['booking_id'] = (int) $booking['id'];
         }
-        if (isset($booking['guest_name'])) {
+        if (($slot['status'] ?? '') === 'reserved' && isset($booking['guest_name'])) {
             $slot['guest_name'] = (string) $booking['guest_name'];
         }
     }
@@ -237,14 +242,14 @@ function mt_annotate_reserved_slots(array $slots, array $bookings): array {
  * @param list<int>|array<int,string> $flags
  * @return list<array{time:string,minute:int,status:string}>
  */
-function mt_slots_from_minutes(array $minutes, array $bookings, array $flags = []): array {
+function mt_slots_from_minutes(array $minutes, array $bookings, array $flags = [], ?string $room = null): array {
     $normalized = mt_normalize_slot_flags($flags);
     $slots = [];
     foreach ($minutes as $minute) {
         $slots[] = [
             'time' => mt_minutes_to_hhmm($minute),
             'minute' => $minute,
-            'status' => mt_unit_status($minute, $bookings, $normalized),
+            'status' => mt_unit_status($minute, $bookings, $normalized, $room),
         ];
     }
     return $slots;
@@ -304,8 +309,8 @@ function mt_unit_minutes(array $periods): array {
  * @param list<int>|array<int,string> $flags
  * @return list<array{time:string,minute:int,status:string}>
  */
-function mt_compute_day_slots(array $periods, array $bookings, array $flags = []): array {
-    return mt_slots_from_minutes(mt_game_start_minutes($periods), $bookings, $flags);
+function mt_compute_day_slots(array $periods, array $bookings, array $flags = [], ?string $room = null): array {
+    return mt_slots_from_minutes(mt_game_start_minutes($periods), $bookings, $flags, $room);
 }
 
 /**
@@ -316,6 +321,6 @@ function mt_compute_day_slots(array $periods, array $bookings, array $flags = []
  * @param list<int>|array<int,string> $flags
  * @return list<array{time:string,minute:int,status:string}>
  */
-function mt_compute_unit_slots(array $periods, array $bookings, array $flags = []): array {
-    return mt_slots_from_minutes(mt_unit_minutes($periods), $bookings, $flags);
+function mt_compute_unit_slots(array $periods, array $bookings, array $flags = [], ?string $room = null): array {
+    return mt_slots_from_minutes(mt_unit_minutes($periods), $bookings, $flags, $room);
 }

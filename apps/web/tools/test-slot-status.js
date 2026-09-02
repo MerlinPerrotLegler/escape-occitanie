@@ -8,13 +8,13 @@ function expect(cond, msg) {
   }
 }
 
-expect(nextAdminSlotStatus('open') === 'hidden', 'Ouvert → Indisponible');
-expect(nextAdminSlotStatus('hidden') === 'closed', 'Indisponible → Fermé');
+expect(nextAdminSlotStatus('open') === 'hidden', 'Ouvert → Invisible');
+expect(nextAdminSlotStatus('hidden') === 'closed', 'Invisible → Fermé');
 expect(nextAdminSlotStatus('closed') === 'open', 'Fermé → Ouvert');
 expect(nextAdminSlotStatus('reserved') === null, 'Occupé does not cycle');
 
 expect(slotStatusLabel('open') === 'Ouvert', 'open label');
-expect(slotStatusLabel('hidden') === 'Indisponible', 'hidden label');
+expect(slotStatusLabel('hidden') === 'Invisible', 'hidden label');
 expect(slotStatusLabel('closed') === 'Fermé', 'closed label');
 expect(slotStatusLabel('reserved') === 'Occupé', 'reserved fallback label');
 

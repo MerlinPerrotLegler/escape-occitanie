@@ -5553,3 +5553,1379 @@ début et la fin (au moins 60 minutes, aligné sur 30). Le site propose alors to
 ## 2026-09-02 13:41:27.482Z load
 - url: http://localhost:3000/
 
+## 2026-09-02 13:47:09.218Z load
+- url: http://127.0.0.1:3000/maitre#reservations?filtre=a-confirmer&page=1
+
+## 2026-09-02 13:47:09.552Z load
+- url: http://localhost:3000/
+
+## 2026-09-02 13:47:54.134Z load
+- url: http://localhost:3000/tous-les-creneaux
+
+## 2026-09-02 13:47:54.187Z navigate
+- url: http://localhost:3000/tous-les-creneaux
+- via: replaceState
+
+## 2026-09-02 13:47:57.562Z load
+- url: http://127.0.0.1:3000/tous-les-creneaux
+
+## 2026-09-02 13:47:57.612Z navigate
+- url: http://127.0.0.1:3000/tous-les-creneaux
+- via: replaceState
+
+## 2026-09-02 13:49:58.070Z load
+- url: http://127.0.0.1:3000/tous-les-creneaux
+
+## 2026-09-02 13:49:58.140Z navigate
+- url: http://127.0.0.1:3000/tous-les-creneaux
+- via: replaceState
+
+## 2026-09-02 13:50:10.112Z load
+- url: http://127.0.0.1:3000/reservation
+
+## 2026-09-02 13:50:10.147Z navigate
+- url: http://127.0.0.1:3000/reservation
+- via: replaceState
+
+## 2026-09-02 13:50:10.151Z navigate
+- url: http://127.0.0.1:3000/tous-les-creneaux
+- via: replaceState
+
+## 2026-09-02 13:50:17.871Z click
+- element: {"tag":"button","role":null,"ariaLabel":"Réserver Le Vaisseau Fantôme, mercredi 1 septembre 2027 à 10:00","name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Réserver"}
+
+## 2026-09-02 13:50:28.898Z load
+- url: http://127.0.0.1:3000/reservation/convocation-chez-le-directeur
+
+## 2026-09-02 13:50:28.922Z navigate
+- url: http://127.0.0.1:3000/reservation/convocation-chez-le-directeur
+- via: replaceState
+
+## 2026-09-02 13:50:29.299Z unhandledrejection
+- message: closestOpenSlot is not defined
+- stack: 
+    ReferenceError: closestOpenSlot is not defined
+        at http://127.0.0.1:3000/src/components/BookingCalendar.jsx?t=1788357020385:206:23
+
+## 2026-09-02 13:50:51.603Z click
+- element: {"tag":"a","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Réserver"}
+
+## 2026-09-02 13:50:51.603Z navigate
+- url: http://127.0.0.1:3000/tous-les-creneaux
+- via: pushState
+
+## 2026-09-02 13:51:09.899Z load
+- url: http://localhost:3000/reservation/convocation-chez-le-directeur?date=2026-09-03
+
+## 2026-09-02 13:51:09.955Z navigate
+- url: http://localhost:3000/reservation/convocation-chez-le-directeur?date=2026-09-03
+- via: replaceState
+
+## 2026-09-02 13:51:28.060Z click
+- element: {"tag":"p","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Comparez les deux salles et réservez un créneau de 60 minutes. Votre demande est d’abord enregistrée, puis confirmée par l’équipe."}
+
+## 2026-09-02 13:52:00.253Z click
+- element: {"tag":"button","role":null,"ariaLabel":null,"name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"16:15"}
+
+## 2026-09-02 13:52:08.551Z load
+- url: http://localhost:3000/reservation/convocation-chez-le-directeur?date=2027-09-01&heure=16:15
+
+## 2026-09-02 13:52:08.577Z navigate
+- url: http://localhost:3000/reservation/convocation-chez-le-directeur?date=2027-09-01&heure=16:15
+- via: replaceState
+
+## 2026-09-02 13:54:01.434Z load
+- url: http://127.0.0.1:3000/maitre#planning
+
+## 2026-09-02 13:54:01.488Z navigate
+- url: http://127.0.0.1:3000/maitre#planning
+- via: replaceState
+
+## 2026-09-02 13:54:01.510Z network.error
+- method: GET
+- url: http://127.0.0.1:3000/api/me.php
+- status: 401
+- statusText: Unauthorized
+- response: {"error":"Session expirée."}
+- durationMs: 13
+
+## 2026-09-02 13:54:01.510Z console.error
+- text: Fetch error from http://127.0.0.1:3000/api/me.php: {"error":"Session expirée."}
+
+## 2026-09-02 13:54:19.854Z change
+- element: {"tag":"input","role":null,"ariaLabel":null,"name":null,"type":"email","id":"mt-email","placeholder":null,"label":"Email","value":"contact@escapeoccitanie.fr","valueLength":26,"text":""}
+
+## 2026-09-02 13:54:20.062Z change
+- element: {"tag":"input","role":null,"ariaLabel":null,"name":null,"type":"password","id":"mt-password","placeholder":null,"label":"Mot de passe","value":"[redacted:length=29]","valueLength":29,"text":""}
+
+## 2026-09-02 13:54:30.896Z click
+- element: {"tag":"button","role":null,"ariaLabel":null,"name":null,"type":"submit","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Entrer dans le bureau"}
+
+## 2026-09-02 13:54:30.896Z submit
+- action: http://127.0.0.1:3000/maitre#planning
+- fields: [{"label":"Email","type":"email","value":"contact@escapeoccitanie.fr","length":26,"redacted":false},{"label":"Mot de passe","type":"password","value":"[redacted:length=29]","length":29,"redacted":true},{"label":"Se souvenir de moi","type":"button","value":"on","length":2,"redacted":false},{"label":"[checkbox]","type":"checkbox","value":"on","length":2,"redacted":false},{"label":"[submit]","type":"submit","value":"","length":0,"redacted":false}]
+
+## 2026-09-02 13:55:04.231Z load
+- url: http://127.0.0.1:3000/maitre#reservations?filtre=a-confirmer&page=1
+
+## 2026-09-02 13:55:04.333Z navigate
+- url: http://127.0.0.1:3000/maitre#reservations?filtre=a-confirmer&page=1
+- via: replaceState
+
+## 2026-09-02 13:55:04.359Z network.error
+- method: GET
+- url: http://127.0.0.1:3000/api/me.php
+- status: 401
+- statusText: Unauthorized
+- response: {"error":"Session expirée."}
+- durationMs: 18
+
+## 2026-09-02 13:55:04.359Z console.error
+- text: Fetch error from http://127.0.0.1:3000/api/me.php: {"error":"Session expirée."}
+
+## 2026-09-02 13:55:05.343Z focus
+- element: {"tag":"input","role":null,"ariaLabel":null,"name":null,"type":"email","id":"mt-email","placeholder":null,"label":"Email","value":"","valueLength":0,"text":""}
+
+## 2026-09-02 13:55:05.442Z click
+- element: {"tag":"input","role":null,"ariaLabel":null,"name":null,"type":"email","id":"mt-email","placeholder":null,"label":"Email","value":"","valueLength":0,"text":""}
+
+## 2026-09-02 13:55:06.069Z click
+- element: {"tag":"input","role":null,"ariaLabel":null,"name":null,"type":"email","id":"mt-email","placeholder":null,"label":"Email","value":"","valueLength":0,"text":""}
+
+## 2026-09-02 13:55:06.236Z click
+- element: {"tag":"input","role":null,"ariaLabel":null,"name":null,"type":"email","id":"mt-email","placeholder":null,"label":"Email","value":"","valueLength":0,"text":""}
+
+## 2026-09-02 13:55:12.546Z load
+- url: http://127.0.0.1:3000/maitre#planning
+
+## 2026-09-02 13:55:12.600Z navigate
+- url: http://127.0.0.1:3000/maitre#planning
+- via: replaceState
+
+## 2026-09-02 13:55:12.426Z click
+- element: {"tag":"button","role":null,"ariaLabel":null,"name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"01/09/2026 — 10:00 → 22:00"}
+
+## 2026-09-02 13:55:21.780Z load
+- url: http://127.0.0.1:3000/maitre#reservations?filtre=a-confirmer&page=1
+
+## 2026-09-02 13:55:21.865Z navigate
+- url: http://127.0.0.1:3000/maitre#reservations?filtre=a-confirmer&page=1
+- via: replaceState
+
+## 2026-09-02 13:55:21.891Z network.error
+- method: GET
+- url: http://127.0.0.1:3000/api/me.php
+- status: 401
+- statusText: Unauthorized
+- response: {"error":"Session expirée."}
+- durationMs: 16
+
+## 2026-09-02 13:55:21.891Z console.error
+- text: Fetch error from http://127.0.0.1:3000/api/me.php: {"error":"Session expirée."}
+
+## 2026-09-02 13:55:26.748Z navigate
+- url: http://127.0.0.1:3000/maitre#planning
+- via: popstate
+
+## 2026-09-02 13:55:26.749Z navigate
+- url: http://127.0.0.1:3000/maitre#planning
+- via: popstate
+
+## 2026-09-02 13:55:28.489Z load
+- url: http://localhost:3000/maitre#reservations?filtre=a-confirmer&page=1
+
+## 2026-09-02 13:55:28.544Z navigate
+- url: http://localhost:3000/maitre#reservations?filtre=a-confirmer&page=1
+- via: replaceState
+
+## 2026-09-02 13:55:32.118Z click
+- element: {"tag":"th","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Date"}
+
+## 2026-09-02 13:55:32.643Z click
+- element: {"tag":"button","role":null,"ariaLabel":null,"name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Aujourd’hui"}
+
+## 2026-09-02 13:55:32.644Z navigate
+- url: http://localhost:3000/maitre#reservations?filtre=aujourdhui&page=1
+- via: popstate
+
+## 2026-09-02 13:55:33.359Z click
+- element: {"tag":"button","role":null,"ariaLabel":null,"name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"À confirmer"}
+
+## 2026-09-02 13:55:33.360Z navigate
+- url: http://localhost:3000/maitre#reservations?filtre=a-confirmer&page=1
+- via: popstate
+
+## 2026-09-02 13:55:33.968Z click
+- element: {"tag":"button","role":null,"ariaLabel":null,"name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Aujourd’hui"}
+
+## 2026-09-02 13:55:33.968Z navigate
+- url: http://localhost:3000/maitre#reservations?filtre=aujourdhui&page=1
+- via: popstate
+
+## 2026-09-02 13:55:32.427Z click
+- element: {"tag":"button","role":null,"ariaLabel":"10:00 — Ouvert","name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"10:00Ouvert"}
+
+## 2026-09-02 13:55:34.642Z click
+- element: {"tag":"button","role":null,"ariaLabel":null,"name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"À confirmer"}
+
+## 2026-09-02 13:55:34.642Z navigate
+- url: http://localhost:3000/maitre#reservations?filtre=a-confirmer&page=1
+- via: popstate
+
+## 2026-09-02 13:55:35.417Z click
+- element: {"tag":"button","role":null,"ariaLabel":null,"name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Avis"}
+
+## 2026-09-02 13:55:35.418Z navigate
+- url: http://localhost:3000/maitre#reservations?filtre=avis&page=1
+- via: popstate
+
+## 2026-09-02 13:55:35.901Z click
+- element: {"tag":"button","role":null,"ariaLabel":null,"name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Toutes"}
+
+## 2026-09-02 13:55:35.901Z navigate
+- url: http://localhost:3000/maitre#reservations?filtre=toutes&page=1
+- via: popstate
+
+## 2026-09-02 13:55:48.159Z click
+- element: {"tag":"button","role":null,"ariaLabel":"10:00 — Invisible","name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"10:00Invisible"}
+
+## 2026-09-02 13:55:56.143Z click
+- element: {"tag":"button","role":null,"ariaLabel":"10:00 — Fermé","name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"10:00Fermé"}
+
+## 2026-09-02 13:56:11.383Z change
+- element: {"tag":"select","role":null,"ariaLabel":null,"name":null,"type":null,"id":"planning-month-year","placeholder":null,"label":"Année","value":"2027","valueLength":4,"text":"2025202620272028"}
+
+## 2026-09-02 13:56:47.583Z click
+- element: {"tag":"button","role":null,"ariaLabel":null,"name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"01/09/2027 — 10:00 → 22:00"}
+
+## 2026-09-02 13:58:03.704Z click
+- element: {"tag":"button","role":null,"ariaLabel":"10:15 — Fermé","name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"10:15Fermé"}
+
+## 2026-09-02 13:58:03.705Z navigate
+- url: http://127.0.0.1:3000/maitre#reservations/52?filtre=toutes&page=1
+- via: popstate
+
+## 2026-09-02 13:58:10.437Z click
+- element: {"tag":"button","role":"checkbox","ariaLabel":null,"name":null,"type":"button","id":"mt-block-both","placeholder":null,"label":null,"value":null,"valueLength":0,"text":""}
+
+## 2026-09-02 13:58:10.441Z click
+- element: {"tag":"input","role":null,"ariaLabel":null,"name":null,"type":"checkbox","id":null,"placeholder":null,"label":"[checkbox]","value":"on","valueLength":2,"text":""}
+
+## 2026-09-02 13:58:22.061Z click
+- element: {"tag":"button","role":null,"ariaLabel":null,"name":null,"type":"submit","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Enregistrer les paramètres"}
+
+## 2026-09-02 13:58:22.061Z submit
+- action: http://127.0.0.1:3000/maitre#reservations/52?filtre=toutes&page=1
+- fields: [{"label":"Lors d’une réservation, bloquer les deux salles","type":"button","value":"on","length":2,"redacted":false},{"label":"[checkbox]","type":"checkbox","value":"on","length":2,"redacted":false},{"label":"Lors de la réservation d’une salle, bloquer le créneau qui suit","type":"button","value":"on","length":2,"redacted":false},{"label":"[checkbox]","type":"checkbox","value":"on","length":2,"redacted":false},{"label":"[button]","type":"button","value":"","length":0,"redacted":false},{"label":"[button]","type":"button","value":"","length":0,"redacted":false},{"label":"[button]","type":"button","value":"","length":0,"redacted":false},{"label":"Confirmation automatique","type":"button","value":"on","length":2,"redacted":false},{"label":"[checkbox]","type":"checkbox","value":"on","length":2,"redacted":false},{"label":"[submit]","type":"submit","value":"","length":0,"redacted":false}]
+
+## 2026-09-02 13:58:36.857Z click
+- element: {"tag":"a","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Planning"}
+
+## 2026-09-02 13:58:36.857Z navigate
+- url: http://127.0.0.1:3000/maitre#planning
+- via: popstate
+
+## 2026-09-02 13:58:46.569Z click
+- element: {"tag":"html","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"\n\t\timport { injectIntoGlobalHook } from \"/@react-refresh\";\ninjectIntoGlobalHook(window);\nwindow.$RefreshReg$ = () => {};\nwindow.$RefreshSig$ = () => (type) => type;\n\n\t\t\n\n\t\t\n\t\t\n\t\t\n\t\t\n\t\tBureau de Maître Thibault — Escape Occitanie\n\t\tconst SITE_PAGES_ENDPOINT = '/__horizons/site-pages';\n\nconst OUTGOING_SITE_PAGES_MESSAGE = 'sitePages';\nconst INCOMING_REQUEST_SITE_PAGES_MESSAGE = 'request-site-pages';\n\nconst ALLOWED_PARENT_ORIGINS = [\n\t'https://horizons.hostinger.com',\n\t'https://horizons.hostinger.dev',\n\t'https://horizons-frontend-local.hostinger.dev',\n\t'http://localhost:4000',\n];\n\nfunction postSitePages(pages) {\n\tlet parentOrigin = window.location.ancestorOrigins?.[0];\n\tif (!parentOrigin && document.referrer) {\n\t\ttry {\n\t\t\tparentOrigin = new URL(document.referrer).origin;\n\t\t} catch {}\n\t}\n\tif (parentOrigin && ALLOWED_PARENT_ORIGINS.includes(parentOrigin)) {\n\t\twindow.parent.postMessage({ type: OUTGOING_SITE_PAGES_MESSAGE, payload: { pages } }, parentOrigin);\n\t}\n}\n\nasync function sendSitePagesToParent() {\n\tif (window.self === window.top) {\n\t\treturn;\n\t}\n\n\ttry {\n\t\tconst response = await fetch(SITE_PAGES_ENDPOINT);\n\t\tif (!response.ok) {\n\t\t\tthrow new Error(`HTTP ${response.status}`);\n\t\t}\n\t\tpostSitePages(await response.json());\n\t} catch (error) {\n\t\tconsole.error('[site-pages] Failed to send site pages to parent:', error);\n\t}\n}\n\nif (window.self !== window.top) {\n\twindow.addEventListener('load', sendSitePagesToParent);\n\twindow.addEventListener('message', (event) => {\n\t\tif (event.data?.type === INCOMING_REQUEST_SITE_PAGES_MESSAGE) {\n\t\t\tsendSitePagesToParent();\n\t\t}\n\t});\n}\n\n\t\t\n\t#root[data-edit-mode-enabled=\"true\"] [data-edit-id],\n\t#root[data-edit-mode-enabled=\"true\"] [data-edit-assisted-id] {\n\t\tcursor: default !important;\n\t\toverflow-wrap: anywhere;\n\t}\n\t#root[data-edit-mode-enabled=\"true\"] [data-edit-id][contenteditable=\"true\"],\n\t#root[data-edit-mode-enabled=\"true\"] [data-edit-assisted-id][contenteditable=\"true\"] {\n\t\toutline: 1px solid #673DE6;\n\t\tcaret-color: currentColor;\n\t\tuser-sel..."}
+
+## 2026-09-02 13:58:47.182Z load
+- url: http://127.0.0.1:3000/maitre#reservations?filtre=a-confirmer&page=1
+
+## 2026-09-02 13:58:47.293Z click
+- element: {"tag":"input","role":null,"ariaLabel":null,"name":null,"type":"checkbox","id":null,"placeholder":null,"label":"[checkbox]","value":"on","valueLength":2,"text":""}
+
+## 2026-09-02 13:58:54.406Z load
+- url: http://127.0.0.1:3000/maitre#reservations?filtre=a-confirmer&page=1
+
+## 2026-09-02 13:58:54.459Z navigate
+- url: http://127.0.0.1:3000/maitre#reservations?filtre=a-confirmer&page=1
+- via: replaceState
+
+## 2026-09-02 13:58:54.512Z click
+- element: {"tag":"input","role":null,"ariaLabel":null,"name":null,"type":"checkbox","id":null,"placeholder":null,"label":"[checkbox]","value":"on","valueLength":2,"text":""}
+
+## 2026-09-02 13:58:57.839Z click
+- element: {"tag":"button","role":null,"ariaLabel":null,"name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Avis"}
+
+## 2026-09-02 13:58:57.839Z navigate
+- url: http://127.0.0.1:3000/maitre#reservations?filtre=avis&page=1
+- via: popstate
+
+## 2026-09-02 13:58:58.466Z click
+- element: {"tag":"button","role":null,"ariaLabel":null,"name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Toutes"}
+
+## 2026-09-02 13:58:58.467Z navigate
+- url: http://127.0.0.1:3000/maitre#reservations?filtre=toutes&page=1
+- via: popstate
+
+## 2026-09-02 13:58:59.211Z click
+- element: {"tag":"button","role":null,"ariaLabel":null,"name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Avis"}
+
+## 2026-09-02 13:58:59.211Z navigate
+- url: http://127.0.0.1:3000/maitre#reservations?filtre=avis&page=1
+- via: popstate
+
+## 2026-09-02 13:59:01.093Z click
+- element: {"tag":"button","role":"checkbox","ariaLabel":null,"name":null,"type":"button","id":"mt-auto-confirm","placeholder":null,"label":null,"value":null,"valueLength":0,"text":""}
+
+## 2026-09-02 13:59:01.094Z click
+- element: {"tag":"input","role":null,"ariaLabel":null,"name":null,"type":"checkbox","id":null,"placeholder":null,"label":"[checkbox]","value":"on","valueLength":2,"text":""}
+
+## 2026-09-02 13:59:01.992Z click
+- element: {"tag":"button","role":null,"ariaLabel":null,"name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"30 min"}
+
+## 2026-09-02 13:59:02.472Z click
+- element: {"tag":"button","role":null,"ariaLabel":null,"name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"15 min"}
+
+## 2026-09-02 13:59:03.144Z click
+- element: {"tag":"button","role":"checkbox","ariaLabel":null,"name":null,"type":"button","id":"mt-auto-confirm","placeholder":null,"label":null,"value":null,"valueLength":0,"text":""}
+
+## 2026-09-02 13:59:03.146Z click
+- element: {"tag":"input","role":null,"ariaLabel":null,"name":null,"type":"checkbox","id":null,"placeholder":null,"label":"[checkbox]","value":"on","valueLength":2,"text":""}
+
+## 2026-09-02 13:59:03.739Z click
+- element: {"tag":"button","role":null,"ariaLabel":null,"name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"30 min"}
+
+## 2026-09-02 13:59:04.822Z click
+- element: {"tag":"button","role":null,"ariaLabel":null,"name":null,"type":"submit","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Enregistrer les paramètres"}
+
+## 2026-09-02 13:59:04.823Z submit
+- action: http://127.0.0.1:3000/maitre#reservations?filtre=avis&page=1
+- fields: [{"label":"Lors d’une réservation, bloquer les deux salles","type":"button","value":"on","length":2,"redacted":false},{"label":"[checkbox]","type":"checkbox","value":"on","length":2,"redacted":false},{"label":"Lors de la réservation d’une salle, bloquer le créneau qui suit","type":"button","value":"on","length":2,"redacted":false},{"label":"[checkbox]","type":"checkbox","value":"on","length":2,"redacted":false},{"label":"[button]","type":"button","value":"","length":0,"redacted":false},{"label":"[button]","type":"button","value":"","length":0,"redacted":false},{"label":"[button]","type":"button","value":"","length":0,"redacted":false},{"label":"Confirmation automatique","type":"button","value":"on","length":2,"redacted":false},{"label":"[checkbox]","type":"checkbox","value":"on","length":2,"redacted":false},{"label":"[submit]","type":"submit","value":"","length":0,"redacted":false}]
+
+## 2026-09-02 13:59:44.445Z network.error
+- method: GET
+- url: http://127.0.0.1:3000/api/me.php
+- status: 401
+- statusText: Unauthorized
+- response: {"error":"Session expirée."}
+- durationMs: 9
+
+## 2026-09-02 13:59:44.446Z console.error
+- text: Fetch error from http://127.0.0.1:3000/api/me.php: {"error":"Session expirée."}
+
+## 2026-09-02 13:59:44.508Z click
+- element: {"tag":"input","role":null,"ariaLabel":null,"name":null,"type":"checkbox","id":null,"placeholder":null,"label":"[checkbox]","value":"on","valueLength":2,"text":""}
+
+## 2026-09-02 13:59:46.444Z network.error
+- method: GET
+- url: http://127.0.0.1:3000/api/me.php
+- status: 401
+- statusText: Unauthorized
+- response: {"error":"Session expirée."}
+- durationMs: 8
+
+## 2026-09-02 13:59:46.444Z console.error
+- text: Fetch error from http://127.0.0.1:3000/api/me.php: {"error":"Session expirée."}
+
+## 2026-09-02 13:59:49.443Z network.error
+- method: GET
+- url: http://127.0.0.1:3000/api/me.php
+- status: 401
+- statusText: Unauthorized
+- response: {"error":"Session expirée."}
+- durationMs: 8
+
+## 2026-09-02 13:59:49.444Z console.error
+- text: Fetch error from http://127.0.0.1:3000/api/me.php: {"error":"Session expirée."}
+
+## 2026-09-02 13:59:52.437Z network.error
+- method: GET
+- url: http://127.0.0.1:3000/api/me.php
+- status: 401
+- statusText: Unauthorized
+- response: {"error":"Session expirée."}
+- durationMs: 6
+
+## 2026-09-02 13:59:52.438Z console.error
+- text: Fetch error from http://127.0.0.1:3000/api/me.php: {"error":"Session expirée."}
+
+## 2026-09-02 13:59:54.443Z network.error
+- method: GET
+- url: http://127.0.0.1:3000/api/me.php
+- status: 401
+- statusText: Unauthorized
+- response: {"error":"Session expirée."}
+- durationMs: 10
+
+## 2026-09-02 13:59:54.444Z console.error
+- text: Fetch error from http://127.0.0.1:3000/api/me.php: {"error":"Session expirée."}
+
+## 2026-09-02 14:00:03.584Z click
+- element: {"tag":"button","role":null,"ariaLabel":null,"name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Demain"}
+
+## 2026-09-02 14:00:03.585Z navigate
+- url: http://127.0.0.1:3000/maitre#reservations?filtre=demain&page=1
+- via: popstate
+
+## 2026-09-02 14:00:05.047Z click
+- element: {"tag":"button","role":null,"ariaLabel":null,"name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Aujourd’hui"}
+
+## 2026-09-02 14:00:05.048Z navigate
+- url: http://127.0.0.1:3000/maitre#reservations?filtre=aujourdhui&page=1
+- via: popstate
+
+## 2026-09-02 14:00:05.622Z click
+- element: {"tag":"button","role":null,"ariaLabel":null,"name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Demain"}
+
+## 2026-09-02 14:00:05.623Z navigate
+- url: http://127.0.0.1:3000/maitre#reservations?filtre=demain&page=1
+- via: popstate
+
+## 2026-09-02 14:00:06.064Z click
+- element: {"tag":"button","role":null,"ariaLabel":null,"name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"À confirmer"}
+
+## 2026-09-02 14:00:06.064Z navigate
+- url: http://127.0.0.1:3000/maitre#reservations?filtre=a-confirmer&page=1
+- via: popstate
+
+## 2026-09-02 14:00:07.534Z click
+- element: {"tag":"button","role":null,"ariaLabel":null,"name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Avis"}
+
+## 2026-09-02 14:00:07.534Z navigate
+- url: http://127.0.0.1:3000/maitre#reservations?filtre=avis&page=1
+- via: popstate
+
+## 2026-09-02 14:00:08.806Z click
+- element: {"tag":"button","role":null,"ariaLabel":null,"name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Toutes"}
+
+## 2026-09-02 14:00:08.806Z navigate
+- url: http://127.0.0.1:3000/maitre#reservations?filtre=toutes&page=1
+- via: popstate
+
+## 2026-09-02 14:00:12.264Z click
+- element: {"tag":"th","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Date"}
+
+## 2026-09-02 14:00:12.931Z click
+- element: {"tag":"th","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Heure"}
+
+## 2026-09-02 14:00:13.331Z click
+- element: {"tag":"th","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Salle"}
+
+## 2026-09-02 14:00:14.331Z click
+- element: {"tag":"a","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Planning"}
+
+## 2026-09-02 14:00:14.331Z navigate
+- url: http://127.0.0.1:3000/maitre#planning
+- via: popstate
+
+## 2026-09-02 14:00:14.931Z click
+- element: {"tag":"a","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Records & Avis"}
+
+## 2026-09-02 14:00:14.931Z navigate
+- url: http://127.0.0.1:3000/maitre#records
+- via: popstate
+
+## 2026-09-02 14:00:15.556Z click
+- element: {"tag":"a","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Planning"}
+
+## 2026-09-02 14:00:15.556Z navigate
+- url: http://127.0.0.1:3000/maitre#planning
+- via: popstate
+
+## 2026-09-02 14:00:16.014Z click
+- element: {"tag":"a","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Réservations6"}
+
+## 2026-09-02 14:00:16.014Z navigate
+- url: http://127.0.0.1:3000/maitre#reservations?filtre=a-confirmer&page=1
+- via: popstate
+
+## 2026-09-02 14:00:35.539Z click
+- element: {"tag":"button","role":null,"ariaLabel":null,"name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Modifier"}
+
+## 2026-09-02 14:01:04.436Z network.error
+- method: GET
+- url: http://127.0.0.1:3000/api/me.php
+- status: 401
+- statusText: Unauthorized
+- response: {"error":"Session expirée."}
+- durationMs: 4
+
+## 2026-09-02 14:01:04.436Z console.error
+- text: Fetch error from http://127.0.0.1:3000/api/me.php: {"error":"Session expirée."}
+
+## 2026-09-02 14:01:08.437Z network.error
+- method: GET
+- url: http://127.0.0.1:3000/api/me.php
+- status: 401
+- statusText: Unauthorized
+- response: {"error":"Session expirée."}
+- durationMs: 5
+
+## 2026-09-02 14:01:08.437Z console.error
+- text: Fetch error from http://127.0.0.1:3000/api/me.php: {"error":"Session expirée."}
+
+## 2026-09-02 14:01:10.441Z network.error
+- method: GET
+- url: http://127.0.0.1:3000/api/me.php
+- status: 401
+- statusText: Unauthorized
+- response: {"error":"Session expirée."}
+- durationMs: 7
+
+## 2026-09-02 14:01:10.441Z console.error
+- text: Fetch error from http://127.0.0.1:3000/api/me.php: {"error":"Session expirée."}
+
+## 2026-09-02 14:01:11.581Z click
+- element: {"tag":"input","role":null,"ariaLabel":null,"name":null,"type":"checkbox","id":null,"placeholder":null,"label":"[checkbox]","value":"on","valueLength":2,"text":""}
+
+## 2026-09-02 14:01:12.528Z click
+- element: {"tag":"input","role":null,"ariaLabel":null,"name":null,"type":"checkbox","id":null,"placeholder":null,"label":"[checkbox]","value":"on","valueLength":2,"text":""}
+
+## 2026-09-02 14:01:12.451Z network.error
+- method: GET
+- url: http://127.0.0.1:3000/api/me.php
+- status: 401
+- statusText: Unauthorized
+- response: {"error":"Session expirée."}
+- durationMs: 7
+
+## 2026-09-02 14:01:12.451Z console.error
+- text: Fetch error from http://127.0.0.1:3000/api/me.php: {"error":"Session expirée."}
+
+## 2026-09-02 14:01:14.437Z network.error
+- method: GET
+- url: http://127.0.0.1:3000/api/me.php
+- status: 401
+- statusText: Unauthorized
+- response: {"error":"Session expirée."}
+- durationMs: 6
+
+## 2026-09-02 14:01:14.437Z console.error
+- text: Fetch error from http://127.0.0.1:3000/api/me.php: {"error":"Session expirée."}
+
+## 2026-09-02 14:01:15.442Z network.error
+- method: GET
+- url: http://127.0.0.1:3000/api/me.php
+- status: 401
+- statusText: Unauthorized
+- response: {"error":"Session expirée."}
+- durationMs: 8
+
+## 2026-09-02 14:01:15.442Z console.error
+- text: Fetch error from http://127.0.0.1:3000/api/me.php: {"error":"Session expirée."}
+
+## 2026-09-02 14:01:16.440Z network.error
+- method: GET
+- url: http://127.0.0.1:3000/api/me.php
+- status: 401
+- statusText: Unauthorized
+- response: {"error":"Session expirée."}
+- durationMs: 4
+
+## 2026-09-02 14:01:16.440Z console.error
+- text: Fetch error from http://127.0.0.1:3000/api/me.php: {"error":"Session expirée."}
+
+## 2026-09-02 14:01:18.444Z network.error
+- method: GET
+- url: http://127.0.0.1:3000/api/me.php
+- status: 401
+- statusText: Unauthorized
+- response: {"error":"Session expirée."}
+- durationMs: 11
+
+## 2026-09-02 14:01:18.444Z console.error
+- text: Fetch error from http://127.0.0.1:3000/api/me.php: {"error":"Session expirée."}
+
+## 2026-09-02 14:01:19.440Z network.error
+- method: GET
+- url: http://127.0.0.1:3000/api/me.php
+- status: 401
+- statusText: Unauthorized
+- response: {"error":"Session expirée."}
+- durationMs: 5
+
+## 2026-09-02 14:01:19.440Z console.error
+- text: Fetch error from http://127.0.0.1:3000/api/me.php: {"error":"Session expirée."}
+
+## 2026-09-02 14:01:20.438Z network.error
+- method: GET
+- url: http://127.0.0.1:3000/api/me.php
+- status: 401
+- statusText: Unauthorized
+- response: {"error":"Session expirée."}
+- durationMs: 6
+
+## 2026-09-02 14:01:20.438Z console.error
+- text: Fetch error from http://127.0.0.1:3000/api/me.php: {"error":"Session expirée."}
+
+## 2026-09-02 14:01:22.437Z network.error
+- method: GET
+- url: http://127.0.0.1:3000/api/me.php
+- status: 401
+- statusText: Unauthorized
+- response: {"error":"Session expirée."}
+- durationMs: 6
+
+## 2026-09-02 14:01:22.437Z console.error
+- text: Fetch error from http://127.0.0.1:3000/api/me.php: {"error":"Session expirée."}
+
+## 2026-09-02 14:01:26.436Z network.error
+- method: GET
+- url: http://127.0.0.1:3000/api/me.php
+- status: 401
+- statusText: Unauthorized
+- response: {"error":"Session expirée."}
+- durationMs: 4
+
+## 2026-09-02 14:01:26.436Z console.error
+- text: Fetch error from http://127.0.0.1:3000/api/me.php: {"error":"Session expirée."}
+
+## 2026-09-02 14:01:27.441Z network.error
+- method: GET
+- url: http://127.0.0.1:3000/api/me.php
+- status: 401
+- statusText: Unauthorized
+- response: {"error":"Session expirée."}
+- durationMs: 10
+
+## 2026-09-02 14:01:27.441Z console.error
+- text: Fetch error from http://127.0.0.1:3000/api/me.php: {"error":"Session expirée."}
+
+## 2026-09-02 14:01:38.438Z network.error
+- method: GET
+- url: http://127.0.0.1:3000/api/me.php
+- status: 401
+- statusText: Unauthorized
+- response: {"error":"Session expirée."}
+- durationMs: 5
+
+## 2026-09-02 14:01:38.438Z console.error
+- text: Fetch error from http://127.0.0.1:3000/api/me.php: {"error":"Session expirée."}
+
+## 2026-09-02 14:02:44.582Z load
+- url: http://127.0.0.1:3000/maitre#reservations?filtre=a-confirmer&page=1
+
+## 2026-09-02 14:02:44.631Z navigate
+- url: http://127.0.0.1:3000/maitre#reservations?filtre=a-confirmer&page=1
+- via: replaceState
+
+## 2026-09-02 14:02:44.759Z click
+- element: {"tag":"input","role":null,"ariaLabel":null,"name":null,"type":"checkbox","id":null,"placeholder":null,"label":"[checkbox]","value":"on","valueLength":2,"text":""}
+
+## 2026-09-02 14:02:52.740Z navigate
+- url: http://127.0.0.1:3000/maitre#reservations?filtre=a-confirmer&page=1
+- via: popstate
+
+## 2026-09-02 14:02:52.741Z navigate
+- url: http://127.0.0.1:3000/maitre#reservations?filtre=a-confirmer&page=1
+- via: popstate
+
+## 2026-09-02 14:03:25.651Z load
+- url: http://127.0.0.1:3000/maitre#reservations?filtre=a-confirmer&page=1
+
+## 2026-09-02 14:03:25.700Z navigate
+- url: http://127.0.0.1:3000/maitre#reservations?filtre=a-confirmer&page=1
+- via: replaceState
+
+## 2026-09-02 14:03:25.762Z click
+- element: {"tag":"input","role":null,"ariaLabel":null,"name":null,"type":"checkbox","id":null,"placeholder":null,"label":"[checkbox]","value":"on","valueLength":2,"text":""}
+
+## 2026-09-02 14:03:45.470Z click
+- element: {"tag":"button","role":null,"ariaLabel":null,"name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Demain"}
+
+## 2026-09-02 14:03:45.471Z navigate
+- url: http://127.0.0.1:3000/maitre#reservations?filtre=demain&page=1
+- via: popstate
+
+## 2026-09-02 14:04:11.677Z click
+- element: {"tag":"button","role":null,"ariaLabel":null,"name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"À confirmer"}
+
+## 2026-09-02 14:04:11.677Z navigate
+- url: http://127.0.0.1:3000/maitre#reservations?filtre=a-confirmer&page=1
+- via: popstate
+
+## 2026-09-02 14:04:23.939Z click
+- element: {"tag":"button","role":null,"ariaLabel":null,"name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Client"}
+
+## 2026-09-02 14:04:23.939Z navigate
+- url: http://127.0.0.1:3000/maitre#reservations?filtre=a-confirmer&page=1&tri=client&sens=asc
+- via: popstate
+
+## 2026-09-02 14:04:35.026Z click
+- element: {"tag":"button","role":null,"ariaLabel":null,"name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Client"}
+
+## 2026-09-02 14:04:35.027Z navigate
+- url: http://127.0.0.1:3000/maitre#reservations?filtre=a-confirmer&page=1&tri=client&sens=desc
+- via: popstate
+
+## 2026-09-02 14:04:43.321Z click
+- element: {"tag":"button","role":null,"ariaLabel":null,"name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Heure"}
+
+## 2026-09-02 14:04:43.321Z navigate
+- url: http://127.0.0.1:3000/maitre#reservations?filtre=a-confirmer&page=1&tri=heure&sens=asc
+- via: popstate
+
+## 2026-09-02 14:05:03.465Z click
+- element: {"tag":"button","role":null,"ariaLabel":null,"name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Date"}
+
+## 2026-09-02 14:05:03.465Z navigate
+- url: http://127.0.0.1:3000/maitre#reservations?filtre=a-confirmer&page=1&tri=date&sens=asc
+- via: popstate
+
+## 2026-09-02 14:05:04.864Z click
+- element: {"tag":"button","role":null,"ariaLabel":null,"name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Heure"}
+
+## 2026-09-02 14:05:04.865Z navigate
+- url: http://127.0.0.1:3000/maitre#reservations?filtre=a-confirmer&page=1&tri=heure&sens=asc
+- via: popstate
+
+## 2026-09-02 14:05:05.755Z click
+- element: {"tag":"button","role":null,"ariaLabel":null,"name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Salle"}
+
+## 2026-09-02 14:05:05.755Z navigate
+- url: http://127.0.0.1:3000/maitre#reservations?filtre=a-confirmer&page=1&tri=salle&sens=asc
+- via: popstate
+
+## 2026-09-02 14:05:06.980Z click
+- element: {"tag":"button","role":null,"ariaLabel":null,"name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Salle"}
+
+## 2026-09-02 14:05:06.980Z navigate
+- url: http://127.0.0.1:3000/maitre#reservations?filtre=a-confirmer&page=1&tri=salle&sens=desc
+- via: popstate
+
+## 2026-09-02 14:05:07.731Z click
+- element: {"tag":"button","role":null,"ariaLabel":null,"name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Salle"}
+
+## 2026-09-02 14:05:07.731Z navigate
+- url: http://127.0.0.1:3000/maitre#reservations?filtre=a-confirmer&page=1&tri=salle&sens=asc
+- via: popstate
+
+## 2026-09-02 14:05:08.239Z click
+- element: {"tag":"button","role":null,"ariaLabel":null,"name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Salle"}
+
+## 2026-09-02 14:05:08.239Z navigate
+- url: http://127.0.0.1:3000/maitre#reservations?filtre=a-confirmer&page=1&tri=salle&sens=desc
+- via: popstate
+
+## 2026-09-02 14:05:09.284Z click
+- element: {"tag":"button","role":null,"ariaLabel":null,"name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Date"}
+
+## 2026-09-02 14:05:09.284Z navigate
+- url: http://127.0.0.1:3000/maitre#reservations?filtre=a-confirmer&page=1&tri=date&sens=asc
+- via: popstate
+
+## 2026-09-02 14:05:10.376Z click
+- element: {"tag":"button","role":null,"ariaLabel":null,"name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Date"}
+
+## 2026-09-02 14:05:10.377Z navigate
+- url: http://127.0.0.1:3000/maitre#reservations?filtre=a-confirmer&page=1&tri=date&sens=desc
+- via: popstate
+
+## 2026-09-02 14:05:14.279Z click
+- element: {"tag":"button","role":null,"ariaLabel":null,"name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Heure"}
+
+## 2026-09-02 14:05:14.280Z navigate
+- url: http://127.0.0.1:3000/maitre#reservations?filtre=a-confirmer&page=1&tri=heure&sens=asc
+- via: popstate
+
+## 2026-09-02 14:05:15.629Z click
+- element: {"tag":"button","role":null,"ariaLabel":null,"name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Date"}
+
+## 2026-09-02 14:05:15.630Z navigate
+- url: http://127.0.0.1:3000/maitre#reservations?filtre=a-confirmer&page=1&tri=date&sens=asc
+- via: popstate
+
+## 2026-09-02 14:05:22.112Z click
+- element: {"tag":"button","role":null,"ariaLabel":null,"name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Toutes"}
+
+## 2026-09-02 14:05:22.113Z navigate
+- url: http://127.0.0.1:3000/maitre#reservations?filtre=toutes&page=1&tri=date&sens=asc
+- via: popstate
+
+## 2026-09-02 14:05:23.137Z click
+- element: {"tag":"button","role":null,"ariaLabel":null,"name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Date"}
+
+## 2026-09-02 14:05:23.138Z navigate
+- url: http://127.0.0.1:3000/maitre#reservations?filtre=toutes&page=1&tri=date&sens=desc
+- via: popstate
+
+## 2026-09-02 14:05:25.655Z click
+- element: {"tag":"button","role":null,"ariaLabel":null,"name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Heure"}
+
+## 2026-09-02 14:05:25.656Z navigate
+- url: http://127.0.0.1:3000/maitre#reservations?filtre=toutes&page=1&tri=heure&sens=asc
+- via: popstate
+
+## 2026-09-02 14:05:26.912Z click
+- element: {"tag":"button","role":null,"ariaLabel":null,"name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Date"}
+
+## 2026-09-02 14:05:26.912Z navigate
+- url: http://127.0.0.1:3000/maitre#reservations?filtre=toutes&page=1&tri=date&sens=asc
+- via: popstate
+
+## 2026-09-02 14:05:27.853Z click
+- element: {"tag":"button","role":null,"ariaLabel":null,"name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Heure"}
+
+## 2026-09-02 14:05:27.854Z navigate
+- url: http://127.0.0.1:3000/maitre#reservations?filtre=toutes&page=1&tri=heure&sens=asc
+- via: popstate
+
+## 2026-09-02 14:05:28.662Z click
+- element: {"tag":"button","role":null,"ariaLabel":null,"name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Date"}
+
+## 2026-09-02 14:05:28.662Z navigate
+- url: http://127.0.0.1:3000/maitre#reservations?filtre=toutes&page=1&tri=date&sens=asc
+- via: popstate
+
+## 2026-09-02 14:05:29.828Z click
+- element: {"tag":"button","role":null,"ariaLabel":null,"name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Heure"}
+
+## 2026-09-02 14:05:29.829Z navigate
+- url: http://127.0.0.1:3000/maitre#reservations?filtre=toutes&page=1&tri=heure&sens=asc
+- via: popstate
+
+## 2026-09-02 14:05:30.720Z click
+- element: {"tag":"button","role":null,"ariaLabel":null,"name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Date"}
+
+## 2026-09-02 14:05:30.720Z navigate
+- url: http://127.0.0.1:3000/maitre#reservations?filtre=toutes&page=1&tri=date&sens=asc
+- via: popstate
+
+## 2026-09-02 14:05:31.503Z click
+- element: {"tag":"button","role":null,"ariaLabel":null,"name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Heure"}
+
+## 2026-09-02 14:05:31.503Z navigate
+- url: http://127.0.0.1:3000/maitre#reservations?filtre=toutes&page=1&tri=heure&sens=asc
+- via: popstate
+
+## 2026-09-02 14:05:32.545Z click
+- element: {"tag":"button","role":null,"ariaLabel":null,"name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Date"}
+
+## 2026-09-02 14:05:32.545Z navigate
+- url: http://127.0.0.1:3000/maitre#reservations?filtre=toutes&page=1&tri=date&sens=asc
+- via: popstate
+
+## 2026-09-02 14:05:33.503Z click
+- element: {"tag":"button","role":null,"ariaLabel":null,"name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Heure"}
+
+## 2026-09-02 14:05:33.504Z navigate
+- url: http://127.0.0.1:3000/maitre#reservations?filtre=toutes&page=1&tri=heure&sens=asc
+- via: popstate
+
+## 2026-09-02 14:05:34.337Z click
+- element: {"tag":"button","role":null,"ariaLabel":null,"name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Client"}
+
+## 2026-09-02 14:05:34.337Z navigate
+- url: http://127.0.0.1:3000/maitre#reservations?filtre=toutes&page=1&tri=client&sens=asc
+- via: popstate
+
+## 2026-09-02 14:05:35.445Z click
+- element: {"tag":"button","role":null,"ariaLabel":null,"name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Heure"}
+
+## 2026-09-02 14:05:35.446Z navigate
+- url: http://127.0.0.1:3000/maitre#reservations?filtre=toutes&page=1&tri=heure&sens=asc
+- via: popstate
+
+## 2026-09-02 14:05:36.220Z click
+- element: {"tag":"button","role":null,"ariaLabel":null,"name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Date"}
+
+## 2026-09-02 14:05:36.220Z navigate
+- url: http://127.0.0.1:3000/maitre#reservations?filtre=toutes&page=1&tri=date&sens=asc
+- via: popstate
+
+## 2026-09-02 14:05:37.012Z click
+- element: {"tag":"button","role":null,"ariaLabel":null,"name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Heure"}
+
+## 2026-09-02 14:05:37.012Z navigate
+- url: http://127.0.0.1:3000/maitre#reservations?filtre=toutes&page=1&tri=heure&sens=asc
+- via: popstate
+
+## 2026-09-02 14:05:37.787Z click
+- element: {"tag":"button","role":null,"ariaLabel":null,"name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Date"}
+
+## 2026-09-02 14:05:37.787Z navigate
+- url: http://127.0.0.1:3000/maitre#reservations?filtre=toutes&page=1&tri=date&sens=asc
+- via: popstate
+
+## 2026-09-02 14:06:58.427Z network.error
+- method: GET
+- url: http://127.0.0.1:3000/api/me.php
+- status: 401
+- statusText: Unauthorized
+- response: {"error":"Session expirée."}
+- durationMs: 3
+
+## 2026-09-02 14:06:58.427Z console.error
+- text: Fetch error from http://127.0.0.1:3000/api/me.php: {"error":"Session expirée."}
+
+## 2026-09-02 14:07:05.434Z network.error
+- method: GET
+- url: http://127.0.0.1:3000/api/me.php
+- status: 401
+- statusText: Unauthorized
+- response: {"error":"Session expirée."}
+- durationMs: 10
+
+## 2026-09-02 14:07:05.434Z console.error
+- text: Fetch error from http://127.0.0.1:3000/api/me.php: {"error":"Session expirée."}
+
+## 2026-09-02 14:07:07.431Z network.error
+- method: GET
+- url: http://127.0.0.1:3000/api/me.php
+- status: 401
+- statusText: Unauthorized
+- response: {"error":"Session expirée."}
+- durationMs: 7
+
+## 2026-09-02 14:07:07.431Z console.error
+- text: Fetch error from http://127.0.0.1:3000/api/me.php: {"error":"Session expirée."}
+
+## 2026-09-02 14:07:09.428Z network.error
+- method: GET
+- url: http://127.0.0.1:3000/api/me.php
+- status: 401
+- statusText: Unauthorized
+- response: {"error":"Session expirée."}
+- durationMs: 6
+
+## 2026-09-02 14:07:09.428Z console.error
+- text: Fetch error from http://127.0.0.1:3000/api/me.php: {"error":"Session expirée."}
+
+## 2026-09-02 14:07:54.506Z navigate
+- url: http://127.0.0.1:3000/maitre#reservations?filtre=toutes&page=1
+- via: popstate
+
+## 2026-09-02 14:08:29.042Z click
+- element: {"tag":"button","role":null,"ariaLabel":null,"name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Date"}
+
+## 2026-09-02 14:08:29.042Z navigate
+- url: http://127.0.0.1:3000/maitre#reservations?filtre=toutes&page=1&tri=date&sens=asc
+- via: popstate
+
+## 2026-09-02 14:08:40.802Z click
+- element: {"tag":"button","role":null,"ariaLabel":null,"name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Heure"}
+
+## 2026-09-02 14:08:40.802Z navigate
+- url: http://127.0.0.1:3000/maitre#reservations?filtre=toutes&page=1&tri=date&sens=desc
+- via: popstate
+
+## 2026-09-02 14:12:04.778Z load
+- url: http://127.0.0.1:3000/maitre#reservations?filtre=a-confirmer&page=1
+
+## 2026-09-02 14:12:04.784Z load
+- url: http://127.0.0.1:3000/tous-les-creneaux
+
+## 2026-09-02 14:12:04.786Z load
+- url: http://127.0.0.1:3000/maitre#reservations?filtre=toutes&page=1&tri=date&sens=desc
+
+## 2026-09-02 14:12:05.574Z load
+- url: http://localhost:3000/maitre#reservations?filtre=toutes&page=1
+
+## 2026-09-02 14:12:05.780Z load
+- url: http://127.0.0.1:3000/maitre#reservations?filtre=a-confirmer&page=1
+
+## 2026-09-02 14:12:04.838Z navigate
+- url: http://127.0.0.1:3000/maitre#reservations?filtre=toutes&page=1&tri=date&sens=desc
+- via: replaceState
+
+## 2026-09-02 14:12:04.973Z click
+- element: {"tag":"input","role":null,"ariaLabel":null,"name":null,"type":"checkbox","id":null,"placeholder":null,"label":"[checkbox]","value":"on","valueLength":2,"text":""}
+
+## 2026-09-02 14:12:04.837Z navigate
+- url: http://127.0.0.1:3000/maitre#reservations?filtre=a-confirmer&page=1
+- via: replaceState
+
+## 2026-09-02 14:12:05.137Z click
+- element: {"tag":"input","role":null,"ariaLabel":null,"name":null,"type":"checkbox","id":null,"placeholder":null,"label":"[checkbox]","value":"on","valueLength":2,"text":""}
+
+## 2026-09-02 14:12:06.110Z network.error
+- method: GET
+- url: http://127.0.0.1:3000/api/me.php
+- status: 401
+- statusText: Unauthorized
+- response: {"error":"Session expirée."}
+- durationMs: 115
+
+## 2026-09-02 14:12:06.125Z console.error
+- text: Fetch error from http://127.0.0.1:3000/api/me.php: {"error":"Session expirée."}
+
+## 2026-09-02 14:12:05.840Z navigate
+- url: http://localhost:3000/maitre#reservations?filtre=toutes&page=1
+- via: replaceState
+
+## 2026-09-02 14:12:06.089Z click
+- element: {"tag":"input","role":null,"ariaLabel":null,"name":null,"type":"checkbox","id":null,"placeholder":null,"label":"[checkbox]","value":"on","valueLength":2,"text":""}
+
+## 2026-09-02 14:13:28.625Z load
+- url: http://127.0.0.1:3000/tous-les-creneaux
+
+## 2026-09-02 14:13:28.632Z load
+- url: http://127.0.0.1:3000/maitre#reservations?filtre=a-confirmer&page=1
+
+## 2026-09-02 14:13:28.646Z load
+- url: http://127.0.0.1:3000/maitre#reservations?filtre=toutes&page=1&tri=date&sens=desc
+
+## 2026-09-02 14:13:29.451Z network.error
+- method: GET
+- url: http://127.0.0.1:3000/api/me.php
+- status: 401
+- statusText: Unauthorized
+- response: {"error":"Session expirée."}
+- durationMs: 11
+
+## 2026-09-02 14:13:29.451Z console.error
+- text: Fetch error from http://127.0.0.1:3000/api/me.php: {"error":"Session expirée."}
+
+## 2026-09-02 14:13:29.528Z load
+- url: http://127.0.0.1:3000/maitre#reservations?filtre=a-confirmer&page=1
+
+## 2026-09-02 14:13:29.538Z load
+- url: http://localhost:3000/maitre#reservations?filtre=toutes&page=1
+
+## 2026-09-02 14:13:28.798Z click
+- element: {"tag":"input","role":null,"ariaLabel":null,"name":null,"type":"checkbox","id":null,"placeholder":null,"label":"[checkbox]","value":"on","valueLength":2,"text":""}
+
+## 2026-09-02 14:13:29.005Z click
+- element: {"tag":"input","role":null,"ariaLabel":null,"name":null,"type":"checkbox","id":null,"placeholder":null,"label":"[checkbox]","value":"on","valueLength":2,"text":""}
+
+## 2026-09-02 14:13:29.940Z network.error
+- method: GET
+- url: http://127.0.0.1:3000/api/me.php
+- status: 401
+- statusText: Unauthorized
+- response: {"error":"Session expirée."}
+- durationMs: 234
+
+## 2026-09-02 14:13:29.956Z console.error
+- text: Fetch error from http://127.0.0.1:3000/api/me.php: {"error":"Session expirée."}
+
+## 2026-09-02 14:13:30.032Z click
+- element: {"tag":"input","role":null,"ariaLabel":null,"name":null,"type":"checkbox","id":null,"placeholder":null,"label":"[checkbox]","value":"on","valueLength":2,"text":""}
+
+## 2026-09-02 14:13:33.434Z network.error
+- method: GET
+- url: http://127.0.0.1:3000/api/me.php
+- status: 401
+- statusText: Unauthorized
+- response: {"error":"Session expirée."}
+- durationMs: 6
+
+## 2026-09-02 14:13:33.434Z console.error
+- text: Fetch error from http://127.0.0.1:3000/api/me.php: {"error":"Session expirée."}
+
+## 2026-09-02 14:18:00.140Z load
+- url: http://127.0.0.1:3000/maitre#reservations?filtre=toutes&page=1&tri=date&sens=desc
+
+## 2026-09-02 14:18:00.216Z load
+- url: http://127.0.0.1:3000/tous-les-creneaux
+
+## 2026-09-02 14:18:00.162Z load
+- url: http://127.0.0.1:3000/maitre#reservations?filtre=a-confirmer&page=1
+
+## 2026-09-02 14:18:00.589Z load
+- url: http://localhost:3000/maitre#reservations?filtre=toutes&page=1
+
+## 2026-09-02 14:18:00.714Z load
+- url: http://127.0.0.1:3000/maitre#reservations?filtre=a-confirmer&page=1
+
+## 2026-09-02 14:18:00.427Z click
+- element: {"tag":"input","role":null,"ariaLabel":null,"name":null,"type":"checkbox","id":null,"placeholder":null,"label":"[checkbox]","value":"on","valueLength":2,"text":""}
+
+## 2026-09-02 14:18:00.474Z click
+- element: {"tag":"input","role":null,"ariaLabel":null,"name":null,"type":"checkbox","id":null,"placeholder":null,"label":"[checkbox]","value":"on","valueLength":2,"text":""}
+
+## 2026-09-02 14:18:01.409Z network.error
+- method: GET
+- url: http://127.0.0.1:3000/api/me.php
+- status: 401
+- statusText: Unauthorized
+- response: {"error":"Session expirée."}
+- durationMs: 92
+
+## 2026-09-02 14:18:01.412Z console.error
+- text: Fetch error from http://127.0.0.1:3000/api/me.php: {"error":"Session expirée."}
+
+## 2026-09-02 14:18:01.495Z click
+- element: {"tag":"input","role":null,"ariaLabel":null,"name":null,"type":"checkbox","id":null,"placeholder":null,"label":"[checkbox]","value":"on","valueLength":2,"text":""}
+
+## 2026-09-02 14:18:35.439Z network.error
+- method: GET
+- url: http://127.0.0.1:3000/api/me.php
+- status: 401
+- statusText: Unauthorized
+- response: {"error":"Session expirée."}
+- durationMs: 7
+
+## 2026-09-02 14:18:35.439Z console.error
+- text: Fetch error from http://127.0.0.1:3000/api/me.php: {"error":"Session expirée."}
+
+## 2026-09-02 14:23:48.701Z load
+- url: http://127.0.0.1:3000/tous-les-creneaux
+
+## 2026-09-02 14:23:48.704Z load
+- url: http://127.0.0.1:3000/maitre#reservations?filtre=a-confirmer&page=1
+
+## 2026-09-02 14:23:48.868Z click
+- element: {"tag":"input","role":null,"ariaLabel":null,"name":null,"type":"checkbox","id":null,"placeholder":null,"label":"[checkbox]","value":"on","valueLength":2,"text":""}
+
+## 2026-09-02 14:23:49.201Z load
+- url: http://127.0.0.1:3000/tous-les-creneaux
+
+## 2026-09-02 14:23:49.202Z load
+- url: http://127.0.0.1:3000/maitre#reservations?filtre=a-confirmer&page=1
+
+## 2026-09-02 14:23:49.437Z network.error
+- method: GET
+- url: http://127.0.0.1:3000/api/me.php
+- status: 401
+- statusText: Unauthorized
+- response: {"error":"Session expirée."}
+- durationMs: 10
+
+## 2026-09-02 14:23:49.437Z console.error
+- text: Fetch error from http://127.0.0.1:3000/api/me.php: {"error":"Session expirée."}
+
+## 2026-09-02 14:23:49.610Z load
+- url: http://localhost:3000/maitre#reservations?filtre=toutes&page=1
+
+## 2026-09-02 14:23:49.606Z load
+- url: http://127.0.0.1:3000/maitre#reservations?filtre=a-confirmer&page=1
+
+## 2026-09-02 14:23:49.411Z click
+- element: {"tag":"input","role":null,"ariaLabel":null,"name":null,"type":"checkbox","id":null,"placeholder":null,"label":"[checkbox]","value":"on","valueLength":2,"text":""}
+
+## 2026-09-02 14:23:49.975Z network.error
+- method: GET
+- url: http://127.0.0.1:3000/api/me.php
+- status: 401
+- statusText: Unauthorized
+- response: {"error":"Session expirée."}
+- durationMs: 79
+
+## 2026-09-02 14:23:49.996Z console.error
+- text: Fetch error from http://127.0.0.1:3000/api/me.php: {"error":"Session expirée."}
+
+## 2026-09-02 14:23:50.080Z click
+- element: {"tag":"input","role":null,"ariaLabel":null,"name":null,"type":"checkbox","id":null,"placeholder":null,"label":"[checkbox]","value":"on","valueLength":2,"text":""}
+
+## 2026-09-02 14:23:53.520Z load
+- url: http://127.0.0.1:3000/maitre#reservations?filtre=a-confirmer&page=1
+
+## 2026-09-02 14:23:53.520Z load
+- url: http://127.0.0.1:3000/tous-les-creneaux
+
+## 2026-09-02 14:23:53.761Z click
+- element: {"tag":"input","role":null,"ariaLabel":null,"name":null,"type":"checkbox","id":null,"placeholder":null,"label":"[checkbox]","value":"on","valueLength":2,"text":""}
+
+## 2026-09-02 14:25:13.145Z load
+- url: http://127.0.0.1:3000/tous-les-creneaux
+
+## 2026-09-02 14:25:13.201Z navigate
+- url: http://127.0.0.1:3000/tous-les-creneaux
+- via: replaceState
+
+## 2026-09-02 14:32:54.855Z load
+- url: http://127.0.0.1:3000/maitre#reservations?filtre=a-confirmer&page=1
+
+## 2026-09-02 14:32:55.417Z click
+- element: {"tag":"input","role":null,"ariaLabel":null,"name":null,"type":"checkbox","id":null,"placeholder":null,"label":"[checkbox]","value":"on","valueLength":2,"text":""}
+
+## 2026-09-02 14:32:55.515Z load
+- url: http://127.0.0.1:3000/tous-les-creneaux
+
+## 2026-09-02 14:33:01.117Z load
+- url: http://127.0.0.1:3000/tous-les-creneaux
+
+## 2026-09-02 14:33:01.170Z navigate
+- url: http://127.0.0.1:3000/tous-les-creneaux
+- via: replaceState
+
+## 2026-09-02 14:33:25.603Z click
+- element: {"tag":"button","role":null,"ariaLabel":"Réserver Le Directeur, mercredi 1 septembre 2027 à 17:30","name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Réserver ce créneau"}
+
+## 2026-09-02 14:34:07.306Z click
+- element: {"tag":"a","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Découvrir les salles"}
+
+## 2026-09-02 14:34:07.306Z navigate
+- url: http://127.0.0.1:3000/#salles
+- via: pushState
+
+## 2026-09-02 14:34:53.071Z load
+- url: http://127.0.0.1:3000/salles/convocation-chez-le-directeur
+
+## 2026-09-02 14:34:53.095Z navigate
+- url: http://127.0.0.1:3000/salles/convocation-chez-le-directeur
+- via: replaceState
+
+## 2026-09-02 14:37:36.528Z window.error
+- message: Uncaught ReferenceError: Button is not defined
+- source: http://127.0.0.1:3000/src/components/AvailabilityTimeline.jsx?t=1788359856423
+- line: 217
+- col: 286
+- stack: 
+    ReferenceError: Button is not defined
+        at http://127.0.0.1:3000/src/components/AvailabilityTimeline.jsx?t=1788359856423:217:286
+        at Array.map (<anonymous>)
+        at http://127.0.0.1:3000/src/components/AvailabilityTimeline.jsx?t=1788359856423:214:15
+        at Array.map (<anonymous>)
+        at AvailabilityTimeline (http://127.0.0.1:3000/src/components/AvailabilityTimeline.jsx?t=1788359856423:208:15)
+        at renderWithHooks (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:11596:26)
+        at updateFunctionComponent (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:14630:28)
+        at beginWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:15972:22)
+        at HTMLUnknownElement.callCallback2 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3680:22)
+        at Object.invokeGuardedCallbackDev (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3705:24)
+
+## 2026-09-02 14:37:36.530Z window.error
+- message: Uncaught ReferenceError: Button is not defined
+- source: http://127.0.0.1:3000/src/components/AvailabilityTimeline.jsx?t=1788359856423
+- line: 217
+- col: 286
+- stack: 
+    ReferenceError: Button is not defined
+        at http://127.0.0.1:3000/src/components/AvailabilityTimeline.jsx?t=1788359856423:217:286
+        at Array.map (<anonymous>)
+        at http://127.0.0.1:3000/src/components/AvailabilityTimeline.jsx?t=1788359856423:214:15
+        at Array.map (<anonymous>)
+        at AvailabilityTimeline (http://127.0.0.1:3000/src/components/AvailabilityTimeline.jsx?t=1788359856423:208:15)
+        at renderWithHooks (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:11596:26)
+        at updateFunctionComponent (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:14630:28)
+        at beginWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:15972:22)
+        at HTMLUnknownElement.callCallback2 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3680:22)
+        at Object.invokeGuardedCallbackDev (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3705:24)
+
+## 2026-09-02 14:37:36.531Z console.error
+- text: 
+    The above error occurred in the <AvailabilityTimeline> component:
+    
+        at AvailabilityTimeline (http://127.0.0.1:3000/src/components/AvailabilityTimeline.jsx?t=1788359856423:25:3)
+        at div
+        at MotionComponent (http://127.0.0.1:3000/node_modules/.vite/deps/framer-motion.js?v=b6c39f40:946:40)
+        at Reveal (http://127.0.0.1:3000/src/components/Reveal.jsx:5:19)
+        at section
+        at ReservationPage
+        at RenderedRoute (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:6647:26)
+        at Outlet (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7502:26)
+        at main
+        at PublicLayout
+        at RenderedRoute (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:6647:26)
+        at Routes (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7572:3)
+        at Router (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7511:13)
+        at BrowserRouter (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:10816:3)
+        at App
+    
+    Consider adding an error boundary to your tree to customize error handling behavior.
+    Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries.
+
+## 2026-09-02 14:37:36.532Z unhandledrejection
+- message: Button is not defined
+- stack: 
+    ReferenceError: Button is not defined
+        at http://127.0.0.1:3000/src/components/AvailabilityTimeline.jsx?t=1788359856423:217:286
+        at Array.map (<anonymous>)
+        at http://127.0.0.1:3000/src/components/AvailabilityTimeline.jsx?t=1788359856423:214:15
+        at Array.map (<anonymous>)
+        at AvailabilityTimeline (http://127.0.0.1:3000/src/components/AvailabilityTimeline.jsx?t=1788359856423:208:15)
+        at renderWithHooks (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:11596:26)
+        at updateFunctionComponent (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:14630:28)
+        at beginWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:15972:22)
+        at beginWork$1 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19806:22)
+        at performUnitOfWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19251:20)
+
+## 2026-09-02 14:37:36.833Z root.empty
+- url: http://127.0.0.1:3000/tous-les-creneaux
+
+## 2026-09-02 14:38:12.541Z load
+- url: http://127.0.0.1:3000/reservation/convocation-chez-le-directeur
+
+## 2026-09-02 14:38:12.565Z navigate
+- url: http://127.0.0.1:3000/reservation/convocation-chez-le-directeur
+- via: replaceState
+
+## 2026-09-02 14:38:13.003Z navigate
+- url: http://127.0.0.1:3000/reservation/convocation-chez-le-directeur?date=2027-09-01
+- via: replaceState
+
+## 2026-09-02 14:38:19.413Z load
+- url: http://127.0.0.1:3000/reservation/convocation-chez-le-directeur?date=2027-09-01
+
+## 2026-09-02 14:38:50.598Z window.error
+- message: Uncaught ReferenceError: Button is not defined
+- source: http://127.0.0.1:3000/src/components/AvailabilityTimeline.jsx?t=1788359930506
+- line: 217
+- col: 286
+- stack: 
+    ReferenceError: Button is not defined
+        at http://127.0.0.1:3000/src/components/AvailabilityTimeline.jsx?t=1788359930506:217:286
+        at Array.map (<anonymous>)
+        at http://127.0.0.1:3000/src/components/AvailabilityTimeline.jsx?t=1788359930506:214:15
+        at Array.map (<anonymous>)
+        at AvailabilityTimeline (http://127.0.0.1:3000/src/components/AvailabilityTimeline.jsx?t=1788359930506:208:15)
+        at renderWithHooks (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:11596:26)
+        at updateFunctionComponent (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:14630:28)
+        at beginWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:15972:22)
+        at HTMLUnknownElement.callCallback2 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3680:22)
+        at Object.invokeGuardedCallbackDev (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3705:24)
+
+## 2026-09-02 14:38:50.599Z window.error
+- message: Uncaught ReferenceError: Button is not defined
+- source: http://127.0.0.1:3000/src/components/AvailabilityTimeline.jsx?t=1788359930506
+- line: 217
+- col: 286
+- stack: 
+    ReferenceError: Button is not defined
+        at http://127.0.0.1:3000/src/components/AvailabilityTimeline.jsx?t=1788359930506:217:286
+        at Array.map (<anonymous>)
+        at http://127.0.0.1:3000/src/components/AvailabilityTimeline.jsx?t=1788359930506:214:15
+        at Array.map (<anonymous>)
+        at AvailabilityTimeline (http://127.0.0.1:3000/src/components/AvailabilityTimeline.jsx?t=1788359930506:208:15)
+        at renderWithHooks (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:11596:26)
+        at updateFunctionComponent (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:14630:28)
+        at beginWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:15972:22)
+        at HTMLUnknownElement.callCallback2 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3680:22)
+        at Object.invokeGuardedCallbackDev (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3705:24)
+
+## 2026-09-02 14:38:50.599Z console.error
+- text: 
+    The above error occurred in the <AvailabilityTimeline> component:
+    
+        at AvailabilityTimeline (http://127.0.0.1:3000/src/components/AvailabilityTimeline.jsx?t=1788359930506:25:3)
+        at div
+        at MotionComponent (http://127.0.0.1:3000/node_modules/.vite/deps/framer-motion.js?v=b6c39f40:946:40)
+        at Reveal (http://127.0.0.1:3000/src/components/Reveal.jsx:5:19)
+        at section
+        at ReservationPage
+        at RenderedRoute (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:6647:26)
+        at Outlet (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7502:26)
+        at main
+        at PublicLayout
+        at RenderedRoute (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:6647:26)
+        at Routes (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7572:3)
+        at Router (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7511:13)
+        at BrowserRouter (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:10816:3)
+        at App
+    
+    Consider adding an error boundary to your tree to customize error handling behavior.
+    Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries.
+
+## 2026-09-02 14:38:50.600Z unhandledrejection
+- message: Button is not defined
+- stack: 
+    ReferenceError: Button is not defined
+        at http://127.0.0.1:3000/src/components/AvailabilityTimeline.jsx?t=1788359930506:217:286
+        at Array.map (<anonymous>)
+        at http://127.0.0.1:3000/src/components/AvailabilityTimeline.jsx?t=1788359930506:214:15
+        at Array.map (<anonymous>)
+        at AvailabilityTimeline (http://127.0.0.1:3000/src/components/AvailabilityTimeline.jsx?t=1788359930506:208:15)
+        at renderWithHooks (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:11596:26)
+        at updateFunctionComponent (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:14630:28)
+        at beginWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:15972:22)
+        at beginWork$1 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19806:22)
+        at performUnitOfWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19251:20)
+
+## 2026-09-02 14:38:50.900Z root.empty
+- url: http://127.0.0.1:3000/tous-les-creneaux
+
+## 2026-09-02 14:39:07.887Z click
+- element: {"tag":"button","role":null,"ariaLabel":null,"name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"17:30"}
+
+## 2026-09-02 14:40:06.130Z load
+- url: http://127.0.0.1:3000/tous-les-creneaux
+
+## 2026-09-02 14:40:06.155Z navigate
+- url: http://127.0.0.1:3000/tous-les-creneaux
+- via: replaceState
+
+## 2026-09-02 14:46:23.570Z click
+- element: {"tag":"section","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"RéservationTous les créneauxComparez les deux salles et réservez un créneau de 60 minutes. Votre demande est d’abord enregistrée, puis confirmée par l’équipe.mer. 1 sept. 2027Le DirecteurLe Vaisseau Fantôme16:30Non dispoRéserver ce créneau17:00Non dispoRéserver ce créneau17:30Réserver ce créneauRéserver ce créneau18:00Réserver ce créneauRéserver ce créneau18:30Réserver ce créneauRéserver ce créneau19:00Réserver ce créneauRéserver ce créneau19:30Réserver ce créneauRéserver ce créneau20:00Réserver ce créneauRéserver ce créneau20:30Réserver ce créneauRéserver ce créneau21:00Réserver ce créneauRéserver ce créneauCréneaux de départ toutes les 30 min — occupation 60 min."}
+

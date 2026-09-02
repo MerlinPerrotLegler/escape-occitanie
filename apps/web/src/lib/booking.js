@@ -147,12 +147,14 @@ export function normalizeBookingSettings(raw = {}) {
   };
 }
 
-export async function fetchBookings({ filtre = 'aujourdhui', page = 1, focus } = {}) {
+export async function fetchBookings({ filtre = 'aujourdhui', page = 1, focus, tri, sens } = {}) {
   const params = new URLSearchParams({
     filtre,
     page: String(page),
   });
   if (focus) params.set('focus', String(focus));
+  if (tri) params.set('tri', tri);
+  if (tri && sens) params.set('sens', sens);
   const res = await fetch(`/api/bookings.php?${params}`, { credentials: 'include' });
   return parseJson(res);
 }

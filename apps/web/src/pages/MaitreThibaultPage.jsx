@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
-import { Star } from 'lucide-react';
+import { ArrowUpDown, ChevronDown, ChevronUp, Star } from 'lucide-react';
 import { toast } from 'sonner';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -58,6 +58,8 @@ import PeriodSlots from '@/components/PeriodSlots';
 import { isoToYearMonth, monthBounds } from '@/lib/monthYear';
 import {
   BOOKING_FILTERS,
+  BOOKING_SORTS,
+  bookingSortMatches,
   defaultReservationsFilter,
   parseLocationHash,
   pendingBadgeLabel,
@@ -133,6 +135,36 @@ function hashNeedsPendingDefault(parsed = parseLocationHash()) {
   return parsed.tab === 'reservations' && !parsed.filtreExplicit && !parsed.focusBookingId;
 }
 
+function SortableHead({ column, label, tri, sens, onSort }) {
+  const active = bookingSortMatches(column, tri);
+  return (
+    <th
+      className="px-4 py-3"
+      aria-sort={active ? (sens === 'desc' ? 'descending' : 'ascending') : 'none'}
+    >
+      <button
+        type="button"
+        className={cn(
+          '-ml-1 inline-flex items-center gap-1 rounded-md px-1 py-0.5 text-xs font-medium uppercase tracking-wider transition-colors',
+          active ? 'text-foreground' : 'text-muted-foreground hover:text-foreground'
+        )}
+        onClick={() => onSort(column)}
+      >
+        {label}
+        {active ? (
+          sens === 'desc' ? (
+            <ChevronDown className="h-3.5 w-3.5" aria-hidden="true" />
+          ) : (
+            <ChevronUp className="h-3.5 w-3.5" aria-hidden="true" />
+          )
+        ) : (
+          <ArrowUpDown className="h-3.5 w-3.5 opacity-40" aria-hidden="true" />
+        )}
+      </button>
+    </th>
+  );
+}
+
 const ROOM_LABELS = {
   directeur: ROOMS.directeur.shortName,
   vaisseau: ROOMS.vaisseau.shortName,
@@ -149,6 +181,8 @@ function MaitreThibaultPage() {
   const [focusBookingId, setFocusBookingId] = useState(() => parseLocationHash().focusBookingId);
   const [filtre, setFiltre] = useState(() => parseLocationHash().filtre);
   const [page, setPage] = useState(() => parseLocationHash().page);
+  const [tri, setTri] = useState(() => parseLocationHash().tri);
+  const [sens, setSens] = useState(() => parseLocationHash().sens);
   const [pendingCount, setPendingCount] = useState(null);
   const [filtreReady, setFiltreReady] = useState(() => !hashNeedsPendingDefault());
   const [bookingsTotal, setBookingsTotal] = useState(0);
@@ -200,6 +234,8 @@ function MaitreThibaultPage() {
       filtre: focusBookingId ? 'toutes' : filtre,
       page,
       focus: focusBookingId || undefined,
+      tri: tri || undefined,
+      sens: tri ? sens : undefined,
     });
     setBookings(data.bookings || []);
     setBookingsTotal(data.total || 0);
@@ -210,11 +246,19 @@ function MaitreThibaultPage() {
     return data;
   }
 
-  function goReservations({ nextFiltre = filtre, nextPage = 1, nextFocus = null } = {}) {
+  function goReservations({
+    nextFiltre = filtre,
+    nextPage = 1,
+    nextFocus = null,
+    nextTri = tri,
+    nextSens = sens,
+  } = {}) {
     window.location.hash = reservationsHash({
       filtre: nextFiltre,
       page: nextPage,
       focusBookingId: nextFocus,
+      tri: nextTri,
+      sens: nextSens,
     });
   }
 
@@ -255,6 +299,8 @@ function MaitreThibaultPage() {
       setFocusBookingId(next.focusBookingId);
       setFiltre(next.filtre);
       setPage(next.page);
+      setTri(next.tri);
+      setSens(next.sens);
       setFiltreReady(!hashNeedsPendingDefault(next));
     };
     if (!window.location.hash) {
@@ -277,17 +323,17 @@ function MaitreThibaultPage() {
     window.history.replaceState(
       null,
       '',
-      reservationsHash({ filtre: nextFiltre, page: 1, focusBookingId })
+      reservationsHash({ filtre: nextFiltre, page: 1, focusBookingId, tri, sens })
     );
-  }, [pendingCount, filtreReady, tab, focusBookingId]);
+  }, [pendingCount, filtreReady, tab, focusBookingId, tri, sens]);
 
   useEffect(() => {
     if (tab !== 'reservations' || !filtreReady) return;
-    const next = reservationsHash({ filtre, page, focusBookingId });
+    const next = reservationsHash({ filtre, page, focusBookingId, tri, sens });
     if (window.location.hash !== next) {
       window.history.replaceState(null, '', next);
     }
-  }, [tab, filtre, page, focusBookingId, filtreReady]);
+  }, [tab, filtre, page, focusBookingId, tri, sens, filtreReady]);
 
   useEffect(() => {
     if (tab !== 'reservations' || !focusBookingId) return undefined;
@@ -329,6 +375,8 @@ function MaitreThibaultPage() {
       filtre: focusBookingId ? 'toutes' : filtre,
       page,
       focus: focusBookingId || undefined,
+      tri: tri || undefined,
+      sens: tri ? sens : undefined,
     };
     fetchBookings(query)
       .then((data) => {
@@ -348,7 +396,7 @@ function MaitreThibaultPage() {
     return () => {
       cancelled = true;
     };
-  }, [session, tab, filtre, page, focusBookingId, filtreReady]);
+  }, [session, tab, filtre, page, focusBookingId, tri, sens, filtreReady]);
 
   useEffect(() => {
     if (!session) return undefined;
@@ -531,7 +579,7 @@ function MaitreThibaultPage() {
         toast.success(`Créneau ${slot.time} rouvert.`);
       } else if (next === 'hidden') {
         await closeSlot(room, expandedPeriod.period_date, slot.time, 'hidden');
-        toast.success(`Créneau ${slot.time} indisponible.`);
+        toast.success(`Créneau ${slot.time} invisible.`);
       } else {
         await closeSlot(room, expandedPeriod.period_date, slot.time, 'closed');
         toast.success(`Créneau ${slot.time} fermé.`);
@@ -594,7 +642,7 @@ function MaitreThibaultPage() {
       });
       setBookings((list) => list.map((row) => (row.id === editingBooking ? result.booking : row)));
       setEditingBooking(null);
-      toast.success(result.emailSent ? 'Réservation mise à jour. Calendrier renvoyé au client.' : 'Réservation mise à jour.');
+      toast.success(result.emailSent ? 'Réservation mise à jour. E-mail envoyé au client.' : 'Réservation mise à jour.');
       await reloadBookings();
       if (expandedPeriod) await reloadDaySlots(expandedPeriod.period_date);
     } catch (err) {
@@ -648,6 +696,7 @@ function MaitreThibaultPage() {
 
   function emptyBookingsLabel() {
     if (filtre === 'aujourdhui') return 'Aucune réservation aujourd’hui.';
+    if (filtre === 'demain') return 'Aucune réservation demain.';
     if (filtre === 'a-confirmer') return 'Aucune réservation à confirmer.';
     if (filtre === 'avis') return 'Aucun avis à demander.';
     return 'Aucune réservation.';
@@ -977,7 +1026,7 @@ function MaitreThibaultPage() {
                     <div>
                       <h2 className="font-display text-2xl font-bold tracking-wide">Planning</h2>
                       <p className="mt-2 max-w-2xl text-sm leading-relaxed text-muted-foreground">
-                        Clique une plage pour voir ses créneaux. Cycle : Ouvert → Indisponible →
+                        Clique une plage pour voir ses créneaux. Cycle : Ouvert → Invisible →
                         Fermé → Ouvert. Un créneau occupé (vert) ouvre la réservation.
                       </p>
                     </div>
@@ -1130,12 +1179,24 @@ function MaitreThibaultPage() {
                     <table className="w-full min-w-[720px] text-left text-sm">
                       <thead className="border-b border-border/70 text-xs uppercase tracking-wider text-muted-foreground">
                         <tr>
-                          <th className="px-4 py-3">Date</th>
-                          <th className="px-4 py-3">Heure</th>
-                          <th className="px-4 py-3">Salle</th>
-                          <th className="px-4 py-3">Client</th>
-                          <th className="px-4 py-3">Joueurs</th>
-                          <th className="px-4 py-3">Statut</th>
+                          {BOOKING_SORTS.map((item) => (
+                            <SortableHead
+                              key={item.id}
+                              column={item.id}
+                              label={item.label}
+                              tri={tri}
+                              sens={sens}
+                              onSort={(column) =>
+                                goReservations({
+                                  nextFiltre: filtre,
+                                  nextPage: 1,
+                                  nextTri: column,
+                                  nextSens:
+                                    bookingSortMatches(column, tri) && sens === 'asc' ? 'desc' : 'asc',
+                                })
+                              }
+                            />
+                          ))}
                           <th className="px-4 py-3" />
                         </tr>
                       </thead>

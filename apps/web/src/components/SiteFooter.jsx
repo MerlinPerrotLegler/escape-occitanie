@@ -116,11 +116,11 @@ function SiteFooter() {
             </li>
           </ul>
           <Link
-            to="/reservation"
+            to="/tous-les-creneaux"
             className="mt-5 inline-flex h-10 items-center gap-2 rounded-md bg-primary px-4 text-sm font-semibold text-primary-foreground shadow-[0_0_20px_hsl(var(--primary)/0.35)] transition-all duration-200 hover:brightness-110 active:scale-[0.98]"
           >
             <CalendarDays className="h-4 w-4" strokeWidth={2} />
-            {COPY.commun.nav.reserver}
+            {COPY.commun.nav.tousLesCreneaux}
           </Link>
         </div>
       </div>

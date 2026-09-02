@@ -90,3 +90,29 @@ export function closestOpenSlot(slots, { iso, todayISO, preferredTime, nowMinute
   });
   return best.time;
 }
+
+export function resolveBookingDeepLink({
+  requestedISO,
+  preferredTime,
+  candidates,
+  slotsByDate,
+  todayISO,
+  nowMinutes,
+} = {}) {
+  const dates = candidates || [];
+  if (preferredTime) {
+    for (const iso of dates) {
+      const slot = closestOpenSlot(slotsByDate?.[iso] || [], {
+        iso,
+        todayISO,
+        preferredTime,
+        nowMinutes,
+      });
+      if (slot) return { iso, slot };
+    }
+    return { iso: requestedISO, slot: null };
+  }
+
+  const iso = dates.includes(requestedISO) ? requestedISO : dates[0] || requestedISO;
+  return { iso, slot: null };
+}
