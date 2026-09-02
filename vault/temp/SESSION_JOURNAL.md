@@ -5422,3 +5422,134 @@ début et la fin (au moins 60 minutes, aligné sur 30). Le site propose alors to
 ## 2026-09-02 13:03:27.880Z click
 - element: {"tag":"html","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"\n\t\timport { injectIntoGlobalHook } from \"/@react-refresh\";\ninjectIntoGlobalHook(window);\nwindow.$RefreshReg$ = () => {};\nwindow.$RefreshSig$ = () => (type) => type;\n\n\t\t\n\n\t\t\n\t\t\n\t\t\n\t\t\n\t\tBureau de Maître Thibault — Escape Occitanie\n\t\tconst SITE_PAGES_ENDPOINT = '/__horizons/site-pages';\n\nconst OUTGOING_SITE_PAGES_MESSAGE = 'sitePages';\nconst INCOMING_REQUEST_SITE_PAGES_MESSAGE = 'request-site-pages';\n\nconst ALLOWED_PARENT_ORIGINS = [\n\t'https://horizons.hostinger.com',\n\t'https://horizons.hostinger.dev',\n\t'https://horizons-frontend-local.hostinger.dev',\n\t'http://localhost:4000',\n];\n\nfunction postSitePages(pages) {\n\tlet parentOrigin = window.location.ancestorOrigins?.[0];\n\tif (!parentOrigin && document.referrer) {\n\t\ttry {\n\t\t\tparentOrigin = new URL(document.referrer).origin;\n\t\t} catch {}\n\t}\n\tif (parentOrigin && ALLOWED_PARENT_ORIGINS.includes(parentOrigin)) {\n\t\twindow.parent.postMessage({ type: OUTGOING_SITE_PAGES_MESSAGE, payload: { pages } }, parentOrigin);\n\t}\n}\n\nasync function sendSitePagesToParent() {\n\tif (window.self === window.top) {\n\t\treturn;\n\t}\n\n\ttry {\n\t\tconst response = await fetch(SITE_PAGES_ENDPOINT);\n\t\tif (!response.ok) {\n\t\t\tthrow new Error(`HTTP ${response.status}`);\n\t\t}\n\t\tpostSitePages(await response.json());\n\t} catch (error) {\n\t\tconsole.error('[site-pages] Failed to send site pages to parent:', error);\n\t}\n}\n\nif (window.self !== window.top) {\n\twindow.addEventListener('load', sendSitePagesToParent);\n\twindow.addEventListener('message', (event) => {\n\t\tif (event.data?.type === INCOMING_REQUEST_SITE_PAGES_MESSAGE) {\n\t\t\tsendSitePagesToParent();\n\t\t}\n\t});\n}\n\n\t\t\n\t#root[data-edit-mode-enabled=\"true\"] [data-edit-id],\n\t#root[data-edit-mode-enabled=\"true\"] [data-edit-assisted-id] {\n\t\tcursor: default !important;\n\t\toverflow-wrap: anywhere;\n\t}\n\t#root[data-edit-mode-enabled=\"true\"] [data-edit-id][contenteditable=\"true\"],\n\t#root[data-edit-mode-enabled=\"true\"] [data-edit-assisted-id][contenteditable=\"true\"] {\n\t\toutline: 1px solid #673DE6;\n\t\tcaret-color: currentColor;\n\t\tuser-sel..."}
 
+## 2026-09-02 13:26:00.441Z load
+- url: http://127.0.0.1:3000/reservation
+
+## 2026-09-02 13:26:00.450Z load
+- url: http://127.0.0.1:3000/maitre#reservations?filtre=a-confirmer&page=1
+
+## 2026-09-02 13:26:00.451Z load
+- url: http://127.0.0.1:3000/reservation
+
+## 2026-09-02 13:27:57.596Z load
+- url: http://127.0.0.1:3000/reservation
+
+## 2026-09-02 13:27:57.598Z load
+- url: http://127.0.0.1:3000/maitre#reservations?filtre=a-confirmer&page=1
+
+## 2026-09-02 13:28:29.764Z load
+- url: http://127.0.0.1:3000/maitre#reservations?filtre=a-confirmer&page=1
+
+## 2026-09-02 13:28:29.762Z load
+- url: http://127.0.0.1:3000/reservation
+
+## 2026-09-02 13:32:22.454Z load
+- url: http://localhost:3000/
+
+## 2026-09-02 13:39:14.512Z load
+- url: http://127.0.0.1:3000/maitre#reservations?filtre=a-confirmer&page=1
+
+## 2026-09-02 13:39:15.596Z load
+- url: http://localhost:3000/
+
+## 2026-09-02 13:39:21.764Z load
+- url: http://127.0.0.1:3000/maitre#reservations?filtre=a-confirmer&page=1
+
+## 2026-09-02 13:39:22.461Z load
+- url: http://localhost:3000/
+
+## 2026-09-02 13:39:27.196Z load
+- url: http://127.0.0.1:3000/maitre#reservations?filtre=a-confirmer&page=1
+
+## 2026-09-02 13:39:27.283Z network.error
+- method: GET
+- url: http://127.0.0.1:3000/api/booking-settings.php
+- message: Failed to fetch
+- durationMs: 4
+
+## 2026-09-02 13:39:27.283Z network.error
+- method: GET
+- url: http://127.0.0.1:3000/api/bookings.php?filtre=a-confirmer&page=1
+- message: Failed to fetch
+- durationMs: 4
+
+## 2026-09-02 13:39:27.283Z network.error
+- method: GET
+- url: http://127.0.0.1:3000/api/content.php
+- message: Failed to fetch
+- durationMs: 5
+
+## 2026-09-02 13:39:27.283Z network.error
+- method: GET
+- url: http://127.0.0.1:3000/api/periods.php?from=2026-09-01&to=2026-09-30
+- message: Failed to fetch
+- durationMs: 4
+
+## 2026-09-02 13:39:27.283Z console.error
+- text: 
+    TypeError: Failed to fetch
+        at window.fetch (http://127.0.0.1:3000/@id/virtual:session-journal-client:328:28)
+        at window.fetch (http://127.0.0.1:3000/maitre:497:23)
+        at fetchBookingSettings (http://127.0.0.1:3000/src/lib/booking.js:162:23)
+        at http://127.0.0.1:3000/src/pages/MaitreThibaultPage.jsx?t=1788356361803:287:5
+        at commitHookEffectListMount (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:16963:34)
+        at commitPassiveMountOnFiber (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:18206:19)
+        at commitPassiveMountEffects_complete (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:18179:17)
+        at commitPassiveMountEffects_begin (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:18169:15)
+        at commitPassiveMountEffects (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:18159:11)
+        at flushPassiveEffectsImpl (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19543:11)
+
+## 2026-09-02 13:39:27.283Z console.error
+- text: 
+    TypeError: Failed to fetch
+        at window.fetch (http://127.0.0.1:3000/@id/virtual:session-journal-client:328:28)
+        at window.fetch (http://127.0.0.1:3000/maitre:497:23)
+        at fetchBookings (http://127.0.0.1:3000/src/lib/booking.js:156:21)
+        at http://127.0.0.1:3000/src/pages/MaitreThibaultPage.jsx?t=1788356361803:305:5
+        at commitHookEffectListMount (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:16963:34)
+        at commitPassiveMountOnFiber (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:18206:19)
+        at commitPassiveMountEffects_complete (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:18179:17)
+        at commitPassiveMountEffects_begin (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:18169:15)
+        at commitPassiveMountEffects (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:18159:11)
+        at flushPassiveEffectsImpl (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19543:11)
+
+## 2026-09-02 13:39:27.283Z console.error
+- text: 
+    TypeError: Failed to fetch
+        at window.fetch (http://127.0.0.1:3000/@id/virtual:session-journal-client:328:28)
+        at window.fetch (http://127.0.0.1:3000/maitre:497:23)
+        at fetchSiteContent (http://127.0.0.1:3000/src/lib/siteContent.js:3:23)
+        at http://127.0.0.1:3000/src/pages/MaitreThibaultPage.jsx?t=1788356361803:277:5
+        at commitHookEffectListMount (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:16963:34)
+        at commitPassiveMountOnFiber (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:18206:19)
+        at commitPassiveMountEffects_complete (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:18179:17)
+        at commitPassiveMountEffects_begin (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:18169:15)
+        at commitPassiveMountEffects (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:18159:11)
+        at flushPassiveEffectsImpl (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19543:11)
+
+## 2026-09-02 13:39:27.283Z console.error
+- text: 
+    TypeError: Failed to fetch
+        at window.fetch (http://127.0.0.1:3000/@id/virtual:session-journal-client:328:28)
+        at window.fetch (http://127.0.0.1:3000/maitre:497:23)
+        at fetchPeriods (http://127.0.0.1:3000/src/lib/booking.js:73:21)
+        at http://127.0.0.1:3000/src/pages/MaitreThibaultPage.jsx?t=1788356361803:343:5
+        at commitHookEffectListMount (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:16963:34)
+        at commitPassiveMountOnFiber (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:18206:19)
+        at commitPassiveMountEffects_complete (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:18179:17)
+        at commitPassiveMountEffects_begin (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:18169:15)
+        at commitPassiveMountEffects (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:18159:11)
+        at flushPassiveEffectsImpl (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19543:11)
+
+## 2026-09-02 13:39:27.295Z load
+- url: http://127.0.0.1:3000/maitre#reservations?filtre=a-confirmer&page=1
+
+## 2026-09-02 13:39:27.456Z load
+- url: http://localhost:3000/
+
+## 2026-09-02 13:41:26.655Z load
+- url: http://127.0.0.1:3000/maitre#reservations?filtre=a-confirmer&page=1
+
+## 2026-09-02 13:41:27.482Z load
+- url: http://localhost:3000/
+

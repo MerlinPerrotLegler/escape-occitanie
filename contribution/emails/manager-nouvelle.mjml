@@ -7,26 +7,56 @@
     </mj-attributes>
   </mj-head>
   <mj-body background-color="#1a1612">
-    <mj-section background-color="#1a1612" padding="48px 20px">
-      <mj-column background-color="#241f1a" border-radius="12px" padding="0">
-        <mj-image src="{logo}" alt="{logo_alt}" width="88px" height="88px" border-radius="44px" align="center" padding="28px 20px 16px" />
-        <mj-image src="{image_salle}" alt="{image_salle_alt}" width="560px" padding="0" fluid-on-mobile="true" />
-        <mj-text font-size="22px" color="#f4ead6" padding="24px 24px 12px">Nouvelle réservation ({statut})</mj-text>
-        <mj-text padding="0 24px 16px">
-          Salle : {salle}<br />
-          Date : {date} à {heure}<br />
-          Joueurs : {joueurs}<br />
-          Nom : {nom}<br />
-          E-mail : {email}<br />
-          Téléphone : {telephone}
+    <mj-wrapper padding="48px 20px">
+      <mj-hero
+        mode="fixed-height"
+        height="469px"
+        background-width="600px"
+        background-height="469px"
+        background-url="{image_salle}"
+        background-color="#2a3448"
+        padding="0px">
+        <mj-image
+          src="{logo}"
+          alt="{logo_alt}"
+          width="160px"
+          height="160px"
+          border-radius="80px"
+          align="center"
+          padding="128px 20px 16px"
+          href="{site}"
+        />
+        <mj-text
+          padding="20px"
+          color="#ffffff"
+          font-family="Helvetica"
+          align="center"
+          font-size="45px"
+          line-height="45px"
+          font-weight="900">
+          NOUVELLE <br />
+          RÉSERVATION
         </mj-text>
-        <mj-button href="{lien_confirmer}" background-color="#c9a227" color="#1a1612" font-weight="700" inner-padding="12px 22px">
-          Confirmer la réservation
-        </mj-button>
-        <mj-button href="{lien_voir}" background-color="#241f1a" color="#f4ead6" border="1px solid #c9a227" inner-padding="12px 22px" padding="10px 25px 32px">
-          Voir la réservation
-        </mj-button>
-      </mj-column>
-    </mj-section>
+      </mj-hero>
+      <mj-section background-color="#241f1a" padding="0">
+        <mj-column padding="0">
+          <mj-text font-size="22px" color="#f4ead6" padding="24px 24px 12px">Nouvelle réservation ({statut})</mj-text>
+          <mj-text padding="0 24px 16px">
+            Salle : {salle}<br />
+            Date : {date} à {heure}<br />
+            Joueurs : {joueurs}<br />
+            Nom : {nom}<br />
+            E-mail : {email}<br />
+            Téléphone : {telephone}
+          </mj-text>
+          <mj-button href="{lien_confirmer}" background-color="#c9a227" color="#1a1612" font-weight="700" inner-padding="12px 22px">
+            Confirmer la réservation
+          </mj-button>
+          <mj-button href="{lien_voir}" background-color="#241f1a" color="#f4ead6" border="1px solid #c9a227" inner-padding="12px 22px" padding="10px 25px 32px">
+            Voir la réservation
+          </mj-button>
+        </mj-column>
+      </mj-section>
+    </mj-wrapper>
   </mj-body>
 </mjml>
