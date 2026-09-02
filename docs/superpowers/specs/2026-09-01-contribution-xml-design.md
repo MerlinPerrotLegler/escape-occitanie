@@ -128,7 +128,7 @@ Racine `<salle slug="…">`.
 - `resume` (carte accueil)
 - `histoire` : un ou plusieurs `<p>`
 - `citation`
-- `galerie` : **exactement 3** `<photo src alt legende>`
+- `galerie` : optionnelle ; si présente, chaque `<photo>` a `src`, `alt`, `legende`
 - Textes **identiques aux deux salles** → `commun.xml` : « Toutes les salles », « L'histoire », « Votre mission commence ici », « Informations pratiques », « par session », « accompagnés d'un adulte », « pour vous échapper », « niveau de difficulté », phrase sous le taux de réussite, titres galerie, CTA « Oserez-vous franchir la porte ? » + paragraphe, « Découvrir l'autre salle », « Voir les disponibilités », « Réserver « {nom-court} » ».
 
 ### `reserver.xml`

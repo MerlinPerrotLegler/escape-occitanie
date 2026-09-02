@@ -321,10 +321,8 @@ function parseSalle(contributionDir, mediaDir, file, expectedSlug, node) {
     .map((item) => str(item))
     .filter(Boolean);
   if (histoire.length < 1) throw new Error(`${file}: <histoire> sans <p>`);
-  const photos = asArray(reqNode(file, node, 'galerie').photo);
-  if (photos.length !== 3) {
-    throw new Error(`${file}: <galerie> doit contenir exactement 3 <photo>`);
-  }
+  const galerieNode = node.galerie;
+  const photos = galerieNode ? asArray(galerieNode.photo) : [];
   const difficulty = Number(reqStr(file, node, 'difficulte'));
   if (!Number.isInteger(difficulty) || difficulty < 1 || difficulty > 5) {
     throw new Error(`${file}: <difficulte> doit être 1–5`);

@@ -8,7 +8,7 @@
   <age>Dès 10 ans</age>
   <duree>60 minutes</duree>
   <difficulte>3</difficulte>
-  <images/directeur-bureau-1.png>
+  <image src="images/bureau-directeur-1.png" alt="Bureau du directeur M. Grenot, lampe de banquier verte, téléphone ancien et chaise en cuir"/>
   <resume>Convoqués dans le bureau de M. Grenot, aidez l'inspecteur Dupont à percer le mystère qui plane sur le collège. Fouille, indices et révélations vous attendent.</resume>
   <histoire>
     <p>Vous allez être convoqués dans le bureau du directeur.</p>

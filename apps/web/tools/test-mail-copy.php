@@ -51,12 +51,12 @@ if (is_array($copy) && isset($copy['emails']['client-attente'])) {
     expect(str_contains($parts['html'], 'Ada'), 'html filled name');
     expect(!str_contains($parts['html'], '{nom}'), 'html placeholder gone');
     expect(str_contains($parts['html'], '4bd0e6870391b77d0f13cc22e5fda061.jpg'), 'html has logo');
-    expect(str_contains($parts['html'], 'f2d40922-ae59-47a0-95d4-549223e899bf.png'), 'html has directeur image');
+    expect(str_contains($parts['html'], 'https://escapeoccitanie.fr/media/bureau-directeur-1.png'), 'html has directeur image');
     expect(!str_contains($parts['html'], '{logo}'), 'logo placeholder gone');
     expect(!str_contains($parts['html'], '{image_salle}'), 'room image placeholder gone');
     expect(str_contains($parts['text'], 'Ada'), 'text filled name');
     $vaisseau = mt_booking_email_parts(array_merge($booking, ['room_slug' => 'vaisseau']), 'pending');
-    expect(str_contains($vaisseau['html'], 'c1b6ad64-40d1-40af-90d5-bb894b7f5893.png'), 'html has vaisseau image');
+    expect(str_contains($vaisseau['html'], 'https://escapeoccitanie.fr/media/vaisseau-1.png'), 'html has vaisseau image');
     $confirmed = mt_booking_email_parts(array_merge($booking, ['status' => 'confirmed', 'id' => 1]), 'confirmed', [
         'AUTH_URL' => 'https://escapeoccitanie.fr',
         'AUTH_SECRET' => 'test-secret',

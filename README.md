@@ -25,7 +25,7 @@ Quelques textes contiennent des variables entre accolades (`{nom-court}`, `{nom}
 
 ### Images
 
-Chaque image a un `src` et un `alt` obligatoire. Les photos de galerie ont aussi une `legende`.
+Chaque image a un `src` et un `alt` obligatoire.
 
 Deux formes de `src` :
 
@@ -40,7 +40,6 @@ Deux formes de `src` :
 
 ```xml
 <image src="images/accueil-hero.png" alt="Couloir sombre d'un escape game"/>
-<photo src="images/directeur-galerie-1.png" alt="Loupe sur des notes" legende="Les indices de l'inspecteur"/>
 ```
 
 À la compile, le fichier est recopié vers `/media/…` et le site utilise ce chemin (`images/accueil-hero.png` → `/media/accueil-hero.png`). Un sous-dossier est possible : `images/salles/hero.png` → `/media/salles/hero.png`. Fichier manquant, `src` ni URL ni `images/…` : la compile s’arrête.
@@ -51,7 +50,7 @@ Les e-mails (`{logo}`, `{image_salle}`) reprennent le logo de `contact.xml` et l
 
 L’envoi lui-même est indépendant des images : `HOSTINGER_EMAIL_MCP_TOKEN` (+ `HOSTINGER_MAIL_MAILBOX_ID` si besoin) dans le `.env` du serveur, pas dans les XML.
 
-Chaque salle a **exactement 3** photos dans `<galerie>`. Accueil : **au moins 2** paragraphes d’expérience, **3** stats, et **0 ou 4** atouts. Réservation : **3** étapes.
+Accueil : **au moins 2** paragraphes d’expérience, **3** stats, et **0 ou 4** atouts. Réservation : **3** étapes. Les galeries de photos de salle sont optionnelles (absentes aujourd’hui).
 
 ### Prévisualiser
 
@@ -64,7 +63,7 @@ npm run dev
 
 Le site s’ouvre sur [http://localhost:3000](http://localhost:3000). Enregistrer un XML recharge la page. Si rien ne change, relancer `npm run dev`.
 
-XML cassé, image locale manquante ou galerie incomplète : la compile s’arrête et affiche le fichier en cause. On peut aussi lancer uniquement la compile :
+XML cassé, image locale manquante ou MJML invalide : la compile s’arrête et affiche le fichier en cause. On peut aussi lancer uniquement la compile :
 
 ```bash
 npm run compile:content --prefix apps/web

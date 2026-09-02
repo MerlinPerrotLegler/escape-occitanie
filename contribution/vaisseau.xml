@@ -3,12 +3,12 @@
   <seo titre="La malédiction du Vaisseau Fantôme — Escape Occitanie" description="Naufragés sur une île inconnue, explorez un galion abandonné et brisez la malédiction du capitaine disparu avant que le temps ne soit écoulé. 3 à 6 joueurs, dès 14 ans, 60 minutes. Réservez votre session chez Escape Occitanie."/>
   <nom>La malédiction du Vaisseau Fantôme</nom>
   <nom-court>Le Vaisseau Fantôme</nom-court>
-  <accroche>Aventure maudite en haute mer</accroche>
+  <accroche>Aventure dans un vaisseau maudit</accroche>
   <joueurs>3 à 6 joueurs</joueurs>
   <age>Dès 14 ans</age>
   <duree>60 minutes</duree>
   <difficulte>4</difficulte>
-  <image src="images/vaisseau-1.png">
+  <image src="images/vaisseau-1.png" alt="Porte pirate KEEP OUT, lanterne et table de trésor sous un filet de pêche"/>
   <resume>Naufragés sur une île inconnue, explorez un galion abandonné et brisez la malédiction du capitaine disparu avant que le temps ne soit écoulé.</resume>
   <histoire>
     <p>Après une terrible tempête, vous faites naufrage sur une île inconnue. Au cœur de la brume se dresse une silhouette immense : un galion abandonné, échoué là depuis des siècles, un Vaisseau Fantôme.</p>

@@ -172,38 +172,6 @@ function RoomPage({ roomKey }) {
         </div>
       </section>
 
-      {/* GALERIE */}
-      <section className="border-t border-border/60 bg-card/30 py-20 sm:py-24">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6">
-          <Reveal>
-            <p className="font-display text-xs font-semibold uppercase tracking-[0.35em] text-primary">
-              {labels.galerieSurtitre}
-            </p>
-            <h2 className="mt-4 font-display text-2xl font-bold tracking-wide sm:text-3xl">
-              {labels.galerieTitre}
-            </h2>
-          </Reveal>
-          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {room.gallery.map((photo, i) => (
-              <Reveal key={photo.src} delay={0.08 * i}>
-                <figure className="group relative overflow-hidden rounded-xl border border-border/70">
-                  <img
-                    src={photo.src}
-                    alt={photo.alt}
-                    loading="lazy"
-                    className="aspect-[3/2] w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-                  <figcaption className="absolute bottom-3 left-4 right-4 translate-y-2 text-sm font-medium text-foreground opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
-                    {photo.caption}
-                  </figcaption>
-                </figure>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* CTA FINAL */}
       <section className="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-24">
         <Reveal>

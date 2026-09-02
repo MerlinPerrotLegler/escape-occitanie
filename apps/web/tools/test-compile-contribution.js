@@ -29,7 +29,7 @@ const MJML = `<mjml>
 </mjml>
 `;
 
-function writeMinimal(dir, { localImage = false, extraPhoto = false } = {}) {
+function writeMinimal(dir, { localImage = false, skipGallery = false } = {}) {
   fs.mkdirSync(path.join(dir, 'emails'), { recursive: true });
   fs.mkdirSync(path.join(dir, 'images'), { recursive: true });
   if (localImage) {
@@ -171,14 +171,13 @@ function writeMinimal(dir, { localImage = false, extraPhoto = false } = {}) {
 `
   );
 
-  const photos = extraPhoto
-    ? `<photo src="${imageSrc}" alt="1" legende="a"/>
+  const galleryXml = skipGallery
+    ? ''
+    : `<galerie>
+    <photo src="${imageSrc}" alt="1" legende="a"/>
     <photo src="${imageSrc}" alt="2" legende="b"/>
     <photo src="${imageSrc}" alt="3" legende="c"/>
-    <photo src="${imageSrc}" alt="4" legende="d"/>`
-    : `<photo src="${imageSrc}" alt="1" legende="a"/>
-    <photo src="${imageSrc}" alt="2" legende="b"/>
-    <photo src="${imageSrc}" alt="3" legende="c"/>`;
+  </galerie>`;
 
   for (const [file, slug, difficulte] of [
     ['directeur.xml', 'directeur', '3'],
@@ -203,9 +202,7 @@ function writeMinimal(dir, { localImage = false, extraPhoto = false } = {}) {
     <p>Histoire 2</p>
   </histoire>
   <citation>Citation</citation>
-  <galerie>
-    ${photos}
-  </galerie>
+  ${galleryXml}
 </salle>
 `
     );
@@ -409,15 +406,9 @@ await withTemp(async (dir, out) => {
 });
 
 await withTemp(async (dir, out) => {
-  writeMinimal(dir, { extraPhoto: true });
-  let threw = false;
-  try {
-    await compileContribution(dir, out);
-  } catch (err) {
-    threw = true;
-    expect(String(err.message).toLowerCase().includes('galerie') || String(err.message).includes('3'), `gallery count (got ${err.message})`);
-  }
-  expect(threw, '4 photos throws');
+  writeMinimal(dir, { skipGallery: true });
+  const copy = await compileContribution(dir, out);
+  expect(copy.rooms.directeur.gallery.length === 0, 'gallery optional');
 });
 
 if (failed > 0) {
