@@ -45,6 +45,7 @@
             Salle : {salle}<br />
             Date : {date} à {heure}<br />
             Joueurs : {joueurs}<br />
+            Prix : {prix} € ({prix_personne} € par personne)<br />
             Nom : {nom}<br />
             E-mail : {email}<br />
             Téléphone : {telephone}

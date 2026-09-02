@@ -54,6 +54,14 @@ export function listPublicPages(copy) {
       image: absoluteUrl(origin, copy.accueil.hero.image),
       priority: '1.0',
     },
+    {
+      path: '/tous-les-creneaux',
+      loc: `${origin}/tous-les-creneaux`,
+      title: copy.reserver.page.seo.titre,
+      description: copy.reserver.page.seo.description,
+      image: absoluteUrl(origin, copy.accueil.hero.image),
+      priority: '0.85',
+    },
   ];
   for (const room of rooms) {
     pages.push({

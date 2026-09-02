@@ -78,6 +78,30 @@ function mt_room_image(string $slug): array {
     ];
 }
 
+function mt_slot_price_euros(?array $copy = null): int {
+    $data = $copy ?? mt_load_site_copy();
+    if (!is_array($data)) {
+        return 120;
+    }
+    $n = (int) ($data['reserver']['calendrier']['prixCreneau'] ?? 120);
+    return $n > 0 ? $n : 120;
+}
+
+function mt_format_price_amount(float $amount): string {
+    if (abs($amount - round($amount)) < 0.0001) {
+        return (string) (int) round($amount);
+    }
+    return number_format($amount, 2, ',', '');
+}
+
+function mt_price_per_person(int $players, ?int $slotPrice = null): string {
+    $slot = $slotPrice ?? mt_slot_price_euros();
+    if ($players < 1) {
+        return '';
+    }
+    return mt_format_price_amount($slot / $players);
+}
+
 function mt_booking_copy_vars(array $booking, array $env = []): array {
     $copy = mt_load_site_copy();
     $time = $booking['time'] ?? mt_minutes_to_hhmm((int) $booking['start_minute']);
@@ -85,6 +109,8 @@ function mt_booking_copy_vars(array $booking, array $env = []): array {
     $status = ($booking['status'] ?? '') === 'confirmed' ? 'confirmée' : 'en attente de confirmation';
     $mgrLinks = $env !== [] ? mt_manager_booking_links($env, $booking) : ['voir' => '', 'confirmer' => ''];
     $visual = mt_room_image((string) ($booking['room_slug'] ?? ''));
+    $players = (int) ($booking['players'] ?? 0);
+    $slotPrice = mt_slot_price_euros($copy);
     return [
         'nom' => (string) ($booking['guest_name'] ?? ''),
         'salle' => mt_room_label((string) ($booking['room_slug'] ?? '')),
@@ -92,6 +118,8 @@ function mt_booking_copy_vars(array $booking, array $env = []): array {
         'heure' => (string) $time,
         'duree' => (string) mt_occupancy_duration($booking),
         'joueurs' => (string) ($booking['players'] ?? ''),
+        'prix' => mt_format_price_amount((float) $slotPrice),
+        'prix_personne' => mt_price_per_person($players, $slotPrice),
         'adresse' => (string) ($copy['contact']['address'] ?? '23 Bd de Verdun, 12400 Saint-Affrique'),
         'email' => (string) ($booking['guest_email'] ?? ''),
         'telephone' => (string) ($booking['guest_phone'] ?? ''),
@@ -366,7 +394,8 @@ function mt_booking_customer_email(array $booking, string $kind = 'pending', arr
         . "Date : {$booking['booking_date']}\n"
         . "Heure : {$time}\n"
         . 'Durée : ' . mt_occupancy_duration($booking) . " minutes\n"
-        . "Joueurs : {$booking['players']}\n\n"
+        . "Joueurs : {$booking['players']}\n"
+        . 'Prix : ' . mt_format_price_amount((float) mt_slot_price_euros($copy)) . ' € (' . mt_price_per_person((int) $booking['players']) . " € par personne) — pas de CB\n\n"
         . "Merci d'arriver 15 minutes avant le début de la session une fois la réservation confirmée.\n"
         . "Adresse : {$address}\n";
     if (($kind === 'confirmed' || $kind === 'modified') && $env !== []) {
@@ -386,6 +415,7 @@ function mt_booking_manager_email(array $booking, array $env = []): string {
         . "Salle : {$room}\n"
         . "Date : {$booking['booking_date']} à {$time}\n"
         . "Joueurs : {$booking['players']}\n"
+        . 'Prix : ' . mt_format_price_amount((float) mt_slot_price_euros()) . ' € (' . mt_price_per_person((int) $booking['players']) . " € par personne)\n"
         . "Nom : {$booking['guest_name']}\n"
         . "E-mail : {$booking['guest_email']}\n"
         . "Téléphone : {$booking['guest_phone']}\n";
@@ -443,6 +473,7 @@ function mt_manager_confirm_page_html(array $booking, string $state, array $link
             . 'Salle : ' . $room . '<br>'
             . 'Date : ' . $date . ($time !== '' ? ' à ' . $time : '') . '<br>'
             . 'Joueurs : ' . $players . '<br>'
+            . 'Prix : ' . mt_html(mt_format_price_amount((float) mt_slot_price_euros()) . ' € (' . mt_price_per_person((int) ($booking['players'] ?? 0)) . ' € par personne)') . '<br>'
             . 'Nom : ' . $name . '<br>'
             . 'E-mail : ' . $email . '<br>'
             . 'Téléphone : ' . $phone

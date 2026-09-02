@@ -91,6 +91,15 @@ function reqStr(file, node, key) {
   return value;
 }
 
+function reqInt(file, node, key) {
+  const value = reqStr(file, node, key);
+  const n = Number(value);
+  if (!Number.isInteger(n) || n < 1) {
+    throw new Error(`${file}: <${key}> doit être un entier ≥ 1`);
+  }
+  return n;
+}
+
 function parseXmlFile(filePath) {
   const xml = fs.readFileSync(filePath, 'utf8');
   try {
@@ -425,6 +434,9 @@ function parseReserver(file, node) {
       placeholderEmail: reqStr(file, cal, 'placeholder-email'),
       placeholderTel: reqStr(file, cal, 'placeholder-tel'),
       joueurs: reqStr(file, cal, 'joueurs'),
+      prixCreneau: reqInt(file, cal, 'prix-creneau'),
+      prixOption: reqStr(file, cal, 'prix-option'),
+      prixAide: reqStr(file, cal, 'prix-aide'),
       bouton: reqStr(file, cal, 'bouton'),
       noteAuto: reqStr(file, cal, 'note-auto'),
       noteManuel: reqStr(file, cal, 'note-manuel'),

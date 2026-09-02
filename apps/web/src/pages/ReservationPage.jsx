@@ -15,7 +15,6 @@ function ReservationPage() {
       <Helmet>
         <title>{page.seo.titre}</title>
         <meta name="description" content={page.seo.description} />
-        <meta name="robots" content="noindex, nofollow" />
       </Helmet>
       <Seo
         title={page.seo.titre}

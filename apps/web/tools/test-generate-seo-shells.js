@@ -68,6 +68,12 @@ const copy = {
       titre: 'Réservation — {nom} — Escape Occitanie',
       description: 'Réservez « {nom} ».',
     },
+    page: {
+      seo: {
+        titre: 'Tous les créneaux — Escape Occitanie',
+        description: 'Comparez les deux salles.',
+      },
+    },
   },
 };
 
@@ -85,9 +91,10 @@ expect(postal.addressLocality === 'Saint-Affrique', 'city');
 
 const pages = listPublicPages(copy);
 expect(pages[0].path === '/', 'home first');
+expect(pages.some((p) => p.path === '/tous-les-creneaux'), 'tous-les-creneaux page');
 expect(pages.some((p) => p.path === '/salles/convocation-chez-le-directeur'), 'room page');
 expect(pages.some((p) => p.path === '/reservation/convocation-chez-le-directeur'), 'booking page');
-expect(!pages.some((p) => p.path.includes('tous-les-creneaux') || p.path.includes('maitre')), 'noindex/admin omitted');
+expect(!pages.some((p) => p.path.includes('maitre')), 'admin omitted');
 
 const jsonLd = buildJsonLd(copy);
 expect(jsonLd['@type'].includes('EntertainmentBusiness'), 'jsonld type');
@@ -98,7 +105,7 @@ expect(jsonLd.hasOfferCatalog.itemListElement.length === 2, 'two rooms');
 const sitemap = buildSitemap(pages, '2026-09-02');
 expect(sitemap.includes('<loc>https://escapeoccitanie.fr/</loc>'), 'sitemap home');
 expect(sitemap.includes('https://escapeoccitanie.fr/salles/convocation-chez-le-directeur'), 'sitemap room');
-expect(!sitemap.includes('tous-les-creneaux'), 'sitemap skips noindex');
+expect(sitemap.includes('https://escapeoccitanie.fr/tous-les-creneaux'), 'sitemap all slots');
 expect(sitemap.includes('<lastmod>2026-09-02</lastmod>'), 'sitemap lastmod');
 
 const injected = injectSeo(

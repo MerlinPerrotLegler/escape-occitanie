@@ -11,6 +11,7 @@ import { Button } from '@/components/ui/button';
 import { Form, FormControl, FormField, FormItem, FormMessage } from '@/components/ui/form';
 import { createBooking } from '@/lib/booking';
 import { bookingContactSchemaForRoom, playerCountsForRoom } from '@/lib/bookingContact';
+import { formatPriceAmount, pricePerPerson, slotPriceFromCopy } from '@/lib/bookingPrice';
 import { TurnstileField } from '@/components/TurnstileField';
 import { scrollNodeIntoView } from '@/lib/scrollIntoView';
 
@@ -22,6 +23,14 @@ const dayFormatter = new Intl.DateTimeFormat('fr-FR', {
   month: 'long',
   year: 'numeric',
 });
+
+function bookingPriceVars(players) {
+  const slotPrice = slotPriceFromCopy(COPY);
+  return {
+    prix: formatPriceAmount(slotPrice),
+    prix_personne: formatPriceAmount(pricePerPerson(players, slotPrice)),
+  };
+}
 
 export function BookingSuccess({ booking, room }) {
   const confirmed = booking.status === 'confirmed';
@@ -50,6 +59,7 @@ export function BookingSuccess({ booking, room }) {
           heure: booking.time,
           joueurs: booking.players,
           email: booking.guest_email,
+          ...bookingPriceVars(booking.players),
         })}
       </p>
       <p className="mt-3 text-sm text-muted-foreground">
@@ -73,6 +83,9 @@ export function BookingForm({ room, iso, time, settings, formRef, title, onSucce
     defaultValues: { name: '', email: '', phone: '', players: playerCounts.includes(4) ? 4 : playerCounts[0] },
   });
   const dateLabel = dayFormatter.format(new Date(`${iso}T12:00:00`));
+  const slotPrice = slotPriceFromCopy(COPY);
+  const selectedPlayers = Number(contactForm.watch('players'));
+  const priceVars = bookingPriceVars(selectedPlayers);
 
   useLayoutEffect(() => {
     const frame = requestAnimationFrame(() => scrollNodeIntoView(localFormRef.current));
@@ -184,7 +197,7 @@ export function BookingForm({ room, iso, time, settings, formRef, title, onSucce
           name="players"
           render={({ field }) => (
             <FormItem>
-              <label className="flex items-center gap-2 text-sm">
+              <label className="flex flex-wrap items-center gap-2 text-sm">
                 <Users className="h-4 w-4 text-primary" />
                 {cal.joueurs}
                 <select
@@ -197,11 +210,15 @@ export function BookingForm({ room, iso, time, settings, formRef, title, onSucce
                 >
                   {playerCounts.map((n) => (
                     <option key={n} value={n}>
-                      {n}
+                      {fillCopy(cal.prixOption, {
+                        n,
+                        prix_personne: formatPriceAmount(pricePerPerson(n, slotPrice)),
+                      })}
                     </option>
                   ))}
                 </select>
               </label>
+              <p className="text-sm text-muted-foreground">{fillCopy(cal.prixAide, priceVars)}</p>
               <FormMessage />
             </FormItem>
           )}

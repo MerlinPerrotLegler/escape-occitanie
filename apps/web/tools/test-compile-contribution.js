@@ -243,6 +243,9 @@ function writeMinimal(dir, { localImage = false, skipGallery = false } = {}) {
     <placeholder-email>E-mail</placeholder-email>
     <placeholder-tel>Téléphone</placeholder-tel>
     <joueurs>Joueurs</joueurs>
+    <prix-creneau>120</prix-creneau>
+    <prix-option>{n} — {prix_personne} € / pers.</prix-option>
+    <prix-aide>{prix} € par créneau · {prix_personne} € par personne · pas de CB</prix-aide>
     <bouton>Réserver ce créneau</bouton>
     <note-auto>Note auto {telephone}</note-auto>
     <note-manuel>Note manuel {telephone}</note-manuel>
@@ -344,6 +347,8 @@ await withTemp(async (dir, out) => {
   expect(copy.reserver.page.titre === 'Réservation', 'reserver page titre');
   expect(copy.commun.nav.tousLesCreneaux === 'Tous les créneaux', 'nav tous les créneaux');
   expect(copy.reserver.page.rassuranceLien === 'Découvrir les salles', 'rassurance lien');
+  expect(copy.reserver.calendrier.prixCreneau === 120, 'slot price from xml');
+  expect(copy.reserver.calendrier.prixAide.includes('pas de CB'), 'price help mentions no card');
   expect(copy.reserver.timeline.reserver === 'Réserver ce créneau', 'timeline reserver');
   expect(copy.reserver.timeline.nonDispo === 'Non dispo', 'timeline non dispo');
   expect(copy.emails['client-attente'].sujet === 'Demande', 'email sujet');

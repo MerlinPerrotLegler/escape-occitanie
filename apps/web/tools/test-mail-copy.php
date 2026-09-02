@@ -17,6 +17,13 @@ expect(mt_fill_copy('Réserver « {nom-court} »', ['nom-court' => 'Le Directeur
 expect(mt_fill_copy('Lien {lien_ics}', ['lien_ics' => 'https://x/ics']) === 'Lien https://x/ics', 'fill underscore');
 expect(mt_fill_copy('reste {inconnu}', []) === 'reste {inconnu}', 'unknown kept');
 
+expect(mt_price_per_person(3, 120) === '40', '3 players = 40');
+expect(mt_price_per_person(4, 120) === '30', '4 players = 30');
+expect(mt_price_per_person(5, 120) === '24', '5 players = 24');
+expect(mt_price_per_person(6, 120) === '20', '6 players = 20');
+expect(mt_format_price_amount(40.5) === '40,50', 'decimal price');
+expect(mt_slot_price_euros(['reserver' => ['calendrier' => ['prixCreneau' => 120]]]) === 120, 'slot from copy');
+
 expect(mt_mail_image_src('https://images.hostinger.com/x.png') === 'https://images.hostinger.com/x.png', 'absolute url kept');
 expect(
     mt_mail_image_src('/media/logo.jpg', ['contact' => ['website' => 'https://escapeoccitanie.fr']])
@@ -43,6 +50,9 @@ $booking = [
 $fallback = mt_booking_customer_email($booking, 'pending');
 expect(str_contains($fallback, 'Bonjour Ada'), 'fallback greeting');
 expect(str_contains($fallback, 'Convocation chez le Directeur') || str_contains($fallback, 'Ada'), 'fallback has room or name');
+expect(str_contains($fallback, '120 €'), 'fallback has slot price');
+expect(str_contains($fallback, '30 € par personne'), 'fallback has per-person price');
+expect(str_contains($fallback, 'pas de CB'), 'fallback has no card');
 $fallbackModified = mt_booking_customer_email(array_merge($booking, ['status' => 'confirmed']), 'modified');
 expect(str_contains($fallbackModified, 'modifiée'), 'fallback modified says the booking changed');
 expect(!str_contains($fallbackModified, 'Votre réservation est confirmée.'), 'fallback modified is not the confirmation copy');
@@ -65,6 +75,12 @@ if (is_array($copy) && isset($copy['emails']['client-attente'])) {
         'AUTH_SECRET' => 'test-secret',
     ]);
     expect($confirmed['subject'] === 'Confirmation de réservation — Escape Occitanie', 'confirmed subject');
+    expect(str_contains($confirmed['html'], '120 €'), 'confirmed html has slot price');
+    expect(str_contains($confirmed['html'], '30 € par personne'), 'confirmed html has per-person price');
+    expect(str_contains($confirmed['html'], 'pas de CB'), 'confirmed html has no card');
+    expect(str_contains($confirmed['text'], '120 €'), 'confirmed text has slot price');
+    expect(str_contains($confirmed['text'], '30 € par personne'), 'confirmed text has per-person price');
+    expect(str_contains($confirmed['text'], 'pas de CB'), 'confirmed text has no card');
     expect(str_contains($confirmed['html'], 'calendar.php'), 'confirmed html has ics link');
     expect(!str_contains($confirmed['html'], 'Google Agenda'), 'confirmed html has no google agenda');
     expect(!str_contains($confirmed['html'], 'calendar.google.com'), 'confirmed html has no google template');

@@ -47,7 +47,8 @@
             Date : {date}<br />
             Heure : {heure}<br />
             Durée : {duree} minutes<br />
-            Joueurs : {joueurs}
+            Joueurs : {joueurs}<br />
+            Prix : {prix} € ({prix_personne} € par personne) — pas de CB
           </mj-text>
           <mj-text padding="0 24px 12px">Merci d'arriver 15 minutes avant le début de la session une fois la réservation confirmée.</mj-text>
           <mj-text padding="0 24px 12px">Adresse : {adresse}</mj-text>

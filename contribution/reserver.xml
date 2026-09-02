@@ -35,6 +35,9 @@
     <placeholder-email>E-mail</placeholder-email>
     <placeholder-tel>Téléphone</placeholder-tel>
     <joueurs>Joueurs</joueurs>
+    <prix-creneau>120</prix-creneau>
+    <prix-option>{n} — {prix_personne} € / pers.</prix-option>
+    <prix-aide>{prix} € par créneau · {prix_personne} € par personne · pas de CB</prix-aide>
     <bouton>Réserver ce créneau</bouton>
     <note-auto>Un e-mail de confirmation sera envoyé. Une question ? {telephone}</note-auto>
     <note-manuel>Un e-mail d’accusé de réception sera envoyé. Confirmation par l’équipe ensuite. Une question ? {telephone}</note-manuel>
@@ -44,8 +47,8 @@
     <toast-demande>Demande envoyée, en attente de confirmation.</toast-demande>
     <done-confirme>Réservation confirmée</done-confirme>
     <done-demande>Demande envoyée</done-demande>
-    <done-corps-confirme>{nom}, votre réservation pour « {salle} » le {date} à {heure} ({joueurs} joueurs) est enregistrée. Un e-mail de confirmation a été envoyé à {email}.</done-corps-confirme>
-    <done-corps-demande>{nom}, votre demande pour « {salle} » le {date} à {heure} ({joueurs} joueurs) est enregistrée. Elle sera confirmée par l’équipe. Un e-mail a été envoyé à {email}.</done-corps-demande>
+    <done-corps-confirme>{nom}, votre réservation pour « {salle} » le {date} à {heure} ({joueurs} joueurs, {prix} € soit {prix_personne} € par personne, pas de CB) est enregistrée. Un e-mail de confirmation a été envoyé à {email}.</done-corps-confirme>
+    <done-corps-demande>{nom}, votre demande pour « {salle} » le {date} à {heure} ({joueurs} joueurs, {prix} € soit {prix_personne} € par personne, pas de CB) est enregistrée. Elle sera confirmée par l’équipe. Un e-mail a été envoyé à {email}.</done-corps-demande>
     <done-arrive-confirme>Merci d’arriver 15 minutes en avance.</done-arrive-confirme>
     <done-arrive-attente>Merci d’arriver 15 minutes en avance une fois confirmé.</done-arrive-attente>
   </calendrier>

@@ -168,6 +168,11 @@ function pagesFromSiteCopy() {
 				title: data.accueil?.seo?.titre,
 				description: data.accueil?.seo?.description,
 			},
+			{
+				url: '/tous-les-creneaux',
+				title: data.reserver?.page?.seo?.titre,
+				description: data.reserver?.page?.seo?.description,
+			},
 		];
 		for (const slug of ['directeur', 'vaisseau']) {
 			const room = data.rooms?.[slug];
