@@ -42,12 +42,22 @@ if (is_array($copy) && isset($copy['emails']['client-attente'])) {
     expect($parts['subject'] === 'Demande de réservation — Escape Occitanie', 'pending subject from xml');
     expect(str_contains($parts['html'], 'Ada'), 'html filled name');
     expect(!str_contains($parts['html'], '{nom}'), 'html placeholder gone');
+    expect(str_contains($parts['html'], '4bd0e6870391b77d0f13cc22e5fda061.jpg'), 'html has logo');
+    expect(str_contains($parts['html'], 'f2d40922-ae59-47a0-95d4-549223e899bf.png'), 'html has directeur image');
+    expect(!str_contains($parts['html'], '{logo}'), 'logo placeholder gone');
+    expect(!str_contains($parts['html'], '{image_salle}'), 'room image placeholder gone');
     expect(str_contains($parts['text'], 'Ada'), 'text filled name');
+    $vaisseau = mt_booking_email_parts(array_merge($booking, ['room_slug' => 'vaisseau']), 'pending');
+    expect(str_contains($vaisseau['html'], 'c1b6ad64-40d1-40af-90d5-bb894b7f5893.png'), 'html has vaisseau image');
     $confirmed = mt_booking_email_parts(array_merge($booking, ['status' => 'confirmed', 'id' => 1]), 'confirmed', [
         'AUTH_URL' => 'https://escapeoccitanie.fr',
         'AUTH_SECRET' => 'test-secret',
     ]);
     expect($confirmed['subject'] === 'Confirmation de réservation — Escape Occitanie', 'confirmed subject');
+    expect(str_contains($confirmed['html'], 'calendar.php'), 'confirmed html has ics link');
+    expect(!str_contains($confirmed['html'], 'Google Agenda'), 'confirmed html has no google agenda');
+    expect(!str_contains($confirmed['html'], 'calendar.google.com'), 'confirmed html has no google template');
+    expect(!str_contains($confirmed['text'], 'Google Agenda'), 'confirmed text has no google agenda');
     $mgr = mt_manager_email_parts($booking, [
         'AUTH_URL' => 'https://escapeoccitanie.fr',
         'AUTH_SECRET' => 'test-secret',
@@ -59,6 +69,25 @@ if (is_array($copy) && isset($copy['emails']['client-attente'])) {
 } else {
     fwrite(STDERR, "SKIP: site-copy.json absent, template assertions skipped\n");
 }
+
+$identity = mt_mail_identity('Escape Occitanie <contact@escapeoccitanie.fr>');
+expect($identity['name'] === 'Escape Occitanie', 'from name parsed');
+expect($identity['email'] === 'contact@escapeoccitanie.fr', 'from email parsed');
+$payload = mt_hostinger_send_payload(
+    'ada@example.com',
+    'Sujet',
+    'Texte',
+    '<p>Html</p>',
+    ['filename' => 'reservation.ics', 'content' => 'BEGIN:VCALENDAR', 'mime' => 'text/calendar; method=PUBLISH'],
+    'Escape Occitanie'
+);
+expect($payload['to'] === ['ada@example.com'], 'payload to');
+expect($payload['displayName'] === 'Escape Occitanie', 'payload display name');
+expect($payload['html'] === '<p>Html</p>', 'payload html');
+expect($payload['attachments'][0]['encoding'] === 'base64', 'attachment encoding');
+expect($payload['attachments'][0]['contentType'] === 'text/calendar', 'attachment mime stripped');
+expect($payload['attachments'][0]['content'] === base64_encode('BEGIN:VCALENDAR'), 'attachment base64');
+expect(mt_send_mail(['HOSTINGER_EMAIL_MCP_TOKEN' => ''], 'not-an-email', 'x', 'y') === false, 'invalid recipient rejected');
 
 if ($failed > 0) {
     fwrite(STDERR, "$failed assertion(s) failed\n");

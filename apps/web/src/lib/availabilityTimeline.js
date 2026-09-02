@@ -57,7 +57,14 @@ export function buildColumns(days, slotsByRoomByDate, { todayISO, nowMinutes, ro
         if (slot?.time) times.add(slot.time);
       }
     }
-    for (const time of [...times].sort()) {
+    const sorted = [...times].sort();
+    if (sorted.length === 0) {
+      const cells = {};
+      for (const slug of roomSlugs) cells[slug] = 'unavailable';
+      columns.push({ iso, time: null, cells });
+      continue;
+    }
+    for (const time of sorted) {
       const cells = {};
       for (const slug of roomSlugs) {
         const slot = (slotsByRoomByDate?.[slug]?.[iso] || []).find((row) => row.time === time);
@@ -77,6 +84,11 @@ export function groupColumnsByDay(columns) {
     else groups.push({ iso: col.iso, columns: [col] });
   }
   return groups;
+}
+
+export function formatColumnDate(iso) {
+  const date = new Date(`${iso}T12:00:00`);
+  return new Intl.DateTimeFormat('fr-FR', { weekday: 'short', day: 'numeric' }).format(date);
 }
 
 export function formatDayHeading(iso, todayISO) {

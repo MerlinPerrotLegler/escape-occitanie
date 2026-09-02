@@ -47,7 +47,7 @@ if ($method === 'POST' && isset($_GET['id']) && (($_GET['action'] ?? '') === 'ma
     $kind = $booking['status'] === 'confirmed' ? 'confirmed' : 'pending';
     $emailSent = false;
     try {
-        $attachment = $kind === 'confirmed' ? mt_booking_ics_attachment($booking) : null;
+        $attachment = $kind === 'confirmed' ? mt_booking_ics_attachment($booking, $env) : null;
         $parts = mt_booking_email_parts($booking, $kind, $env);
         $emailSent = mt_send_mail(
             $env,
@@ -116,11 +116,20 @@ if ($method === 'PATCH') {
             $fields['date'] = trim((string) $body['date']);
             $fields['time'] = trim((string) $body['time']);
         }
+        $before = mt_get_booking($pdo, $id);
         $booking = mt_update_booking($pdo, $id, $fields);
         if (!$booking) {
             mt_json_out(404, ['error' => 'Réservation introuvable.']);
         }
-        mt_json_out(200, ['booking' => $booking]);
+        $emailSent = false;
+        if ($before && mt_should_refresh_guest_calendar($before, $booking)) {
+            try {
+                $emailSent = mt_send_booking_emails($env, $booking, 'confirmed');
+            } catch (Throwable $ignored) {
+                $emailSent = false;
+            }
+        }
+        mt_json_out(200, ['booking' => $booking, 'emailSent' => $emailSent]);
     } catch (InvalidArgumentException $e) {
         mt_json_out(400, ['error' => $e->getMessage()]);
     } catch (RuntimeException $e) {

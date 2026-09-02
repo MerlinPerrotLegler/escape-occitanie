@@ -3800,7 +3800,7 @@ début et la fin (au moins 60 minutes, aligné sur 30). Le site propose alors to
 - via: popstate
 
 ## 2026-09-02 07:48:14.592Z change
-- element: {"tag":"input","role":null,"ariaLabel":null,"name":null,"type":"email","id":"mt-email","placeholder":null,"label":"Email","value":"escapeoccitanie@gmail.com","valueLength":25,"text":""}
+- element: {"tag":"input","role":null,"ariaLabel":null,"name":null,"type":"email","id":"mt-email","placeholder":null,"label":"Email","value":"contact@escapeoccitanie.fr","valueLength":25,"text":""}
 
 ## 2026-09-02 07:48:14.595Z change
 - element: {"tag":"input","role":null,"ariaLabel":null,"name":null,"type":"password","id":"mt-password","placeholder":null,"label":"Mot de passe","value":"[redacted:length=29]","valueLength":29,"text":""}
@@ -3810,7 +3810,7 @@ début et la fin (au moins 60 minutes, aligné sur 30). Le site propose alors to
 
 ## 2026-09-02 07:48:17.962Z submit
 - action: http://localhost:3000/maitre#reservations
-- fields: [{"label":"Email","type":"email","value":"escapeoccitanie@gmail.com","length":25,"redacted":false},{"label":"Mot de passe","type":"password","value":"[redacted:length=29]","length":29,"redacted":true},{"label":"Se souvenir de moi","type":"button","value":"on","length":2,"redacted":false},{"label":"[checkbox]","type":"checkbox","value":"on","length":2,"redacted":false},{"label":"[submit]","type":"submit","value":"","length":0,"redacted":false}]
+- fields: [{"label":"Email","type":"email","value":"contact@escapeoccitanie.fr","length":25,"redacted":false},{"label":"Mot de passe","type":"password","value":"[redacted:length=29]","length":29,"redacted":true},{"label":"Se souvenir de moi","type":"button","value":"on","length":2,"redacted":false},{"label":"[checkbox]","type":"checkbox","value":"on","length":2,"redacted":false},{"label":"[submit]","type":"submit","value":"","length":0,"redacted":false}]
 
 ## 2026-09-02 07:48:17.985Z navigate
 - url: http://localhost:3000/maitre#reservations?filtre=a-confirmer&page=1
@@ -3971,4 +3971,412 @@ début et la fin (au moins 60 minutes, aligné sur 30). Le site propose alors to
 
 ## 2026-09-02 08:33:40.025Z click
 - element: {"tag":"button","role":null,"ariaLabel":"Ouvrir le menu","name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":""}
+
+## 2026-09-02 08:42:12.618Z load
+- url: http://localhost:3000/reservation/convocation-chez-le-directeur?date=2027-09-01
+
+## 2026-09-02 08:42:12.681Z navigate
+- url: http://localhost:3000/reservation/convocation-chez-le-directeur?date=2027-09-01
+- via: replaceState
+
+## 2026-09-02 08:42:15.055Z click
+- element: {"tag":"a","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Réserver"}
+
+## 2026-09-02 08:42:15.056Z navigate
+- url: http://localhost:3000/reservation
+- via: pushState
+
+## 2026-09-02 08:42:19.240Z click
+- element: {"tag":"button","role":null,"ariaLabel":"Réserver Le Directeur, mercredi 1 septembre 2027 à 12:00","name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Réserver"}
+
+## 2026-09-02 08:42:23.754Z click
+- element: {"tag":"p","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Comparez les deux salles et réservez un créneau de 60 minutes. Votre demande est d’abord enregistrée, puis confirmée par l’équipe."}
+
+## 2026-09-02 08:42:27.794Z navigate
+- url: http://localhost:3000/reservation/convocation-chez-le-directeur?date=2027-09-01
+- via: popstate
+
+## 2026-09-02 08:42:29.571Z click
+- element: {"tag":"a","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Réserver"}
+
+## 2026-09-02 08:42:29.571Z navigate
+- url: http://localhost:3000/reservation
+- via: pushState
+
+## 2026-09-02 08:44:14.301Z navigate
+- url: http://localhost:3000/reservation/convocation-chez-le-directeur?date=2027-09-01
+- via: popstate
+
+## 2026-09-02 08:44:40.412Z click
+- element: {"tag":"a","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Accueil"}
+
+## 2026-09-02 08:44:40.412Z navigate
+- url: http://localhost:3000/
+- via: pushState
+
+## 2026-09-02 08:44:48.682Z click
+- element: {"tag":"nav","role":null,"ariaLabel":"Navigation principale","name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"AccueilLe DirecteurLe Vaisseau FantômeContactRéserver"}
+
+## 2026-09-02 08:44:49.195Z click
+- element: {"tag":"a","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Contact"}
+
+## 2026-09-02 08:44:49.196Z navigate
+- url: http://localhost:3000/#contact
+- via: pushState
+
+## 2026-09-02 08:44:50.257Z click
+- element: {"tag":"a","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Contact"}
+
+## 2026-09-02 08:44:50.257Z navigate
+- url: http://localhost:3000/#contact
+- via: replaceState
+
+## 2026-09-02 08:45:07.141Z click
+- element: {"tag":"a","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Contact"}
+
+## 2026-09-02 08:45:07.141Z navigate
+- url: http://localhost:3000/#contact
+- via: replaceState
+
+## 2026-09-02 08:45:18.935Z click
+- element: {"tag":"a","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Contact"}
+
+## 2026-09-02 08:45:18.936Z navigate
+- url: http://localhost:3000/#contact
+- via: replaceState
+
+## 2026-09-02 08:45:20.122Z click
+- element: {"tag":"a","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Contact"}
+
+## 2026-09-02 08:45:20.122Z navigate
+- url: http://localhost:3000/#contact
+- via: replaceState
+
+## 2026-09-02 08:45:21.004Z click
+- element: {"tag":"a","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Le Vaisseau Fantôme"}
+
+## 2026-09-02 08:45:21.004Z navigate
+- url: http://localhost:3000/salles/la-malediction-du-vaisseau-fantome
+- via: pushState
+
+## 2026-09-02 08:45:21.787Z click
+- element: {"tag":"a","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Contact"}
+
+## 2026-09-02 08:45:21.787Z navigate
+- url: http://localhost:3000/#contact
+- via: pushState
+
+## 2026-09-02 08:45:30.412Z click
+- element: {"tag":"a","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Réserver"}
+
+## 2026-09-02 08:45:30.412Z navigate
+- url: http://localhost:3000/reservation
+- via: pushState
+
+## 2026-09-02 08:46:05.334Z console.error
+- text: [vite] Failed to reload /src/components/AvailabilityTimeline.jsx. This could be due to syntax errors or importing non-existent modules. (see errors above)
+
+## 2026-09-02 08:46:05.334Z console.error
+- text: [vite] Failed to reload /src/components/AvailabilityTimeline.jsx. This could be due to syntax errors or importing non-existent modules. (see errors above)
+
+## 2026-09-02 08:46:05.334Z console.error
+- text: [vite] Failed to reload /src/components/AvailabilityTimeline.jsx. This could be due to syntax errors or importing non-existent modules. (see errors above)
+
+## 2026-09-02 08:46:05.339Z console.error
+- text: [vite] Failed to reload /src/components/AvailabilityTimeline.jsx. This could be due to syntax errors or importing non-existent modules. (see errors above)
+
+## 2026-09-02 08:46:10.630Z console.error
+- text: [vite] Failed to reload /src/components/AvailabilityTimeline.jsx. This could be due to syntax errors or importing non-existent modules. (see errors above)
+
+## 2026-09-02 08:46:11.255Z console.error
+- text: [vite] Failed to reload /src/components/AvailabilityTimeline.jsx. This could be due to syntax errors or importing non-existent modules. (see errors above)
+
+## 2026-09-02 08:46:10.632Z console.error
+- text: [vite] Failed to reload /src/components/AvailabilityTimeline.jsx. This could be due to syntax errors or importing non-existent modules. (see errors above)
+
+## 2026-09-02 08:46:11.256Z console.error
+- text: [vite] Failed to reload /src/components/AvailabilityTimeline.jsx. This could be due to syntax errors or importing non-existent modules. (see errors above)
+
+## 2026-09-02 08:46:10.631Z console.error
+- text: [vite] Failed to reload /src/components/AvailabilityTimeline.jsx. This could be due to syntax errors or importing non-existent modules. (see errors above)
+
+## 2026-09-02 08:46:11.258Z console.error
+- text: [vite] Failed to reload /src/components/AvailabilityTimeline.jsx. This could be due to syntax errors or importing non-existent modules. (see errors above)
+
+## 2026-09-02 08:46:10.634Z console.error
+- text: [vite] Failed to reload /src/components/AvailabilityTimeline.jsx. This could be due to syntax errors or importing non-existent modules. (see errors above)
+
+## 2026-09-02 08:46:11.262Z console.error
+- text: [vite] Failed to reload /src/components/AvailabilityTimeline.jsx. This could be due to syntax errors or importing non-existent modules. (see errors above)
+
+## 2026-09-02 08:46:53.611Z load
+- url: http://127.0.0.1:3000/reservation
+
+## 2026-09-02 08:47:26.937Z click
+- element: {"tag":"a","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Accueil"}
+
+## 2026-09-02 08:47:26.937Z navigate
+- url: http://localhost:3000/
+- via: pushState
+
+## 2026-09-02 08:47:37.953Z click
+- element: {"tag":"h3","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"La malédiction du Vaisseau Fantôme"}
+
+## 2026-09-02 08:47:39.720Z click
+- element: {"tag":"a","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Découvrir l'histoire"}
+
+## 2026-09-02 08:47:39.721Z navigate
+- url: http://localhost:3000/salles/la-malediction-du-vaisseau-fantome
+- via: pushState
+
+## 2026-09-02 08:50:16.261Z click
+- element: {"tag":"a","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Accueil"}
+
+## 2026-09-02 08:50:16.261Z navigate
+- url: http://localhost:3000/
+- via: pushState
+
+## 2026-09-02 08:50:25.770Z click
+- element: {"tag":"div","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Convocation chez le Directeur3 à 6 joueursDès 14 ans60 minutesConvoqués dans le bureau de M. Grenot, aidez l'inspecteur Dupont à percer le mystère qui plane sur le collège. Fouille, indices et révélations vous attendent.Réserver cette salleDécouvrir l'histoire"}
+
+## 2026-09-02 08:50:27.041Z click
+- element: {"tag":"p","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Convoqués dans le bureau de M. Grenot, aidez l'inspecteur Dupont à percer le mystère qui plane sur le collège. Fouille, indices et révélations vous attendent."}
+
+## 2026-09-02 08:50:29.037Z click
+- element: {"tag":"article","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Enquête au cœur du collègeConvocation chez le Directeur3 à 6 joueursDès 14 ans60 minutesConvoqués dans le bureau de M. Grenot, aidez l'inspecteur Dupont à percer le mystère qui plane sur le collège. Fouille, indices et révélations vous attendent.Réserver cette salleDécouvrir l'histoire"}
+
+## 2026-09-02 08:50:37.986Z click
+- element: {"tag":"nav","role":null,"ariaLabel":"Navigation principale","name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"AccueilLe DirecteurLe Vaisseau FantômeContactRéserver"}
+
+## 2026-09-02 08:50:38.478Z click
+- element: {"tag":"a","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Le Directeur"}
+
+## 2026-09-02 08:50:38.478Z navigate
+- url: http://localhost:3000/salles/convocation-chez-le-directeur
+- via: pushState
+
+## 2026-09-02 08:54:36.925Z window.error
+- message: Uncaught ReferenceError: AvailabilityTimeline is not defined
+- source: http://localhost:3000/src/pages/RoomPage.jsx?t=1788339276814
+- line: 159
+- col: 105
+- stack: 
+    ReferenceError: AvailabilityTimeline is not defined
+        at RoomPage (http://localhost:3000/src/pages/RoomPage.jsx?t=1788339276814:159:105)
+        at renderWithHooks (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:11596:26)
+        at updateFunctionComponent (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:14630:28)
+        at beginWork (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:15972:22)
+        at HTMLUnknownElement.callCallback2 (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3680:22)
+        at Object.invokeGuardedCallbackDev (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3705:24)
+        at invokeGuardedCallback (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3739:39)
+        at beginWork$1 (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19818:15)
+        at performUnitOfWork (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19251:20)
+        at workLoopSync (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19190:13)
+
+## 2026-09-02 08:54:36.927Z window.error
+- message: Uncaught ReferenceError: AvailabilityTimeline is not defined
+- source: http://localhost:3000/src/pages/RoomPage.jsx?t=1788339276814
+- line: 159
+- col: 105
+- stack: 
+    ReferenceError: AvailabilityTimeline is not defined
+        at RoomPage (http://localhost:3000/src/pages/RoomPage.jsx?t=1788339276814:159:105)
+        at renderWithHooks (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:11596:26)
+        at updateFunctionComponent (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:14630:28)
+        at beginWork (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:15972:22)
+        at HTMLUnknownElement.callCallback2 (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3680:22)
+        at Object.invokeGuardedCallbackDev (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3705:24)
+        at invokeGuardedCallback (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3739:39)
+        at beginWork$1 (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19818:15)
+        at performUnitOfWork (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19251:20)
+        at workLoopSync (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19190:13)
+
+## 2026-09-02 08:54:36.929Z console.error
+- text: 
+    The above error occurred in the <RoomPage> component:
+    
+        at RoomPage (http://localhost:3000/src/pages/RoomPage.jsx?t=1788339276814:29:3)
+        at RenderedRoute (http://localhost:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:6647:26)
+        at Outlet (http://localhost:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7502:26)
+        at main
+        at PublicLayout
+        at RenderedRoute (http://localhost:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:6647:26)
+        at Routes (http://localhost:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7572:3)
+        at Router (http://localhost:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7511:13)
+        at BrowserRouter (http://localhost:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:10816:3)
+        at App
+    
+    Consider adding an error boundary to your tree to customize error handling behavior.
+    Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries.
+
+## 2026-09-02 08:54:36.930Z unhandledrejection
+- message: AvailabilityTimeline is not defined
+- stack: 
+    ReferenceError: AvailabilityTimeline is not defined
+        at RoomPage (http://localhost:3000/src/pages/RoomPage.jsx?t=1788339276814:159:105)
+        at renderWithHooks (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:11596:26)
+        at updateFunctionComponent (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:14630:28)
+        at beginWork (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:15972:22)
+        at beginWork$1 (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19806:22)
+        at performUnitOfWork (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19251:20)
+        at workLoopSync (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19190:13)
+        at renderRootSync (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19169:15)
+        at recoverFromConcurrentError (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:18786:28)
+        at performSyncWorkOnRoot (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:18932:28)
+
+## 2026-09-02 08:54:37.231Z root.empty
+- url: http://localhost:3000/salles/convocation-chez-le-directeur
+
+## 2026-09-02 08:55:17.840Z load
+- url: http://127.0.0.1:3000/reservation
+
+## 2026-09-02 08:55:33.854Z load
+- url: http://127.0.0.1:3000/salles/convocation-chez-le-directeur
+
+## 2026-09-02 08:55:33.884Z navigate
+- url: http://127.0.0.1:3000/salles/convocation-chez-le-directeur
+- via: replaceState
+
+## 2026-09-02 08:55:42.227Z click
+- element: {"tag":"a","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Voir les disponibilités"}
+
+## 2026-09-02 08:55:42.228Z navigate
+- url: http://127.0.0.1:3000/reservation/convocation-chez-le-directeur
+- via: pushState
+
+## 2026-09-02 08:55:42.539Z navigate
+- url: http://127.0.0.1:3000/reservation/convocation-chez-le-directeur?date=2027-09-01
+- via: replaceState
+
+## 2026-09-02 08:55:54.222Z load
+- url: http://127.0.0.1:3000/reservation/convocation-chez-le-directeur
+
+## 2026-09-02 08:55:54.252Z navigate
+- url: http://127.0.0.1:3000/reservation/convocation-chez-le-directeur
+- via: replaceState
+
+## 2026-09-02 08:55:54.553Z navigate
+- url: http://127.0.0.1:3000/reservation/convocation-chez-le-directeur?date=2027-09-01
+- via: replaceState
+
+## 2026-09-02 08:56:01.975Z load
+- url: http://127.0.0.1:3000/salles/la-malediction-du-vaisseau-fantome
+
+## 2026-09-02 08:56:01.998Z navigate
+- url: http://127.0.0.1:3000/salles/la-malediction-du-vaisseau-fantome
+- via: replaceState
+
+## 2026-09-02 08:56:06.695Z load
+- url: http://127.0.0.1:3000/#salles
+
+## 2026-09-02 08:56:06.714Z navigate
+- url: http://127.0.0.1:3000/#salles
+- via: replaceState
+
+## 2026-09-02 09:18:12.765Z load
+- url: http://localhost:3000/salles/convocation-chez-le-directeur
+
+## 2026-09-02 09:18:14.904Z click
+- element: {"tag":"a","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Réserver cette salle"}
+
+## 2026-09-02 09:18:14.905Z navigate
+- url: http://localhost:3000/reservation/convocation-chez-le-directeur
+- via: pushState
+
+## 2026-09-02 09:18:15.189Z navigate
+- url: http://localhost:3000/reservation/convocation-chez-le-directeur?date=2027-09-01
+- via: replaceState
+
+## 2026-09-02 09:18:19.988Z click
+- element: {"tag":"a","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Réserver"}
+
+## 2026-09-02 09:18:19.988Z navigate
+- url: http://localhost:3000/reservation
+- via: pushState
+
+## 2026-09-02 09:19:38.704Z load
+- url: http://localhost:3000/reservation
+
+## 2026-09-02 09:19:38.708Z load
+- url: http://127.0.0.1:3000/#salles
+
+## 2026-09-02 09:19:38.713Z load
+- url: http://127.0.0.1:3000/reserv%C3%A9
+
+## 2026-09-02 09:19:38.717Z load
+- url: http://127.0.0.1:3000/reservation/convocation-chez-le-directeur?date=2027-09-01
+
+## 2026-09-02 09:21:27.374Z load
+- url: http://localhost:3000/#contact
+
+## 2026-09-02 09:21:27.400Z navigate
+- url: http://localhost:3000/#contact
+- via: replaceState
+
+## 2026-09-02 09:56:54.826Z load
+- url: http://127.0.0.1:3000/#salles
+
+## 2026-09-02 09:56:54.826Z load
+- url: http://127.0.0.1:3000/reservation/convocation-chez-le-directeur?date=2027-09-01
+
+## 2026-09-02 09:56:54.826Z load
+- url: http://127.0.0.1:3000/reserv%C3%A9
+
+## 2026-09-02 09:56:55.360Z load
+- url: http://127.0.0.1:3000/#salles
+
+## 2026-09-02 09:56:55.362Z load
+- url: http://127.0.0.1:3000/reserv%C3%A9
+
+## 2026-09-02 09:56:55.369Z load
+- url: http://127.0.0.1:3000/reservation/convocation-chez-le-directeur?date=2027-09-01
+
+## 2026-09-02 09:56:55.805Z load
+- url: http://127.0.0.1:3000/reserv%C3%A9
+
+## 2026-09-02 09:56:55.811Z load
+- url: http://127.0.0.1:3000/#salles
+
+## 2026-09-02 09:56:55.818Z load
+- url: http://127.0.0.1:3000/reservation/convocation-chez-le-directeur?date=2027-09-01
+
+## 2026-09-02 09:58:25.406Z load
+- url: http://127.0.0.1:3000/#salles
+
+## 2026-09-02 09:58:25.416Z load
+- url: http://127.0.0.1:3000/reserv%C3%A9
+
+## 2026-09-02 09:58:25.448Z load
+- url: http://127.0.0.1:3000/reservation/convocation-chez-le-directeur?date=2027-09-01
+
+## 2026-09-02 10:03:11.733Z load
+- url: http://127.0.0.1:3000/reservation/convocation-chez-le-directeur?date=2027-09-01
+
+## 2026-09-02 10:03:11.735Z load
+- url: http://127.0.0.1:3000/reserv%C3%A9
+
+## 2026-09-02 10:03:17.528Z load
+- url: http://127.0.0.1:3000/reserv%C3%A9
+
+## 2026-09-02 10:03:17.530Z load
+- url: http://127.0.0.1:3000/reservation/convocation-chez-le-directeur?date=2027-09-01
+
+## 2026-09-02 10:03:18.705Z load
+- url: http://127.0.0.1:3000/reserv%C3%A9
+
+## 2026-09-02 10:03:18.715Z load
+- url: http://127.0.0.1:3000/reservation/convocation-chez-le-directeur?date=2027-09-01
+
+## 2026-09-02 10:08:12.154Z load
+- url: http://127.0.0.1:3000/reserv%C3%A9
+
+## 2026-09-02 10:08:12.156Z load
+- url: http://127.0.0.1:3000/reservation/convocation-chez-le-directeur?date=2027-09-01
+
+## 2026-09-02 10:09:25.126Z load
+- url: http://127.0.0.1:3000/_mail-preview/client-confirmee-directeur.html
+
+## 2026-09-02 10:09:25.178Z navigate
+- url: http://127.0.0.1:3000/_mail-preview/client-confirmee-directeur.html
+- via: replaceState
 

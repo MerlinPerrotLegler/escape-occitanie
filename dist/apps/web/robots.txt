@@ -1,6 +1,0 @@
-User-agent: *
-Allow: /
-Disallow: /maitre
-Disallow: /maitre-Thibault
-Disallow: /api/
-Sitemap: https://escapeoccitanie.fr/sitemap.xml

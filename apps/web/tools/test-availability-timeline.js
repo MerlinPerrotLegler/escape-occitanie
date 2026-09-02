@@ -1,6 +1,7 @@
 import {
   PAGE_SIZE,
   buildColumns,
+  formatColumnDate,
   formatDayHeading,
   formatPageRange,
   groupColumnsByDay,
@@ -71,15 +72,25 @@ const cols = buildColumns(days, slotsByRoomByDate, {
   nowMinutes: 0,
   roomSlugs: ['directeur', 'vaisseau'],
 });
-expect(cols.map((c) => `${c.iso} ${c.time}`).join('|') === '2026-09-02 14:00|2026-09-02 14:30|2026-09-02 15:00', 'union of times, skip empty day');
+expect(cols.map((c) => `${c.iso} ${c.time}`).join('|') === '2026-09-02 14:00|2026-09-02 14:30|2026-09-02 15:00|2026-09-03 null', 'empty day still has a date column');
 expect(cols[0].cells.directeur === 'open' && cols[0].cells.vaisseau === 'unavailable', 'A open B closed');
 expect(cols[1].cells.directeur === 'unavailable' && cols[1].cells.vaisseau === 'unavailable', 'reserved / missing');
 expect(cols[2].cells.directeur === 'unavailable' && cols[2].cells.vaisseau === 'open', 'missing / open');
+expect(cols[3].time === null && cols[3].cells.directeur === 'unavailable', 'placeholder date column is unavailable');
 
 const grouped = groupColumnsByDay(cols);
-expect(grouped.length === 1 && grouped[0].iso === '2026-09-02' && grouped[0].columns.length === 3, 'one day group');
+expect(grouped.length === 2 && grouped[1].iso === '2026-09-03' && grouped[1].columns.length === 1, 'empty day is its own date group');
 
-expect(formatDayHeading('2026-09-02', '2026-09-02').toLowerCase().includes('sept'), 'heading has month, no forced year');
+expect(
+  buildColumns(['2026-09-10'], { directeur: { '2026-09-10': [] }, vaisseau: { '2026-09-10': [] } }, {
+    todayISO: '2026-09-01',
+    nowMinutes: 0,
+    roomSlugs: ['directeur', 'vaisseau'],
+  }).length === 1,
+  'a page with only empty days still shows one date'
+);
+
+expect(formatColumnDate('2026-09-02').includes('2'), 'column date shows the day number');
 expect(formatDayHeading('2027-01-01', '2026-09-02').includes('2027'), 'other year shows year');
 expect(formatPageRange([]) === '', 'empty range');
 expect(formatPageRange(['2026-09-01']).includes('1'), 'single day');

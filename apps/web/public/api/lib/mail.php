@@ -37,12 +37,35 @@ function mt_room_label(string $slug): string {
     return $slug === 'vaisseau' ? 'La malédiction du Vaisseau Fantôme' : 'Convocation chez le Directeur';
 }
 
+function mt_room_image(string $slug): array {
+    $copy = mt_load_site_copy();
+    $room = is_array($copy['rooms'][$slug] ?? null) ? $copy['rooms'][$slug] : null;
+    $src = is_array($room) ? (string) ($room['image'] ?? '') : '';
+    if ($src !== '') {
+        return [
+            'src' => $src,
+            'alt' => (string) ($room['imageAlt'] ?? ''),
+        ];
+    }
+    if ($slug === 'vaisseau') {
+        return [
+            'src' => 'https://images.hostinger.com/c1b6ad64-40d1-40af-90d5-bb894b7f5893.png',
+            'alt' => 'Cabine du capitaine d\'un galion abandonné, cartes marines et bougies vacillantes',
+        ];
+    }
+    return [
+        'src' => 'https://images.hostinger.com/f2d40922-ae59-47a0-95d4-549223e899bf.png',
+        'alt' => 'Bureau du directeur du collège plongé dans la pénombre, lampe verte allumée',
+    ];
+}
+
 function mt_booking_copy_vars(array $booking, array $env = []): array {
     $copy = mt_load_site_copy();
     $time = $booking['time'] ?? mt_minutes_to_hhmm((int) $booking['start_minute']);
-    $links = $env !== [] ? mt_booking_calendar_links($env, $booking) : ['ics' => '', 'google' => ''];
+    $links = $env !== [] ? mt_booking_calendar_links($env, $booking) : ['ics' => ''];
     $status = ($booking['status'] ?? '') === 'confirmed' ? 'confirmée' : 'en attente de confirmation';
     $mgrLinks = $env !== [] ? mt_manager_booking_links($env, $booking) : ['voir' => '', 'confirmer' => ''];
+    $visual = mt_room_image((string) ($booking['room_slug'] ?? ''));
     return [
         'nom' => (string) ($booking['guest_name'] ?? ''),
         'salle' => mt_room_label((string) ($booking['room_slug'] ?? '')),
@@ -54,10 +77,14 @@ function mt_booking_copy_vars(array $booking, array $env = []): array {
         'email' => (string) ($booking['guest_email'] ?? ''),
         'telephone' => (string) ($booking['guest_phone'] ?? ''),
         'lien_ics' => (string) ($links['ics'] ?? ''),
-        'lien_google' => (string) ($links['google'] ?? ''),
         'lien_voir' => (string) ($mgrLinks['voir'] ?? ''),
         'lien_confirmer' => (string) ($mgrLinks['confirmer'] ?? ''),
         'statut' => $status,
+        'logo' => (string) ($copy['contact']['logo'] ?? 'https://horizons-cdn.hostinger.com/6f05984e-16ed-4597-8f84-cb44fc903b9b/4bd0e6870391b77d0f13cc22e5fda061.jpg'),
+        'logo_alt' => (string) ($copy['contact']['logoAlt'] ?? 'Escape Occitanie'),
+        'site' => (string) ($copy['contact']['website'] ?? 'https://escapeoccitanie.fr'),
+        'image_salle' => $visual['src'],
+        'image_salle_alt' => $visual['alt'],
     ];
 }
 
@@ -113,20 +140,120 @@ function mt_mail_alternative(string $text, string $html, string $boundary): stri
         . '--' . $boundary . "--\r\n";
 }
 
+function mt_mail_identity(string $from): array {
+    $from = trim($from);
+    if (preg_match('/^(?:"?([^"<]*?)"?\s*)?<([^>]+)>$/', $from, $match) === 1) {
+        return [
+            'name' => trim($match[1], " \t\""),
+            'email' => trim($match[2]),
+        ];
+    }
+    if (filter_var($from, FILTER_VALIDATE_EMAIL)) {
+        return ['name' => '', 'email' => $from];
+    }
+    return ['name' => 'Escape Occitanie', 'email' => 'contact@escapeoccitanie.fr'];
+}
+
+function mt_hostinger_send_payload(string $to, string $subject, string $body, ?string $html, ?array $attachment, string $displayName): array {
+    $payload = [
+        'to' => [$to],
+        'subject' => $subject,
+        'text' => $body,
+    ];
+    if ($displayName !== '') {
+        $payload['displayName'] = $displayName;
+    }
+    if (is_string($html) && $html !== '') {
+        $payload['html'] = $html;
+    }
+    if ($attachment && !empty($attachment['content']) && !empty($attachment['filename'])) {
+        $mime = (string) ($attachment['mime'] ?? 'application/octet-stream');
+        $payload['attachments'] = [[
+            'filename' => (string) $attachment['filename'],
+            'content' => base64_encode((string) $attachment['content']),
+            'contentType' => explode(';', $mime, 2)[0],
+            'encoding' => 'base64',
+        ]];
+    }
+    return $payload;
+}
+
+function mt_hostinger_api(array $env, string $method, string $path, ?array $json = null): array {
+    $token = trim((string) ($env['HOSTINGER_EMAIL_MCP_TOKEN'] ?? ''));
+    if ($token === '' || !function_exists('curl_init')) {
+        return ['ok' => false, 'status' => 0, 'body' => ''];
+    }
+    $ch = curl_init('https://api.mail.hostinger.com' . $path);
+    $headers = [
+        'Authorization: Bearer ' . $token,
+        'Accept: application/json',
+        'Content-Type: application/json',
+    ];
+    $opts = [
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_CUSTOMREQUEST => $method,
+        CURLOPT_HTTPHEADER => $headers,
+        CURLOPT_TIMEOUT => 20,
+        CURLOPT_USERAGENT => 'EscapeOccitanie/1.0',
+    ];
+    if ($json !== null) {
+        $opts[CURLOPT_POSTFIELDS] = json_encode($json, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+    }
+    curl_setopt_array($ch, $opts);
+    $raw = curl_exec($ch);
+    $status = (int) curl_getinfo($ch, CURLINFO_HTTP_CODE);
+    curl_close($ch);
+    return [
+        'ok' => $raw !== false && $status >= 200 && $status < 300,
+        'status' => $status,
+        'body' => is_string($raw) ? $raw : '',
+    ];
+}
+
+function mt_hostinger_mailbox_id(array $env): string {
+    $id = trim((string) ($env['HOSTINGER_MAIL_MAILBOX_ID'] ?? ''));
+    if ($id !== '') {
+        return $id;
+    }
+    $res = mt_hostinger_api($env, 'GET', '/api/v1/me');
+    if (!$res['ok']) {
+        return '';
+    }
+    $data = json_decode($res['body'], true);
+    $mailbox = $data['data']['mailboxes'][0]['resourceId'] ?? '';
+    return is_string($mailbox) ? $mailbox : '';
+}
+
+function mt_send_via_hostinger(array $env, string $to, string $subject, string $body, ?array $attachment, ?string $html): bool {
+    $mailbox = mt_hostinger_mailbox_id($env);
+    if ($mailbox === '') {
+        return false;
+    }
+    $from = $env['SMTP_FROM'] ?? 'Escape Occitanie <contact@escapeoccitanie.fr>';
+    $identity = mt_mail_identity($from);
+    $payload = mt_hostinger_send_payload($to, $subject, $body, $html, $attachment, $identity['name']);
+    $res = mt_hostinger_api($env, 'POST', '/api/v1/mailboxes/' . rawurlencode($mailbox) . '/send', $payload);
+    return $res['ok'];
+}
+
 function mt_send_mail(array $env, string $to, string $subject, string $body, ?array $attachment = null, ?string $html = null): bool {
     if ($to === '' || !filter_var($to, FILTER_VALIDATE_EMAIL)) {
         return false;
     }
-    $from = $env['SMTP_FROM'] ?? 'Escape Occitanie <reservations@escapeoccitanie.fr>';
+    if (mt_send_via_hostinger($env, $to, $subject, $body, $attachment, $html)) {
+        return true;
+    }
+    $from = $env['SMTP_FROM'] ?? 'Escape Occitanie <contact@escapeoccitanie.fr>';
     $encoded = '=?UTF-8?B?' . base64_encode($subject) . '?=';
-    $reply = $env['MANAGER_EMAIL'] ?? 'escapeoccitanie@gmail.com';
+    $identity = mt_mail_identity($from);
+    $reply = $identity['email'] !== '' ? $identity['email'] : ($env['MANAGER_EMAIL'] ?? 'contact@escapeoccitanie.fr');
     $hasHtml = is_string($html) && $html !== '';
     $hasFile = $attachment && !empty($attachment['content']) && !empty($attachment['filename']);
 
     if ($hasFile) {
         $mixed = 'EscBound' . bin2hex(random_bytes(8));
         $filename = str_replace(['"', "\r", "\n"], '', $attachment['filename']);
-        $mime = $attachment['mime'] ?? 'text/calendar; method=PUBLISH';
+        $mime = $attachment['mime'] ?? 'text/calendar; method=REQUEST';
         $headers = implode("\r\n", [
             'MIME-Version: 1.0',
             'From: ' . $from,
@@ -198,9 +325,7 @@ function mt_booking_customer_email(array $booking, string $kind = 'pending', arr
         . "Adresse : {$address}\n";
     if ($kind === 'confirmed' && $env !== []) {
         $links = mt_booking_calendar_links($env, $booking);
-        $body .= "\nAjoutez l'événement à votre calendrier :\n"
-            . "- Fichier joint (reservation.ics) ou téléchargement : {$links['ics']}\n"
-            . "- Google Agenda : {$links['google']}\n";
+        $body .= "\nAjoutez l'événement à votre calendrier : fichier joint (reservation.ics) ou téléchargement : {$links['ics']}\n";
     }
     $body .= "\nÀ très bientôt,\n"
         . "L'équipe Escape Occitanie\n";
@@ -296,17 +421,17 @@ function mt_manager_confirm_page_html(array $booking, string $state, array $link
         . '</div></body></html>';
 }
 
-function mt_booking_ics_attachment(array $booking): array {
+function mt_booking_ics_attachment(array $booking, array $env = []): array {
     return [
         'filename' => 'reservation-escape-occitanie.ics',
-        'mime' => 'text/calendar; method=PUBLISH',
-        'content' => mt_booking_ics($booking),
+        'mime' => 'text/calendar; method=REQUEST',
+        'content' => mt_booking_ics($booking, $env),
     ];
 }
 
 function mt_send_booking_emails(array $env, array $booking, string $kind, bool $notifyManager = false): bool {
     $parts = mt_booking_email_parts($booking, $kind, $env);
-    $attachment = $kind === 'confirmed' ? mt_booking_ics_attachment($booking) : null;
+    $attachment = $kind === 'confirmed' ? mt_booking_ics_attachment($booking, $env) : null;
     $sent = mt_send_mail(
         $env,
         $booking['guest_email'],

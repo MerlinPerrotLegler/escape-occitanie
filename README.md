@@ -25,10 +25,27 @@ Quelques textes contiennent des variables entre accolades (`{nom-court}`, `{nom}
 
 ### Images
 
-Chaque image a un `src` et un `alt` obligatoire.
+Chaque image a un `src` et un `alt` obligatoire. Les photos de galerie ont aussi une `legende`.
 
-- URL `https://…` : utilisée telle quelle (cas actuel des visuels Hostinger).
-- Fichier local : `src="images/mon-fichier.png"` et le fichier dans `contribution/images/mon-fichier.png`.
+Deux formes de `src` :
+
+**URL** (visuels Hostinger actuels) — laissée telle quelle, pas de fichier dans le dépôt :
+
+```xml
+<image src="https://images.hostinger.com/….png" alt="Couloir sombre d'un escape game"/>
+<logo src="https://horizons-cdn.hostinger.com/…/logo.jpg" alt="Escape Occitanie"/>
+```
+
+**Fichier local** — `src` commence toujours par `images/`, le fichier est dans `contribution/images/` :
+
+```xml
+<image src="images/accueil-hero.png" alt="Couloir sombre d'un escape game"/>
+<photo src="images/directeur-galerie-1.png" alt="Loupe sur des notes" legende="Les indices de l'inspecteur"/>
+```
+
+À la compile, le fichier est recopié vers `/media/…` et le site utilise ce chemin (`images/accueil-hero.png` → `/media/accueil-hero.png`). Un sous-dossier est possible : `images/salles/hero.png` → `/media/salles/hero.png`. Fichier manquant, `src` ni URL ni `images/…` : la compile s’arrête.
+
+En local (`npm run dev`), `/media/…` est servi par Vite. Au `npm run deploy`, ces fichiers partent avec le site. S’il est activé, le CDN Hostinger du domaine les cache : pas d’envoi séparé vers `images.hostinger.com`.
 
 Chaque salle a **exactement 3** photos dans `<galerie>`. Accueil : **3** stats et **4** atouts. Réservation : **3** étapes.
 
@@ -58,7 +75,7 @@ npm run deploy:check   # teste la connexion SSH ou FTP
 npm run deploy         # compile le site (XML inclus) et l’envoie
 ```
 
-Le build embarque les XML compilés. Le `.env` local n’est pas uploadé : les secrets de production restent sur le serveur.
+Le build embarque les XML compilés et les images locales recopiées dans `/media/`. Le `.env` local n’est pas uploadé : les secrets de production restent sur le serveur.
 
 SSH est utilisé si `SSH_USER` et `SSH_PASSWORD` sont remplis (port `65002` chez Hostinger). Sinon, repli sur FTP.
 

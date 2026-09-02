@@ -65,7 +65,15 @@ function mt_ics_escape(string $text): string {
     return str_replace(["\\", ";", ",", "\n", "\r"], ["\\\\", "\\;", "\\,", '\\n', ''], $text);
 }
 
-function mt_booking_ics(array $booking): string {
+function mt_should_refresh_guest_calendar(array $before, array $after): bool {
+    if (($after['status'] ?? '') !== 'confirmed') {
+        return false;
+    }
+    return (string) ($before['booking_date'] ?? '') !== (string) ($after['booking_date'] ?? '')
+        || (int) ($before['start_minute'] ?? -1) !== (int) ($after['start_minute'] ?? -1);
+}
+
+function mt_booking_ics(array $booking, array $env = []): string {
     [$start, $end] = mt_booking_datetime($booking);
     $utc = new DateTimeZone('UTC');
     $stamp = (new DateTimeImmutable('now', $utc))->format('Ymd\THis\Z');
@@ -73,6 +81,14 @@ function mt_booking_ics(array $booking): string {
     $dtEnd = $end->setTimezone($utc)->format('Ymd\THis\Z');
     $room = mt_room_label($booking['room_slug']);
     $uid = 'booking-' . (int) $booking['id'] . '@escapeoccitanie.fr';
+    $sequence = max(0, (int) ($booking['ics_sequence'] ?? 0));
+    $from = function_exists('mt_mail_identity')
+        ? mt_mail_identity((string) ($env['SMTP_FROM'] ?? 'Escape Occitanie <contact@escapeoccitanie.fr>'))
+        : ['name' => 'Escape Occitanie', 'email' => 'contact@escapeoccitanie.fr'];
+    $orgEmail = $from['email'] !== '' ? $from['email'] : 'contact@escapeoccitanie.fr';
+    $orgName = mt_ics_escape($from['name'] !== '' ? $from['name'] : 'Escape Occitanie');
+    $attendeeName = mt_ics_escape((string) ($booking['guest_name'] ?? ''));
+    $attendeeEmail = (string) ($booking['guest_email'] ?? '');
     $summary = mt_ics_escape('Escape Occitanie — ' . $room);
     $desc = mt_ics_escape(
         "Salle : {$room}\n"
@@ -85,10 +101,15 @@ function mt_booking_ics(array $booking): string {
         . "VERSION:2.0\r\n"
         . "PRODID:-//Escape Occitanie//Reservation//FR\r\n"
         . "CALSCALE:GREGORIAN\r\n"
-        . "METHOD:PUBLISH\r\n"
+        . "METHOD:REQUEST\r\n"
         . "BEGIN:VEVENT\r\n"
         . "UID:{$uid}\r\n"
+        . "SEQUENCE:{$sequence}\r\n"
         . "DTSTAMP:{$stamp}\r\n"
+        . "LAST-MODIFIED:{$stamp}\r\n"
+        . "STATUS:CONFIRMED\r\n"
+        . "ORGANIZER;CN={$orgName}:mailto:{$orgEmail}\r\n"
+        . "ATTENDEE;CN={$attendeeName};RSVP=TRUE;PARTSTAT=ACCEPTED;ROLE=REQ-PARTICIPANT:mailto:{$attendeeEmail}\r\n"
         . "DTSTART:{$dtStart}\r\n"
         . "DTEND:{$dtEnd}\r\n"
         . "SUMMARY:{$summary}\r\n"
@@ -99,19 +120,7 @@ function mt_booking_ics(array $booking): string {
 }
 
 function mt_booking_calendar_links(array $env, array $booking): array {
-    [$start, $end] = mt_booking_datetime($booking);
-    $utc = new DateTimeZone('UTC');
-    $dates = $start->setTimezone($utc)->format('Ymd\THis\Z') . '/' . $end->setTimezone($utc)->format('Ymd\THis\Z');
-    $room = mt_room_label($booking['room_slug']);
-    $text = 'Escape Occitanie — ' . $room;
-    $details = "Salle : {$room}. {$booking['players']} joueurs. Merci d'arriver 15 minutes avant le début.";
-    $location = '23 Bd de Verdun, 12400 Saint-Affrique, France';
-    $google = 'https://calendar.google.com/calendar/render?action=TEMPLATE'
-        . '&text=' . rawurlencode($text)
-        . '&dates=' . $dates
-        . '&details=' . rawurlencode($details)
-        . '&location=' . rawurlencode($location);
     $token = mt_calendar_token($env, (int) $booking['id'], $booking['guest_email']);
     $ics = mt_public_base($env) . '/api/calendar.php?b=' . (int) $booking['id'] . '&t=' . rawurlencode($token);
-    return ['ics' => $ics, 'google' => $google];
+    return ['ics' => $ics];
 }

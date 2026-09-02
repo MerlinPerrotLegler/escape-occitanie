@@ -121,6 +121,10 @@ try {
     $moved = mt_update_booking($pdo, (int) $booking['id'], ['date' => $date, 'time' => '12:00']);
     expect((int) $moved['start_minute'] === 720, '60-min booking moved to 12:00');
     expect((int) $moved['duration_minutes'] === 60, 'moved booking stays 60 min');
+    expect((int) ($moved['ics_sequence'] ?? 0) === 1, 'moving a booking bumps ics sequence');
+    $nameOnly = mt_update_booking($pdo, (int) $booking['id'], ['guest_name' => 'Moved Name']);
+    expect((int) ($nameOnly['ics_sequence'] ?? 0) === 1, 'contact-only update keeps ics sequence');
+    expect($nameOnly['guest_name'] === 'Moved Name', 'contact-only update still saves the name');
     $afterMove = [];
     foreach (mt_public_day_slots($pdo, $room, $date) as $slot) {
         $afterMove[$slot['minute']] = $slot['status'];

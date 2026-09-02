@@ -84,6 +84,7 @@ function mt_ensure_bookings_schema(PDO $pdo): void {
         guest_phone VARCHAR(40) NOT NULL,
         players TINYINT UNSIGNED NOT NULL,
         status VARCHAR(16) NOT NULL DEFAULT 'pending',
+        ics_sequence INT UNSIGNED NOT NULL DEFAULT 0,
         created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
         INDEX idx_bookings_day (room_slug, booking_date, status)
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4";
@@ -148,6 +149,10 @@ function mt_ensure_bookings_schema(PDO $pdo): void {
             $pdo->exec("ALTER TABLE bookings MODIFY status VARCHAR(16) NOT NULL DEFAULT 'pending'");
         }
     } catch (Throwable $ignored) {
+    }
+
+    if (!mt_table_has_column($pdo, 'bookings', 'ics_sequence')) {
+        $pdo->exec('ALTER TABLE bookings ADD COLUMN ics_sequence INT UNSIGNED NOT NULL DEFAULT 0');
     }
 }
 

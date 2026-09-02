@@ -1,0 +1,10 @@
+{
+	"mcpServers": {
+		"hostinger-email": {
+			"url": "https://mcp.mail.hostinger.com/mcp",
+			"headers": {
+				"Authorization": "Bearer ${env:HOSTINGER_EMAIL_MCP_TOKEN}"
+			}
+		}
+	}
+}

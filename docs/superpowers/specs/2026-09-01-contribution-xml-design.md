@@ -163,7 +163,7 @@ Les règles de validation (longueurs, regex, libphonenumber) restent dans le cod
 
 Les `id` sont figés dans PHP. Chemins MJML relatifs à `contribution/`.
 
-Compile : MJML → HTML ; HTML → texte brut. Les `{nom}`, `{salle}`, `{date}`, `{heure}`, `{duree}`, `{joueurs}`, `{adresse}`, `{email}`, `{telephone}`, `{lien_ics}`, `{lien_google}` restent dans le HTML ; PHP les substitue à l’envoi.
+Compile : MJML → HTML ; HTML → texte brut. Les `{nom}`, `{salle}`, `{date}`, `{heure}`, `{duree}`, `{joueurs}`, `{adresse}`, `{email}`, `{telephone}`, `{lien_ics}`, `{lien_google}`, `{logo}`, `{logo_alt}`, `{image_salle}`, `{image_salle_alt}` restent dans le HTML ; PHP les substitue à l’envoi. `{logo}` vient de `contact.xml` ; `{image_salle}` est le visuel de la salle réservée.
 
 `mail.php` envoie `multipart/alternative` (texte + HTML). Confirmation : `multipart/mixed` avec ICS comme aujourd’hui. `{adresse}` vient de `contact.xml`. `{salle}` = `nom` de la salle. Sujet SMTP = `<sujet>` XML, pas `<mj-title>`.
 

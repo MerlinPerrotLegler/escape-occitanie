@@ -2,7 +2,7 @@ node_modules
 
 .env
 apps/web/public/api/.env
-dist/apps/web/api/.env
+dist/
 apps/web/src/generated/siteCopy.js
 apps/web/public/api/site-copy.json
 apps/web/public/media/

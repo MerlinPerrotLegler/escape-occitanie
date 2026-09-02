@@ -155,7 +155,7 @@ function mt_copy_period(PDO $pdo, int $sourceId, array $dates, bool $overwrite):
 }
 
 function mt_booking_select_sql(): string {
-    return 'id, room_slug, booking_date, start_minute, duration_minutes, guest_name, guest_email, guest_phone, players, status, created_at';
+    return 'id, room_slug, booking_date, start_minute, duration_minutes, guest_name, guest_email, guest_phone, players, status, ics_sequence, created_at';
 }
 
 function mt_booking_duration(array $booking): int {
@@ -167,6 +167,7 @@ function mt_map_booking_rows(array $rows): array {
         $row['id'] = (int) $row['id'];
         $row['start_minute'] = (int) $row['start_minute'];
         $row['players'] = (int) $row['players'];
+        $row['ics_sequence'] = (int) ($row['ics_sequence'] ?? 0);
         $row['duration_minutes'] = mt_booking_duration($row);
         $row['time'] = mt_minutes_to_hhmm($row['start_minute']);
         $row['end_time'] = mt_minutes_to_hhmm($row['start_minute'] + $row['duration_minutes']);
@@ -519,8 +520,12 @@ function mt_update_booking(PDO $pdo, int $id, array $fields): ?array {
             'déplacer cette réservation'
         );
     }
-    $stmt = $pdo->prepare('UPDATE bookings SET room_slug = ?, booking_date = ?, start_minute = ?, guest_name = ?, guest_email = ?, guest_phone = ?, players = ? WHERE id = ?');
-    $stmt->execute([$room, $date, $start, $name, $email, $phone, $players, $id]);
+    $sequence = (int) ($current['ics_sequence'] ?? 0);
+    if ($moved) {
+        $sequence++;
+    }
+    $stmt = $pdo->prepare('UPDATE bookings SET room_slug = ?, booking_date = ?, start_minute = ?, guest_name = ?, guest_email = ?, guest_phone = ?, players = ?, ics_sequence = ? WHERE id = ?');
+    $stmt->execute([$room, $date, $start, $name, $email, $phone, $players, $sequence, $id]);
     return mt_get_booking($pdo, $id);
 }
 

@@ -86,7 +86,7 @@ function mt_load_env(?string $startDir = null): array {
             $merged[$key] = $repoEnv[$key];
         }
     }
-    foreach (['MYSQL_HOST', 'MYSQL_USER', 'MYSQL_PASSWORD', 'MYSQL_DATABASE', 'MYSQL_PORT', 'DATABASE_URL', 'MANAGER_EMAIL', 'MANAGER_PASSWORD', 'MANAGER_NAME', 'AUTH_SECRET', 'SMTP_FROM', 'SMTP_HOST'] as $key) {
+    foreach (['MYSQL_HOST', 'MYSQL_USER', 'MYSQL_PASSWORD', 'MYSQL_DATABASE', 'MYSQL_PORT', 'DATABASE_URL', 'MANAGER_EMAIL', 'MANAGER_PASSWORD', 'MANAGER_NAME', 'AUTH_SECRET', 'SMTP_FROM', 'SMTP_HOST', 'HOSTINGER_EMAIL_MCP_TOKEN', 'HOSTINGER_MAIL_MAILBOX_ID'] as $key) {
         $g = getenv($key);
         if ($g !== false && $g !== '') {
             $merged[$key] = $g;

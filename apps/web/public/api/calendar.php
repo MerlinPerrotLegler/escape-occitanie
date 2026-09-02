@@ -34,8 +34,8 @@ if (
     exit;
 }
 
-$ics = mt_booking_ics($booking);
-header('Content-Type: text/calendar; charset=utf-8');
+$ics = mt_booking_ics($booking, $env);
+header('Content-Type: text/calendar; method=REQUEST; charset=utf-8');
 header('Content-Disposition: attachment; filename="reservation-escape-occitanie.ics"');
 header('Cache-Control: private, no-store');
 echo $ics;

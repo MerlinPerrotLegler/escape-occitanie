@@ -156,13 +156,25 @@ $booking = [
 $ics = mt_booking_ics($booking);
 expect(str_contains($ics, 'BEGIN:VEVENT'), 'ics has event');
 expect(str_contains($ics, 'DTSTART:20260910T100000Z') || str_contains($ics, 'DTSTART:20260910T110000Z'), 'ics start in UTC');
+expect(str_contains($ics, 'METHOD:REQUEST'), 'ics is an updatable calendar invite');
+expect(str_contains($ics, 'SEQUENCE:0'), 'first invite starts at sequence 0');
+expect(str_contains($ics, 'UID:booking-42@escapeoccitanie.fr'), 'ics uid is stable per booking');
+expect(str_contains($ics, 'ORGANIZER;'), 'ics has organizer');
+expect(str_contains($ics, 'ATTENDEE;') && str_contains($ics, 'mailto:paul@example.com'), 'ics addresses the guest');
+$icsMoved = mt_booking_ics(array_merge($booking, ['ics_sequence' => 1, 'start_minute' => 780, 'time' => '13:00']));
+expect(str_contains($icsMoved, 'UID:booking-42@escapeoccitanie.fr'), 'updated ics keeps the same uid');
+expect(str_contains($icsMoved, 'SEQUENCE:1'), 'moved booking increments sequence');
+expect(str_contains($icsMoved, 'DTSTART:20260910T110000Z') || str_contains($icsMoved, 'DTSTART:20260910T120000Z'), 'updated ics has new start');
+expect(mt_should_refresh_guest_calendar($booking, array_merge($booking, ['status' => 'confirmed', 'start_minute' => 780])) === true, 'confirmed time change refreshes guest calendar');
+expect(mt_should_refresh_guest_calendar(array_merge($booking, ['status' => 'confirmed']), array_merge($booking, ['status' => 'confirmed'])) === false, 'same slot does not refresh calendar');
+expect(mt_should_refresh_guest_calendar($booking, array_merge($booking, ['status' => 'pending', 'start_minute' => 780])) === false, 'pending move does not send calendar update');
 $envCal = ['AUTH_SECRET' => 'test-secret-key-for-hmac', 'AUTH_URL' => 'http://localhost:3000'];
 $token = mt_calendar_token($envCal, 42, 'paul@example.com');
 expect(mt_calendar_token_ok($envCal, 42, 'paul@example.com', $token) === true, 'calendar token ok');
 expect(mt_calendar_token_ok($envCal, 42, 'other@example.com', $token) === false, 'calendar token rejects other email');
 $links = mt_booking_calendar_links($envCal, $booking);
 expect(str_contains($links['ics'], '/api/calendar.php?b=42'), 'ics download link');
-expect(str_contains($links['google'], 'calendar.google.com'), 'google calendar link');
+expect(!array_key_exists('google', $links), 'no google calendar template link');
 
 $confirmToken = mt_manager_confirm_token($envCal, 42, 'paul@example.com');
 expect($confirmToken !== '', 'manager confirm token issued');

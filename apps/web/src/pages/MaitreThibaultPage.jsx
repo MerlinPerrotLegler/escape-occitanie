@@ -592,8 +592,9 @@ function MaitreThibaultPage() {
       });
       setBookings((list) => list.map((row) => (row.id === editingBooking ? result.booking : row)));
       setEditingBooking(null);
-      toast.success('Réservation mise à jour.');
+      toast.success(result.emailSent ? 'Réservation mise à jour. Calendrier renvoyé au client.' : 'Réservation mise à jour.');
       await reloadBookings();
+      if (expandedPeriod) await reloadDaySlots(expandedPeriod.period_date);
     } catch (err) {
       toastFromApi(err);
     }

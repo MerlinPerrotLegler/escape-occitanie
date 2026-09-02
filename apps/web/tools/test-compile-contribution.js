@@ -20,6 +20,8 @@ const MJML = `<mjml>
   <mj-body>
     <mj-section>
       <mj-column>
+        <mj-image src="{logo}" alt="{logo_alt}" />
+        <mj-image src="{image_salle}" alt="{image_salle_alt}" />
         <mj-text>Bonjour {nom}, salle {salle}.</mj-text>
       </mj-column>
     </mj-section>
@@ -334,6 +336,8 @@ await withTemp(async (dir, out) => {
   expect(copy.reserver.timeline.nonDispo === 'Non dispo', 'timeline non dispo');
   expect(copy.emails['client-attente'].sujet === 'Demande', 'email sujet');
   expect(copy.emails['client-attente'].html.includes('{nom}'), 'html keeps placeholder');
+  expect(copy.emails['client-attente'].html.includes('{logo}'), 'html keeps logo placeholder');
+  expect(copy.emails['client-attente'].html.includes('{image_salle}'), 'html keeps room image placeholder');
   expect(copy.emails['client-attente'].texte.includes('{nom}'), 'texte keeps placeholder');
   expect(copy.contact.logo.startsWith('https://'), 'https image unchanged');
   expect(fs.existsSync(out.jsPath), 'wrote js');

@@ -16,6 +16,7 @@ import { toISODate } from '@/lib/bookingDeepLink';
 import { horizonIso } from '@/lib/calendarMonths';
 import {
   buildColumns,
+  formatColumnDate,
   formatDayHeading,
   formatPageRange,
   groupColumnsByDay,
@@ -190,19 +191,24 @@ function AvailabilityTimeline({ highlightRoom }) {
           {groups.map((group) => (
             <div
               key={group.iso}
-              className="border-b border-border/60 px-1 py-2 text-center text-xs font-semibold capitalize tracking-wide text-foreground/80"
+              className="relative border-b border-border/60"
               style={{ gridColumn: `span ${group.columns.length}` }}
             >
-              {formatDayHeading(group.iso, todayISO)}
+              <span className="sticky left-[8.5rem] z-[1] inline-block bg-card px-2 py-2 text-xs font-semibold capitalize tracking-wide text-foreground">
+                {formatDayHeading(group.iso, todayISO)}
+              </span>
             </div>
           ))}
           <div className="sticky left-0 z-10 bg-card" />
           {columns.map((col) => (
             <div
-              key={`${col.iso}-${col.time}`}
-              className="flex min-h-[2rem] items-center justify-center border-b border-border/60 text-center text-xs font-medium text-foreground"
+              key={`${col.iso}-${col.time ?? 'empty'}`}
+              className="flex min-h-[2.75rem] flex-col items-center justify-center border-b border-border/60 px-1 text-center"
             >
-              {col.time}
+              <span className="text-[10px] font-semibold capitalize leading-tight text-muted-foreground">
+                {formatColumnDate(col.iso)}
+              </span>
+              <span className="text-xs font-medium text-foreground">{col.time || '—'}</span>
             </div>
           ))}
           {rooms.map((room) => (
@@ -223,7 +229,7 @@ function AvailabilityTimeline({ highlightRoom }) {
                   selected.time === col.time;
                 return status === 'open' ? (
                   <button
-                    key={`${room.slug}-${col.iso}-${col.time}`}
+                    key={`${room.slug}-${col.iso}-${col.time ?? 'empty'}`}
                     type="button"
                     onClick={() => {
                       setDone(null);
@@ -245,7 +251,7 @@ function AvailabilityTimeline({ highlightRoom }) {
                   </button>
                 ) : (
                   <div
-                    key={`${room.slug}-${col.iso}-${col.time}`}
+                    key={`${room.slug}-${col.iso}-${col.time ?? 'empty'}`}
                     className={cn(
                       'flex items-center justify-center border-l border-t border-border/40 text-[11px] text-muted-foreground/50',
                       highlightRoom === room.slug && 'bg-primary/5'

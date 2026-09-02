@@ -3,25 +3,26 @@
     <mj-preview>Nous avons bien reçu votre demande de réservation.</mj-preview>
     <mj-attributes>
       <mj-all font-family="Georgia, serif" />
-      <mj-text color="#e8dcc8" font-size="16px" line-height="1.55" />
+      <mj-text color="#e8dcc8" font-size="16px" line-height="1.55" padding="8px 24px" />
     </mj-attributes>
   </mj-head>
   <mj-body background-color="#1a1612">
-    <mj-section background-color="#241f1a" padding="28px 20px">
-      <mj-column>
-        <mj-text font-size="12px" letter-spacing="3px" color="#c9a227" text-transform="uppercase">Escape Occitanie</mj-text>
-        <mj-text font-size="22px" color="#f4ead6" padding-top="8px">Bonjour {nom},</mj-text>
-        <mj-text>Nous avons bien reçu votre demande de réservation. Elle est en attente de confirmation par l'équipe.</mj-text>
-        <mj-text>
+    <mj-section background-color="#1a1612" padding="48px 20px">
+      <mj-column background-color="#241f1a" border-radius="12px" padding="0">
+        <mj-image src="{logo}" alt="{logo_alt}" width="88px" height="88px" border-radius="44px" align="center" padding="28px 20px 16px" />
+        <mj-image src="{image_salle}" alt="{image_salle_alt}" width="560px" padding="0" fluid-on-mobile="true" />
+        <mj-text font-size="22px" color="#f4ead6" padding="24px 24px 12px">Bonjour {nom},</mj-text>
+        <mj-text padding="0 24px 12px">Nous avons bien reçu votre demande de réservation. Elle est en attente de confirmation par l'équipe.</mj-text>
+        <mj-text padding="0 24px 12px">
           Salle : {salle}<br />
           Date : {date}<br />
           Heure : {heure}<br />
           Durée : {duree} minutes<br />
           Joueurs : {joueurs}
         </mj-text>
-        <mj-text>Merci d'arriver 15 minutes avant le début de la session une fois la réservation confirmée.</mj-text>
-        <mj-text>Adresse : {adresse}</mj-text>
-        <mj-text>À très bientôt,<br />L'équipe Escape Occitanie</mj-text>
+        <mj-text padding="0 24px 12px">Merci d'arriver 15 minutes avant le début de la session une fois la réservation confirmée.</mj-text>
+        <mj-text padding="0 24px 12px">Adresse : {adresse}</mj-text>
+        <mj-text padding="0 24px 32px">À très bientôt,<br />L'équipe Escape Occitanie</mj-text>
       </mj-column>
     </mj-section>
   </mj-body>
