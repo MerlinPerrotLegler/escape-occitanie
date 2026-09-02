@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { CalendarCheck, Users } from 'lucide-react';
 import { toast } from 'sonner';
 import { useForm } from 'react-hook-form';
@@ -12,6 +12,7 @@ import { Form, FormControl, FormField, FormItem, FormMessage } from '@/component
 import { createBooking } from '@/lib/booking';
 import { bookingContactSchemaForRoom, playerCountsForRoom } from '@/lib/bookingContact';
 import { TurnstileField } from '@/components/TurnstileField';
+import { scrollNodeIntoView } from '@/lib/scrollIntoView';
 
 const cal = COPY.reserver.calendrier;
 
@@ -24,8 +25,19 @@ const dayFormatter = new Intl.DateTimeFormat('fr-FR', {
 
 export function BookingSuccess({ booking, room }) {
   const confirmed = booking.status === 'confirmed';
+  const resultRef = useRef(null);
+
+  useLayoutEffect(() => {
+    const node = resultRef.current;
+    requestAnimationFrame(() => scrollNodeIntoView(node));
+  }, []);
+
   return (
-    <div className="rounded-xl border border-primary/40 bg-primary/5 p-6 sm:p-8">
+    <div
+      ref={resultRef}
+      id="confirmation"
+      className="scroll-mt-24 rounded-xl border border-primary/40 bg-primary/5 p-6 sm:p-8"
+    >
       <CalendarCheck className="h-8 w-8 text-primary" />
       <h2 className="mt-4 font-display text-2xl font-bold tracking-wide">
         {confirmed ? cal.doneConfirme : cal.doneDemande}

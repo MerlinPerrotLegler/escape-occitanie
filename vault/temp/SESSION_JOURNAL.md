@@ -4996,3 +4996,58 @@ début et la fin (au moins 60 minutes, aligné sur 30). Le site propose alors to
 - url: http://localhost:3000/reservation/la-malediction-du-vaisseau-fantome?date=2027-09-01
 - via: replaceState
 
+## 2026-09-02 11:44:58.573Z load
+- url: http://localhost:3000/reservation/convocation-chez-le-directeur?date=2027-09-03
+
+## 2026-09-02 11:44:58.609Z navigate
+- url: http://localhost:3000/reservation/convocation-chez-le-directeur?date=2027-09-03
+- via: replaceState
+
+## 2026-09-02 11:45:06.779Z load
+- url: http://localhost:3000/reservation
+
+## 2026-09-02 11:45:06.802Z navigate
+- url: http://localhost:3000/reservation
+- via: replaceState
+
+## 2026-09-02 11:46:53.635Z click
+- element: {"tag":"button","role":null,"ariaLabel":"Réserver Le Directeur, mercredi 1 septembre 2027 à 14:00","name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Réserver"}
+
+## 2026-09-02 11:47:14.864Z change
+- element: {"tag":"input","role":null,"ariaLabel":null,"name":"name","type":null,"id":":r0:-form-item","placeholder":"Nom","label":"name","value":"Merlin Test","valueLength":11,"text":""}
+
+## 2026-09-02 11:47:15.222Z change
+- element: {"tag":"input","role":null,"ariaLabel":null,"name":"email","type":"email","id":":r1:-form-item","placeholder":"E-mail","label":"email","value":"merlin.test@example.com","valueLength":23,"text":""}
+
+## 2026-09-02 11:47:15.540Z change
+- element: {"tag":"input","role":null,"ariaLabel":null,"name":"phone","type":"tel","id":":r2:-form-item","placeholder":"Téléphone","label":"phone","value":"0612345678","valueLength":10,"text":""}
+
+## 2026-09-02 11:48:22.691Z click
+- element: {"tag":"button","role":null,"ariaLabel":null,"name":null,"type":"submit","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Réserver ce créneau"}
+
+## 2026-09-02 11:48:22.691Z submit
+- formId: reservation
+- action: http://localhost:3000/reservation
+- fields: [{"label":"name","type":"text","value":"Merlin Test","length":11,"redacted":false},{"label":"email","type":"email","value":"merlin.test@example.com","length":23,"redacted":false},{"label":"phone","type":"tel","value":"0612345678","length":10,"redacted":false},{"label":"players","type":"select-one","value":"4","length":1,"redacted":false},{"label":"cf-turnstile-response","type":"hidden","value":"1.SsVPl8P3U64I1Xvt_w4k_v0owFSswHdQ7AbnFfF2yzbIaZEb5NpWkbkFEgkiq5TiLM8XT5uet3Q29LtTNN-ElyGQENoteRBvhAEDWWlpK1YsuvDJL-GX4KBvYP_sCSfDT_wfHgemwVl8OkFuqRHE_Rao6mXj9v2Nqzos2uiL9b5xg_MHIIJOFtlIYFPi4gD9KvyDBOHgsX64nNpU_obFSM5fF8j4CuoTqjkyjqnZcr2zgfe6fjmrog0IT6tM1JuNOiBtG3kQK07Bk4NtnXuk6-KRg7yuJ2F4x81CbyLl8pY5Hb4ULUxxjG0AABWZNYgbY-O34SLfFqyM-wyT54sVM1QeSUot4hwALLvOqZyR0QPcCoOmmQN9uxvRIIAH4476htTB07ppqp4_XeyKg4dbEdzDac0jy-Lr2jL7ZzrSz-Lr9xpJBxcVZ8bj5Eu4NMOGCoenAb5kIJOcBBJYNsv-Fy0RuUalg-MhMMRfUXXjwuJT89KsDH3NdJBP0LcDEzOzLYIbxnRoPaCKseGUtRij1oJqZigqUEFDe8AyHj8wSgtnv8ivZms_jEZ0zbCotF5WcUM4FP6B5Cljs65xjaY80dZfkwzTsTRefOvgVJnKSzTqiXDtGE_08TF5bgOyPj7RJ737WOTcXOw7k95UQuyUru4y1yFuOH4Ur4cz6sBQT_Jbjn3wlpHXZrtKWA6y9p0xuoEk9yExRL0Q-dNWKBXKcFii1Nn37_mInDxNM-ecCkw.qHr0wo-NRbKei2Nvr2wTMw.56c8828f83cac92851c62cec2f99440b21594cf8352438d1373d96d7d1080621","length":837,"redacted":false},{"label":"[submit]","type":"submit","value":"","length":0,"redacted":false}]
+
+## 2026-09-02 11:48:44.777Z load
+- url: http://localhost:3000/reservation/convocation-chez-le-directeur?date=2027-09-01&heure=14:15
+
+## 2026-09-02 11:48:44.802Z navigate
+- url: http://localhost:3000/reservation/convocation-chez-le-directeur?date=2027-09-01&heure=14:15
+- via: replaceState
+
+## 2026-09-02 11:49:01.844Z change
+- element: {"tag":"input","role":null,"ariaLabel":null,"name":"name","type":null,"id":":r0:-form-item","placeholder":"Nom","label":"name","value":"Merlin Test","valueLength":11,"text":""}
+
+## 2026-09-02 11:49:01.845Z change
+- element: {"tag":"input","role":null,"ariaLabel":null,"name":"email","type":"email","id":":r1:-form-item","placeholder":"E-mail","label":"email","value":"merlin.cal@example.com","valueLength":22,"text":""}
+
+## 2026-09-02 11:49:01.845Z change
+- element: {"tag":"input","role":null,"ariaLabel":null,"name":"phone","type":"tel","id":":r2:-form-item","placeholder":"Téléphone","label":"phone","value":"0612345678","valueLength":10,"text":""}
+
+## 2026-09-02 11:49:07.192Z submit
+- formId: reservation
+- action: http://localhost:3000/reservation/convocation-chez-le-directeur?date=2027-09-01&heure=14:15
+- fields: [{"label":"name","type":"text","value":"Merlin Test","length":11,"redacted":false},{"label":"email","type":"email","value":"merlin.cal@example.com","length":22,"redacted":false},{"label":"phone","type":"tel","value":"0612345678","length":10,"redacted":false},{"label":"players","type":"select-one","value":"4","length":1,"redacted":false},{"label":"cf-turnstile-response","type":"hidden","value":"1.OEO3G6k4JSSUoEkrLjTbmjWjL9RnWF-sJVWx7mxQpia9f9LGE12AtSnTmWaucl3NpPQOlyA_ZfKowaPz4NxUAUSV4Picl3NREOYxlKTUvLEgbHZfMtuUVYWz0geCU0UIxHg0InmHgnR4Mtdzx2AjHZ0HqFUZXRpKssXlGXCTi8LhcuWTRKXPbHOlgDOF_Rod_2KwblZEVNoOzvaku0lU-lH65bLToMKysxy1FqlYkHLDMrkjkKFo3yf9CIHtkuzMWQaoKie9a6B9lFfUthtWzLuFpzg0-Do8msAXmac3ulB2UPPtyaPgsDewsV8q1Sreq6GDwMJNSAGISuvLlmxykxCu-3qjmzMnF21lKYZeY5aBw-HRFwrI7yOkXzstZu8W2IP69cthQd8mHSXDO0XCudibgpE0u2gHB6uNh1kGHkJraSrfGMh-YYhATBsNdg3nigISHugW5x3_haBqOhQ9Lw-yPAm1pQovgv4FOGVKEYBm5rOBrinOVBjclk9IvfNH5THJheeqLhGwbY_n_eRkcljDx7mtQTkbJkEO66nGgj1XCzWgIShRYCGsznBLXejuLGnD6sPIUCCr1KnltB5x-_Jm8HKuA4CBrrbSMcQ2JdG84w4iJy-Sn13ouFW1PSL_XYSdmT8sMU8CS1t0JqeK7RP7WWKCmdvHFGn1nL3J7vvEYW6qCZQx9Gp9dp21WZE_JJLGb6I1yWSSX65Gr9tbxw.CEG2GCsruMXj9NGoWJtDrA.34202a2bbf63865b772bc62722705dc24abfe9433dffbbcb19166d76c7f271a4","length":816,"redacted":false},{"label":"[submit]","type":"submit","value":"","length":0,"redacted":false}]
+
