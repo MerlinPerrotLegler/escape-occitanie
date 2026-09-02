@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<emails>
+  <mail id="client-attente">
+    <sujet>Demande de réservation — Escape Occitanie</sujet>
+    <mjml>emails/client-attente.mjml</mjml>
+  </mail>
+  <mail id="client-confirmee">
+    <sujet>Confirmation de réservation — Escape Occitanie</sujet>
+    <mjml>emails/client-confirmee.mjml</mjml>
+  </mail>
+  <mail id="manager-nouvelle">
+    <sujet>Nouvelle demande de réservation — Escape Occitanie</sujet>
+    <mjml>emails/manager-nouvelle.mjml</mjml>
+  </mail>
+</emails>

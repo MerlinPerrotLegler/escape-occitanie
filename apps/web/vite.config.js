@@ -4,6 +4,7 @@ import { createLogger, defineConfig } from 'vite';
 import inlineEditPlugin from './plugins/visual-editor/vite-plugin-react-inline-editor.js';
 import editModeDevPlugin from './plugins/visual-editor/vite-plugin-edit-mode.js';
 import iframeRouteRestorationPlugin from './plugins/vite-plugin-iframe-route-restoration.js';
+import contributionPlugin from './plugins/vite-plugin-contribution.js';
 import sitePagesPlugin from './plugins/vite-plugin-site-pages.js';
 import pocketbaseAuthPlugin from './plugins/vite-plugin-pocketbase-auth.js';
 import sessionJournalPlugin from './plugins/session-journal/vite-plugin-session-journal.js';
@@ -374,6 +375,7 @@ export default defineConfig({
 	},
 	customLogger: logger,
 	plugins: [
+		contributionPlugin(),
 		...(isDev ? [inlineEditPlugin(), editModeDevPlugin(), iframeRouteRestorationPlugin(), sitePagesPlugin(), pocketbaseAuthPlugin(), sessionJournalPlugin()] : []),
 		react(),
 		addTransformIndexHtml
@@ -392,6 +394,7 @@ export default defineConfig({
 			strict: true,
 			allow: [
 				path.resolve(__dirname),
+				path.resolve(__dirname, '../..'),
 				path.join(path.resolve(__dirname, '../..'), 'node_modules'),
 			],
 		},

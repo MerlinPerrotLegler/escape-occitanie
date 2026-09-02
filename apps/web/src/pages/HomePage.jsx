@@ -20,42 +20,13 @@ import Reveal from '@/components/Reveal';
 import CountUp from '@/components/CountUp';
 import Seo from '@/components/Seo';
 import { CONTACT, ROOM_LIST, REVIEWS, HERO_IMAGE } from '@/data/rooms';
+import { COPY } from '@/generated/siteCopy';
 import { fetchSiteContent } from '@/lib/siteContent';
 import { cn } from '@/lib/utils';
 
-const MARQUEE_WORDS = [
-  'Enquête',
-  'Fouille',
-  'Manipulation',
-  'Réflexion',
-  'Coopération',
-  '60 minutes chrono',
-  'Adrénaline',
-  'Mystère',
-];
-
-const FEATURES = [
-  {
-    icon: Search,
-    title: 'Investigation',
-    text: 'Fouillez chaque recoin du décor : aucun détail n\'est laissé au hasard.',
-  },
-  {
-    icon: Puzzle,
-    title: 'Énigmes',
-    text: 'Cadenas, mécanismes et casse-tête à résoudre en chaîne pour progresser.',
-  },
-  {
-    icon: Users,
-    title: 'Coopération',
-    text: 'On ne s\'évade jamais seul : communiquez, partagez, combinez vos trouvailles.',
-  },
-  {
-    icon: Timer,
-    title: '60 minutes chrono',
-    text: 'L\'adrénaline monte à mesure que le temps s\'écoule. Tiendrez-vous la pression ?',
-  },
-];
+const FEATURE_ICONS = [Search, Puzzle, Users, Timer];
+const home = COPY.accueil;
+const labels = COPY.commun;
 
 const RANK_STYLES = [
   'border-primary/60 bg-primary/15 text-primary',
@@ -84,24 +55,21 @@ function HomePage() {
   return (
     <>
       <Helmet>
-        <title>Escape Occitanie — Escape game immersif en Occitanie</title>
-        <meta
-          name="description"
-          content="L'Escape Occitanie réouvre ses portes ! Deux salles d'escape game immersives : enquêtez dans le bureau du directeur ou brisez la malédiction du Vaisseau Fantôme. 60 minutes, 4 à 6 joueurs, dès 10 ans."
-        />
+        <title>{home.seo.titre}</title>
+        <meta name="description" content={home.seo.description} />
       </Helmet>
       <Seo
-        title="Escape Occitanie — Escape game immersif en Occitanie"
-        description="Deux aventures immersives de 60 minutes : Convocation chez le Directeur et La malédiction du Vaisseau Fantôme. Réservez votre session."
+        title={home.seoOg.titre}
+        description={home.seoOg.description}
         image={HERO_IMAGE}
-        siteName="Escape Occitanie"
+        siteName={CONTACT.name}
       />
 
       {/* HERO */}
       <section className="relative flex min-h-[100dvh] items-center justify-center overflow-hidden">
         <img
-          src={HERO_IMAGE}
-          alt="Couloir sombre d'un escape game, porte ancienne entrouverte laissant filtrer une lumière dorée"
+          src={home.hero.image}
+          alt={home.hero.imageAlt}
           className="absolute inset-0 h-full w-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/55 to-background" />
@@ -113,15 +81,15 @@ function HomePage() {
         <div className="relative z-10 mx-auto max-w-4xl px-4 pb-24 pt-28 text-center sm:px-6">
           <Reveal>
             <p className="font-display text-xs font-semibold uppercase tracking-[0.4em] text-primary sm:text-sm">
-              Escape game — Occitanie
+              {home.hero.surtitre}
             </p>
           </Reveal>
           <Reveal delay={0.12}>
             <h1 className="mt-5 font-display text-4xl font-black leading-[1.08] tracking-wide text-foreground sm:text-6xl lg:text-7xl">
-              L'Escape Occitanie
+              {home.hero.titre}
               <br />
               <span className="relative inline-block text-primary">
-                réouvre ses portes
+                {home.hero.accent}
                 <svg
                   className="absolute -bottom-2 left-0 w-full text-primary/70"
                   viewBox="0 0 300 12"
@@ -142,9 +110,7 @@ function HomePage() {
           </Reveal>
           <Reveal delay={0.24}>
             <p className="mx-auto mt-7 max-w-2xl text-base leading-relaxed text-foreground/80 sm:text-lg">
-              Enfermés en équipe, vous avez 60 minutes pour fouiller les lieux, dénicher les
-              indices, résoudre les énigmes et percer le mystère. Observation, logique et
-              coopération seront vos seules clés vers la sortie.
+              {home.hero.texte}
             </p>
           </Reveal>
           <Reveal delay={0.36}>
@@ -154,23 +120,24 @@ function HomePage() {
                 className="inline-flex min-h-[52px] items-center gap-2 rounded-md bg-primary px-8 text-base font-semibold text-primary-foreground shadow-[0_0_30px_hsl(var(--primary)/0.4)] transition-all duration-200 hover:brightness-110 active:scale-[0.98]"
               >
                 <CalendarDays className="h-5 w-5" />
-                Réserver une session
+                {home.hero.ctaReserver}
               </Link>
               <Link
                 to="/#experience"
                 className="inline-flex min-h-[52px] items-center gap-2 rounded-md border border-foreground/25 px-8 text-base font-semibold text-foreground transition-all duration-200 hover:border-primary/60 hover:text-primary active:scale-[0.98]"
               >
-                Découvrir l'expérience
+                {home.hero.ctaDecouvrir}
               </Link>
             </div>
           </Reveal>
           <Reveal delay={0.48}>
             <div className="mt-10 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
-              <span>2 salles immersives</span>
-              <span className="h-1 w-1 rounded-full bg-primary" aria-hidden="true" />
-              <span>4 à 6 joueurs</span>
-              <span className="h-1 w-1 rounded-full bg-primary" aria-hidden="true" />
-              <span>Dès 10 ans</span>
+              {home.hero.puces.map((puce, i) => (
+                <React.Fragment key={puce}>
+                  {i > 0 ? <span className="h-1 w-1 rounded-full bg-primary" aria-hidden="true" /> : null}
+                  <span>{puce}</span>
+                </React.Fragment>
+              ))}
             </div>
           </Reveal>
         </div>
@@ -183,7 +150,7 @@ function HomePage() {
       {/* MARQUEE */}
       <div className="overflow-hidden border-y border-border/60 bg-card/50 py-3.5" aria-hidden="true">
         <div className="animate-marquee flex w-max items-center gap-8">
-          {[...MARQUEE_WORDS, ...MARQUEE_WORDS].map((word, i) => (
+          {[...home.bandeau, ...home.bandeau].map((word, i) => (
             <span
               key={`${word}-${i}`}
               className="flex items-center gap-8 font-display text-sm font-semibold uppercase tracking-[0.3em] text-muted-foreground"
@@ -201,68 +168,53 @@ function HomePage() {
           <Reveal>
             <div>
               <p className="font-display text-xs font-semibold uppercase tracking-[0.35em] text-primary">
-                L'expérience
+                {home.experience.surtitre}
               </p>
               <h2 className="mt-4 font-display text-3xl font-bold leading-tight tracking-wide sm:text-4xl">
-                60 minutes pour résoudre l'impossible
+                {home.experience.titre}
               </h2>
               <p className="mt-6 leading-relaxed text-muted-foreground">
-                Une porte se referme. Le chronomètre s'affole : 60 minutes, ni une de plus. En
-                équipe de 4 à 6 joueurs, fouillez les lieux, dénichez les indices cachés, résolvez
-                les énigmes et faites parler les mécanismes.
+                {home.experience.paragraphes[0]}
               </p>
               <p className="mt-4 leading-relaxed text-muted-foreground">
-                Ici, pas de force ni de hasard : seuls votre esprit d'observation, votre logique et
-                votre cohésion vous permettront de sortir vainqueurs. Entre amis, en famille ou
-                entre collègues, chaque session est une aventure dont vous êtes les héros.
+                {home.experience.paragraphes[1]}
               </p>
               <div className="mt-8 grid grid-cols-3 gap-4 border-t border-border/60 pt-8">
-                <div>
-                  <p className="font-display text-3xl font-bold text-primary sm:text-4xl">
-                    <CountUp value={2} />
-                  </p>
-                  <p className="mt-1 text-xs uppercase tracking-widest text-muted-foreground">
-                    Salles
-                  </p>
-                </div>
-                <div>
-                  <p className="font-display text-3xl font-bold text-primary sm:text-4xl">
-                    <CountUp value={60} />
-                  </p>
-                  <p className="mt-1 text-xs uppercase tracking-widest text-muted-foreground">
-                    Minutes
-                  </p>
-                </div>
-                <div>
-                  <p className="font-display text-3xl font-bold text-primary sm:text-4xl">
-                    <CountUp value={12} />
-                  </p>
-                  <p className="mt-1 text-xs uppercase tracking-widest text-muted-foreground">
-                    Joueurs max
-                  </p>
-                </div>
+                {home.experience.stats.map((stat) => (
+                  <div key={stat.libelle}>
+                    <p className="font-display text-3xl font-bold text-primary sm:text-4xl">
+                      <CountUp value={stat.valeur} />
+                    </p>
+                    <p className="mt-1 text-xs uppercase tracking-widest text-muted-foreground">
+                      {stat.libelle}
+                    </p>
+                  </div>
+                ))}
               </div>
             </div>
           </Reveal>
 
           <div className="flex flex-col divide-y divide-border/60">
-            {FEATURES.map((feature, i) => (
-              <Reveal key={feature.title} delay={0.08 * i}>
+            {home.experience.atouts.map((feature, i) => {
+              const Icon = FEATURE_ICONS[i];
+              return (
+              <Reveal key={feature.titre} delay={0.08 * i}>
                 <div className="flex items-start gap-5 py-6 first:pt-0 last:pb-0">
                   <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg border border-primary/30 bg-primary/10 text-primary">
-                    <feature.icon className="h-5 w-5" strokeWidth={1.8} />
+                    <Icon className="h-5 w-5" strokeWidth={1.8} />
                   </span>
                   <div>
                     <h3 className="font-display text-lg font-bold tracking-wider">
-                      {feature.title}
+                      {feature.titre}
                     </h3>
                     <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">
-                      {feature.text}
+                      {feature.texte}
                     </p>
                   </div>
                 </div>
               </Reveal>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
@@ -273,14 +225,13 @@ function HomePage() {
           <Reveal>
             <div className="max-w-2xl">
               <p className="font-display text-xs font-semibold uppercase tracking-[0.35em] text-primary">
-                Nos aventures
+                {home.salles.surtitre}
               </p>
               <h2 className="mt-4 font-display text-3xl font-bold tracking-wide sm:text-4xl">
-                Deux salles, deux mondes à explorer
+                {home.salles.titre}
               </h2>
               <p className="mt-4 leading-relaxed text-muted-foreground">
-                Choisissez votre mission : menez l'enquête dans un collège aux secrets troublants,
-                ou affrontez la malédiction d'un galion fantôme échoué dans la brume.
+                {home.salles.texte}
               </p>
             </div>
           </Reveal>
@@ -333,13 +284,13 @@ function HomePage() {
                         className="inline-flex h-12 items-center justify-center gap-2 rounded-md bg-primary px-6 text-sm font-semibold text-primary-foreground transition-all hover:brightness-110 active:scale-[0.98]"
                       >
                         <CalendarDays className="h-4 w-4" />
-                        Réserver cette salle
+                        {labels.salle.reserverSalle}
                       </Link>
                       <Link
                         to={room.pagePath}
                         className="inline-flex h-12 items-center justify-center gap-2 rounded-md border border-border px-6 text-sm font-semibold text-foreground transition-all hover:border-primary/60 hover:text-primary active:scale-[0.98]"
                       >
-                        Découvrir l'histoire
+                        {labels.salle.decouvrirHistoire}
                         <ArrowRight className="h-4 w-4" />
                       </Link>
                     </div>
@@ -356,10 +307,10 @@ function HomePage() {
         <Reveal>
           <div className="text-center">
             <p className="font-display text-xs font-semibold uppercase tracking-[0.35em] text-primary">
-              Ils ont tenté l'aventure
+              {home.avis.surtitre}
             </p>
             <h2 className="mt-4 font-display text-3xl font-bold tracking-wide sm:text-4xl">
-              Les survivants témoignent
+              {home.avis.titre}
             </h2>
           </div>
         </Reveal>
@@ -403,14 +354,13 @@ function HomePage() {
           <Reveal>
             <div className="text-center">
               <p className="font-display text-xs font-semibold uppercase tracking-[0.35em] text-primary">
-                Hall of fame
+                {home.records.surtitre}
               </p>
               <h2 className="mt-4 font-display text-3xl font-bold tracking-wide sm:text-4xl">
-                Top 3 des records
+                {home.records.titre}
               </h2>
               <p className="mx-auto mt-4 max-w-xl leading-relaxed text-muted-foreground">
-                Les équipes les plus rapides de la saison. Saurez-vous faire mieux et graver votre
-                nom au tableau ?
+                {home.records.texte}
               </p>
             </div>
           </Reveal>
@@ -456,15 +406,13 @@ function HomePage() {
           <Reveal>
             <div>
               <p className="font-display text-xs font-semibold uppercase tracking-[0.35em] text-primary">
-                Contact
+                {home.contact.surtitre}
               </p>
               <h2 className="mt-4 font-display text-3xl font-bold tracking-wide sm:text-4xl">
-                Prêt à relever le défi ?
+                {home.contact.titre}
               </h2>
               <p className="mt-5 leading-relaxed text-muted-foreground">
-                Une question sur nos salles, un événement à organiser (anniversaire, enterrement de
-                vie de célibataire, team building) ou une réservation à confirmer ? Notre équipe
-                vous répond avec plaisir.
+                {home.contact.texte}
               </p>
               <ul className="mt-8 space-y-4 text-sm">
                 <li className="flex items-start gap-3">
@@ -477,7 +425,7 @@ function HomePage() {
                   >
                     {CONTACT.address}
                     <span className="mt-1 block text-xs font-medium text-primary">
-                      Voir sur Google Maps
+                      {labels.salle.maps}
                     </span>
                   </a>
                 </li>
@@ -507,11 +455,10 @@ function HomePage() {
             <div className="flex h-full flex-col justify-center rounded-xl border border-primary/30 bg-gradient-to-br from-primary/10 via-card/60 to-card/60 p-8 sm:p-10">
               <KeyRound className="h-10 w-10 text-primary" strokeWidth={1.5} />
               <h3 className="mt-5 font-display text-2xl font-bold tracking-wide">
-                Le chronomètre tourne déjà…
+                {home.contact.encartTitre}
               </h3>
               <p className="mt-3 leading-relaxed text-muted-foreground">
-                Consultez les disponibilités de chaque salle et bloquez votre créneau. Les sessions
-                partent vite, surtout le week-end !
+                {home.contact.encartTexte}
               </p>
               <div className="mt-7 flex flex-col gap-3">
                 {ROOM_LIST.map((room) => (
@@ -524,7 +471,7 @@ function HomePage() {
                       {room.name}
                     </span>
                     <span className="flex items-center gap-2 text-sm font-semibold text-primary">
-                      Voir les créneaux
+                      {labels.salle.voirCreneaux}
                       <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                     </span>
                   </Link>

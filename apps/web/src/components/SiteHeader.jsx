@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { Menu, X, CalendarDays } from 'lucide-react';
 import { CONTACT, ROOM_LIST } from '@/data/rooms';
+import { COPY } from '@/generated/siteCopy';
 import { cn } from '@/lib/utils';
 
 const linkBase =
@@ -11,9 +12,9 @@ function SiteHeader() {
   const [open, setOpen] = useState(false);
 
   const navItems = [
-    { to: '/', label: 'Accueil', end: true },
+    { to: '/', label: COPY.commun.nav.accueil, end: true },
     ...ROOM_LIST.map((room) => ({ to: room.pagePath, label: room.shortName })),
-    { to: '/#contact', label: 'Contact', hash: true },
+    { to: '/#contact', label: COPY.commun.nav.contact, hash: true },
   ];
 
   return (
@@ -22,11 +23,11 @@ function SiteHeader() {
         <Link to="/" className="group flex items-center gap-2.5" onClick={() => setOpen(false)}>
           <img
             src={CONTACT.logo}
-            alt="Escape Occitanie"
+            alt={CONTACT.logoAlt}
             className="h-11 w-11 rounded-full object-cover shadow-[0_0_16px_hsl(var(--primary)/0.25)] ring-1 ring-primary/30 transition-transform duration-300 group-hover:scale-105 sm:h-12 sm:w-12"
           />
           <span className="font-display text-base font-bold tracking-widest text-foreground sm:text-lg">
-            ESCAPE <span className="text-primary">OCCITANIE</span>
+            {COPY.commun.marque.ligne1} <span className="text-primary">{COPY.commun.marque.ligne2}</span>
           </span>
         </Link>
 
@@ -52,7 +53,7 @@ function SiteHeader() {
             className="inline-flex h-10 items-center gap-2 rounded-md bg-primary px-4 text-sm font-semibold text-primary-foreground shadow-[0_0_20px_hsl(var(--primary)/0.35)] transition-all duration-200 hover:brightness-110 active:scale-[0.98]"
           >
             <CalendarDays className="h-4 w-4" strokeWidth={2} />
-            Réserver
+            {COPY.commun.nav.reserver}
           </Link>
         </nav>
 
@@ -91,7 +92,7 @@ function SiteHeader() {
             className="mt-4 flex h-12 items-center justify-center gap-2 rounded-md bg-primary text-sm font-semibold text-primary-foreground active:scale-[0.98]"
           >
             <CalendarDays className="h-4 w-4" />
-            Réserver une session
+            {COPY.commun.nav.reserverSession}
           </Link>
         </nav>
       )}

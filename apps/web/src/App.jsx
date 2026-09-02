@@ -7,23 +7,23 @@ import HomePage from './pages/HomePage';
 import RoomPage from './pages/RoomPage';
 import BookingPage from './pages/BookingPage';
 import MaitreThibaultPage from './pages/MaitreThibaultPage';
+import { COPY } from './generated/siteCopy';
 
 function NotFound() {
   return (
     <div className="flex min-h-[80dvh] flex-col items-center justify-center px-6 pt-16 text-center">
-      <p className="font-display text-7xl font-black text-primary sm:text-8xl">404</p>
+      <p className="font-display text-7xl font-black text-primary sm:text-8xl">{COPY.commun.notFound.code}</p>
       <h1 className="mt-4 font-display text-2xl font-bold tracking-wider">
-        Cette porte n'existe pas…
+        {COPY.commun.notFound.titre}
       </h1>
       <p className="mt-3 max-w-md text-muted-foreground">
-        La page que vous cherchez s'est volatilisée dans la brume. Peut-être un indice vous
-        attend-il ailleurs ?
+        {COPY.commun.notFound.texte}
       </p>
       <Link
         to="/"
         className="mt-8 inline-flex h-12 items-center rounded-md bg-primary px-6 text-sm font-semibold text-primary-foreground transition-all hover:brightness-110 active:scale-[0.98]"
       >
-        Retour à l'accueil
+        {COPY.commun.notFound.bouton}
       </Link>
     </div>
   );

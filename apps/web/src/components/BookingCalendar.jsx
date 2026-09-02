@@ -5,6 +5,8 @@ import { toast } from 'sonner';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { CONTACT } from '@/data/rooms';
+import { COPY } from '@/generated/siteCopy';
+import { fillCopy } from '@/lib/fillCopy';
 import { cn } from '@/lib/utils';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
@@ -20,7 +22,7 @@ import {
 import { MAX_MONTH_OFFSET, horizonIso, initialMonthOffset } from '@/lib/calendarMonths';
 import { bookingContactSchema } from '@/lib/bookingContact';
 
-const WEEKDAY_LABELS = ['Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam', 'Dim'];
+const cal = COPY.reserver.calendrier;
 
 function monthRange(year, month) {
   const from = `${year}-${String(month + 1).padStart(2, '0')}-01`;
@@ -287,11 +289,11 @@ function BookingCalendar({ room }) {
       toast.success(
         confirmed
           ? result.emailSent
-            ? 'Réservation confirmée. Un e-mail vous a été envoyé.'
-            : 'Réservation confirmée.'
+            ? cal.toastConfirmeMail
+            : cal.toastConfirme
           : result.emailSent
-            ? 'Demande envoyée. Un e-mail vous a été envoyé.'
-            : 'Demande envoyée, en attente de confirmation.'
+            ? cal.toastDemandeMail
+            : cal.toastDemande
       );
     } catch (err) {
       toast.error(err.message);
@@ -306,19 +308,20 @@ function BookingCalendar({ room }) {
       <div className="rounded-xl border border-primary/40 bg-primary/5 p-6 sm:p-8">
         <CalendarCheck className="h-8 w-8 text-primary" />
         <h2 className="mt-4 font-display text-2xl font-bold tracking-wide">
-          {confirmed ? 'Réservation confirmée' : 'Demande envoyée'}
+          {confirmed ? cal.doneConfirme : cal.doneDemande}
         </h2>
         <p className="mt-3 leading-relaxed text-muted-foreground">
-          {done.guest_name}, votre {confirmed ? 'réservation' : 'demande'} pour « {room.name} » le{' '}
-          {dayFormatter.format(new Date(`${done.booking_date}T12:00:00`))} à {done.time} ({done.players}{' '}
-          joueurs) est enregistrée.
-          {confirmed
-            ? ' Un e-mail de confirmation a été envoyé à '
-            : ' Elle sera confirmée par l’équipe. Un e-mail a été envoyé à '}
-          {done.guest_email}.
+          {fillCopy(confirmed ? cal.doneCorpsConfirme : cal.doneCorpsDemande, {
+            nom: done.guest_name,
+            salle: room.name,
+            date: dayFormatter.format(new Date(`${done.booking_date}T12:00:00`)),
+            heure: done.time,
+            joueurs: done.players,
+            email: done.guest_email,
+          })}
         </p>
         <p className="mt-3 text-sm text-muted-foreground">
-          Merci d’arriver 15 minutes en avance{confirmed ? '.' : ' une fois confirmé.'}
+          {confirmed ? cal.doneArriveConfirme : cal.doneArriveAttente}
         </p>
       </div>
     );
@@ -332,7 +335,7 @@ function BookingCalendar({ room }) {
           disabled={monthOffset === 0}
           onClick={() => setMonthOffset((v) => Math.max(0, v - 1))}
           className="flex h-10 w-10 items-center justify-center rounded-md border border-border text-foreground transition-colors hover:bg-secondary disabled:cursor-not-allowed disabled:opacity-30"
-          aria-label="Mois précédent"
+          aria-label={cal.moisPrev}
         >
           <ChevronLeft className="h-5 w-5" />
         </button>
@@ -344,7 +347,7 @@ function BookingCalendar({ room }) {
           disabled={monthOffset === maxOffset}
           onClick={() => setMonthOffset((v) => Math.min(maxOffset, v + 1))}
           className="flex h-10 w-10 items-center justify-center rounded-md border border-border text-foreground transition-colors hover:bg-secondary disabled:cursor-not-allowed disabled:opacity-30"
-          aria-label="Mois suivant"
+          aria-label={cal.moisNext}
         >
           <ChevronRight className="h-5 w-5" />
         </button>
@@ -360,14 +363,16 @@ function BookingCalendar({ room }) {
             }}
             className="text-left text-sm text-primary underline-offset-4 hover:underline"
           >
-            Prochaine ouverture le {dayFormatter.format(new Date(`${nextOpenIso}T12:00:00`))}
+            {fillCopy(cal.prochaine, {
+              date: dayFormatter.format(new Date(`${nextOpenIso}T12:00:00`)),
+            })}
           </button>
         </div>
       ) : null}
 
       <div className="px-3 py-4 sm:px-6">
         <div className="grid grid-cols-7 gap-1 text-center">
-          {WEEKDAY_LABELS.map((d) => (
+          {cal.jours.map((d) => (
             <span
               key={d}
               className="pb-2 text-[11px] font-semibold uppercase tracking-widest text-muted-foreground"
@@ -396,16 +401,16 @@ function BookingCalendar({ room }) {
                     : 'text-foreground hover:border-primary/50 hover:bg-primary/5 active:scale-[0.97]',
                   isSelected && 'border-primary bg-primary/10 shadow-[0_0_16px_hsl(var(--primary)/0.25)]'
                 )}
-                aria-label={`${dayFormatter.format(date)}${isPast || isClosed ? ' — indisponible' : ` — ${openCount} créneaux disponibles`}`}
+                aria-label={`${dayFormatter.format(date)}${isPast || isClosed ? ` — ${cal.indisponible}` : ` — ${fillCopy(cal.creneauxDispo, { n: openCount })}`}`}
               >
                 <span className="text-sm font-semibold sm:text-base">{date.getDate()}</span>
                 {!isPast && info && !info.closed && (
                   <span className={cn('text-[10px] leading-none', openCount > 0 ? 'text-primary' : 'text-muted-foreground/60')}>
-                    {openCount > 0 ? `${openCount} dispo` : 'Complet'}
+                    {openCount > 0 ? fillCopy(cal.dispo, { n: openCount }) : cal.complet}
                   </span>
                 )}
                 {!isPast && isClosed && (
-                  <span className="text-[10px] leading-none text-muted-foreground/50">Fermé</span>
+                  <span className="text-[10px] leading-none text-muted-foreground/50">{cal.ferme}</span>
                 )}
               </button>
             );
@@ -421,7 +426,7 @@ function BookingCalendar({ room }) {
         {!selectedDate ? (
           <p className="flex items-center gap-2 text-sm text-muted-foreground">
             <Info className="h-4 w-4 shrink-0 text-primary" />
-            Sélectionnez un jour pour afficher les horaires disponibles.
+            {cal.choisirJour}
           </p>
         ) : (
           <div>
@@ -429,13 +434,15 @@ function BookingCalendar({ room }) {
               {dayFormatter.format(selectedDate)}
             </p>
             <p className="mt-1 text-xs text-muted-foreground">
-              Créneaux de départ toutes les {settings.slot_minutes} min — occupation{' '}
-              {settings.occupancy_minutes} min.
+              {fillCopy(cal.creneauxInfo, {
+                slot: settings.slot_minutes,
+                occupancy: settings.occupancy_minutes,
+              })}
             </p>
             {loadingSlots ? (
-              <p className="mt-3 text-sm text-muted-foreground">Chargement des horaires…</p>
+              <p className="mt-3 text-sm text-muted-foreground">{cal.chargement}</p>
             ) : slots.length === 0 ? (
-              <p className="mt-3 text-sm text-muted-foreground">Aucun créneau ouvert ce jour-là.</p>
+              <p className="mt-3 text-sm text-muted-foreground">{cal.aucun}</p>
             ) : (
               <div className="mt-3 grid grid-cols-2 gap-2 sm:grid-cols-3">
                 {slots.map((slot) => {
@@ -457,7 +464,7 @@ function BookingCalendar({ room }) {
                     >
                       <Clock className="h-3.5 w-3.5" />
                       {slot.time}
-                      {isFull && <span className="sr-only">— réservé</span>}
+                      {isFull && <span className="sr-only">{cal.reserve}</span>}
                     </button>
                   );
                 })}
@@ -483,7 +490,7 @@ function BookingCalendar({ room }) {
                     render={({ field }) => (
                       <FormItem>
                         <FormControl>
-                          <Input placeholder="Nom" autoComplete="name" {...field} />
+                          <Input placeholder={cal.placeholderNom} autoComplete="name" {...field} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -495,7 +502,7 @@ function BookingCalendar({ room }) {
                     render={({ field }) => (
                       <FormItem>
                         <FormControl>
-                          <Input type="email" placeholder="E-mail" autoComplete="email" {...field} />
+                          <Input type="email" placeholder={cal.placeholderEmail} autoComplete="email" {...field} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -507,7 +514,7 @@ function BookingCalendar({ room }) {
                     render={({ field }) => (
                       <FormItem>
                         <FormControl>
-                          <Input type="tel" placeholder="Téléphone" autoComplete="tel" {...field} />
+                          <Input type="tel" placeholder={cal.placeholderTel} autoComplete="tel" {...field} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -520,7 +527,7 @@ function BookingCalendar({ room }) {
                       <FormItem>
                         <label className="flex items-center gap-2 text-sm">
                           <Users className="h-4 w-4 text-primary" />
-                          Joueurs
+                          {cal.joueurs}
                           <select
                             className="h-9 rounded-md border border-input bg-transparent px-2 text-sm"
                             value={field.value}
@@ -541,12 +548,12 @@ function BookingCalendar({ room }) {
                     )}
                   />
                   <Button type="submit" disabled={submitting} className="h-11 w-full">
-                    Réserver ce créneau
+                    {cal.bouton}
                   </Button>
                   <p className="text-xs text-muted-foreground">
-                    {settings.auto_confirm
-                      ? `Un e-mail de confirmation sera envoyé. Une question ? ${CONTACT.phone}`
-                      : `Un e-mail d’accusé de réception sera envoyé. Confirmation par l’équipe ensuite. Une question ? ${CONTACT.phone}`}
+                    {fillCopy(settings.auto_confirm ? cal.noteAuto : cal.noteManuel, {
+                      telephone: CONTACT.phone,
+                    })}
                   </p>
                 </form>
               </Form>
