@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import { Helmet } from 'react-helmet';
 import { Route, Routes, BrowserRouter as Router, Link, Outlet, Navigate } from 'react-router-dom';
 import ScrollToTop from './components/ScrollToTop';
@@ -6,11 +6,16 @@ import SiteHeader from './components/SiteHeader';
 import SiteFooter from './components/SiteFooter';
 import HomePage from './pages/HomePage';
 import RoomPage from './pages/RoomPage';
-import BookingPage from './pages/BookingPage';
-import ReservationPage from './pages/ReservationPage';
-import MaitreThibaultPage from './pages/MaitreThibaultPage';
 import { COPY, CONTACT, ROOMS } from './generated/siteCopy';
 import { buildJsonLd } from './lib/seo';
+
+const BookingPage = lazy(() => import('./pages/BookingPage'));
+const ReservationPage = lazy(() => import('./pages/ReservationPage'));
+const MaitreThibaultPage = lazy(() => import('./pages/MaitreThibaultPage'));
+
+function RouteFallback() {
+  return <div className="min-h-dvh bg-background" />;
+}
 
 function NotFound() {
   return (
@@ -65,7 +70,14 @@ function App() {
       <ScrollToTop />
       <div className="noise-overlay" aria-hidden="true" />
       <Routes>
-        <Route path="/maitre" element={<MaitreThibaultPage />} />
+        <Route
+          path="/maitre"
+          element={
+            <Suspense fallback={<RouteFallback />}>
+              <MaitreThibaultPage />
+            </Suspense>
+          }
+        />
         <Route path="/maitre-Thibault" element={<Navigate to="/maitre" replace />} />
         <Route element={<PublicLayout />}>
           <Route path="/" element={<HomePage />} />
@@ -77,15 +89,30 @@ function App() {
             path="/salles/la-malediction-du-vaisseau-fantome"
             element={<RoomPage roomKey="vaisseau" />}
           />
-          <Route path="/tous-les-creneaux" element={<ReservationPage />} />
+          <Route
+            path="/tous-les-creneaux"
+            element={
+              <Suspense fallback={<RouteFallback />}>
+                <ReservationPage />
+              </Suspense>
+            }
+          />
           <Route path="/reservation" element={<Navigate to="/tous-les-creneaux" replace />} />
           <Route
             path="/reservation/convocation-chez-le-directeur"
-            element={<BookingPage roomKey="directeur" />}
+            element={
+              <Suspense fallback={<RouteFallback />}>
+                <BookingPage roomKey="directeur" />
+              </Suspense>
+            }
           />
           <Route
             path="/reservation/la-malediction-du-vaisseau-fantome"
-            element={<BookingPage roomKey="vaisseau" />}
+            element={
+              <Suspense fallback={<RouteFallback />}>
+                <BookingPage roomKey="vaisseau" />
+              </Suspense>
+            }
           />
           <Route path="*" element={<NotFound />} />
         </Route>

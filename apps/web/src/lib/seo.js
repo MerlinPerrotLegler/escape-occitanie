@@ -51,7 +51,7 @@ export function listPublicPages(copy) {
       loc: `${origin}/`,
       title: copy.accueil.seo.titre,
       description: copy.accueil.seo.description,
-      image: copy.accueil.hero.image,
+      image: absoluteUrl(origin, copy.accueil.hero.image),
       priority: '1.0',
     },
   ];
@@ -87,8 +87,8 @@ export function buildJsonLd(copy) {
     '@type': ['LocalBusiness', 'EntertainmentBusiness'],
     name: contact.name,
     url: `${origin}/`,
-    image: contact.logo,
-    logo: contact.logo,
+    image: absoluteUrl(origin, contact.logo),
+    logo: absoluteUrl(origin, contact.logo),
     email: contact.email,
     telephone: String(contact.phoneHref || '').replace(/^tel:/, ''),
     address: {
@@ -159,7 +159,11 @@ export function buildNoscriptHtml(copy) {
 
 export function buildFallbackHtml(copy) {
   const city = parsePostalAddress(copy.contact.address).addressLocality || 'Saint-Affrique';
-  return `<p style="margin:0;padding:24px;color:#f3ead8;background:#120f0d;font-family:Georgia,serif">${escapeHtml(copy.contact.name)} — escape game à ${escapeHtml(city)}.</p>`;
+  const hero = copy.accueil?.hero?.imageWebp || copy.accueil?.hero?.image || '';
+  const heroImg = hero
+    ? `<img src="${escapeHtml(hero)}" alt="" width="${escapeHtml(copy.accueil?.hero?.imageWidth || 1600)}" height="${escapeHtml(copy.accueil?.hero?.imageHeight || 695)}" fetchpriority="high" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.4">`
+    : '';
+  return `<div style="position:relative;margin:0;min-height:100dvh;background:#120f0d;color:#f3ead8;font-family:Georgia,serif">${heroImg}<p style="position:relative;margin:0;padding:24px">${escapeHtml(copy.contact.name)} — escape game à ${escapeHtml(city)}.</p></div>`;
 }
 
 function upsertMeta(head, needle, tag) {
@@ -179,6 +183,8 @@ export function injectSeo(html, options) {
     jsonLd,
     noscriptHtml,
     fallbackHtml,
+    preloadImage,
+    preloadSrcSet,
   } = options;
 
   let out = html.replace(/<meta\s+name=["']generator["'][^>]*>\s*/i, '');
@@ -233,6 +239,14 @@ export function injectSeo(html, options) {
       /<meta\s+property=["']og:image["'][^>]*>/i,
       `<meta property="og:image" data-react-helmet="true" content="${escapeHtml(image)}" />`
     );
+  }
+
+  if (preloadImage) {
+    const srcSetAttr = preloadSrcSet ? ` imagesrcset="${escapeHtml(preloadSrcSet)}"` : '';
+    const preloadTag = `<link rel="preload" as="image" href="${escapeHtml(preloadImage)}" fetchpriority="high"${srcSetAttr} imagesizes="100vw" />`;
+    if (!/rel=["']preload["']/.test(out)) {
+      out = out.replace('</title>', `</title>\n\t\t${preloadTag}`);
+    }
   }
 
   const jsonLdTag = `<script type="application/ld+json">${JSON.stringify(jsonLd)}</script>`;

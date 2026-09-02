@@ -13,6 +13,7 @@ import {
 } from 'lucide-react';
 import Reveal from '@/components/Reveal';
 import Seo from '@/components/Seo';
+import MediaImage from '@/components/MediaImage';
 import { CONTACT, ROOMS, ROOM_LIST } from '@/data/rooms';
 import { COPY } from '@/generated/siteCopy';
 import { fillCopy } from '@/lib/fillCopy';
@@ -52,9 +53,15 @@ function RoomPage({ roomKey }) {
 
       {/* HERO SALLE */}
       <section className="relative flex min-h-[85dvh] items-end overflow-hidden">
-        <img
+        <MediaImage
           src={room.image}
+          webp={room.imageWebp}
+          srcSet={room.imageSrcSet}
           alt={room.imageAlt}
+          width={room.imageWidth}
+          height={room.imageHeight}
+          priority
+          sizes="100vw"
           className="absolute inset-0 h-full w-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-background/30" />

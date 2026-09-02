@@ -36,6 +36,8 @@ export function applySeoToDist({ distDir, copy, lastmod }) {
     jsonLd: buildJsonLd(copy),
     noscriptHtml: buildNoscriptHtml(copy),
     fallbackHtml: buildFallbackHtml(copy),
+    preloadImage: copy.accueil?.hero?.imageWebp || copy.accueil?.hero?.image || home.image,
+    preloadSrcSet: copy.accueil?.hero?.imageSrcSet || '',
   });
   fs.writeFileSync(indexPath, injected);
   fs.writeFileSync(path.join(distDir, 'sitemap.xml'), buildSitemap(pages, lastmod));

@@ -6929,3 +6929,1296 @@ début et la fin (au moins 60 minutes, aligné sur 30). Le site propose alors to
 ## 2026-09-02 14:46:23.570Z click
 - element: {"tag":"section","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"RéservationTous les créneauxComparez les deux salles et réservez un créneau de 60 minutes. Votre demande est d’abord enregistrée, puis confirmée par l’équipe.mer. 1 sept. 2027Le DirecteurLe Vaisseau Fantôme16:30Non dispoRéserver ce créneau17:00Non dispoRéserver ce créneau17:30Réserver ce créneauRéserver ce créneau18:00Réserver ce créneauRéserver ce créneau18:30Réserver ce créneauRéserver ce créneau19:00Réserver ce créneauRéserver ce créneau19:30Réserver ce créneauRéserver ce créneau20:00Réserver ce créneauRéserver ce créneau20:30Réserver ce créneauRéserver ce créneau21:00Réserver ce créneauRéserver ce créneauCréneaux de départ toutes les 30 min — occupation 60 min."}
 
+## 2026-09-02 14:50:57.982Z load
+- url: http://127.0.0.1:3000/maitre#reservations?filtre=a-confirmer&page=1
+
+## 2026-09-02 14:50:58.228Z click
+- element: {"tag":"input","role":null,"ariaLabel":null,"name":null,"type":"checkbox","id":null,"placeholder":null,"label":"[checkbox]","value":"on","valueLength":2,"text":""}
+
+## 2026-09-02 14:50:59.726Z load
+- url: http://127.0.0.1:3000/tous-les-creneaux
+
+## 2026-09-02 14:51:01.329Z load
+- url: http://127.0.0.1:3000/
+
+## 2026-09-02 14:57:06.472Z load
+- url: http://127.0.0.1:3000/tous-les-creneaux
+- title: Escape Occitanie — Escape game immersif en Occitanie
+
+## 2026-09-02 14:57:06.481Z load
+- url: http://127.0.0.1:3000/
+- title: Escape Occitanie — Escape game immersif en Occitanie
+
+## 2026-09-02 14:57:06.481Z load
+- url: http://127.0.0.1:3000/maitre#reservations?filtre=a-confirmer&page=1
+- title: Escape Occitanie — Escape game immersif en Occitanie
+
+## 2026-09-02 14:57:06.638Z click
+- element: {"tag":"input","role":null,"ariaLabel":null,"name":null,"type":"checkbox","id":null,"placeholder":null,"label":"[checkbox]","value":"on","valueLength":2,"text":""}
+
+## 2026-09-02 14:57:11.751Z load
+- url: http://127.0.0.1:3000/maitre#reservations?filtre=a-confirmer&page=1
+- title: Escape Occitanie — Escape game immersif en Occitanie
+
+## 2026-09-02 14:57:11.751Z load
+- url: http://127.0.0.1:3000/
+- title: Escape Occitanie — Escape game immersif en Occitanie
+
+## 2026-09-02 14:57:11.762Z load
+- url: http://127.0.0.1:3000/tous-les-creneaux
+- title: Escape Occitanie — Escape game immersif en Occitanie
+
+## 2026-09-02 14:57:12.121Z click
+- element: {"tag":"input","role":null,"ariaLabel":null,"name":null,"type":"checkbox","id":null,"placeholder":null,"label":"[checkbox]","value":"on","valueLength":2,"text":""}
+
+## 2026-09-02 14:58:53.712Z load
+- url: http://127.0.0.1:3000/
+- title: Escape Occitanie — Escape game immersif en Occitanie
+
+## 2026-09-02 14:58:53.744Z navigate
+- url: http://127.0.0.1:3000/
+- via: replaceState
+
+## 2026-09-02 15:00:12.547Z click
+- element: {"tag":"a","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Convocation chez le Directeur"}
+
+## 2026-09-02 15:00:12.547Z navigate
+- url: http://127.0.0.1:3000/salles/convocation-chez-le-directeur
+- via: pushState
+
+## 2026-09-02 15:01:07.581Z network.error
+- method: GET
+- url: http://127.0.0.1:3000/api/content.php
+- message: Failed to fetch
+- durationMs: 14
+
+## 2026-09-02 15:01:07.581Z console.error
+- text: 
+    TypeError: Failed to fetch
+        at window.fetch (http://127.0.0.1:3000/@id/virtual:session-journal-client:328:28)
+        at window.fetch (http://127.0.0.1:3000/:502:23)
+        at fetchSiteContent (http://127.0.0.1:3000/src/lib/siteContent.js:3:23)
+        at http://127.0.0.1:3000/src/pages/HomePage.jsx?t=1788361194729:25:5
+        at commitHookEffectListMount (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:16963:34)
+        at commitPassiveMountOnFiber (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:18206:19)
+        at commitPassiveMountEffects_complete (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:18179:17)
+        at commitPassiveMountEffects_begin (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:18169:15)
+        at commitPassiveMountEffects (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:18159:11)
+        at flushPassiveEffectsImpl (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19543:11)
+
+## 2026-09-02 15:01:07.600Z load
+- url: http://127.0.0.1:3000/maitre#reservations?filtre=a-confirmer&page=1
+- title: Escape Occitanie — Escape game immersif en Occitanie
+
+## 2026-09-02 15:01:07.607Z load
+- url: http://127.0.0.1:3000/
+- title: Escape Occitanie — Escape game immersif en Occitanie
+
+## 2026-09-02 15:01:07.601Z load
+- url: http://127.0.0.1:3000/tous-les-creneaux
+- title: Escape Occitanie — Escape game immersif en Occitanie
+
+## 2026-09-02 15:01:07.607Z load
+- url: http://127.0.0.1:3000/salles/convocation-chez-le-directeur
+- title: Escape Occitanie — Escape game immersif en Occitanie
+
+## 2026-09-02 15:01:07.782Z click
+- element: {"tag":"input","role":null,"ariaLabel":null,"name":null,"type":"checkbox","id":null,"placeholder":null,"label":"[checkbox]","value":"on","valueLength":2,"text":""}
+
+## 2026-09-02 15:01:16.496Z load
+- url: http://127.0.0.1:3000/salles/convocation-chez-le-directeur
+- title: Escape Occitanie — Escape game immersif en Occitanie
+
+## 2026-09-02 15:01:46.124Z load
+- url: http://127.0.0.1:3000/
+- title: Escape Occitanie — Escape game immersif en Occitanie
+
+## 2026-09-02 15:01:46.133Z load
+- url: http://127.0.0.1:3000/maitre#reservations?filtre=a-confirmer&page=1
+- title: Escape Occitanie — Escape game immersif en Occitanie
+
+## 2026-09-02 15:01:46.137Z load
+- url: http://127.0.0.1:3000/salles/convocation-chez-le-directeur
+- title: Escape Occitanie — Escape game immersif en Occitanie
+
+## 2026-09-02 15:01:46.148Z load
+- url: http://127.0.0.1:3000/tous-les-creneaux
+- title: Escape Occitanie — Escape game immersif en Occitanie
+
+## 2026-09-02 15:01:46.562Z load
+- url: http://127.0.0.1:3000/tous-les-creneaux
+- title: Escape Occitanie — Escape game immersif en Occitanie
+
+## 2026-09-02 15:01:46.750Z load
+- url: http://127.0.0.1:3000/maitre#reservations?filtre=a-confirmer&page=1
+- title: Escape Occitanie — Escape game immersif en Occitanie
+
+## 2026-09-02 15:01:46.750Z load
+- url: http://127.0.0.1:3000/
+- title: Escape Occitanie — Escape game immersif en Occitanie
+
+## 2026-09-02 15:01:46.752Z load
+- url: http://127.0.0.1:3000/salles/convocation-chez-le-directeur
+- title: Escape Occitanie — Escape game immersif en Occitanie
+
+## 2026-09-02 15:01:47.081Z click
+- element: {"tag":"input","role":null,"ariaLabel":null,"name":null,"type":"checkbox","id":null,"placeholder":null,"label":"[checkbox]","value":"on","valueLength":2,"text":""}
+
+## 2026-09-02 15:47:24.156Z load
+- url: http://127.0.0.1:3000/tous-les-creneaux
+- title: Escape Occitanie — Escape game immersif en Occitanie
+
+## 2026-09-02 15:47:24.163Z load
+- url: http://127.0.0.1:3000/salles/convocation-chez-le-directeur
+- title: Escape Occitanie — Escape game immersif en Occitanie
+
+## 2026-09-02 15:47:24.285Z load
+- url: http://127.0.0.1:3000/
+- title: Escape Occitanie — Escape game immersif en Occitanie
+
+## 2026-09-02 15:47:24.298Z load
+- url: http://127.0.0.1:3000/maitre#reservations?filtre=a-confirmer&page=1
+- title: Escape Occitanie — Escape game immersif en Occitanie
+
+## 2026-09-02 15:47:24.427Z load
+- url: http://127.0.0.1:3000/tous-les-creneaux
+- title: Escape Occitanie — Escape game immersif en Occitanie
+
+## 2026-09-02 15:47:24.432Z load
+- url: http://127.0.0.1:3000/
+- title: Escape Occitanie — Escape game immersif en Occitanie
+
+## 2026-09-02 15:47:24.432Z load
+- url: http://127.0.0.1:3000/maitre#reservations?filtre=a-confirmer&page=1
+- title: Escape Occitanie — Escape game immersif en Occitanie
+
+## 2026-09-02 15:47:24.432Z load
+- url: http://127.0.0.1:3000/salles/convocation-chez-le-directeur
+- title: Escape Occitanie — Escape game immersif en Occitanie
+
+## 2026-09-02 15:47:24.561Z click
+- element: {"tag":"input","role":null,"ariaLabel":null,"name":null,"type":"checkbox","id":null,"placeholder":null,"label":"[checkbox]","value":"on","valueLength":2,"text":""}
+
+## 2026-09-02 15:48:31.009Z load
+- url: http://127.0.0.1:3000/salles/convocation-chez-le-directeur
+- title: Escape Occitanie — Escape game immersif en Occitanie
+
+## 2026-09-02 15:48:31.009Z load
+- url: http://127.0.0.1:3000/
+- title: Escape Occitanie — Escape game immersif en Occitanie
+
+## 2026-09-02 15:48:31.023Z load
+- url: http://127.0.0.1:3000/tous-les-creneaux
+- title: Escape Occitanie — Escape game immersif en Occitanie
+
+## 2026-09-02 15:48:31.053Z load
+- url: http://127.0.0.1:3000/maitre#reservations?filtre=a-confirmer&page=1
+- title: Escape Occitanie — Escape game immersif en Occitanie
+
+## 2026-09-02 15:48:31.285Z click
+- element: {"tag":"input","role":null,"ariaLabel":null,"name":null,"type":"checkbox","id":null,"placeholder":null,"label":"[checkbox]","value":"on","valueLength":2,"text":""}
+
+## 2026-09-02 15:48:39.117Z network.error
+- method: GET
+- url: http://127.0.0.1:3000/api/content.php
+- message: Failed to fetch
+- durationMs: 5
+
+## 2026-09-02 15:48:39.117Z network.error
+- method: GET
+- url: http://127.0.0.1:3000/api/booking-settings.php
+- message: Failed to fetch
+- durationMs: 5
+
+## 2026-09-02 15:48:39.117Z network.error
+- method: GET
+- url: http://127.0.0.1:3000/api/periods.php?from=2026-09-01&to=2026-09-30
+- message: Failed to fetch
+- durationMs: 4
+
+## 2026-09-02 15:48:39.117Z network.error
+- method: GET
+- url: http://127.0.0.1:3000/api/me.php
+- message: Failed to fetch
+- durationMs: 5
+
+## 2026-09-02 15:48:39.117Z network.error
+- method: GET
+- url: http://127.0.0.1:3000/api/bookings.php?filtre=a-confirmer&page=1
+- message: Failed to fetch
+- durationMs: 4
+
+## 2026-09-02 15:48:39.117Z console.error
+- text: 
+    TypeError: Failed to fetch
+        at window.fetch (http://127.0.0.1:3000/@id/virtual:session-journal-client:328:28)
+        at window.fetch (http://127.0.0.1:3000/maitre:502:23)
+        at fetchSiteContent (http://127.0.0.1:3000/src/lib/siteContent.js:3:23)
+        at http://127.0.0.1:3000/src/pages/MaitreThibaultPage.jsx?t=1788364119043:325:5
+        at commitHookEffectListMount (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:16963:34)
+        at commitPassiveMountOnFiber (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:18206:19)
+        at commitPassiveMountEffects_complete (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:18179:17)
+        at commitPassiveMountEffects_begin (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:18169:15)
+        at commitPassiveMountEffects (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:18159:11)
+        at flushPassiveEffectsImpl (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19543:11)
+
+## 2026-09-02 15:48:39.118Z console.error
+- text: 
+    TypeError: Failed to fetch
+        at window.fetch (http://127.0.0.1:3000/@id/virtual:session-journal-client:328:28)
+        at window.fetch (http://127.0.0.1:3000/maitre:502:23)
+        at fetchBookingSettings (http://127.0.0.1:3000/src/lib/booking.js:164:23)
+        at http://127.0.0.1:3000/src/pages/MaitreThibaultPage.jsx?t=1788364119043:335:5
+        at commitHookEffectListMount (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:16963:34)
+        at commitPassiveMountOnFiber (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:18206:19)
+        at commitPassiveMountEffects_complete (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:18179:17)
+        at commitPassiveMountEffects_begin (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:18169:15)
+        at commitPassiveMountEffects (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:18159:11)
+        at flushPassiveEffectsImpl (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19543:11)
+
+## 2026-09-02 15:48:39.118Z console.error
+- text: 
+    TypeError: Failed to fetch
+        at window.fetch (http://127.0.0.1:3000/@id/virtual:session-journal-client:328:28)
+        at window.fetch (http://127.0.0.1:3000/maitre:502:23)
+        at fetchPeriods (http://127.0.0.1:3000/src/lib/booking.js:73:21)
+        at http://127.0.0.1:3000/src/pages/MaitreThibaultPage.jsx?t=1788364119043:393:5
+        at commitHookEffectListMount (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:16963:34)
+        at commitPassiveMountOnFiber (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:18206:19)
+        at commitPassiveMountEffects_complete (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:18179:17)
+        at commitPassiveMountEffects_begin (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:18169:15)
+        at commitPassiveMountEffects (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:18159:11)
+        at flushPassiveEffectsImpl (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19543:11)
+
+## 2026-09-02 15:48:39.118Z console.error
+- text: 
+    TypeError: Failed to fetch
+        at window.fetch (http://127.0.0.1:3000/@id/virtual:session-journal-client:328:28)
+        at window.fetch (http://127.0.0.1:3000/maitre:502:23)
+        at fetchMe (http://127.0.0.1:3000/src/lib/siteContent.js:33:23)
+        at http://127.0.0.1:3000/src/pages/MaitreThibaultPage.jsx?t=1788364119043:250:5
+        at commitHookEffectListMount (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:16963:34)
+        at commitPassiveMountOnFiber (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:18206:19)
+        at commitPassiveMountEffects_complete (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:18179:17)
+        at commitPassiveMountEffects_begin (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:18169:15)
+        at commitPassiveMountEffects (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:18159:11)
+        at flushPassiveEffectsImpl (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19543:11)
+
+## 2026-09-02 15:48:39.118Z console.error
+- text: 
+    TypeError: Failed to fetch
+        at window.fetch (http://127.0.0.1:3000/@id/virtual:session-journal-client:328:28)
+        at window.fetch (http://127.0.0.1:3000/maitre:502:23)
+        at fetchBookings (http://127.0.0.1:3000/src/lib/booking.js:158:21)
+        at http://127.0.0.1:3000/src/pages/MaitreThibaultPage.jsx?t=1788364119043:355:5
+        at commitHookEffectListMount (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:16963:34)
+        at commitPassiveMountOnFiber (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:18206:19)
+        at commitPassiveMountEffects_complete (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:18179:17)
+        at commitPassiveMountEffects_begin (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:18169:15)
+        at commitPassiveMountEffects (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:18159:11)
+        at flushPassiveEffectsImpl (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19543:11)
+
+## 2026-09-02 15:48:39.120Z network.error
+- method: GET
+- url: http://127.0.0.1:3000/api/content.php
+- message: Failed to fetch
+- durationMs: 6
+
+## 2026-09-02 15:48:39.120Z console.error
+- text: 
+    TypeError: Failed to fetch
+        at window.fetch (http://127.0.0.1:3000/@id/virtual:session-journal-client:328:28)
+        at window.fetch (http://127.0.0.1:3000/:502:23)
+        at fetchSiteContent (http://127.0.0.1:3000/src/lib/siteContent.js:3:23)
+        at http://127.0.0.1:3000/src/pages/HomePage.jsx?t=1788364119043:25:5
+        at commitHookEffectListMount (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:16963:34)
+        at commitPassiveMountOnFiber (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:18206:19)
+        at commitPassiveMountEffects_complete (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:18179:17)
+        at commitPassiveMountEffects_begin (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:18169:15)
+        at commitPassiveMountEffects (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:18159:11)
+        at flushPassiveEffectsImpl (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19543:11)
+
+## 2026-09-02 15:48:39.145Z load
+- url: http://127.0.0.1:3000/maitre#reservations?filtre=a-confirmer&page=1
+- title: Escape Occitanie — Escape game immersif en Occitanie
+
+## 2026-09-02 15:48:39.145Z load
+- url: http://127.0.0.1:3000/
+- title: Escape Occitanie — Escape game immersif en Occitanie
+
+## 2026-09-02 15:48:39.150Z load
+- url: http://127.0.0.1:3000/tous-les-creneaux
+- title: Escape Occitanie — Escape game immersif en Occitanie
+
+## 2026-09-02 15:48:39.160Z load
+- url: http://127.0.0.1:3000/salles/convocation-chez-le-directeur
+- title: Escape Occitanie — Escape game immersif en Occitanie
+
+## 2026-09-02 15:48:39.301Z click
+- element: {"tag":"input","role":null,"ariaLabel":null,"name":null,"type":"checkbox","id":null,"placeholder":null,"label":"[checkbox]","value":"on","valueLength":2,"text":""}
+
+## 2026-09-02 15:49:00.042Z load
+- url: http://127.0.0.1:3000/
+- title: Escape Occitanie — Escape game immersif en Occitanie
+
+## 2026-09-02 15:49:00.043Z load
+- url: http://127.0.0.1:3000/salles/convocation-chez-le-directeur
+- title: Escape Occitanie — Escape game immersif en Occitanie
+
+## 2026-09-02 15:49:00.054Z load
+- url: http://127.0.0.1:3000/maitre#reservations?filtre=a-confirmer&page=1
+- title: Escape Occitanie — Escape game immersif en Occitanie
+
+## 2026-09-02 15:49:00.052Z load
+- url: http://127.0.0.1:3000/tous-les-creneaux
+- title: Escape Occitanie — Escape game immersif en Occitanie
+
+## 2026-09-02 15:49:00.318Z click
+- element: {"tag":"input","role":null,"ariaLabel":null,"name":null,"type":"checkbox","id":null,"placeholder":null,"label":"[checkbox]","value":"on","valueLength":2,"text":""}
+
+## 2026-09-02 15:49:02.375Z window.error
+- message: Uncaught ReferenceError: Reveal is not defined
+- source: http://127.0.0.1:3000/src/pages/HomePage.jsx?t=1788364142305
+- line: 73
+- col: 32
+- stack: 
+    ReferenceError: Reveal is not defined
+        at HomePage (http://127.0.0.1:3000/src/pages/HomePage.jsx?t=1788364142305:73:32)
+        at renderWithHooks (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:11596:26)
+        at updateFunctionComponent (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:14630:28)
+        at beginWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:15972:22)
+        at HTMLUnknownElement.callCallback2 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3680:22)
+        at Object.invokeGuardedCallbackDev (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3705:24)
+        at invokeGuardedCallback (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3739:39)
+        at beginWork$1 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19818:15)
+        at performUnitOfWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19251:20)
+        at workLoopSync (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19190:13)
+
+## 2026-09-02 15:49:02.376Z window.error
+- message: Uncaught ReferenceError: Reveal is not defined
+- source: http://127.0.0.1:3000/src/pages/HomePage.jsx?t=1788364142305
+- line: 73
+- col: 32
+- stack: 
+    ReferenceError: Reveal is not defined
+        at HomePage (http://127.0.0.1:3000/src/pages/HomePage.jsx?t=1788364142305:73:32)
+        at renderWithHooks (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:11596:26)
+        at updateFunctionComponent (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:14630:28)
+        at beginWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:15972:22)
+        at HTMLUnknownElement.callCallback2 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3680:22)
+        at Object.invokeGuardedCallbackDev (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3705:24)
+        at invokeGuardedCallback (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3739:39)
+        at beginWork$1 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19818:15)
+        at performUnitOfWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19251:20)
+        at workLoopSync (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19190:13)
+
+## 2026-09-02 15:49:02.377Z console.error
+- text: 
+    The above error occurred in the <HomePage> component:
+    
+        at HomePage (http://127.0.0.1:3000/src/pages/HomePage.jsx?t=1788364142305:21:33)
+        at RenderedRoute (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:6647:26)
+        at Outlet (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7502:26)
+        at main
+        at PublicLayout
+        at RenderedRoute (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:6647:26)
+        at Routes (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7572:3)
+        at Router (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7511:13)
+        at BrowserRouter (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:10816:3)
+        at App
+    
+    Consider adding an error boundary to your tree to customize error handling behavior.
+    Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries.
+
+## 2026-09-02 15:49:02.378Z unhandledrejection
+- message: Reveal is not defined
+- stack: 
+    ReferenceError: Reveal is not defined
+        at HomePage (http://127.0.0.1:3000/src/pages/HomePage.jsx?t=1788364142305:73:32)
+        at renderWithHooks (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:11596:26)
+        at updateFunctionComponent (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:14630:28)
+        at beginWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:15972:22)
+        at beginWork$1 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19806:22)
+        at performUnitOfWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19251:20)
+        at workLoopSync (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19190:13)
+        at renderRootSync (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19169:15)
+        at recoverFromConcurrentError (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:18786:28)
+        at performSyncWorkOnRoot (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:18932:28)
+
+## 2026-09-02 15:49:02.679Z root.empty
+- url: http://127.0.0.1:3000/
+
+## 2026-09-02 15:49:03.811Z window.error
+- message: Uncaught ReferenceError: Reveal is not defined
+- source: http://127.0.0.1:3000/src/pages/HomePage.jsx?t=1788364143752
+- line: 73
+- col: 32
+- stack: 
+    ReferenceError: Reveal is not defined
+        at HomePage (http://127.0.0.1:3000/src/pages/HomePage.jsx?t=1788364143752:73:32)
+        at renderWithHooks (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:11596:26)
+        at mountIndeterminateComponent (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:14974:21)
+        at beginWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:15962:22)
+        at HTMLUnknownElement.callCallback2 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3680:22)
+        at Object.invokeGuardedCallbackDev (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3705:24)
+        at invokeGuardedCallback (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3739:39)
+        at beginWork$1 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19818:15)
+        at performUnitOfWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19251:20)
+        at workLoopSync (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19190:13)
+
+## 2026-09-02 15:49:03.812Z window.error
+- message: Uncaught ReferenceError: Reveal is not defined
+- source: http://127.0.0.1:3000/src/pages/HomePage.jsx?t=1788364143752
+- line: 73
+- col: 32
+- stack: 
+    ReferenceError: Reveal is not defined
+        at HomePage (http://127.0.0.1:3000/src/pages/HomePage.jsx?t=1788364143752:73:32)
+        at renderWithHooks (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:11596:26)
+        at mountIndeterminateComponent (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:14974:21)
+        at beginWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:15962:22)
+        at HTMLUnknownElement.callCallback2 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3680:22)
+        at Object.invokeGuardedCallbackDev (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3705:24)
+        at invokeGuardedCallback (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3739:39)
+        at beginWork$1 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19818:15)
+        at performUnitOfWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19251:20)
+        at workLoopSync (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19190:13)
+
+## 2026-09-02 15:49:03.813Z console.error
+- text: 
+    The above error occurred in the <HomePage> component:
+    
+        at HomePage (http://127.0.0.1:3000/src/pages/HomePage.jsx?t=1788364143752:21:33)
+        at RenderedRoute (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:6647:26)
+        at Outlet (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7502:26)
+        at main
+        at PublicLayout
+        at RenderedRoute (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:6647:26)
+        at Routes (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7572:3)
+        at Router (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7511:13)
+        at BrowserRouter (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:10816:3)
+        at App
+    
+    Consider adding an error boundary to your tree to customize error handling behavior.
+    Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries.
+
+## 2026-09-02 15:49:03.813Z unhandledrejection
+- message: Reveal is not defined
+- stack: 
+    ReferenceError: Reveal is not defined
+        at HomePage (http://127.0.0.1:3000/src/pages/HomePage.jsx?t=1788364143752:73:32)
+        at renderWithHooks (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:11596:26)
+        at mountIndeterminateComponent (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:14974:21)
+        at beginWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:15962:22)
+        at beginWork$1 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19806:22)
+        at performUnitOfWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19251:20)
+        at workLoopSync (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19190:13)
+        at renderRootSync (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19169:15)
+        at recoverFromConcurrentError (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:18786:28)
+        at performSyncWorkOnRoot (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:18932:28)
+
+## 2026-09-02 15:49:04.418Z window.error
+- message: Uncaught ReferenceError: Reveal is not defined
+- source: http://127.0.0.1:3000/src/pages/HomePage.jsx?t=1788364144357
+- line: 78
+- col: 32
+- stack: 
+    ReferenceError: Reveal is not defined
+        at HomePage (http://127.0.0.1:3000/src/pages/HomePage.jsx?t=1788364144357:78:32)
+        at renderWithHooks (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:11596:26)
+        at mountIndeterminateComponent (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:14974:21)
+        at beginWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:15962:22)
+        at HTMLUnknownElement.callCallback2 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3680:22)
+        at Object.invokeGuardedCallbackDev (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3705:24)
+        at invokeGuardedCallback (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3739:39)
+        at beginWork$1 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19818:15)
+        at performUnitOfWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19251:20)
+        at workLoopSync (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19190:13)
+
+## 2026-09-02 15:49:04.419Z window.error
+- message: Uncaught ReferenceError: Reveal is not defined
+- source: http://127.0.0.1:3000/src/pages/HomePage.jsx?t=1788364144357
+- line: 78
+- col: 32
+- stack: 
+    ReferenceError: Reveal is not defined
+        at HomePage (http://127.0.0.1:3000/src/pages/HomePage.jsx?t=1788364144357:78:32)
+        at renderWithHooks (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:11596:26)
+        at mountIndeterminateComponent (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:14974:21)
+        at beginWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:15962:22)
+        at HTMLUnknownElement.callCallback2 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3680:22)
+        at Object.invokeGuardedCallbackDev (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3705:24)
+        at invokeGuardedCallback (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3739:39)
+        at beginWork$1 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19818:15)
+        at performUnitOfWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19251:20)
+        at workLoopSync (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19190:13)
+
+## 2026-09-02 15:49:04.420Z console.error
+- text: 
+    The above error occurred in the <HomePage> component:
+    
+        at HomePage (http://127.0.0.1:3000/src/pages/HomePage.jsx?t=1788364144357:21:33)
+        at RenderedRoute (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:6647:26)
+        at Outlet (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7502:26)
+        at main
+        at PublicLayout
+        at RenderedRoute (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:6647:26)
+        at Routes (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7572:3)
+        at Router (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7511:13)
+        at BrowserRouter (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:10816:3)
+        at App
+    
+    Consider adding an error boundary to your tree to customize error handling behavior.
+    Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries.
+
+## 2026-09-02 15:49:04.420Z unhandledrejection
+- message: Reveal is not defined
+- stack: 
+    ReferenceError: Reveal is not defined
+        at HomePage (http://127.0.0.1:3000/src/pages/HomePage.jsx?t=1788364144357:78:32)
+        at renderWithHooks (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:11596:26)
+        at mountIndeterminateComponent (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:14974:21)
+        at beginWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:15962:22)
+        at beginWork$1 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19806:22)
+        at performUnitOfWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19251:20)
+        at workLoopSync (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19190:13)
+        at renderRootSync (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19169:15)
+        at recoverFromConcurrentError (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:18786:28)
+        at performSyncWorkOnRoot (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:18932:28)
+
+## 2026-09-02 15:49:07.272Z window.error
+- message: Uncaught ReferenceError: Reveal is not defined
+- source: http://127.0.0.1:3000/src/pages/HomePage.jsx?t=1788364144357
+- line: 78
+- col: 32
+- stack: 
+    ReferenceError: Reveal is not defined
+        at HomePage (http://127.0.0.1:3000/src/pages/HomePage.jsx?t=1788364144357:78:32)
+        at renderWithHooks (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:11596:26)
+        at mountIndeterminateComponent (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:14974:21)
+        at beginWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:15962:22)
+        at HTMLUnknownElement.callCallback2 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3680:22)
+        at Object.invokeGuardedCallbackDev (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3705:24)
+        at invokeGuardedCallback (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3739:39)
+        at beginWork$1 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19818:15)
+        at performUnitOfWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19251:20)
+        at workLoopSync (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19190:13)
+
+## 2026-09-02 15:49:07.273Z window.error
+- message: Uncaught ReferenceError: Reveal is not defined
+- source: http://127.0.0.1:3000/src/pages/HomePage.jsx?t=1788364144357
+- line: 78
+- col: 32
+- stack: 
+    ReferenceError: Reveal is not defined
+        at HomePage (http://127.0.0.1:3000/src/pages/HomePage.jsx?t=1788364144357:78:32)
+        at renderWithHooks (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:11596:26)
+        at mountIndeterminateComponent (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:14974:21)
+        at beginWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:15962:22)
+        at HTMLUnknownElement.callCallback2 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3680:22)
+        at Object.invokeGuardedCallbackDev (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3705:24)
+        at invokeGuardedCallback (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3739:39)
+        at beginWork$1 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19818:15)
+        at performUnitOfWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19251:20)
+        at workLoopSync (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19190:13)
+
+## 2026-09-02 15:49:07.274Z console.error
+- text: 
+    The above error occurred in the <HomePage> component:
+    
+        at HomePage (http://127.0.0.1:3000/src/pages/HomePage.jsx?t=1788364144357:21:33)
+        at RenderedRoute (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:6647:26)
+        at Outlet (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7502:26)
+        at main
+        at PublicLayout
+        at RenderedRoute (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:6647:26)
+        at Routes (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7572:3)
+        at Router (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7511:13)
+        at BrowserRouter (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:10816:3)
+        at App
+    
+    Consider adding an error boundary to your tree to customize error handling behavior.
+    Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries.
+
+## 2026-09-02 15:49:07.274Z unhandledrejection
+- message: Reveal is not defined
+- stack: 
+    ReferenceError: Reveal is not defined
+        at HomePage (http://127.0.0.1:3000/src/pages/HomePage.jsx?t=1788364144357:78:32)
+        at renderWithHooks (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:11596:26)
+        at mountIndeterminateComponent (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:14974:21)
+        at beginWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:15962:22)
+        at beginWork$1 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19806:22)
+        at performUnitOfWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19251:20)
+        at workLoopSync (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19190:13)
+        at renderRootSync (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19169:15)
+        at recoverFromConcurrentError (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:18786:28)
+        at performSyncWorkOnRoot (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:18932:28)
+
+## 2026-09-02 15:49:07.892Z window.error
+- message: Uncaught ReferenceError: Reveal is not defined
+- source: http://127.0.0.1:3000/src/pages/HomePage.jsx?t=1788364144357
+- line: 78
+- col: 32
+- stack: 
+    ReferenceError: Reveal is not defined
+        at HomePage (http://127.0.0.1:3000/src/pages/HomePage.jsx?t=1788364144357:78:32)
+        at renderWithHooks (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:11596:26)
+        at mountIndeterminateComponent (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:14974:21)
+        at beginWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:15962:22)
+        at HTMLUnknownElement.callCallback2 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3680:22)
+        at Object.invokeGuardedCallbackDev (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3705:24)
+        at invokeGuardedCallback (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3739:39)
+        at beginWork$1 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19818:15)
+        at performUnitOfWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19251:20)
+        at workLoopSync (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19190:13)
+
+## 2026-09-02 15:49:07.893Z window.error
+- message: Uncaught ReferenceError: Reveal is not defined
+- source: http://127.0.0.1:3000/src/pages/HomePage.jsx?t=1788364144357
+- line: 78
+- col: 32
+- stack: 
+    ReferenceError: Reveal is not defined
+        at HomePage (http://127.0.0.1:3000/src/pages/HomePage.jsx?t=1788364144357:78:32)
+        at renderWithHooks (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:11596:26)
+        at mountIndeterminateComponent (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:14974:21)
+        at beginWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:15962:22)
+        at HTMLUnknownElement.callCallback2 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3680:22)
+        at Object.invokeGuardedCallbackDev (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3705:24)
+        at invokeGuardedCallback (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3739:39)
+        at beginWork$1 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19818:15)
+        at performUnitOfWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19251:20)
+        at workLoopSync (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19190:13)
+
+## 2026-09-02 15:49:07.894Z console.error
+- text: 
+    The above error occurred in the <HomePage> component:
+    
+        at HomePage (http://127.0.0.1:3000/src/pages/HomePage.jsx?t=1788364144357:21:33)
+        at RenderedRoute (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:6647:26)
+        at Outlet (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7502:26)
+        at main
+        at PublicLayout
+        at RenderedRoute (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:6647:26)
+        at Routes (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7572:3)
+        at Router (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7511:13)
+        at BrowserRouter (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:10816:3)
+        at App
+    
+    Consider adding an error boundary to your tree to customize error handling behavior.
+    Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries.
+
+## 2026-09-02 15:49:07.894Z unhandledrejection
+- message: Reveal is not defined
+- stack: 
+    ReferenceError: Reveal is not defined
+        at HomePage (http://127.0.0.1:3000/src/pages/HomePage.jsx?t=1788364144357:78:32)
+        at renderWithHooks (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:11596:26)
+        at mountIndeterminateComponent (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:14974:21)
+        at beginWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:15962:22)
+        at beginWork$1 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19806:22)
+        at performUnitOfWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19251:20)
+        at workLoopSync (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19190:13)
+        at renderRootSync (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19169:15)
+        at recoverFromConcurrentError (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:18786:28)
+        at performSyncWorkOnRoot (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:18932:28)
+
+## 2026-09-02 15:49:09.901Z window.error
+- message: Uncaught ReferenceError: Reveal is not defined
+- source: http://127.0.0.1:3000/src/pages/HomePage.jsx?t=1788364144357
+- line: 78
+- col: 32
+- stack: 
+    ReferenceError: Reveal is not defined
+        at HomePage (http://127.0.0.1:3000/src/pages/HomePage.jsx?t=1788364144357:78:32)
+        at renderWithHooks (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:11596:26)
+        at mountIndeterminateComponent (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:14974:21)
+        at beginWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:15962:22)
+        at HTMLUnknownElement.callCallback2 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3680:22)
+        at Object.invokeGuardedCallbackDev (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3705:24)
+        at invokeGuardedCallback (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3739:39)
+        at beginWork$1 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19818:15)
+        at performUnitOfWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19251:20)
+        at workLoopSync (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19190:13)
+
+## 2026-09-02 15:49:09.902Z window.error
+- message: Uncaught ReferenceError: Reveal is not defined
+- source: http://127.0.0.1:3000/src/pages/HomePage.jsx?t=1788364144357
+- line: 78
+- col: 32
+- stack: 
+    ReferenceError: Reveal is not defined
+        at HomePage (http://127.0.0.1:3000/src/pages/HomePage.jsx?t=1788364144357:78:32)
+        at renderWithHooks (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:11596:26)
+        at mountIndeterminateComponent (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:14974:21)
+        at beginWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:15962:22)
+        at HTMLUnknownElement.callCallback2 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3680:22)
+        at Object.invokeGuardedCallbackDev (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3705:24)
+        at invokeGuardedCallback (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3739:39)
+        at beginWork$1 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19818:15)
+        at performUnitOfWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19251:20)
+        at workLoopSync (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19190:13)
+
+## 2026-09-02 15:49:09.903Z console.error
+- text: 
+    The above error occurred in the <HomePage> component:
+    
+        at HomePage (http://127.0.0.1:3000/src/pages/HomePage.jsx?t=1788364144357:21:33)
+        at RenderedRoute (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:6647:26)
+        at Outlet (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7502:26)
+        at main
+        at PublicLayout
+        at RenderedRoute (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:6647:26)
+        at Routes (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7572:3)
+        at Router (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7511:13)
+        at BrowserRouter (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:10816:3)
+        at App
+    
+    Consider adding an error boundary to your tree to customize error handling behavior.
+    Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries.
+
+## 2026-09-02 15:49:09.903Z unhandledrejection
+- message: Reveal is not defined
+- stack: 
+    ReferenceError: Reveal is not defined
+        at HomePage (http://127.0.0.1:3000/src/pages/HomePage.jsx?t=1788364144357:78:32)
+        at renderWithHooks (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:11596:26)
+        at mountIndeterminateComponent (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:14974:21)
+        at beginWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:15962:22)
+        at beginWork$1 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19806:22)
+        at performUnitOfWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19251:20)
+        at workLoopSync (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19190:13)
+        at renderRootSync (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19169:15)
+        at recoverFromConcurrentError (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:18786:28)
+        at performSyncWorkOnRoot (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:18932:28)
+
+## 2026-09-02 15:49:10.627Z window.error
+- message: Uncaught ReferenceError: Reveal is not defined
+- source: http://127.0.0.1:3000/src/pages/HomePage.jsx?t=1788364144357
+- line: 78
+- col: 32
+- stack: 
+    ReferenceError: Reveal is not defined
+        at HomePage (http://127.0.0.1:3000/src/pages/HomePage.jsx?t=1788364144357:78:32)
+        at renderWithHooks (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:11596:26)
+        at mountIndeterminateComponent (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:14974:21)
+        at beginWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:15962:22)
+        at HTMLUnknownElement.callCallback2 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3680:22)
+        at Object.invokeGuardedCallbackDev (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3705:24)
+        at invokeGuardedCallback (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3739:39)
+        at beginWork$1 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19818:15)
+        at performUnitOfWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19251:20)
+        at workLoopSync (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19190:13)
+
+## 2026-09-02 15:49:10.629Z window.error
+- message: Uncaught ReferenceError: Reveal is not defined
+- source: http://127.0.0.1:3000/src/pages/HomePage.jsx?t=1788364144357
+- line: 78
+- col: 32
+- stack: 
+    ReferenceError: Reveal is not defined
+        at HomePage (http://127.0.0.1:3000/src/pages/HomePage.jsx?t=1788364144357:78:32)
+        at renderWithHooks (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:11596:26)
+        at mountIndeterminateComponent (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:14974:21)
+        at beginWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:15962:22)
+        at HTMLUnknownElement.callCallback2 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3680:22)
+        at Object.invokeGuardedCallbackDev (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3705:24)
+        at invokeGuardedCallback (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3739:39)
+        at beginWork$1 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19818:15)
+        at performUnitOfWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19251:20)
+        at workLoopSync (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19190:13)
+
+## 2026-09-02 15:49:10.629Z console.error
+- text: 
+    The above error occurred in the <HomePage> component:
+    
+        at HomePage (http://127.0.0.1:3000/src/pages/HomePage.jsx?t=1788364144357:21:33)
+        at RenderedRoute (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:6647:26)
+        at Outlet (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7502:26)
+        at main
+        at PublicLayout
+        at RenderedRoute (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:6647:26)
+        at Routes (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7572:3)
+        at Router (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7511:13)
+        at BrowserRouter (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:10816:3)
+        at App
+    
+    Consider adding an error boundary to your tree to customize error handling behavior.
+    Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries.
+
+## 2026-09-02 15:49:10.630Z unhandledrejection
+- message: Reveal is not defined
+- stack: 
+    ReferenceError: Reveal is not defined
+        at HomePage (http://127.0.0.1:3000/src/pages/HomePage.jsx?t=1788364144357:78:32)
+        at renderWithHooks (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:11596:26)
+        at mountIndeterminateComponent (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:14974:21)
+        at beginWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:15962:22)
+        at beginWork$1 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19806:22)
+        at performUnitOfWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19251:20)
+        at workLoopSync (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19190:13)
+        at renderRootSync (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19169:15)
+        at recoverFromConcurrentError (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:18786:28)
+        at performSyncWorkOnRoot (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:18932:28)
+
+## 2026-09-02 15:49:10.628Z console.error
+- text: 
+    Warning: React does not recognize the `%s` prop on a DOM element. If you intentionally want it to appear in the DOM as a custom attribute, spell it as lowercase `%s` instead. If you accidentally passed it from a parent component, remove it from the DOM element.%s fetchPriority fetchpriority 
+        at img
+        at picture
+        at MediaImage (http://127.0.0.1:3000/src/components/MediaImage.jsx:5:3)
+        at section
+        at RoomPage (http://127.0.0.1:3000/src/pages/RoomPage.jsx?t=1788364150578:30:3)
+        at RenderedRoute (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:6647:26)
+        at Outlet (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7502:26)
+        at main
+        at PublicLayout
+        at RenderedRoute (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:6647:26)
+        at Routes (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7572:3)
+        at Router (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7511:13)
+        at BrowserRouter (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:10816:3)
+        at App
+
+## 2026-09-02 15:49:13.514Z window.error
+- message: Uncaught ReferenceError: Reveal is not defined
+- source: http://127.0.0.1:3000/src/pages/HomePage.jsx?t=1788364144357
+- line: 78
+- col: 32
+- stack: 
+    ReferenceError: Reveal is not defined
+        at HomePage (http://127.0.0.1:3000/src/pages/HomePage.jsx?t=1788364144357:78:32)
+        at renderWithHooks (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:11596:26)
+        at mountIndeterminateComponent (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:14974:21)
+        at beginWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:15962:22)
+        at HTMLUnknownElement.callCallback2 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3680:22)
+        at Object.invokeGuardedCallbackDev (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3705:24)
+        at invokeGuardedCallback (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3739:39)
+        at beginWork$1 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19818:15)
+        at performUnitOfWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19251:20)
+        at workLoopSync (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19190:13)
+
+## 2026-09-02 15:49:13.515Z window.error
+- message: Uncaught ReferenceError: Reveal is not defined
+- source: http://127.0.0.1:3000/src/pages/HomePage.jsx?t=1788364144357
+- line: 78
+- col: 32
+- stack: 
+    ReferenceError: Reveal is not defined
+        at HomePage (http://127.0.0.1:3000/src/pages/HomePage.jsx?t=1788364144357:78:32)
+        at renderWithHooks (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:11596:26)
+        at mountIndeterminateComponent (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:14974:21)
+        at beginWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:15962:22)
+        at HTMLUnknownElement.callCallback2 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3680:22)
+        at Object.invokeGuardedCallbackDev (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3705:24)
+        at invokeGuardedCallback (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3739:39)
+        at beginWork$1 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19818:15)
+        at performUnitOfWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19251:20)
+        at workLoopSync (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19190:13)
+
+## 2026-09-02 15:49:13.515Z console.error
+- text: 
+    The above error occurred in the <HomePage> component:
+    
+        at HomePage (http://127.0.0.1:3000/src/pages/HomePage.jsx?t=1788364144357:21:33)
+        at RenderedRoute (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:6647:26)
+        at Outlet (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7502:26)
+        at main
+        at PublicLayout
+        at RenderedRoute (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:6647:26)
+        at Routes (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7572:3)
+        at Router (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7511:13)
+        at BrowserRouter (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:10816:3)
+        at App
+    
+    Consider adding an error boundary to your tree to customize error handling behavior.
+    Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries.
+
+## 2026-09-02 15:49:13.516Z unhandledrejection
+- message: Reveal is not defined
+- stack: 
+    ReferenceError: Reveal is not defined
+        at HomePage (http://127.0.0.1:3000/src/pages/HomePage.jsx?t=1788364144357:78:32)
+        at renderWithHooks (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:11596:26)
+        at mountIndeterminateComponent (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:14974:21)
+        at beginWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:15962:22)
+        at beginWork$1 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19806:22)
+        at performUnitOfWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19251:20)
+        at workLoopSync (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19190:13)
+        at renderRootSync (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19169:15)
+        at recoverFromConcurrentError (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:18786:28)
+        at performSyncWorkOnRoot (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:18932:28)
+
+## 2026-09-02 15:49:14.171Z window.error
+- message: Uncaught ReferenceError: Reveal is not defined
+- source: http://127.0.0.1:3000/src/pages/HomePage.jsx?t=1788364144357
+- line: 78
+- col: 32
+- stack: 
+    ReferenceError: Reveal is not defined
+        at HomePage (http://127.0.0.1:3000/src/pages/HomePage.jsx?t=1788364144357:78:32)
+        at renderWithHooks (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:11596:26)
+        at mountIndeterminateComponent (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:14974:21)
+        at beginWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:15962:22)
+        at HTMLUnknownElement.callCallback2 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3680:22)
+        at Object.invokeGuardedCallbackDev (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3705:24)
+        at invokeGuardedCallback (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3739:39)
+        at beginWork$1 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19818:15)
+        at performUnitOfWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19251:20)
+        at workLoopSync (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19190:13)
+
+## 2026-09-02 15:49:14.172Z window.error
+- message: Uncaught ReferenceError: Reveal is not defined
+- source: http://127.0.0.1:3000/src/pages/HomePage.jsx?t=1788364144357
+- line: 78
+- col: 32
+- stack: 
+    ReferenceError: Reveal is not defined
+        at HomePage (http://127.0.0.1:3000/src/pages/HomePage.jsx?t=1788364144357:78:32)
+        at renderWithHooks (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:11596:26)
+        at mountIndeterminateComponent (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:14974:21)
+        at beginWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:15962:22)
+        at HTMLUnknownElement.callCallback2 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3680:22)
+        at Object.invokeGuardedCallbackDev (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3705:24)
+        at invokeGuardedCallback (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:3739:39)
+        at beginWork$1 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19818:15)
+        at performUnitOfWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19251:20)
+        at workLoopSync (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19190:13)
+
+## 2026-09-02 15:49:14.173Z console.error
+- text: 
+    The above error occurred in the <HomePage> component:
+    
+        at HomePage (http://127.0.0.1:3000/src/pages/HomePage.jsx?t=1788364144357:21:33)
+        at RenderedRoute (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:6647:26)
+        at Outlet (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7502:26)
+        at main
+        at PublicLayout
+        at RenderedRoute (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:6647:26)
+        at Routes (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7572:3)
+        at Router (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7511:13)
+        at BrowserRouter (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:10816:3)
+        at App
+    
+    Consider adding an error boundary to your tree to customize error handling behavior.
+    Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries.
+
+## 2026-09-02 15:49:14.173Z unhandledrejection
+- message: Reveal is not defined
+- stack: 
+    ReferenceError: Reveal is not defined
+        at HomePage (http://127.0.0.1:3000/src/pages/HomePage.jsx?t=1788364144357:78:32)
+        at renderWithHooks (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:11596:26)
+        at mountIndeterminateComponent (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:14974:21)
+        at beginWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:15962:22)
+        at beginWork$1 (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19806:22)
+        at performUnitOfWork (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19251:20)
+        at workLoopSync (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19190:13)
+        at renderRootSync (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19169:15)
+        at recoverFromConcurrentError (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:18786:28)
+        at performSyncWorkOnRoot (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:18932:28)
+
+## 2026-09-02 15:49:25.649Z console.error
+- text: 
+    Warning: React does not recognize the `%s` prop on a DOM element. If you intentionally want it to appear in the DOM as a custom attribute, spell it as lowercase `%s` instead. If you accidentally passed it from a parent component, remove it from the DOM element.%s fetchPriority fetchpriority 
+        at img
+        at picture
+        at MediaImage (http://127.0.0.1:3000/src/components/MediaImage.jsx:5:3)
+        at section
+        at HomePage (http://127.0.0.1:3000/src/pages/HomePage.jsx?t=1788364165548:22:33)
+        at RenderedRoute (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:6647:26)
+        at Outlet (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7502:26)
+        at main
+        at PublicLayout
+        at RenderedRoute (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:6647:26)
+        at Routes (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7572:3)
+        at Router (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7511:13)
+        at BrowserRouter (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:10816:3)
+        at App
+
+## 2026-09-02 15:49:43.970Z console.error
+- text: 
+    The above error occurred in the <Route.Provider> component:
+    
+        at RenderedRoute (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:6647:26)
+        at Routes (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7572:3)
+        at Router (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7511:13)
+        at BrowserRouter (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:10816:3)
+        at App
+    
+    Consider adding an error boundary to your tree to customize error handling behavior.
+    Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries.
+
+## 2026-09-02 15:49:43.971Z unhandledrejection
+- message: A component suspended while responding to synchronous input. This will cause the UI to be replaced with a loading indicator. To fix, updates that suspend should be wrapped with startTransition.
+- stack: 
+    Error: A component suspended while responding to synchronous input. This will cause the UI to be replaced with a loading indicator. To fix, updates that suspend should be wrapped with startTransition.
+        at throwException (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:14261:43)
+        at handleError (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19087:15)
+        at renderRootSync (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19172:15)
+        at recoverFromConcurrentError (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:18786:28)
+        at performSyncWorkOnRoot (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:18932:28)
+        at flushSyncCallbacks (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:9166:30)
+        at flushSync (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19012:15)
+        at Object.scheduleRefresh (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:20057:13)
+        at http://127.0.0.1:3000/@react-refresh:228:17
+        at Set.forEach (<anonymous>)
+
+## 2026-09-02 15:49:44.272Z root.empty
+- url: http://127.0.0.1:3000/maitre#reservations?filtre=a-confirmer&page=1
+
+## 2026-09-02 15:49:43.973Z console.error
+- text: 
+    The above error occurred in the <Route.Provider> component:
+    
+        at RenderedRoute (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:6647:26)
+        at Outlet (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7502:26)
+        at main
+        at PublicLayout
+        at RenderedRoute (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:6647:26)
+        at Routes (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7572:3)
+        at Router (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7511:13)
+        at BrowserRouter (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:10816:3)
+        at App
+    
+    Consider adding an error boundary to your tree to customize error handling behavior.
+    Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries.
+
+## 2026-09-02 15:49:43.974Z unhandledrejection
+- message: A component suspended while responding to synchronous input. This will cause the UI to be replaced with a loading indicator. To fix, updates that suspend should be wrapped with startTransition.
+- stack: 
+    Error: A component suspended while responding to synchronous input. This will cause the UI to be replaced with a loading indicator. To fix, updates that suspend should be wrapped with startTransition.
+        at throwException (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:14261:43)
+        at handleError (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19087:15)
+        at renderRootSync (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19172:15)
+        at recoverFromConcurrentError (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:18786:28)
+        at performSyncWorkOnRoot (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:18932:28)
+        at flushSyncCallbacks (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:9166:30)
+        at flushSync (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19012:15)
+        at Object.scheduleRefresh (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:20057:13)
+        at http://127.0.0.1:3000/@react-refresh:228:17
+        at Set.forEach (<anonymous>)
+
+## 2026-09-02 15:49:44.275Z root.empty
+- url: http://127.0.0.1:3000/tous-les-creneaux
+
+## 2026-09-02 15:49:47.214Z click
+- element: {"tag":"input","role":null,"ariaLabel":null,"name":null,"type":"checkbox","id":null,"placeholder":null,"label":"[checkbox]","value":"on","valueLength":2,"text":""}
+
+## 2026-09-02 15:49:58.520Z load
+- url: http://127.0.0.1:3000/maitre#reservations?filtre=a-confirmer&page=1
+- title: Escape Occitanie — Escape game immersif en Occitanie
+
+## 2026-09-02 15:49:58.554Z load
+- url: http://127.0.0.1:3000/
+- title: Escape Occitanie — Escape game immersif en Occitanie
+
+## 2026-09-02 15:49:58.568Z console.error
+- text: 
+    Warning: React does not recognize the `%s` prop on a DOM element. If you intentionally want it to appear in the DOM as a custom attribute, spell it as lowercase `%s` instead. If you accidentally passed it from a parent component, remove it from the DOM element.%s fetchPriority fetchpriority 
+        at img
+        at picture
+        at MediaImage (http://127.0.0.1:3000/src/components/MediaImage.jsx:5:3)
+        at section
+        at HomePage (http://127.0.0.1:3000/src/pages/HomePage.jsx?t=1788364165548:22:33)
+        at RenderedRoute (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:6647:26)
+        at Outlet (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7502:26)
+        at main
+        at PublicLayout
+        at RenderedRoute (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:6647:26)
+        at Routes (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7572:3)
+        at Router (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7511:13)
+        at BrowserRouter (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:10816:3)
+        at App
+
+## 2026-09-02 15:49:58.569Z load
+- url: http://127.0.0.1:3000/tous-les-creneaux
+- title: Escape Occitanie — Escape game immersif en Occitanie
+
+## 2026-09-02 15:49:58.568Z load
+- url: http://127.0.0.1:3000/salles/convocation-chez-le-directeur
+- title: Escape Occitanie — Escape game immersif en Occitanie
+
+## 2026-09-02 15:49:58.583Z console.error
+- text: 
+    Warning: React does not recognize the `%s` prop on a DOM element. If you intentionally want it to appear in the DOM as a custom attribute, spell it as lowercase `%s` instead. If you accidentally passed it from a parent component, remove it from the DOM element.%s fetchPriority fetchpriority 
+        at img
+        at picture
+        at MediaImage (http://127.0.0.1:3000/src/components/MediaImage.jsx:5:3)
+        at section
+        at RoomPage (http://127.0.0.1:3000/src/pages/RoomPage.jsx?t=1788364150578:30:3)
+        at RenderedRoute (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:6647:26)
+        at Outlet (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7502:26)
+        at main
+        at PublicLayout
+        at RenderedRoute (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:6647:26)
+        at Routes (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7572:3)
+        at Router (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7511:13)
+        at BrowserRouter (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:10816:3)
+        at App
+
+## 2026-09-02 15:49:58.634Z click
+- element: {"tag":"input","role":null,"ariaLabel":null,"name":null,"type":"checkbox","id":null,"placeholder":null,"label":"[checkbox]","value":"on","valueLength":2,"text":""}
+
+## 2026-09-02 15:51:15.720Z load
+- url: http://127.0.0.1:3000/maitre#reservations?filtre=a-confirmer&page=1
+- title: Escape Occitanie — Escape game immersif en Occitanie
+
+## 2026-09-02 15:51:15.776Z load
+- url: http://127.0.0.1:3000/salles/convocation-chez-le-directeur
+- title: Escape Occitanie — Escape game immersif en Occitanie
+
+## 2026-09-02 15:51:15.791Z console.error
+- text: 
+    Warning: React does not recognize the `%s` prop on a DOM element. If you intentionally want it to appear in the DOM as a custom attribute, spell it as lowercase `%s` instead. If you accidentally passed it from a parent component, remove it from the DOM element.%s fetchPriority fetchpriority 
+        at img
+        at picture
+        at MediaImage (http://127.0.0.1:3000/src/components/MediaImage.jsx:5:3)
+        at section
+        at RoomPage (http://127.0.0.1:3000/src/pages/RoomPage.jsx:30:3)
+        at RenderedRoute (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:6647:26)
+        at Outlet (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7502:26)
+        at main
+        at PublicLayout
+        at RenderedRoute (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:6647:26)
+        at Routes (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7572:3)
+        at Router (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7511:13)
+        at BrowserRouter (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:10816:3)
+        at App
+
+## 2026-09-02 15:51:15.782Z load
+- url: http://127.0.0.1:3000/
+- title: Escape Occitanie — Escape game immersif en Occitanie
+
+## 2026-09-02 15:51:15.797Z console.error
+- text: 
+    Warning: React does not recognize the `%s` prop on a DOM element. If you intentionally want it to appear in the DOM as a custom attribute, spell it as lowercase `%s` instead. If you accidentally passed it from a parent component, remove it from the DOM element.%s fetchPriority fetchpriority 
+        at img
+        at picture
+        at MediaImage (http://127.0.0.1:3000/src/components/MediaImage.jsx:5:3)
+        at section
+        at HomePage (http://127.0.0.1:3000/src/pages/HomePage.jsx:22:33)
+        at RenderedRoute (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:6647:26)
+        at Outlet (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7502:26)
+        at main
+        at PublicLayout
+        at RenderedRoute (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:6647:26)
+        at Routes (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7572:3)
+        at Router (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7511:13)
+        at BrowserRouter (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:10816:3)
+        at App
+
+## 2026-09-02 15:51:15.776Z load
+- url: http://127.0.0.1:3000/tous-les-creneaux
+- title: Escape Occitanie — Escape game immersif en Occitanie
+
+## 2026-09-02 15:51:17.559Z load
+- url: http://127.0.0.1:3000/salles/convocation-chez-le-directeur
+- title: Escape Occitanie — Escape game immersif en Occitanie
+
+## 2026-09-02 15:51:17.559Z load
+- url: http://127.0.0.1:3000/
+- title: Escape Occitanie — Escape game immersif en Occitanie
+
+## 2026-09-02 15:51:17.559Z load
+- url: http://127.0.0.1:3000/maitre#reservations?filtre=a-confirmer&page=1
+- title: Escape Occitanie — Escape game immersif en Occitanie
+
+## 2026-09-02 15:51:17.560Z load
+- url: http://127.0.0.1:3000/tous-les-creneaux
+- title: Escape Occitanie — Escape game immersif en Occitanie
+
+## 2026-09-02 15:51:17.603Z console.error
+- text: 
+    Warning: React does not recognize the `%s` prop on a DOM element. If you intentionally want it to appear in the DOM as a custom attribute, spell it as lowercase `%s` instead. If you accidentally passed it from a parent component, remove it from the DOM element.%s fetchPriority fetchpriority 
+        at img
+        at picture
+        at MediaImage (http://127.0.0.1:3000/src/components/MediaImage.jsx:5:3)
+        at section
+        at HomePage (http://127.0.0.1:3000/src/pages/HomePage.jsx:22:33)
+        at RenderedRoute (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:6647:26)
+        at Outlet (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7502:26)
+        at main
+        at PublicLayout
+        at RenderedRoute (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:6647:26)
+        at Routes (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7572:3)
+        at Router (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7511:13)
+        at BrowserRouter (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:10816:3)
+        at App
+
+## 2026-09-02 15:51:17.602Z console.error
+- text: 
+    Warning: React does not recognize the `%s` prop on a DOM element. If you intentionally want it to appear in the DOM as a custom attribute, spell it as lowercase `%s` instead. If you accidentally passed it from a parent component, remove it from the DOM element.%s fetchPriority fetchpriority 
+        at img
+        at picture
+        at MediaImage (http://127.0.0.1:3000/src/components/MediaImage.jsx:5:3)
+        at section
+        at RoomPage (http://127.0.0.1:3000/src/pages/RoomPage.jsx:30:3)
+        at RenderedRoute (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:6647:26)
+        at Outlet (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7502:26)
+        at main
+        at PublicLayout
+        at RenderedRoute (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:6647:26)
+        at Routes (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7572:3)
+        at Router (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7511:13)
+        at BrowserRouter (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:10816:3)
+        at App
+
+## 2026-09-02 15:51:17.802Z click
+- element: {"tag":"input","role":null,"ariaLabel":null,"name":null,"type":"checkbox","id":null,"placeholder":null,"label":"[checkbox]","value":"on","valueLength":2,"text":""}
+
+## 2026-09-02 15:52:03.986Z load
+- url: http://127.0.0.1:3000/salles/convocation-chez-le-directeur
+- title: Escape Occitanie — Escape game immersif en Occitanie
+
+## 2026-09-02 15:52:03.986Z load
+- url: http://127.0.0.1:3000/
+- title: Escape Occitanie — Escape game immersif en Occitanie
+
+## 2026-09-02 15:52:03.988Z load
+- url: http://127.0.0.1:3000/maitre#reservations?filtre=a-confirmer&page=1
+- title: Escape Occitanie — Escape game immersif en Occitanie
+
+## 2026-09-02 15:52:03.997Z load
+- url: http://127.0.0.1:3000/tous-les-creneaux
+- title: Escape Occitanie — Escape game immersif en Occitanie
+
+## 2026-09-02 15:52:04.041Z console.error
+- text: 
+    Warning: React does not recognize the `%s` prop on a DOM element. If you intentionally want it to appear in the DOM as a custom attribute, spell it as lowercase `%s` instead. If you accidentally passed it from a parent component, remove it from the DOM element.%s fetchPriority fetchpriority 
+        at img
+        at picture
+        at MediaImage (http://127.0.0.1:3000/src/components/MediaImage.jsx:5:3)
+        at section
+        at RoomPage (http://127.0.0.1:3000/src/pages/RoomPage.jsx:30:3)
+        at RenderedRoute (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:6647:26)
+        at Outlet (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7502:26)
+        at main
+        at PublicLayout
+        at RenderedRoute (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:6647:26)
+        at Routes (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7572:3)
+        at Router (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7511:13)
+        at BrowserRouter (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:10816:3)
+        at App
+
+## 2026-09-02 15:52:04.041Z console.error
+- text: 
+    Warning: React does not recognize the `%s` prop on a DOM element. If you intentionally want it to appear in the DOM as a custom attribute, spell it as lowercase `%s` instead. If you accidentally passed it from a parent component, remove it from the DOM element.%s fetchPriority fetchpriority 
+        at img
+        at picture
+        at MediaImage (http://127.0.0.1:3000/src/components/MediaImage.jsx:5:3)
+        at section
+        at HomePage (http://127.0.0.1:3000/src/pages/HomePage.jsx:22:33)
+        at RenderedRoute (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:6647:26)
+        at Outlet (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7502:26)
+        at main
+        at PublicLayout
+        at RenderedRoute (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:6647:26)
+        at Routes (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7572:3)
+        at Router (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7511:13)
+        at BrowserRouter (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:10816:3)
+        at App
+
+## 2026-09-02 15:52:04.267Z click
+- element: {"tag":"input","role":null,"ariaLabel":null,"name":null,"type":"checkbox","id":null,"placeholder":null,"label":"[checkbox]","value":"on","valueLength":2,"text":""}
+

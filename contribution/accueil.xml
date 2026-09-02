@@ -7,7 +7,7 @@
     <titre>L'Escape Occitanie</titre>
     <accent>réouvre ses portes</accent>
     <texte>Plongé en équipe au cœur de l'aventure, vous avez 60 minutes pour fouiller les lieux, dénicher les indices, résoudre les énigmes et percer le mystère. Observation, logique et coopération seront vos seules clés vers la sortie.</texte>
-    <image src="https://images.hostinger.com/97e78780-1685-4dc5-98c8-9ae3b0bb5543.png" alt="Couloir sombre d'un escape game, porte ancienne entrouverte laissant filtrer une lumière dorée"/>
+    <image src="images/accueil-hero.jpg" alt="Couloir sombre d'un escape game, porte ancienne entrouverte laissant filtrer une lumière dorée"/>
     <cta-reserver>Réserver une session</cta-reserver>
     <cta-decouvrir>Découvrir l'expérience</cta-decouvrir>
     <puce>2 salles immersives</puce>

@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { CalendarDays, ArrowRight } from 'lucide-react';
 import Reveal from '@/components/Reveal';
+import MediaImage from '@/components/MediaImage';
 import { ROOM_LIST } from '@/data/rooms';
 import { COPY } from '@/generated/siteCopy';
 import { cn } from '@/lib/utils';
@@ -24,10 +25,14 @@ function RoomCards() {
               to={room.pagePath}
               className="group relative block overflow-hidden rounded-xl border border-border/70"
             >
-              <img
+              <MediaImage
                 src={room.image}
+                webp={room.imageWebp}
+                srcSet={room.imageSrcSet}
                 alt={room.imageAlt}
-                loading="lazy"
+                width={room.imageWidth}
+                height={room.imageHeight}
+                sizes="(min-width: 1024px) 50vw, 100vw"
                 className="aspect-[3/2] w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-background/70 via-transparent to-transparent" />

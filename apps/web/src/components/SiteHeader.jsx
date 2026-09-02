@@ -24,6 +24,9 @@ function SiteHeader() {
           <img
             src={CONTACT.logo}
             alt={CONTACT.logoAlt}
+            width={CONTACT.logoWidth || 48}
+            height={CONTACT.logoHeight || 48}
+            decoding="async"
             className="h-11 w-11 rounded-full object-cover shadow-[0_0_16px_hsl(var(--primary)/0.25)] ring-1 ring-primary/30 transition-transform duration-300 group-hover:scale-105 sm:h-12 sm:w-12"
           />
           <span className="font-display text-base font-bold tracking-widest text-foreground sm:text-lg">

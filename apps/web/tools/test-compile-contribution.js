@@ -374,8 +374,8 @@ await withTemp(async (dir, out) => {
 await withTemp(async (dir, out) => {
   writeMinimal(dir, { localImage: true });
   const copy = await compileContribution(dir, out);
-  expect(copy.accueil.hero.image === '/media/hero.png', 'local image rewritten');
-  expect(fs.existsSync(path.join(out.mediaDir, 'hero.png')), 'media copied');
+  expect(['/media/hero.png', '/media/hero.jpg', '/media/hero.webp'].some((p) => p === copy.accueil.hero.image) || copy.accueil.hero.image.startsWith('/media/hero'), 'local image rewritten');
+  expect(fs.readdirSync(out.mediaDir).some((name) => name.startsWith('hero')), 'media published');
 });
 
 await withTemp(async (dir, out) => {

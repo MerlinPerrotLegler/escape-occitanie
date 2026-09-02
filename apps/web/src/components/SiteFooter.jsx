@@ -13,6 +13,10 @@ function SiteFooter() {
             <img
               src={CONTACT.logo}
               alt={CONTACT.logoAlt}
+              width={CONTACT.logoWidth || 44}
+              height={CONTACT.logoHeight || 44}
+              loading="lazy"
+              decoding="async"
               className="h-11 w-11 rounded-full object-cover ring-1 ring-primary/30"
             />
             <span className="font-display text-base font-bold tracking-widest">

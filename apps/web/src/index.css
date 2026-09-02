@@ -135,3 +135,14 @@
     animation: none;
   }
 }
+
+@media (max-width: 767px) {
+  .noise-overlay,
+  .lantern-glow {
+    display: none;
+  }
+  header {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+}

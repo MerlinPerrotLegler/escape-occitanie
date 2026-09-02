@@ -4,6 +4,7 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 import { XMLParser } from 'fast-xml-parser';
 import { htmlToText } from 'html-to-text';
 import mjmlPkg from 'mjml';
+import { publishLocalImage } from './optimize-media.js';
 
 const mjml2html = typeof mjmlPkg === 'function' ? mjmlPkg : mjmlPkg.default;
 
@@ -118,9 +119,9 @@ function parseImage(file, node, label) {
   return { src, alt };
 }
 
-function resolveImage(contributionDir, mediaDir, file, rawSrc) {
+function publishImage(contributionDir, mediaDir, file, rawSrc) {
   if (rawSrc.startsWith('https://') || rawSrc.startsWith('http://')) {
-    return rawSrc;
+    return { src: rawSrc, webp: '', srcSet: '', width: 0, height: 0 };
   }
   if (!rawSrc.startsWith('images/')) {
     throw new Error(`${file}: src d'image invalide « ${rawSrc} » (images/… ou URL)`);
@@ -129,17 +130,18 @@ function resolveImage(contributionDir, mediaDir, file, rawSrc) {
   if (!fs.existsSync(from) || !fs.statSync(from).isFile()) {
     throw new Error(`${file}: image locale absente ${rawSrc}`);
   }
-  const rel = rawSrc.slice('images/'.length);
-  const dest = path.join(mediaDir, rel);
-  fs.mkdirSync(path.dirname(dest), { recursive: true });
-  fs.copyFileSync(from, dest);
-  return `/media/${rel.split(path.sep).join('/')}`;
+  const rel = rawSrc.slice('images/'.length).split(path.sep).join('/');
+  return publishLocalImage(from, mediaDir, rel);
+}
+
+function resolveImage(contributionDir, mediaDir, file, rawSrc) {
+  return publishImage(contributionDir, mediaDir, file, rawSrc).src;
 }
 
 function imageField(contributionDir, mediaDir, file, node, label) {
   const parsed = parseImage(file, node, label);
   return {
-    src: resolveImage(contributionDir, mediaDir, file, parsed.src),
+    ...publishImage(contributionDir, mediaDir, file, parsed.src),
     alt: parsed.alt,
   };
 }
@@ -152,6 +154,10 @@ function parseContact(contributionDir, mediaDir, file, node) {
     website: reqStr(file, node, 'site'),
     logo: logo.src,
     logoAlt: logo.alt,
+    logoWebp: logo.webp,
+    logoSrcSet: logo.srcSet,
+    logoWidth: logo.width,
+    logoHeight: logo.height,
     address: reqStr(file, node, 'adresse'),
     phone: reqStr(file, node, 'telephone'),
     phoneHref: reqStr(file, node, 'telephone-href'),
@@ -257,6 +263,10 @@ function parseAccueil(contributionDir, mediaDir, file, node) {
       texte: reqStr(file, hero, 'texte'),
       image: heroImage.src,
       imageAlt: heroImage.alt,
+      imageWebp: heroImage.webp,
+      imageSrcSet: heroImage.srcSet,
+      imageWidth: heroImage.width,
+      imageHeight: heroImage.height,
       ctaReserver: reqStr(file, hero, 'cta-reserver'),
       ctaDecouvrir: reqStr(file, hero, 'cta-decouvrir'),
       puces,
@@ -341,6 +351,10 @@ function parseSalle(contributionDir, mediaDir, file, expectedSlug, node) {
     difficulty,
     image: image.src,
     imageAlt: image.alt,
+    imageWebp: image.webp,
+    imageSrcSet: image.srcSet,
+    imageWidth: image.width,
+    imageHeight: image.height,
     cardDescription: reqStr(file, node, 'resume'),
     story: histoire,
     note: reqStr(file, node, 'citation'),
@@ -523,6 +537,9 @@ export async function compileContribution(contributionDir, { jsPath, jsonPath, m
     throw new Error(`${contributionDir}: dossier contribution absent`);
   }
   fs.mkdirSync(mediaDir, { recursive: true });
+  for (const name of fs.readdirSync(mediaDir)) {
+    fs.rmSync(path.join(mediaDir, name), { recursive: true, force: true });
+  }
   for (const name of REQUIRED_FILES) {
     const filePath = path.join(contributionDir, name);
     if (!fs.existsSync(filePath)) {

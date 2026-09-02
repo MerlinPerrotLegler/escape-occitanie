@@ -16,6 +16,7 @@ import {
   CalendarDays,
   ArrowRight,
 } from 'lucide-react';
+import MediaImage from '@/components/MediaImage';
 import Reveal from '@/components/Reveal';
 import CountUp from '@/components/CountUp';
 import Seo from '@/components/Seo';
@@ -58,6 +59,16 @@ function HomePage() {
       <Helmet>
         <title>{home.seo.titre}</title>
         <meta name="description" content={home.seo.description} />
+        {(home.hero.imageWebp || home.hero.image) && (
+          <link
+            rel="preload"
+            as="image"
+            href={home.hero.imageWebp || home.hero.image}
+            imageSrcSet={home.hero.imageSrcSet || undefined}
+            imageSizes="100vw"
+            fetchPriority="high"
+          />
+        )}
       </Helmet>
       <Seo
         title={home.seoOg.titre}
@@ -68,9 +79,15 @@ function HomePage() {
 
       {/* HERO */}
       <section className="relative flex min-h-[100dvh] items-center justify-center overflow-hidden">
-        <img
+        <MediaImage
           src={home.hero.image}
+          webp={home.hero.imageWebp}
+          srcSet={home.hero.imageSrcSet}
           alt={home.hero.imageAlt}
+          width={home.hero.imageWidth}
+          height={home.hero.imageHeight}
+          priority
+          sizes="100vw"
           className="absolute inset-0 h-full w-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/55 to-background" />

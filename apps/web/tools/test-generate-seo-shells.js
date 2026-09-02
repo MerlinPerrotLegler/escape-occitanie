@@ -124,6 +124,7 @@ const injected = injectSeo(
     jsonLd,
     noscriptHtml: '<h1>Escape Occitanie</h1><p>Deux salles.</p>',
     fallbackHtml: '<p>Escape Occitanie — escape game à Saint-Affrique.</p>',
+    preloadImage: 'https://example.com/hero.png',
   }
 );
 
@@ -136,6 +137,7 @@ expect(injected.includes('<noscript>'), 'noscript');
 expect(injected.includes('id="root"') && injected.includes('escape game à Saint-Affrique'), 'visible fallback in root');
 expect(injected.includes('/favicon.svg'), 'favicon');
 expect(!injected.includes('/vite.svg'), 'vite icon gone');
+expect(injected.includes('rel="preload"') && injected.includes('https://example.com/hero.png'), 'hero preload');
 
 if (failed > 0) {
   process.stderr.write(`${failed} assertion(s) failed\n`);

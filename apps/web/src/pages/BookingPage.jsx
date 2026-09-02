@@ -4,6 +4,7 @@ import { Helmet } from 'react-helmet';
 import { ArrowLeft, Users, Baby, Timer, Phone, Mail, MousePointerClick, Send, BadgeCheck } from 'lucide-react';
 import Reveal from '@/components/Reveal';
 import Seo from '@/components/Seo';
+import MediaImage from '@/components/MediaImage';
 import BookingCalendar from '@/components/BookingCalendar';
 import { ROOMS, CONTACT } from '@/data/rooms';
 import { COPY } from '@/generated/siteCopy';
@@ -60,10 +61,14 @@ function BookingPage({ roomKey }) {
           <Reveal delay={0.2}>
             <div className="flex flex-col gap-6">
               <div className="overflow-hidden rounded-xl border border-border bg-card/60">
-                <img
+                <MediaImage
                   src={room.image}
+                  webp={room.imageWebp}
+                  srcSet={room.imageSrcSet}
                   alt={room.imageAlt}
-                  loading="lazy"
+                  width={room.imageWidth}
+                  height={room.imageHeight}
+                  sizes="(min-width: 1024px) 20vw, 100vw"
                   className="aspect-[3/2] w-full object-cover"
                 />
                 <div className="flex flex-wrap gap-2 p-5">
