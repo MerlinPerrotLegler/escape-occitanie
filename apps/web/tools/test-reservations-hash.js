@@ -1,9 +1,12 @@
 import {
   BOOKING_FILTERS,
+  defaultReservationsFilter,
   parseBookingFilter,
   parseLocationHash,
   parsePage,
+  pendingBadgeLabel,
   reservationsHash,
+  reservationsTabHash,
 } from '../src/lib/reservationsHash.js';
 import { occupancyFromSettings, normalizeBookingSettings } from '../src/lib/booking.js';
 
@@ -37,7 +40,31 @@ expect(focused.page === 2, 'focus keeps page');
 
 expect(parseLocationHash('#planning').tab === 'planning', 'planning tab');
 expect(parseLocationHash('#reservations').filtre === 'aujourdhui', 'default filter');
+expect(parseLocationHash('#reservations').filtreExplicit === false, 'bare reservations hash is not explicit');
+expect(parseLocationHash('#reservations?filtre=aujourdhui').filtreExplicit === true, 'today query is explicit');
+expect(parseLocationHash('#reservations?filtre=a-confirmer').filtreExplicit === true, 'to-confirm query is explicit');
 expect(parseLocationHash('').tab === 'reservations', 'empty hash defaults to reservations');
+expect(parseLocationHash('').filtreExplicit === false, 'empty hash is not explicit');
+
+expect(pendingBadgeLabel(0) === '', 'badge hidden when empty');
+expect(pendingBadgeLabel(1) === '1', 'badge shows 1');
+expect(pendingBadgeLabel(9) === '9', 'badge shows 9');
+expect(pendingBadgeLabel(10) === '+', 'badge caps above 9');
+expect(pendingBadgeLabel(99) === '+', 'badge caps large counts');
+
+expect(defaultReservationsFilter(0) === 'aujourdhui', 'no pending → today');
+expect(defaultReservationsFilter(3) === 'a-confirmer', 'pending → to confirm');
+expect(defaultReservationsFilter(5, 'aujourdhui') === 'aujourdhui', 'explicit today wins');
+expect(defaultReservationsFilter(0, 'a-confirmer') === 'a-confirmer', 'explicit to-confirm kept');
+
+expect(
+  reservationsTabHash(0) === '#reservations?filtre=aujourdhui&page=1',
+  'tab without pending opens today'
+);
+expect(
+  reservationsTabHash(2) === '#reservations?filtre=a-confirmer&page=1',
+  'tab with pending opens to confirm'
+);
 
 expect(
   reservationsHash({ filtre: 'aujourdhui', page: 1 }) === '#reservations?filtre=aujourdhui&page=1',

@@ -132,6 +132,10 @@ try {
     }
     expect($foundPending, 'à confirmer includes pending');
     expect(!$foundAuto, 'à confirmer excludes already confirmed');
+    expect(isset($toConfirm['pendingCount']), 'list payload includes pendingCount');
+    expect((int) $toConfirm['pendingCount'] >= 1, 'pendingCount counts the pending booking');
+    $counted = mt_pending_booking_count($pdo);
+    expect($counted === (int) $toConfirm['pendingCount'], 'pendingCount helper matches list payload');
     $focused = mt_list_bookings_page($pdo, 'toutes', 1, (int) $auto['id']);
     $focusIds = array_map(fn($row) => (int) $row['id'], $focused['bookings']);
     expect(in_array((int) $auto['id'], $focusIds, true), 'focus jumps to the page that contains the booking');

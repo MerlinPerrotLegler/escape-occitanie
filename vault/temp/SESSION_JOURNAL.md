@@ -7373,3 +7373,326 @@
 ## 2026-09-02 07:22:58.465Z load
 - url: http://localhost:3000/#salles
 
+## 2026-09-02 07:26:15.415Z load
+- url: http://localhost:3000/maitre#planning
+
+## 2026-09-02 07:26:20.082Z click
+- element: {"tag":"button","role":null,"ariaLabel":null,"name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"01/09/2026 — 10:00 → 22:00"}
+
+## 2026-09-02 07:26:23.781Z click
+- element: {"tag":"button","role":null,"ariaLabel":"11:15 — Ouvert","name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"11:15Ouvert"}
+
+## 2026-09-02 07:26:24.189Z click
+- element: {"tag":"button","role":null,"ariaLabel":"11:30 — Ouvert","name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"11:30Ouvert"}
+
+## 2026-09-02 07:26:25.289Z click
+- element: {"tag":"button","role":null,"ariaLabel":"11:15 — Indisponible","name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"11:15Indisponible"}
+
+## 2026-09-02 07:26:25.646Z click
+- element: {"tag":"button","role":null,"ariaLabel":"11:30 — Indisponible","name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"11:30Indisponible"}
+
+## 2026-09-02 07:27:00.539Z click
+- element: {"tag":"h2","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Planning"}
+
+## 2026-09-02 07:27:00.993Z load
+- url: http://localhost:3000/maitre#planning
+
+## 2026-09-02 07:27:02.404Z click
+- element: {"tag":"button","role":null,"ariaLabel":null,"name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"01/09/2026 — 10:00 → 22:00"}
+
+## 2026-09-02 07:27:11.538Z click
+- element: {"tag":"a","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Réservations"}
+
+## 2026-09-02 07:27:11.539Z navigate
+- url: http://localhost:3000/maitre#reservations?filtre=aujourdhui&page=1
+- via: popstate
+
+## 2026-09-02 07:27:13.877Z load
+- url: http://localhost:3000/maitre#reservations?filtre=aujourdhui&page=1
+
+## 2026-09-02 07:27:13.912Z navigate
+- url: http://localhost:3000/maitre#reservations?filtre=aujourdhui&page=1
+- via: replaceState
+
+## 2026-09-02 07:27:15.491Z load
+- url: http://localhost:3000/maitre#reservations?filtre=aujourdhui&page=1
+
+## 2026-09-02 07:35:21.202Z click
+- element: {"tag":"a","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Réserver"}
+
+## 2026-09-02 07:35:21.203Z navigate
+- url: http://localhost:3000/#salles
+- via: replaceState
+
+## 2026-09-02 07:35:21.727Z click
+- element: {"tag":"a","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Réserver"}
+
+## 2026-09-02 07:35:21.728Z navigate
+- url: http://localhost:3000/#salles
+- via: replaceState
+
+## 2026-09-02 07:35:22.102Z click
+- element: {"tag":"a","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Réserver"}
+
+## 2026-09-02 07:35:22.102Z navigate
+- url: http://localhost:3000/#salles
+- via: replaceState
+
+## 2026-09-02 07:35:22.277Z click
+- element: {"tag":"a","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Réserver"}
+
+## 2026-09-02 07:35:22.278Z navigate
+- url: http://localhost:3000/#salles
+- via: replaceState
+
+## 2026-09-02 07:35:22.457Z click
+- element: {"tag":"a","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Réserver"}
+
+## 2026-09-02 07:35:22.457Z navigate
+- url: http://localhost:3000/#salles
+- via: replaceState
+
+## 2026-09-02 07:35:22.610Z click
+- element: {"tag":"a","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Réserver"}
+
+## 2026-09-02 07:35:22.610Z navigate
+- url: http://localhost:3000/#salles
+- via: replaceState
+
+## 2026-09-02 07:35:24.660Z click
+- element: {"tag":"a","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Réserver"}
+
+## 2026-09-02 07:35:24.661Z navigate
+- url: http://localhost:3000/#salles
+- via: replaceState
+
+## 2026-09-02 07:35:24.870Z click
+- element: {"tag":"a","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Réserver"}
+
+## 2026-09-02 07:35:24.871Z navigate
+- url: http://localhost:3000/#salles
+- via: replaceState
+
+## 2026-09-02 07:35:25.035Z click
+- element: {"tag":"a","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Réserver"}
+
+## 2026-09-02 07:35:25.036Z navigate
+- url: http://localhost:3000/#salles
+- via: replaceState
+
+## 2026-09-02 07:40:35.975Z network.error
+- method: GET
+- url: http://localhost:3000/api/me.php
+- status: 401
+- statusText: Unauthorized
+- response: {"error":"Session expirée."}
+- durationMs: 2
+
+## 2026-09-02 07:40:35.975Z console.error
+- text: Fetch error from http://localhost:3000/api/me.php: {"error":"Session expirée."}
+
+## 2026-09-02 07:41:44.952Z load
+- url: http://localhost:3000/maitre#reservations?filtre=aujourdhui&page=1
+
+## 2026-09-02 07:41:44.958Z load
+- url: http://127.0.0.1:3000/reservation/convocation-chez-le-directeur?date=2027-09-01
+
+## 2026-09-02 07:41:45.433Z load
+- url: http://localhost:3000/#salles
+
+## 2026-09-02 07:41:45.489Z load
+- url: http://localhost:3000/
+
+## 2026-09-02 07:41:45.041Z network.error
+- method: GET
+- url: http://localhost:3000/api/me.php
+- status: 401
+- statusText: Unauthorized
+- response: {"error":"Session expirée."}
+- durationMs: 7
+
+## 2026-09-02 07:41:45.041Z console.error
+- text: Fetch error from http://localhost:3000/api/me.php: {"error":"Session expirée."}
+
+## 2026-09-02 07:42:11.847Z network.error
+- method: GET
+- url: http://localhost:3000/api/me.php
+- status: 401
+- statusText: Unauthorized
+- response: {"error":"Session expirée."}
+- durationMs: 2
+
+## 2026-09-02 07:42:11.847Z console.error
+- text: Fetch error from http://localhost:3000/api/me.php: {"error":"Session expirée."}
+
+## 2026-09-02 07:42:13.100Z network.error
+- method: GET
+- url: http://localhost:3000/api/me.php
+- status: 401
+- statusText: Unauthorized
+- response: {"error":"Session expirée."}
+- durationMs: 2
+
+## 2026-09-02 07:42:13.100Z console.error
+- text: Fetch error from http://localhost:3000/api/me.php: {"error":"Session expirée."}
+
+## 2026-09-02 07:42:15.511Z network.error
+- method: GET
+- url: http://localhost:3000/api/me.php
+- status: 401
+- statusText: Unauthorized
+- response: {"error":"Session expirée."}
+- durationMs: 2
+
+## 2026-09-02 07:42:15.511Z console.error
+- text: Fetch error from http://localhost:3000/api/me.php: {"error":"Session expirée."}
+
+## 2026-09-02 07:42:17.271Z network.error
+- method: GET
+- url: http://localhost:3000/api/me.php
+- status: 401
+- statusText: Unauthorized
+- response: {"error":"Session expirée."}
+- durationMs: 2
+
+## 2026-09-02 07:42:17.271Z console.error
+- text: Fetch error from http://localhost:3000/api/me.php: {"error":"Session expirée."}
+
+## 2026-09-02 07:42:42.565Z network.error
+- method: GET
+- url: http://localhost:3000/api/me.php
+- status: 401
+- statusText: Unauthorized
+- response: {"error":"Session expirée."}
+- durationMs: 2
+
+## 2026-09-02 07:42:42.566Z console.error
+- text: Fetch error from http://localhost:3000/api/me.php: {"error":"Session expirée."}
+
+## 2026-09-02 07:42:43.296Z network.error
+- method: GET
+- url: http://localhost:3000/api/me.php
+- status: 401
+- statusText: Unauthorized
+- response: {"error":"Session expirée."}
+- durationMs: 2
+
+## 2026-09-02 07:42:43.296Z console.error
+- text: Fetch error from http://localhost:3000/api/me.php: {"error":"Session expirée."}
+
+## 2026-09-02 07:43:03.186Z network.error
+- method: GET
+- url: http://localhost:3000/api/me.php
+- status: 401
+- statusText: Unauthorized
+- response: {"error":"Session expirée."}
+- durationMs: 2
+
+## 2026-09-02 07:43:03.186Z console.error
+- text: Fetch error from http://localhost:3000/api/me.php: {"error":"Session expirée."}
+
+## 2026-09-02 07:43:09.207Z network.error
+- method: GET
+- url: http://localhost:3000/api/me.php
+- status: 401
+- statusText: Unauthorized
+- response: {"error":"Session expirée."}
+- durationMs: 2
+
+## 2026-09-02 07:43:09.207Z console.error
+- text: Fetch error from http://localhost:3000/api/me.php: {"error":"Session expirée."}
+
+## 2026-09-02 07:43:09.954Z network.error
+- method: GET
+- url: http://localhost:3000/api/me.php
+- status: 401
+- statusText: Unauthorized
+- response: {"error":"Session expirée."}
+- durationMs: 2
+
+## 2026-09-02 07:43:09.955Z console.error
+- text: Fetch error from http://localhost:3000/api/me.php: {"error":"Session expirée."}
+
+## 2026-09-02 07:44:12.264Z network.error
+- method: GET
+- url: http://localhost:3000/api/me.php
+- status: 401
+- statusText: Unauthorized
+- response: {"error":"Session expirée."}
+- durationMs: 4
+
+## 2026-09-02 07:44:12.264Z console.error
+- text: Fetch error from http://localhost:3000/api/me.php: {"error":"Session expirée."}
+
+## 2026-09-02 07:46:12.722Z network.error
+- method: GET
+- url: http://localhost:3000/api/me.php
+- status: 401
+- statusText: Unauthorized
+- response: {"error":"Session expirée."}
+- durationMs: 3
+
+## 2026-09-02 07:46:12.722Z console.error
+- text: Fetch error from http://localhost:3000/api/me.php: {"error":"Session expirée."}
+
+## 2026-09-02 07:46:13.394Z network.error
+- method: GET
+- url: http://localhost:3000/api/me.php
+- status: 401
+- statusText: Unauthorized
+- response: {"error":"Session expirée."}
+- durationMs: 4
+
+## 2026-09-02 07:46:13.394Z console.error
+- text: Fetch error from http://localhost:3000/api/me.php: {"error":"Session expirée."}
+
+## 2026-09-02 07:47:17.392Z navigate
+- url: http://localhost:3000/maitre#reservations
+- via: popstate
+
+## 2026-09-02 07:48:14.592Z change
+- element: {"tag":"input","role":null,"ariaLabel":null,"name":null,"type":"email","id":"mt-email","placeholder":null,"label":"Email","value":"escapeoccitanie@gmail.com","valueLength":25,"text":""}
+
+## 2026-09-02 07:48:14.595Z change
+- element: {"tag":"input","role":null,"ariaLabel":null,"name":null,"type":"password","id":"mt-password","placeholder":null,"label":"Mot de passe","value":"[redacted:length=29]","valueLength":29,"text":""}
+
+## 2026-09-02 07:48:17.962Z click
+- element: {"tag":"button","role":null,"ariaLabel":null,"name":null,"type":"submit","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Entrer dans le bureau"}
+
+## 2026-09-02 07:48:17.962Z submit
+- action: http://localhost:3000/maitre#reservations
+- fields: [{"label":"Email","type":"email","value":"escapeoccitanie@gmail.com","length":25,"redacted":false},{"label":"Mot de passe","type":"password","value":"[redacted:length=29]","length":29,"redacted":true},{"label":"Se souvenir de moi","type":"button","value":"on","length":2,"redacted":false},{"label":"[checkbox]","type":"checkbox","value":"on","length":2,"redacted":false},{"label":"[submit]","type":"submit","value":"","length":0,"redacted":false}]
+
+## 2026-09-02 07:48:17.985Z navigate
+- url: http://localhost:3000/maitre#reservations?filtre=a-confirmer&page=1
+- via: replaceState
+
+## 2026-09-02 07:48:30.471Z click
+- element: {"tag":"a","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Planning"}
+
+## 2026-09-02 07:48:30.471Z navigate
+- url: http://localhost:3000/maitre#planning
+- via: popstate
+
+## 2026-09-02 07:49:11.286Z click
+- element: {"tag":"a","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Réservations2"}
+
+## 2026-09-02 07:49:11.286Z navigate
+- url: http://localhost:3000/maitre#reservations?filtre=a-confirmer&page=1
+- via: popstate
+
+## 2026-09-02 07:49:43.015Z load
+- url: http://localhost:3000/maitre#reservations/101?filtre=toutes&page=1
+
+## 2026-09-02 07:49:43.048Z navigate
+- url: http://localhost:3000/maitre#reservations/101?filtre=toutes&page=1
+- via: replaceState
+
+## 2026-09-02 07:50:18.755Z navigate
+- url: http://localhost:3000/maitre#reservations/101?filtre=toutes&page=1
+- via: popstate
+
+## 2026-09-02 07:50:18.755Z navigate
+- url: http://localhost:3000/maitre#reservations/101?filtre=toutes&page=1
+- via: popstate
+

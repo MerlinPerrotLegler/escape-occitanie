@@ -19,6 +19,12 @@
           E-mail : {email}<br />
           Téléphone : {telephone}
         </mj-text>
+        <mj-button href="{lien_confirmer}" background-color="#c9a227" color="#1a1612" font-weight="700" inner-padding="12px 22px">
+          Confirmer la réservation
+        </mj-button>
+        <mj-button href="{lien_voir}" background-color="#241f1a" color="#f4ead6" border="1px solid #c9a227" inner-padding="12px 22px">
+          Voir la réservation
+        </mj-button>
       </mj-column>
     </mj-section>
   </mj-body>

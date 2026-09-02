@@ -41,9 +41,28 @@ export function parseLocationHash(hash = typeof window !== 'undefined' ? window.
   const tab = OFFICE_TABS.includes(id) ? id : 'reservations';
   const focusBookingId = /^\d+$/.test(focusRaw || '') ? Number(focusRaw) : null;
   const params = new URLSearchParams(query);
+  const filtreExplicit = params.has('filtre') || params.has('filter');
   const filtre = parseBookingFilter(params.get('filtre') || params.get('filter'));
   const page = parsePage(params.get('page'));
-  return { tab, focusBookingId, filtre, page };
+  return { tab, focusBookingId, filtre, page, filtreExplicit };
+}
+
+export function pendingBadgeLabel(count) {
+  const n = Number(count);
+  if (!Number.isFinite(n) || n < 1) return '';
+  return n > 9 ? '+' : String(Math.trunc(n));
+}
+
+export function defaultReservationsFilter(pendingCount, explicitFiltre) {
+  if (explicitFiltre) return parseBookingFilter(explicitFiltre);
+  return Number(pendingCount) > 0 ? 'a-confirmer' : 'aujourdhui';
+}
+
+export function reservationsTabHash(pendingCount) {
+  return reservationsHash({
+    filtre: defaultReservationsFilter(pendingCount),
+    page: 1,
+  });
 }
 
 export function reservationsHash({ filtre = 'aujourdhui', page = 1, focusBookingId = null } = {}) {

@@ -201,6 +201,27 @@ function mt_normalize_booking_filter(?string $raw): string {
     return 'aujourdhui';
 }
 
+function mt_pending_booking_count(PDO $pdo): int {
+    mt_ensure_schema($pdo);
+    $n = $pdo->query("SELECT COUNT(*) FROM bookings WHERE status = 'pending'")->fetchColumn();
+    return (int) $n;
+}
+
+function mt_manager_session_payload(array $env, string $email, ?PDO $pdo = null): array {
+    $pending = 0;
+    if ($pdo) {
+        try {
+            $pending = mt_pending_booking_count($pdo);
+        } catch (Throwable $ignored) {
+        }
+    }
+    return [
+        'email' => $email,
+        'name' => (string) ($env['MANAGER_NAME'] ?? 'Direction'),
+        'pendingCount' => $pending,
+    ];
+}
+
 function mt_list_bookings_page(PDO $pdo, string $filter = 'aujourdhui', int $page = 1, ?int $focusId = null): array {
     mt_ensure_schema($pdo);
     $filter = mt_normalize_booking_filter($filter);
@@ -246,6 +267,7 @@ function mt_list_bookings_page(PDO $pdo, string $filter = 'aujourdhui', int $pag
         'perPage' => $perPage,
         'pages' => $pages,
         'filtre' => $filter,
+        'pendingCount' => mt_pending_booking_count($pdo),
         'settings' => mt_runtime_booking_settings(),
     ];
 }

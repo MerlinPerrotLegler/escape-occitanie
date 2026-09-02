@@ -164,6 +164,24 @@ $links = mt_booking_calendar_links($envCal, $booking);
 expect(str_contains($links['ics'], '/api/calendar.php?b=42'), 'ics download link');
 expect(str_contains($links['google'], 'calendar.google.com'), 'google calendar link');
 
+$confirmToken = mt_manager_confirm_token($envCal, 42, 'paul@example.com');
+expect($confirmToken !== '', 'manager confirm token issued');
+expect(mt_manager_confirm_token_ok($envCal, 42, 'paul@example.com', $confirmToken) === true, 'manager confirm token ok');
+expect(mt_manager_confirm_token_ok($envCal, 42, 'other@example.com', $confirmToken) === false, 'manager confirm token rejects other email');
+expect(mt_manager_confirm_token_ok($envCal, 41, 'paul@example.com', $confirmToken) === false, 'manager confirm token rejects other booking');
+$mgrLinks = mt_manager_booking_links($envCal, $booking);
+expect(str_contains($mgrLinks['voir'], '/maitre#reservations/42'), 'view link points at maitre booking');
+expect(str_contains($mgrLinks['voir'], 'filtre=toutes'), 'view link uses all-bookings filter');
+expect(str_contains($mgrLinks['confirmer'], '/api/confirm-booking.php?b=42'), 'confirm link hits confirm endpoint');
+expect(str_contains($mgrLinks['confirmer'], 't='), 'confirm link includes token');
+
+$formHtml = mt_manager_confirm_page_html($booking, 'form', $mgrLinks);
+expect(str_contains($formHtml, 'Paul'), 'confirm page shows guest');
+expect(str_contains($formHtml, 'method="post"') || str_contains($formHtml, "method='post'"), 'confirm page posts');
+expect(str_contains($formHtml, 'Confirmer'), 'confirm page has confirm action');
+$okHtml = mt_manager_confirm_page_html(array_merge($booking, ['status' => 'confirmed']), 'already', $mgrLinks);
+expect(str_contains($okHtml, 'déjà') || str_contains($okHtml, 'confirmée'), 'already confirmed page');
+
 if ($failed > 0) {
     fwrite(STDERR, "$failed assertion(s) failed\n");
     exit(1);

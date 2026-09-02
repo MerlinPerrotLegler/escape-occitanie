@@ -14,9 +14,11 @@ function expect($cond, $msg) {
 
 expect(mt_fill_copy('Bonjour {nom}', ['nom' => 'Ada']) === 'Bonjour Ada', 'fill simple');
 expect(mt_fill_copy('Réserver « {nom-court} »', ['nom-court' => 'Le Directeur']) === 'Réserver « Le Directeur »', 'fill hyphen');
+expect(mt_fill_copy('Lien {lien_ics}', ['lien_ics' => 'https://x/ics']) === 'Lien https://x/ics', 'fill underscore');
 expect(mt_fill_copy('reste {inconnu}', []) === 'reste {inconnu}', 'unknown kept');
 
 $booking = [
+    'id' => 17,
     'room_slug' => 'directeur',
     'guest_name' => 'Ada',
     'guest_email' => 'ada@example.com',
@@ -46,8 +48,14 @@ if (is_array($copy) && isset($copy['emails']['client-attente'])) {
         'AUTH_SECRET' => 'test-secret',
     ]);
     expect($confirmed['subject'] === 'Confirmation de réservation — Escape Occitanie', 'confirmed subject');
-    $mgr = mt_manager_email_parts($booking);
+    $mgr = mt_manager_email_parts($booking, [
+        'AUTH_URL' => 'https://escapeoccitanie.fr',
+        'AUTH_SECRET' => 'test-secret',
+    ]);
     expect($mgr['subject'] === 'Nouvelle demande de réservation — Escape Occitanie', 'manager subject');
+    expect(str_contains($mgr['html'], 'confirm-booking.php'), 'manager html has confirm link');
+    expect(str_contains($mgr['html'], '/maitre#reservations/'), 'manager html has view link');
+    expect(str_contains($mgr['text'], 'confirm-booking.php') || str_contains($mgr['text'], 'Confirmer'), 'manager text has confirm');
 } else {
     fwrite(STDERR, "SKIP: site-copy.json absent, template assertions skipped\n");
 }

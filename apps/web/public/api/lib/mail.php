@@ -23,7 +23,7 @@ function mt_load_site_copy(): ?array {
 }
 
 function mt_fill_copy(string $template, array $vars): string {
-    return (string) preg_replace_callback('/\{([a-z0-9-]+)\}/i', static function (array $match) use ($vars): string {
+    return (string) preg_replace_callback('/\{([a-z0-9_-]+)\}/i', static function (array $match) use ($vars): string {
         return array_key_exists($match[1], $vars) ? (string) $vars[$match[1]] : $match[0];
     }, $template);
 }
@@ -42,6 +42,7 @@ function mt_booking_copy_vars(array $booking, array $env = []): array {
     $time = $booking['time'] ?? mt_minutes_to_hhmm((int) $booking['start_minute']);
     $links = $env !== [] ? mt_booking_calendar_links($env, $booking) : ['ics' => '', 'google' => ''];
     $status = ($booking['status'] ?? '') === 'confirmed' ? 'confirmée' : 'en attente de confirmation';
+    $mgrLinks = $env !== [] ? mt_manager_booking_links($env, $booking) : ['voir' => '', 'confirmer' => ''];
     return [
         'nom' => (string) ($booking['guest_name'] ?? ''),
         'salle' => mt_room_label((string) ($booking['room_slug'] ?? '')),
@@ -54,6 +55,8 @@ function mt_booking_copy_vars(array $booking, array $env = []): array {
         'telephone' => (string) ($booking['guest_phone'] ?? ''),
         'lien_ics' => (string) ($links['ics'] ?? ''),
         'lien_google' => (string) ($links['google'] ?? ''),
+        'lien_voir' => (string) ($mgrLinks['voir'] ?? ''),
+        'lien_confirmer' => (string) ($mgrLinks['confirmer'] ?? ''),
         'statut' => $status,
     ];
 }
@@ -80,9 +83,9 @@ function mt_booking_email_parts(array $booking, string $kind, array $env = []): 
     ];
 }
 
-function mt_manager_email_parts(array $booking): array {
+function mt_manager_email_parts(array $booking, array $env = []): array {
     $copy = mt_load_site_copy();
-    $vars = mt_booking_copy_vars($booking);
+    $vars = mt_booking_copy_vars($booking, $env);
     $tpl = $copy['emails']['manager-nouvelle'] ?? null;
     if (is_array($tpl) && ($tpl['sujet'] ?? '') !== '') {
         return [
@@ -93,7 +96,7 @@ function mt_manager_email_parts(array $booking): array {
     }
     return [
         'subject' => 'Nouvelle demande de réservation — Escape Occitanie',
-        'text' => mt_booking_manager_email($booking),
+        'text' => mt_booking_manager_email($booking, $env),
         'html' => '',
     ];
 }
@@ -204,17 +207,93 @@ function mt_booking_customer_email(array $booking, string $kind = 'pending', arr
     return $body;
 }
 
-function mt_booking_manager_email(array $booking): string {
+function mt_booking_manager_email(array $booking, array $env = []): string {
     $room = mt_room_label($booking['room_slug']);
     $time = $booking['time'] ?? mt_minutes_to_hhmm((int) $booking['start_minute']);
     $status = $booking['status'] === 'confirmed' ? 'confirmée' : 'en attente de confirmation';
-    return "Nouvelle réservation ({$status})\n\n"
+    $body = "Nouvelle réservation ({$status})\n\n"
         . "Salle : {$room}\n"
         . "Date : {$booking['booking_date']} à {$time}\n"
         . "Joueurs : {$booking['players']}\n"
         . "Nom : {$booking['guest_name']}\n"
         . "E-mail : {$booking['guest_email']}\n"
         . "Téléphone : {$booking['guest_phone']}\n";
+    if ($env !== []) {
+        $links = mt_manager_booking_links($env, $booking);
+        $body .= "\nConfirmer : {$links['confirmer']}\n"
+            . "Voir : {$links['voir']}\n";
+    }
+    return $body;
+}
+
+function mt_html(string $value): string {
+    return htmlspecialchars($value, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
+}
+
+function mt_manager_confirm_page_html(array $booking, string $state, array $links = [], string $message = ''): string {
+    $name = mt_html((string) ($booking['guest_name'] ?? ''));
+    $room = mt_html(mt_room_label((string) ($booking['room_slug'] ?? '')));
+    $date = mt_html((string) ($booking['booking_date'] ?? ''));
+    $time = mt_html((string) ($booking['time'] ?? (isset($booking['start_minute']) ? mt_minutes_to_hhmm((int) $booking['start_minute']) : '')));
+    $players = mt_html((string) ($booking['players'] ?? ''));
+    $email = mt_html((string) ($booking['guest_email'] ?? ''));
+    $phone = mt_html((string) ($booking['guest_phone'] ?? ''));
+    $view = mt_html((string) ($links['voir'] ?? ''));
+    $confirm = (string) ($links['confirmer'] ?? '');
+    $token = mt_html((string) ($links['token'] ?? ''));
+    $id = (int) ($booking['id'] ?? 0);
+    $title = 'Réservation';
+    $lead = $message !== '' ? mt_html($message) : '';
+    $form = '';
+    if ($state === 'form') {
+        $title = 'Confirmer la réservation';
+        $lead = $lead !== '' ? $lead : 'Un clic suffit pour valider cette demande et envoyer l’e-mail au client.';
+        $form = '<form method="post" action="' . mt_html($confirm) . '">'
+            . '<input type="hidden" name="b" value="' . $id . '">'
+            . '<input type="hidden" name="t" value="' . $token . '">'
+            . '<button type="submit">Confirmer la réservation</button>'
+            . '</form>';
+    } elseif ($state === 'confirmed') {
+        $title = 'Réservation confirmée';
+        $lead = $lead !== '' ? $lead : 'La réservation est confirmée. Le client a reçu l’e-mail.';
+    } elseif ($state === 'already') {
+        $title = 'Déjà confirmée';
+        $lead = $lead !== '' ? $lead : 'Cette réservation est déjà confirmée.';
+    } elseif ($state === 'conflict') {
+        $title = 'Impossible de confirmer';
+        $lead = $lead !== '' ? $lead : 'Le créneau n’est plus disponible.';
+    } else {
+        $title = 'Lien invalide';
+        $lead = $lead !== '' ? $lead : 'Ce lien de confirmation n’est plus valable.';
+    }
+    $details = $name === '' && $date === ''
+        ? ''
+        : '<p>'
+            . 'Salle : ' . $room . '<br>'
+            . 'Date : ' . $date . ($time !== '' ? ' à ' . $time : '') . '<br>'
+            . 'Joueurs : ' . $players . '<br>'
+            . 'Nom : ' . $name . '<br>'
+            . 'E-mail : ' . $email . '<br>'
+            . 'Téléphone : ' . $phone
+            . '</p>';
+    $viewBlock = $view !== '' ? '<p><a href="' . $view . '">Voir la réservation</a></p>' : '';
+    return '<!DOCTYPE html><html lang="fr"><head><meta charset="utf-8">'
+        . '<meta name="viewport" content="width=device-width, initial-scale=1">'
+        . '<title>' . mt_html($title) . ' — Escape Occitanie</title>'
+        . '<style>'
+        . 'body{margin:0;background:#1a1612;color:#e8dcc8;font-family:Georgia,serif;}'
+        . '.box{max-width:32rem;margin:12vh auto;padding:28px 22px;background:#241f1a;border-radius:12px;}'
+        . 'h1{font-size:1.4rem;color:#f4ead6;margin:0 0 12px;}'
+        . 'p{line-height:1.55;}'
+        . 'button{background:#c9a227;color:#1a1612;border:0;border-radius:8px;padding:12px 18px;font-weight:700;cursor:pointer;}'
+        . 'a{color:#c9a227;}'
+        . '</style></head><body><div class="box"><p style="letter-spacing:3px;color:#c9a227;text-transform:uppercase;font-size:12px;">Escape Occitanie</p>'
+        . '<h1>' . mt_html($title) . '</h1>'
+        . '<p>' . $lead . '</p>'
+        . $details
+        . $form
+        . $viewBlock
+        . '</div></body></html>';
 }
 
 function mt_booking_ics_attachment(array $booking): array {
@@ -238,7 +317,7 @@ function mt_send_booking_emails(array $env, array $booking, string $kind, bool $
     );
     $manager = $env['MANAGER_EMAIL'] ?? '';
     if (($kind === 'pending' || $notifyManager) && $manager !== '') {
-        $mgr = mt_manager_email_parts($booking);
+        $mgr = mt_manager_email_parts($booking, $env);
         mt_send_mail($env, $manager, $mgr['subject'], $mgr['text'], null, $mgr['html'] !== '' ? $mgr['html'] : null);
     }
     return $sent;

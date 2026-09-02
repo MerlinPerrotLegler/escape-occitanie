@@ -8,7 +8,10 @@ if (($_SERVER['REQUEST_METHOD'] ?? '') !== 'GET') {
 
 $env = mt_boot();
 $session = mt_require_session($env);
-mt_json_out(200, [
-    'email' => $session['email'],
-    'name' => (string) ($env['MANAGER_NAME'] ?? 'Direction'),
-]);
+$pdo = null;
+try {
+    $pdo = mt_pdo($env);
+} catch (Throwable $ignored) {
+    $pdo = null;
+}
+mt_json_out(200, mt_manager_session_payload($env, $session['email'], $pdo));

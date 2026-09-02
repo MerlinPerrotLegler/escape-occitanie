@@ -12,6 +12,7 @@ expect(fillCopy('Réserver « {nom-court} »', { 'nom-court': 'Le Directeur' }) 
 expect(fillCopy('Bonjour {nom}', { nom: 'Ada' }) === 'Bonjour Ada', 'simple');
 expect(fillCopy('reste {inconnu}', {}) === 'reste {inconnu}', 'unknown kept');
 expect(fillCopy('Salle : {salle}', { salle: 'Le Directeur' }) === 'Salle : Le Directeur', 'salle');
+expect(fillCopy('Lien {lien_ics}', { lien_ics: 'https://x/ics' }) === 'Lien https://x/ics', 'underscore key');
 expect(fillCopy('', { nom: 'x' }) === '', 'empty');
 
 if (failed > 0) {
