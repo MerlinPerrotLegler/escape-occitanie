@@ -7333,3 +7333,43 @@
 ## 2026-09-01 23:03:50.652Z console.error
 - text: Fetch error from http://localhost:3000/api/me.php: {"error":"Session expirée."}
 
+## 2026-09-02 07:18:56.196Z load
+- url: http://localhost:3000/
+
+## 2026-09-02 07:18:56.243Z navigate
+- url: http://localhost:3000/
+- via: replaceState
+
+## 2026-09-02 07:19:19.020Z click
+- element: {"tag":"div","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Escape game — OccitanieL'Escape Occitanieréouvre ses portes !Enfermés en équipe, vous avez 60 minutes pour fouiller les lieux, dénicher les indices, résoudre les énigmes et percer le mystère. Observation, logique et coopération seront vos seules clés vers la sortie.Réserver une sessionDécouvrir l'expérience2 salles immersives4 à 6 joueursDès 10 ans"}
+
+## 2026-09-02 07:20:26.074Z load
+- url: http://localhost:3000/maitre
+
+## 2026-09-02 07:20:26.142Z navigate
+- url: http://localhost:3000/maitre
+- via: replaceState
+
+## 2026-09-02 07:20:26.151Z navigate
+- url: http://localhost:3000/maitre#reservations?filtre=aujourdhui&page=1
+- via: replaceState
+
+## 2026-09-02 07:20:29.988Z load
+- url: http://localhost:3000/
+
+## 2026-09-02 07:20:30.013Z navigate
+- url: http://localhost:3000/
+- via: replaceState
+
+## 2026-09-02 07:22:55.276Z load
+- url: http://localhost:3000/#salles
+
+## 2026-09-02 07:22:56.830Z click
+- element: {"tag":"section","role":null,"ariaLabel":null,"name":null,"type":null,"id":"salles","placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Nos aventuresDeux salles, deux mondes à explorerChoisissez votre mission : menez l'enquête dans un collège aux secrets troublants, ou affrontez la malédiction d'un galion fantôme échoué dans la brume.Enquête au cœur du collègeConvocation chez le Directeur3 à 6 joueursDès 14 ans60 minutesConvoqués dans le bureau de M. Grenot, aidez l'inspecteur Dupont à percer le mystère qui plane sur le collège. Fouille, indices et révélations vous attendent.Réserver cette salleDécouvrir l'histoireAventure maudite en haute merLa malédiction du Vaisseau Fantôme3 à 6 joueursDès 14 ans60 minutesNaufragés sur une île inconnue, explorez un galion abandonné et brisez la malédiction du capitaine disparu avant que le temps ne soit écoulé.Réserver cette salleDécouvrir l'histoire"}
+
+## 2026-09-02 07:22:57.212Z load
+- url: http://localhost:3000/#salles
+
+## 2026-09-02 07:22:58.465Z load
+- url: http://localhost:3000/#salles
+
