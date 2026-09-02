@@ -5,6 +5,7 @@ $root = dirname(__DIR__) . '/public/api/lib';
 require $root . '/env.php';
 require $root . '/validate.php';
 require $root . '/auth.php';
+require $root . '/turnstile.php';
 
 $failed = 0;
 function expect($cond, $msg) {
@@ -202,6 +203,82 @@ expect(str_contains($formHtml, 'method="post"') || str_contains($formHtml, "meth
 expect(str_contains($formHtml, 'Confirmer'), 'confirm page has confirm action');
 $okHtml = mt_manager_confirm_page_html(array_merge($booking, ['status' => 'confirmed']), 'already', $mgrLinks);
 expect(str_contains($okHtml, 'déjà') || str_contains($okHtml, 'confirmée'), 'already confirmed page');
+
+$secretEnv = ['TURNSTILE_SECRET_KEY' => 'test-secret', 'TURNSTILE_SITE_KEY' => 'test-site'];
+$okPost = static function (string $url, array $fields): array {
+    expect($url === MT_TURNSTILE_VERIFY_URL, 'siteverify url');
+    expect(($fields['secret'] ?? '') === 'test-secret', 'siteverify secret');
+    expect(($fields['response'] ?? '') === 'tok', 'siteverify token');
+    expect(($fields['remoteip'] ?? '') === '203.0.113.9', 'siteverify ip');
+    return ['ok' => true, 'status' => 200, 'body' => '{"success":true}'];
+};
+
+$skipCalled = false;
+$mustNotSkipPost = static function () use (&$skipCalled): array {
+    $skipCalled = true;
+    return ['ok' => true, 'status' => 200, 'body' => '{"success":true}'];
+};
+$emptySecret = mt_turnstile_verify(['TURNSTILE_SITE_KEY' => 'site-only'], 'tok', '203.0.113.9', $mustNotSkipPost);
+expect($emptySecret['ok'] === true, 'missing secret skips captcha');
+expect(!empty($emptySecret['skipped']), 'missing secret skipped flag');
+expect($skipCalled === false, 'missing secret skips siteverify');
+
+$noKeys = mt_turnstile_verify([], '', '203.0.113.9', $mustNotSkipPost);
+expect($noKeys['ok'] === true, 'no keys skips even without token');
+expect(!empty($noKeys['skipped']), 'no keys skipped flag');
+
+$called = false;
+$mustNotPost = static function () use (&$called): array {
+    $called = true;
+    return ['ok' => true, 'status' => 200, 'body' => '{"success":true}'];
+};
+$emptyToken = mt_turnstile_verify($secretEnv, '  ', '203.0.113.9', $mustNotPost);
+expect($emptyToken['ok'] === false, 'empty token not ok');
+expect((int) $emptyToken['status'] === 400, 'empty token 400');
+expect($emptyToken['error'] === 'Vérification anti-robot requise.', 'empty token message');
+expect($called === false, 'empty token skips siteverify');
+
+$ok = mt_turnstile_verify($secretEnv, 'tok', '203.0.113.9', $okPost);
+expect($ok['ok'] === true, 'success true ok');
+expect((int) $ok['status'] === 200, 'success true status 200');
+expect(empty($ok['skipped']), 'success not skipped');
+
+$denied = mt_turnstile_verify($secretEnv, 'tok', '203.0.113.9', static function (): array {
+    return ['ok' => true, 'status' => 200, 'body' => '{"success":false}'];
+});
+expect($denied['ok'] === false, 'success false not ok');
+expect((int) $denied['status'] === 400, 'success false 400');
+expect($denied['error'] === 'Vérification anti-robot échouée, réessaie.', 'success false message');
+
+$timeout = mt_turnstile_verify($secretEnv, 'tok', '203.0.113.9', static function (): array {
+    return ['ok' => false, 'status' => 0, 'body' => ''];
+});
+expect($timeout['ok'] === true, 'timeout skips captcha');
+expect(!empty($timeout['skipped']), 'timeout skipped flag');
+
+$http500 = mt_turnstile_verify($secretEnv, 'tok', '203.0.113.9', static function (): array {
+    return ['ok' => false, 'status' => 500, 'body' => '{"success":true}'];
+});
+expect($http500['ok'] === true, 'http 500 skips captcha');
+expect(!empty($http500['skipped']), 'http 500 skipped flag');
+
+$http429 = mt_turnstile_verify($secretEnv, 'tok', '203.0.113.9', static function (): array {
+    return ['ok' => false, 'status' => 429, 'body' => ''];
+});
+expect($http429['ok'] === true, 'http 429 quota skips captcha');
+expect(!empty($http429['skipped']), 'http 429 skipped flag');
+
+$badJson = mt_turnstile_verify($secretEnv, 'tok', '203.0.113.9', static function (): array {
+    return ['ok' => true, 'status' => 200, 'body' => 'not-json'];
+});
+expect($badJson['ok'] === true, 'invalid json skips captcha');
+expect(!empty($badJson['skipped']), 'invalid json skipped flag');
+
+$deadSecret = mt_turnstile_verify($secretEnv, 'tok', '203.0.113.9', static function (): array {
+    return ['ok' => true, 'status' => 200, 'body' => '{"success":false,"error-codes":["invalid-input-secret"]}'];
+});
+expect($deadSecret['ok'] === true, 'invalid secret skips captcha');
+expect(!empty($deadSecret['skipped']), 'invalid secret skipped flag');
 
 if ($failed > 0) {
     fwrite(STDERR, "$failed assertion(s) failed\n");

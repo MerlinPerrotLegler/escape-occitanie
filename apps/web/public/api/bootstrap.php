@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 require_once __DIR__ . '/lib/env.php';
 require_once __DIR__ . '/lib/http.php';
+require_once __DIR__ . '/lib/turnstile.php';
 require_once __DIR__ . '/lib/validate.php';
 require_once __DIR__ . '/lib/auth.php';
 require_once __DIR__ . '/lib/schedule.php';

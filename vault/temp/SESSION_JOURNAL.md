@@ -4415,3 +4415,289 @@ début et la fin (au moins 60 minutes, aligné sur 30). Le site propose alors to
 ## 2026-09-02 10:19:07.158Z click
 - element: {"tag":"button","role":null,"ariaLabel":"Réserver Le Vaisseau Fantôme, mercredi 1 septembre 2027 à 10:00","name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Réserver"}
 
+## 2026-09-02 10:45:49.813Z network.error
+- method: GET
+- url: http://127.0.0.1:3000/api/turnstile.php
+- status: 503
+- statusText: Service Unavailable
+- response: {"error":"Réservation temporairement indisponible."}
+- durationMs: 2
+
+## 2026-09-02 10:45:49.813Z console.error
+- text: Fetch error from http://127.0.0.1:3000/api/turnstile.php: {"error":"Réservation temporairement indisponible."}
+
+## 2026-09-02 10:46:39.727Z load
+- url: http://localhost:3000/reservation/convocation-chez-le-directeur
+
+## 2026-09-02 10:46:39.787Z navigate
+- url: http://localhost:3000/reservation/convocation-chez-le-directeur
+- via: replaceState
+
+## 2026-09-02 10:46:40.197Z navigate
+- url: http://localhost:3000/reservation/convocation-chez-le-directeur?date=2027-09-01
+- via: replaceState
+
+## 2026-09-02 10:46:48.425Z load
+- url: http://localhost:3000/reservation/convocation-chez-le-directeur
+
+## 2026-09-02 10:46:48.449Z navigate
+- url: http://localhost:3000/reservation/convocation-chez-le-directeur
+- via: replaceState
+
+## 2026-09-02 10:46:48.797Z navigate
+- url: http://localhost:3000/reservation/convocation-chez-le-directeur?date=2027-09-01
+- via: replaceState
+
+## 2026-09-02 10:46:57.108Z click
+- element: {"tag":"button","role":null,"ariaLabel":"Mois suivant","name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":""}
+
+## 2026-09-02 10:48:32.872Z change
+- element: {"tag":"input","role":null,"ariaLabel":null,"name":"name","type":null,"id":":r0:-form-item","placeholder":"Nom","label":"name","value":"Jean Test","valueLength":9,"text":""}
+
+## 2026-09-02 10:48:33.464Z change
+- element: {"tag":"input","role":null,"ariaLabel":null,"name":"email","type":"email","id":":r1:-form-item","placeholder":"E-mail","label":"email","value":"jean.test.turnstile@example.com","valueLength":31,"text":""}
+
+## 2026-09-02 10:48:35.079Z change
+- element: {"tag":"input","role":null,"ariaLabel":null,"name":"phone","type":"tel","id":":r2:-form-item","placeholder":"Téléphone","label":"phone","value":"0612345678","valueLength":10,"text":""}
+
+## 2026-09-02 10:48:41.805Z click
+- element: {"tag":"button","role":null,"ariaLabel":null,"name":null,"type":"submit","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Réserver ce créneau"}
+
+## 2026-09-02 10:48:41.805Z submit
+- formId: reservation
+- action: http://localhost:3000/reservation/convocation-chez-le-directeur?date=2027-09-01
+- fields: [{"label":"name","type":"text","value":"Jean Test","length":9,"redacted":false},{"label":"email","type":"email","value":"jean.test.turnstile@example.com","length":31,"redacted":false},{"label":"phone","type":"tel","value":"0612345678","length":10,"redacted":false},{"label":"players","type":"select-one","value":"4","length":1,"redacted":false},{"label":"cf-turnstile-response","type":"hidden","value":"XXXX.DUMMY.TOKEN.XXXX","length":21,"redacted":false},{"label":"[submit]","type":"submit","value":"","length":0,"redacted":false}]
+
+## 2026-09-02 10:49:12.271Z load
+- url: http://localhost:3000/reservation
+
+## 2026-09-02 10:49:12.297Z navigate
+- url: http://localhost:3000/reservation
+- via: replaceState
+
+## 2026-09-02 10:49:46.373Z click
+- element: {"tag":"button","role":null,"ariaLabel":"Réserver Le Directeur, mercredi 1 septembre 2027 à 13:00","name":null,"type":"button","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Réserver"}
+
+## 2026-09-02 10:50:09.506Z change
+- element: {"tag":"input","role":null,"ariaLabel":null,"name":"name","type":null,"id":":r0:-form-item","placeholder":"Nom","label":"name","value":"Marie Timeline","valueLength":14,"text":""}
+
+## 2026-09-02 10:50:09.506Z blur
+- element: {"tag":"input","role":null,"ariaLabel":null,"name":"name","type":null,"id":":r0:-form-item","placeholder":"Nom","label":"name","value":"Marie Timeline","valueLength":14,"text":""}
+
+## 2026-09-02 10:50:09.507Z change
+- element: {"tag":"input","role":null,"ariaLabel":null,"name":"email","type":"email","id":":r1:-form-item","placeholder":"E-mail","label":"email","value":"marie.timeline@example.com","valueLength":26,"text":""}
+
+## 2026-09-02 10:50:09.507Z blur
+- element: {"tag":"input","role":null,"ariaLabel":null,"name":"email","type":"email","id":":r1:-form-item","placeholder":"E-mail","label":"email","value":"marie.timeline@example.com","valueLength":26,"text":""}
+
+## 2026-09-02 10:50:09.507Z change
+- element: {"tag":"input","role":null,"ariaLabel":null,"name":"phone","type":"tel","id":":r2:-form-item","placeholder":"Téléphone","label":"phone","value":"0612345678","valueLength":10,"text":""}
+
+## 2026-09-02 10:50:09.507Z blur
+- element: {"tag":"input","role":null,"ariaLabel":null,"name":"phone","type":"tel","id":":r2:-form-item","placeholder":"Téléphone","label":"phone","value":"0612345678","valueLength":10,"text":""}
+
+## 2026-09-02 10:50:17.625Z click
+- element: {"tag":"button","role":null,"ariaLabel":null,"name":null,"type":"submit","id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Réserver ce créneau"}
+
+## 2026-09-02 10:50:17.625Z submit
+- formId: reservation
+- action: http://localhost:3000/reservation
+- fields: [{"label":"name","type":"text","value":"Marie Timeline","length":14,"redacted":false},{"label":"email","type":"email","value":"marie.timeline@example.com","length":26,"redacted":false},{"label":"phone","type":"tel","value":"0612345678","length":10,"redacted":false},{"label":"players","type":"select-one","value":"4","length":1,"redacted":false},{"label":"cf-turnstile-response","type":"hidden","value":"XXXX.DUMMY.TOKEN.XXXX","length":21,"redacted":false},{"label":"[submit]","type":"submit","value":"","length":0,"redacted":false}]
+
+## 2026-09-02 10:50:17.726Z network.error
+- method: POST
+- url: http://localhost:3000/api/bookings.php
+- status: 409
+- statusText: Conflict
+- requestBody: {"room":"directeur","date":"2027-09-01","time":"13:00","name":"Marie Timeline","email":"marie.timeline@example.com","phone":"0612345678","players":"4","turnstileToken":"[redacted:length=21]"}
+- response: {"error":"Ce créneau n’est plus disponible."}
+- durationMs: 100
+
+## 2026-09-02 10:50:17.726Z console.error
+- text: Fetch error from http://localhost:3000/api/bookings.php: {"error":"Ce créneau n’est plus disponible."}
+
+## 2026-09-02 10:50:46.091Z submit
+- formId: reservation
+- action: http://localhost:3000/reservation
+- fields: [{"label":"name","type":"text","value":"Marie Timeline","length":14,"redacted":false},{"label":"email","type":"email","value":"marie.timeline@example.com","length":26,"redacted":false},{"label":"phone","type":"tel","value":"0612345678","length":10,"redacted":false},{"label":"players","type":"select-one","value":"4","length":1,"redacted":false},{"label":"cf-turnstile-response","type":"hidden","value":"XXXX.DUMMY.TOKEN.XXXX","length":21,"redacted":false},{"label":"[submit]","type":"submit","value":"","length":0,"redacted":false}]
+
+## 2026-09-02 10:50:46.190Z network.error
+- method: POST
+- url: http://localhost:3000/api/bookings.php
+- status: 409
+- statusText: Conflict
+- requestBody: {"room":"directeur","date":"2027-09-01","time":"13:00","name":"Marie Timeline","email":"marie.timeline@example.com","phone":"0612345678","players":"4","turnstileToken":"[redacted:length=21]"}
+- response: {"error":"Ce créneau n’est plus disponible."}
+- durationMs: 98
+
+## 2026-09-02 10:50:46.190Z console.error
+- text: Fetch error from http://localhost:3000/api/bookings.php: {"error":"Ce créneau n’est plus disponible."}
+
+## 2026-09-02 10:51:06.126Z submit
+- formId: reservation
+- action: http://localhost:3000/reservation
+- fields: [{"label":"name","type":"text","value":"Marie Timeline","length":14,"redacted":false},{"label":"email","type":"email","value":"marie.timeline@example.com","length":26,"redacted":false},{"label":"phone","type":"tel","value":"0612345678","length":10,"redacted":false},{"label":"players","type":"select-one","value":"4","length":1,"redacted":false},{"label":"cf-turnstile-response","type":"hidden","value":"XXXX.DUMMY.TOKEN.XXXX","length":21,"redacted":false},{"label":"[submit]","type":"submit","value":"","length":0,"redacted":false}]
+
+## 2026-09-02 10:51:06.224Z network.error
+- method: POST
+- url: http://localhost:3000/api/bookings.php
+- status: 409
+- statusText: Conflict
+- requestBody: {"room":"directeur","date":"2027-09-01","time":"13:00","name":"Marie Timeline","email":"marie.timeline@example.com","phone":"0612345678","players":"4","turnstileToken":"[redacted:length=21]"}
+- response: {"error":"Ce créneau n’est plus disponible."}
+- durationMs: 98
+
+## 2026-09-02 10:51:06.224Z console.error
+- text: Fetch error from http://localhost:3000/api/bookings.php: {"error":"Ce créneau n’est plus disponible."}
+
+## 2026-09-02 10:53:13.675Z click
+- element: {"tag":"div","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"ESCAPE OCCITANIEAccueilLe DirecteurLe Vaisseau FantômeContactRéserver"}
+
+## 2026-09-02 10:57:21.255Z window.error
+- message: Uncaught TypeError: onEnabledRef.current is not a function
+- source: http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40
+- line: 16718
+- col: 15
+- stack: 
+    TypeError: onEnabledRef.current is not a function
+        at http://localhost:3000/src/components/TurnstileField.jsx?t=1788346641177:45:18
+        at commitHookEffectListMount (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:16963:34)
+        at commitPassiveMountOnFiber (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:18206:19)
+        at commitPassiveMountEffects_complete (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:18179:17)
+        at commitPassiveMountEffects_begin (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:18169:15)
+        at commitPassiveMountEffects (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:18159:11)
+        at flushPassiveEffectsImpl (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19543:11)
+        at flushPassiveEffects (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19500:22)
+        at commitRootImpl (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19469:13)
+        at commitRoot (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19330:13)
+
+## 2026-09-02 10:57:21.259Z console.error
+- text: 
+    The above error occurred in the <TurnstileField> component:
+    
+        at TurnstileField (http://localhost:3000/src/components/TurnstileField.jsx?t=1788346641177:34:34)
+        at form
+        at FormProvider (http://localhost:3000/node_modules/.vite/deps/chunk-J2W4Z4A2.js?v=b6c39f40:428:23)
+        at BookingForm (http://localhost:3000/src/components/BookingForm.jsx?t=1788345949747:65:3)
+        at div
+        at AvailabilityTimeline (http://localhost:3000/src/components/AvailabilityTimeline.jsx?t=1788345949747:23:3)
+        at div
+        at MotionComponent (http://localhost:3000/node_modules/.vite/deps/framer-motion.js?v=b6c39f40:946:40)
+        at Reveal (http://localhost:3000/src/components/Reveal.jsx:5:19)
+        at section
+        at ReservationPage
+        at RenderedRoute (http://localhost:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:6647:26)
+        at Outlet (http://localhost:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7502:26)
+        at main
+        at PublicLayout
+        at RenderedRoute (http://localhost:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:6647:26)
+        at Routes (http://localhost:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7572:3)
+        at Router (http://localhost:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7511:13)
+        at BrowserRouter (http://localhost:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:10816:3)
+        at App
+    
+    Consider adding an error boundary to your tree to customize error handling behavior.
+    Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries.
+
+## 2026-09-02 10:57:21.260Z unhandledrejection
+- message: onEnabledRef.current is not a function
+- stack: 
+    TypeError: onEnabledRef.current is not a function
+        at http://localhost:3000/src/components/TurnstileField.jsx?t=1788346641177:45:18
+        at commitHookEffectListMount (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:16963:34)
+        at commitPassiveMountOnFiber (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:18206:19)
+        at commitPassiveMountEffects_complete (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:18179:17)
+        at commitPassiveMountEffects_begin (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:18169:15)
+        at commitPassiveMountEffects (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:18159:11)
+        at flushPassiveEffectsImpl (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19543:11)
+        at flushPassiveEffects (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19500:22)
+        at commitRootImpl (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19469:13)
+        at commitRoot (http://localhost:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19330:13)
+
+## 2026-09-02 10:57:21.560Z root.empty
+- url: http://localhost:3000/reservation
+
+## 2026-09-02 10:57:21.256Z window.error
+- message: Uncaught TypeError: onEnabledRef.current is not a function
+- source: http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40
+- line: 16718
+- col: 15
+- stack: 
+    TypeError: onEnabledRef.current is not a function
+        at http://127.0.0.1:3000/src/components/TurnstileField.jsx?t=1788346641177:45:18
+        at commitHookEffectListMount (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:16963:34)
+        at commitPassiveMountOnFiber (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:18206:19)
+        at commitPassiveMountEffects_complete (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:18179:17)
+        at commitPassiveMountEffects_begin (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:18169:15)
+        at commitPassiveMountEffects (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:18159:11)
+        at flushPassiveEffectsImpl (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19543:11)
+        at flushPassiveEffects (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19500:22)
+        at commitRootImpl (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19469:13)
+        at commitRoot (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19330:13)
+
+## 2026-09-02 10:57:21.260Z console.error
+- text: 
+    The above error occurred in the <TurnstileField> component:
+    
+        at TurnstileField (http://127.0.0.1:3000/src/components/TurnstileField.jsx?t=1788346641177:34:34)
+        at form
+        at FormProvider (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-J2W4Z4A2.js?v=b6c39f40:428:23)
+        at BookingForm (http://127.0.0.1:3000/src/components/BookingForm.jsx?t=1788345949747:65:3)
+        at div
+        at AvailabilityTimeline (http://127.0.0.1:3000/src/components/AvailabilityTimeline.jsx?t=1788344271080:23:3)
+        at div
+        at MotionComponent (http://127.0.0.1:3000/node_modules/.vite/deps/framer-motion.js?v=b6c39f40:946:40)
+        at Reveal (http://127.0.0.1:3000/src/components/Reveal.jsx:5:19)
+        at section
+        at ReservationPage
+        at RenderedRoute (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:6647:26)
+        at Outlet (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7502:26)
+        at main
+        at PublicLayout
+        at RenderedRoute (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:6647:26)
+        at Routes (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7572:3)
+        at Router (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7511:13)
+        at BrowserRouter (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:10816:3)
+        at App
+    
+    Consider adding an error boundary to your tree to customize error handling behavior.
+    Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries.
+
+## 2026-09-02 10:57:21.262Z unhandledrejection
+- message: onEnabledRef.current is not a function
+- stack: 
+    TypeError: onEnabledRef.current is not a function
+        at http://127.0.0.1:3000/src/components/TurnstileField.jsx?t=1788346641177:45:18
+        at commitHookEffectListMount (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:16963:34)
+        at commitPassiveMountOnFiber (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:18206:19)
+        at commitPassiveMountEffects_complete (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:18179:17)
+        at commitPassiveMountEffects_begin (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:18169:15)
+        at commitPassiveMountEffects (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:18159:11)
+        at flushPassiveEffectsImpl (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19543:11)
+        at flushPassiveEffects (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19500:22)
+        at commitRootImpl (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19469:13)
+        at commitRoot (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19330:13)
+
+## 2026-09-02 10:57:21.562Z root.empty
+- url: http://127.0.0.1:3000/reservation
+
+## 2026-09-02 11:07:31.339Z load
+- url: http://localhost:3000/reservation/la-malediction-du-vaisseau-fantome?date=2026-09-03
+
+## 2026-09-02 11:07:31.392Z navigate
+- url: http://localhost:3000/reservation/la-malediction-du-vaisseau-fantome?date=2026-09-03
+- via: replaceState
+
+## 2026-09-02 11:07:31.800Z navigate
+- url: http://localhost:3000/reservation/la-malediction-du-vaisseau-fantome?date=2027-09-01
+- via: replaceState
+
+## 2026-09-02 11:07:31.932Z console.warn
+- text: [Cloudflare Turnstile] turnstile.ready() would break if called *before* the Turnstile api.js script is loaded by visitors.
+
+## 2026-09-02 11:08:34.625Z console.warn
+- text: [Cloudflare Turnstile] turnstile.ready() would break if called *before* the Turnstile api.js script is loaded by visitors.
+
+## 2026-09-02 11:09:38.909Z console.warn
+- text: [Cloudflare Turnstile] turnstile.ready() would break if called *before* the Turnstile api.js script is loaded by visitors.
+

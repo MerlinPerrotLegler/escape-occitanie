@@ -11,6 +11,7 @@ import { Button } from '@/components/ui/button';
 import { Form, FormControl, FormField, FormItem, FormMessage } from '@/components/ui/form';
 import { createBooking } from '@/lib/booking';
 import { bookingContactSchemaForRoom, playerCountsForRoom } from '@/lib/bookingContact';
+import { TurnstileField } from '@/components/TurnstileField';
 
 const cal = COPY.reserver.calendrier;
 
@@ -48,6 +49,9 @@ export function BookingSuccess({ booking, room }) {
 
 export function BookingForm({ room, iso, time, settings, formRef, title, onSuccess }) {
   const [submitting, setSubmitting] = useState(false);
+  const [turnstileToken, setTurnstileToken] = useState('');
+  const [turnstileReset, setTurnstileReset] = useState(0);
+  const [turnstileOn, setTurnstileOn] = useState(null);
   const playerCounts = playerCountsForRoom(room.slug);
   const schema = useMemo(() => bookingContactSchemaForRoom(room.slug), [room.slug]);
   const contactForm = useForm({
@@ -57,7 +61,20 @@ export function BookingForm({ room, iso, time, settings, formRef, title, onSucce
   });
   const dateLabel = dayFormatter.format(new Date(`${iso}T12:00:00`));
 
+  function resetTurnstile() {
+    setTurnstileToken('');
+    setTurnstileReset((n) => n + 1);
+  }
+
   async function onSubmit(values) {
+    if (turnstileOn === null) {
+      formRef?.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return;
+    }
+    if (turnstileOn && !turnstileToken) {
+      toast.error('Vérification anti-robot requise.');
+      return;
+    }
     setSubmitting(true);
     try {
       const result = await createBooking({
@@ -68,6 +85,7 @@ export function BookingForm({ room, iso, time, settings, formRef, title, onSucce
         email: values.email,
         phone: values.phone,
         players: Number(values.players),
+        turnstileToken: turnstileOn ? turnstileToken : '',
       });
       const confirmed = result.booking?.status === 'confirmed' || settings.auto_confirm;
       toast.success(
@@ -79,9 +97,11 @@ export function BookingForm({ room, iso, time, settings, formRef, title, onSucce
             ? cal.toastDemandeMail
             : cal.toastDemande
       );
+      resetTurnstile();
       onSuccess?.(result.booking);
     } catch (err) {
       toast.error(err.message);
+      resetTurnstile();
     } finally {
       setSubmitting(false);
     }
@@ -163,7 +183,12 @@ export function BookingForm({ room, iso, time, settings, formRef, title, onSucce
             </FormItem>
           )}
         />
-        <Button type="submit" disabled={submitting} className="h-11 w-full">
+        <TurnstileField
+          resetKey={`${room.slug}:${iso}:${time}:${turnstileReset}`}
+          onToken={setTurnstileToken}
+          onEnabled={setTurnstileOn}
+        />
+        <Button type="submit" disabled={submitting || turnstileOn === null || (turnstileOn === true && !turnstileToken)} className="h-11 w-full">
           {cal.bouton}
         </Button>
         <p className="text-xs text-muted-foreground">

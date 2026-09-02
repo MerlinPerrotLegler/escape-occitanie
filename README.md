@@ -70,6 +70,23 @@ XML cassé, image locale manquante ou galerie incomplète : la compile s’arrê
 npm run compile:content --prefix apps/web
 ```
 
+### Turnstile (anti-robot réservation)
+
+Le formulaire public de réservation utilise Cloudflare Turnstile quand les deux clés sont présentes (`TURNSTILE_SITE_KEY`, `TURNSTILE_SECRET_KEY` dans `.env` / `api/.env` serveur).
+
+Sans clés, si Cloudflare est injoignable, ou s’il n’y a plus de quota / secret invalide : **le captcha s’éteint tout seul**, la réservation continue.
+
+En local, sans compte Cloudflare, coller les clés dummy always-pass :
+
+```
+TURNSTILE_SITE_KEY="1x00000000000000000000AA"
+TURNSTILE_SECRET_KEY="1x0000000000000000000000000000000AA"
+```
+
+Puis relancer `npm run dev` (PHP relit le `.env`).
+
+En production : créer un widget **Managed** sur [Cloudflare Turnstile](https://dash.cloudflare.com/?to=/:account/turnstile), hostnames = `localhost` + le domaine public. `npm run deploy` recopie ces clés dans `api/.env` distant. Les dummy locales suffisent pour un test visuel ; remplace-les par les vraies clés dès que le widget Cloudflare est créé.
+
 ## Déployer (avec `.env`)
 
 Le fichier `.env` à la racine n’est **pas** versionné. Il contient les identifiants Hostinger (`SSH_*` de préférence, sinon `FTP_*`). Sans ce fichier, le déploiement refuse de partir.

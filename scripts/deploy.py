@@ -111,6 +111,8 @@ def production_api_env(env: dict[str, str]) -> str:
         "SMTP_FROM": env.get("SMTP_FROM") or "",
         "HOSTINGER_EMAIL_MCP_TOKEN": env.get("HOSTINGER_EMAIL_MCP_TOKEN") or "",
         "HOSTINGER_MAIL_MAILBOX_ID": env.get("HOSTINGER_MAIL_MAILBOX_ID") or "",
+        "TURNSTILE_SITE_KEY": env.get("TURNSTILE_SITE_KEY") or "",
+        "TURNSTILE_SECRET_KEY": env.get("TURNSTILE_SECRET_KEY") or "",
         "TZ": env.get("TZ") or "Europe/Paris",
     }
     lines = ["# Généré par scripts/deploy.py — ne pas éditer à la main si tu redéploies."]

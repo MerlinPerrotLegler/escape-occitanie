@@ -141,6 +141,10 @@ if ($method === 'PATCH') {
 
 if ($method === 'POST') {
     $body = mt_read_json();
+    $checked = mt_turnstile_verify($env, (string) ($body['turnstileToken'] ?? ''), mt_client_ip());
+    if (!$checked['ok']) {
+        mt_json_out($checked['status'], ['error' => $checked['error']]);
+    }
     $room = (string) ($body['room'] ?? '');
     $date = trim((string) ($body['date'] ?? ''));
     $time = trim((string) ($body['time'] ?? ''));

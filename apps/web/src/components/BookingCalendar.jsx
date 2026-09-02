@@ -230,6 +230,11 @@ function BookingCalendar({ room }) {
       setSelectedSlot(slot);
       setLoadingSlots(false);
       initLoadedISO.current = iso;
+      if (slot) {
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => scrollToForm());
+        });
+      }
       if (slot && iso !== queryDate) {
         skipQueryBootstrap.current = true;
         setSearchParams((prev) => applyDateParam(prev, iso), { replace: true });
@@ -263,7 +268,7 @@ function BookingCalendar({ room }) {
   }
 
   return (
-    <div className="overflow-hidden rounded-xl border border-border bg-card/60">
+    <div className="rounded-xl border border-border bg-card/60">
       <div className="flex items-center justify-between border-b border-border/70 px-4 py-3 sm:px-6">
         <button
           type="button"
