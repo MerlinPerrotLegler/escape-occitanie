@@ -4,8 +4,13 @@
 
 <IfModule mod_headers.c>
   <Files "index.html">
-    Header set Cache-Control "public, max-age=0, must-revalidate"
+    Header unset Cache-Control
+    Header set Cache-Control "public, max-age=0, must-revalidate, s-maxage=0"
   </Files>
+  <FilesMatch "\.html$">
+    Header unset Cache-Control
+    Header set Cache-Control "public, max-age=0, must-revalidate, s-maxage=0"
+  </FilesMatch>
   <FilesMatch "\.(?:js|css|woff2)$">
     Header set Cache-Control "public, max-age=31536000, immutable"
   </FilesMatch>

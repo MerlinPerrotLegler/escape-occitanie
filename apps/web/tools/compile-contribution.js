@@ -4,7 +4,7 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 import { XMLParser } from 'fast-xml-parser';
 import { htmlToText } from 'html-to-text';
 import mjmlPkg from 'mjml';
-import { publishLocalImage } from './optimize-media.js';
+import { publishFavicons, publishLocalImage } from './optimize-media.js';
 
 const mjml2html = typeof mjmlPkg === 'function' ? mjmlPkg : mjmlPkg.default;
 
@@ -59,6 +59,7 @@ export function contributionPaths(webRoot) {
     jsPath: path.join(root, 'src/generated/siteCopy.js'),
     jsonPath: path.join(root, 'public/api/site-copy.json'),
     mediaDir: path.join(root, 'public/media'),
+    publicDir: path.join(root, 'public'),
   };
 }
 
@@ -155,8 +156,15 @@ function imageField(contributionDir, mediaDir, file, node, label) {
   };
 }
 
-function parseContact(contributionDir, mediaDir, file, node) {
-  const logo = imageField(contributionDir, mediaDir, file, reqNode(file, node, 'logo'), 'logo');
+function parseContact(contributionDir, mediaDir, publicDir, file, node) {
+  const parsedLogo = parseImage(file, reqNode(file, node, 'logo'), 'logo');
+  const logo = {
+    ...publishImage(contributionDir, mediaDir, file, parsedLogo.src),
+    alt: parsedLogo.alt,
+  };
+  if (publicDir && parsedLogo.src.startsWith('images/')) {
+    publishFavicons(path.join(contributionDir, parsedLogo.src), publicDir);
+  }
   return {
     name: reqStr(file, node, 'nom'),
     domain: reqStr(file, node, 'domaine'),
@@ -544,14 +552,11 @@ function writeSiteCopyJs(jsPath, siteCopy) {
   fs.writeFileSync(jsPath, body, 'utf8');
 }
 
-export async function compileContribution(contributionDir, { jsPath, jsonPath, mediaDir }) {
+export async function compileContribution(contributionDir, { jsPath, jsonPath, mediaDir, publicDir }) {
   if (!fs.existsSync(contributionDir)) {
     throw new Error(`${contributionDir}: dossier contribution absent`);
   }
   fs.mkdirSync(mediaDir, { recursive: true });
-  for (const name of fs.readdirSync(mediaDir)) {
-    fs.rmSync(path.join(mediaDir, name), { recursive: true, force: true });
-  }
   for (const name of REQUIRED_FILES) {
     const filePath = path.join(contributionDir, name);
     if (!fs.existsSync(filePath)) {
@@ -562,6 +567,7 @@ export async function compileContribution(contributionDir, { jsPath, jsonPath, m
   const contact = parseContact(
     contributionDir,
     mediaDir,
+    publicDir,
     'contact.xml',
     rootOf(parseXmlFile(path.join(contributionDir, 'contact.xml')), 'contact', 'contact.xml')
   );

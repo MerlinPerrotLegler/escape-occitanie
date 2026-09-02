@@ -325,6 +325,7 @@ async function withTemp(fn) {
     jsPath: path.join(dir, 'out', 'siteCopy.js'),
     jsonPath: path.join(dir, 'out', 'site-copy.json'),
     mediaDir: path.join(dir, 'out', 'media'),
+    publicDir: path.join(dir, 'out', 'public'),
   };
   try {
     await fn(dir, out);
@@ -379,8 +380,11 @@ await withTemp(async (dir, out) => {
 await withTemp(async (dir, out) => {
   writeMinimal(dir, { localImage: true });
   const copy = await compileContribution(dir, out);
-  expect(['/media/hero.png', '/media/hero.jpg', '/media/hero.webp'].some((p) => p === copy.accueil.hero.image) || copy.accueil.hero.image.startsWith('/media/hero'), 'local image rewritten');
+  expect(copy.accueil.hero.image.startsWith('/media/hero') || ['/media/hero.png', '/media/hero.jpg', '/media/hero.webp'].includes(copy.accueil.hero.image), 'local image rewritten');
   expect(fs.readdirSync(out.mediaDir).some((name) => name.startsWith('hero')), 'media published');
+  expect(fs.existsSync(path.join(out.publicDir, 'favicon-48x48.png')), 'favicon 48');
+  expect(fs.existsSync(path.join(out.publicDir, 'favicon-192x192.png')), 'favicon 192');
+  expect(fs.existsSync(path.join(out.publicDir, 'apple-touch-icon.png')), 'apple touch icon');
 });
 
 await withTemp(async (dir, out) => {
@@ -426,6 +430,33 @@ await withTemp(async (dir, out) => {
   writeMinimal(dir, { skipGallery: true });
   const copy = await compileContribution(dir, out);
   expect(copy.rooms.directeur.gallery.length === 0, 'gallery optional');
+});
+
+await withTemp(async (dir, out) => {
+  writeMinimal(dir, { localImage: true });
+  await compileContribution(dir, out);
+  const names = fs.readdirSync(out.mediaDir);
+  expect(names.length > 0, 'media published on success');
+  const snapshot = Object.fromEntries(names.map((name) => [name, fs.readFileSync(path.join(out.mediaDir, name))]));
+  fs.writeFileSync(path.join(dir, 'contact.xml'), '<contact></contact>');
+  let threw = false;
+  try {
+    await compileContribution(dir, out);
+  } catch {
+    threw = true;
+  }
+  expect(threw, 'broken contact throws');
+  for (const [name, buf] of Object.entries(snapshot)) {
+    const dest = path.join(out.mediaDir, name);
+    const stillThere = fs.existsSync(dest);
+    expect(stillThere, `failed compile keeps ${name}`);
+    if (stillThere) {
+      expect(
+        Buffer.compare(fs.readFileSync(dest), buf) === 0,
+        `failed compile does not rewrite ${name}`
+      );
+    }
+  }
 });
 
 if (failed > 0) {

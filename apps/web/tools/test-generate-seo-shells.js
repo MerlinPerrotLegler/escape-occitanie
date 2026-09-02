@@ -142,8 +142,12 @@ expect(injected.includes('rel="canonical"'), 'canonical');
 expect(injected.includes('application/ld+json'), 'json-ld');
 expect(injected.includes('<noscript>'), 'noscript');
 expect(injected.includes('id="root"') && injected.includes('escape game à Saint-Affrique'), 'visible fallback in root');
-expect(injected.includes('/favicon.svg'), 'favicon');
+expect(injected.includes('/favicon.ico'), 'favicon ico');
+expect(injected.includes('/favicon-48x48.png'), 'favicon 48');
+expect(injected.includes('/favicon-192x192.png'), 'favicon 192');
+expect(injected.includes('apple-touch-icon'), 'apple touch icon');
 expect(!injected.includes('/vite.svg'), 'vite icon gone');
+expect(!injected.includes('/favicon.svg'), 'placeholder svg gone');
 expect(injected.includes('rel="preload"') && injected.includes('https://example.com/hero.png'), 'hero preload');
 
 if (failed > 0) {

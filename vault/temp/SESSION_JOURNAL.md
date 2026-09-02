@@ -4682,3 +4682,331 @@
 - url: http://127.0.0.1:3000/tous-les-creneaux
 - via: replaceState
 
+## 2026-09-02 19:46:36.790Z load
+- url: http://127.0.0.1:3000/
+- title: Escape Occitanie — Escape game immersif en Occitanie
+
+## 2026-09-02 19:46:36.811Z navigate
+- url: http://127.0.0.1:3000/
+- via: replaceState
+
+## 2026-09-02 19:46:36.822Z console.error
+- text: 
+    Warning: React does not recognize the `%s` prop on a DOM element. If you intentionally want it to appear in the DOM as a custom attribute, spell it as lowercase `%s` instead. If you accidentally passed it from a parent component, remove it from the DOM element.%s fetchPriority fetchpriority 
+        at img
+        at picture
+        at MediaImage (http://127.0.0.1:3000/src/components/MediaImage.jsx:5:3)
+        at section
+        at HomePage (http://127.0.0.1:3000/src/pages/HomePage.jsx?t=1788378388023:22:33)
+        at RenderedRoute (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:6647:26)
+        at Outlet (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7502:26)
+        at main
+        at PublicLayout
+        at RenderedRoute (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:6647:26)
+        at Routes (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7572:3)
+        at Router (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7511:13)
+        at BrowserRouter (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:10816:3)
+        at App
+
+## 2026-09-02 19:46:48.921Z load
+- url: http://127.0.0.1:3000/
+- title: Escape Occitanie — Escape game immersif en Occitanie
+
+## 2026-09-02 19:46:48.933Z console.error
+- text: 
+    Warning: React does not recognize the `%s` prop on a DOM element. If you intentionally want it to appear in the DOM as a custom attribute, spell it as lowercase `%s` instead. If you accidentally passed it from a parent component, remove it from the DOM element.%s fetchPriority fetchpriority 
+        at img
+        at picture
+        at MediaImage (http://127.0.0.1:3000/src/components/MediaImage.jsx:5:3)
+        at section
+        at HomePage (http://127.0.0.1:3000/src/pages/HomePage.jsx?t=1788378388023:22:33)
+        at RenderedRoute (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:6647:26)
+        at Outlet (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7502:26)
+        at main
+        at PublicLayout
+        at RenderedRoute (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:6647:26)
+        at Routes (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7572:3)
+        at Router (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7511:13)
+        at BrowserRouter (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:10816:3)
+        at App
+
+## 2026-09-02 19:47:41.314Z load
+- url: http://127.0.0.1:3000/tous-les-creneaux
+- title: Escape Occitanie — Escape game immersif en Occitanie
+
+## 2026-09-02 19:47:41.324Z navigate
+- url: http://127.0.0.1:3000/tous-les-creneaux
+- via: replaceState
+
+## 2026-09-02 19:47:41.427Z load
+- url: http://127.0.0.1:3000/reservation/convocation-chez-le-directeur?date=2027-09-03
+- title: Escape Occitanie — Escape game immersif en Occitanie
+
+## 2026-09-02 19:47:41.568Z console.error
+- text: 
+    Warning: React does not recognize the `%s` prop on a DOM element. If you intentionally want it to appear in the DOM as a custom attribute, spell it as lowercase `%s` instead. If you accidentally passed it from a parent component, remove it from the DOM element.%s fetchPriority fetchpriority 
+        at img
+        at picture
+        at MediaImage (http://127.0.0.1:3000/src/components/MediaImage.jsx:5:3)
+        at div
+        at div
+        at div
+        at MotionComponent (http://127.0.0.1:3000/node_modules/.vite/deps/framer-motion.js?v=b6c39f40:946:40)
+        at Reveal (http://127.0.0.1:3000/src/components/Reveal.jsx:6:19)
+        at div
+        at section
+        at BookingPage (http://127.0.0.1:3000/src/pages/BookingPage.jsx:15:3)
+        at Suspense
+        at RenderedRoute (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:6647:26)
+        at Outlet (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7502:26)
+        at main
+        at PublicLayout
+        at RenderedRoute (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:6647:26)
+        at Routes (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7572:3)
+        at Router (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7511:13)
+        at BrowserRouter (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:10816:3)
+        at App
+
+## 2026-09-02 19:48:11.961Z load
+- url: http://127.0.0.1:3000/tous-les-creneaux
+- title: Escape Occitanie — Escape game immersif en Occitanie
+
+## 2026-09-02 19:48:12.683Z load
+- url: http://127.0.0.1:3000/tous-les-creneaux
+- title: Escape Occitanie — Escape game immersif en Occitanie
+
+## 2026-09-02 19:50:09.806Z load
+- url: http://127.0.0.1:3000/
+- title: Escape Occitanie — Escape game immersif en Occitanie
+
+## 2026-09-02 19:50:09.817Z navigate
+- url: http://127.0.0.1:3000/
+- via: replaceState
+
+## 2026-09-02 19:50:09.822Z console.error
+- text: 
+    Warning: React does not recognize the `%s` prop on a DOM element. If you intentionally want it to appear in the DOM as a custom attribute, spell it as lowercase `%s` instead. If you accidentally passed it from a parent component, remove it from the DOM element.%s fetchPriority fetchpriority 
+        at img
+        at picture
+        at MediaImage (http://127.0.0.1:3000/src/components/MediaImage.jsx:5:3)
+        at section
+        at HomePage (http://127.0.0.1:3000/src/pages/HomePage.jsx?t=1788378388023:22:33)
+        at RenderedRoute (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:6647:26)
+        at Outlet (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7502:26)
+        at main
+        at PublicLayout
+        at RenderedRoute (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:6647:26)
+        at Routes (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7572:3)
+        at Router (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7511:13)
+        at BrowserRouter (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:10816:3)
+        at App
+
+## 2026-09-02 19:50:18.478Z window.error
+- message: Uncaught Error: Stale element reference: e0 now points to (a, text="ESCAPE OCCITANIE") but was expected to be "Header brand link with logo". The page may have changed. Take a new snapshot.
+- source: http://127.0.0.1:3000/
+- line: 130
+- col: 5
+- stack: 
+    Error: Stale element reference: e0 now points to (a, text="ESCAPE OCCITANIE") but was expected to be "Header brand link with logo". The page may have changed. Take a new snapshot.
+        at assertDescriptionMatches (<anonymous>:130:11)
+        at <anonymous>:393:7
+        at <anonymous>:410:8
+
+## 2026-09-02 19:54:17.291Z load
+- url: http://127.0.0.1:3000/
+- title: Escape Occitanie — Escape game immersif en Occitanie
+
+## 2026-09-02 19:54:17.320Z console.error
+- text: 
+    Warning: React does not recognize the `%s` prop on a DOM element. If you intentionally want it to appear in the DOM as a custom attribute, spell it as lowercase `%s` instead. If you accidentally passed it from a parent component, remove it from the DOM element.%s fetchPriority fetchpriority 
+        at img
+        at picture
+        at MediaImage (http://127.0.0.1:3000/src/components/MediaImage.jsx:5:3)
+        at section
+        at HomePage (http://127.0.0.1:3000/src/pages/HomePage.jsx?t=1788378388023:22:33)
+        at RenderedRoute (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:6647:26)
+        at Outlet (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7502:26)
+        at main
+        at PublicLayout
+        at RenderedRoute (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:6647:26)
+        at Routes (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7572:3)
+        at Router (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7511:13)
+        at BrowserRouter (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:10816:3)
+        at App
+
+## 2026-09-02 19:54:18.160Z load
+- url: http://127.0.0.1:3000/
+- title: Escape Occitanie — Escape game immersif en Occitanie
+
+## 2026-09-02 19:54:18.171Z console.error
+- text: 
+    Warning: React does not recognize the `%s` prop on a DOM element. If you intentionally want it to appear in the DOM as a custom attribute, spell it as lowercase `%s` instead. If you accidentally passed it from a parent component, remove it from the DOM element.%s fetchPriority fetchpriority 
+        at img
+        at picture
+        at MediaImage (http://127.0.0.1:3000/src/components/MediaImage.jsx:5:3)
+        at section
+        at HomePage (http://127.0.0.1:3000/src/pages/HomePage.jsx?t=1788378388023:22:33)
+        at RenderedRoute (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:6647:26)
+        at Outlet (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7502:26)
+        at main
+        at PublicLayout
+        at RenderedRoute (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:6647:26)
+        at Routes (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7572:3)
+        at Router (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7511:13)
+        at BrowserRouter (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:10816:3)
+        at App
+
+## 2026-09-02 19:54:19.074Z load
+- url: http://127.0.0.1:3000/
+- title: Escape Occitanie — Escape game immersif en Occitanie
+
+## 2026-09-02 19:54:19.085Z console.error
+- text: 
+    Warning: React does not recognize the `%s` prop on a DOM element. If you intentionally want it to appear in the DOM as a custom attribute, spell it as lowercase `%s` instead. If you accidentally passed it from a parent component, remove it from the DOM element.%s fetchPriority fetchpriority 
+        at img
+        at picture
+        at MediaImage (http://127.0.0.1:3000/src/components/MediaImage.jsx:5:3)
+        at section
+        at HomePage (http://127.0.0.1:3000/src/pages/HomePage.jsx?t=1788378388023:22:33)
+        at RenderedRoute (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:6647:26)
+        at Outlet (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7502:26)
+        at main
+        at PublicLayout
+        at RenderedRoute (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:6647:26)
+        at Routes (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7572:3)
+        at Router (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7511:13)
+        at BrowserRouter (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:10816:3)
+        at App
+
+## 2026-09-02 19:54:19.915Z load
+- url: http://127.0.0.1:3000/
+- title: Escape Occitanie — Escape game immersif en Occitanie
+
+## 2026-09-02 19:54:19.927Z console.error
+- text: 
+    Warning: React does not recognize the `%s` prop on a DOM element. If you intentionally want it to appear in the DOM as a custom attribute, spell it as lowercase `%s` instead. If you accidentally passed it from a parent component, remove it from the DOM element.%s fetchPriority fetchpriority 
+        at img
+        at picture
+        at MediaImage (http://127.0.0.1:3000/src/components/MediaImage.jsx:5:3)
+        at section
+        at HomePage (http://127.0.0.1:3000/src/pages/HomePage.jsx?t=1788378388023:22:33)
+        at RenderedRoute (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:6647:26)
+        at Outlet (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7502:26)
+        at main
+        at PublicLayout
+        at RenderedRoute (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:6647:26)
+        at Routes (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7572:3)
+        at Router (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7511:13)
+        at BrowserRouter (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:10816:3)
+        at App
+
+## 2026-09-02 19:54:20.788Z load
+- url: http://127.0.0.1:3000/
+- title: Escape Occitanie — Escape game immersif en Occitanie
+
+## 2026-09-02 19:54:20.799Z console.error
+- text: 
+    Warning: React does not recognize the `%s` prop on a DOM element. If you intentionally want it to appear in the DOM as a custom attribute, spell it as lowercase `%s` instead. If you accidentally passed it from a parent component, remove it from the DOM element.%s fetchPriority fetchpriority 
+        at img
+        at picture
+        at MediaImage (http://127.0.0.1:3000/src/components/MediaImage.jsx:5:3)
+        at section
+        at HomePage (http://127.0.0.1:3000/src/pages/HomePage.jsx?t=1788378388023:22:33)
+        at RenderedRoute (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:6647:26)
+        at Outlet (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7502:26)
+        at main
+        at PublicLayout
+        at RenderedRoute (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:6647:26)
+        at Routes (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7572:3)
+        at Router (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7511:13)
+        at BrowserRouter (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:10816:3)
+        at App
+
+## 2026-09-02 19:54:21.700Z load
+- url: http://127.0.0.1:3000/
+- title: Escape Occitanie — Escape game immersif en Occitanie
+
+## 2026-09-02 19:54:21.711Z console.error
+- text: 
+    Warning: React does not recognize the `%s` prop on a DOM element. If you intentionally want it to appear in the DOM as a custom attribute, spell it as lowercase `%s` instead. If you accidentally passed it from a parent component, remove it from the DOM element.%s fetchPriority fetchpriority 
+        at img
+        at picture
+        at MediaImage (http://127.0.0.1:3000/src/components/MediaImage.jsx:5:3)
+        at section
+        at HomePage (http://127.0.0.1:3000/src/pages/HomePage.jsx?t=1788378388023:22:33)
+        at RenderedRoute (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:6647:26)
+        at Outlet (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7502:26)
+        at main
+        at PublicLayout
+        at RenderedRoute (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:6647:26)
+        at Routes (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7572:3)
+        at Router (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7511:13)
+        at BrowserRouter (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:10816:3)
+        at App
+
+## 2026-09-02 19:54:22.589Z load
+- url: http://127.0.0.1:3000/
+- title: Escape Occitanie — Escape game immersif en Occitanie
+
+## 2026-09-02 19:54:22.600Z console.error
+- text: 
+    Warning: React does not recognize the `%s` prop on a DOM element. If you intentionally want it to appear in the DOM as a custom attribute, spell it as lowercase `%s` instead. If you accidentally passed it from a parent component, remove it from the DOM element.%s fetchPriority fetchpriority 
+        at img
+        at picture
+        at MediaImage (http://127.0.0.1:3000/src/components/MediaImage.jsx:5:3)
+        at section
+        at HomePage (http://127.0.0.1:3000/src/pages/HomePage.jsx?t=1788378388023:22:33)
+        at RenderedRoute (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:6647:26)
+        at Outlet (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7502:26)
+        at main
+        at PublicLayout
+        at RenderedRoute (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:6647:26)
+        at Routes (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7572:3)
+        at Router (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7511:13)
+        at BrowserRouter (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:10816:3)
+        at App
+
+## 2026-09-02 19:56:07.757Z load
+- url: http://127.0.0.1:3000/
+- title: Escape Occitanie — Escape game immersif en Occitanie
+
+## 2026-09-02 19:56:07.794Z console.error
+- text: 
+    Warning: React does not recognize the `%s` prop on a DOM element. If you intentionally want it to appear in the DOM as a custom attribute, spell it as lowercase `%s` instead. If you accidentally passed it from a parent component, remove it from the DOM element.%s fetchPriority fetchpriority 
+        at img
+        at picture
+        at MediaImage (http://127.0.0.1:3000/src/components/MediaImage.jsx:5:3)
+        at section
+        at HomePage (http://127.0.0.1:3000/src/pages/HomePage.jsx:22:33)
+        at RenderedRoute (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:6647:26)
+        at Outlet (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7502:26)
+        at main
+        at PublicLayout
+        at RenderedRoute (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:6647:26)
+        at Routes (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7572:3)
+        at Router (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7511:13)
+        at BrowserRouter (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:10816:3)
+        at App
+
+## 2026-09-02 19:56:34.901Z load
+- url: http://127.0.0.1:3000/
+- title: Escape Occitanie — Escape game immersif en Occitanie
+
+## 2026-09-02 19:56:34.916Z console.error
+- text: 
+    Warning: React does not recognize the `%s` prop on a DOM element. If you intentionally want it to appear in the DOM as a custom attribute, spell it as lowercase `%s` instead. If you accidentally passed it from a parent component, remove it from the DOM element.%s fetchPriority fetchpriority 
+        at img
+        at picture
+        at MediaImage (http://127.0.0.1:3000/src/components/MediaImage.jsx:5:3)
+        at section
+        at HomePage (http://127.0.0.1:3000/src/pages/HomePage.jsx:22:33)
+        at RenderedRoute (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:6647:26)
+        at Outlet (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7502:26)
+        at main
+        at PublicLayout
+        at RenderedRoute (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:6647:26)
+        at Routes (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7572:3)
+        at Router (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7511:13)
+        at BrowserRouter (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:10816:3)
+        at App
+

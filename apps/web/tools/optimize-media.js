@@ -78,6 +78,58 @@ im.save(r'''${dest}''', 'JPEG', quality=${quality}, optimize=True)
   return result.status === 0 && fs.existsSync(dest) && fs.statSync(dest).size > 0;
 }
 
+function toPng(from, dest, size) {
+  const sips = which('sips');
+  if (sips) {
+    const result = spawnSync(
+      sips,
+      ['-z', String(size), String(size), '-s', 'format', 'png', from, '--out', dest],
+      { encoding: 'utf8' }
+    );
+    if (result.status === 0 && fs.existsSync(dest) && fs.statSync(dest).size > 0) return true;
+  }
+  const python = which('python3');
+  if (!python) return false;
+  const script = `
+from PIL import Image
+im = Image.open(r'''${from}''')
+im = im.convert('RGBA')
+im = im.resize((${size}, ${size}), Image.Resampling.LANCZOS)
+im.save(r'''${dest}''', 'PNG', optimize=True)
+`;
+  const result = spawnSync(python, ['-c', script], { encoding: 'utf8' });
+  return result.status === 0 && fs.existsSync(dest) && fs.statSync(dest).size > 0;
+}
+
+function toIco(from, dest) {
+  const python = which('python3');
+  if (!python) return false;
+  const script = `
+from PIL import Image
+im = Image.open(r'''${from}''').convert('RGBA')
+im.save(r'''${dest}''', 'ICO', sizes=[(16, 16), (32, 32), (48, 48)])
+`;
+  const result = spawnSync(python, ['-c', script], { encoding: 'utf8' });
+  return result.status === 0 && fs.existsSync(dest) && fs.statSync(dest).size > 0;
+}
+
+export function publishFavicons(from, publicDir) {
+  if (!from || !publicDir || !fs.existsSync(from)) return [];
+  fs.mkdirSync(publicDir, { recursive: true });
+  const written = [];
+  const pngs = [
+    ['favicon-48x48.png', 48],
+    ['favicon-192x192.png', 192],
+    ['apple-touch-icon.png', 180],
+  ];
+  for (const [name, size] of pngs) {
+    const dest = path.join(publicDir, name);
+    if (toPng(from, dest, size)) written.push(name);
+  }
+  if (toIco(from, path.join(publicDir, 'favicon.ico'))) written.push('favicon.ico');
+  return written;
+}
+
 export function publishLocalImage(from, mediaDir, relPosix) {
   const ext = path.extname(relPosix);
   const stem = relPosix.slice(0, relPosix.length - ext.length);

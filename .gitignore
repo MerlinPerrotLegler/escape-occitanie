@@ -6,3 +6,4 @@ dist/
 apps/web/src/generated/siteCopy.js
 apps/web/public/api/site-copy.json
 apps/web/public/media/
+**/__pycache__/

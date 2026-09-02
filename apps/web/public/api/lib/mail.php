@@ -481,6 +481,9 @@ function mt_manager_confirm_page_html(array $booking, string $state, array $link
     $viewBlock = $view !== '' ? '<p><a href="' . $view . '">Voir la réservation</a></p>' : '';
     return '<!DOCTYPE html><html lang="fr"><head><meta charset="utf-8">'
         . '<meta name="viewport" content="width=device-width, initial-scale=1">'
+        . '<link rel="icon" href="/favicon.ico" sizes="48x48">'
+        . '<link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png">'
+        . '<link rel="apple-touch-icon" href="/apple-touch-icon.png">'
         . '<title>' . mt_html($title) . ' — Escape Occitanie</title>'
         . '<style>'
         . 'body{margin:0;background:#1a1612;color:#e8dcc8;font-family:Georgia,serif;}'
@@ -545,6 +548,9 @@ function mt_review_page_html(array $booking, string $state): string {
     }
     return '<!DOCTYPE html><html lang="fr"><head><meta charset="utf-8">'
         . '<meta name="viewport" content="width=device-width, initial-scale=1">'
+        . '<link rel="icon" href="/favicon.ico" sizes="48x48">'
+        . '<link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png">'
+        . '<link rel="apple-touch-icon" href="/apple-touch-icon.png">'
         . '<title>' . mt_html($title) . ' — Escape Occitanie</title>'
         . '<style>'
         . 'body{margin:0;background:#1a1612;color:#e8dcc8;font-family:Georgia,serif;}'

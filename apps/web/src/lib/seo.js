@@ -174,6 +174,25 @@ export function buildFallbackHtml(copy) {
   return `<div style="position:relative;margin:0;min-height:100dvh;background:#120f0d;color:#f3ead8;font-family:Georgia,serif">${heroImg}<p style="position:relative;margin:0;padding:24px">${escapeHtml(copy.contact.name)} — escape game à ${escapeHtml(city)}.</p></div>`;
 }
 
+export const FAVICON_LINKS = [
+  '<link rel="icon" href="/favicon.ico" sizes="48x48" />',
+  '<link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png" />',
+  '<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192x192.png" />',
+  '<link rel="apple-touch-icon" href="/apple-touch-icon.png" />',
+].join('\n\t\t');
+
+export function injectFaviconLinks(html) {
+  let out = String(html).replace(
+    /\s*<link\b[^>]*rel=["'](?:shortcut\s+)?icon["'][^>]*>/gi,
+    ''
+  );
+  out = out.replace(/\s*<link\b[^>]*rel=["']apple-touch-icon["'][^>]*>/gi, '');
+  if (/<\/title>/i.test(out)) {
+    return out.replace(/<\/title>/i, `</title>\n\t\t${FAVICON_LINKS}`);
+  }
+  return out.replace(/<\/head>/i, `\t\t${FAVICON_LINKS}\n\t</head>`);
+}
+
 function upsertMeta(head, needle, tag) {
   if (needle.test(head)) {
     return head.replace(needle, tag);
@@ -196,7 +215,7 @@ export function injectSeo(html, options) {
   } = options;
 
   let out = html.replace(/<meta\s+name=["']generator["'][^>]*>\s*/i, '');
-  out = out.replace(/href=["']\/vite\.svg["']/g, 'href="/favicon.svg"');
+  out = injectFaviconLinks(out);
   out = out.replace(/<title>[\s\S]*?<\/title>/i, `<title>${escapeHtml(title)}</title>`);
 
   out = upsertMeta(

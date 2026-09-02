@@ -146,6 +146,7 @@ expect(str_contains($htmlOk, 'Google'), 'review page Google');
 expect(str_contains($htmlOk, 'Facebook'), 'review page Facebook');
 expect(str_contains($htmlOk, 'Instagram'), 'review page Instagram');
 expect(str_contains($htmlOk, 'autres joueurs'), 'review page asks to share');
+expect(str_contains($htmlOk, '/favicon-48x48.png'), 'review page favicon');
 expect(str_contains($htmlOk, 'navigator.share') || str_contains($htmlOk, 'clipboard'), 'review page share or copy');
 $htmlBad = mt_review_page_html([], 'invalid');
 expect(str_contains($htmlBad, 'invalide'), 'invalid copy');
