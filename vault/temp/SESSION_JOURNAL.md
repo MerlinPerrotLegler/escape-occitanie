@@ -4701,3 +4701,298 @@ début et la fin (au moins 60 minutes, aligné sur 30). Le site propose alors to
 ## 2026-09-02 11:09:38.909Z console.warn
 - text: [Cloudflare Turnstile] turnstile.ready() would break if called *before* the Turnstile api.js script is loaded by visitors.
 
+## 2026-09-02 11:32:35.269Z load
+- url: http://127.0.0.1:3000/reservation
+
+## 2026-09-02 11:32:37.482Z load
+- url: http://127.0.0.1:3000/reservation
+
+## 2026-09-02 11:33:32.505Z load
+- url: http://localhost:3000/
+
+## 2026-09-02 11:33:32.755Z navigate
+- url: http://localhost:3000/
+- via: replaceState
+
+## 2026-09-02 11:33:36.638Z load
+- url: http://localhost:3000/
+
+## 2026-09-02 11:33:50.398Z load
+- url: http://localhost:3000/salles/convocation-chez-le-directeur
+
+## 2026-09-02 11:33:50.429Z navigate
+- url: http://localhost:3000/salles/convocation-chez-le-directeur
+- via: replaceState
+
+## 2026-09-02 11:33:58.229Z load
+- url: http://localhost:3000/salles/la-malediction-du-vaisseau-fantome
+
+## 2026-09-02 11:33:58.250Z navigate
+- url: http://localhost:3000/salles/la-malediction-du-vaisseau-fantome
+- via: replaceState
+
+## 2026-09-02 11:34:04.621Z load
+- url: http://localhost:3000/reservation/convocation-chez-le-directeur
+
+## 2026-09-02 11:34:04.644Z navigate
+- url: http://localhost:3000/reservation/convocation-chez-le-directeur
+- via: replaceState
+
+## 2026-09-02 11:34:04.996Z navigate
+- url: http://localhost:3000/reservation/convocation-chez-le-directeur?date=2027-09-01
+- via: replaceState
+
+## 2026-09-02 11:38:02.568Z load
+- url: http://127.0.0.1:3000/reservation
+
+## 2026-09-02 11:38:02.587Z load
+- url: http://localhost:3000/reservation/convocation-chez-le-directeur?date=2027-09-01
+
+## 2026-09-02 11:38:03.800Z load
+- url: http://127.0.0.1:3000/reservation
+
+## 2026-09-02 11:38:03.806Z load
+- url: http://localhost:3000/reservation/convocation-chez-le-directeur?date=2027-09-01
+
+## 2026-09-02 11:38:05.122Z network.error
+- method: GET
+- url: http://127.0.0.1:3000/api/availability.php?room=vaisseau&date=2027-09-05
+- message: Failed to fetch
+- durationMs: 4
+
+## 2026-09-02 11:38:05.122Z network.error
+- method: GET
+- url: http://127.0.0.1:3000/api/availability.php?room=vaisseau&date=2027-09-01
+- message: Failed to fetch
+- durationMs: 4
+
+## 2026-09-02 11:38:05.122Z network.error
+- method: GET
+- url: http://127.0.0.1:3000/api/availability.php?room=vaisseau&date=2027-09-03
+- message: Failed to fetch
+- durationMs: 4
+
+## 2026-09-02 11:38:05.122Z network.error
+- method: GET
+- url: http://127.0.0.1:3000/api/availability.php?room=directeur&date=2027-09-06
+- message: Failed to fetch
+- durationMs: 4
+
+## 2026-09-02 11:38:05.122Z network.error
+- method: GET
+- url: http://127.0.0.1:3000/api/availability.php?room=directeur&date=2027-09-05
+- message: Failed to fetch
+- durationMs: 4
+
+## 2026-09-02 11:38:05.122Z network.error
+- method: GET
+- url: http://127.0.0.1:3000/api/availability.php?room=directeur&date=2027-09-01
+- message: Failed to fetch
+- durationMs: 4
+
+## 2026-09-02 11:38:05.122Z network.error
+- method: GET
+- url: http://127.0.0.1:3000/api/availability.php?room=vaisseau&date=2027-09-06
+- message: Failed to fetch
+- durationMs: 3
+
+## 2026-09-02 11:38:05.122Z network.error
+- method: GET
+- url: http://127.0.0.1:3000/api/availability.php?room=directeur&date=2027-09-03
+- message: Failed to fetch
+- durationMs: 4
+
+## 2026-09-02 11:38:05.122Z network.error
+- method: GET
+- url: http://127.0.0.1:3000/api/booking-settings.php
+- message: Failed to fetch
+- durationMs: 4
+
+## 2026-09-02 11:38:05.122Z network.error
+- method: GET
+- url: http://127.0.0.1:3000/api/periods.php?from=2026-09-02&to=2028-03-31
+- message: Failed to fetch
+- durationMs: 4
+
+## 2026-09-02 11:38:05.122Z console.error
+- text: 
+    TypeError: Failed to fetch
+        at window.fetch (http://127.0.0.1:3000/@id/virtual:session-journal-client:328:28)
+        at window.fetch (http://127.0.0.1:3000/reservation:497:23)
+        at fetchDaySlotsStrict (http://127.0.0.1:3000/src/lib/booking.js:55:21)
+        at http://127.0.0.1:3000/src/components/AvailabilityTimeline.jsx?t=1788349085044:82:31
+        at Array.map (<anonymous>)
+        at http://127.0.0.1:3000/src/components/AvailabilityTimeline.jsx?t=1788349085044:81:73
+        at Array.flatMap (<anonymous>)
+        at http://127.0.0.1:3000/src/components/AvailabilityTimeline.jsx?t=1788349085044:81:46
+        at http://127.0.0.1:3000/src/components/AvailabilityTimeline.jsx?t=1788349085044:100:7
+        at commitHookEffectListMount (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:16963:34)
+
+## 2026-09-02 11:38:05.122Z console.error
+- text: 
+    TypeError: Failed to fetch
+        at window.fetch (http://127.0.0.1:3000/@id/virtual:session-journal-client:328:28)
+        at window.fetch (http://127.0.0.1:3000/reservation:497:23)
+        at fetchDaySlotsStrict (http://127.0.0.1:3000/src/lib/booking.js:55:21)
+        at http://127.0.0.1:3000/src/components/AvailabilityTimeline.jsx?t=1788349085044:82:31
+        at Array.map (<anonymous>)
+        at http://127.0.0.1:3000/src/components/AvailabilityTimeline.jsx?t=1788349085044:81:73
+        at Array.flatMap (<anonymous>)
+        at http://127.0.0.1:3000/src/components/AvailabilityTimeline.jsx?t=1788349085044:81:46
+        at http://127.0.0.1:3000/src/components/AvailabilityTimeline.jsx?t=1788349085044:100:7
+        at commitHookEffectListMount (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:16963:34)
+
+## 2026-09-02 11:38:05.122Z console.error
+- text: 
+    TypeError: Failed to fetch
+        at window.fetch (http://127.0.0.1:3000/@id/virtual:session-journal-client:328:28)
+        at window.fetch (http://127.0.0.1:3000/reservation:497:23)
+        at fetchDaySlotsStrict (http://127.0.0.1:3000/src/lib/booking.js:55:21)
+        at http://127.0.0.1:3000/src/components/AvailabilityTimeline.jsx?t=1788349085044:82:31
+        at Array.map (<anonymous>)
+        at http://127.0.0.1:3000/src/components/AvailabilityTimeline.jsx?t=1788349085044:81:73
+        at Array.flatMap (<anonymous>)
+        at http://127.0.0.1:3000/src/components/AvailabilityTimeline.jsx?t=1788349085044:81:46
+        at http://127.0.0.1:3000/src/components/AvailabilityTimeline.jsx?t=1788349085044:100:7
+        at commitHookEffectListMount (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:16963:34)
+
+## 2026-09-02 11:38:05.122Z console.error
+- text: 
+    TypeError: Failed to fetch
+        at window.fetch (http://127.0.0.1:3000/@id/virtual:session-journal-client:328:28)
+        at window.fetch (http://127.0.0.1:3000/reservation:497:23)
+        at fetchDaySlotsStrict (http://127.0.0.1:3000/src/lib/booking.js:55:21)
+        at http://127.0.0.1:3000/src/components/AvailabilityTimeline.jsx?t=1788349085044:82:31
+        at Array.map (<anonymous>)
+        at http://127.0.0.1:3000/src/components/AvailabilityTimeline.jsx?t=1788349085044:81:73
+        at Array.flatMap (<anonymous>)
+        at http://127.0.0.1:3000/src/components/AvailabilityTimeline.jsx?t=1788349085044:81:46
+        at http://127.0.0.1:3000/src/components/AvailabilityTimeline.jsx?t=1788349085044:100:7
+        at commitHookEffectListMount (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:16963:34)
+
+## 2026-09-02 11:38:05.122Z console.error
+- text: 
+    TypeError: Failed to fetch
+        at window.fetch (http://127.0.0.1:3000/@id/virtual:session-journal-client:328:28)
+        at window.fetch (http://127.0.0.1:3000/reservation:497:23)
+        at fetchDaySlotsStrict (http://127.0.0.1:3000/src/lib/booking.js:55:21)
+        at http://127.0.0.1:3000/src/components/AvailabilityTimeline.jsx?t=1788349085044:82:31
+        at Array.map (<anonymous>)
+        at http://127.0.0.1:3000/src/components/AvailabilityTimeline.jsx?t=1788349085044:81:73
+        at Array.flatMap (<anonymous>)
+        at http://127.0.0.1:3000/src/components/AvailabilityTimeline.jsx?t=1788349085044:81:46
+        at http://127.0.0.1:3000/src/components/AvailabilityTimeline.jsx?t=1788349085044:100:7
+        at commitHookEffectListMount (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:16963:34)
+
+## 2026-09-02 11:38:05.122Z console.error
+- text: 
+    TypeError: Failed to fetch
+        at window.fetch (http://127.0.0.1:3000/@id/virtual:session-journal-client:328:28)
+        at window.fetch (http://127.0.0.1:3000/reservation:497:23)
+        at fetchDaySlotsStrict (http://127.0.0.1:3000/src/lib/booking.js:55:21)
+        at http://127.0.0.1:3000/src/components/AvailabilityTimeline.jsx?t=1788349085044:82:31
+        at Array.map (<anonymous>)
+        at http://127.0.0.1:3000/src/components/AvailabilityTimeline.jsx?t=1788349085044:81:73
+        at Array.flatMap (<anonymous>)
+        at http://127.0.0.1:3000/src/components/AvailabilityTimeline.jsx?t=1788349085044:81:46
+        at http://127.0.0.1:3000/src/components/AvailabilityTimeline.jsx?t=1788349085044:100:7
+        at commitHookEffectListMount (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:16963:34)
+
+## 2026-09-02 11:38:05.122Z console.error
+- text: 
+    TypeError: Failed to fetch
+        at window.fetch (http://127.0.0.1:3000/@id/virtual:session-journal-client:328:28)
+        at window.fetch (http://127.0.0.1:3000/reservation:497:23)
+        at fetchDaySlotsStrict (http://127.0.0.1:3000/src/lib/booking.js:55:21)
+        at http://127.0.0.1:3000/src/components/AvailabilityTimeline.jsx?t=1788349085044:82:31
+        at Array.map (<anonymous>)
+        at http://127.0.0.1:3000/src/components/AvailabilityTimeline.jsx?t=1788349085044:81:73
+        at Array.flatMap (<anonymous>)
+        at http://127.0.0.1:3000/src/components/AvailabilityTimeline.jsx?t=1788349085044:81:46
+        at http://127.0.0.1:3000/src/components/AvailabilityTimeline.jsx?t=1788349085044:100:7
+        at commitHookEffectListMount (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:16963:34)
+
+## 2026-09-02 11:38:05.122Z console.error
+- text: 
+    TypeError: Failed to fetch
+        at window.fetch (http://127.0.0.1:3000/@id/virtual:session-journal-client:328:28)
+        at window.fetch (http://127.0.0.1:3000/reservation:497:23)
+        at fetchDaySlotsStrict (http://127.0.0.1:3000/src/lib/booking.js:55:21)
+        at http://127.0.0.1:3000/src/components/AvailabilityTimeline.jsx?t=1788349085044:82:31
+        at Array.map (<anonymous>)
+        at http://127.0.0.1:3000/src/components/AvailabilityTimeline.jsx?t=1788349085044:81:73
+        at Array.flatMap (<anonymous>)
+        at http://127.0.0.1:3000/src/components/AvailabilityTimeline.jsx?t=1788349085044:81:46
+        at http://127.0.0.1:3000/src/components/AvailabilityTimeline.jsx?t=1788349085044:100:7
+        at commitHookEffectListMount (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:16963:34)
+
+## 2026-09-02 11:38:05.122Z console.error
+- text: 
+    TypeError: Failed to fetch
+        at window.fetch (http://127.0.0.1:3000/@id/virtual:session-journal-client:328:28)
+        at window.fetch (http://127.0.0.1:3000/reservation:497:23)
+        at fetchBookingSettings (http://127.0.0.1:3000/src/lib/booking.js:162:23)
+        at http://127.0.0.1:3000/src/components/AvailabilityTimeline.jsx?t=1788349085044:45:5
+        at commitHookEffectListMount (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:16963:34)
+        at commitPassiveMountOnFiber (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:18206:19)
+        at commitPassiveMountEffects_complete (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:18179:17)
+        at commitPassiveMountEffects_begin (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:18169:15)
+        at commitPassiveMountEffects (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:18159:11)
+        at flushPassiveEffectsImpl (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19543:11)
+
+## 2026-09-02 11:38:05.122Z console.error
+- text: 
+    TypeError: Failed to fetch
+        at window.fetch (http://127.0.0.1:3000/@id/virtual:session-journal-client:328:28)
+        at window.fetch (http://127.0.0.1:3000/reservation:497:23)
+        at fetchOpenPeriodsStrict (http://127.0.0.1:3000/src/lib/booking.js:47:21)
+        at http://127.0.0.1:3000/src/components/AvailabilityTimeline.jsx?t=1788349085044:58:5
+        at commitHookEffectListMount (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:16963:34)
+        at commitPassiveMountOnFiber (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:18206:19)
+        at commitPassiveMountEffects_complete (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:18179:17)
+        at commitPassiveMountEffects_begin (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:18169:15)
+        at commitPassiveMountEffects (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:18159:11)
+        at flushPassiveEffectsImpl (http://127.0.0.1:3000/node_modules/.vite/deps/chunk-OGKD6Q5V.js?v=b6c39f40:19543:11)
+
+## 2026-09-02 11:38:05.126Z load
+- url: http://localhost:3000/reservation/convocation-chez-le-directeur?date=2027-09-01
+
+## 2026-09-02 11:38:05.135Z load
+- url: http://127.0.0.1:3000/reservation
+
+## 2026-09-02 11:38:37.830Z load
+- url: http://localhost:3000/salles/convocation-chez-le-directeur
+
+## 2026-09-02 11:38:37.858Z navigate
+- url: http://localhost:3000/salles/convocation-chez-le-directeur
+- via: replaceState
+
+## 2026-09-02 11:38:47.866Z load
+- url: http://localhost:3000/salles/la-malediction-du-vaisseau-fantome
+
+## 2026-09-02 11:38:47.891Z navigate
+- url: http://localhost:3000/salles/la-malediction-du-vaisseau-fantome
+- via: replaceState
+
+## 2026-09-02 11:38:52.983Z load
+- url: http://localhost:3000/reservation/convocation-chez-le-directeur
+
+## 2026-09-02 11:38:53.002Z navigate
+- url: http://localhost:3000/reservation/convocation-chez-le-directeur
+- via: replaceState
+
+## 2026-09-02 11:38:53.347Z navigate
+- url: http://localhost:3000/reservation/convocation-chez-le-directeur?date=2027-09-01
+- via: replaceState
+
+## 2026-09-02 11:38:58.235Z load
+- url: http://localhost:3000/reservation/la-malediction-du-vaisseau-fantome
+
+## 2026-09-02 11:38:58.256Z navigate
+- url: http://localhost:3000/reservation/la-malediction-du-vaisseau-fantome
+- via: replaceState
+
+## 2026-09-02 11:38:58.589Z navigate
+- url: http://localhost:3000/reservation/la-malediction-du-vaisseau-fantome?date=2027-09-01
+- via: replaceState
+

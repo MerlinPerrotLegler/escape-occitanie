@@ -98,7 +98,9 @@ function BookingPage({ roomKey }) {
                           {i + 1}. {step.titre}
                         </p>
                         <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
-                          {step.texte}
+                          {fillCopy(step.texte, {
+                            joueurs: room.players.replace(/\s*joueurs$/i, ''),
+                          })}
                         </p>
                       </div>
                     </li>

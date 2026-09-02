@@ -7,7 +7,7 @@
   <retour>Retour à la salle</retour>
   <comment>Comment réserver ?</comment>
   <etape titre="Choisissez un horaire" texte="Les départs s’affichent toutes les 30 minutes. Une partie dure 60 minutes."/>
-  <etape titre="Réservez en ligne" texte="Indiquez votre nom, e-mail, téléphone et le nombre de joueurs (3 à 6)."/>
+  <etape titre="Réservez en ligne" texte="Indiquez votre nom, e-mail, téléphone et le nombre de joueurs ({joueurs})."/>
   <etape titre="Confirmation" texte="Vous recevez un e-mail. L’équipe confirme ensuite la réservation. Rendez-vous 15 minutes avant le début."/>
   <contact>Nous contacter</contact>
   <calendrier>
