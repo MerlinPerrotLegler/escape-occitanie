@@ -5010,3 +5010,57 @@
         at BrowserRouter (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:10816:3)
         at App
 
+## 2026-09-02 19:57:01.386Z load
+- url: http://127.0.0.1:3000/tous-les-creneaux
+- title: Escape Occitanie — Escape game immersif en Occitanie
+
+## 2026-09-02 19:57:01.398Z navigate
+- url: http://127.0.0.1:3000/tous-les-creneaux
+- via: replaceState
+
+## 2026-09-02 21:00:34.225Z click
+- element: {"tag":"a","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Accueil"}
+
+## 2026-09-02 21:00:34.226Z navigate
+- url: http://127.0.0.1:3000/
+- via: pushState
+
+## 2026-09-02 21:00:34.230Z console.error
+- text: 
+    Warning: React does not recognize the `%s` prop on a DOM element. If you intentionally want it to appear in the DOM as a custom attribute, spell it as lowercase `%s` instead. If you accidentally passed it from a parent component, remove it from the DOM element.%s fetchPriority fetchpriority 
+        at img
+        at picture
+        at MediaImage (http://127.0.0.1:3000/src/components/MediaImage.jsx:5:3)
+        at section
+        at HomePage (http://127.0.0.1:3000/src/pages/HomePage.jsx?t=1788379020178:22:33)
+        at RenderedRoute (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:6647:26)
+        at Outlet (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7502:26)
+        at main
+        at PublicLayout
+        at RenderedRoute (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:6647:26)
+        at Routes (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7572:3)
+        at Router (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:7511:13)
+        at BrowserRouter (http://127.0.0.1:3000/node_modules/.vite/deps/react-router-dom.js?v=b6c39f40:10816:3)
+        at App
+
+## 2026-09-02 21:01:03.181Z click
+- element: {"tag":"a","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Découvrir l'histoire"}
+
+## 2026-09-02 21:01:03.182Z navigate
+- url: http://127.0.0.1:3000/salles/convocation-chez-le-directeur
+- via: pushState
+
+## 2026-09-02 21:01:13.823Z click
+- element: {"tag":"a","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Toutes les salles"}
+
+## 2026-09-02 21:01:13.824Z navigate
+- url: http://127.0.0.1:3000/#salles
+- via: pushState
+
+## 2026-09-02 21:01:16.481Z click
+- element: {"tag":"a","role":null,"ariaLabel":null,"name":null,"type":null,"id":null,"placeholder":null,"label":null,"value":null,"valueLength":0,"text":"Découvrir l'histoire"}
+
+## 2026-09-02 21:01:16.481Z navigate
+- url: http://127.0.0.1:3000/salles/la-malediction-du-vaisseau-fantome
+- via: pushState
+
