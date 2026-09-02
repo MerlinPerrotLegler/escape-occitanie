@@ -1,0 +1,175 @@
+import React, { useState } from 'react';
+import { CalendarCheck, Users } from 'lucide-react';
+import { toast } from 'sonner';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { CONTACT } from '@/data/rooms';
+import { COPY } from '@/generated/siteCopy';
+import { fillCopy } from '@/lib/fillCopy';
+import { Input } from '@/components/ui/input';
+import { Button } from '@/components/ui/button';
+import { Form, FormControl, FormField, FormItem, FormMessage } from '@/components/ui/form';
+import { createBooking } from '@/lib/booking';
+import { bookingContactSchema } from '@/lib/bookingContact';
+
+const cal = COPY.reserver.calendrier;
+
+const dayFormatter = new Intl.DateTimeFormat('fr-FR', {
+  weekday: 'long',
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric',
+});
+
+export function BookingSuccess({ booking, room }) {
+  const confirmed = booking.status === 'confirmed';
+  return (
+    <div className="rounded-xl border border-primary/40 bg-primary/5 p-6 sm:p-8">
+      <CalendarCheck className="h-8 w-8 text-primary" />
+      <h2 className="mt-4 font-display text-2xl font-bold tracking-wide">
+        {confirmed ? cal.doneConfirme : cal.doneDemande}
+      </h2>
+      <p className="mt-3 leading-relaxed text-muted-foreground">
+        {fillCopy(confirmed ? cal.doneCorpsConfirme : cal.doneCorpsDemande, {
+          nom: booking.guest_name,
+          salle: room.name,
+          date: dayFormatter.format(new Date(`${booking.booking_date}T12:00:00`)),
+          heure: booking.time,
+          joueurs: booking.players,
+          email: booking.guest_email,
+        })}
+      </p>
+      <p className="mt-3 text-sm text-muted-foreground">
+        {confirmed ? cal.doneArriveConfirme : cal.doneArriveAttente}
+      </p>
+    </div>
+  );
+}
+
+export function BookingForm({ room, iso, time, settings, formRef, title, onSuccess }) {
+  const [submitting, setSubmitting] = useState(false);
+  const contactForm = useForm({
+    resolver: zodResolver(bookingContactSchema),
+    mode: 'onTouched',
+    defaultValues: { name: '', email: '', phone: '', players: 4 },
+  });
+  const dateLabel = dayFormatter.format(new Date(`${iso}T12:00:00`));
+
+  async function onSubmit(values) {
+    setSubmitting(true);
+    try {
+      const result = await createBooking({
+        room: room.slug,
+        date: iso,
+        time,
+        name: values.name,
+        email: values.email,
+        phone: values.phone,
+        players: Number(values.players),
+      });
+      const confirmed = result.booking?.status === 'confirmed' || settings.auto_confirm;
+      toast.success(
+        confirmed
+          ? result.emailSent
+            ? cal.toastConfirmeMail
+            : cal.toastConfirme
+          : result.emailSent
+            ? cal.toastDemandeMail
+            : cal.toastDemande
+      );
+      onSuccess?.(result.booking);
+    } catch (err) {
+      toast.error(err.message);
+    } finally {
+      setSubmitting(false);
+    }
+  }
+
+  return (
+    <Form {...contactForm}>
+      <form
+        ref={formRef}
+        id="reservation"
+        onSubmit={contactForm.handleSubmit(onSubmit)}
+        className="mt-5 scroll-mt-24 space-y-3 rounded-lg border border-primary/40 bg-primary/5 p-4"
+        noValidate
+      >
+        <p className="flex items-center gap-2 font-display text-sm font-bold tracking-wider text-primary">
+          <CalendarCheck className="h-4 w-4" />
+          {title || `${dateLabel} à ${time} — ${settings.occupancy_minutes} min`}
+        </p>
+        <FormField
+          control={contactForm.control}
+          name="name"
+          render={({ field }) => (
+            <FormItem>
+              <FormControl>
+                <Input placeholder={cal.placeholderNom} autoComplete="name" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={contactForm.control}
+          name="email"
+          render={({ field }) => (
+            <FormItem>
+              <FormControl>
+                <Input type="email" placeholder={cal.placeholderEmail} autoComplete="email" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={contactForm.control}
+          name="phone"
+          render={({ field }) => (
+            <FormItem>
+              <FormControl>
+                <Input type="tel" placeholder={cal.placeholderTel} autoComplete="tel" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={contactForm.control}
+          name="players"
+          render={({ field }) => (
+            <FormItem>
+              <label className="flex items-center gap-2 text-sm">
+                <Users className="h-4 w-4 text-primary" />
+                {cal.joueurs}
+                <select
+                  className="h-9 rounded-md border border-input bg-transparent px-2 text-sm"
+                  value={field.value}
+                  onChange={(e) => field.onChange(Number(e.target.value))}
+                  onBlur={field.onBlur}
+                  name={field.name}
+                  ref={field.ref}
+                >
+                  {[3, 4, 5, 6].map((n) => (
+                    <option key={n} value={n}>
+                      {n}
+                    </option>
+                  ))}
+                </select>
+              </label>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <Button type="submit" disabled={submitting} className="h-11 w-full">
+          {cal.bouton}
+        </Button>
+        <p className="text-xs text-muted-foreground">
+          {fillCopy(settings.auto_confirm ? cal.noteAuto : cal.noteManuel, {
+            telephone: CONTACT.phone,
+          })}
+        </p>
+      </form>
+    </Form>
+  );
+}

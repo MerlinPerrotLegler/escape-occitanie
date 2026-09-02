@@ -49,7 +49,7 @@ function SiteHeader() {
             )
           )}
           <Link
-            to="/#salles"
+            to="/reservation"
             className="inline-flex h-10 items-center gap-2 rounded-md bg-primary px-4 text-sm font-semibold text-primary-foreground shadow-[0_0_20px_hsl(var(--primary)/0.35)] transition-all duration-200 hover:brightness-110 active:scale-[0.98]"
           >
             <CalendarDays className="h-4 w-4" strokeWidth={2} />
@@ -87,7 +87,7 @@ function SiteHeader() {
             ))}
           </ul>
           <Link
-            to="/#salles"
+            to="/reservation"
             onClick={() => setOpen(false)}
             className="mt-4 flex h-12 items-center justify-center gap-2 rounded-md bg-primary text-sm font-semibold text-primary-foreground active:scale-[0.98]"
           >

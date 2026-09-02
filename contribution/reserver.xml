@@ -49,4 +49,23 @@
     <done-arrive-confirme>Merci d’arriver 15 minutes en avance.</done-arrive-confirme>
     <done-arrive-attente>Merci d’arriver 15 minutes en avance une fois confirmé.</done-arrive-attente>
   </calendrier>
+  <page>
+    <seo titre="Réservation — Escape Occitanie" description="Comparez les disponibilités des deux salles et réservez votre session d'escape game de 60 minutes chez Escape Occitanie."/>
+    <seo-og description="Disponibilités et réservation pour les deux salles d'Escape Occitanie."/>
+    <surtitre>Réservation</surtitre>
+    <titre>Réservation</titre>
+    <intro>Comparez les deux salles et réservez un créneau de 60 minutes. Votre demande est d’abord enregistrée, puis confirmée par l’équipe.</intro>
+  </page>
+  <timeline>
+    <reserver>Réserver</reserver>
+    <non-dispo>Non dispo</non-dispo>
+    <aria-reserver>Réserver {salle}, {date} à {heure}</aria-reserver>
+    <form-titre>{date} à {heure} — {salle} — {occupancy} min</form-titre>
+    <vide>Aucune date ouverte pour le moment.</vide>
+    <erreur>Impossible de charger les disponibilités.</erreur>
+    <reessayer>Réessayer</reessayer>
+    <aucun-horaire>Aucun horaire sur ces dates.</aucun-horaire>
+    <page-prev>Dates précédentes</page-prev>
+    <page-next>Dates suivantes</page-next>
+  </timeline>
 </reserver>

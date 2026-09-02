@@ -6,6 +6,7 @@ import SiteFooter from './components/SiteFooter';
 import HomePage from './pages/HomePage';
 import RoomPage from './pages/RoomPage';
 import BookingPage from './pages/BookingPage';
+import ReservationPage from './pages/ReservationPage';
 import MaitreThibaultPage from './pages/MaitreThibaultPage';
 import { COPY } from './generated/siteCopy';
 
@@ -59,6 +60,7 @@ function App() {
             path="/salles/la-malediction-du-vaisseau-fantome"
             element={<RoomPage roomKey="vaisseau" />}
           />
+          <Route path="/reservation" element={<ReservationPage />} />
           <Route
             path="/reservation/convocation-chez-le-directeur"
             element={<BookingPage roomKey="directeur" />}

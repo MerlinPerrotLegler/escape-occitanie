@@ -369,6 +369,10 @@ function parseReserver(file, node) {
   const seo = reqNode(file, node, 'seo');
   const seoOg = reqNode(file, node, 'seo-og');
   const cal = reqNode(file, node, 'calendrier');
+  const page = reqNode(file, node, 'page');
+  const pageSeo = reqNode(file, page, 'seo');
+  const pageSeoOg = reqNode(file, page, 'seo-og');
+  const timeline = reqNode(file, node, 'timeline');
   const etapes = asArray(node.etape);
   if (etapes.length !== 3) throw new Error(`${file}: exactement 3 <etape>`);
   const jours = asArray(cal.jour).map((item) => str(item)).filter(Boolean);
@@ -424,6 +428,30 @@ function parseReserver(file, node) {
       doneCorpsDemande: reqStr(file, cal, 'done-corps-demande'),
       doneArriveConfirme: reqStr(file, cal, 'done-arrive-confirme'),
       doneArriveAttente: reqStr(file, cal, 'done-arrive-attente'),
+    },
+    page: {
+      seo: {
+        titre: str(pageSeo.titre) || reqStr(file, pageSeo, 'titre'),
+        description: str(pageSeo.description) || reqStr(file, pageSeo, 'description'),
+      },
+      seoOg: {
+        description: str(pageSeoOg.description) || reqStr(file, pageSeoOg, 'description'),
+      },
+      surtitre: reqStr(file, page, 'surtitre'),
+      titre: reqStr(file, page, 'titre'),
+      intro: reqStr(file, page, 'intro'),
+    },
+    timeline: {
+      reserver: reqStr(file, timeline, 'reserver'),
+      nonDispo: reqStr(file, timeline, 'non-dispo'),
+      ariaReserver: reqStr(file, timeline, 'aria-reserver'),
+      formTitre: reqStr(file, timeline, 'form-titre'),
+      vide: reqStr(file, timeline, 'vide'),
+      erreur: reqStr(file, timeline, 'erreur'),
+      reessayer: reqStr(file, timeline, 'reessayer'),
+      aucunHoraire: reqStr(file, timeline, 'aucun-horaire'),
+      pagePrev: reqStr(file, timeline, 'page-prev'),
+      pageNext: reqStr(file, timeline, 'page-next'),
     },
   };
 }

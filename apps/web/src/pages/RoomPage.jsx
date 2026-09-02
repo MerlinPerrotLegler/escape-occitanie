@@ -13,6 +13,7 @@ import {
 } from 'lucide-react';
 import Reveal from '@/components/Reveal';
 import Seo from '@/components/Seo';
+import AvailabilityTimeline from '@/components/AvailabilityTimeline';
 import { CONTACT, ROOMS, ROOM_LIST } from '@/data/rooms';
 import { COPY } from '@/generated/siteCopy';
 import { fillCopy } from '@/lib/fillCopy';
@@ -102,16 +103,21 @@ function RoomPage({ roomKey }) {
 
       {/* HISTOIRE */}
       <section className="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-24">
-        <div className="grid gap-12 lg:grid-cols-5 lg:gap-16">
+        <Reveal>
+          <p className="font-display text-xs font-semibold uppercase tracking-[0.35em] text-primary">
+            {labels.histoireSurtitre}
+          </p>
+          <h2 className="mt-4 font-display text-2xl font-bold tracking-wide sm:text-3xl">
+            {labels.histoireTitre}
+          </h2>
+        </Reveal>
+        <Reveal delay={0.05} className="mt-8">
+          <AvailabilityTimeline highlightRoom={room.slug} />
+        </Reveal>
+        <div className="mt-12 grid gap-12 lg:grid-cols-5 lg:gap-16">
           <Reveal className="lg:col-span-3">
             <div>
-              <p className="font-display text-xs font-semibold uppercase tracking-[0.35em] text-primary">
-                {labels.histoireSurtitre}
-              </p>
-              <h2 className="mt-4 font-display text-2xl font-bold tracking-wide sm:text-3xl">
-                {labels.histoireTitre}
-              </h2>
-              <div className="mt-6 space-y-5 leading-relaxed text-muted-foreground">
+              <div className="space-y-5 leading-relaxed text-muted-foreground">
                 {room.story.map((paragraph) => (
                   <p key={paragraph.slice(0, 24)}>{paragraph}</p>
                 ))}

@@ -258,6 +258,25 @@ function writeMinimal(dir, { localImage = false, extraPhoto = false } = {}) {
     <done-arrive-confirme>arrive confirme</done-arrive-confirme>
     <done-arrive-attente>arrive attente</done-arrive-attente>
   </calendrier>
+  <page>
+    <seo titre="Réservation — Escape Occitanie" description="Comparez les deux salles et réservez 60 min."/>
+    <seo-og description="Disponibilités des deux salles."/>
+    <surtitre>Réservation</surtitre>
+    <titre>Réservation</titre>
+    <intro>Intro comparatif</intro>
+  </page>
+  <timeline>
+    <reserver>Réserver</reserver>
+    <non-dispo>Non dispo</non-dispo>
+    <aria-reserver>Réserver {salle}, {date} à {heure}</aria-reserver>
+    <form-titre>{date} à {heure} — {salle} — {occupancy} min</form-titre>
+    <vide>Aucune date ouverte pour le moment.</vide>
+    <erreur>Impossible de charger les disponibilités.</erreur>
+    <reessayer>Réessayer</reessayer>
+    <aucun-horaire>Aucun horaire sur ces dates.</aucun-horaire>
+    <page-prev>Dates précédentes</page-prev>
+    <page-next>Dates suivantes</page-next>
+  </timeline>
 </reserver>
 `
   );
@@ -311,6 +330,8 @@ await withTemp(async (dir, out) => {
   expect(copy.rooms.directeur.gallery.length === 3, '3 photos');
   expect(copy.accueil.hero.puces.length === 3, '3 puces');
   expect(copy.accueil.experience.atouts.length === 4, '4 atouts');
+  expect(copy.reserver.page.titre === 'Réservation', 'reserver page titre');
+  expect(copy.reserver.timeline.nonDispo === 'Non dispo', 'timeline non dispo');
   expect(copy.emails['client-attente'].sujet === 'Demande', 'email sujet');
   expect(copy.emails['client-attente'].html.includes('{nom}'), 'html keeps placeholder');
   expect(copy.emails['client-attente'].texte.includes('{nom}'), 'texte keeps placeholder');

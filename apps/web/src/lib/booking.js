@@ -43,6 +43,22 @@ export async function fetchDaySlots(room, date) {
   }
 }
 
+export async function fetchOpenPeriodsStrict(from, to) {
+  const res = await fetch(`/api/periods.php?from=${from}&to=${to}`);
+  if (!res.ok) throw new Error('Impossible de charger les disponibilités.');
+  const data = await res.json().catch(() => ({}));
+  if (!Array.isArray(data.periods)) throw new Error('Impossible de charger les disponibilités.');
+  return data.periods;
+}
+
+export async function fetchDaySlotsStrict(room, date) {
+  const res = await fetch(`/api/availability.php?room=${encodeURIComponent(room)}&date=${date}`);
+  if (!res.ok) throw new Error('Impossible de charger les disponibilités.');
+  const data = await res.json().catch(() => ({}));
+  if (!Array.isArray(data.slots)) throw new Error('Impossible de charger les disponibilités.');
+  return data.slots;
+}
+
 export async function createBooking(payload) {
   const res = await fetch('/api/bookings.php', {
     method: 'POST',
